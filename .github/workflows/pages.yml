@@ -1,0 +1,53 @@
+name: Website
+
+# Builds site/ (plus PRIVACY.md and README screenshots) and deploys it to
+# https://yazmani.github.io/pushpilot/
+on:
+  push:
+    branches: [main]
+    paths:
+      - 'site/**'
+      - 'PRIVACY.md'
+      - 'docs/screenshots/**'
+      - 'src/public/icon/**'
+      - 'src/assets/logo.svg'
+      - 'scripts/site.mjs'
+      - '.github/workflows/pages.yml'
+  workflow_dispatch:
+
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+
+concurrency:
+  group: pages
+  cancel-in-progress: true
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    env:
+      PUPPETEER_SKIP_DOWNLOAD: 'true'
+    steps:
+      - uses: actions/checkout@v7
+      - uses: actions/setup-node@v7
+        with:
+          node-version: 22
+          cache: npm
+      - run: npm ci
+      - run: npm run site
+      - uses: actions/configure-pages@v5
+      - uses: actions/upload-pages-artifact@v3
+        with:
+          path: _site
+
+  deploy:
+    needs: build
+    runs-on: ubuntu-latest
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    steps:
+      - id: deployment
+        uses: actions/deploy-pages@v4

@@ -1,0 +1,283 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Pushpilot: a modern Pushbullet extension for Chrome, Brave and Edge</title>
+    <meta
+      name="description"
+      content="Send tabs, notes and files to your phone, see your Android notifications and text from your browser. A free, open-source Manifest V3 client for Pushbullet."
+    />
+    <link rel="canonical" href="https://yazmani.github.io/pushpilot/" />
+    <meta name="theme-color" content="#16a35a" />
+    <link rel="icon" type="image/png" sizes="32x32" href="icons/32.png" />
+    <link rel="icon" type="image/png" sizes="128x128" href="icons/128.png" />
+    <link rel="apple-touch-icon" href="icons/128.png" />
+
+    <meta property="og:type" content="website" />
+    <meta property="og:site_name" content="Pushpilot" />
+    <meta property="og:title" content="Pushpilot: send this page to your phone" />
+    <meta
+      property="og:description"
+      content="A free, open-source Pushbullet client for Chrome, Brave and Edge. Send tabs, notes and files, see Android notifications, text from your browser."
+    />
+    <meta property="og:url" content="https://yazmani.github.io/pushpilot/" />
+    <meta property="og:image" content="https://yazmani.github.io/pushpilot/og.png" />
+    <meta property="og:image:width" content="1200" />
+    <meta property="og:image:height" content="630" />
+    <meta name="twitter:card" content="summary_large_image" />
+
+    <script type="application/ld+json">
+      {
+        "@context": "https://schema.org",
+        "@type": "SoftwareApplication",
+        "name": "Pushpilot for Pushbullet",
+        "applicationCategory": "BrowserApplication",
+        "operatingSystem": "Chrome, Brave, Microsoft Edge",
+        "description": "Send tabs, notes and files to your phone, see your Android notifications and text from your browser. An unofficial, open-source Manifest V3 client for Pushbullet.",
+        "url": "https://yazmani.github.io/pushpilot/",
+        "image": "https://yazmani.github.io/pushpilot/og.png",
+        "license": "https://www.gnu.org/licenses/agpl-3.0.html",
+        "offers": { "@type": "Offer", "price": "0", "priceCurrency": "USD" }
+      }
+    </script>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <header class="band">
+      <nav class="nav wrap" aria-label="Main">
+        <a class="brand" href="./"><img src="logo.svg" alt="" width="32" height="32" />Pushpilot</a>
+        <div class="nav-links">
+          <a href="#features">Features</a>
+          <a href="privacy.html">Privacy</a>
+          <a href="https://github.com/yazmani/pushpilot">GitHub</a>
+          <a class="btn btn-light btn-sm" href="#install">Install</a>
+        </div>
+      </nav>
+
+      <section class="hero wrap">
+        <div class="hero-copy">
+          <h1>Send this page to your phone.</h1>
+          <p class="lead">
+            Pushpilot is a fast, open-source Pushbullet client for Chrome, Brave and Edge. Send tabs, notes and files, see your
+            Android notifications, and text from your browser.
+          </p>
+          <div class="cta">
+            <a class="btn btn-light" href="#install">Install free</a>
+            <a class="btn btn-ghost" href="https://github.com/yazmani/pushpilot">View the code</a>
+          </div>
+          <p class="fine">Unofficial. Not affiliated with Pushbullet. Works with your existing Pushbullet account.</p>
+        </div>
+      </section>
+      <div class="hero-shot wrap">
+        <img
+          src="screenshots/hero-clear.png"
+          width="1600"
+          height="860"
+          alt="Pushpilot's feed, send sheet and phone notifications"
+        />
+      </div>
+    </header>
+
+    <main>
+      <section class="why wrap">
+        <h2>The Pushbullet extension, rebuilt for today's browsers</h2>
+        <p>
+          The official extension was built on Manifest V2, which current Chrome, Brave and Edge no longer let you install.
+          Pushpilot is a ground-up rewrite on Manifest V3 that brings back what people relied on, and makes sending the page
+          you're on a one-click job.
+        </p>
+      </section>
+
+      <section id="features" class="features wrap">
+        <article class="feature">
+          <div class="feature-copy">
+            <h3>Open it on any page. It's ready to send.</h3>
+            <p>
+              The page you're on appears as a card with its picture, title and site. Pick a device and press
+              <kbd>⌘</kbd> <kbd>Enter</kbd>.
+            </p>
+            <ul>
+              <li>Watching a video? <strong>Start at 12:34</strong> sends it at the exact minute.</li>
+              <li>Notes, links, files and images, by paste or drag and drop.</li>
+              <li>Send to one device, several, all of them, or a friend.</li>
+              <li>Right-click any page, link, image or selection to push it.</li>
+            </ul>
+          </div>
+          <img
+            class="shot"
+            src="screenshots/send-light.png"
+            width="400"
+            height="588"
+            loading="lazy"
+            alt="The send sheet with a video ready to send"
+          />
+        </article>
+
+        <article class="feature flip">
+          <div class="feature-copy">
+            <h3>Links open themselves when they land</h3>
+            <p>
+              Desktop notifications with a choice of sounds, and links that open in a new tab as they arrive, like the original
+              extension.
+            </p>
+            <ul>
+              <li>A feed of everything you've sent and received, with search and previews.</li>
+              <li>Choose what counts: pushes to this browser, to all devices, or to your others.</li>
+              <li>Each browser gets its own Pushbullet device, so pushes between them just work.</li>
+            </ul>
+          </div>
+          <img
+            class="shot"
+            src="screenshots/feed-light.png"
+            width="400"
+            height="588"
+            loading="lazy"
+            alt="The feed with video thumbnails and notes"
+          />
+        </article>
+
+        <article class="feature">
+          <div class="feature-copy">
+            <h3>Your phone's notifications, on your desktop</h3>
+            <p>See Android notifications as they happen, and handle them without picking up your phone.</p>
+            <ul>
+              <li>Copy sign-in codes in one click, or automatically.</li>
+              <li>Reply to WhatsApp, Messages and other chat apps.</li>
+              <li>Run notification actions and dismiss them on the phone.</li>
+            </ul>
+          </div>
+          <img
+            class="shot"
+            src="screenshots/phone-dark.png"
+            width="400"
+            height="588"
+            loading="lazy"
+            alt="Phone notifications with a sign-in code ready to copy"
+          />
+        </article>
+
+        <article class="feature flip">
+          <div class="feature-copy">
+            <h3>Text from your browser</h3>
+            <p>Read your SMS conversations and reply from the keyboard you're already typing on.</p>
+            <ul>
+              <li>Works with any Android phone running the Pushbullet app.</li>
+              <li>End-to-end encryption compatible with the Pushbullet apps.</li>
+            </ul>
+          </div>
+          <img
+            class="shot"
+            src="screenshots/sms-thread-light.png"
+            width="400"
+            height="588"
+            loading="lazy"
+            alt="An SMS conversation"
+          />
+        </article>
+
+        <ul class="extras" aria-label="Also included">
+          <li><strong>Side panel</strong> that follows the tab you're on</li>
+          <li><strong>Keyboard shortcuts</strong> for opening, pushing and the clipboard</li>
+          <li><strong>Universal copy and paste</strong> with Pushbullet Pro</li>
+          <li><strong>Snooze</strong> notifications for an hour or overnight</li>
+          <li><strong>Light and dark</strong> themes</li>
+          <li><strong>Your own sound</strong>, or one of four built in</li>
+        </ul>
+      </section>
+
+      <section class="privacy-band">
+        <div class="wrap privacy">
+          <h2>Private by design</h2>
+          <p>
+            No servers, no analytics, no tracking. Pushpilot talks only to Pushbullet, and your history stays in your browser. The
+            code is open for anyone to check.
+          </p>
+          <a class="btn btn-dark" href="privacy.html">Read the privacy policy</a>
+        </div>
+      </section>
+
+      <section id="install" class="install wrap">
+        <h2>Install</h2>
+        <div class="install-grid">
+          <div class="card">
+            <h3>Chrome Web Store</h3>
+            <p>Coming soon. One click to install in Chrome, Brave and Edge, with automatic updates.</p>
+          </div>
+          <div class="card">
+            <h3>From GitHub</h3>
+            <p>
+              Download <code>pushpilot-*-chrome.zip</code> from
+              <a href="https://github.com/yazmani/pushpilot/releases">Releases</a>, unzip it, open
+              <code>chrome://extensions</code>, turn on Developer mode and choose <strong>Load unpacked</strong>.
+            </p>
+          </div>
+        </div>
+        <p class="fine dark">Needs Chrome 127 or newer, or a browser based on it, and a Pushbullet account.</p>
+      </section>
+
+      <section class="faq wrap">
+        <h2>Questions</h2>
+        <details>
+          <summary>Is Pushpilot made by Pushbullet?</summary>
+          <p>
+            No. It's an independent, open-source project that uses Pushbullet's public API with your own account. It is not
+            affiliated with, endorsed by, or sponsored by Pushbullet.
+          </p>
+        </details>
+        <details>
+          <summary>A push didn't reach my phone.</summary>
+          <p>
+            Pushbullet keeps old device registrations around as "not connected"; pushes to them never arrive. Settings › Devices
+            shows which ones are live. Opening the Pushbullet app on the phone reconnects it.
+          </p>
+        </details>
+        <details>
+          <summary>Do phone notifications and SMS work on iPhone?</summary>
+          <p>No. Pushbullet supports notification mirroring and SMS on Android only.</p>
+        </details>
+        <details>
+          <summary>Is there a limit?</summary>
+          <p>
+            Free Pushbullet accounts can send 500 pushes a month. Receiving, phone notifications and SMS aren't affected.
+            Pushpilot itself is free.
+          </p>
+        </details>
+      </section>
+
+      <section class="support wrap">
+        <h2>Free and open source</h2>
+        <p>
+          Pushpilot is licensed under AGPL-3.0 and made by one person, with no ads. If it saves you time, you can help keep it
+          going.
+        </p>
+        <div class="cta center">
+          <a class="btn btn-accent" href="https://ko-fi.com/yazmanii">Buy me a coffee</a>
+          <a class="btn btn-outline" href="https://github.com/sponsors/yazmani">Sponsor on GitHub</a>
+          <a class="btn btn-outline" href="https://github.com/yazmani/pushpilot">Star on GitHub</a>
+        </div>
+      </section>
+    </main>
+
+    <footer class="footer">
+      <div class="wrap footer-inner">
+        <p>
+          <img src="logo.svg" alt="" width="20" height="20" /> Pushpilot. Not affiliated with, endorsed by, or sponsored by
+          Pushbullet. "Pushbullet" is a trademark of its owner.
+        </p>
+        <nav aria-label="Footer">
+          <a href="privacy.html">Privacy</a>
+          <a href="https://github.com/yazmani/pushpilot">GitHub</a>
+          <a href="https://github.com/yazmani/pushpilot/issues">Support</a>
+        </nav>
+      </div>
+    </footer>
+  </body>
+</html>

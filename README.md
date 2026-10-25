@@ -7,6 +7,8 @@
 **Send tabs, notes and files to your phone. See your Android notifications and text from your browser.**
 A fast, modern, open-source Manifest V3 client for [Pushbullet](https://www.pushbullet.com).
 
+**[Website](https://yazmani.github.io/pushpilot/)** · **[Privacy](https://yazmani.github.io/pushpilot/privacy.html)**
+
 [![CI](https://github.com/yazmani/pushpilot/actions/workflows/ci.yml/badge.svg)](https://github.com/yazmani/pushpilot/actions/workflows/ci.yml)
 [![License: AGPL-3.0](https://img.shields.io/badge/license-AGPL--3.0-16a35a)](LICENSE)
 ![Manifest V3](https://img.shields.io/badge/Manifest-V3-16a35a)

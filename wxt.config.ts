@@ -20,7 +20,7 @@ export default defineConfig({
     description:
       'Send tabs, notes and files to your phone, see Android notifications and text from your browser. Unofficial Pushbullet client.',
     minimum_chrome_version: '127',
-    homepage_url: 'https://github.com/yazmani/pushpilot',
+    homepage_url: 'https://yazmani.github.io/pushpilot/',
     permissions: [
       'storage',
       'unlimitedStorage',

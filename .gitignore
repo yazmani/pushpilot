@@ -30,3 +30,6 @@ web-ext.config.ts
 .env.*
 e2e-shots
 .local/
+
+# Website build output
+_site

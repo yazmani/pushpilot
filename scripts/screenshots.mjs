@@ -54,9 +54,9 @@ function storePage({ view, theme, headline, sub, extra = '' }) {
   </body></html>`;
 }
 
-function heroPage() {
+function heroPage(transparent = false) {
   return `<!doctype html><html><head><meta charset="utf-8">${FONT}<style>
-    body{margin:0;width:1600px;height:860px;overflow:hidden;background:${BAND};display:flex;align-items:center;justify-content:center;gap:48px}
+    body{margin:0;width:1600px;height:860px;overflow:hidden;background:${transparent ? 'transparent' : BAND};display:flex;align-items:center;justify-content:center;gap:48px}
     .f{width:400px;height:588px}.f.mid{transform:translateY(-24px)}
   </style></head><body>
     <div class="f">${popupFrame('feed', 'light')}</div>
@@ -86,6 +86,22 @@ function promoPage(width, height) {
   </style></head><body>
     <div class="copy"><div class="logo">${logo}</div><h1>Pushpilot</h1><p>Your pushes, cleared for takeoff.<br>A modern client for Pushbullet.</p></div>
     <div class="shots"><div class="f">${popupFrame('send', 'light', 0.82)}</div><div class="f">${popupFrame('phone', 'dark', 0.82)}</div></div>
+  </body></html>`;
+}
+
+// Social preview (Open Graph) for the website: 1200×630, public, lives with the README images.
+function ogPage() {
+  return `<!doctype html><html><head><meta charset="utf-8">${FONT}<style>
+    body{margin:0;width:1200px;height:630px;overflow:hidden;position:relative;font-family:'Plus Jakarta Sans',sans-serif;background:${BAND};color:#fff}
+    .copy{position:absolute;left:80px;top:0;bottom:0;width:560px;display:flex;flex-direction:column;justify-content:center}
+    .mark{display:flex;align-items:center;gap:14px;font-weight:800;font-size:26px;letter-spacing:-.01em}
+    .mark svg{width:56px;height:56px;border-radius:15px;box-shadow:0 0 0 3px rgba(255,255,255,.3)}
+    h1{font-size:62px;line-height:1.02;letter-spacing:-.04em;margin:30px 0 16px;font-weight:800}
+    p{font-size:23px;line-height:1.45;margin:0;opacity:.9;font-weight:500}
+    .shot{position:absolute;left:740px;top:56px;width:${400 * 0.95}px;height:${588 * 0.95}px}
+  </style></head><body>
+    <div class="copy"><div class="mark">${logo}Pushpilot</div><h1>Send this page to your phone.</h1><p>A free, open-source Pushbullet client for Chrome, Brave and Edge.</p></div>
+    <div class="shot">${popupFrame('send', 'light', 0.95)}</div>
   </body></html>`;
 }
 
@@ -124,7 +140,10 @@ const STORE = [
 ];
 
 const pages = {
-  '/__hero.html': heroPage,
+  '/__hero.html': () => heroPage(),
+  // Same composition without the backdrop, for the website's hero band (light and dark).
+  '/__hero-clear.html': () => heroPage(true),
+  '/__og.html': ogPage,
   '/__promo-small.html': () => promoPage(440, 280),
   '/__promo-marquee.html': () => promoPage(1400, 560),
   ...Object.fromEntries(STORE.map((s, i) => [`/__store-${i + 1}.html`, () => storePage(s)])),
@@ -203,6 +222,15 @@ try {
   await hero.goto(`${base}/__hero.html`, { waitUntil: 'networkidle2' });
   await settle(2500);
   await hero.screenshot({ path: join(out, 'hero.png') });
+  await hero.goto(`${base}/__hero-clear.html`, { waitUntil: 'networkidle2' });
+  await settle(2500);
+  await hero.screenshot({ path: join(out, 'hero-clear.png'), omitBackground: true });
+
+  const og = await browser.newPage();
+  await og.setViewport({ width: 1200, height: 630, deviceScaleFactor: 1 });
+  await og.goto(`${base}/__og.html`, { waitUntil: 'networkidle2' });
+  await settle(2500);
+  await og.screenshot({ path: join(out, 'og.png') });
 
   // Chrome Web Store: 1280×800 screenshots and promo tiles at exact sizes.
   const store = await browser.newPage();

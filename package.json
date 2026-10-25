@@ -6,7 +6,7 @@
   "type": "module",
   "license": "AGPL-3.0-only",
   "author": "yazmani (https://github.com/yazmani)",
-  "homepage": "https://github.com/yazmani/pushpilot#readme",
+  "homepage": "https://yazmani.github.io/pushpilot/",
   "repository": {
     "type": "git",
     "url": "git+https://github.com/yazmani/pushpilot.git"
@@ -38,10 +38,11 @@
     "postinstall": "wxt prepare",
     "test:api": "node --env-file=.env scripts/api-check.mjs",
     "test:e2e": "wxt build && node --env-file=.env scripts/e2e.mjs",
-    "format": "prettier --write \"src/**/*.{ts,tsx,css}\" \"scripts/**/*.{mjs,js}\" \"tests/**/*.ts\" wxt.config.ts vitest.config.ts",
+    "format": "prettier --write \"src/**/*.{ts,tsx,css}\" \"scripts/**/*.{mjs,js}\" \"tests/**/*.ts\" \"site/**/*.{html,css}\" wxt.config.ts vitest.config.ts",
     "test": "vitest run",
     "screenshots": "wxt build && node scripts/screenshots.mjs",
-    "format:check": "prettier --check \"src/**/*.{ts,tsx,css}\" \"scripts/**/*.{mjs,js}\" \"tests/**/*.ts\" wxt.config.ts vitest.config.ts"
+    "format:check": "prettier --check \"src/**/*.{ts,tsx,css}\" \"scripts/**/*.{mjs,js}\" \"tests/**/*.ts\" \"site/**/*.{html,css}\" wxt.config.ts vitest.config.ts",
+    "site": "node scripts/site.mjs"
   },
   "dependencies": {
     "@fontsource-variable/plus-jakarta-sans": "^5.3.0",
@@ -56,6 +57,7 @@
     "@types/react": "^19.3.0",
     "@types/react-dom": "^19.3.0",
     "@wxt-dev/module-react": "^1.2.2",
+    "marked": "^18.1.1",
     "prettier": "^3.9.10",
     "puppeteer": "^25.16.0",
     "sharp": "^0.35.5",
