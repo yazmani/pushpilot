@@ -1,0 +1,227 @@
+import clsx from 'clsx';
+import { ArrowLeft, MessageSquareText, RefreshCw, SquarePen } from 'lucide-react';
+import { useCallback, useEffect, useMemo, useState } from 'react';
+import { call } from '@/core/messaging/rpc';
+import type { Device, SmsThread } from '@/core/pushbullet/types';
+import { deviceName, isReachable, threadName, timeAgo } from '@/core/utils/format';
+import { Avatar, Centered, Empty, fieldClass, Group, IconButton, MessageComposer, Notice, Spinner } from '@/ui/components';
+import { useNow } from '@/ui/hooks/use-now';
+import { useStore } from '@/ui/hooks/use-store';
+import { errorText, useToast } from '@/ui/hooks/use-toast';
+import { recipientImage, ThreadView } from './ThreadView';
+
+function lastSeen(d: Device) {
+  return new Date(d.modified * 1000).toLocaleDateString(undefined, { month: 'short', day: 'numeric', year: 'numeric' });
+}
+
+export function SmsView({ device: wantDevice, thread: wantThread }: { device?: string; thread?: string }) {
+  const { devices, smsThreads } = useStore(['devices', 'smsThreads']);
+  // Phones that are still connected first, then the most recently active.
+  const phones = useMemo(
+    () =>
+      devices.filter((d) => d.has_sms).sort((a, b) => Number(isReachable(b)) - Number(isReachable(a)) || b.modified - a.modified),
+    [devices],
+  );
+  const [device, setDevice] = useState<string | undefined>(wantDevice);
+  const [threadId, setThreadId] = useState<string | undefined>(wantThread);
+  const [composing, setComposing] = useState(false);
+  const [loading, setLoading] = useState(false);
+  const [error, setError] = useState<string | null>(null);
+
+  // No phone picked yet: use the first one whose texts actually load.
+  useEffect(() => {
+    if (device || !phones.length) return;
+    let cancelled = false;
+    void (async () => {
+      setLoading(true);
+      for (const p of phones) {
+        try {
+          await call('sms.threads', { device: p.iden });
+          if (!cancelled) setDevice(p.iden);
+          setLoading(false);
+          return;
+        } catch {
+          // try the next phone
+        }
+      }
+      if (!cancelled) {
+        setDevice(phones[0]!.iden);
+        setLoading(false);
+      }
+    })();
+    return () => {
+      cancelled = true;
+    };
+  }, [device, phones]);
+
+  const refresh = useCallback(async () => {
+    if (!device) return;
+    setLoading(true);
+    setError(null);
+    try {
+      await call('sms.threads', { device });
+    } catch (err) {
+      setError(errorText(err));
+    } finally {
+      setLoading(false);
+    }
+  }, [device]);
+
+  useEffect(() => {
+    void refresh();
+  }, [refresh]);
+
+  if (!phones.length) {
+    return (
+      <Empty icon={<MessageSquareText size={24} />} title="No phone can text from here">
+        Install Pushbullet on an Android phone and allow it to send and read SMS.
+      </Empty>
+    );
+  }
+
+  const phone = phones.find((p) => p.iden === device);
+  const threads = (device && smsThreads[device]) || [];
+  const thread = threads.find((t) => t.id === threadId);
+
+  if (composing && device) {
+    return (
+      <NewMessage
+        device={device}
+        onBack={() => setComposing(false)}
+        onSent={() => {
+          setComposing(false);
+          setTimeout(() => void refresh(), 2500);
+        }}
+      />
+    );
+  }
+  if (thread && device) return <ThreadView device={device} thread={thread} onBack={() => setThreadId(undefined)} />;
+
+  return (
+    <div className="flex h-full flex-col">
+      <div className="flex shrink-0 items-center gap-2 px-3.5 pb-2 pt-3">
+        <select
+          value={device ?? ''}
+          onChange={(e) => {
+            setDevice(e.target.value);
+            setThreadId(undefined);
+          }}
+          aria-label="Phone"
+          className={clsx(fieldClass, 'h-9 min-w-0 flex-1 font-semibold')}
+        >
+          {phones.map((p) => (
+            <option key={p.iden} value={p.iden}>
+              {deviceName(p)} {isReachable(p) ? '' : `(last seen ${lastSeen(p)})`}
+            </option>
+          ))}
+        </select>
+        <IconButton label="Refresh" onClick={refresh} disabled={loading}>
+          <RefreshCw size={15} className={clsx(loading && 'animate-spin')} />
+        </IconButton>
+        <IconButton label="New text" onClick={() => setComposing(true)}>
+          <SquarePen size={15} />
+        </IconButton>
+      </div>
+
+      <div className="scroll-area min-h-0 flex-1 px-2 pb-3">
+        {phone && !isReachable(phone) && (
+          <div className="mx-1.5 mb-2">
+            <Notice tone="warn">
+              {deviceName(phone)} hasn’t connected since {lastSeen(phone)}. You can read old texts, but new ones won’t send until
+              it’s back online.
+            </Notice>
+          </div>
+        )}
+        {error && (
+          <div className="mx-1.5 mb-2">
+            <Notice tone="error">{error}</Notice>
+          </div>
+        )}
+        {!threads.length && loading && (
+          <Centered>
+            <Spinner />
+          </Centered>
+        )}
+        {!threads.length && !loading && !error && (
+          <Empty title="No conversations">This phone hasn’t shared any text threads yet.</Empty>
+        )}
+        {threads.length > 0 && (
+          <Group className="mx-1.5">
+            {threads.map((t) => (
+              <ThreadRow key={t.id} t={t} onOpen={() => setThreadId(t.id)} />
+            ))}
+          </Group>
+        )}
+      </div>
+    </div>
+  );
+}
+
+function ThreadRow({ t, onOpen }: { t: SmsThread; onOpen: () => void }) {
+  useNow();
+  const name = threadName(t);
+  return (
+    <li>
+      <button
+        onClick={onOpen}
+        className="flex w-full items-center gap-3 px-3.5 py-2.5 text-left transition-colors hover:bg-raised/50"
+      >
+        <Avatar src={t.recipients.length === 1 ? recipientImage(t.recipients[0]) : undefined} name={name} size={38} />
+        <span className="min-w-0 flex-1">
+          <span className="flex items-baseline gap-2">
+            <span className="truncate text-sm font-bold">{name}</span>
+            {t.latest && <span className="ml-auto shrink-0 text-2xs font-medium text-faint">{timeAgo(t.latest.timestamp)}</span>}
+          </span>
+          <span className="mt-0.5 block truncate text-xs text-muted">
+            {t.latest?.direction === 'outgoing' && 'You: '}
+            {t.latest?.body || (t.latest?.image_urls?.length ? 'Photo' : '')}
+          </span>
+        </span>
+      </button>
+    </li>
+  );
+}
+
+function NewMessage({ device, onBack, onSent }: { device: string; onBack: () => void; onSent: () => void }) {
+  const notify = useToast();
+  const [to, setTo] = useState('');
+  const [text, setText] = useState('');
+  const send = async () => {
+    const addresses = to
+      .split(/[,;]/)
+      .map((a) => a.trim())
+      .filter(Boolean);
+    if (!addresses.length) return notify('Add a phone number.', 'error');
+    if (!text.trim()) return;
+    try {
+      await call('sms.send', { device, addresses, message: text.trim() });
+      notify('Text sent');
+      onSent();
+    } catch (err) {
+      notify(errorText(err), 'error');
+    }
+  };
+  return (
+    <div className="flex h-full flex-col">
+      <div className="flex shrink-0 items-center gap-2 border-b border-line bg-surface/60 px-2 py-2">
+        <IconButton label="Back to conversations" onClick={onBack}>
+          <ArrowLeft size={16} />
+        </IconButton>
+        <p className="text-sm font-bold">New text</p>
+      </div>
+      <label className="flex shrink-0 items-center gap-2 border-b border-line px-4 py-3">
+        <span className="text-sm font-semibold text-muted">To</span>
+        <input
+          autoFocus
+          value={to}
+          onChange={(e) => setTo(e.target.value)}
+          placeholder="Phone number, or several separated by commas"
+          inputMode="tel"
+          className="min-w-0 flex-1 bg-transparent text-sm outline-none placeholder:text-faint"
+        />
+      </label>
+      <div className="flex-1" />
+      <MessageComposer value={text} onChange={setText} onSend={send} placeholder="Text message" />
+    </div>
+  );
+}
