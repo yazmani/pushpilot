@@ -1,0 +1,39 @@
+name: Bug report
+description: Something doesn't work as expected
+labels: [bug]
+body:
+  - type: markdown
+    attributes:
+      value: Thanks for the report. Please don't include your access token, email or other personal data.
+  - type: textarea
+    id: what
+    attributes:
+      label: What happened?
+      description: What did you do, what did you expect, and what happened instead?
+    validations:
+      required: true
+  - type: input
+    id: version
+    attributes:
+      label: Pushpilot version
+      placeholder: 1.0.0
+    validations:
+      required: true
+  - type: input
+    id: browser
+    attributes:
+      label: Browser and version
+      placeholder: Chrome 141, Brave 1.85, Edge 141…
+    validations:
+      required: true
+  - type: input
+    id: phone
+    attributes:
+      label: Phone (if it's about notifications or SMS)
+      placeholder: Pixel 9 Pro, Android 16, Pushbullet app 18.x
+  - type: textarea
+    id: logs
+    attributes:
+      label: Errors from the service worker
+      description: chrome://extensions → Pushpilot → "Inspect views: service worker" → Console. Remove anything personal.
+      render: text
