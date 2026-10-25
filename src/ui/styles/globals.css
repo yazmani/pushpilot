@@ -1,0 +1,190 @@
+@import 'tailwindcss';
+@import '@fontsource-variable/plus-jakarta-sans';
+
+@custom-variant dark (&:where([data-theme='dark'], [data-theme='dark'] *));
+
+/* Design tokens. Light is a cool sage paper with deep-pine ink; dark is a pine
+   night. Emerald is the single brand accent; the link/note/file tints exist
+   only to tell push types apart at a glance. */
+:root {
+  --bg: #f2f5f3;
+  --surface: #ffffff;
+  --raised: #edf2ee;
+  --sunken: #e5ece7;
+  --line: #e0e7e2;
+  --ink: #0f2a1d;
+  --muted: #587063;
+  --faint: #8fa597;
+  --accent: #16a35a;
+  --accent-strong: #0b7f43;
+  --accent-soft: #dbf3e4;
+  --on-accent: #ffffff;
+  --danger: #cf3346;
+  --danger-soft: #fbe6e9;
+  --link-bg: #e2f0fa;
+  --link-fg: #1c6aa3;
+  --note-bg: #fdf0d5;
+  --note-fg: #93600a;
+  --file-bg: #eee7fa;
+  --file-fg: #6843b3;
+  --shadow-sm: 0 1px 2px rgb(15 42 29 / 0.06);
+  --shadow: 0 1px 2px rgb(15 42 29 / 0.05), 0 10px 28px -14px rgb(15 42 29 / 0.22);
+  --glow: 0 8px 24px -10px rgb(22 163 90 / 0.55);
+  /* The green header band, a nod to the original Pushbullet extension. */
+  --band: linear-gradient(135deg, #0c8446 0%, #17a85b 60%, #22bd6a 100%);
+  --on-band: #ffffff;
+  color-scheme: light;
+}
+
+:root[data-theme='dark'] {
+  --bg: #0b130f;
+  --surface: #131f19;
+  --raised: #1a2a21;
+  --sunken: #0f1914;
+  --line: #21332a;
+  --ink: #e5f2ea;
+  --muted: #8eaa9a;
+  --faint: #5d7769;
+  --accent: #2bc46e;
+  --accent-strong: #5fe096;
+  --accent-soft: #163a26;
+  --on-accent: #03170b;
+  --danger: #ff7b8b;
+  --danger-soft: #3b1f27;
+  --link-bg: #13304a;
+  --link-fg: #84c4f3;
+  --note-bg: #382d16;
+  --note-fg: #f1c66f;
+  --file-bg: #2a2342;
+  --file-fg: #c0a6f6;
+  --shadow-sm: 0 1px 2px rgb(0 0 0 / 0.3);
+  --shadow: 0 1px 2px rgb(0 0 0 / 0.35), 0 14px 34px -16px rgb(0 0 0 / 0.7);
+  --glow: 0 8px 26px -10px rgb(43 196 110 / 0.5);
+  --band: linear-gradient(135deg, #0a3520 0%, #0f4a2b 60%, #135a34 100%);
+  --on-band: #eafaf0;
+  color-scheme: dark;
+}
+
+@theme inline {
+  --font-sans: 'Plus Jakarta Sans Variable', ui-sans-serif, system-ui, sans-serif;
+  --color-bg: var(--bg);
+  --color-surface: var(--surface);
+  --color-raised: var(--raised);
+  --color-sunken: var(--sunken);
+  --color-line: var(--line);
+  --color-ink: var(--ink);
+  --color-muted: var(--muted);
+  --color-faint: var(--faint);
+  --color-accent: var(--accent);
+  --color-accent-strong: var(--accent-strong);
+  --color-accent-soft: var(--accent-soft);
+  --color-on-accent: var(--on-accent);
+  --color-danger: var(--danger);
+  --color-danger-soft: var(--danger-soft);
+  --color-link-bg: var(--link-bg);
+  --color-link-fg: var(--link-fg);
+  --color-note-bg: var(--note-bg);
+  --color-note-fg: var(--note-fg);
+  --color-file-bg: var(--file-bg);
+  --color-file-fg: var(--file-fg);
+  --shadow-sm: var(--shadow-sm);
+  --shadow-card: var(--shadow);
+  --shadow-glow: var(--glow);
+  --color-on-band: var(--on-band);
+  --text-2xs: 11px;
+  --text-xs: 12px;
+  --text-sm: 13px;
+  --text-base: 14px;
+  --text-lg: 16px;
+  --text-xl: 20px;
+  --text-2xl: 26px;
+}
+
+@layer base {
+  html,
+  body {
+    background: var(--bg);
+    color: var(--ink);
+    font-family: var(--font-sans);
+    font-size: 13px;
+    line-height: 1.45;
+    -webkit-font-smoothing: antialiased;
+  }
+
+  body.popup {
+    width: 400px;
+    height: 588px;
+    overflow: hidden;
+  }
+
+  body.fill,
+  body.fill #root {
+    height: 100vh;
+  }
+
+  #root {
+    height: 100%;
+  }
+
+  ::selection {
+    background: var(--accent);
+    color: var(--on-accent);
+  }
+
+  :focus-visible {
+    outline: 2px solid var(--accent);
+    outline-offset: 2px;
+    border-radius: 8px;
+  }
+
+  input,
+  textarea,
+  select,
+  button {
+    font: inherit;
+    color: inherit;
+  }
+
+  button {
+    cursor: pointer;
+  }
+}
+
+@utility scroll-area {
+  overflow-y: auto;
+  scrollbar-width: thin;
+  scrollbar-color: var(--line) transparent;
+}
+
+@utility no-scrollbar {
+  scrollbar-width: none;
+}
+
+@utility bg-band {
+  background-image: var(--band);
+}
+
+/* Fades the right edge of a horizontal scroller so it reads as "more this way". */
+@utility fade-x {
+  mask-image: linear-gradient(to right, #000 calc(100% - 28px), transparent);
+}
+
+@keyframes rise {
+  from {
+    opacity: 0;
+    transform: translateY(4px);
+  }
+}
+
+@utility animate-rise {
+  animation: rise 180ms ease-out both;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    transition-duration: 0.01ms !important;
+  }
+}
