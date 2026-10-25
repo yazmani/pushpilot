@@ -1,15 +1,38 @@
 import clsx from 'clsx';
 import { KeyRound } from 'lucide-react';
-import { useState } from 'react';
+import { useEffect, useRef, useState } from 'react';
 import { call } from '@/core/messaging/rpc';
 import { Button, fieldClass, Logo, Notice } from '@/ui/components';
 import { errorText } from '@/ui/hooks/use-toast';
+import { continueSignInInSettings, signInWithPushbullet } from './oauth';
 
-export function SignIn({ wide = false }: { wide?: boolean }) {
+export function SignIn({
+  wide = false,
+  inPopup = false,
+  autoStart = false,
+}: {
+  wide?: boolean;
+  inPopup?: boolean;
+  autoStart?: boolean;
+}) {
   const [showToken, setShowToken] = useState(false);
   const [token, setToken] = useState('');
   const [error, setError] = useState<string | null>(null);
   const [busy, setBusy] = useState<'web' | 'token' | null>(null);
+
+  const startWeb = () => {
+    if (inPopup) return continueSignInInSettings();
+    void attempt('web', signInWithPushbullet);
+  };
+
+  // Settings opened from the popup's "Sign in" button: go straight to Pushbullet.
+  const started = useRef(false);
+  useEffect(() => {
+    if (!autoStart || started.current) return;
+    started.current = true;
+    history.replaceState(null, '', location.pathname);
+    startWeb();
+  }, [autoStart]);
 
   const attempt = async (which: 'web' | 'token', fn: () => Promise<unknown>) => {
     setBusy(which);
@@ -39,17 +62,11 @@ export function SignIn({ wide = false }: { wide?: boolean }) {
         notifications to your desktop.
       </p>
 
-      <Button
-        variant="primary"
-        size="lg"
-        className="relative mt-7 w-full"
-        busy={busy === 'web'}
-        onClick={() => attempt('web', () => call('auth.signin'))}
-      >
+      <Button variant="primary" size="lg" className="relative mt-7 w-full" busy={busy === 'web'} onClick={startWeb}>
         Sign in with Pushbullet
       </Button>
       <p className="relative mt-2 text-xs leading-relaxed text-muted">
-        Opens pushbullet.com. Once you’re signed in there, Pushpilot connects by itself.
+        Opens Pushbullet so you can approve Pushpilot. Your password never reaches the extension.
       </p>
 
       {!showToken ? (

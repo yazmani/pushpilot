@@ -1,6 +1,6 @@
 # Privacy policy
 
-_Last updated: October 25, 2026_
+_Last updated: October 26, 2026_
 
 Pushpilot for Pushbullet ("Pushpilot") is an open-source browser extension that works with your Pushbullet account. It is not affiliated with Pushbullet. This policy explains what Pushpilot does with your data.
 
@@ -39,7 +39,7 @@ When you open Pushpilot from the toolbar or with its keyboard shortcut, Chrome l
 
 ## Sign-in
 
-"Sign in with Pushbullet" reads the session cookie that pushbullet.com sets after you sign in there, and only while a sign-in you started is in progress. Pushpilot does not read cookies from any other site.
+"Sign in with Pushbullet" opens Pushbullet's own authorization page, where you approve Pushpilot. Pushbullet then gives Pushpilot an access token; your password never reaches the extension. You can revoke Pushpilot's access at any time in your Pushbullet account settings. Pushpilot does not read cookies.
 
 ## Children
 

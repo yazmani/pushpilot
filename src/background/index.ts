@@ -4,7 +4,7 @@
 import { browser } from 'wxt/browser';
 import * as store from '@/core/storage/store';
 import { ensureSelfDevice, syncPeople } from '@/background/services/account';
-import { registerSignInWatchers, signOut } from '@/background/services/auth';
+import { signOut } from '@/background/services/auth';
 import { registerBadge, updateBadge } from '@/background/platform/badge';
 import { rebuildMenus, registerMenuClicks } from '@/background/platform/menus';
 import { registerMirrorNotifications } from '@/background/services/mirror';
@@ -23,7 +23,6 @@ export function startBackground() {
   registerPushNotifications();
   registerMirrorNotifications();
   registerSmsNotifications();
-  registerSignInWatchers();
   registerMenuClicks();
   registerStreamWatchdog();
   registerBadge();

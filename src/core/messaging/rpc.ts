@@ -16,7 +16,6 @@ export interface OutgoingPush {
 // UI → background requests. Each entry maps a request to its response data.
 export interface Rpc {
   'auth.token': { req: { token: string }; res: void };
-  'auth.signin': { req: object; res: void };
   'auth.signout': { req: object; res: void };
   sync: { req: object; res: void };
   reconnect: { req: object; res: void };

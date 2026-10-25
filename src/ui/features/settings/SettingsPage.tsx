@@ -63,7 +63,7 @@ function SettingsContent() {
   if (!token) {
     return (
       <div className="mx-auto max-w-3xl px-8 py-20">
-        <SignIn wide />
+        <SignIn wide autoStart={location.hash === '#signin'} />
       </div>
     );
   }

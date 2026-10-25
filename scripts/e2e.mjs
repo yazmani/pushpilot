@@ -56,6 +56,12 @@ try {
   await app.goto(`chrome-extension://${extId}/popup.html`);
   await app.screenshot({ path: `${shots}signin.png` });
 
+  await step('OAuth redirect uses the store extension ID', async () => {
+    const redirect = await app.evaluate(() => chrome.identity.getRedirectURL());
+    if (redirect !== 'https://pdiijobemepbckkbdeacfngodbeddmcf.chromiumapp.org/') throw new Error(redirect);
+    return redirect;
+  });
+
   await step('sign in with token', async () => {
     const r = await rpc({ rpc: 'auth.token', token });
     if (!r?.ok) throw new Error(r?.error ?? 'no reply');

@@ -3,7 +3,7 @@ import { deriveKey } from '@/core/pushbullet/crypto';
 import type { Rpc, RpcMessage, RpcName } from '@/core/messaging/rpc';
 import * as store from '@/core/storage/store';
 import { renameSelfDevice, setChatMuted, syncMe, syncPeople } from '@/background/services/account';
-import { bootstrap, signInWithToken, signOut, startWebSignIn } from '@/background/services/auth';
+import { bootstrap, signInWithToken, signOut } from '@/background/services/auth';
 import { show } from '@/background/platform/notifications';
 import { playSound } from '@/background/platform/offscreen';
 import { fetchPreviews, savePreview } from '@/background/services/previews';
@@ -19,7 +19,6 @@ const handlers: Handlers = {
   'auth.token': async ({ token }) => {
     await signInWithToken(token);
   },
-  'auth.signin': () => startWebSignIn(),
   'auth.signout': () => signOut(),
   sync: async () => {
     await syncMe();

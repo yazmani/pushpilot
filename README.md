@@ -72,7 +72,7 @@ Requires Chrome 127 or newer (or a browser based on it).
 
 ## Getting started
 
-1. Click the Pushpilot icon and choose **Sign in with Pushbullet**. Pushpilot opens pushbullet.com; once you're signed in there it connects by itself.
+1. Click the Pushpilot icon and choose **Sign in with Pushbullet**, then approve Pushpilot on Pushbullet's page. You can revoke access any time at pushbullet.com › Settings.
 2. Or paste an access token from [pushbullet.com › Settings › Account](https://www.pushbullet.com/#settings/account).
 3. Open Pushpilot on any page, pick a device, press `⌘ Enter` / `Ctrl Enter`.
 
@@ -89,7 +89,7 @@ Pushpilot has no servers, no analytics and no tracking. It talks only to Pushbul
 | `notifications` | Desktop notifications for pushes, phone notifications and texts |
 | `tabs`, `activeTab`, `scripting` | Reading the page you're on (title, link, preview, video position) when you open Pushpilot; following the active tab in the side panel |
 | `contextMenus` | The right-click "Push this page / link / image / selection" menu |
-| `cookies` + pushbullet.com | One-click sign-in: picking up your session after you sign in on pushbullet.com |
+| `identity` | Signing in through Pushbullet's own authorization page (OAuth) |
 | `alarms` | Reconnecting to Pushbullet's stream if the connection drops |
 | `offscreen` | Playing the notification sound and writing to the clipboard (service workers have no DOM) |
 | `clipboardRead`, `clipboardWrite` | Universal copy and paste, and copying sign-in codes |

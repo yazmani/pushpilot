@@ -32,7 +32,7 @@
   "scripts": {
     "dev": "wxt",
     "build": "wxt build",
-    "zip": "wxt zip",
+    "zip": "STORE_BUILD=1 wxt zip && wxt build",
     "compile": "tsc --noEmit",
     "icons": "node scripts/icons.mjs",
     "postinstall": "wxt prepare",

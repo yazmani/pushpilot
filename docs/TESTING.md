@@ -40,7 +40,7 @@ These are implemented against Pushbullet's protocol (the same calls the official
 
 | Feature | Why it isn't automated | How to help |
 | --- | --- | --- |
-| Sign in with Pushbullet (web) | Needs an interactive Google/Facebook login | Sign out, then sign in with the button, and report |
+| Sign in with Pushbullet (OAuth) | Needs an interactive Pushbullet login; the suite checks the redirect URL matches the store ID | Sign out, then sign in with the button, and report |
 | Notification mirroring: receive, dismiss, actions, quick reply | Needs an Android phone with mirroring on | Try each on a phone and report |
 | Sending SMS | Needs a connected Android phone with SMS sync | Send a text from the SMS tab |
 | SMS with end-to-end encryption on | Needs a phone with encryption enabled | Same as above with encryption on |

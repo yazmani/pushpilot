@@ -73,7 +73,7 @@ function Shell({ mode }: { mode: Mode }) {
       </Centered>
     );
   }
-  if (!token) return <SignIn />;
+  if (!token) return <SignIn inPopup={mode === 'popup'} />;
 
   return (
     <div className="flex h-full flex-col bg-bg">
