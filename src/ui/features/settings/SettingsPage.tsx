@@ -1,13 +1,14 @@
 import clsx from 'clsx';
-import { LockKeyhole, LogOut, RefreshCw } from 'lucide-react';
+import { Coffee, Heart, LockKeyhole, LogOut, RefreshCw, Star } from 'lucide-react';
 import { type ReactNode, useEffect, useRef, useState } from 'react';
 import { browser, type Browser } from 'wxt/browser';
+import { LINKS } from '@/core/links';
 import { call } from '@/core/messaging/rpc';
 import type { Device } from '@/core/pushbullet/types';
 import * as store from '@/core/storage/store';
 import type { Settings, SoundChoice, Tab, Theme } from '@/core/storage/store';
 import { deviceKind, deviceName, isReachable } from '@/core/utils/format';
-import { Avatar, Button, DeviceGlyph, fieldClass, LogoMark, Segmented, Toggle, ToastBar } from '@/ui/components';
+import { Avatar, Button, DeviceGlyph, fieldClass, LinkButton, LogoMark, Segmented, Toggle, ToastBar } from '@/ui/components';
 import { SignIn } from '@/ui/features/auth/SignIn';
 import { useTargets } from '@/ui/features/send/targets';
 import { useStore } from '@/ui/hooks/use-store';
@@ -28,6 +29,7 @@ const SECTIONS = [
   ['appearance', 'Appearance'],
   ['shortcuts', 'Shortcuts'],
   ['data', 'Your data'],
+  ['support', 'Support'],
 ] as const;
 
 export function SettingsPage() {
@@ -371,6 +373,27 @@ function SettingsContent() {
               <Button variant="danger" onClick={() => run(() => call('history.clear'), 'History cleared')}>
                 Clear local history
               </Button>
+            </div>
+          </Section>
+
+          <Section id="support" title="Support Pushpilot">
+            <p className="py-3.5 text-sm leading-relaxed text-muted">
+              Pushpilot is free, open source and made by one person, with no ads or tracking. If it’s useful to you, you can help
+              keep it going.
+            </p>
+            <div className="flex flex-wrap gap-2 pb-3.5">
+              <LinkButton href={LINKS.kofi} variant="primary">
+                <Coffee size={15} /> Buy me a coffee
+              </LinkButton>
+              <LinkButton href={LINKS.sponsor}>
+                <Heart size={15} /> Sponsor on GitHub
+              </LinkButton>
+              <LinkButton href={LINKS.repo} variant="ghost">
+                <Star size={15} /> Star on GitHub
+              </LinkButton>
+              <LinkButton href={LINKS.issues} variant="ghost">
+                Report a problem
+              </LinkButton>
             </div>
           </Section>
         </main>

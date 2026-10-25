@@ -13,6 +13,7 @@ import { useStore } from '@/ui/hooks/use-store';
 import { errorText, useToast } from '@/ui/hooks/use-toast';
 import { LinkCard } from './LinkCard';
 import { RecentPushes } from './RecentPushes';
+import { SupportPrompt } from './SupportPrompt';
 import { grabImage, type PageInfo, readPage } from './page';
 import { TargetGrid } from './TargetGrid';
 import { targetLabel, useTargets } from './targets';
@@ -207,6 +208,7 @@ export function SendView({ mode, onOpenFeed }: { mode: Mode; onOpenFeed: () => v
       if (selected.length === 1 && selected[0] !== settings.defaultTarget)
         void store.updateSettings({ defaultTarget: selected[0] });
       trail.current?.fire();
+      void store.update('sendCount', (n) => n + 1);
       notify(`Sent to ${where}`);
       if (settings.closeAfterSend && mode === 'popup') setTimeout(() => window.close(), 700);
       else reset();
@@ -382,6 +384,7 @@ export function SendView({ mode, onOpenFeed }: { mode: Mode; onOpenFeed: () => v
         </div>
 
         <TargetGrid targets={targets} selected={selected} unreachable={unreachable} onChange={setSelected} />
+        <SupportPrompt />
         <RecentPushes onSeeAll={onOpenFeed} />
       </div>
 

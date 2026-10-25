@@ -142,6 +142,10 @@ export interface Schema {
   lastError: string | null;
   /** Hand-off from the context menu / notifications to the popup. */
   intent: { view: Tab; thread?: string; device?: string; mirror?: string } | null;
+  /** Successful sends from this install, for the one-time support prompt. */
+  sendCount: number;
+  /** The support prompt was shown and acted on or dismissed. */
+  supportPromptSeen: boolean;
 }
 
 export const defaults: Schema = {
@@ -165,6 +169,8 @@ export const defaults: Schema = {
   connection: 'signed-out',
   lastError: null,
   intent: null,
+  sendCount: 0,
+  supportPromptSeen: false,
 };
 
 export type Key = keyof Schema;
