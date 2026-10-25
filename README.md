@@ -14,7 +14,7 @@ A fast, modern, open-source Manifest V3 client for [Pushbullet](https://www.push
 ![Manifest V3](https://img.shields.io/badge/Manifest-V3-16a35a)
 ![Chrome, Brave, Edge](https://img.shields.io/badge/works%20in-Chrome%20%7C%20Brave%20%7C%20Edge-0b7f43)
 [![Sponsor](https://img.shields.io/badge/sponsor-GitHub-ea4aaa?logo=githubsponsors&logoColor=white)](https://github.com/sponsors/yazmani)
-[![Ko-fi](https://img.shields.io/badge/buy%20me%20a%20coffee-Ko--fi-ff5e5b?logo=kofi&logoColor=white)](https://ko-fi.com/yazmanii)
+[![Ko-fi](https://img.shields.io/badge/buy%20me%20a%20coffee-Ko--fi-ff5e5b?logo=kofi&logoColor=white)](https://ko-fi.com/pushpilot)
 
 <img src="docs/screenshots/hero.png" alt="Pushpilot: the feed, the send sheet and phone notifications" width="900">
 
@@ -161,7 +161,7 @@ The worker owns the network: it syncs, listens to the stream and writes to `chro
 
 Pushpilot is free, open source and made by one person, with no ads and no tracking. If it saves you time, you can help keep it going:
 
-- ☕ [Buy me a coffee on Ko-fi](https://ko-fi.com/yazmanii)
+- ☕ [Buy me a coffee on Ko-fi](https://ko-fi.com/pushpilot)
 - 💚 [Sponsor on GitHub](https://github.com/sponsors/yazmani)
 - ⭐ Star this repository, or leave a review once Pushpilot is in the Chrome Web Store
 

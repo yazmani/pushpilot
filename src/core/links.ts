@@ -3,7 +3,7 @@ export const LINKS = {
   repo: 'https://github.com/yazmani/pushpilot',
   issues: 'https://github.com/yazmani/pushpilot/issues',
   sponsor: 'https://github.com/sponsors/yazmani',
-  kofi: 'https://ko-fi.com/yazmanii',
+  kofi: 'https://ko-fi.com/pushpilot',
 } as const;
 
 /**
