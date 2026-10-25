@@ -165,6 +165,13 @@ Pushpilot is free, open source and made by one person, with no ads and no tracki
 - 💚 [Sponsor on GitHub](https://github.com/sponsors/yazmani)
 - ⭐ Star this repository, or leave a review once Pushpilot is in the Chrome Web Store
 
+### Supporters
+
+Thank you to everyone who keeps Pushpilot going 💚 Supporters who'd like to be listed here can reply to their Ko-fi thank-you message or mention it on GitHub Sponsors.
+
+<!-- supporters:start -->
+<!-- supporters:end -->
+
 ## Contributing
 
 Issues and pull requests are welcome. Please read [CONTRIBUTING.md](CONTRIBUTING.md) first. Security issues: see [SECURITY.md](SECURITY.md).
