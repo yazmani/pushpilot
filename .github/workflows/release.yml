@@ -1,0 +1,32 @@
+name: Release
+
+# Push a tag like v1.0.1 (matching package.json's version) to build the store
+# zip and publish a GitHub release with it attached.
+on:
+  push:
+    tags: ['v*']
+
+permissions:
+  contents: write
+
+jobs:
+  release:
+    runs-on: ubuntu-latest
+    env:
+      PUPPETEER_SKIP_DOWNLOAD: 'true'
+    steps:
+      - uses: actions/checkout@v7
+      - uses: actions/setup-node@v7
+        with:
+          node-version: 22
+          cache: npm
+      - run: npm ci
+      - name: Check the tag matches package.json
+        run: test "v$(node -p "require('./package.json').version")" = "${GITHUB_REF_NAME}"
+      - run: npm run compile
+      - run: npm test
+      - run: npm run zip
+      - uses: softprops/action-gh-release@v3
+        with:
+          files: dist/*-chrome.zip
+          generate_release_notes: true

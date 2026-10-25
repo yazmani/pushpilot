@@ -1,0 +1,40 @@
+name: Publish to Chrome Web Store
+
+# Run manually once the extension exists in the Chrome Web Store and these
+# repository secrets are set (CWS API v2, service account):
+#   CHROME_EXTENSION_ID, CHROME_PUBLISHER_ID,
+#   CHROME_SERVICE_ACCOUNT_CLIENT_EMAIL, CHROME_SERVICE_ACCOUNT_PRIVATE_KEY
+# `npx wxt submit init` walks through creating them.
+on:
+  workflow_dispatch:
+    inputs:
+      dry_run:
+        description: Validate credentials without submitting
+        type: boolean
+        default: true
+
+permissions:
+  contents: read
+
+jobs:
+  submit:
+    runs-on: ubuntu-latest
+    env:
+      PUPPETEER_SKIP_DOWNLOAD: 'true'
+    steps:
+      - uses: actions/checkout@v7
+      - uses: actions/setup-node@v7
+        with:
+          node-version: 22
+          cache: npm
+      - run: npm ci
+      - run: npm test
+      - run: npm run zip
+      - name: Submit
+        run: npx wxt submit ${{ inputs.dry_run && '--dry-run' || '' }} --chrome-zip dist/*-chrome.zip
+        env:
+          CHROME_API_VERSION: v2
+          CHROME_EXTENSION_ID: ${{ secrets.CHROME_EXTENSION_ID }}
+          CHROME_PUBLISHER_ID: ${{ secrets.CHROME_PUBLISHER_ID }}
+          CHROME_SERVICE_ACCOUNT_CLIENT_EMAIL: ${{ secrets.CHROME_SERVICE_ACCOUNT_CLIENT_EMAIL }}
+          CHROME_SERVICE_ACCOUNT_PRIVATE_KEY: ${{ secrets.CHROME_SERVICE_ACCOUNT_PRIVATE_KEY }}
