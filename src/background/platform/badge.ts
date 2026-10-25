@@ -1,0 +1,36 @@
+import { browser } from 'wxt/browser';
+import * as store from '@/core/storage/store';
+
+export async function updateBadge() {
+  const { unread, settings, connection, token } = await store.getMany(['unread', 'settings', 'connection', 'token']);
+  if (!token) {
+    await browser.action.setBadgeText({ text: '' });
+    await browser.action.setTitle({ title: 'Pushpilot: sign in to Pushbullet' });
+    return;
+  }
+  if (connection === 'offline') {
+    await browser.action.setBadgeBackgroundColor({ color: '#587063' });
+    await browser.action.setBadgeTextColor({ color: '#FFFFFF' });
+    await browser.action.setBadgeText({ text: '!' });
+    await browser.action.setTitle({ title: 'Pushpilot: offline, retrying' });
+    return;
+  }
+  const total = settings.badge
+    ? (settings.badgeFeed ? unread.feed : 0) + (settings.badgePhone ? unread.phone : 0) + (settings.badgeSms ? unread.sms : 0)
+    : 0;
+  await browser.action.setBadgeBackgroundColor({ color: '#16A35A' });
+  await browser.action.setBadgeTextColor({ color: '#FFFFFF' });
+  await browser.action.setBadgeText({ text: total ? (total > 99 ? '99+' : String(total)) : '' });
+  const snoozed = settings.snoozeUntil > Date.now();
+  await browser.action.setTitle({
+    title: `Pushpilot${total ? `: ${total} new` : ''}${snoozed ? ' (notifications snoozed)' : ''}`,
+  });
+}
+
+export function registerBadge() {
+  store.onChange((changes) => {
+    if ('unread' in changes || 'settings' in changes || 'connection' in changes || 'token' in changes) {
+      void updateBadge();
+    }
+  });
+}
