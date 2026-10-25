@@ -11,6 +11,8 @@ A fast, modern, open-source Manifest V3 client for [Pushbullet](https://www.push
 [![License: AGPL-3.0](https://img.shields.io/badge/license-AGPL--3.0-16a35a)](LICENSE)
 ![Manifest V3](https://img.shields.io/badge/Manifest-V3-16a35a)
 ![Chrome, Brave, Edge](https://img.shields.io/badge/works%20in-Chrome%20%7C%20Brave%20%7C%20Edge-0b7f43)
+[![Sponsor](https://img.shields.io/badge/sponsor-GitHub-ea4aaa?logo=githubsponsors&logoColor=white)](https://github.com/sponsors/yazmani)
+[![Ko-fi](https://img.shields.io/badge/buy%20me%20a%20coffee-Ko--fi-ff5e5b?logo=kofi&logoColor=white)](https://ko-fi.com/yazmanii)
 
 <img src="docs/screenshots/hero.png" alt="Pushpilot: the feed, the send sheet and phone notifications" width="900">
 
@@ -107,6 +109,8 @@ Pushpilot has no servers, no analytics and no tracking. It talks only to Pushbul
 
 **Universal copy and paste doesn't do anything.** It needs Pushbullet Pro and the setting turned on in your other Pushbullet apps.
 
+**Sending stopped working with an error.** Free Pushbullet accounts can send 500 pushes a month; going over makes sends fail until the next month or until you upgrade to Pushbullet Pro. Receiving, phone notifications and SMS aren't affected.
+
 ## Development
 
 Built with [WXT](https://wxt.dev), React 19, TypeScript and Tailwind CSS 4.
@@ -150,6 +154,14 @@ tests/              unit tests (Vitest)
 ```
 
 The worker owns the network: it syncs, listens to the stream and writes to `chrome.storage.local`. The UI renders from storage and asks the worker to act through typed RPC (`src/core/messaging/rpc.ts`). File uploads run in the UI so they can show progress.
+
+## Support
+
+Pushpilot is free, open source and made by one person, with no ads and no tracking. If it saves you time, you can help keep it going:
+
+- ☕ [Buy me a coffee on Ko-fi](https://ko-fi.com/yazmanii)
+- 💚 [Sponsor on GitHub](https://github.com/sponsors/yazmani)
+- ⭐ Star this repository, or leave a review once Pushpilot is in the Chrome Web Store
 
 ## Contributing
 
