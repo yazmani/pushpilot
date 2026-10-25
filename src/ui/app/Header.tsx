@@ -45,7 +45,7 @@ export function Header({
   return (
     <header className="bg-band relative shrink-0 text-on-band">
       <div className="flex h-[52px] items-center gap-1 pl-3.5 pr-2.5">
-        <LogoMark size={20} className="mr-2 shrink-0" />
+        <LogoMark size={28} className="mr-1.5 shrink-0 drop-shadow-[0_2px_4px_rgba(0,40,20,0.3)]" />
         <nav className="flex min-w-0 flex-1 items-center gap-0.5" role="tablist" aria-label="Sections">
           {TABS.filter((t) => t.id !== 'sms' || showSms).map((t) => {
             const on = tab === t.id;

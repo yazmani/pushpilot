@@ -72,7 +72,7 @@ function SettingsContent() {
     <div className="min-h-screen">
       <header className="bg-band text-on-band">
         <div className="mx-auto flex h-16 max-w-5xl items-center gap-3 px-8">
-          <LogoMark size={22} />
+          <LogoMark size={28} className="drop-shadow-[0_2px_4px_rgba(0,40,20,0.3)]" />
           <p className="text-lg font-extrabold tracking-[-0.02em]">Pushpilot</p>
           <span className="ml-2 rounded-full bg-white/15 px-2.5 py-1 text-2xs font-bold">
             {connection === 'live' ? 'Connected' : connection === 'connecting' ? 'Connecting…' : 'Offline'}

@@ -18,11 +18,11 @@ export function Logo({ size = 24, className }: { size?: number; className?: stri
   );
 }
 
-/** The plane on its own, for coloured backgrounds like the header band. */
+/** The plane on its own for coloured backgrounds like the header band: white with a mint fold. */
 export function LogoMark({ size = 22, className }: { size?: number; className?: string }) {
   return (
-    <svg width={size} height={size} viewBox="11 16 100 100" aria-hidden="true" className={className}>
-      <LogoGlyph ink="currentColor" fold="currentColor" foldOpacity={0.6} />
+    <svg width={size} height={size} viewBox="14 18 98 98" aria-hidden="true" className={className}>
+      <LogoGlyph ink="#fff" fold="#B9F2D1" />
     </svg>
   );
 }
