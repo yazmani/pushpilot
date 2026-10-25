@@ -1,0 +1,67 @@
+{
+  "name": "pushpilot",
+  "description": "Send pages, notes, files, texts and phone notifications between your devices. An unofficial, open-source Manifest V3 client for Pushbullet.",
+  "private": true,
+  "version": "1.0.0",
+  "type": "module",
+  "license": "AGPL-3.0-only",
+  "author": "yazmani (https://github.com/yazmani)",
+  "homepage": "https://github.com/yazmani/pushpilot#readme",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/yazmani/pushpilot.git"
+  },
+  "bugs": {
+    "url": "https://github.com/yazmani/pushpilot/issues"
+  },
+  "keywords": [
+    "pushbullet",
+    "chrome-extension",
+    "browser-extension",
+    "manifest-v3",
+    "send-to-phone",
+    "sms",
+    "notification-mirroring",
+    "universal-clipboard",
+    "wxt",
+    "react"
+  ],
+  "engines": {
+    "node": ">=20"
+  },
+  "scripts": {
+    "dev": "wxt",
+    "build": "wxt build",
+    "zip": "wxt zip",
+    "compile": "tsc --noEmit",
+    "icons": "node scripts/icons.mjs",
+    "postinstall": "wxt prepare",
+    "test:api": "node --env-file=.env scripts/api-check.mjs",
+    "test:e2e": "wxt build && node --env-file=.env scripts/e2e.mjs",
+    "format": "prettier --write \"src/**/*.{ts,tsx,css}\" \"scripts/**/*.{mjs,js}\" \"tests/**/*.ts\" wxt.config.ts vitest.config.ts",
+    "test": "vitest run",
+    "screenshots": "wxt build && node scripts/screenshots.mjs",
+    "format:check": "prettier --check \"src/**/*.{ts,tsx,css}\" \"scripts/**/*.{mjs,js}\" \"tests/**/*.ts\" wxt.config.ts vitest.config.ts"
+  },
+  "dependencies": {
+    "@fontsource-variable/plus-jakarta-sans": "^5.3.0",
+    "clsx": "^2.1.1",
+    "lucide-react": "^1.61.0",
+    "react": "^19.3.1",
+    "react-dom": "^19.3.1"
+  },
+  "devDependencies": {
+    "@tailwindcss/vite": "^4.3.3",
+    "@types/node": "^24.19.2",
+    "@types/react": "^19.3.0",
+    "@types/react-dom": "^19.3.0",
+    "@wxt-dev/module-react": "^1.2.2",
+    "prettier": "^3.9.10",
+    "puppeteer": "^25.16.0",
+    "sharp": "^0.35.5",
+    "tailwindcss": "^4.3.3",
+    "typescript": "^5.9.3",
+    "vitest": "^5.0.5",
+    "wxt": "^0.21.4"
+  }
+}
