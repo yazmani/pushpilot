@@ -1,7 +1,9 @@
-// Builds the Pushpilot shortcut for Apple Shortcuts (macOS and iOS): push
-// links, text, images and files to a Pushbullet device from the Share menu,
-// Finder, the menu bar or a keyboard shortcut, with or without the browser
-// running. Run with nothing selected, it pushes the clipboard.
+// Builds the Pushpilot shortcut for Apple Shortcuts on iPhone, iPad and Mac:
+// push links, text, photos and files to a Pushbullet device or friend from the
+// Share sheet, Finder, the menu bar, Back Tap, Siri or a keyboard shortcut,
+// with or without the browser running. With nothing shared it pushes the
+// clipboard. The list starts with wherever you pushed last (read from your
+// recent pushes), and you can set one device to skip it.
 //
 // The access token is asked for when someone adds the shortcut, so the
 // published file holds no secrets. Signing goes through Apple and needs a Mac
@@ -10,10 +12,12 @@
 //   node scripts/shortcut.mjs [out-dir]   → <out-dir>/Pushpilot.shortcut (default: site/)
 //
 // --test builds "Pushpilot Test" for checking with `shortcuts run`: ACCESS_TOKEN
-// from .env baked in and no device picker (it pushes to TEST_DEVICE). Never
-// publish that one.
+// from .env baked in, no "All devices", the first entry of the list picked
+// instead of asking, and checkpoint notes pushed to TEST_DEVICE as it runs.
+// Push something to TEST_DEVICE first so it's the first entry. Never publish
+// that one.
 //
-//   node --env-file=.env scripts/shortcut.mjs --test <out-dir>
+//   TEST_DEVICE=<iden> node --env-file=.env scripts/shortcut.mjs --test <out-dir>
 
 import { execFileSync } from 'node:child_process';
 import { randomUUID } from 'node:crypto';
@@ -100,6 +104,8 @@ function act(id, params = {}, name = id) {
 }
 
 const setVar = (name, ref) => act('setvariable', { WFVariableName: name, WFInput: attach(ref) });
+const append = (name, ref) => act('appendvariable', { WFVariableName: name, WFInput: attach(ref) });
+const dictionary = (pairs) => act('dictionary', { WFItems: fields(pairs) }, 'Dictionary');
 const setText = (name, ...parts) => setVar(name, act('gettext', { WFTextActionText: text(...parts) }, 'Text'));
 const value = (dict, key) => act('getvalueforkey', { WFInput: attach(dict), WFDictionaryKey: key }, 'Dictionary Value');
 const match = (input, pattern) =>
@@ -120,17 +126,29 @@ const post = (url, body) =>
     'Contents of URL',
   );
 
+// Note: in Shortcuts, empty text still "has any value", and checking a variable
+// that was never set, looking up an empty key or comparing against empty text all
+// stop the run. So "nothing yet" is the placeholder NONE, and keys get a prefix.
+// (NONE has to read as text: an "is" check on something like "-" also stops it.)
+const NONE = 'nothing yet';
 const IS = 4;
+const BEGINS_WITH = 8;
 const CONTAINS = 99;
 const HAS_VALUE = 100;
+const HAS_NO_VALUE = 101;
+
+const asText = { Type: 'WFCoercionVariableAggrandizement', CoercionItemClass: 'WFStringContentItem' };
 
 function when(input, condition, compareTo, then, otherwise) {
   const GroupingIdentifier = uuid();
+  // Text comparisons on a value Shortcuts can't type (a dictionary value, say)
+  // stop the run, so compare it explicitly as text.
+  const compared = compareTo === undefined ? input : withAggr(input, ...(input.Aggrandizements ?? []), asText);
   act('conditional', {
     GroupingIdentifier,
     WFControlFlowMode: 0,
     WFCondition: condition,
-    WFInput: { Type: 'Variable', Variable: attach(input) },
+    WFInput: { Type: 'Variable', Variable: attach(compared) },
     WFConditionalActionString: compareTo,
   });
   then();
@@ -157,12 +175,56 @@ function stopWithAlert(...message) {
   act('exit');
 }
 
+/** Test builds only: a note to TEST_DEVICE marking how far a run got. */
+function checkpoint(...parts) {
+  if (!test) return;
+  post(`${API}/pushes`, [
+    ['type', 'note'],
+    ['body', text('checkpoint ', ...parts)],
+    ['device_iden', process.env.TEST_DEVICE],
+  ]);
+}
+
 // ---------------------------------------------------------------- the shortcut
 
-// 1. The access token, filled in by the import question (action 0).
-setVar('Token', act('gettext', { WFTextActionText: test ? process.env.ACCESS_TOKEN : '' }, 'Text'));
+const ALL = '🌐 All devices';
+const ASK = 'Ask every time';
 
-// 2. Devices that can receive pushes, as "name → iden", after "All devices".
+// Device types as Pushbullet reports them (icon first, then type).
+const KINDS = {
+  phone: ['📱', 'Phone'],
+  iphone: ['📱', 'Phone'],
+  android: ['📱', 'Phone'],
+  ios: ['📱', 'Phone'],
+  tablet: ['📱', 'Tablet'],
+  ipad: ['📱', 'Tablet'],
+  watch: ['⌚', 'Watch'],
+  browser: ['💻', 'Browser'],
+  chrome: ['💻', 'Browser'],
+  firefox: ['💻', 'Browser'],
+  opera: ['💻', 'Browser'],
+  safari: ['💻', 'Browser'],
+  laptop: ['💻', 'Laptop'],
+  desktop: ['🖥️', 'Computer'],
+  system: ['🖥️', 'Computer'],
+  windows: ['🖥️', 'Computer'],
+  mac: ['🖥️', 'Computer'],
+  website: ['🌐', 'Website'],
+};
+
+// 1. Settings, filled in by the import questions.
+const TOKEN_ACTION = actions.length;
+setVar('Token', act('gettext', { WFTextActionText: test ? process.env.ACCESS_TOKEN : '' }, 'Text'));
+const DEVICE_ACTION = actions.length;
+setVar('Fixed', act('gettext', { WFTextActionText: ASK }, 'Text'));
+checkpoint('start');
+
+when(ShortcutInput, HAS_NO_VALUE, undefined, () =>
+  stopWithAlert('Nothing to push. Share a link, text, photo or file with Pushpilot, or copy something first.'),
+);
+
+// 2. Everything you can push to. Each entry has a label for the list ("📱 Pixel 8 ·
+//    Phone"), a target ("all", "d:<device>", "e:<friend's email>") and a plain name.
 const devices = act(
   'downloadurl',
   { WFURL: `${API}/devices?active=true`, WFHTTPMethod: 'GET', WFHTTPHeaders: auth(), Advanced: true },
@@ -176,54 +238,184 @@ when(error, HAS_VALUE, undefined, () =>
     '\n\nEdit the shortcut and paste a new token from pushbullet.com › Settings › Account.',
   ),
 );
-setVar('Targets', act('dictionary', { WFItems: fields([['All devices', 'all']]) }, 'Dictionary'));
+checkpoint('devices fetched');
+// The test build starts with an entry Pushbullet rejects instead of "All devices",
+// so a mix-up can't push to real devices.
+const first = test ? ['⚠️ test guard', 'd:none', 'none', 'test guard'] : [ALL, 'all', 'all', 'All devices'];
+setVar('Targets', dictionary([[first[0], first[1]]])); // label → "all" | "d:…" | "e:…"
+setVar('Ids', dictionary([[first[0], first[2]]])); // label → device iden or email
+setVar('Names', dictionary([[first[0], first[3]]])); // label → plain name
+setVar('Labels', dictionary([[`n:${first[3]}`, first[0]]])); // "n:" + plain name → label
+setVar('Codes', dictionary([[first[1], first[0]]])); // target → label
+const emoji = dictionary(Object.entries(KINDS).map(([k, [e]]) => [`k:${k}`, e]));
+const kinds = dictionary(Object.entries(KINDS).map(([k, [, kind]]) => [`k:${k}`, kind]));
+
+/** Adds the entry in Label/Name unless the name is taken (two devices with one name: the first, newest, wins). */
+function addTarget(prefix, id) {
+  when(
+    value(variable('Labels'), text('n:', variable('Name'))),
+    HAS_VALUE,
+    undefined,
+    () => {},
+    () => {
+      const put = (dict, key, val) =>
+        setVar(
+          dict,
+          act(
+            'setvalueforkey',
+            { WFDictionary: attach(variable(dict)), WFDictionaryKey: key, WFDictionaryValue: val },
+            'Dictionary',
+          ),
+        );
+      setText('Id', id);
+      put('Targets', text(variable('Label')), text(prefix, variable('Id')));
+      put('Ids', text(variable('Label')), text(variable('Id')));
+      put('Names', text(variable('Label')), text(variable('Name')));
+      put('Labels', text('n:', variable('Name')), text(variable('Label')));
+      put('Codes', text(prefix, variable('Id')), text(variable('Label')));
+    },
+  );
+}
+
 forEach(value(devices, 'devices'), () => {
   // Pushbullet keeps old registrations that never receive anything (pushable: false).
   // Matching the value as text works however Shortcuts spells a boolean.
-  const pushable = match(value(RepeatItem, 'pushable'), '^(1|yes|true)$');
-  // Two devices with one name: keep the first, the most recently added.
-  const taken = () => value(variable('Targets'), text(value(RepeatItem, 'nickname')));
-  when(pushable, HAS_VALUE, undefined, () =>
+  when(match(value(RepeatItem, 'pushable'), '^(1|yes|true)$'), HAS_VALUE, undefined, () => {
+    const nickname = value(RepeatItem, 'nickname');
     when(
-      taken(),
+      nickname,
       HAS_VALUE,
       undefined,
-      () => {},
-      () => {
-        const updated = act(
-          'setvalueforkey',
-          {
-            WFDictionary: attach(variable('Targets')),
-            WFDictionaryKey: text(value(RepeatItem, 'nickname')),
-            WFDictionaryValue: text(value(RepeatItem, 'iden')),
-          },
-          'Dictionary',
-        );
-        setVar('Targets', updated);
-      },
-    ),
-  );
+      () => setText('Name', nickname),
+      () => setText('Name', 'Unnamed device'),
+    );
+    setText('Kind', 'k:', value(RepeatItem, 'type'));
+    const icon = value(RepeatItem, 'icon');
+    when(icon, HAS_VALUE, undefined, () =>
+      when(value(kinds, text('k:', icon)), HAS_VALUE, undefined, () => setText('Kind', 'k:', icon)),
+    );
+    const kind = value(kinds, text(variable('Kind')));
+    when(
+      kind,
+      HAS_VALUE,
+      undefined,
+      () => setText('Label', value(emoji, text(variable('Kind'))), ' ', variable('Name'), ' · ', kind),
+      () => setText('Label', variable('Name')),
+    );
+    addTarget('d:', value(RepeatItem, 'iden'));
+  });
 });
+checkpoint('devices listed');
 
-// 3. Pick where to push.
-const names = act(
-  'getvalueforkey',
-  { WFInput: attach(variable('Targets')), WFGetDictionaryValueType: 'All Keys' },
-  'Dictionary Value',
+const chats = act(
+  'downloadurl',
+  { WFURL: `${API}/chats?active=true`, WFHTTPMethod: 'GET', WFHTTPHeaders: auth(), Advanced: true },
+  'Contents of URL',
 );
-if (test) {
-  setText('Choice', 'the test device');
-  setText('Target', process.env.TEST_DEVICE);
-} else {
-  setVar('Choice', act('choosefromlist', { WFInput: attach(names), WFChooseFromListActionPrompt: 'Push to' }, 'Chosen Item'));
-  setVar('Target', value(variable('Targets'), text(variable('Choice'))));
-}
-setText('Failed', '');
+forEach(value(chats, 'chats'), () => {
+  const friend = value(RepeatItem, 'with');
+  const friendName = value(friend, 'name');
+  when(
+    friendName,
+    HAS_VALUE,
+    undefined,
+    () => setText('Name', friendName),
+    () => setText('Name', value(friend, 'email')),
+  );
+  setText('Label', '👤 ', variable('Name'), ' · Friend');
+  addTarget('e:', value(friend, 'email'));
+});
+checkpoint('friends listed');
+
+// 3. Where to push: the device set when adding the shortcut, or a list that starts
+//    with wherever you pushed last (from any app), read from your recent pushes.
+const fixed = value(variable('Labels'), text('n:', variable('Fixed')));
+when(
+  fixed,
+  HAS_VALUE,
+  undefined,
+  () => setText('Choice', fixed),
+  () => {
+    const recent = act(
+      'downloadurl',
+      { WFURL: `${API}/pushes?active=true&limit=10`, WFHTTPMethod: 'GET', WFHTTPHeaders: auth(), Advanced: true },
+      'Contents of URL',
+    );
+    setText('Last', NONE);
+    const pushes = value(recent, 'pushes');
+    forEach(pushes, () => {
+      when(variable('Last'), IS, NONE, () => {
+        when(
+          value(RepeatItem, 'direction'),
+          IS,
+          'incoming',
+          () => {},
+          () => {
+            when(
+              value(RepeatItem, 'target_device_iden'),
+              HAS_VALUE,
+              undefined,
+              () => setText('Code', 'd:', value(RepeatItem, 'target_device_iden')),
+              () =>
+                when(
+                  value(RepeatItem, 'direction'),
+                  IS,
+                  'outgoing',
+                  () => setText('Code', 'e:', value(RepeatItem, 'receiver_email')),
+                  () => setText('Code', 'all'),
+                ),
+            );
+            // Nothing for a device that's gone, so the next push is tried.
+            const hit = value(variable('Codes'), text(variable('Code')));
+            when(hit, HAS_VALUE, undefined, () => setText('Last', hit));
+          },
+        );
+      });
+    });
+    checkpoint('last: ', variable('Last'));
+    const labels = act(
+      'getvalueforkey',
+      { WFInput: attach(variable('Targets')), WFGetDictionaryValueType: 'All Keys' },
+      'Dictionary Value',
+    );
+    when(
+      variable('Last'),
+      IS,
+      NONE,
+      () => setVar('Ordered', labels),
+      () => {
+        append('Ordered', variable('Last'));
+        forEach(labels, () =>
+          when(
+            RepeatItem,
+            IS,
+            text(variable('Last')),
+            () => {},
+            () => append('Ordered', RepeatItem),
+          ),
+        );
+      },
+    );
+    checkpoint('ordered');
+    setText(
+      'Choice',
+      test
+        ? act('getitemfromlist', { WFInput: attach(variable('Ordered')), WFItemSpecifier: 'First Item' }, 'Item from List')
+        : act('choosefromlist', { WFInput: attach(variable('Ordered')), WFChooseFromListActionPrompt: 'Push to' }, 'Chosen Item'),
+    );
+  },
+);
+setText('Target', value(variable('Targets'), text(variable('Choice'))));
+setText('TargetId', value(variable('Ids'), text(variable('Choice'))));
+setText('Display', value(variable('Names'), text(variable('Choice'))));
+setText('Pushed', NONE);
+checkpoint('target: ', variable('Choice'), ' → ', variable('Target'), ' / ', variable('TargetId'));
 
 // 4. Push each shared item (or the clipboard): links, text as a note, anything else as a file.
 forEach(ShortcutInput, () => {
   for (const name of ['Type', 'Url', 'Body', 'FileName', 'FileType', 'FileUrl']) setText(name, '');
   const kind = act('getitemtype', { WFInput: attach(RepeatItem) }, 'Type');
+  checkpoint('item: ', kind);
 
   when(
     kind,
@@ -314,27 +506,46 @@ forEach(ShortcutInput, () => {
     IS,
     'all',
     () => setVar('Result', post(`${API}/pushes`, push)),
-    () => setVar('Result', post(`${API}/pushes`, [...push, ['device_iden', variable('Target')]])),
+    () =>
+      when(
+        variable('Target'),
+        BEGINS_WITH,
+        'e:',
+        () => setVar('Result', post(`${API}/pushes`, [...push, ['email', variable('TargetId')]])),
+        () => setVar('Result', post(`${API}/pushes`, [...push, ['device_iden', variable('TargetId')]])),
+      ),
   );
   const failure = value(variable('Result'), 'error');
-  when(failure, HAS_VALUE, undefined, () => {
-    setText('Failed', 'yes');
-    act('notification', {
-      WFNotificationActionTitle: 'Couldn’t push',
-      WFNotificationActionBody: text(value(failure, 'message')),
-    });
-  });
+  when(
+    failure,
+    HAS_VALUE,
+    undefined,
+    () =>
+      act('notification', {
+        WFNotificationActionTitle: 'Couldn’t push',
+        WFNotificationActionBody: text(value(failure, 'message')),
+      }),
+    // Only one of Url, Body and FileName is set for each item.
+    () =>
+      when(
+        variable('Pushed'),
+        IS,
+        NONE,
+        () => setText('Pushed', variable('Url'), variable('Body'), variable('FileName')),
+        () => setText('Pushed', variable('Pushed'), ', ', variable('Url'), variable('Body'), variable('FileName')),
+      ),
+  );
 });
 
 when(
-  variable('Failed'),
-  HAS_VALUE,
-  undefined,
+  variable('Pushed'),
+  IS,
+  NONE,
   () => {},
   () =>
     act('notification', {
-      WFNotificationActionTitle: 'Pushpilot',
-      WFNotificationActionBody: text('Pushed to ', variable('Choice')),
+      WFNotificationActionTitle: text('Pushed to ', variable('Display')),
+      WFNotificationActionBody: text(variable('Pushed')),
     }),
 );
 
@@ -344,7 +555,8 @@ const shortcut = {
   WFWorkflowClientVersion: '3218.0.4.100',
   WFWorkflowMinimumClientVersion: 900,
   WFWorkflowMinimumClientVersionString: '900',
-  WFWorkflowIcon: { WFWorkflowIconStartColor: 4292093695, WFWorkflowIconGlyphNumber: 59708 },
+  // Green, with a paper plane.
+  WFWorkflowIcon: { WFWorkflowIconStartColor: 4292093695, WFWorkflowIconGlyphNumber: 59836 },
   WFWorkflowTypes: ['ActionExtension', 'QuickActions', 'MenuBar', 'WFWorkflowTypeShowInSearch'],
   WFQuickActionSurfaces: ['Finder', 'Services'],
   WFWorkflowInputContentItemClasses: [
@@ -363,11 +575,18 @@ const shortcut = {
     ? []
     : [
         {
-          ActionIndex: 0,
+          ActionIndex: TOKEN_ACTION,
           Category: 'Parameter',
           ParameterKey: 'WFTextActionText',
           DefaultValue: '',
           Text: 'Paste your Pushbullet access token. Create one at pushbullet.com › Settings › Account › Create Access Token. It stays in this shortcut on your devices.',
+        },
+        {
+          ActionIndex: DEVICE_ACTION,
+          Category: 'Parameter',
+          ParameterKey: 'WFTextActionText',
+          DefaultValue: ASK,
+          Text: `Always push to one device or friend? Type its name exactly as Pushbullet shows it (or "All devices"). Leave "${ASK}" to pick from a list, with your last choice first.`,
         },
       ],
   WFWorkflowActions: actions,
@@ -381,6 +600,8 @@ try {
     xml,
     `<?xml version="1.0" encoding="UTF-8"?>\n<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">\n<plist version="1.0">${plist(shortcut)}</plist>\n`,
   );
+  // SHORTCUT_XML=path keeps a readable copy for debugging.
+  if (process.env.SHORTCUT_XML) execFileSync('plutil', ['-convert', 'xml1', '-o', process.env.SHORTCUT_XML, xml]);
   execFileSync('plutil', ['-convert', 'binary1', '-o', unsigned, xml]);
   const out = join(outDir, test ? 'Pushpilot Test.shortcut' : 'Pushpilot.shortcut');
   // Apple's signing service fails now and then (HTTP 500); a retry usually goes through.
