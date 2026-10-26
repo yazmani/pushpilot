@@ -4,6 +4,8 @@ export const LINKS = {
   issues: 'https://github.com/yazmani/pushpilot/issues',
   sponsor: 'https://github.com/sponsors/yazmani',
   kofi: 'https://ko-fi.com/pushpilot',
+  store: 'https://chromewebstore.google.com/detail/pushpilot-for-pushbullet/pdiijobemepbckkbdeacfngodbeddmcf',
+  review: 'https://chromewebstore.google.com/detail/pushpilot-for-pushbullet/pdiijobemepbckkbdeacfngodbeddmcf/reviews',
 } as const;
 
 /**

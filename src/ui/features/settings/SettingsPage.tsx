@@ -403,8 +403,11 @@ function SettingsContent() {
               <LinkButton href={LINKS.sponsor}>
                 <Heart size={15} /> Sponsor on GitHub
               </LinkButton>
+              <LinkButton href={LINKS.review} variant="ghost">
+                <Star size={15} /> Rate it in the Chrome Web Store
+              </LinkButton>
               <LinkButton href={LINKS.repo} variant="ghost">
-                <Star size={15} /> Star on GitHub
+                Star on GitHub
               </LinkButton>
               <LinkButton href={LINKS.issues} variant="ghost">
                 Report a problem

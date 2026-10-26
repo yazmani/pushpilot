@@ -50,7 +50,7 @@ function page({ title, description, path, body }) {
         <div class="nav-links">
           <a href="./#features">Features</a>
           <a href="https://github.com/yazmani/pushpilot">GitHub</a>
-          <a class="btn btn-light btn-sm" href="./#install">Install</a>
+          <a class="btn btn-light btn-sm" href="https://chromewebstore.google.com/detail/pushpilot-for-pushbullet/pdiijobemepbckkbdeacfngodbeddmcf">Install</a>
         </div>
       </nav>
     </header>

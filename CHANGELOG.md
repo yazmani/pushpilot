@@ -2,6 +2,29 @@
 
 All notable changes are listed here. The format follows [Keep a Changelog](https://keepachangelog.com/), and versions follow [Semantic Versioning](https://semver.org/).
 
+## [1.1.0] - 2026-10-26
+
+### Added
+
+- Push from any app: copy something and press ⌘⇧9 (Ctrl+Shift+9) to push it to your default device, or ⌘⇧8 to open Pushpilot in a window. Both work while the browser is in the background.
+- The Pushpilot shortcut for Apple Shortcuts, from the website: push links, text, photos and files from the Share sheet on iPhone, iPad and Mac, to any device or friend, without the browser.
+- Settings › Receiving › Pushes sent to another browser, for phones that still send to the old Pushbullet extension's "Chrome".
+- Toolbar badge option to keep counting phone notifications until they're dismissed.
+- Pushbullet.com in the account menu, and a link to rate Pushpilot in Settings.
+
+### Changed
+
+- Images, PDFs and other files open in a new tab as they arrive, like links (on by default).
+- Light theme by default.
+- The popup uses the full 600px height, and an empty note stays one line until you start writing.
+- Universal copy and paste keeps its keyboard command but no longer suggests a key (Chrome allows four).
+
+### Fixed
+
+- A note that's just an address now opens like a link.
+- The first push on an account with no pushes yet is notified and opened.
+- If this browser's Pushbullet device is removed, Pushpilot registers a new one, and the device list refreshes when it reconnects.
+
 ## [1.0.0] - 2026-10-25
 
 First public release.
@@ -20,4 +43,5 @@ First public release.
 - Popup, side panel and pop-out window; light and dark themes; snooze; unread badge.
 - One-click sign-in through pushbullet.com, or an access token.
 
+[1.1.0]: https://github.com/yazmani/pushpilot/releases/tag/v1.1.0
 [1.0.0]: https://github.com/yazmani/pushpilot/releases/tag/v1.0.0

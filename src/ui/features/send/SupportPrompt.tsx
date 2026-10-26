@@ -1,4 +1,4 @@
-import { Coffee, Heart, X } from 'lucide-react';
+import { Coffee, Heart, Star, X } from 'lucide-react';
 import { browser } from 'wxt/browser';
 import { LINKS, SUPPORT_PROMPT_AFTER } from '@/core/links';
 import * as store from '@/core/storage/store';
@@ -22,7 +22,7 @@ export function SupportPrompt() {
         <p className="flex-1 text-sm font-bold">
           {sendCount} pushes sent with Pushpilot.
           <span className="mt-0.5 block text-xs font-medium leading-relaxed text-muted">
-            It’s free, open source and made by one person. If it saves you time, a coffee keeps it going.
+            It’s free, open source and made by one person. If it saves you time, a coffee or a review keeps it going.
           </span>
         </p>
         <IconButton label="Don’t ask again" className="-mr-1.5 -mt-1.5 size-7" onClick={done}>
@@ -41,6 +41,12 @@ export function SupportPrompt() {
           className="flex h-8 items-center gap-1.5 rounded-full bg-surface px-3 text-xs font-bold text-ink ring-1 ring-line hover:bg-raised"
         >
           <Heart size={14} className="text-accent-strong" /> Sponsor on GitHub
+        </button>
+        <button
+          onClick={() => open(LINKS.review)}
+          className="flex h-8 items-center gap-1.5 rounded-full bg-surface px-3 text-xs font-bold text-ink ring-1 ring-line hover:bg-raised"
+        >
+          <Star size={14} className="text-accent-strong" /> Leave a review
         </button>
       </div>
     </section>

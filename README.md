@@ -7,8 +7,9 @@
 **Send tabs, notes and files to your phone. See your Android notifications and text from your browser.**
 A fast, modern, open-source Manifest V3 client for [Pushbullet](https://www.pushbullet.com).
 
-**[Website](https://yazmani.github.io/pushpilot/)** · **[Privacy](https://yazmani.github.io/pushpilot/privacy.html)**
+**[Install from the Chrome Web Store](https://chromewebstore.google.com/detail/pushpilot-for-pushbullet/pdiijobemepbckkbdeacfngodbeddmcf)** · **[Website](https://yazmani.github.io/pushpilot/)** · **[Privacy](https://yazmani.github.io/pushpilot/privacy.html)**
 
+[![Chrome Web Store](https://img.shields.io/chrome-web-store/v/pdiijobemepbckkbdeacfngodbeddmcf?label=Chrome%20Web%20Store&color=16a35a&logo=googlechrome&logoColor=white)](https://chromewebstore.google.com/detail/pushpilot-for-pushbullet/pdiijobemepbckkbdeacfngodbeddmcf)
 [![CI](https://github.com/yazmani/pushpilot/actions/workflows/ci.yml/badge.svg)](https://github.com/yazmani/pushpilot/actions/workflows/ci.yml)
 [![License: AGPL-3.0](https://img.shields.io/badge/license-AGPL--3.0-16a35a)](LICENSE)
 ![Manifest V3](https://img.shields.io/badge/Manifest-V3-16a35a)
@@ -65,7 +66,7 @@ The official Pushbullet extension is built on Manifest V2, which current version
 
 ## Install
 
-- **Chrome Web Store:** coming soon.
+- **[Chrome Web Store](https://chromewebstore.google.com/detail/pushpilot-for-pushbullet/pdiijobemepbckkbdeacfngodbeddmcf):** one click, with automatic updates. Works in Chrome, Brave and Edge.
 - **From a release:** download the latest `pushpilot-*-chrome.zip` from [Releases](https://github.com/yazmani/pushpilot/releases), unzip it, open `chrome://extensions` (or `brave://extensions`, `edge://extensions`), turn on **Developer mode**, click **Load unpacked** and pick the unzipped folder.
 - **From source:** see [Development](#development).
 
@@ -186,7 +187,7 @@ Pushpilot is free, open source and made by one person, with no ads and no tracki
 
 - ☕ [Buy me a coffee on Ko-fi](https://ko-fi.com/pushpilot)
 - 💚 [Sponsor on GitHub](https://github.com/sponsors/yazmani)
-- ⭐ Star this repository, or leave a review once Pushpilot is in the Chrome Web Store
+- ⭐ [Leave a review in the Chrome Web Store](https://chromewebstore.google.com/detail/pushpilot-for-pushbullet/pdiijobemepbckkbdeacfngodbeddmcf/reviews), or star this repository
 
 ### Supporters
 
