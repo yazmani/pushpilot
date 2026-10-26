@@ -335,9 +335,26 @@ main section {
 }
 
 .install h2,
+.anywhere h2,
 .faq h2,
 .support h2 {
   text-align: center;
+}
+.section-lead {
+  text-align: center;
+  color: var(--muted);
+  font-size: 18px;
+  margin: 14px 0 0;
+}
+.anywhere {
+  padding-top: 32px !important;
+}
+.card .cta {
+  justify-content: flex-start;
+  margin-top: 20px;
+}
+.card .fine-card {
+  font-size: 14px;
 }
 .install-grid {
   display: grid;

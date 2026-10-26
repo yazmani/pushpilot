@@ -45,7 +45,8 @@ These are implemented against Pushbullet's protocol (the same calls the official
 | Sending SMS | Needs a connected Android phone with SMS sync | Send a text from the SMS tab |
 | SMS with end-to-end encryption on | Needs a phone with encryption enabled | Same as above with encryption on |
 | Universal copy and paste | Needs Pushbullet Pro | Copy on one device, check the other |
-| Right-click menu and keyboard shortcuts | Browser automation can't trigger them | Use them and report |
+| Right-click menu and keyboard shortcuts | Browser automation can't trigger them (the suite does run what ⌘⇧9 runs) | Use them, including ⌘⇧9 / ⌘⇧8 from another app, and report |
+| Pushpilot shortcut for Apple Shortcuts | Import needs a click in the Shortcuts app; `node --env-file=.env scripts/shortcut.mjs --test` builds a copy for `shortcuts run` | Add it, share a link, a photo and a PDF to it, and report |
 | Side panel and pop-out window | Same | Open each from the account menu |
 | Snooze, sticky notifications, "closing dismisses" | Timing and OS notification behaviour | Use for a day |
 | Link previews for all sites | Needs the optional permission prompt | Turn it on in Settings › Feed |

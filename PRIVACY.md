@@ -37,6 +37,14 @@ Pushbullet's handling of your data is covered by [Pushbullet's privacy policy](h
 
 When you open Pushpilot from the toolbar or with its keyboard shortcut, Chrome lets it read the page you're on. Pushpilot uses that only to fill in the link, title, preview image, selected text and video position for the push you're composing. Nothing is read in the background, and nothing is sent anywhere unless you press **Send**.
 
+## Clipboard
+
+Pushpilot reads your clipboard only when you ask it to: when you press the **push what you copied** shortcut, or use universal copy and paste. What it reads is pushed to the device you chose and isn't kept anywhere else. It writes to your clipboard when you copy a sign-in code or receive a universal clipboard.
+
+## The Pushpilot shortcut for Apple Shortcuts
+
+The optional Pushpilot shortcut runs in Apple's Shortcuts app, not in the extension. It sends what you share with it, and your access token, only to Pushbullet. The token you paste in when adding it stays in your copy of the shortcut, on your devices and in your iCloud if you sync shortcuts.
+
 ## Sign-in
 
 "Sign in with Pushbullet" opens Pushbullet's own authorization page, where you approve Pushpilot. Pushbullet then gives Pushpilot an access token; your password never reaches the extension. You can revoke Pushpilot's access at any time in your Pushbullet account settings. Pushpilot does not read cookies.

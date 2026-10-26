@@ -42,7 +42,8 @@
     "test": "vitest run",
     "screenshots": "wxt build && node scripts/screenshots.mjs",
     "format:check": "prettier --check \"src/**/*.{ts,tsx,css}\" \"scripts/**/*.{mjs,js}\" \"tests/**/*.ts\" \"site/**/*.{html,css}\" wxt.config.ts vitest.config.ts",
-    "site": "node scripts/site.mjs"
+    "site": "node scripts/site.mjs",
+    "shortcut": "node scripts/shortcut.mjs"
   },
   "dependencies": {
     "@fontsource-variable/plus-jakarta-sans": "^5.3.0",

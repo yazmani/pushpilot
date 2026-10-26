@@ -34,7 +34,8 @@ The official Pushbullet extension is built on Manifest V2, which current version
 - On YouTube, Vimeo and Twitch, **Start at 12:34** sends the link at the point you're watching.
 - On an image tab, **Send the image itself** pushes the file instead of the link. Highlighted text becomes the message.
 - Notes, links and files, with paste and drag-and-drop. Send to one device, several (hold `⌘`/`Ctrl`), all of them, a friend, or "This browser" to save for later.
-- Right-click any page, link, image or selection to push it. Keyboard shortcuts for opening Pushpilot, pushing the current page and sending your clipboard.
+- Right-click any page, link, image or selection to push it. Keyboard shortcuts for opening Pushpilot and pushing the current page.
+- **From any app:** copy something and press `⌘⇧9` (`Ctrl+Shift+9`) to push it to your default device, or `⌘⇧8` to open Pushpilot in a window. They work while the browser is in the background. See [Push from anywhere on your Mac](#push-from-anywhere-on-your-mac) for the Share menu and Finder.
 
 **Receive**
 - Real-time over Pushbullet's stream, with desktop notifications and four built-in sounds (or your own).
@@ -75,6 +76,15 @@ Requires Chrome 127 or newer (or a browser based on it).
 1. Click the Pushpilot icon and choose **Sign in with Pushbullet**, then approve Pushpilot on Pushbullet's page. You can revoke access any time at pushbullet.com › Settings.
 2. Or paste an access token from [pushbullet.com › Settings › Account](https://www.pushbullet.com/#settings/account).
 3. Open Pushpilot on any page, pick a device, press `⌘ Enter` / `Ctrl Enter`.
+
+## Push from anywhere on your Mac
+
+The Pushbullet Mac app is gone, so there are two ways to push from outside the browser:
+
+- **Pushpilot's global shortcuts**, built in: copy a link, some text or an address in any app and press `⌘⇧9` to push it to your default device (**Settings › Sending**). `⌘⇧8` opens Pushpilot in a window over whatever you're doing, ready for files dropped onto it. The browser has to be running. To change the keys, open `chrome://extensions/shortcuts` (or `brave://…`) and keep the scope on **Global**.
+- **The Pushpilot shortcut for Apple Shortcuts**, which works even with the browser closed, on a Mac, iPhone or iPad. [Download Pushpilot.shortcut](https://yazmani.github.io/pushpilot/Pushpilot.shortcut), open it, and paste an access token from [pushbullet.com › Settings › Account](https://www.pushbullet.com/#settings/account) when asked. It then shows up in the **Share** menu, in Finder's **Quick Actions** and the **Services** menu; pick a device and it pushes links, text, photos and files. Run it with nothing selected and it pushes the clipboard. In the Shortcuts app, **Details › Add Keyboard Shortcut** gives it a key, and **Pin in Menu Bar** puts it there.
+
+  Your copy keeps the access token inside it, so don't share it (iCloud links included). Share the link above instead. The shortcut talks only to Pushbullet; it's built from [scripts/shortcut.mjs](scripts/shortcut.mjs).
 
 ## Privacy
 
