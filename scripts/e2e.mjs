@@ -6,7 +6,7 @@
 //   npm run build && node --env-file=.env scripts/e2e.mjs [--headful]
 //   BROWSER_PATH="/Applications/Brave Browser.app/Contents/MacOS/Brave Browser" … to test in Brave
 
-import { mkdir, writeFile } from 'node:fs/promises';
+import { mkdir, readFile, writeFile } from 'node:fs/promises';
 import { tmpdir } from 'node:os';
 import { join } from 'node:path';
 import { fileURLToPath } from 'node:url';
@@ -330,6 +330,69 @@ try {
     } finally {
       await api(`/v2/pushes/${push.iden}`, { method: 'DELETE' });
       for (const pg of await browser.pages()) if (pg.url().startsWith(marker)) await pg.close();
+    }
+  });
+
+  // Images and other files open too (on by default).
+  await step('receive an image (auto-open)', async () => {
+    const headers = { 'Access-Token': token, 'Content-Type': 'application/json' };
+    const ticket = await fetch('https://api.pushbullet.com/v2/upload-request', {
+      method: 'POST',
+      headers,
+      body: JSON.stringify({ file_name: 'pushpilot-e2e.png' }),
+    }).then((r) => r.json());
+    const form = new FormData();
+    form.append('file', new Blob([await readFile(new URL('../src/public/icon/32.png', import.meta.url))]), 'pushpilot-e2e.png');
+    const up = await fetch(ticket.upload_url, { method: 'POST', body: form });
+    if (!up.ok) throw new Error(`upload ${up.status}`);
+    const push = await fetch('https://api.pushbullet.com/v2/pushes', {
+      method: 'POST',
+      headers,
+      body: JSON.stringify({
+        type: 'file',
+        file_name: ticket.file_name,
+        file_type: ticket.file_type,
+        file_url: ticket.file_url,
+        device_iden: selfDeviceIden,
+      }),
+    }).then((r) => r.json());
+    if (!push.iden) throw new Error(JSON.stringify(push));
+    try {
+      let opened = false;
+      for (let i = 0; i < 40 && !opened; i++) {
+        await new Promise((r) => setTimeout(r, 250));
+        opened = (await browser.pages()).some((pg) => pg.url() === ticket.file_url);
+      }
+      if (!opened) throw new Error('image was not auto-opened');
+      return `opened ${ticket.file_type}`;
+    } finally {
+      await fetch(`https://api.pushbullet.com/v2/pushes/${push.iden}`, { method: 'DELETE', headers: { 'Access-Token': token } });
+      for (const pg of await browser.pages()) if (pg.url() === ticket.file_url) await pg.close();
+    }
+  });
+
+  // What the Apple shortcut and some apps send: a note holding only an address,
+  // with no source device. It should open like a link.
+  await step('receive an address sent as a note (auto-open)', async () => {
+    const address = `example.org/?pushpilot-e2e-note=${Date.now()}`;
+    const res = await fetch('https://api.pushbullet.com/v2/pushes', {
+      method: 'POST',
+      headers: { 'Access-Token': token, 'Content-Type': 'application/json' },
+      body: JSON.stringify({ type: 'note', body: address, device_iden: selfDeviceIden }),
+    });
+    const push = await res.json();
+    if (!push.iden) throw new Error(JSON.stringify(push));
+    try {
+      let opened = false;
+      for (let i = 0; i < 40 && !opened; i++) {
+        await new Promise((r) => setTimeout(r, 250));
+        opened = (await browser.pages()).some((pg) => pg.url().startsWith(`https://${address}`));
+      }
+      if (!opened) throw new Error('address note was not auto-opened');
+      return `opened https://${address.split('?')[0]}`;
+    } finally {
+      await fetch(`https://api.pushbullet.com/v2/pushes/${push.iden}`, { method: 'DELETE', headers: { 'Access-Token': token } });
+      for (const pg of await browser.pages()) if (pg.url().startsWith(`https://${address}`)) await pg.close();
     }
   });
 

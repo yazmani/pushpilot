@@ -57,9 +57,21 @@ export function isHttpUrl(url: string | undefined): url is string {
   return !!url && /^https?:\/\//i.test(url);
 }
 
-/** Whole URL typed into a note? Treat it as a link. */
+// A bare domain counts as an address when it has a path or a common ending, so
+// "example.com" and "news.site.dev/a" do and "notes.md" or "file.txt" don't.
+const BARE_DOMAIN = /^(?:[a-z0-9-]+\.)+([a-z]{2,24})(?::\d+)?([/?#]\S*)?$/i;
+const COMMON_TLDS = new Set(
+  'com org net io dev app co me ai gg tv fm ly edu gov info xyz uk de fr nl es it ca au jp in br be ch se no dk pl eu us'.split(
+    ' ',
+  ),
+);
+
+/** Whole URL typed (or pushed) as a note? Treat it as a link. */
 export function looksLikeUrl(text: string): boolean {
-  return /^(https?:\/\/|www\.)\S+$/i.test(text.trim());
+  const t = text.trim();
+  if (/^(https?:\/\/|www\.)\S+$/i.test(t)) return true;
+  const m = BARE_DOMAIN.exec(t);
+  return !!m && (!!m[2] || COMMON_TLDS.has(m[1]!.toLowerCase()));
 }
 
 const rtf = new Intl.RelativeTimeFormat(undefined, { numeric: 'auto', style: 'narrow' });
@@ -114,9 +126,15 @@ export function uid(): string {
 }
 
 /** Push → the thing a click should open. */
+/** A note that is nothing but an address, as some apps and shortcuts send links. */
+export function isAddressNote(p: Push): boolean {
+  return p.type === 'note' && !p.title && !!p.body && looksLikeUrl(p.body);
+}
+
 export function pushOpenUrl(p: Push): string | undefined {
   if (p.type === 'link' && p.url) return normalizeUrl(p.url);
   if (p.type === 'file' && p.file_url) return p.file_url;
+  if (isAddressNote(p)) return normalizeUrl(p.body!.trim());
   return undefined;
 }
 

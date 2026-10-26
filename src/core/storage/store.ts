@@ -100,7 +100,7 @@ export const defaultSettings: Settings = {
   stickyMirrors: false,
   closeDismisses: true,
   autoOpenLinks: true,
-  autoOpenFiles: false,
+  autoOpenFiles: true,
   autoOpenFromPeople: false,
   autoOpenActive: false,
   autoOpenOnReconnect: false,

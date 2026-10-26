@@ -1,7 +1,7 @@
 import { browser } from 'wxt/browser';
 import * as store from '@/core/storage/store';
 import type { Push } from '@/core/pushbullet/types';
-import { deviceName, host, isImage, pushOpenUrl, pushText } from '@/core/utils/format';
+import { deviceName, host, isAddressNote, isImage, pushOpenUrl, pushText } from '@/core/utils/format';
 import { urlPreview } from '@/core/utils/links';
 import { clear, isSnoozed, onNotification, show, toDataUrl } from '@/background/platform/notifications';
 import { copyText } from '@/background/platform/offscreen';
@@ -108,7 +108,7 @@ async function deliver(p: Push, reconnect: boolean) {
   const opens =
     settings.autoOpenLinks &&
     !!url &&
-    (p.type === 'link' || (p.type === 'file' && settings.autoOpenFiles)) &&
+    (p.type === 'link' || isAddressNote(p) || (p.type === 'file' && settings.autoOpenFiles)) &&
     (!fromPerson || settings.autoOpenFromPeople) &&
     (!reconnect || settings.autoOpenOnReconnect);
   if (opens) await openUrl(url, settings.autoOpenActive);

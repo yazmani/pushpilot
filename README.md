@@ -39,7 +39,7 @@ The official Pushbullet extension is built on Manifest V2, which current version
 
 **Receive**
 - Real-time over Pushbullet's stream, with desktop notifications and four built-in sounds (or your own).
-- Links open automatically as they arrive, like the original extension. Optionally switch to the tab, include files, include links from friends, or catch up on links that arrived while you were offline.
+- Links, images, PDFs and other files open in a new tab as they arrive, like the original extension. Optionally switch to the tab, include links from friends, or catch up on what arrived while you were offline.
 - Choose what counts: pushes to this browser, to all devices, to your other devices, or sent from here.
 - Each browser registers its own Pushbullet device ("Brave on macOS"), so pushes between your browsers just work.
 

@@ -192,7 +192,7 @@ function SettingsContent() {
           <Section id="auto-open" title="Auto-open">
             <Toggle
               label="Open links as soon as they arrive"
-              hint="Links pushed to this browser open in a new tab, like the original Pushbullet extension."
+              hint="Links pushed to this browser open in a new tab, like the original Pushbullet extension. So does a note that’s just an address."
               checked={settings.autoOpenLinks}
               onChange={(autoOpenLinks) => set({ autoOpenLinks })}
             />
@@ -204,7 +204,7 @@ function SettingsContent() {
               disabled={!settings.autoOpenLinks}
             />
             <Toggle
-              label="Also open files and images"
+              label="Also open images, PDFs and other files"
               checked={settings.autoOpenFiles}
               onChange={(autoOpenFiles) => set({ autoOpenFiles })}
               disabled={!settings.autoOpenLinks}

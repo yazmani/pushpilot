@@ -30,6 +30,7 @@ Loads the real built extension in Chrome for Testing (or Brave with `BROWSER_PAT
 | Notification and sound | Desktop notification appears; the offscreen document for audio starts |
 | Encryption password | Key is derived, stored, and cleared |
 | Receive a push from another device | A notification appears and the link auto-opens |
+| Receive an image, and an address sent as a note | Both open in a new tab |
 | Render Feed, Phone, SMS | Each view renders with real data, light and dark |
 
 Everything it creates is deleted afterwards, including the test device.

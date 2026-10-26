@@ -30,6 +30,15 @@ describe('urls', () => {
     expect(looksLikeUrl('see https://example.com')).toBe(false);
   });
 
+  it('recognises a bare address, not a file name', () => {
+    expect(looksLikeUrl('chromewebstore.google.com/detail/x')).toBe(true);
+    expect(looksLikeUrl('example.com')).toBe(true);
+    expect(looksLikeUrl('news.site.dev/a?b=1')).toBe(true);
+    expect(looksLikeUrl('notes.md')).toBe(false);
+    expect(looksLikeUrl('file.txt')).toBe(false);
+    expect(looksLikeUrl('v1.2')).toBe(false);
+  });
+
   it('shows a short host', () => {
     expect(host('https://www.example.com/path')).toBe('example.com');
   });
