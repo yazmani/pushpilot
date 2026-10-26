@@ -45,6 +45,8 @@ export function SendView({ mode, onOpenFeed }: { mode: Mode; onOpenFeed: () => v
   const [title, setTitle] = useState('');
   const [url, setUrl] = useState('');
   const [body, setBody] = useState('');
+  // An empty note stays one line until you start writing, so the targets fit.
+  const [writing, setWriting] = useState(false);
   const [files, setFiles] = useState<Attachment[]>([]);
   const [selected, setSelected] = useState<string[]>([]);
   const [sending, setSending] = useState(false);
@@ -145,6 +147,8 @@ export function SendView({ mode, onOpenFeed }: { mode: Mode; onOpenFeed: () => v
     if (k === 'link' && !url) void loadPage(true);
     if (k === 'note') setTimeout(() => bodyRef.current?.focus(), 0);
   };
+
+  const expanded = writing || !!body || !!title;
 
   const canSend =
     !sending &&
@@ -262,6 +266,8 @@ export function SendView({ mode, onOpenFeed }: { mode: Mode; onOpenFeed: () => v
             'overflow-hidden rounded-[20px] bg-surface shadow-card ring-1 transition-colors',
             dragging ? 'ring-2 ring-accent' : 'ring-line',
           )}
+          onFocus={() => setWriting(true)}
+          onBlur={(e) => !e.currentTarget.contains(e.relatedTarget as Node | null) && setWriting(false)}
         >
           {kind === 'link' && (
             <LinkCard
@@ -322,7 +328,7 @@ export function SendView({ mode, onOpenFeed }: { mode: Mode; onOpenFeed: () => v
             </ul>
           )}
 
-          {kind === 'note' && (
+          {kind === 'note' && expanded && (
             <input
               value={title}
               onChange={(e) => setTitle(e.target.value)}
@@ -339,14 +345,14 @@ export function SendView({ mode, onOpenFeed }: { mode: Mode; onOpenFeed: () => v
               edited.current = true;
               setBody(e.target.value);
             }}
-            rows={kind === 'note' ? 5 : 2}
+            rows={kind === 'note' ? (expanded ? 5 : 1) : 2}
             placeholder={kind === 'note' ? 'Write a note, paste a link, or drop a file' : 'Add a message (optional)'}
             aria-label="Message"
             className={clsx(
               'block max-h-56 w-full resize-none bg-transparent px-4 py-3 text-sm leading-relaxed outline-none [field-sizing:content] placeholder:text-faint',
               kind !== 'note' && 'mt-2 border-t border-line',
             )}
-            style={{ minHeight: kind === 'note' ? 140 : 46 }}
+            style={{ minHeight: kind === 'note' ? (expanded ? 140 : 48) : 46 }}
           />
         </div>
 

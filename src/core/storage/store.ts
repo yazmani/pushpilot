@@ -80,7 +80,7 @@ export interface Settings {
 }
 
 export const defaultSettings: Settings = {
-  theme: 'system',
+  theme: 'light',
   defaultTab: 'send',
   defaultTarget: 'all',
   prefillCurrentPage: true,
@@ -152,6 +152,8 @@ export interface Schema {
   sendCount: number;
   /** The support prompt was shown and acted on or dismissed. */
   supportPromptSeen: boolean;
+  /** Bumped when a changed default should reach existing installs (see background/index.ts). */
+  settingsVersion: number;
 }
 
 export const defaults: Schema = {
@@ -177,6 +179,7 @@ export const defaults: Schema = {
   intent: null,
   sendCount: 0,
   supportPromptSeen: false,
+  settingsVersion: 0,
 };
 
 export type Key = keyof Schema;

@@ -45,6 +45,14 @@ export function startBackground() {
   // Cold start (browser launch or the worker waking up for any event).
   void (async () => {
     await updateBadge();
+    // Defaults that changed before the first store release: light theme, and
+    // images and files open like links. Saved settings keep the old values, so
+    // apply the new ones once.
+    if ((await store.get('settingsVersion')) < 1) {
+      const { theme } = await store.get('settings');
+      await store.updateSettings({ autoOpenFiles: true, ...(theme === 'system' && { theme: 'light' }) });
+      await store.set({ settingsVersion: 1 });
+    }
     if (await store.get('token')) {
       // Installs from before per-browser devices shared one; give this one its own.
       if (!(await store.get('selfDeviceOwned'))) await ensureSelfDevice().catch(() => undefined);

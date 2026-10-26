@@ -111,9 +111,10 @@
     -webkit-font-smoothing: antialiased;
   }
 
+  /* Chrome caps toolbar popups at 800×600. */
   body.popup {
     width: 400px;
-    height: 588px;
+    height: 600px;
     overflow: hidden;
   }
 

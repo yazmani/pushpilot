@@ -2,7 +2,7 @@ import { browser } from 'wxt/browser';
 import { STREAM } from '@/core/pushbullet/client';
 import { decryptJson } from '@/core/pushbullet/crypto';
 import * as store from '@/core/storage/store';
-import { syncDevices, syncPeople } from '@/background/services/account';
+import { ensureSelfDevice, syncPeople } from '@/background/services/account';
 import { type DismissalPush, handleDismissal, handleMirror, type MirrorPush } from '@/background/services/mirror';
 import { show } from '@/background/platform/notifications';
 import { copyText } from '@/background/platform/offscreen';
@@ -62,8 +62,9 @@ export async function connect() {
     void store.set({ connection: 'live', lastError: null });
     armSilence();
     keepalive = setInterval(() => socket.readyState === WebSocket.OPEN && socket.send('keepalive'), KEEPALIVE_MS);
-    // Catch up on anything pushed while we were away.
+    // Catch up on anything pushed while we were away, and on device changes.
     void syncPushes({ reconnect: true }).catch(() => undefined);
+    void ensureSelfDevice().catch(() => undefined);
   };
 
   socket.onmessage = (e) => {
@@ -136,7 +137,8 @@ async function onMessage(raw: string) {
   if (msg.type === 'tickle') {
     if (msg.subtype === 'push') void syncPushes();
     if (msg.subtype === 'device') {
-      void syncDevices().catch(() => undefined);
+      // Also re-registers this browser if its device was removed (say on pushbullet.com).
+      void ensureSelfDevice().catch(() => undefined);
       void syncPeople().catch(() => undefined);
     }
     return;

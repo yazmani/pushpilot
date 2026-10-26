@@ -31,7 +31,12 @@ async function doSync(notify: boolean, reconnect: boolean) {
   const incoming = await guard(() =>
     firstRun ? pb.pushes({ activeOnly: true, pages: 8 }) : pb.pushes({ after: cursor, pages: 5 }),
   );
-  if (!incoming.length) return;
+  if (!incoming.length) {
+    // An account with no pushes yet: start the cursor now, or the first push to
+    // arrive would be taken for history and never notified.
+    if (firstRun) await store.set({ pushes: [], pushCursor: Date.now() / 1000 - 60 });
+    return;
+  }
 
   const fresh: Push[] = [];
   const dismissedNow: string[] = [];
