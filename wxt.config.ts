@@ -67,9 +67,21 @@ export default defineConfig({
         suggested_key: { default: 'Alt+Shift+P' },
         description: 'Push the current page to your default device',
       },
+      // Global: they work from any app while the browser runs. Chrome allows
+      // at most four suggested keys, and only Ctrl+Shift+[0-9] for global ones
+      // (⌘⇧ on a Mac).
+      'push-clipboard': {
+        suggested_key: { default: 'Ctrl+Shift+9' },
+        description: 'Push what you copied to your default device, from any app',
+        global: true,
+      },
+      'open-window': {
+        suggested_key: { default: 'Ctrl+Shift+8' },
+        description: 'Open Pushpilot in a window, from any app',
+        global: true,
+      },
       'send-clipboard': {
-        suggested_key: { default: 'Alt+Shift+C' },
-        description: 'Send your clipboard to your other devices',
+        description: 'Send your clipboard to your other devices (universal copy and paste)',
       },
     },
   },

@@ -98,6 +98,31 @@ try {
     return sentIden;
   });
 
+  // What the global ⌘⇧9 shortcut runs: read the clipboard in the offscreen
+  // page and push it to the default target (this browser here, not the phone).
+  await step('push the clipboard (global shortcut)', async () => {
+    const marker = `https://example.org/?pushpilot-clip=${Date.now()}`;
+    await app.bringToFront();
+    await app.evaluate(async (iden) => {
+      const { settings } = await chrome.storage.local.get('settings');
+      await chrome.storage.local.set({ settings: { ...settings, defaultTarget: `device:${iden}` } });
+    }, selfDeviceIden);
+    await app.evaluate((text) => navigator.clipboard.writeText(text), marker);
+    const r = await rpc({ rpc: 'clip.push' });
+    if (!r?.ok) throw new Error(r?.error ?? 'no reply');
+    const { pushes } = await storage(['pushes']);
+    const push = pushes.find((p) => p.url === marker);
+    if (!push) throw new Error('clipboard was not pushed');
+    if (push.type !== 'link' || push.target_device_iden !== selfDeviceIden)
+      throw new Error(`${push.type} → ${push.target_device_iden}`);
+    await rpc({ rpc: 'push.delete', iden: push.iden });
+    await app.evaluate(async () => {
+      const { settings } = await chrome.storage.local.get('settings');
+      await chrome.storage.local.set({ settings: { ...settings, defaultTarget: 'all' } });
+    });
+    return 'pushed as a link to this browser';
+  });
+
   // Open the UI as Pushpilot's pop-out window over the example.com tab, so the
   // composer picks up "the page you're on" exactly as the toolbar popup does.
   await site.bringToFront();

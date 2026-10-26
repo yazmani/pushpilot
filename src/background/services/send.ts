@@ -1,8 +1,9 @@
 import type { OutgoingPush } from '@/core/messaging/rpc';
 import { parseTarget } from '@/core/messaging/rpc';
 import * as store from '@/core/storage/store';
-import { deviceName, personName } from '@/core/utils/format';
+import { deviceName, looksLikeUrl, normalizeUrl, personName } from '@/core/utils/format';
 import { show } from '@/background/platform/notifications';
+import { readClipboard } from '@/background/platform/offscreen';
 import { rememberPush } from '@/background/services/pushes';
 import { guard, requireClient } from '@/background/session';
 
@@ -88,4 +89,20 @@ export async function sendClipboard(text: string) {
       source_device_iden: selfDeviceIden,
     }),
   );
+}
+
+/** Pushes the copied text (as a link if it's an address) to the default target. */
+export async function pushClipboard() {
+  const text = (await readClipboard()).trim();
+  if (!text) {
+    await show(`info:clip-empty-${Date.now()}`, {
+      title: 'Nothing to push',
+      message: 'Copy a link or some text first.',
+      silent: true,
+    });
+    return;
+  }
+  const { defaultTarget } = await store.get('settings');
+  const push: OutgoingPush = looksLikeUrl(text) ? { type: 'link', url: normalizeUrl(text) } : { type: 'note', body: text };
+  await sendQuietly(push, [defaultTarget], text.slice(0, 200));
 }

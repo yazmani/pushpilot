@@ -1,8 +1,9 @@
 import { browser } from 'wxt/browser';
 import * as store from '@/core/storage/store';
-import { sendClipboard, sendQuietly } from '@/background/services/send';
+import { pushClipboard, sendClipboard, sendQuietly } from '@/background/services/send';
 import { show } from '@/background/platform/notifications';
 import { readClipboard } from '@/background/platform/offscreen';
+import { openPopout } from '@/background/platform/windows';
 
 /** Keyboard shortcuts declared in wxt.config.ts (`commands`). */
 export function registerCommands() {
@@ -14,6 +15,8 @@ export function registerCommands() {
       const { defaultTarget } = await store.get('settings');
       await sendQuietly({ type: 'link', title: active.title, url: active.url }, [defaultTarget], active.title ?? active.url);
     }
+    if (command === 'push-clipboard') await pushClipboard();
+    if (command === 'open-window') await openPopout();
     if (command === 'send-clipboard') {
       const text = await readClipboard();
       if (!text) return;

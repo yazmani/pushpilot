@@ -647,6 +647,10 @@ function Shortcuts() {
         </Row>
       ))}
       <div className="py-3.5">
+        <p className="mb-3 text-xs leading-relaxed text-muted">
+          The “from any app” shortcuts work even when the browser is in the background. If one doesn’t, open the shortcuts page
+          and set its scope to <strong>Global</strong>.
+        </p>
         <Button onClick={() => void browser.tabs.create({ url: 'chrome://extensions/shortcuts' })}>Change shortcuts</Button>
       </div>
     </>
