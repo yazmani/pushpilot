@@ -22,7 +22,7 @@ export function SupportPrompt() {
         <p className="flex-1 text-sm font-bold">
           {sendCount} pushes sent with Pushpilot.
           <span className="mt-0.5 block text-xs font-medium leading-relaxed text-muted">
-            It’s free, open source and made by one person. If it saves you time, a coffee or a review keeps it going.
+            Free, open source and ad-free for good. If it saves you time, a coffee or a review keeps it going.
           </span>
         </p>
         <IconButton label="Don’t ask again" className="-mr-1.5 -mt-1.5 size-7" onClick={done}>

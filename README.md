@@ -183,7 +183,7 @@ The worker owns the network: it syncs, listens to the stream and writes to `chro
 
 ## Support
 
-Pushpilot is free, open source and made by one person, with no ads and no tracking. If it saves you time, you can help keep it going:
+Pushpilot is free and open source, with no ads and no tracking, and it stays that way. If it saves you time, you can help keep it going:
 
 - ☕ [Buy me a coffee on Ko-fi](https://ko-fi.com/pushpilot)
 - 💚 [Sponsor on GitHub](https://github.com/sponsors/yazmani)

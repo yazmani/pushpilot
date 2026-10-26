@@ -393,8 +393,8 @@ function SettingsContent() {
 
           <Section id="support" title="Support Pushpilot">
             <p className="py-3.5 text-sm leading-relaxed text-muted">
-              Pushpilot is free, open source and made by one person, with no ads or tracking. If it’s useful to you, you can help
-              keep it going.
+              Pushpilot is free and open source, with no ads or tracking, and it stays that way. If it’s useful to you, you can
+              help keep it going.
             </p>
             <div className="flex flex-wrap gap-2 pb-3.5">
               <LinkButton href={LINKS.kofi} variant="primary">
