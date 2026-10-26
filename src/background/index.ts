@@ -15,6 +15,7 @@ import { setExpiredHandler } from '@/background/session';
 import { registerSmsNotifications } from '@/background/services/sms';
 import { connect, registerStreamWatchdog } from '@/background/services/stream';
 import { registerCommands } from '@/background/platform/commands';
+import { minorVersion } from '@/core/whats-new';
 
 export function startBackground() {
   setExpiredHandler(signOut);
@@ -35,8 +36,10 @@ export function startBackground() {
 
   browser.runtime.onInstalled.addListener(async ({ reason }) => {
     void rebuildMenus();
-    if (reason === 'install' && !(await store.get('token'))) {
-      await browser.runtime.openOptionsPage();
+    if (reason === 'install') {
+      // New installs have nothing to catch up on; What's new is for updates.
+      await store.set({ whatsNewSeen: minorVersion(browser.runtime.getManifest().version) });
+      if (!(await store.get('token'))) await browser.runtime.openOptionsPage();
     }
   });
 

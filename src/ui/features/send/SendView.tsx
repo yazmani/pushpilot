@@ -14,6 +14,7 @@ import { errorText, useToast } from '@/ui/hooks/use-toast';
 import { LinkCard } from './LinkCard';
 import { RecentPushes } from './RecentPushes';
 import { SupportPrompt } from './SupportPrompt';
+import { WhatsNew } from './WhatsNew';
 import { grabImage, type PageInfo, readPage } from './page';
 import { TargetGrid } from './TargetGrid';
 import { targetLabel, useTargets } from './targets';
@@ -261,6 +262,7 @@ export function SendView({ mode, onOpenFeed }: { mode: Mode; onOpenFeed: () => v
       onDrop={onDrop}
     >
       <div className="scroll-area min-h-0 flex-1 px-3.5 pb-4 pt-3.5">
+        <WhatsNew />
         <div
           className={clsx(
             'overflow-hidden rounded-[20px] bg-surface shadow-card ring-1 transition-colors',

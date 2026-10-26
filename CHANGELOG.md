@@ -2,6 +2,12 @@
 
 All notable changes are listed here. The format follows [Keep a Changelog](https://keepachangelog.com/), and versions follow [Semantic Versioning](https://semver.org/).
 
+## [1.1.1] - 2026-10-26
+
+### Added
+
+- After an update, the popup shows what's new in that version once, with a link to the full list of changes.
+
 ## [1.1.0] - 2026-10-26
 
 ### Added
@@ -43,5 +49,6 @@ First public release.
 - Popup, side panel and pop-out window; light and dark themes; snooze; unread badge.
 - One-click sign-in through pushbullet.com, or an access token.
 
+[1.1.1]: https://github.com/yazmani/pushpilot/releases/tag/v1.1.1
 [1.1.0]: https://github.com/yazmani/pushpilot/releases/tag/v1.1.0
 [1.0.0]: https://github.com/yazmani/pushpilot/releases/tag/v1.0.0

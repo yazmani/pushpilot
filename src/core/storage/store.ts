@@ -154,6 +154,8 @@ export interface Schema {
   supportPromptSeen: boolean;
   /** Bumped when a changed default should reach existing installs (see background/index.ts). */
   settingsVersion: number;
+  /** Minor version ("1.1") whose What's new card was dismissed, or set on a fresh install. */
+  whatsNewSeen: string;
 }
 
 export const defaults: Schema = {
@@ -180,6 +182,7 @@ export const defaults: Schema = {
   sendCount: 0,
   supportPromptSeen: false,
   settingsVersion: 0,
+  whatsNewSeen: '',
 };
 
 export type Key = keyof Schema;
