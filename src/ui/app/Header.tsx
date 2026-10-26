@@ -1,5 +1,5 @@
 import clsx from 'clsx';
-import { BellOff, Check, ExternalLink, Moon, PanelRight, RefreshCw, Settings } from 'lucide-react';
+import { BellOff, Check, ExternalLink, Globe, Moon, PanelRight, RefreshCw, Settings } from 'lucide-react';
 import { useEffect, useRef, useState } from 'react';
 import { browser } from 'wxt/browser';
 import { call } from '@/core/messaging/rpc';
@@ -237,6 +237,9 @@ function AccountMenu({
             </button>
           </>
         )}
+        <a className={item} href="https://www.pushbullet.com/" target="_blank" rel="noreferrer" onClick={onClose}>
+          <Globe size={15} className="text-muted" /> Pushbullet.com
+        </a>
         <button className={item} onClick={() => void browser.runtime.openOptionsPage()}>
           <Settings size={15} className="text-muted" /> Settings
         </button>

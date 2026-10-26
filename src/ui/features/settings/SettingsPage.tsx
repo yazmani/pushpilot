@@ -167,6 +167,14 @@ function SettingsContent() {
               checked={settings.receiveOthers}
               onChange={(receiveOthers) => set({ receiveOthers })}
             />
+            {!settings.receiveOthers && (
+              <OtherBrowsers
+                devices={devices}
+                selfIden={selfDeviceIden}
+                value={settings.receiveFor}
+                onChange={(receiveFor) => set({ receiveFor })}
+              />
+            )}
             <Toggle
               label="Pushes you send from this browser"
               hint="Notify and open your own pushes here too, for example when you push to all devices from the right-click menu."
@@ -210,7 +218,7 @@ function SettingsContent() {
             />
             <Toggle
               label="Open links that arrived while offline"
-              hint="When Pushpilot reconnects, for example after your computer wakes up."
+              hint="When the browser starts or your computer wakes up, open what was pushed in the meantime."
               checked={settings.autoOpenOnReconnect}
               onChange={(autoOpenOnReconnect) => set({ autoOpenOnReconnect })}
               disabled={!settings.autoOpenLinks}
@@ -286,6 +294,13 @@ function SettingsContent() {
               checked={settings.badgePhone}
               onChange={(badgePhone) => set({ badgePhone })}
               disabled={!settings.badge}
+            />
+            <Toggle
+              label="Keep counting phone notifications until they’re cleared"
+              hint="Instead of resetting when you open the Phone tab, the count drops as you dismiss them."
+              checked={settings.badgePhoneLive}
+              onChange={(badgePhoneLive) => set({ badgePhoneLive })}
+              disabled={!settings.badge || !settings.badgePhone}
             />
             <Toggle
               label="Count text messages"
@@ -472,6 +487,61 @@ function DeviceList({ devices, selfIden }: { devices: Device[]; selfIden: string
         . A phone shows up as Receiving again after you open the Pushbullet app on it.
       </p>
     </>
+  );
+}
+
+/**
+ * Other browsers on the account whose pushes should land here too. Phones still
+ * list the old Pushbullet extension's "Chrome" device, and pushes picked for it
+ * would otherwise reach no one.
+ */
+function OtherBrowsers({
+  devices,
+  selfIden,
+  value,
+  onChange,
+}: {
+  devices: Device[];
+  selfIden: string | null;
+  value: string[];
+  onChange: (v: string[]) => void;
+}) {
+  const others = devices.filter(
+    (d) => d.iden !== selfIden && isReachable(d) && ['Browser', 'Computer', 'Laptop'].includes(deviceKind(d)),
+  );
+  if (!others.length) return null;
+  return (
+    <div className="py-3.5">
+      <p className="text-sm font-semibold text-ink">Pushes sent to another browser</p>
+      <p className="mt-0.5 text-xs leading-relaxed text-muted">
+        Your phone may still list the old Pushbullet extension as “Chrome”. Tick any browser whose pushes should arrive here.
+      </p>
+      <div className="mt-2.5 flex flex-wrap gap-2">
+        {others.map((d) => {
+          const on = value.includes(d.iden);
+          return (
+            <label
+              key={d.iden}
+              className={clsx(
+                'flex cursor-pointer items-center gap-2 rounded-xl border px-3 py-2 text-sm font-semibold transition-colors',
+                on ? 'border-accent bg-accent-soft text-accent-strong' : 'border-line text-ink hover:bg-raised',
+              )}
+            >
+              <input
+                type="checkbox"
+                className="size-4 accent-accent"
+                checked={on}
+                onChange={(e) => onChange(e.target.checked ? [...value, d.iden] : value.filter((iden) => iden !== d.iden))}
+              />
+              {deviceName(d)}
+              <span className="text-xs font-medium text-faint">
+                {new Date(d.modified * 1000).toLocaleDateString(undefined, { month: 'short', year: 'numeric' })}
+              </span>
+            </label>
+          );
+        })}
+      </div>
+    </div>
   );
 }
 

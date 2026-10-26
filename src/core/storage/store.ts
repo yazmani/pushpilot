@@ -33,6 +33,8 @@ export interface Settings {
   receiveOthers: boolean;
   /** Pushes you sent from this browser. */
   receiveOwn: boolean;
+  /** Other browser devices whose pushes count as this browser's, like the old Pushbullet extension's "Chrome". */
+  receiveFor: string[];
   showChannels: boolean;
 
   // Notifications
@@ -69,6 +71,8 @@ export interface Settings {
   badgeFeed: boolean;
   badgePhone: boolean;
   badgeSms: boolean;
+  /** Phone count is what's still on the phone, not what's new since you last looked. */
+  badgePhoneLive: boolean;
 
   /** Rich previews for links in the feed (needs optional site access). */
   linkPreviews: boolean;
@@ -85,6 +89,7 @@ export const defaultSettings: Settings = {
   receiveAll: true,
   receiveOthers: false,
   receiveOwn: false,
+  receiveFor: [],
   showChannels: false,
   notifyPushes: true,
   notifyMirrors: true,
@@ -107,6 +112,7 @@ export const defaultSettings: Settings = {
   badgeFeed: true,
   badgePhone: true,
   badgeSms: true,
+  badgePhoneLive: false,
   linkPreviews: true,
   snoozeUntil: 0,
 };

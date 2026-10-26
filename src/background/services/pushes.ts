@@ -89,7 +89,7 @@ async function isForMe(p: Push): Promise<boolean> {
   const fromHere = !!selfDeviceIden && p.source_device_iden === selfDeviceIden;
   if (fromHere && !settings.receiveOwn) return false;
   if (!p.target_device_iden) return settings.receiveAll;
-  if (p.target_device_iden === selfDeviceIden) return true;
+  if (p.target_device_iden === selfDeviceIden || settings.receiveFor.includes(p.target_device_iden)) return true;
   return settings.receiveOthers;
 }
 

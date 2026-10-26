@@ -2,7 +2,13 @@ import { browser } from 'wxt/browser';
 import * as store from '@/core/storage/store';
 
 export async function updateBadge() {
-  const { unread, settings, connection, token } = await store.getMany(['unread', 'settings', 'connection', 'token']);
+  const { unread, settings, connection, token, mirrors } = await store.getMany([
+    'unread',
+    'settings',
+    'connection',
+    'token',
+    'mirrors',
+  ]);
   if (!token) {
     await browser.action.setBadgeText({ text: '' });
     await browser.action.setTitle({ title: 'Pushpilot: sign in to Pushbullet' });
@@ -15,8 +21,9 @@ export async function updateBadge() {
     await browser.action.setTitle({ title: 'Pushpilot: offline, retrying' });
     return;
   }
+  const phone = settings.badgePhoneLive ? mirrors.filter((m) => !m.dismissed).length : unread.phone;
   const total = settings.badge
-    ? (settings.badgeFeed ? unread.feed : 0) + (settings.badgePhone ? unread.phone : 0) + (settings.badgeSms ? unread.sms : 0)
+    ? (settings.badgeFeed ? unread.feed : 0) + (settings.badgePhone ? phone : 0) + (settings.badgeSms ? unread.sms : 0)
     : 0;
   await browser.action.setBadgeBackgroundColor({ color: '#16A35A' });
   await browser.action.setBadgeTextColor({ color: '#FFFFFF' });
@@ -29,7 +36,7 @@ export async function updateBadge() {
 
 export function registerBadge() {
   store.onChange((changes) => {
-    if ('unread' in changes || 'settings' in changes || 'connection' in changes || 'token' in changes) {
+    if ('unread' in changes || 'settings' in changes || 'connection' in changes || 'token' in changes || 'mirrors' in changes) {
       void updateBadge();
     }
   });

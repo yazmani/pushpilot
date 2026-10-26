@@ -107,6 +107,10 @@ Pushpilot has no servers, no analytics and no tracking. It talks only to Pushbul
 
 **I pushed to "All devices" and this browser didn't get it.** Pushbullet doesn't deliver a push back to the device that sent it. Turn on **Settings › Receiving › Pushes you send from this browser** if you want that.
 
+**Pushes from my phone don't show up here.** On the phone, pick this browser or "All devices". If the phone still lists the old Pushbullet extension as "Chrome", tick it under **Settings › Receiving › Pushes sent to another browser** and those pushes arrive here too.
+
+**Texts don't appear as phone notifications.** When SMS sync is on in the Pushbullet app, Pushbullet sends texts through its SMS channel instead of notification mirroring. They show up in the SMS tab and as text alerts. Turn SMS sync off on the phone if you'd rather get them as mirrored notifications.
+
 **Do phone notifications and SMS work on iPhone?** No. Pushbullet supports notification mirroring and SMS on Android only.
 
 **Universal copy and paste doesn't do anything.** It needs Pushbullet Pro and the setting turned on in your other Pushbullet apps.
