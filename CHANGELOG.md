@@ -2,6 +2,12 @@
 
 All notable changes are listed here. The format follows [Keep a Changelog](https://keepachangelog.com/), and versions follow [Semantic Versioning](https://semver.org/).
 
+## [Unreleased]
+
+### Fixed
+
+- Sending texts from the SMS tab works again. Pushbullet retired the endpoint Pushpilot used, so texts failed with "Insufficient authorization"; Pushpilot now uses the current one.
+
 ## [1.2.0] - 2026-10-27
 
 ### Added
