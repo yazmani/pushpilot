@@ -66,6 +66,14 @@ export function ensureSelfDevice(): Promise<string> {
   return ensuring;
 }
 
+/** Any device on the account; Pushbullet shows the new name everywhere. */
+export async function renameDevice(iden: string, name: string) {
+  const pb = await requireClient();
+  if (!name.trim()) return;
+  await guard(() => pb.updateDevice(iden, { nickname: name.trim() }));
+  await syncDevices();
+}
+
 export async function renameSelfDevice(name: string) {
   const pb = await requireClient();
   const iden = await ensureSelfDevice();

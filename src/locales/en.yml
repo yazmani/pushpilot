@@ -53,6 +53,7 @@ send:
   file: File
   clipboard: Clipboard
   clipboardHint: 'Paste what you copied, ready to send'
+  clear: 'Clear'
   uploading: Uploading…
   sending: Sending…
   sendTo: Send to $1
@@ -321,6 +322,9 @@ settings:
   otherBrowsers: 'Pushes sent to another browser'
   otherBrowsersHint: 'Your phone may still list the old Pushbullet extension as “Chrome”. Tick any browser whose pushes should arrive here.'
   renameLabel: 'This browser’s name on your other devices'
+  renameDevice: 'Rename $1'
+  save: 'Save'
+  cancel: 'Cancel'
   rename: 'Rename'
   e2eOn: 'End-to-end encryption is on'
   e2eOff: 'End-to-end encryption is off'

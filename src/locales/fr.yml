@@ -53,6 +53,7 @@ send:
   file: Fichier
   clipboard: Presse-papiers
   clipboardHint: 'Collez ce que vous avez copié, prêt à envoyer'
+  clear: 'Effacer'
   uploading: Envoi du fichier…
   sending: Envoi…
   sendTo: Envoyer à $1
@@ -321,6 +322,9 @@ settings:
   otherBrowsers: 'Envois à un autre navigateur'
   otherBrowsersHint: 'Votre téléphone affiche peut-être encore l’ancienne extension Pushbullet sous le nom « Chrome ». Cochez chaque navigateur dont les envois doivent arriver ici.'
   renameLabel: 'Nom de ce navigateur sur vos autres appareils'
+  renameDevice: 'Renommer $1'
+  save: 'Enregistrer'
+  cancel: 'Annuler'
   rename: 'Renommer'
   e2eOn: 'Le chiffrement de bout en bout est activé'
   e2eOff: 'Le chiffrement de bout en bout est désactivé'

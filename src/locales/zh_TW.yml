@@ -53,6 +53,7 @@ send:
   file: 檔案
   clipboard: 剪貼簿
   clipboardHint: '貼上你複製的內容，隨時傳送'
+  clear: '清除'
   uploading: 上傳中…
   sending: 傳送中…
   sendTo: 傳送到 $1
@@ -321,6 +322,9 @@ settings:
   otherBrowsers: '傳送到其他瀏覽器的推送'
   otherBrowsersHint: '你的手機可能仍將舊版 Pushbullet 擴充功能顯示為「Chrome」。勾選希望在這裡接收其推送的瀏覽器。'
   renameLabel: '這個瀏覽器在你其他裝置上顯示的名稱'
+  renameDevice: '重新命名 $1'
+  save: '儲存'
+  cancel: '取消'
   rename: '重新命名'
   e2eOn: '端對端加密已開啟'
   e2eOff: '端對端加密已關閉'

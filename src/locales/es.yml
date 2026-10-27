@@ -53,6 +53,7 @@ send:
   file: Archivo
   clipboard: Portapapeles
   clipboardHint: 'Pega lo que copiaste, listo para enviar'
+  clear: 'Borrar'
   uploading: Subiendo…
   sending: Enviando…
   sendTo: Enviar a $1
@@ -321,6 +322,9 @@ settings:
   otherBrowsers: 'Envíos a otro navegador'
   otherBrowsersHint: 'Puede que tu teléfono todavía muestre la antigua extensión de Pushbullet como “Chrome”. Marca los navegadores cuyos envíos deben llegar aquí.'
   renameLabel: 'Nombre de este navegador en tus otros dispositivos'
+  renameDevice: 'Cambiar nombre de $1'
+  save: 'Guardar'
+  cancel: 'Cancelar'
   rename: 'Cambiar nombre'
   e2eOn: 'El cifrado de extremo a extremo está activado'
   e2eOff: 'El cifrado de extremo a extremo está desactivado'

@@ -345,16 +345,33 @@ export function SendView({ mode, onOpenFeed }: { mode: Mode; onOpenFeed: () => v
           )}
 
           {kind === 'note' && expanded && (
-            <input
-              value={title}
-              onChange={(e) => setTitle(e.target.value)}
-              placeholder={i18n.t('send.titlePlaceholder')}
-              aria-label={i18n.t('send.noteTitle')}
-              className="w-full bg-transparent px-4 pt-4 text-[15px] font-bold outline-none placeholder:text-faint"
-            />
+            <div className="flex items-start pe-2 pt-2">
+              <input
+                dir="auto"
+                value={title}
+                onChange={(e) => setTitle(e.target.value)}
+                placeholder={i18n.t('send.titlePlaceholder')}
+                aria-label={i18n.t('send.noteTitle')}
+                className="min-w-0 flex-1 bg-transparent ps-4 pt-2 text-[15px] font-bold outline-none placeholder:text-faint"
+              />
+              {(body || title) && (
+                <IconButton
+                  label={i18n.t('send.clear')}
+                  className="size-7"
+                  onClick={() => {
+                    setBody('');
+                    setTitle('');
+                    bodyRef.current?.focus();
+                  }}
+                >
+                  <X size={14} />
+                </IconButton>
+              )}
+            </div>
           )}
 
           <textarea
+            dir="auto"
             ref={bodyRef}
             value={body}
             onChange={(e) => {

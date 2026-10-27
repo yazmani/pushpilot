@@ -58,8 +58,16 @@ export function MirrorCard({ m, devices, autoFocus }: { m: Mirror; devices: Devi
             {device && <span className="truncate">{i18n.t('phone.onDevice', [deviceName(device)])}</span>}
             <span className="ms-auto shrink-0">{timeAgo(m.created)}</span>
           </p>
-          {m.title && <p className="mt-0.5 break-words text-sm font-bold leading-snug">{m.title}</p>}
-          {m.body && <p className="line-clamp-5 whitespace-pre-wrap break-words text-sm leading-relaxed text-ink/85">{m.body}</p>}
+          {m.title && (
+            <p dir="auto" className="mt-0.5 break-words text-sm font-bold leading-snug">
+              {m.title}
+            </p>
+          )}
+          {m.body && (
+            <p dir="auto" className="line-clamp-5 whitespace-pre-wrap break-words text-sm leading-relaxed text-ink/85">
+              {m.body}
+            </p>
+          )}
 
           {(m.code || m.conversation_iden || (m.actions?.length && !m.dismissed)) && (
             <div className="mt-2.5 flex flex-wrap gap-1.5">

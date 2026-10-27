@@ -44,6 +44,7 @@ export function LinkCard({
         <LinkThumb preview={preview} url={url} size={62} shape="wide" />
         <div className="min-w-0 flex-1">
           <textarea
+            dir="auto"
             value={title}
             onChange={(e) => onTitle(e.target.value.replace(/\n/g, ' '))}
             rows={1}

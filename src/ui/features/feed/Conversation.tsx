@@ -87,8 +87,16 @@ export function Conversation({
                     mine ? 'rounded-ee-md bg-accent text-on-accent' : 'rounded-es-md border border-line bg-surface',
                   )}
                 >
-                  {p.title && <p className="font-bold">{p.title}</p>}
-                  {p.body && <p className="whitespace-pre-wrap break-words">{p.body}</p>}
+                  {p.title && (
+                    <p dir="auto" className="font-bold">
+                      {p.title}
+                    </p>
+                  )}
+                  {p.body && (
+                    <p dir="auto" className="whitespace-pre-wrap break-words">
+                      {p.body}
+                    </p>
+                  )}
                   {url && (
                     <a
                       href={url}

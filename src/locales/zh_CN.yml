@@ -53,6 +53,7 @@ send:
   file: 文件
   clipboard: 剪贴板
   clipboardHint: '粘贴你复制的内容，随时发送'
+  clear: '清空'
   uploading: 正在上传…
   sending: 正在发送…
   sendTo: 发送到 $1
@@ -321,6 +322,9 @@ settings:
   otherBrowsers: '发送到其他浏览器的推送'
   otherBrowsersHint: '你的手机可能仍将旧版 Pushbullet 扩展程序显示为“Chrome”。勾选希望在这里接收其推送的浏览器。'
   renameLabel: '此浏览器在你其他设备上显示的名称'
+  renameDevice: '重命名 $1'
+  save: '保存'
+  cancel: '取消'
   rename: '重命名'
   e2eOn: '端到端加密已开启'
   e2eOff: '端到端加密已关闭'

@@ -122,22 +122,29 @@ export function FeedItem({
                 href={url}
                 target="_blank"
                 rel="noreferrer"
+                dir="auto"
                 className="line-clamp-2 min-w-0 flex-1 break-words text-[13px] font-bold leading-snug hover:text-accent-strong"
               >
                 {title}
               </a>
             ) : (
-              <p className="line-clamp-2 min-w-0 flex-1 break-words text-[13px] font-bold leading-snug">{title}</p>
+              <p dir="auto" className="line-clamp-2 min-w-0 flex-1 break-words text-[13px] font-bold leading-snug">
+                {title}
+              </p>
             )
           ) : (
-            <p className="line-clamp-3 min-w-0 flex-1 whitespace-pre-wrap break-words text-[13px] leading-snug">{p.body}</p>
+            <p dir="auto" className="line-clamp-3 min-w-0 flex-1 whitespace-pre-wrap break-words text-[13px] leading-snug">
+              {p.body}
+            </p>
           )}
           <time className="mt-px shrink-0 text-2xs font-medium text-faint" title={new Date(p.created * 1000).toLocaleString()}>
             {timeAgo(p.created)}
           </time>
         </div>
         {title && subtitle && (
-          <p className="mt-0.5 line-clamp-2 whitespace-pre-wrap break-words text-xs leading-relaxed text-muted">{subtitle}</p>
+          <p dir="auto" className="mt-0.5 line-clamp-2 whitespace-pre-wrap break-words text-xs leading-relaxed text-muted">
+            {subtitle}
+          </p>
         )}
         <div className="mt-0.5 flex h-5 items-center gap-2">
           <p className="min-w-0 flex-1 truncate text-2xs font-medium text-faint">{describe(p, ctx, who, chat, sub)}</p>

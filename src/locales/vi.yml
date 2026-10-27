@@ -53,6 +53,7 @@ send:
   file: Tệp
   clipboard: Bảng nhớ tạm
   clipboardHint: 'Dán nội dung bạn đã sao chép, sẵn sàng để gửi'
+  clear: 'Xóa'
   uploading: Đang tải lên…
   sending: Đang gửi…
   sendTo: Gửi tới $1
@@ -321,6 +322,9 @@ settings:
   otherBrowsers: Mục gửi tới trình duyệt khác
   otherBrowsersHint: Điện thoại có thể vẫn liệt kê tiện ích Pushbullet cũ là “Chrome”. Đánh dấu những trình duyệt có mục gửi cần nhận tại đây.
   renameLabel: Tên của trình duyệt này trên các thiết bị khác
+  renameDevice: 'Đổi tên $1'
+  save: 'Lưu'
+  cancel: 'Hủy'
   rename: Đổi tên
   e2eOn: Mã hóa đầu cuối đang bật
   e2eOff: Mã hóa đầu cuối đang tắt

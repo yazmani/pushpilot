@@ -1,5 +1,5 @@
 import clsx from 'clsx';
-import { Coffee, Heart, LockKeyhole, LogOut, RefreshCw, Star } from 'lucide-react';
+import { Coffee, Heart, LockKeyhole, LogOut, Pencil, RefreshCw, Star } from 'lucide-react';
 import { type ReactNode, useEffect, useRef, useState } from 'react';
 import { browser, type Browser } from 'wxt/browser';
 import { LINKS } from '@/core/links';
@@ -438,6 +438,14 @@ function Row({ label, children }: { label: string; children: ReactNode }) {
 }
 
 function DeviceList({ devices, selfIden }: { devices: Device[]; selfIden: string | null }) {
+  const run = useRun();
+  const [editing, setEditing] = useState<string | null>(null);
+  const [draft, setDraft] = useState('');
+  const save = (d: Device) => {
+    setEditing(null);
+    if (draft.trim() && draft.trim() !== deviceName(d))
+      void run(() => call('device.rename', { iden: d.iden, name: draft }), i18n.t('settings.renamed'));
+  };
   const sorted = [...devices].sort((a, b) => Number(isReachable(b)) - Number(isReachable(a)) || b.modified - a.modified);
   return (
     <>
@@ -454,12 +462,50 @@ function DeviceList({ devices, selfIden }: { devices: Device[]; selfIden: string
               <DeviceGlyph device={d} size={17} />
             </span>
             <div className="min-w-0 flex-1">
-              <p className={clsx('truncate text-sm font-semibold', !live && 'text-muted')}>
-                {deviceName(d)}
-                {d.iden === selfIden && (
-                  <span className="ms-2 text-xs font-medium text-faint">{i18n.t('settings.thisBrowser')}</span>
-                )}
-              </p>
+              {editing === d.iden ? (
+                <form
+                  className="flex items-center gap-2"
+                  onSubmit={(e) => {
+                    e.preventDefault();
+                    save(d);
+                  }}
+                >
+                  <input
+                    autoFocus
+                    onFocus={(e) => e.currentTarget.select()}
+                    value={draft}
+                    onChange={(e) => setDraft(e.target.value)}
+                    onKeyDown={(e) => e.key === 'Escape' && setEditing(null)}
+                    aria-label={i18n.t('settings.renameDevice', [deviceName(d)])}
+                    className={clsx(fieldClass, 'h-8 min-w-0 flex-1')}
+                  />
+                  <Button type="submit" size="sm" disabled={!draft.trim()}>
+                    {i18n.t('settings.save')}
+                  </Button>
+                  <Button type="button" size="sm" variant="ghost" onClick={() => setEditing(null)}>
+                    {i18n.t('settings.cancel')}
+                  </Button>
+                </form>
+              ) : (
+                <p className={clsx('group flex items-center gap-1 text-sm font-semibold', !live && 'text-muted')}>
+                  <span className="truncate">{deviceName(d)}</span>
+                  {d.iden === selfIden && (
+                    <span className="ms-1 shrink-0 text-xs font-medium text-faint">{i18n.t('settings.thisBrowser')}</span>
+                  )}
+                  <button
+                    type="button"
+                    title={i18n.t('settings.renameDevice', [deviceName(d)])}
+                    aria-label={i18n.t('settings.renameDevice', [deviceName(d)])}
+                    onClick={() => {
+                      setDraft(deviceName(d));
+                      setEditing(d.iden);
+                    }}
+                    className="grid size-6 shrink-0 place-items-center rounded-md text-faint opacity-0 transition-opacity hover:bg-raised hover:text-ink focus-visible:opacity-100 group-hover:opacity-100"
+                  >
+                    <Pencil size={12} />
+                  </button>
+                </p>
+              )}
               <p className="text-xs text-faint">
                 {i18n.t(d.has_sms ? 'settings.deviceLineSms' : 'settings.deviceLine', [
                   deviceKind(d),

@@ -52,6 +52,7 @@ send:
   file: Bestand
   clipboard: Klembord
   clipboardHint: 'Plak wat je hebt gekopieerd, klaar om te versturen'
+  clear: 'Wissen'
   uploading: Uploaden…
   sending: Versturen…
   sendTo: Versturen naar $1
@@ -320,6 +321,9 @@ settings:
   otherBrowsers: Pushes naar een andere browser
   otherBrowsersHint: Je telefoon toont de oude Pushbullet-extensie misschien nog als ‘Chrome’. Vink elke browser aan waarvan de pushes hier moeten binnenkomen.
   renameLabel: Naam van deze browser op je andere apparaten
+  renameDevice: '$1 hernoemen'
+  save: 'Opslaan'
+  cancel: 'Annuleren'
   rename: Naam wijzigen
   e2eOn: End-to-end-versleuteling staat aan
   e2eOff: End-to-end-versleuteling staat uit
