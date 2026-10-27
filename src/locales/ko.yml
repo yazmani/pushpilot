@@ -40,7 +40,6 @@ send:
   imageUnreadable: 이미지를 읽을 수 없어요. 대신 끌어다 놓아 보세요.
   sentTo: $1(으)로 보냈어요
   clipboardEmpty: 클립보드가 비어 있어요.
-  clipboardSent: 클립보드를 기기로 보냈어요
   pastedImage: 붙여넣은 이미지
   removeFile: $1 삭제
   titlePlaceholder: 제목 (선택 사항)
@@ -53,7 +52,7 @@ send:
   addFile: 파일 추가
   file: 파일
   clipboard: 클립보드
-  clipboardHint: 클립보드를 기기로 보내기 (유니버설 복사/붙여넣기)
+  clipboardHint: '복사한 내용을 붙여넣어 바로 보내기'
   uploading: 업로드 중…
   sending: 보내는 중…
   sendTo: $1(으)로 보내기
@@ -388,3 +387,4 @@ bg:
   smsOff: 이 휴대폰은 Pushbullet과 문자를 공유하지 않고 있어요. 휴대폰에서 Pushbullet을 열고 SMS를 켜세요.
   encrypted: 이 데이터는 엔드투엔드 암호화되어 있어요. 설정에서 암호화 비밀번호를 추가하세요.
   noAnswer: Pushpilot의 백그라운드 작업이 응답하지 않았어요. 다시 시도하세요.
+  needsPro: '유니버설 복사 및 붙여넣기에는 Pushbullet Pro가 필요해요.'

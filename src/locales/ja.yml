@@ -40,7 +40,6 @@ send:
   imageUnreadable: 画像を読み込めませんでした。ドラッグして追加してみてください。
   sentTo: $1 に送信しました
   clipboardEmpty: クリップボードが空です。
-  clipboardSent: クリップボードをデバイスに送信しました
   pastedImage: 貼り付けた画像
   removeFile: $1 を削除
   titlePlaceholder: タイトル（任意）
@@ -53,7 +52,7 @@ send:
   addFile: ファイルを追加
   file: ファイル
   clipboard: クリップボード
-  clipboardHint: クリップボードをデバイスに送信（ユニバーサル コピー＆ペースト）
+  clipboardHint: 'コピーした内容を貼り付けて、すぐに送信'
   uploading: アップロード中…
   sending: 送信中…
   sendTo: $1 に送信
@@ -388,3 +387,4 @@ bg:
   smsOff: このスマートフォンは Pushbullet と SMS を共有していません。スマートフォンで Pushbullet を開き、SMS をオンにしてください。
   encrypted: このデータはエンドツーエンド暗号化されています。設定で暗号化パスワードを追加してください。
   noAnswer: Pushpilot のバックグラウンド処理が応答しませんでした。もう一度お試しください。
+  needsPro: 'ユニバーサルコピー＆ペーストには Pushbullet Pro が必要です。'

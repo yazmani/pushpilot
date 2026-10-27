@@ -39,7 +39,6 @@ send:
   imageUnreadable: Impossibile leggere l’immagine. Prova a trascinarla qui.
   sentTo: Inviato a $1
   clipboardEmpty: Gli appunti sono vuoti.
-  clipboardSent: Appunti inviati ai tuoi dispositivi
   pastedImage: Immagine incollata
   removeFile: Rimuovi $1
   titlePlaceholder: Titolo (facoltativo)
@@ -52,7 +51,7 @@ send:
   addFile: Aggiungi file
   file: File
   clipboard: Appunti
-  clipboardHint: Invia gli appunti ai tuoi dispositivi (copia e incolla universale)
+  clipboardHint: 'Incolla ciò che hai copiato, pronto da inviare'
   uploading: Caricamento…
   sending: Invio…
   sendTo: Invia a $1
@@ -387,3 +386,4 @@ bg:
   smsOff: Questo telefono non condivide gli SMS con Pushbullet. Apri Pushbullet sul telefono e attiva gli SMS.
   encrypted: Questi dati sono crittografati end-to-end. Aggiungi la password di crittografia nelle Impostazioni.
   noAnswer: Il processo in background di Pushpilot non ha risposto. Riprova.
+  needsPro: 'Il copia e incolla universale richiede Pushbullet Pro.'

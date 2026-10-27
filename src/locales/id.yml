@@ -40,7 +40,6 @@ send:
   imageUnreadable: Gambar itu tidak dapat dibaca. Coba seret ke sini.
   sentTo: Terkirim ke $1
   clipboardEmpty: Papan klip Anda kosong.
-  clipboardSent: Papan klip terkirim ke perangkat Anda
   pastedImage: Gambar yang ditempel
   removeFile: Hapus $1
   titlePlaceholder: Judul (opsional)
@@ -53,7 +52,7 @@ send:
   addFile: Tambahkan file
   file: File
   clipboard: Papan klip
-  clipboardHint: Kirim papan klip ke perangkat Anda (salin & tempel universal)
+  clipboardHint: 'Tempel yang Anda salin, siap dikirim'
   uploading: Mengunggah…
   sending: Mengirim…
   sendTo: Kirim ke $1
@@ -388,3 +387,4 @@ bg:
   smsOff: Ponsel ini tidak membagikan SMS-nya dengan Pushbullet. Buka Pushbullet di ponsel itu dan aktifkan SMS.
   encrypted: Data ini terenkripsi end-to-end. Tambahkan sandi enkripsi Anda di Setelan.
   noAnswer: Proses latar belakang Pushpilot tidak merespons. Coba lagi.
+  needsPro: 'Salin-tempel universal memerlukan Pushbullet Pro.'

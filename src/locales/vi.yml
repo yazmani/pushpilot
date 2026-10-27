@@ -40,7 +40,6 @@ send:
   imageUnreadable: Không đọc được hình ảnh đó. Hãy thử kéo thả vào.
   sentTo: Đã gửi tới $1
   clipboardEmpty: Bảng nhớ tạm đang trống.
-  clipboardSent: Đã gửi bảng nhớ tạm tới các thiết bị
   pastedImage: Ảnh đã dán
   removeFile: Xóa $1
   titlePlaceholder: Tiêu đề (không bắt buộc)
@@ -53,7 +52,7 @@ send:
   addFile: Thêm tệp
   file: Tệp
   clipboard: Bảng nhớ tạm
-  clipboardHint: Gửi bảng nhớ tạm tới các thiết bị (sao chép & dán đa thiết bị)
+  clipboardHint: 'Dán nội dung bạn đã sao chép, sẵn sàng để gửi'
   uploading: Đang tải lên…
   sending: Đang gửi…
   sendTo: Gửi tới $1
@@ -388,3 +387,4 @@ bg:
   smsOff: Điện thoại này không chia sẻ tin nhắn với Pushbullet. Mở Pushbullet trên điện thoại đó và bật SMS.
   encrypted: Dữ liệu này được mã hóa đầu cuối. Hãy thêm mật khẩu mã hóa trong Cài đặt.
   noAnswer: Tiến trình nền của Pushpilot không phản hồi. Hãy thử lại.
+  needsPro: 'Sao chép và dán toàn cầu cần Pushbullet Pro.'

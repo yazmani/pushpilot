@@ -31,7 +31,6 @@ export interface Rpc {
   'sms.threads': { req: { device: string }; res: SmsThread[] };
   'sms.thread': { req: { device: string; thread: string }; res: SmsMessage[] };
   'sms.send': { req: { device: string; addresses: string[]; message: string }; res: void };
-  'clip.send': { req: { text: string }; res: void };
   'clip.push': { req: object; res: void };
   'e2e.set': { req: { password: string | null }; res: void };
   'chat.mute': { req: { iden: string; muted: boolean }; res: void };

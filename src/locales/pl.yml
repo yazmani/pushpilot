@@ -38,7 +38,6 @@ send:
   imageUnreadable: Nie udało się odczytać obrazu. Spróbuj go przeciągnąć.
   sentTo: 'Wysłano: $1'
   clipboardEmpty: Schowek jest pusty.
-  clipboardSent: Schowek wysłany na twoje urządzenia
   pastedImage: Wklejony obraz
   removeFile: Usuń $1
   titlePlaceholder: Tytuł (opcjonalnie)
@@ -51,7 +50,7 @@ send:
   addFile: Dodaj plik
   file: Plik
   clipboard: Schowek
-  clipboardHint: Wyślij schowek na swoje urządzenia (uniwersalne kopiowanie i wklejanie)
+  clipboardHint: 'Wklej to, co skopiowano, i wyślij'
   uploading: Przesyłanie…
   sending: Wysyłanie…
   sendTo: 'Wyślij: $1'
@@ -386,3 +385,4 @@ bg:
   smsOff: Ten telefon nie udostępnia SMS-ów w Pushbullet. Otwórz na nim Pushbullet i włącz SMS.
   encrypted: Te dane są zaszyfrowane end-to-end. Dodaj hasło szyfrowania w Ustawieniach.
   noAnswer: Proces w tle Pushpilot nie odpowiedział. Spróbuj ponownie.
+  needsPro: 'Uniwersalne kopiowanie i wklejanie wymaga Pushbullet Pro.'

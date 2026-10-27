@@ -40,7 +40,6 @@ send:
   imageUnreadable: 無法讀取這張圖片。請試著直接拖曳進來。
   sentTo: 已傳送到 $1
   clipboardEmpty: 剪貼簿是空的。
-  clipboardSent: 已將剪貼簿傳送到你的裝置
   pastedImage: 貼上的圖片
   removeFile: 移除 $1
   titlePlaceholder: 標題（選填）
@@ -53,7 +52,7 @@ send:
   addFile: 新增檔案
   file: 檔案
   clipboard: 剪貼簿
-  clipboardHint: 將剪貼簿傳送到你的裝置（通用複製貼上）
+  clipboardHint: '貼上你複製的內容，隨時傳送'
   uploading: 上傳中…
   sending: 傳送中…
   sendTo: 傳送到 $1
@@ -388,3 +387,4 @@ bg:
   smsOff: 這支手機沒有與 Pushbullet 分享簡訊。請在手機上開啟 Pushbullet 並啟用簡訊功能。
   encrypted: 這份資料經過端對端加密。請在設定中新增加密密碼。
   noAnswer: Pushpilot 的背景程序沒有回應。請再試一次。
+  needsPro: '通用複製貼上需要 Pushbullet Pro。'

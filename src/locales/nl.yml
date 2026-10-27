@@ -39,7 +39,6 @@ send:
   imageUnreadable: Kan die afbeelding niet lezen. Sleep hem er liever in.
   sentTo: Verstuurd naar $1
   clipboardEmpty: Je klembord is leeg.
-  clipboardSent: Klembord naar je apparaten verstuurd
   pastedImage: Geplakte afbeelding
   removeFile: $1 verwijderen
   titlePlaceholder: Titel (optioneel)
@@ -52,7 +51,7 @@ send:
   addFile: Bestand toevoegen
   file: Bestand
   clipboard: Klembord
-  clipboardHint: Stuur je klembord naar je apparaten (universeel kopiëren en plakken)
+  clipboardHint: 'Plak wat je hebt gekopieerd, klaar om te versturen'
   uploading: Uploaden…
   sending: Versturen…
   sendTo: Versturen naar $1
@@ -387,3 +386,4 @@ bg:
   smsOff: Deze telefoon deelt zijn sms’jes niet met Pushbullet. Open Pushbullet op de telefoon en zet sms aan.
   encrypted: Deze gegevens zijn end-to-end versleuteld. Voeg je versleutelingswachtwoord toe in Instellingen.
   noAnswer: Het achtergrondproces van Pushpilot reageerde niet. Probeer het opnieuw.
+  needsPro: 'Universeel kopiëren en plakken vereist Pushbullet Pro.'

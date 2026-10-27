@@ -40,7 +40,6 @@ send:
   imageUnreadable: تعذّرت قراءة هذه الصورة. جرّب سحبها وإفلاتها بدلًا من ذلك.
   sentTo: تم الإرسال إلى $1
   clipboardEmpty: الحافظة فارغة.
-  clipboardSent: تم إرسال الحافظة إلى أجهزتك
   pastedImage: صورة ملصقة
   removeFile: إزالة $1
   titlePlaceholder: العنوان (اختياري)
@@ -53,7 +52,7 @@ send:
   addFile: إضافة ملف
   file: ملف
   clipboard: الحافظة
-  clipboardHint: إرسال الحافظة إلى أجهزتك (نسخ ولصق بين الأجهزة)
+  clipboardHint: 'الصق ما نسخته، جاهزًا للإرسال'
   uploading: جارٍ الرفع…
   sending: جارٍ الإرسال…
   sendTo: إرسال إلى $1
@@ -388,3 +387,4 @@ bg:
   smsOff: هذا الهاتف لا يشارك رسائله مع Pushbullet. افتح Pushbullet عليه وفعّل الرسائل القصيرة (SMS).
   encrypted: هذه البيانات مشفّرة تشفيرًا تامًا بين الطرفين. أضف كلمة مرور التشفير في الإعدادات.
   noAnswer: لم تستجب العملية الخلفية في Pushpilot. حاول مرة أخرى.
+  needsPro: 'تتطلب ميزة النسخ واللصق الشامل اشتراك Pushbullet Pro.'
