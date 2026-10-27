@@ -186,6 +186,7 @@ sms:
   noPhoneBody: 在 Android 手機上安裝 Pushbullet，並允許它傳送和讀取簡訊。
   phone: 手機
   lastSeen: （上次上線：$1）
+  offlineNotice: '$1 自 $2 起未連線。你可以查看舊簡訊，但在它重新上線前無法傳送新簡訊。'
   refresh: 重新整理
   newText: 新簡訊
   noThreadsTitle: 沒有對話

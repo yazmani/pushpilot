@@ -184,6 +184,7 @@ sms:
   noPhoneBody: Pushbullet’ı bir Android telefona yükle ve SMS gönderip okumasına izin ver.
   phone: Telefon
   lastSeen: '(son görülme: $1)'
+  offlineNotice: '$1, $2 tarihinden beri bağlanmadı. Eski mesajları okuyabilirsin, ancak yenileri tekrar çevrimiçi olana kadar gönderilmez.'
   refresh: Yenile
   newText: Yeni SMS
   noThreadsTitle: Sohbet yok

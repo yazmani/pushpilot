@@ -12,6 +12,7 @@ export function PhoneView({ focus }: { focus?: string }) {
   const { mirrors, devices, settings } = useStore(['mirrors', 'devices', 'settings']);
   const run = useRun();
   const live = useMemo(() => mirrors.filter((m) => !m.dismissed), [mirrors]);
+  const manyPhones = useMemo(() => new Set(mirrors.map((m) => m.source_device_iden)).size > 1, [mirrors]);
   const earlier = useMemo(() => mirrors.filter((m) => m.dismissed).slice(0, 40), [mirrors]);
 
   if (!settings.mirrorEnabled) {
@@ -45,7 +46,7 @@ export function PhoneView({ focus }: { focus?: string }) {
           <SectionLabel>{i18n.t('phone.now')}</SectionLabel>
           <Group>
             {live.map((m) => (
-              <MirrorCard key={m.id} m={m} devices={devices} autoFocus={m.id === focus} />
+              <MirrorCard key={m.id} m={m} devices={devices} autoFocus={m.id === focus} showDevice={manyPhones} />
             ))}
           </Group>
         </section>
@@ -66,7 +67,7 @@ export function PhoneView({ focus }: { focus?: string }) {
           </SectionLabel>
           <Group>
             {earlier.map((m) => (
-              <MirrorCard key={m.id} m={m} devices={devices} />
+              <MirrorCard key={m.id} m={m} devices={devices} showDevice={manyPhones} />
             ))}
           </Group>
         </section>

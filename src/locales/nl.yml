@@ -185,6 +185,7 @@ sms:
   noPhoneBody: Installeer Pushbullet op een Android-telefoon en geef de app toestemming om sms’jes te versturen en te lezen.
   phone: Telefoon
   lastSeen: (laatst gezien op $1)
+  offlineNotice: '$1 is sinds $2 niet meer verbonden. Je kunt oude sms’jes lezen, maar nieuwe worden pas verstuurd als hij weer online is.'
   refresh: Vernieuwen
   newText: Nieuwe sms
   noThreadsTitle: Geen gesprekken

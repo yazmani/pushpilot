@@ -1,17 +1,27 @@
 import clsx from 'clsx';
-import { Copy, Reply, SendHorizontal, Smartphone, X } from 'lucide-react';
+import { Reply, SendHorizontal, Smartphone, X } from 'lucide-react';
 import { useEffect, useRef, useState } from 'react';
 import { call } from '@/core/messaging/rpc';
 import type { Device, Mirror } from '@/core/pushbullet/types';
 import { deviceName, timeAgo } from '@/core/utils/format';
-import { Button, fieldClass, IconButton } from '@/ui/components';
+import { Button, CodeChip, fieldClass, IconButton } from '@/ui/components';
 import { useNow } from '@/ui/hooks/use-now';
-import { useRun, useToast } from '@/ui/hooks/use-toast';
+import { useRun } from '@/ui/hooks/use-toast';
 import { i18n } from '#i18n';
 
-export function MirrorCard({ m, devices, autoFocus }: { m: Mirror; devices: Device[]; autoFocus?: boolean }) {
+export function MirrorCard({
+  m,
+  devices,
+  autoFocus,
+  showDevice,
+}: {
+  m: Mirror;
+  devices: Device[];
+  autoFocus?: boolean;
+  /** Name the phone, when notifications come from more than one. */
+  showDevice?: boolean;
+}) {
   useNow();
-  const notify = useToast();
   const run = useRun();
   const [replying, setReplying] = useState(!!autoFocus && !!m.conversation_iden);
   const [reply, setReply] = useState('');
@@ -55,7 +65,7 @@ export function MirrorCard({ m, devices, autoFocus }: { m: Mirror; devices: Devi
         <div className="min-w-0 flex-1 pe-6">
           <p className="flex items-center gap-1.5 text-2xs text-faint">
             <span className="truncate font-bold text-muted">{app}</span>
-            {device && <span className="truncate">{i18n.t('phone.onDevice', [deviceName(device)])}</span>}
+            {showDevice && device && <span className="truncate">{i18n.t('phone.onDevice', [deviceName(device)])}</span>}
             <span className="ms-auto shrink-0">{timeAgo(m.created)}</span>
           </p>
           {m.title && (
@@ -71,19 +81,7 @@ export function MirrorCard({ m, devices, autoFocus }: { m: Mirror; devices: Devi
 
           {(m.code || m.conversation_iden || (m.actions?.length && !m.dismissed)) && (
             <div className="mt-2.5 flex flex-wrap gap-1.5">
-              {m.code && (
-                <button
-                  className="flex h-8 items-center gap-2 rounded-xl bg-accent-soft px-3 text-base font-extrabold tracking-[0.12em] text-accent-strong transition hover:brightness-95"
-                  onClick={async () => {
-                    await navigator.clipboard.writeText(m.code!);
-                    notify(i18n.t('phone.copiedCode', [m.code!]));
-                  }}
-                  title={i18n.t('phone.copyCode')}
-                >
-                  {m.code}
-                  <Copy size={14} />
-                </button>
-              )}
+              {m.code && <CodeChip code={m.code} />}
               {m.conversation_iden && !replying && (
                 <Button size="sm" className="h-8" onClick={() => setReplying(true)}>
                   <Reply size={13} /> {i18n.t('phone.reply')}

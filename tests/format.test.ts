@@ -2,6 +2,18 @@ import { describe, expect, it } from 'vitest';
 import { extractCode, host, isReachable, looksLikeUrl, normalizeUrl } from '@/core/utils/format';
 import type { Device } from '@/core/pushbullet/types';
 
+describe('extractCode strict', () => {
+  it('finds codes next to a code word', () => {
+    expect(extractCode('Your Northwind verification code is 739204.', { strict: true })).toBe('739204');
+    expect(extractCode('482913 is your sign-in code', { strict: true })).toBe('482913');
+  });
+
+  it('ignores lone numbers like order numbers and short codes', () => {
+    expect(extractCode('Votre colis no 423161277 arrive demain. STOP 33800', { strict: true })).toBeUndefined();
+    expect(extractCode('Christmas sale! Reply STOP to 36191', { strict: true })).toBeUndefined();
+  });
+});
+
 describe('extractCode', () => {
   it.each([
     ['Your verification code is 482913. Never share it.', '482913'],

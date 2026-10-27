@@ -186,6 +186,7 @@ sms:
   noPhoneBody: ثبّت Pushbullet على هاتف Android واسمح له بإرسال الرسائل القصيرة وقراءتها.
   phone: الهاتف
   lastSeen: (آخر ظهور $1)
+  offlineNotice: 'لم يتصل $1 منذ $2. يمكنك قراءة الرسائل القديمة، لكن الرسائل الجديدة لن تُرسل حتى يعود متصلًا.'
   refresh: تحديث
   newText: رسالة جديدة
   noThreadsTitle: لا توجد محادثات

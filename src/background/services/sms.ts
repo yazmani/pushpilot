@@ -1,6 +1,7 @@
 import * as store from '@/core/storage/store';
 import type { SmsNotice } from '@/core/pushbullet/types';
-import { uid } from '@/core/utils/format';
+import { extractCode, uid } from '@/core/utils/format';
+import { copyText } from '@/background/platform/offscreen';
 import { isSnoozed, onNotification, show, toDataUrl } from '@/background/platform/notifications';
 import { openApp } from '@/background/platform/windows';
 import { guard, requireClient } from '@/background/session';
@@ -36,17 +37,23 @@ export async function handleSmsChanged(push: SmsChangedPush) {
   if (!notices.length) return;
 
   const settings = await store.get('settings');
+  // Codes in texts are copied like codes in phone notifications.
+  const code = notices.map((n) => extractCode(n.body, { strict: true })).find(Boolean);
+  if (code && settings.autoCopyCodes) await copyText(code);
   await store.update('smsNotices', (all) => [...notices, ...all].slice(0, 50));
   if (settings.badge && settings.badgeSms) await store.update('unread', (u) => ({ ...u, sms: u.sms + notices.length }));
   if (!settings.notifySms || (await isSnoozed())) return;
 
   for (const n of notices) {
+    const c = extractCode(n.body, { strict: true });
     await show(`sms:${device}|${n.thread_id}`, {
       title: n.title,
       message: n.body,
       context: i18n.t('sms.placeholder'),
       icon: await toDataUrl(n.image_url),
-      buttons: [i18n.t('phone.reply')],
+      buttons: c
+        ? [settings.autoCopyCodes ? i18n.t('phone.copiedCode', [c]) : i18n.t('bg.copyCode', [c]), i18n.t('phone.reply')]
+        : [i18n.t('phone.reply')],
     });
   }
 }
@@ -56,5 +63,14 @@ export function registerSmsNotifications() {
     const [device, thread] = rest.split('|');
     return openApp({ view: 'sms', device, thread });
   };
-  onNotification('sms', { click: open, button: open });
+  onNotification('sms', {
+    click: open,
+    async button(rest, index) {
+      const [, thread] = rest.split('|');
+      const latest = (await store.get('smsNotices')).find((n) => n.thread_id === thread);
+      const code = extractCode(latest?.body, { strict: true });
+      if (code && index === 0) await copyText(code);
+      else await open(rest);
+    },
+  });
 }
