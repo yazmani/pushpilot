@@ -18,6 +18,7 @@ tabs:
   sms: SMS
 app:
   offline: Tidak dapat terhubung ke Pushbullet. Mencoba lagi di latar belakang.
+  rateLimited: 'Pushbullet sedang membatasi permintaan dari akun Anda untuk sementara (semua aplikasi yang Anda pakai dengannya ikut dihitung). Pushpilot akan menyusul setelah $1.'
 header:
   sections: Bagian
   pausedHint: Notifikasi dijeda. Klik untuk mengaktifkannya lagi.
@@ -104,7 +105,16 @@ feed:
   searchPlaceholder: Cari kiriman Anda
   searchLabel: Cari kiriman
   closeSearch: Tutup pencarian
-  everything: Semua
+  all: 'Semua'
+  show: 'Tampilkan'
+  fileKind:
+    all: 'Semua'
+    image: 'Gambar'
+    video: 'Video'
+    pdf: 'PDF'
+    doc: 'Dokumen'
+    audio: 'Audio'
+    other: 'Lainnya'
   only:
     link: 'Tautan'
     note: 'Catatan'
@@ -396,3 +406,9 @@ bg:
   encrypted: Data ini terenkripsi end-to-end. Tambahkan sandi enkripsi Anda di Setelan.
   noAnswer: Proses latar belakang Pushpilot tidak merespons. Coba lagi.
   needsPro: 'Salin-tempel universal memerlukan Pushbullet Pro.'
+gallery:
+  close: 'Tutup'
+  previous: 'Sebelumnya'
+  next: 'Berikutnya'
+  open: 'Buka asli'
+  count: '$1 dari $2'

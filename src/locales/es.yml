@@ -18,6 +18,7 @@ tabs:
   sms: SMS
 app:
   offline: No se puede conectar con Pushbullet. Reintentando en segundo plano.
+  rateLimited: 'Pushbullet está limitando por un tiempo las solicitudes de tu cuenta (cuenta todas las apps que usas con él). Pushpilot se pondrá al día después de las $1.'
 header:
   sections: Secciones
   pausedHint: Las notificaciones están en pausa. Haz clic para reactivarlas.
@@ -104,7 +105,16 @@ feed:
   searchPlaceholder: Buscar en tus envíos
   searchLabel: Buscar envíos
   closeSearch: Cerrar búsqueda
-  everything: Todo
+  all: 'Todo'
+  show: 'Mostrar'
+  fileKind:
+    all: 'Todos'
+    image: 'Imágenes'
+    video: 'Videos'
+    pdf: 'PDF'
+    doc: 'Documentos'
+    audio: 'Audio'
+    other: 'Otros'
   only:
     link: 'Enlaces'
     note: 'Notas'
@@ -396,3 +406,9 @@ bg:
   encrypted: Estos datos están cifrados de extremo a extremo. Agrega tu contraseña de cifrado en Configuración.
   noAnswer: El proceso en segundo plano de Pushpilot no respondió. Inténtalo de nuevo.
   needsPro: 'Copiar y pegar universal requiere Pushbullet Pro.'
+gallery:
+  close: 'Cerrar'
+  previous: 'Anterior'
+  next: 'Siguiente'
+  open: 'Abrir original'
+  count: '$1 de $2'

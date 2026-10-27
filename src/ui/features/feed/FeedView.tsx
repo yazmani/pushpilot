@@ -1,17 +1,48 @@
 import clsx from 'clsx';
-import { Inbox, Search, X } from 'lucide-react';
+import {
+  Archive,
+  FileText,
+  Film,
+  Image,
+  Inbox,
+  Layers,
+  Link2,
+  Music,
+  Paperclip,
+  Radio,
+  Search,
+  StickyNote,
+  X,
+} from 'lucide-react';
 import { type ReactNode, useEffect, useMemo, useRef, useState } from 'react';
 import { call } from '@/core/messaging/rpc';
 import type { Push } from '@/core/pushbullet/types';
 import { dayLabel, personName } from '@/core/utils/format';
 import { Avatar, Empty, Group, IconButton, Spinner } from '@/ui/components';
 import { useStore } from '@/ui/hooks/use-store';
-import { counterpart, type Filter, matches } from './classify';
+import { counterpart, FILE_KINDS, fileKind, type FileKind, type Filter, matches } from './classify';
 import { Conversation } from './Conversation';
 import { type FeedContext, FeedItem } from './FeedItem';
+import { Gallery } from './Gallery';
 import { i18n } from '#i18n';
 
 const SEEN_KEY = 'pushpilot.feedSeenAt';
+
+const TYPES = [
+  { type: 'all', icon: Layers },
+  { type: 'link', icon: Link2 },
+  { type: 'note', icon: StickyNote },
+  { type: 'file', icon: Paperclip },
+] as const;
+
+const FILE_KIND_ICONS: Record<FileKind, typeof Layers> = {
+  image: Image,
+  video: Film,
+  pdf: FileText,
+  doc: FileText,
+  audio: Music,
+  other: Archive,
+};
 const PAGE = 50;
 
 export function FeedView() {
@@ -52,6 +83,13 @@ export function FeedView() {
     const emails = new Set(pushes.map((p) => counterpart(p, me)).filter(Boolean));
     return chats.filter((c) => emails.has(c.with.email_normalized));
   }, [pushes, chats, me]);
+  // Kinds of files there are, for the second row of chips under Files.
+  const fileKinds = useMemo(() => {
+    const present = new Set(pushes.filter((p) => p.type === 'file').map(fileKind));
+    return FILE_KINDS.filter((k) => present.has(k));
+  }, [pushes]);
+  const filesOn = filter.kind === 'type' && filter.type === 'file';
+  const gallery = filesOn && filter.file === 'image';
   const hasChannels = settings.showChannels && pushes.some((p) => p.channel_iden);
   const ctx: FeedContext = { devices, chats, subscriptions, me, selfDeviceIden, previews };
 
@@ -131,32 +169,26 @@ export function FeedView() {
           </div>
         ) : (
           <>
-            <div className="no-scrollbar flex min-w-0 flex-1 gap-1.5 overflow-x-auto">
-              <Chip on={filter.kind === 'all'} onClick={() => setFilter({ kind: 'all' })}>
-                {i18n.t('feed.everything')}
-              </Chip>
-              {(['link', 'note', 'file'] as const).map((type) => (
-                <Chip
-                  key={type}
-                  on={filter.kind === 'type' && filter.type === type}
-                  onClick={() =>
-                    setFilter(filter.kind === 'type' && filter.type === type ? { kind: 'all' } : { kind: 'type', type })
-                  }
-                >
-                  {i18n.t(`feed.only.${type}`)}
-                </Chip>
-              ))}
-              {hasChannels && (
-                <Chip on={filter.kind === 'channels'} onClick={() => setFilter({ kind: 'channels' })}>
-                  {i18n.t('feed.channels')}
-                </Chip>
-              )}
-              {people.map((c) => (
-                <Chip key={c.iden} on={false} onClick={() => setFilter({ kind: 'person', email: c.with.email_normalized })}>
-                  <Avatar src={c.with.image_url} name={personName(c)} size={18} />
-                  {personName(c).split(' ')[0]}
-                </Chip>
-              ))}
+            <div className="flex min-w-0 flex-1 rounded-xl bg-sunken p-[3px]" role="radiogroup" aria-label={i18n.t('feed.show')}>
+              {TYPES.map(({ type, icon: Icon }) => {
+                const on = type === 'all' ? filter.kind === 'all' : filter.kind === 'type' && filter.type === type;
+                return (
+                  <button
+                    key={type}
+                    type="button"
+                    role="radio"
+                    aria-checked={on}
+                    onClick={() => setFilter(type === 'all' ? { kind: 'all' } : { kind: 'type', type })}
+                    className={clsx(
+                      'flex h-8 min-w-0 flex-1 items-center justify-center gap-1.5 rounded-[9px] px-1.5 text-xs font-bold transition-colors',
+                      on ? 'bg-surface text-accent-strong shadow-sm' : 'text-muted hover:text-ink',
+                    )}
+                  >
+                    <Icon size={14} strokeWidth={2.2} className="shrink-0" />
+                    <span className="truncate">{type === 'all' ? i18n.t('feed.all') : i18n.t(`feed.only.${type}`)}</span>
+                  </button>
+                );
+              })}
             </div>
             <IconButton label={i18n.t('feed.search')} onClick={() => setSearching(true)}>
               <Search size={16} />
@@ -164,7 +196,41 @@ export function FeedView() {
           </>
         )}
       </div>
-
+      {filesOn && fileKinds.length > 1 && (
+        <div className="no-scrollbar flex shrink-0 gap-1.5 overflow-x-auto px-3.5 pb-2">
+          <SubChip on={!filter.file} onClick={() => setFilter({ kind: 'type', type: 'file' })}>
+            {i18n.t('feed.fileKind.all')}
+          </SubChip>
+          {fileKinds.map((k) => {
+            const Icon = FILE_KIND_ICONS[k];
+            return (
+              <SubChip key={k} on={filter.file === k} onClick={() => setFilter({ kind: 'type', type: 'file', file: k })}>
+                <Icon size={13} strokeWidth={2.2} />
+                {i18n.t(`feed.fileKind.${k}`)}
+              </SubChip>
+            );
+          })}
+        </div>
+      )}
+      {!searching && (filter.kind === 'all' || filter.kind === 'channels') && (hasChannels || people.length > 0) && (
+        <div className="no-scrollbar flex shrink-0 gap-1.5 overflow-x-auto px-3.5 pb-2">
+          {hasChannels && (
+            <SubChip
+              on={filter.kind === 'channels'}
+              onClick={() => setFilter(filter.kind === 'channels' ? { kind: 'all' } : { kind: 'channels' })}
+            >
+              <Radio size={13} strokeWidth={2.2} />
+              {i18n.t('feed.channels')}
+            </SubChip>
+          )}
+          {people.map((c) => (
+            <SubChip key={c.iden} on={false} onClick={() => setFilter({ kind: 'person', email: c.with.email_normalized })}>
+              <Avatar src={c.with.image_url} name={personName(c)} size={18} />
+              {personName(c).split(' ')[0]}
+            </SubChip>
+          ))}
+        </div>
+      )}
       <div className="scroll-area min-h-0 flex-1 px-3.5 pb-4">
         {visible.length === 0 ? (
           query ? (
@@ -176,6 +242,8 @@ export function FeedView() {
               {i18n.t('feed.emptyBody')}
             </Empty>
           )
+        ) : gallery ? (
+          <Gallery pushes={visible.slice(0, limit)} />
         ) : (
           <DayGroups pushes={visible.slice(0, limit)}>
             {(p) => (
@@ -199,7 +267,7 @@ export function FeedView() {
   );
 }
 
-function Chip({ on, onClick, children }: { on: boolean; onClick: () => void; children: ReactNode }) {
+function SubChip({ on, onClick, children }: { on: boolean; onClick: () => void; children: ReactNode }) {
   return (
     <button
       type="button"
@@ -207,7 +275,7 @@ function Chip({ on, onClick, children }: { on: boolean; onClick: () => void; chi
       aria-pressed={on}
       className={clsx(
         'flex h-8 shrink-0 items-center gap-1.5 rounded-full px-3 text-xs font-bold transition-colors',
-        on ? 'bg-accent text-on-accent' : 'bg-surface text-muted ring-1 ring-line hover:text-ink',
+        on ? 'bg-accent text-on-accent shadow-sm' : 'bg-surface text-muted ring-1 ring-line hover:text-ink',
       )}
     >
       {children}

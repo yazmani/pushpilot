@@ -18,6 +18,7 @@ tabs:
   sms: SMS
 app:
   offline: Pushbullet에 연결할 수 없어요. 백그라운드에서 다시 시도하는 중이에요.
+  rateLimited: 'Pushbullet이 잠시 계정의 요청을 제한하고 있어요(함께 쓰는 모든 앱이 포함돼요). $1 이후에 Pushpilot이 다시 동기화해요.'
 header:
   sections: 섹션
   pausedHint: 알림이 일시중지되었어요. 클릭하면 다시 켜져요.
@@ -104,7 +105,16 @@ feed:
   searchPlaceholder: 푸시 검색
   searchLabel: 푸시 검색
   closeSearch: 검색 닫기
-  everything: 전체
+  all: '전체'
+  show: '보기'
+  fileKind:
+    all: '전체'
+    image: '이미지'
+    video: '동영상'
+    pdf: 'PDF'
+    doc: '문서'
+    audio: '오디오'
+    other: '기타'
   only:
     link: '링크'
     note: '메모'
@@ -396,3 +406,9 @@ bg:
   encrypted: 이 데이터는 엔드투엔드 암호화되어 있어요. 설정에서 암호화 비밀번호를 추가하세요.
   noAnswer: Pushpilot의 백그라운드 작업이 응답하지 않았어요. 다시 시도하세요.
   needsPro: '유니버설 복사 및 붙여넣기에는 Pushbullet Pro가 필요해요.'
+gallery:
+  close: '닫기'
+  previous: '이전'
+  next: '다음'
+  open: '원본 열기'
+  count: '$1 / $2'

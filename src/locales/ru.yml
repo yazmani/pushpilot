@@ -16,6 +16,7 @@ tabs:
   sms: SMS
 app:
   offline: Нет связи с Pushbullet. Повторяем попытки в фоне.
+  rateLimited: 'Pushbullet временно ограничивает запросы вашего аккаунта (учитываются все приложения, которыми вы с ним пользуетесь). Pushpilot всё догонит после $1.'
 header:
   sections: Разделы
   pausedHint: Уведомления приостановлены. Нажмите, чтобы включить их снова.
@@ -102,7 +103,16 @@ feed:
   searchPlaceholder: Поиск по пушам
   searchLabel: Поиск по пушам
   closeSearch: Закрыть поиск
-  everything: Всё
+  all: 'Все'
+  show: 'Показать'
+  fileKind:
+    all: 'Все'
+    image: 'Изображения'
+    video: 'Видео'
+    pdf: 'PDF'
+    doc: 'Документы'
+    audio: 'Аудио'
+    other: 'Другое'
   only:
     link: 'Ссылки'
     note: 'Заметки'
@@ -394,3 +404,9 @@ bg:
   encrypted: Эти данные защищены сквозным шифрованием. Добавьте пароль шифрования в настройках.
   noAnswer: Фоновый процесс Pushpilot не ответил. Попробуйте ещё раз.
   needsPro: 'Для универсального копирования и вставки нужен Pushbullet Pro.'
+gallery:
+  close: 'Закрыть'
+  previous: 'Назад'
+  next: 'Вперёд'
+  open: 'Открыть оригинал'
+  count: '$1 из $2'

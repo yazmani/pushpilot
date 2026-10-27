@@ -11,7 +11,7 @@ import { registerMirrorNotifications } from '@/background/services/mirror';
 import { registerNotificationListeners } from '@/background/platform/notifications';
 import { registerPushNotifications } from '@/background/services/pushes';
 import { registerRpc } from '@/background/router';
-import { setExpiredHandler } from '@/background/session';
+import { due, setExpiredHandler } from '@/background/session';
 import { registerSmsNotifications } from '@/background/services/sms';
 import { connect, registerStreamWatchdog } from '@/background/services/stream';
 import { registerCommands } from '@/background/platform/commands';
@@ -61,11 +61,7 @@ export function startBackground() {
       if (!(await store.get('selfDeviceOwned'))) await ensureSelfDevice().catch(() => undefined);
       await connect();
       // People and channels have no tickle; refresh them at most every 10 minutes of wake-ups.
-      const { peopleSyncedAt = 0 } = (await browser.storage.session.get('peopleSyncedAt')) as { peopleSyncedAt?: number };
-      if (Date.now() - peopleSyncedAt > 10 * 60_000) {
-        await browser.storage.session.set({ peopleSyncedAt: Date.now() });
-        void syncPeople().catch(() => undefined);
-      }
+      if (await due('people', 10 * 60_000)) void syncPeople().catch(() => undefined);
     }
   })();
 }

@@ -66,18 +66,21 @@ export function SmsView({ device: wantDevice, thread: wantThread }: { device?: s
     };
   }, [device, phones]);
 
-  const refresh = useCallback(async () => {
-    if (!device) return;
-    setLoading(true);
-    setError(null);
-    try {
-      await call('sms.threads', { device });
-    } catch (err) {
-      setError(errorText(err));
-    } finally {
-      setLoading(false);
-    }
-  }, [device]);
+  const refresh = useCallback(
+    async (force = false) => {
+      if (!device) return;
+      setLoading(true);
+      setError(null);
+      try {
+        await call('sms.threads', { device, force });
+      } catch (err) {
+        setError(errorText(err));
+      } finally {
+        setLoading(false);
+      }
+    },
+    [device],
+  );
 
   useEffect(() => {
     void refresh();
@@ -102,7 +105,7 @@ export function SmsView({ device: wantDevice, thread: wantThread }: { device?: s
         onBack={() => setComposing(false)}
         onSent={() => {
           setComposing(false);
-          setTimeout(() => void refresh(), 2500);
+          setTimeout(() => void refresh(true), 2500);
         }}
       />
     );
@@ -136,7 +139,7 @@ export function SmsView({ device: wantDevice, thread: wantThread }: { device?: s
             ))}
           </select>
         )}
-        <IconButton label={i18n.t('sms.refresh')} onClick={refresh} disabled={loading}>
+        <IconButton label={i18n.t('sms.refresh')} onClick={() => void refresh(true)} disabled={loading}>
           <RefreshCw size={15} className={clsx(loading && 'animate-spin')} />
         </IconButton>
         <IconButton label={i18n.t('sms.newText')} onClick={() => setComposing(true)}>

@@ -18,6 +18,7 @@ tabs:
   sms: SMS
 app:
   offline: Pushbullet に接続できません。バックグラウンドで再試行しています。
+  rateLimited: 'Pushbullet がしばらくの間、このアカウントからのリクエストを制限しています（一緒に使っているすべてのアプリが対象です）。$1 以降に Pushpilot が追いつきます。'
 header:
   sections: セクション
   pausedHint: 通知は一時停止中です。クリックすると再開します。
@@ -104,7 +105,16 @@ feed:
   searchPlaceholder: プッシュを検索
   searchLabel: プッシュを検索
   closeSearch: 検索を閉じる
-  everything: すべて
+  all: 'すべて'
+  show: '表示'
+  fileKind:
+    all: 'すべて'
+    image: '画像'
+    video: '動画'
+    pdf: 'PDF'
+    doc: '書類'
+    audio: '音声'
+    other: 'その他'
   only:
     link: 'リンク'
     note: 'メモ'
@@ -396,3 +406,9 @@ bg:
   encrypted: このデータはエンドツーエンド暗号化されています。設定で暗号化パスワードを追加してください。
   noAnswer: Pushpilot のバックグラウンド処理が応答しませんでした。もう一度お試しください。
   needsPro: 'ユニバーサルコピー＆ペーストには Pushbullet Pro が必要です。'
+gallery:
+  close: '閉じる'
+  previous: '前へ'
+  next: '次へ'
+  open: '元の画像を開く'
+  count: '$1 / $2'

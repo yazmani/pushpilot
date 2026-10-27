@@ -17,6 +17,7 @@ tabs:
   sms: Sms
 app:
   offline: Pushbullet is niet bereikbaar. We proberen het op de achtergrond opnieuw.
+  rateLimited: 'Pushbullet beperkt tijdelijk de verzoeken van je account (alle apps die je ermee gebruikt tellen mee). Pushpilot haalt het na $1 in.'
 header:
   sections: Secties
   pausedHint: Meldingen zijn gepauzeerd. Klik om ze weer aan te zetten.
@@ -103,7 +104,16 @@ feed:
   searchPlaceholder: Doorzoek je pushes
   searchLabel: Pushes doorzoeken
   closeSearch: Zoeken sluiten
-  everything: Alles
+  all: 'Alles'
+  show: 'Tonen'
+  fileKind:
+    all: 'Alle'
+    image: 'Afbeeldingen'
+    video: 'Video’s'
+    pdf: 'Pdf’s'
+    doc: 'Documenten'
+    audio: 'Audio'
+    other: 'Overig'
   only:
     link: 'Links'
     note: 'Notities'
@@ -395,3 +405,9 @@ bg:
   encrypted: Deze gegevens zijn end-to-end versleuteld. Voeg je versleutelingswachtwoord toe in Instellingen.
   noAnswer: Het achtergrondproces van Pushpilot reageerde niet. Probeer het opnieuw.
   needsPro: 'Universeel kopiëren en plakken vereist Pushbullet Pro.'
+gallery:
+  close: 'Sluiten'
+  previous: 'Vorige'
+  next: 'Volgende'
+  open: 'Origineel openen'
+  count: '$1 van $2'

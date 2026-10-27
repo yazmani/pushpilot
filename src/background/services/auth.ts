@@ -25,6 +25,8 @@ export async function bootstrap() {
 export async function signOut() {
   disconnect();
   await browser.storage.local.remove(store.accountKeys);
+  // Cached conversations and refresh times belong to the account too.
+  await browser.storage.session.clear();
   await store.set({ connection: 'signed-out' });
   await browser.action.setBadgeText({ text: '' });
   const all = await browser.notifications.getAll();

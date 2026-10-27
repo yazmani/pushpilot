@@ -18,6 +18,7 @@ tabs:
   sms: SMS
 app:
   offline: Can’t reach Pushbullet. Retrying in the background.
+  rateLimited: 'Pushbullet is limiting requests from your account for a while (it counts every app you use with it). Pushpilot catches up after $1.'
 header:
   sections: Sections
   pausedHint: Notifications are paused. Click to turn them back on.
@@ -104,7 +105,16 @@ feed:
   searchPlaceholder: Search your pushes
   searchLabel: Search pushes
   closeSearch: Close search
-  everything: Everything
+  all: 'All'
+  show: 'Show'
+  fileKind:
+    all: 'All files'
+    image: 'Images'
+    video: 'Videos'
+    pdf: 'PDFs'
+    doc: 'Documents'
+    audio: 'Audio'
+    other: 'Other'
   only:
     link: 'Links'
     note: 'Notes'
@@ -396,3 +406,9 @@ bg:
   encrypted: This data is end-to-end encrypted. Add your encryption password in Settings.
   noAnswer: Pushpilot’s background worker did not answer. Try again.
   needsPro: 'Universal copy and paste needs Pushbullet Pro.'
+gallery:
+  close: 'Close'
+  previous: 'Previous'
+  next: 'Next'
+  open: 'Open original'
+  count: '$1 of $2'

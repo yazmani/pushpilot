@@ -35,7 +35,8 @@ export function App({ mode }: { mode: Mode }) {
 }
 
 function Shell({ mode }: { mode: Mode }) {
-  const { token, me, settings, unread, connection, lastError, devices, ready } = useStore([
+  const { token, me, settings, unread, connection, lastError, devices, rateLimitedUntil, ready } = useStore([
+    'rateLimitedUntil',
     'token',
     'me',
     'settings',
@@ -46,6 +47,13 @@ function Shell({ mode }: { mode: Mode }) {
   ]);
   const [tab, setTab] = useState<Tab | null>(null);
   const [intent, setIntent] = useState<Intent>({});
+  // Re-render when a rate limit runs out, so its notice goes away by itself.
+  const [now, setNow] = useState(Date.now());
+  useEffect(() => {
+    if (rateLimitedUntil <= Date.now()) return;
+    const t = setTimeout(() => setNow(Date.now()), rateLimitedUntil - Date.now() + 1000);
+    return () => clearTimeout(t);
+  }, [rateLimitedUntil]);
 
   // Starting tab: a hand-off from a notification wins over the default.
   useEffect(() => {
@@ -89,6 +97,18 @@ function Shell({ mode }: { mode: Mode }) {
         showSms={devices.some((d) => d.has_sms)}
       />
 
+      {rateLimitedUntil > now && (
+        <div className="flex shrink-0 items-center gap-2 border-b border-line bg-note-bg px-3.5 py-2 text-xs text-ink">
+          <span className="flex-1 leading-relaxed">
+            {i18n.t('app.rateLimited', [
+              new Date(rateLimitedUntil).toLocaleTimeString(undefined, { hour: 'numeric', minute: '2-digit' }),
+            ])}
+          </span>
+          <button className="font-bold text-note-fg" onClick={() => void store.set({ rateLimitedUntil: 0 })}>
+            {i18n.t('common.dismiss')}
+          </button>
+        </div>
+      )}
       {(connection === 'offline' || lastError) && (
         <div className="flex shrink-0 items-center gap-2 border-b border-line bg-note-bg px-3.5 py-2 text-xs text-ink">
           <span className="flex-1 leading-relaxed">{connection === 'offline' ? i18n.t('app.offline') : lastError}</span>

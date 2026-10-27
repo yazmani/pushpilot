@@ -17,6 +17,7 @@ tabs:
   sms: SMS
 app:
   offline: Pushbullet ist nicht erreichbar. Neuer Versuch im Hintergrund.
+  rateLimited: 'Pushbullet begrenzt gerade die Anfragen deines Kontos (alle Apps, die du damit nutzt, zählen mit). Pushpilot holt nach $1 alles nach.'
 header:
   sections: Bereiche
   pausedHint: Benachrichtigungen sind pausiert. Klicke, um sie wieder einzuschalten.
@@ -103,7 +104,16 @@ feed:
   searchPlaceholder: Deine Pushes durchsuchen
   searchLabel: Pushes durchsuchen
   closeSearch: Suche schließen
-  everything: Alles
+  all: 'Alle'
+  show: 'Anzeigen'
+  fileKind:
+    all: 'Alle'
+    image: 'Bilder'
+    video: 'Videos'
+    pdf: 'PDFs'
+    doc: 'Dokumente'
+    audio: 'Audio'
+    other: 'Sonstige'
   only:
     link: 'Links'
     note: 'Notizen'
@@ -395,3 +405,9 @@ bg:
   encrypted: Diese Daten sind Ende-zu-Ende-verschlüsselt. Gib dein Verschlüsselungspasswort in den Einstellungen ein.
   noAnswer: Der Hintergrunddienst von Pushpilot hat nicht geantwortet. Versuch es noch einmal.
   needsPro: 'Universelles Kopieren und Einfügen braucht Pushbullet Pro.'
+gallery:
+  close: 'Schließen'
+  previous: 'Vorheriges'
+  next: 'Nächstes'
+  open: 'Original öffnen'
+  count: '$1 von $2'

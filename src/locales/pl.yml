@@ -16,6 +16,7 @@ tabs:
   sms: SMS
 app:
   offline: Brak połączenia z Pushbullet. Ponawianie w tle.
+  rateLimited: 'Pushbullet tymczasowo ogranicza żądania z Twojego konta (liczą się wszystkie aplikacje, których z nim używasz). Pushpilot nadrobi zaległości po $1.'
 header:
   sections: Sekcje
   pausedHint: Powiadomienia są wstrzymane. Kliknij, aby je włączyć.
@@ -102,7 +103,16 @@ feed:
   searchPlaceholder: Szukaj w pushach
   searchLabel: Szukaj w pushach
   closeSearch: Zamknij wyszukiwanie
-  everything: Wszystko
+  all: 'Wszystko'
+  show: 'Pokaż'
+  fileKind:
+    all: 'Wszystkie'
+    image: 'Obrazy'
+    video: 'Filmy'
+    pdf: 'PDF'
+    doc: 'Dokumenty'
+    audio: 'Audio'
+    other: 'Inne'
   only:
     link: 'Linki'
     note: 'Notatki'
@@ -394,3 +404,9 @@ bg:
   encrypted: Te dane są zaszyfrowane end-to-end. Dodaj hasło szyfrowania w Ustawieniach.
   noAnswer: Proces w tle Pushpilot nie odpowiedział. Spróbuj ponownie.
   needsPro: 'Uniwersalne kopiowanie i wklejanie wymaga Pushbullet Pro.'
+gallery:
+  close: 'Zamknij'
+  previous: 'Poprzednie'
+  next: 'Następne'
+  open: 'Otwórz oryginał'
+  count: '$1 z $2'

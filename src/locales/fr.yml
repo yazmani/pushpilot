@@ -18,6 +18,7 @@ tabs:
   sms: SMS
 app:
   offline: Impossible de joindre Pushbullet. Nouvelle tentative en arrière-plan.
+  rateLimited: 'Pushbullet limite temporairement les requêtes de votre compte (toutes les apps que vous utilisez avec comptent). Pushpilot rattrapera son retard après $1.'
 header:
   sections: Sections
   pausedHint: Les notifications sont en pause. Cliquez pour les réactiver.
@@ -104,7 +105,16 @@ feed:
   searchPlaceholder: Rechercher dans vos envois
   searchLabel: Rechercher des envois
   closeSearch: Fermer la recherche
-  everything: Tout
+  all: 'Tout'
+  show: 'Afficher'
+  fileKind:
+    all: 'Tous'
+    image: 'Images'
+    video: 'Vidéos'
+    pdf: 'PDF'
+    doc: 'Documents'
+    audio: 'Audio'
+    other: 'Autres'
   only:
     link: 'Liens'
     note: 'Notes'
@@ -396,3 +406,9 @@ bg:
   encrypted: Ces données sont chiffrées de bout en bout. Ajoutez votre mot de passe de chiffrement dans les Paramètres.
   noAnswer: Le service d’arrière-plan de Pushpilot n’a pas répondu. Réessayez.
   needsPro: 'Le copier-coller universel nécessite Pushbullet Pro.'
+gallery:
+  close: 'Fermer'
+  previous: 'Précédente'
+  next: 'Suivante'
+  open: 'Ouvrir l’original'
+  count: '$1 sur $2'

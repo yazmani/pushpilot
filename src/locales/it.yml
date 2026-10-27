@@ -17,6 +17,7 @@ tabs:
   sms: SMS
 app:
   offline: Impossibile raggiungere Pushbullet. Nuovo tentativo in background.
+  rateLimited: 'Pushbullet sta limitando per un po’ le richieste del tuo account (conta tutte le app che usi con esso). Pushpilot si aggiornerà dopo le $1.'
 header:
   sections: Sezioni
   pausedHint: Le notifiche sono in pausa. Fai clic per riattivarle.
@@ -103,7 +104,16 @@ feed:
   searchPlaceholder: Cerca nei tuoi push
   searchLabel: Cerca push
   closeSearch: Chiudi ricerca
-  everything: Tutto
+  all: 'Tutto'
+  show: 'Mostra'
+  fileKind:
+    all: 'Tutti'
+    image: 'Immagini'
+    video: 'Video'
+    pdf: 'PDF'
+    doc: 'Documenti'
+    audio: 'Audio'
+    other: 'Altro'
   only:
     link: 'Link'
     note: 'Note'
@@ -395,3 +405,9 @@ bg:
   encrypted: Questi dati sono crittografati end-to-end. Aggiungi la password di crittografia nelle Impostazioni.
   noAnswer: Il processo in background di Pushpilot non ha risposto. Riprova.
   needsPro: 'Il copia e incolla universale richiede Pushbullet Pro.'
+gallery:
+  close: 'Chiudi'
+  previous: 'Precedente'
+  next: 'Successiva'
+  open: 'Apri originale'
+  count: '$1 di $2'

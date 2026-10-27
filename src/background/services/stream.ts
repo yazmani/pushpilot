@@ -3,6 +3,7 @@ import { STREAM } from '@/core/pushbullet/client';
 import { decryptJson } from '@/core/pushbullet/crypto';
 import * as store from '@/core/storage/store';
 import { ensureSelfDevice, syncPeople } from '@/background/services/account';
+import { due } from '@/background/session';
 import { type DismissalPush, handleDismissal, handleMirror, type MirrorPush } from '@/background/services/mirror';
 import { show } from '@/background/platform/notifications';
 import { copyText } from '@/background/platform/offscreen';
@@ -63,9 +64,12 @@ export async function connect() {
     void store.set({ connection: 'live', lastError: null });
     armSilence();
     keepalive = setInterval(() => socket.readyState === WebSocket.OPEN && socket.send('keepalive'), KEEPALIVE_MS);
-    // Catch up on anything pushed while we were away, and on device changes.
+    // Catch up on anything pushed while we were away. Device changes come as
+    // tickles; a reconnect only rechecks them every 10 minutes.
     void syncPushes({ reconnect: true }).catch(() => undefined);
-    void ensureSelfDevice().catch(() => undefined);
+    void due('devices', 10 * 60_000).then((stale) => {
+      if (stale) void ensureSelfDevice().catch(() => undefined);
+    });
   };
 
   socket.onmessage = (e) => {

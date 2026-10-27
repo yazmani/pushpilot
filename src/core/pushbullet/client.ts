@@ -5,10 +5,16 @@ import { i18n } from '#i18n';
 export const API = 'https://api.pushbullet.com';
 export const STREAM = 'wss://stream.pushbullet.com/websocket/';
 
+function clock(ms: number) {
+  return new Date(ms).toLocaleTimeString(undefined, { hour: 'numeric', minute: '2-digit' });
+}
+
 export class ApiError extends Error {
   constructor(
     readonly status: number,
     message: string,
+    /** For 429s: when Pushbullet lifts the limit (ms since epoch). */
+    readonly retryAt?: number,
   ) {
     super(message);
   }
@@ -42,6 +48,12 @@ export class Pushbullet {
       },
       body: init.body ? JSON.stringify(init.body) : undefined,
     });
+    if (res.status === 429) {
+      // Pushbullet caps requests per account (all its apps together) and says when it resets.
+      const reset = Number(res.headers.get('x-ratelimit-reset')) * 1000;
+      const retryAt = reset > Date.now() ? reset : Date.now() + 15 * 60_000;
+      throw new ApiError(429, i18n.t('app.rateLimited', [clock(retryAt)]), retryAt);
+    }
     if (!res.ok) {
       let message = res.statusText;
       try {
