@@ -186,6 +186,7 @@ sms:
   noPhoneBody: Instal Pushbullet di ponsel Android dan izinkan aplikasi itu mengirim dan membaca SMS.
   phone: Ponsel
   lastSeen: (terakhir terlihat $1)
+  offlineNotice: '$1 belum terhubung sejak $2. Anda bisa membaca SMS lama, tetapi SMS baru tidak akan terkirim sampai ponsel online kembali.'
   refresh: Muat ulang
   newText: SMS baru
   noThreadsTitle: Tidak ada percakapan

@@ -186,6 +186,7 @@ sms:
   noPhoneBody: Android 휴대폰에 Pushbullet을 설치하고 SMS 보내기 및 읽기를 허용하세요.
   phone: 휴대폰
   lastSeen: '(마지막 접속: $1)'
+  offlineNotice: '$1이(가) $2 이후로 연결되지 않았어요. 이전 문자는 읽을 수 있지만, 다시 온라인이 될 때까지 새 문자는 보내지지 않아요.'
   refresh: 새로고침
   newText: 새 문자
   noThreadsTitle: 대화 없음

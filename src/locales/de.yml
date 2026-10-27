@@ -185,6 +185,7 @@ sms:
   noPhoneBody: Installiere Pushbullet auf einem Android-Handy und erlaube der App, SMS zu senden und zu lesen.
   phone: Handy
   lastSeen: (zuletzt gesehen am $1)
+  offlineNotice: '$1 war seit $2 nicht mehr verbunden. Alte SMS kannst du lesen, neue werden erst gesendet, wenn es wieder online ist.'
   refresh: Aktualisieren
   newText: Neue SMS
   noThreadsTitle: Keine Unterhaltungen

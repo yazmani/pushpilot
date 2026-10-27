@@ -186,6 +186,7 @@ sms:
   noPhoneBody: Android スマートフォンに Pushbullet をインストールし、SMS の送信と読み取りを許可してください。
   phone: スマートフォン
   lastSeen: （最終接続：$1）
+  offlineNotice: '$1 は $2 以降接続されていません。過去のメッセージは読めますが、オンラインに戻るまで新しいメッセージは送信されません。'
   refresh: 更新
   newText: 新規メッセージ
   noThreadsTitle: 会話はありません

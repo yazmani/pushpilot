@@ -108,12 +108,14 @@ export function dayLabel(seconds: number): string {
 }
 
 // One-time codes: prefer digits next to a "code"-ish word, then any lone 4–8 digit run.
-export function extractCode(text: string | undefined): string | undefined {
+// `strict` skips that last guess: texts are full of order numbers and short codes.
+export function extractCode(text: string | undefined, { strict = false } = {}): string | undefined {
   if (!text) return;
   const near = text.match(/(?:code|otp|pin|passcode|verification|verify|token|código|code de|kod|码)\D{0,24}?(\d{4,8})\b/i);
   if (near) return near[1];
   const near2 = text.match(/\b(\d{4,8})\b[^\n]{0,30}?(?:is your|est votre|es tu|code|otp)/i);
   if (near2) return near2[1];
+  if (strict) return;
   const lone = text.match(/(?<![\d.,:/-])\b(\d{5,8})\b(?![\d.,:/-])/);
   return lone?.[1];
 }

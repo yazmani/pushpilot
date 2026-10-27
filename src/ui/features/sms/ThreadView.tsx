@@ -3,8 +3,8 @@ import { ArrowLeft } from 'lucide-react';
 import { useCallback, useEffect, useMemo, useRef, useState } from 'react';
 import { call } from '@/core/messaging/rpc';
 import type { SmsMessage, SmsRecipient, SmsThread } from '@/core/pushbullet/types';
-import { clockTime, dayLabel, threadName } from '@/core/utils/format';
-import { Avatar, Centered, IconButton, MessageComposer, Notice, Spinner } from '@/ui/components';
+import { clockTime, dayLabel, extractCode, threadName } from '@/core/utils/format';
+import { Avatar, Centered, CodeChip, IconButton, MessageComposer, Notice, Spinner } from '@/ui/components';
 import { errorText, useToast } from '@/ui/hooks/use-toast';
 import { i18n } from '#i18n';
 
@@ -126,6 +126,9 @@ export function ThreadView({ device, thread, onBack }: { device: string; thread:
                       </p>
                     )}
                   </div>
+                  {!mine && extractCode(m.body, { strict: true }) && (
+                    <CodeChip code={extractCode(m.body, { strict: true })!} small className="mt-1" />
+                  )}
                   <span className="mt-0.5 px-1 text-2xs text-faint">
                     {m.pending ? i18n.t('send.sending') : clockTime(m.timestamp)}
                   </span>

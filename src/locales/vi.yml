@@ -186,6 +186,7 @@ sms:
   noPhoneBody: Cài Pushbullet trên điện thoại Android và cho phép ứng dụng gửi và đọc SMS.
   phone: Điện thoại
   lastSeen: (hoạt động lần cuối $1)
+  offlineNotice: '$1 chưa kết nối kể từ $2. Bạn vẫn đọc được tin nhắn cũ, nhưng tin mới sẽ không được gửi cho đến khi máy trực tuyến trở lại.'
   refresh: Làm mới
   newText: Tin nhắn mới
   noThreadsTitle: Không có cuộc trò chuyện

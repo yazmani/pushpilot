@@ -3,8 +3,19 @@ import { ArrowLeft, MessageSquareText, RefreshCw, SquarePen } from 'lucide-react
 import { useCallback, useEffect, useMemo, useState } from 'react';
 import { call } from '@/core/messaging/rpc';
 import type { Device, SmsThread } from '@/core/pushbullet/types';
-import { deviceName, isReachable, threadName, timeAgo } from '@/core/utils/format';
-import { Avatar, Centered, Empty, fieldClass, Group, IconButton, MessageComposer, Notice, Spinner } from '@/ui/components';
+import { deviceName, extractCode, isReachable, threadName, timeAgo } from '@/core/utils/format';
+import {
+  Avatar,
+  Centered,
+  CodeChip,
+  Empty,
+  fieldClass,
+  Group,
+  IconButton,
+  MessageComposer,
+  Notice,
+  Spinner,
+} from '@/ui/components';
 import { useNow } from '@/ui/hooks/use-now';
 import { useStore } from '@/ui/hooks/use-store';
 import { errorText, useToast } from '@/ui/hooks/use-toast';
@@ -101,21 +112,30 @@ export function SmsView({ device: wantDevice, thread: wantThread }: { device?: s
   return (
     <div className="flex h-full flex-col">
       <div className="flex shrink-0 items-center gap-2 px-3.5 pb-2 pt-3">
-        <select
-          value={device ?? ''}
-          onChange={(e) => {
-            setDevice(e.target.value);
-            setThreadId(undefined);
-          }}
-          aria-label={i18n.t('sms.phone')}
-          className={clsx(fieldClass, 'h-9 min-w-0 flex-1 font-semibold')}
-        >
-          {phones.map((p) => (
-            <option key={p.iden} value={p.iden}>
-              {deviceName(p)} {isReachable(p) ? '' : i18n.t('sms.lastSeen', [lastSeen(p)])}
-            </option>
-          ))}
-        </select>
+        {phones.length === 1 && phone ? (
+          <p className="min-w-0 flex-1 truncate ps-1 text-sm font-bold">
+            {deviceName(phone)}
+            {!isReachable(phone) && (
+              <span className="ms-1.5 font-medium text-faint">{i18n.t('sms.lastSeen', [lastSeen(phone)])}</span>
+            )}
+          </p>
+        ) : (
+          <select
+            value={device ?? ''}
+            onChange={(e) => {
+              setDevice(e.target.value);
+              setThreadId(undefined);
+            }}
+            aria-label={i18n.t('sms.phone')}
+            className={clsx(fieldClass, 'h-9 min-w-0 flex-1 font-semibold')}
+          >
+            {phones.map((p) => (
+              <option key={p.iden} value={p.iden}>
+                {deviceName(p)} {isReachable(p) ? '' : i18n.t('sms.lastSeen', [lastSeen(p)])}
+              </option>
+            ))}
+          </select>
+        )}
         <IconButton label={i18n.t('sms.refresh')} onClick={refresh} disabled={loading}>
           <RefreshCw size={15} className={clsx(loading && 'animate-spin')} />
         </IconButton>
@@ -127,10 +147,7 @@ export function SmsView({ device: wantDevice, thread: wantThread }: { device?: s
       <div className="scroll-area min-h-0 flex-1 px-2 pb-3">
         {phone && !isReachable(phone) && (
           <div className="mx-1.5 mb-2">
-            <Notice tone="warn">
-              {deviceName(phone)} hasn’t connected since {lastSeen(phone)}. You can read old texts, but new ones won’t send until
-              it’s back online.
-            </Notice>
+            <Notice tone="warn">{i18n.t('sms.offlineNotice', [deviceName(phone), lastSeen(phone)])}</Notice>
           </div>
         )}
         {error && (
@@ -161,12 +178,12 @@ export function SmsView({ device: wantDevice, thread: wantThread }: { device?: s
 function ThreadRow({ t, onOpen }: { t: SmsThread; onOpen: () => void }) {
   useNow();
   const name = threadName(t);
+  // Only a fresh code is worth a button; old ones are usually used up.
+  const fresh = t.latest && Date.now() / 1000 - t.latest.timestamp < 30 * 60;
+  const code = fresh && t.latest?.direction === 'incoming' ? extractCode(t.latest.body, { strict: true }) : undefined;
   return (
-    <li>
-      <button
-        onClick={onOpen}
-        className="flex w-full items-center gap-3 px-3.5 py-2.5 text-start transition-colors hover:bg-raised/50"
-      >
+    <li className="flex items-center transition-colors hover:bg-raised/50">
+      <button onClick={onOpen} className="flex min-w-0 flex-1 items-center gap-3 py-2.5 ps-3.5 pe-2 text-start">
         <Avatar src={t.recipients.length === 1 ? recipientImage(t.recipients[0]) : undefined} name={name} size={38} />
         <span className="min-w-0 flex-1">
           <span className="flex items-baseline gap-2">
@@ -179,6 +196,7 @@ function ThreadRow({ t, onOpen }: { t: SmsThread; onOpen: () => void }) {
           </span>
         </span>
       </button>
+      {code && <CodeChip code={code} small className="me-3" />}
     </li>
   );
 }
