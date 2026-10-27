@@ -105,7 +105,10 @@ feed:
   searchLabel: Pesquisar envios
   closeSearch: Fechar pesquisa
   everything: Tudo
-  myDevices: Meus dispositivos
+  only:
+    link: 'Links'
+    note: 'Notas'
+    file: 'Arquivos'
   channels: Canais
   search: Pesquisar
   noMatchTitle: Nada encontrado

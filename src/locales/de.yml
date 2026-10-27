@@ -104,7 +104,10 @@ feed:
   searchLabel: Pushes durchsuchen
   closeSearch: Suche schließen
   everything: Alles
-  myDevices: Meine Geräte
+  only:
+    link: 'Links'
+    note: 'Notizen'
+    file: 'Dateien'
   channels: Kanäle
   search: Suchen
   noMatchTitle: Keine Treffer

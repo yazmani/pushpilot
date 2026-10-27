@@ -105,7 +105,10 @@ feed:
   searchLabel: 푸시 검색
   closeSearch: 검색 닫기
   everything: 전체
-  myDevices: 내 기기
+  only:
+    link: '링크'
+    note: '메모'
+    file: '파일'
   channels: 채널
   search: 검색
   noMatchTitle: 일치하는 항목이 없어요

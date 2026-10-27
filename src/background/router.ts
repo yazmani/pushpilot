@@ -8,7 +8,7 @@ import { show } from '@/background/platform/notifications';
 import { playSound } from '@/background/platform/offscreen';
 import { fetchPreviews, savePreview } from '@/background/services/previews';
 import { clearMirrors, dismissMirror, replyToMirror, triggerMirrorAction } from '@/background/services/mirror';
-import { clearAllPushNotifications, deletePush, dismissPush } from '@/background/services/pushes';
+import { clearAllPushNotifications, deletePush, dismissPush, loadOlderPushes } from '@/background/services/pushes';
 import { pushClipboard, sendPush } from '@/background/services/send';
 import { fetchThread, fetchThreads, sendSms } from '@/background/services/sms';
 import { reconnect } from '@/background/services/stream';
@@ -29,6 +29,7 @@ const handlers: Handlers = {
   'push.send': ({ push, targets }) => sendPush(push, targets),
   'push.dismiss': ({ iden }) => dismissPush(iden),
   'push.delete': ({ iden }) => deletePush(iden),
+  'pushes.older': () => loadOlderPushes(),
   'unread.clear': async ({ view }) => {
     await store.update('unread', (u) => ({ ...u, [view]: 0 }));
     if (view === 'feed') await clearAllPushNotifications();
@@ -52,7 +53,14 @@ const handlers: Handlers = {
   'chat.mute': ({ iden, muted }) => setChatMuted(iden, muted),
   'history.clear': async () => {
     // Keep the cursor so cleared pushes don't come back on the next sync.
-    await store.set({ pushes: [], mirrors: [], smsNotices: [], unread: { feed: 0, phone: 0, sms: 0 } });
+    await store.set({
+      pushes: [],
+      mirrors: [],
+      smsNotices: [],
+      unread: { feed: 0, phone: 0, sms: 0 },
+      // …and don't fetch the cleared history back when the feed scrolls.
+      historyCursor: null,
+    });
     void syncPeople().catch(() => undefined);
   },
   'device.rename': ({ name, iden }) => (iden ? renameDevice(iden, name) : renameSelfDevice(name)),

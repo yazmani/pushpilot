@@ -103,7 +103,10 @@ feed:
   searchLabel: Gönderilerde ara
   closeSearch: Aramayı kapat
   everything: Tümü
-  myDevices: Cihazlarım
+  only:
+    link: 'Bağlantılar'
+    note: 'Notlar'
+    file: 'Dosyalar'
   channels: Kanallar
   search: Ara
   noMatchTitle: Eşleşen bir şey yok

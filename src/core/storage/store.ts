@@ -131,6 +131,8 @@ export interface Schema {
   subscriptions: Subscription[];
   pushes: Push[];
   pushCursor: number;
+  /** Where older history continues: '' = from the newest, null = all loaded. */
+  historyCursor: string | null;
   mirrors: Mirror[];
   smsThreads: Record<string, SmsThread[]>;
   smsNotices: SmsNotice[];
@@ -166,6 +168,7 @@ export const defaults: Schema = {
   subscriptions: [],
   pushes: [],
   pushCursor: 0,
+  historyCursor: '',
   mirrors: [],
   smsThreads: {},
   smsNotices: [],
@@ -258,6 +261,7 @@ export const accountKeys: Key[] = [
   'subscriptions',
   'pushes',
   'pushCursor',
+  'historyCursor',
   'mirrors',
   'smsThreads',
   'smsNotices',

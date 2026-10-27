@@ -105,7 +105,10 @@ feed:
   searchLabel: Search pushes
   closeSearch: Close search
   everything: Everything
-  myDevices: My devices
+  only:
+    link: 'Links'
+    note: 'Notes'
+    file: 'Files'
   channels: Channels
   search: Search
   noMatchTitle: Nothing matches

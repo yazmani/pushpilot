@@ -103,7 +103,10 @@ feed:
   searchLabel: Поиск по пушам
   closeSearch: Закрыть поиск
   everything: Всё
-  myDevices: Мои устройства
+  only:
+    link: 'Ссылки'
+    note: 'Заметки'
+    file: 'Файлы'
   channels: Каналы
   search: Поиск
   noMatchTitle: Ничего не найдено

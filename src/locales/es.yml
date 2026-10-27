@@ -105,7 +105,10 @@ feed:
   searchLabel: Buscar envíos
   closeSearch: Cerrar búsqueda
   everything: Todo
-  myDevices: Mis dispositivos
+  only:
+    link: 'Enlaces'
+    note: 'Notas'
+    file: 'Archivos'
   channels: Canales
   search: Buscar
   noMatchTitle: Sin resultados

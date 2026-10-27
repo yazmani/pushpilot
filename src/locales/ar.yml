@@ -105,7 +105,10 @@ feed:
   searchLabel: البحث في عمليات الإرسال
   closeSearch: إغلاق البحث
   everything: الكل
-  myDevices: أجهزتي
+  only:
+    link: 'الروابط'
+    note: 'الملاحظات'
+    file: 'الملفات'
   channels: القنوات
   search: بحث
   noMatchTitle: لا توجد نتائج

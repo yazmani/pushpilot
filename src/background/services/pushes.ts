@@ -1,5 +1,6 @@
 import { browser } from 'wxt/browser';
 import * as store from '@/core/storage/store';
+import type { Pushbullet } from '@/core/pushbullet/client';
 import type { Push } from '@/core/pushbullet/types';
 import { deviceName, host, isAddressNote, isImage, pushOpenUrl, pushText } from '@/core/utils/format';
 import { urlPreview } from '@/core/utils/links';
@@ -9,7 +10,7 @@ import { openApp, openUrl } from '@/background/platform/windows';
 import { guard, requireClient } from '@/background/session';
 import { i18n } from '#i18n';
 
-const KEEP = 600;
+const KEEP = 3000;
 
 // Runs strictly one at a time: an onopen refresh racing a tickle would read the
 // same cursor and notify the same push twice.
@@ -29,9 +30,11 @@ async function doSync(notify: boolean, reconnect: boolean) {
   const pb = await requireClient();
   const cursor = await store.get('pushCursor');
   const firstRun = cursor === 0;
-  const incoming = await guard(() =>
-    firstRun ? pb.pushes({ activeOnly: true, pages: 8 }) : pb.pushes({ after: cursor, pages: 5 }),
-  );
+  // First run: the recent history page by page (see loadOlderPushes); after that,
+  // only what changed since the cursor.
+  const incoming = firstRun
+    ? (await collectHistory(pb, '', 100)).pushes
+    : await guard(() => pb.pushes({ after: cursor, pages: 5 }));
   if (!incoming.length) {
     // An account with no pushes yet: start the cursor now, or the first push to
     // arrive would be taken for history and never notified.
@@ -161,6 +164,42 @@ async function deliver(p: Push, reconnect: boolean) {
     },
     { sticky: settings.sticky },
   );
+}
+
+/**
+ * Walks the history from `start` until it has `want` active pushes or runs out,
+ * and remembers where it stopped for the next "load older".
+ */
+async function collectHistory(pb: Pushbullet, start: string, want: number) {
+  const pushes: Push[] = [];
+  let cursor: string | undefined = start || undefined;
+  for (let page = 0; page < 40 && pushes.length < want; page++) {
+    const res = await guard(() => pb.pushesPage(cursor));
+    pushes.push(...res.pushes.filter((p) => p.active));
+    cursor = res.cursor;
+    if (!cursor) break;
+  }
+  await store.set({ historyCursor: cursor ?? null });
+  return { pushes, done: !cursor };
+}
+
+/** The feed scrolled to the end: fetch the next stretch of older pushes. */
+export async function loadOlderPushes(): Promise<{ added: number; done: boolean }> {
+  const start = await store.get('historyCursor');
+  if (start === null) return { added: 0, done: true };
+  const pb = await requireClient();
+  const { pushes, done } = await collectHistory(pb, start, 60);
+  let added = 0;
+  await store.update('pushes', (all) => {
+    const have = new Set(all.map((p) => p.iden));
+    const older = pushes.filter((p) => !have.has(p.iden));
+    added = older.length;
+    return [...all, ...older].sort((a, b) => b.created - a.created).slice(0, KEEP);
+  });
+  // Starting over from the newest page (installs from before this) can find
+  // nothing new at first; keep going until something older turns up.
+  if (!added && !done) return loadOlderPushes();
+  return { added, done };
 }
 
 async function findPush(iden: string) {

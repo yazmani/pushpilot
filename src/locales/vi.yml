@@ -105,7 +105,10 @@ feed:
   searchLabel: Tìm mục gửi
   closeSearch: Đóng tìm kiếm
   everything: Tất cả
-  myDevices: Thiết bị của tôi
+  only:
+    link: 'Liên kết'
+    note: 'Ghi chú'
+    file: 'Tệp'
   channels: Kênh
   search: Tìm kiếm
   noMatchTitle: Không có kết quả phù hợp
