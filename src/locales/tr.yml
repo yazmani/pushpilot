@@ -91,6 +91,8 @@ whatsNew:
   title: Pushpilot $1 sürümündeki yenilikler
   seeAll: Tüm değişiklikleri gör
   label: Yenilikler
+  v1_2:
+    languages: 'Pushpilot artık 17 dili destekliyor ve tarayıcının dilini kullanıyor.'
   v1_1:
     pushAnywhere: 'Her uygulamadan gönder: bir şey kopyala ve ⌘⇧9 (Ctrl+Shift+9) tuşlarına bas.'
     filesOpen: Görseller, PDF’ler ve diğer dosyalar gelir gelmez yeni sekmede açılır.

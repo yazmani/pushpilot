@@ -93,6 +93,8 @@ whatsNew:
   title: Pushpilot $1 の新機能
   seeAll: すべての変更を表示
   label: 新機能
+  v1_2:
+    languages: 'Pushpilot が 17 言語に対応し、ブラウザの言語で表示されるようになりました。'
   v1_1:
     pushAnywhere: どのアプリからでもプッシュ：コピーして ⌘⇧9（Ctrl+Shift+9）を押すだけです。
     filesOpen: 画像、PDF などのファイルは、届いたときに新しいタブで開きます。

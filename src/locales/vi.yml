@@ -93,6 +93,8 @@ whatsNew:
   title: Có gì mới trong Pushpilot $1
   seeAll: Xem mọi thay đổi
   label: Có gì mới
+  v1_2:
+    languages: 'Pushpilot giờ hỗ trợ 17 ngôn ngữ và dùng ngôn ngữ của trình duyệt bạn.'
   v1_1:
     pushAnywhere: 'Gửi từ mọi ứng dụng: sao chép nội dung rồi nhấn ⌘⇧9 (Ctrl+Shift+9).'
     filesOpen: Hình ảnh, PDF và các tệp khác mở trong tab mới ngay khi nhận được.

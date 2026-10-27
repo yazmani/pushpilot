@@ -93,6 +93,8 @@ whatsNew:
   title: Pushpilot $1 新功能
   seeAll: 查看所有變更
   label: 新功能
+  v1_2:
+    languages: 'Pushpilot 現已支援 17 種語言，並依瀏覽器的語言顯示。'
   v1_1:
     pushAnywhere: 在任何應用程式中推送：複製內容後按下 ⌘⇧9（Ctrl+Shift+9）即可。
     filesOpen: 圖片、PDF 和其他檔案送達後會在新分頁中開啟。

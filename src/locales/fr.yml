@@ -93,6 +93,8 @@ whatsNew:
   title: Nouveautés de Pushpilot $1
   seeAll: Voir tous les changements
   label: Nouveautés
+  v1_2:
+    languages: 'Pushpilot parle désormais 17 langues et suit la langue de votre navigateur.'
   v1_1:
     pushAnywhere: 'Envoyez depuis n’importe quelle app : copiez quelque chose et appuyez sur ⌘⇧9 (Ctrl+Shift+9).'
     filesOpen: Les images, PDF et autres fichiers s’ouvrent dans un nouvel onglet dès leur arrivée.

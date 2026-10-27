@@ -91,6 +91,8 @@ whatsNew:
   title: Nowości w Pushpilot $1
   seeAll: Zobacz wszystkie zmiany
   label: Co nowego
+  v1_2:
+    languages: 'Pushpilot obsługuje teraz 17 języków i używa języka Twojej przeglądarki.'
   v1_1:
     pushAnywhere: 'Wysyłaj z dowolnej aplikacji: skopiuj coś i naciśnij ⌘⇧9 (Ctrl+Shift+9).'
     filesOpen: Obrazy, pliki PDF i inne pliki otwierają się w nowej karcie zaraz po odebraniu.

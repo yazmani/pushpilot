@@ -93,6 +93,8 @@ whatsNew:
   title: Baru di Pushpilot $1
   seeAll: Lihat semua perubahan
   label: Yang baru
+  v1_2:
+    languages: 'Pushpilot kini tersedia dalam 17 bahasa dan mengikuti bahasa browser Anda.'
   v1_1:
     pushAnywhere: 'Kirim dari aplikasi apa pun: salin sesuatu lalu tekan ⌘⇧9 (Ctrl+Shift+9).'
     filesOpen: Gambar, PDF, dan file lain terbuka di tab baru begitu tiba.

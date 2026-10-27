@@ -93,6 +93,8 @@ whatsNew:
   title: الجديد في Pushpilot $1
   seeAll: عرض كل التغييرات
   label: ما الجديد
+  v1_2:
+    languages: 'يتحدث Pushpilot الآن 17 لغة ويتبع لغة متصفحك.'
   v1_1:
     pushAnywhere: 'أرسل من أي تطبيق: انسخ شيئًا واضغط ⌘⇧9 (Ctrl+Shift+9).'
     filesOpen: تُفتح الصور وملفات PDF وغيرها من الملفات في علامة تبويب جديدة فور وصولها.

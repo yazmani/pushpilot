@@ -3,6 +3,7 @@ import { i18n } from '#i18n';
 // Highlights shown once in the popup after an update to a new minor version.
 // Patch releases show nothing new; the full list is in CHANGELOG.md.
 export const WHATS_NEW: Record<string, () => string[]> = {
+  '1.2': () => [i18n.t('whatsNew.v1_2.languages')],
   '1.1': () => [
     i18n.t('whatsNew.v1_1.pushAnywhere'),
     i18n.t('whatsNew.v1_1.filesOpen'),
