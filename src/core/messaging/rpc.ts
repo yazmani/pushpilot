@@ -29,7 +29,8 @@ export interface Rpc {
   'mirror.action': { req: { id: string; key: string }; res: void };
   'mirror.reply': { req: { id: string; message: string }; res: void };
   'mirror.clear': { req: object; res: void };
-  'sms.threads': { req: { device: string }; res: SmsThread[] };
+  /** Reuses a recent answer unless `force` (the Refresh button). */
+  'sms.threads': { req: { device: string; force?: boolean }; res: SmsThread[] };
   'sms.thread': { req: { device: string; thread: string }; res: SmsMessage[] };
   'sms.send': { req: { device: string; addresses: string[]; message: string }; res: void };
   'clip.push': { req: object; res: void };

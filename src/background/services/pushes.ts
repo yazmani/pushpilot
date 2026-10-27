@@ -7,7 +7,7 @@ import { urlPreview } from '@/core/utils/links';
 import { clear, isSnoozed, onNotification, show, toDataUrl } from '@/background/platform/notifications';
 import { copyText } from '@/background/platform/offscreen';
 import { openApp, openUrl } from '@/background/platform/windows';
-import { guard, requireClient } from '@/background/session';
+import { guard, isRateLimited, requireClient } from '@/background/session';
 import { i18n } from '#i18n';
 
 const KEEP = 3000;
@@ -187,6 +187,7 @@ async function collectHistory(pb: Pushbullet, start: string, want: number) {
 export async function loadOlderPushes(depth = 0): Promise<{ added: number; done: boolean }> {
   const start = await store.get('historyCursor');
   if (start === null) return { added: 0, done: true };
+  if (await isRateLimited()) return { added: 0, done: false };
   const pb = await requireClient();
   const { pushes, done } = await collectHistory(pb, start, 60);
   let added = 0;

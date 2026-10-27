@@ -1,3 +1,4 @@
+import { browser } from 'wxt/browser';
 import { ApiError, Pushbullet } from '@/core/pushbullet/client';
 import * as store from '@/core/storage/store';
 import { i18n } from '#i18n';
@@ -16,6 +17,28 @@ export async function requireClient(): Promise<Pushbullet> {
   const pb = await client();
   if (!pb) throw new Error(i18n.t('bg.signInFirst'));
   return pb;
+}
+
+/** While Pushbullet rate-limits the account, background refreshes wait. */
+export async function isRateLimited(): Promise<boolean> {
+  return (await store.get('rateLimitedUntil')) > Date.now();
+}
+
+/**
+ * True when `key` was last refreshed more than `maxAgeMs` ago, and marks it
+ * refreshed now. Kept in session storage, so a browser restart starts fresh.
+ */
+export async function due(key: string, maxAgeMs: number): Promise<boolean> {
+  const name = `refreshedAt:${key}`;
+  const at = ((await browser.storage.session.get(name))[name] as number | undefined) ?? 0;
+  if (Date.now() - at < maxAgeMs) return false;
+  await browser.storage.session.set({ [name]: Date.now() });
+  return true;
+}
+
+/** Forgets when `key` was refreshed, so the next `due` check passes. */
+export function invalidate(key: string) {
+  return browser.storage.session.remove(`refreshedAt:${key}`);
 }
 
 type ExpiredHandler = () => Promise<void>;
