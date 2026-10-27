@@ -7,29 +7,30 @@ import { call } from '@/core/messaging/rpc';
 import type { Device } from '@/core/pushbullet/types';
 import * as store from '@/core/storage/store';
 import type { Settings, SoundChoice, Tab, Theme } from '@/core/storage/store';
-import { deviceKind, deviceName, isReachable } from '@/core/utils/format';
+import { deviceCategory, deviceKind, deviceName, isReachable } from '@/core/utils/format';
 import { Avatar, Button, DeviceGlyph, fieldClass, LinkButton, LogoMark, Segmented, Toggle, ToastBar } from '@/ui/components';
 import { SignIn } from '@/ui/features/auth/SignIn';
 import { useTargets } from '@/ui/features/send/targets';
 import { useStore } from '@/ui/hooks/use-store';
 import { useTheme } from '@/ui/hooks/use-theme';
 import { ToastProvider, useRun, useToast } from '@/ui/hooks/use-toast';
+import { i18n } from '#i18n';
 
 const SECTIONS = [
-  ['account', 'Account'],
-  ['devices', 'Devices'],
-  ['sending', 'Sending'],
-  ['receiving', 'Receiving'],
-  ['auto-open', 'Auto-open'],
-  ['notifications', 'Notifications'],
-  ['badge', 'Toolbar badge'],
-  ['phone', 'Phone'],
-  ['feed', 'Feed'],
-  ['encryption', 'Encryption'],
-  ['appearance', 'Appearance'],
-  ['shortcuts', 'Shortcuts'],
-  ['data', 'Your data'],
-  ['support', 'Support'],
+  ['account', () => i18n.t('settings.section.account')],
+  ['devices', () => i18n.t('settings.section.devices')],
+  ['sending', () => i18n.t('settings.section.sending')],
+  ['receiving', () => i18n.t('settings.section.receiving')],
+  ['auto-open', () => i18n.t('settings.section.autoOpen')],
+  ['notifications', () => i18n.t('settings.section.notifications')],
+  ['badge', () => i18n.t('settings.section.toolbarBadge')],
+  ['phone', () => i18n.t('settings.section.phone')],
+  ['feed', () => i18n.t('settings.section.feed')],
+  ['encryption', () => i18n.t('settings.section.encryption')],
+  ['appearance', () => i18n.t('settings.section.appearance')],
+  ['shortcuts', () => i18n.t('settings.section.shortcuts')],
+  ['data', () => i18n.t('settings.section.yourData')],
+  ['support', () => i18n.t('settings.navSupport')],
 ] as const;
 
 export function SettingsPage() {
@@ -76,10 +77,14 @@ function SettingsContent() {
         <div className="mx-auto flex h-16 max-w-5xl items-center gap-3 px-8">
           <LogoMark size={28} className="drop-shadow-[0_2px_4px_rgba(0,40,20,0.3)]" />
           <p className="text-lg font-extrabold tracking-[-0.02em]">Pushpilot</p>
-          <span className="ml-2 rounded-full bg-white/15 px-2.5 py-1 text-2xs font-bold">
-            {connection === 'live' ? 'Connected' : connection === 'connecting' ? 'Connecting…' : 'Offline'}
+          <span className="ms-2 rounded-full bg-white/15 px-2.5 py-1 text-2xs font-bold">
+            {connection === 'live'
+              ? i18n.t('header.connected')
+              : connection === 'connecting'
+                ? i18n.t('header.connecting')
+                : i18n.t('header.offline')}
           </span>
-          <span className="ml-auto truncate text-sm font-semibold text-on-band/85">{me?.email}</span>
+          <span className="ms-auto truncate text-sm font-semibold text-on-band/85">{me?.email}</span>
           <Avatar src={me?.image_url} name={me?.name || me?.email} size={32} className="ring-2 ring-white/70" />
         </div>
       </header>
@@ -92,14 +97,14 @@ function SettingsContent() {
                 href={`#${id}`}
                 className="rounded-xl px-3 py-2 text-sm font-semibold text-muted transition-colors hover:bg-surface hover:text-ink"
               >
-                {label}
+                {label()}
               </a>
             ))}
           </nav>
         </aside>
 
         <main className="min-w-0 max-w-2xl pb-24">
-          <Section id="account" title="Account">
+          <Section id="account" title={i18n.t('settings.section.account')}>
             <div className="flex items-center gap-4 py-4">
               <Avatar src={me?.image_url} name={me?.name || me?.email} size={52} />
               <div className="min-w-0 flex-1">
@@ -112,39 +117,35 @@ function SettingsContent() {
                 </p>
               </div>
               <Button onClick={() => run(() => call('auth.signout'))}>
-                <LogOut size={15} /> Sign out
+                <LogOut size={15} /> {i18n.t('settings.signOut')}
               </Button>
             </div>
             <RenameDevice
               current={self ? deviceName(self) : 'Chrome'}
-              onSave={(name) => run(() => call('device.rename', { name }), 'Renamed')}
+              onSave={(name) => run(() => call('device.rename', { name }), i18n.t('settings.renamed'))}
             />
           </Section>
 
-          <Section
-            id="devices"
-            title="Devices"
-            description="Pushbullet keeps old registrations around. Only devices marked Receiving get your pushes."
-          >
+          <Section id="devices" title={i18n.t('settings.section.devices')} description={i18n.t('settings.section.devicesDesc')}>
             <DeviceList devices={devices} selfIden={selfDeviceIden} />
           </Section>
 
-          <Section id="sending" title="Sending">
+          <Section id="sending" title={i18n.t('settings.section.sending')}>
             <DefaultTarget value={settings.defaultTarget} onChange={(defaultTarget) => set({ defaultTarget })} />
             <Toggle
-              label="Start with the page you’re on"
-              hint="Opening Pushpilot fills in the current tab’s title and link, ready to send."
+              label={i18n.t('settings.startWithThePage')}
+              hint={i18n.t('settings.startWithThePageHint')}
               checked={settings.prefillCurrentPage}
               onChange={(prefillCurrentPage) => set({ prefillCurrentPage })}
             />
             <Toggle
-              label="Close the popup after sending"
+              label={i18n.t('settings.closeThePopupAfter')}
               checked={settings.closeAfterSend}
               onChange={(closeAfterSend) => set({ closeAfterSend })}
             />
             <Toggle
-              label="Right-click menu"
-              hint="Push pages, links, images and selected text from any page’s context menu."
+              label={i18n.t('settings.rightClickMenu')}
+              hint={i18n.t('settings.rightClickMenuHint')}
               checked={settings.contextMenu}
               onChange={(contextMenu) => set({ contextMenu })}
             />
@@ -152,18 +153,18 @@ function SettingsContent() {
 
           <Section
             id="receiving"
-            title="Receiving"
-            description="Pushes sent straight to this browser always arrive. Choose what else counts."
+            title={i18n.t('settings.section.receiving')}
+            description={i18n.t('settings.section.receivingDesc')}
           >
             <Toggle
-              label="Pushes sent to all devices"
-              hint="What your phone sends when you don’t pick a device."
+              label={i18n.t('settings.pushesSentToAll')}
+              hint={i18n.t('settings.pushesSentToAllHint')}
               checked={settings.receiveAll}
               onChange={(receiveAll) => set({ receiveAll })}
             />
             <Toggle
-              label="Pushes sent to your other devices"
-              hint="See everything, even pushes meant for your tablet or another computer."
+              label={i18n.t('settings.pushesSentToYour')}
+              hint={i18n.t('settings.pushesSentToYourHint')}
               checked={settings.receiveOthers}
               onChange={(receiveOthers) => set({ receiveOthers })}
             />
@@ -176,241 +177,238 @@ function SettingsContent() {
               />
             )}
             <Toggle
-              label="Pushes you send from this browser"
-              hint="Notify and open your own pushes here too, for example when you push to all devices from the right-click menu."
+              label={i18n.t('settings.pushesYouSendFrom')}
+              hint={i18n.t('settings.pushesYouSendFromHint')}
               checked={settings.receiveOwn}
               onChange={(receiveOwn) => set({ receiveOwn })}
             />
             <Toggle
-              label="Channel subscriptions"
-              hint="Pushes from channels and feeds you follow."
+              label={i18n.t('settings.channelSubscriptions')}
+              hint={i18n.t('settings.channelSubscriptionsHint')}
               checked={settings.showChannels}
               onChange={(showChannels) => set({ showChannels })}
             />
           </Section>
 
-          <Section id="auto-open" title="Auto-open">
+          <Section id="auto-open" title={i18n.t('settings.section.autoOpen')}>
             <Toggle
-              label="Open links as soon as they arrive"
-              hint="Links pushed to this browser open in a new tab, like the original Pushbullet extension. So does a note that’s just an address."
+              label={i18n.t('settings.openLinksAsSoon')}
+              hint={i18n.t('settings.openLinksAsSoonHint')}
               checked={settings.autoOpenLinks}
               onChange={(autoOpenLinks) => set({ autoOpenLinks })}
             />
             <Toggle
-              label="Switch to the new tab"
-              hint="Otherwise it opens in the background."
+              label={i18n.t('settings.switchToTheNew')}
+              hint={i18n.t('settings.switchToTheNewHint')}
               checked={settings.autoOpenActive}
               onChange={(autoOpenActive) => set({ autoOpenActive })}
               disabled={!settings.autoOpenLinks}
             />
             <Toggle
-              label="Also open images, PDFs and other files"
+              label={i18n.t('settings.alsoOpenImagesPdfs')}
               checked={settings.autoOpenFiles}
               onChange={(autoOpenFiles) => set({ autoOpenFiles })}
               disabled={!settings.autoOpenLinks}
             />
             <Toggle
-              label="Also open links from people"
-              hint="Not just your own devices."
+              label={i18n.t('settings.alsoOpenLinksFrom')}
+              hint={i18n.t('settings.alsoOpenLinksFromHint')}
               checked={settings.autoOpenFromPeople}
               onChange={(autoOpenFromPeople) => set({ autoOpenFromPeople })}
               disabled={!settings.autoOpenLinks}
             />
             <Toggle
-              label="Open links that arrived while offline"
-              hint="When the browser starts or your computer wakes up, open what was pushed in the meantime."
+              label={i18n.t('settings.openLinksThatArrived')}
+              hint={i18n.t('settings.openLinksThatArrivedHint')}
               checked={settings.autoOpenOnReconnect}
               onChange={(autoOpenOnReconnect) => set({ autoOpenOnReconnect })}
               disabled={!settings.autoOpenLinks}
             />
             <Toggle
-              label="Skip the notification for opened links"
+              label={i18n.t('settings.skipTheNotificationFor')}
               checked={settings.hideAutoOpened}
               onChange={(hideAutoOpened) => set({ hideAutoOpened })}
               disabled={!settings.autoOpenLinks}
             />
           </Section>
 
-          <Section id="notifications" title="Notifications">
+          <Section id="notifications" title={i18n.t('settings.section.notifications')}>
             <Toggle
-              label="Pushes"
-              hint="Links, notes and files."
+              label={i18n.t('settings.pushes')}
+              hint={i18n.t('settings.pushesHint')}
               checked={settings.notifyPushes}
               onChange={(notifyPushes) => set({ notifyPushes })}
             />
             <Toggle
-              label="Phone notifications"
+              label={i18n.t('settings.phoneNotifications')}
               checked={settings.notifyMirrors}
               onChange={(notifyMirrors) => set({ notifyMirrors })}
             />
-            <Toggle label="Text messages" checked={settings.notifySms} onChange={(notifySms) => set({ notifySms })} />
-            <Toggle label="Play a sound" checked={settings.sound} onChange={(sound) => set({ sound })} />
+            <Toggle
+              label={i18n.t('settings.textMessages')}
+              checked={settings.notifySms}
+              onChange={(notifySms) => set({ notifySms })}
+            />
+            <Toggle label={i18n.t('settings.playASound')} checked={settings.sound} onChange={(sound) => set({ sound })} />
             <SoundPicker
               value={settings.soundChoice}
               disabled={!settings.sound}
               onChange={(soundChoice) => set({ soundChoice })}
             />
             <Toggle
-              label="Keep push notifications on screen"
-              hint="They stay until you click or close them."
+              label={i18n.t('settings.keepPushNotificationsOn')}
+              hint={i18n.t('settings.keepPushNotificationsOnHint')}
               checked={settings.sticky}
               onChange={(sticky) => set({ sticky })}
             />
             <Toggle
-              label="Keep phone notifications on screen"
+              label={i18n.t('settings.keepPhoneNotificationsOn')}
               checked={settings.stickyMirrors}
               onChange={(stickyMirrors) => set({ stickyMirrors })}
             />
             <Toggle
-              label="Closing a notification dismisses it"
-              hint="Close a push and it’s marked done everywhere; close a phone notification and it’s cleared on your phone."
+              label={i18n.t('settings.closingANotificationDismisses')}
+              hint={i18n.t('settings.closingANotificationDismissesHint')}
               checked={settings.closeDismisses}
               onChange={(closeDismisses) => set({ closeDismisses })}
             />
             <div className="flex items-center gap-3 py-3.5">
-              <Button onClick={() => run(() => call('notify.test'))}>Send a test notification</Button>
+              <Button onClick={() => run(() => call('notify.test'))}>{i18n.t('settings.testNotification')}</Button>
               {settings.snoozeUntil > Date.now() && (
                 <Button variant="ghost" onClick={() => set({ snoozeUntil: 0 })}>
-                  End snooze
+                  {i18n.t('settings.endSnooze')}
                 </Button>
               )}
             </div>
           </Section>
 
-          <Section id="badge" title="Toolbar badge">
+          <Section id="badge" title={i18n.t('settings.section.toolbarBadge')}>
+            <Toggle label={i18n.t('settings.showUnreadCountsOn')} checked={settings.badge} onChange={(badge) => set({ badge })} />
             <Toggle
-              label="Show unread counts on the toolbar icon"
-              checked={settings.badge}
-              onChange={(badge) => set({ badge })}
-            />
-            <Toggle
-              label="Count pushes"
+              label={i18n.t('settings.countPushes')}
               checked={settings.badgeFeed}
               onChange={(badgeFeed) => set({ badgeFeed })}
               disabled={!settings.badge}
             />
             <Toggle
-              label="Count phone notifications"
+              label={i18n.t('settings.countPhoneNotifications')}
               checked={settings.badgePhone}
               onChange={(badgePhone) => set({ badgePhone })}
               disabled={!settings.badge}
             />
             <Toggle
-              label="Keep counting phone notifications until they’re cleared"
-              hint="Instead of resetting when you open the Phone tab, the count drops as you dismiss them."
+              label={i18n.t('settings.keepCountingPhoneNotifications')}
+              hint={i18n.t('settings.keepCountingPhoneNotificationsHint')}
               checked={settings.badgePhoneLive}
               onChange={(badgePhoneLive) => set({ badgePhoneLive })}
               disabled={!settings.badge || !settings.badgePhone}
             />
             <Toggle
-              label="Count text messages"
+              label={i18n.t('settings.countTextMessages')}
               checked={settings.badgeSms}
               onChange={(badgeSms) => set({ badgeSms })}
               disabled={!settings.badge}
             />
           </Section>
 
-          <Section id="phone" title="Phone">
+          <Section id="phone" title={i18n.t('settings.section.phone')}>
             <Toggle
-              label="Show my phone’s notifications"
-              hint="Needs Notification mirroring switched on in the Pushbullet app on Android."
+              label={i18n.t('settings.showMyPhonesNotifications')}
+              hint={i18n.t('settings.showMyPhonesNotificationsHint')}
               checked={settings.mirrorEnabled}
               onChange={(mirrorEnabled) => set({ mirrorEnabled })}
             />
             <Toggle
-              label="Copy one-time codes automatically"
-              hint="When a notification contains a verification code, it goes straight to your clipboard."
+              label={i18n.t('settings.copyOneTimeCodes')}
+              hint={i18n.t('settings.copyOneTimeCodesHint')}
               checked={settings.autoCopyCodes}
               onChange={(autoCopyCodes) => set({ autoCopyCodes })}
             />
             <Toggle
-              label="Receive copied text from other devices"
-              hint="Universal copy and paste. Needs Pushbullet Pro and the setting turned on in your other apps."
+              label={i18n.t('settings.receiveCopiedTextFrom')}
+              hint={i18n.t('settings.receiveCopiedTextFromHint')}
               checked={settings.clipboardReceive}
               onChange={(clipboardReceive) => set({ clipboardReceive })}
             />
           </Section>
 
-          <Section id="feed" title="Feed">
+          <Section id="feed" title={i18n.t('settings.section.feed')}>
             <LinkPreviewsToggle enabled={settings.linkPreviews} onChange={(linkPreviews) => set({ linkPreviews })} />
           </Section>
 
-          <Section id="encryption" title="Encryption">
+          <Section id="encryption" title={i18n.t('settings.section.encryption')}>
             <Encryption
               enabled={!!e2eKey}
               onSave={(password) =>
-                run(() => call('e2e.set', { password }), password ? 'Encryption password saved' : 'Encryption turned off')
+                run(
+                  () => call('e2e.set', { password }),
+                  password ? i18n.t('settings.passwordSaved') : i18n.t('settings.encryptionOff'),
+                )
               }
             />
           </Section>
 
-          <Section id="appearance" title="Appearance">
-            <Row label="Theme">
+          <Section id="appearance" title={i18n.t('settings.section.appearance')}>
+            <Row label={i18n.t('settings.theme')}>
               <Segmented<Theme>
                 value={settings.theme}
                 className="w-64"
                 options={[
-                  { value: 'system', label: 'System' },
-                  { value: 'light', label: 'Light' },
-                  { value: 'dark', label: 'Dark' },
+                  { value: 'system', label: i18n.t('settings.themeSystem') },
+                  { value: 'light', label: i18n.t('settings.themeLight') },
+                  { value: 'dark', label: i18n.t('settings.themeDark') },
                 ]}
                 onChange={(theme) => set({ theme })}
               />
             </Row>
-            <Row label="Open on">
+            <Row label={i18n.t('settings.openOn')}>
               <Segmented<Tab>
                 value={settings.defaultTab}
                 className="w-72"
                 options={[
-                  { value: 'send', label: 'Send' },
-                  { value: 'feed', label: 'Feed' },
-                  { value: 'phone', label: 'Phone' },
-                  { value: 'sms', label: 'SMS' },
+                  { value: 'send', label: i18n.t('tabs.send') },
+                  { value: 'feed', label: i18n.t('tabs.feed') },
+                  { value: 'phone', label: i18n.t('tabs.phone') },
+                  { value: 'sms', label: i18n.t('tabs.sms') },
                 ]}
                 onChange={(defaultTab) => set({ defaultTab })}
               />
             </Row>
           </Section>
 
-          <Section id="shortcuts" title="Shortcuts">
+          <Section id="shortcuts" title={i18n.t('settings.section.shortcuts')}>
             <Shortcuts />
           </Section>
 
-          <Section id="data" title="Your data">
-            <p className="py-3.5 text-sm leading-relaxed text-muted">
-              Pushpilot keeps your history in this browser and talks only to Pushbullet. Clearing it here doesn’t delete anything
-              from your account.
-            </p>
+          <Section id="data" title={i18n.t('settings.section.yourData')}>
+            <p className="py-3.5 text-sm leading-relaxed text-muted">{i18n.t('settings.dataBody')}</p>
             <div className="flex flex-wrap gap-2 pb-3.5">
-              <Button onClick={() => run(() => call('sync'), 'Synced with Pushbullet')}>
-                <RefreshCw size={15} /> Sync now
+              <Button onClick={() => run(() => call('sync'), i18n.t('settings.synced'))}>
+                <RefreshCw size={15} /> {i18n.t('settings.syncNow')}
               </Button>
-              <Button variant="danger" onClick={() => run(() => call('history.clear'), 'History cleared')}>
-                Clear local history
+              <Button variant="danger" onClick={() => run(() => call('history.clear'), i18n.t('settings.historyCleared'))}>
+                {i18n.t('settings.clearHistory')}
               </Button>
             </div>
           </Section>
 
-          <Section id="support" title="Support Pushpilot">
-            <p className="py-3.5 text-sm leading-relaxed text-muted">
-              Pushpilot is free and open source, with no ads or tracking, and it stays that way. If it’s useful to you, you can
-              help keep it going.
-            </p>
+          <Section id="support" title={i18n.t('settings.section.supportPushpilot')}>
+            <p className="py-3.5 text-sm leading-relaxed text-muted">{i18n.t('settings.supportBody')}</p>
             <div className="flex flex-wrap gap-2 pb-3.5">
               <LinkButton href={LINKS.kofi} variant="primary">
-                <Coffee size={15} /> Buy me a coffee
+                <Coffee size={15} /> {i18n.t('support.coffee')}
               </LinkButton>
               <LinkButton href={LINKS.sponsor}>
-                <Heart size={15} /> Sponsor on GitHub
+                <Heart size={15} /> {i18n.t('support.sponsor')}
               </LinkButton>
               <LinkButton href={LINKS.review} variant="ghost">
-                <Star size={15} /> Rate it in the Chrome Web Store
+                <Star size={15} /> {i18n.t('settings.rate')}
               </LinkButton>
               <LinkButton href={LINKS.repo} variant="ghost">
-                Star on GitHub
+                {i18n.t('settings.star')}
               </LinkButton>
               <LinkButton href={LINKS.issues} variant="ghost">
-                Report a problem
+                {i18n.t('settings.report')}
               </LinkButton>
             </div>
           </Section>
@@ -458,12 +456,15 @@ function DeviceList({ devices, selfIden }: { devices: Device[]; selfIden: string
             <div className="min-w-0 flex-1">
               <p className={clsx('truncate text-sm font-semibold', !live && 'text-muted')}>
                 {deviceName(d)}
-                {d.iden === selfIden && <span className="ml-2 text-xs font-medium text-faint">this browser</span>}
+                {d.iden === selfIden && (
+                  <span className="ms-2 text-xs font-medium text-faint">{i18n.t('settings.thisBrowser')}</span>
+                )}
               </p>
               <p className="text-xs text-faint">
-                {deviceKind(d)}
-                {d.has_sms ? ', can text' : ''}. Last active{' '}
-                {new Date(d.modified * 1000).toLocaleDateString(undefined, { month: 'short', day: 'numeric', year: 'numeric' })}
+                {i18n.t(d.has_sms ? 'settings.deviceLineSms' : 'settings.deviceLine', [
+                  deviceKind(d),
+                  new Date(d.modified * 1000).toLocaleDateString(undefined, { month: 'short', day: 'numeric', year: 'numeric' }),
+                ])}
               </p>
             </div>
             <span
@@ -472,22 +473,22 @@ function DeviceList({ devices, selfIden }: { devices: Device[]; selfIden: string
                 live ? 'bg-accent-soft text-accent-strong' : 'bg-raised text-faint',
               )}
             >
-              {live ? 'Receiving' : 'Not connected'}
+              {live ? i18n.t('settings.receiving') : i18n.t('settings.notConnected')}
             </span>
           </div>
         );
       })}
       <p className="py-3 text-xs leading-relaxed text-muted">
-        Remove old devices on{' '}
+        {i18n.t('settings.removeOldBefore')}{' '}
         <a
           className="font-bold text-accent-strong hover:underline"
           href="https://www.pushbullet.com/#settings/devices"
           target="_blank"
           rel="noreferrer"
         >
-          pushbullet.com › Devices
+          {i18n.t('settings.removeOldLink')}
         </a>
-        . A phone shows up as Receiving again after you open the Pushbullet app on it.
+        {i18n.t('settings.removeOldAfter')}
       </p>
     </>
   );
@@ -510,15 +511,13 @@ function OtherBrowsers({
   onChange: (v: string[]) => void;
 }) {
   const others = devices.filter(
-    (d) => d.iden !== selfIden && isReachable(d) && ['Browser', 'Computer', 'Laptop'].includes(deviceKind(d)),
+    (d) => d.iden !== selfIden && isReachable(d) && ['browser', 'computer', 'laptop'].includes(deviceCategory(d)),
   );
   if (!others.length) return null;
   return (
     <div className="py-3.5">
-      <p className="text-sm font-semibold text-ink">Pushes sent to another browser</p>
-      <p className="mt-0.5 text-xs leading-relaxed text-muted">
-        Your phone may still list the old Pushbullet extension as “Chrome”. Tick any browser whose pushes should arrive here.
-      </p>
+      <p className="text-sm font-semibold text-ink">{i18n.t('settings.otherBrowsers')}</p>
+      <p className="mt-0.5 text-xs leading-relaxed text-muted">{i18n.t('settings.otherBrowsersHint')}</p>
       <div className="mt-2.5 flex flex-wrap gap-2">
         {others.map((d) => {
           const on = value.includes(d.iden);
@@ -551,7 +550,7 @@ function OtherBrowsers({
 function DefaultTarget({ value, onChange }: { value: string; onChange: (v: string) => void }) {
   const { targets } = useTargets();
   return (
-    <Row label="Send to, by default">
+    <Row label={i18n.t('settings.sendToByDefault')}>
       <select
         value={targets.some((t) => t.key === value) ? value : 'all'}
         onChange={(e) => onChange(e.target.value)}
@@ -581,11 +580,11 @@ function RenameDevice({ current, onSave }: { current: string; onSave: (name: str
       }}
     >
       <label htmlFor="device-name" className="flex-1 text-sm font-semibold">
-        This browser’s name on your other devices
+        {i18n.t('settings.renameLabel')}
       </label>
       <input id="device-name" value={name} onChange={(e) => setName(e.target.value)} className={clsx(fieldClass, 'h-9 w-48')} />
       <Button type="submit" disabled={!name.trim() || name === current}>
-        Rename
+        {i18n.t('settings.rename')}
       </Button>
     </form>
   );
@@ -597,12 +596,9 @@ function Encryption({ enabled, onSave }: { enabled: boolean; onSave: (password: 
     <div className="py-4">
       <p className="flex items-center gap-2 text-sm font-bold">
         <LockKeyhole size={15} className={enabled ? 'text-accent' : 'text-faint'} />
-        {enabled ? 'End-to-end encryption is on' : 'End-to-end encryption is off'}
+        {enabled ? i18n.t('settings.e2eOn') : i18n.t('settings.e2eOff')}
       </p>
-      <p className="mt-1 text-xs leading-relaxed text-muted">
-        Use the same password you set in the Pushbullet app on your phone. It encrypts notifications, texts and copied text in
-        transit. Pushpilot stores only the derived key.
-      </p>
+      <p className="mt-1 text-xs leading-relaxed text-muted">{i18n.t('settings.e2eBody')}</p>
       <form
         className="mt-3 flex flex-wrap gap-2"
         onSubmit={(e) => {
@@ -615,17 +611,17 @@ function Encryption({ enabled, onSave }: { enabled: boolean; onSave: (password: 
           type="password"
           value={password}
           onChange={(e) => setPassword(e.target.value)}
-          placeholder={enabled ? 'Change password' : 'Encryption password'}
-          aria-label="Encryption password"
+          placeholder={enabled ? i18n.t('settings.changePassword') : i18n.t('settings.encryptionPassword')}
+          aria-label={i18n.t('settings.encryptionPassword')}
           autoComplete="off"
           className={clsx(fieldClass, 'h-9 min-w-0 flex-1')}
         />
         <Button type="submit" disabled={!password}>
-          Save password
+          {i18n.t('settings.savePassword')}
         </Button>
         {enabled && (
           <Button variant="danger" onClick={() => onSave(null)}>
-            Turn off
+            {i18n.t('settings.turnOff')}
           </Button>
         )}
       </form>
@@ -641,31 +637,30 @@ function Shortcuts() {
   return (
     <>
       {commands.map((c) => (
-        <Row key={c.name} label={c.name === '_execute_action' ? 'Open Pushpilot' : c.description || c.name || ''}>
+        <Row key={c.name} label={c.name === '_execute_action' ? i18n.t('cmdOpen') : c.description || c.name || ''}>
           {c.shortcut ? (
             <kbd className="rounded-lg border border-line bg-bg px-2 py-1 font-sans text-xs font-bold">{c.shortcut}</kbd>
           ) : (
-            <span className="text-xs text-faint">Not set</span>
+            <span className="text-xs text-faint">{i18n.t('settings.notSet')}</span>
           )}
         </Row>
       ))}
       <div className="py-3.5">
-        <p className="mb-3 text-xs leading-relaxed text-muted">
-          The “from any app” shortcuts work even when the browser is in the background. If one doesn’t, open the shortcuts page
-          and set its scope to <strong>Global</strong>.
-        </p>
-        <Button onClick={() => void browser.tabs.create({ url: 'chrome://extensions/shortcuts' })}>Change shortcuts</Button>
+        <p className="mb-3 text-xs leading-relaxed text-muted">{i18n.t('settings.shortcutsHint')}</p>
+        <Button onClick={() => void browser.tabs.create({ url: 'chrome://extensions/shortcuts' })}>
+          {i18n.t('settings.changeShortcuts')}
+        </Button>
       </div>
     </>
   );
 }
 
-const SOUNDS: { value: SoundChoice; label: string }[] = [
-  { value: 'takeoff', label: 'Takeoff' },
-  { value: 'chime', label: 'Chime' },
-  { value: 'pop', label: 'Pop' },
-  { value: 'ding', label: 'Ding' },
-  { value: 'custom', label: 'Your own' },
+const SOUNDS: { value: SoundChoice; label: () => string }[] = [
+  { value: 'takeoff', label: () => i18n.t('settings.soundTakeoff') },
+  { value: 'chime', label: () => i18n.t('settings.soundChime') },
+  { value: 'pop', label: () => i18n.t('settings.soundPop') },
+  { value: 'ding', label: () => i18n.t('settings.soundDing') },
+  { value: 'custom', label: () => i18n.t('settings.soundCustom') },
 ];
 
 function SoundPicker({
@@ -683,7 +678,7 @@ function SoundPicker({
   const input = useRef<HTMLInputElement>(null);
 
   const choose = (file: File) => {
-    if (file.size > 1_000_000) return notify('Pick a sound under 1 MB.', 'error');
+    if (file.size > 1_000_000) return notify(i18n.t('settings.soundTooBig'), 'error');
     const reader = new FileReader();
     reader.onload = async () => {
       const src = reader.result as string;
@@ -691,7 +686,7 @@ function SoundPicker({
         () => true,
         () => false,
       );
-      if (!ok) return notify('That file couldn’t be played. Try an MP3, OGG or WAV.', 'error');
+      if (!ok) return notify(i18n.t('settings.soundUnplayable'), 'error');
       await store.set({ customSound: src });
       onChange('custom');
     };
@@ -701,10 +696,10 @@ function SoundPicker({
   return (
     <div className={clsx('flex flex-col gap-3 py-3.5', disabled && 'pointer-events-none opacity-50')}>
       <div className="flex flex-wrap items-center gap-3">
-        <span className="flex-1 text-sm font-semibold">Sound</span>
+        <span className="flex-1 text-sm font-semibold">{i18n.t('settings.sound')}</span>
         <Segmented<SoundChoice>
           value={value}
-          options={SOUNDS}
+          options={SOUNDS.map((s) => ({ value: s.value, label: s.label() }))}
           className="w-[360px] max-w-full"
           onChange={(v) => {
             if (v === 'custom' && !customSound) return input.current?.click();
@@ -713,16 +708,16 @@ function SoundPicker({
           }}
         />
         <Button size="sm" onClick={() => run(() => call('sound.preview', { choice: value }))}>
-          Play
+          {i18n.t('settings.play')}
         </Button>
       </div>
       {value === 'custom' && (
         <p className="text-xs text-muted">
-          {customSound ? 'Using your sound.' : 'No sound chosen yet.'}{' '}
+          {customSound ? i18n.t('settings.soundUsing') : i18n.t('settings.soundNone')}{' '}
           <button className="font-bold text-accent-strong hover:underline" onClick={() => input.current?.click()}>
-            {customSound ? 'Choose another' : 'Choose a file'}
+            {customSound ? i18n.t('settings.soundChooseAnother') : i18n.t('settings.soundChoose')}
           </button>
-          . MP3, OGG or WAV, up to 1 MB.
+          {i18n.t('settings.soundFormats')}
         </p>
       )}
       <input
@@ -748,12 +743,8 @@ function LinkPreviewsToggle({ enabled, onChange }: { enabled: boolean; onChange:
   const on = enabled && !!granted;
   return (
     <Toggle
-      label="Show previews for links"
-      hint={
-        granted === false && enabled
-          ? 'Needs permission to read the pages your links point to. Turn this on to grant it.'
-          : 'Pictures, titles and descriptions for links in your feed. Pushpilot reads only the page header of each link.'
-      }
+      label={i18n.t('settings.showPreviewsForLinks')}
+      hint={granted === false && enabled ? i18n.t('settings.previewsNeedPermission') : i18n.t('settings.previewsHint')}
       checked={on}
       onChange={async (v) => {
         if (v && !granted) {

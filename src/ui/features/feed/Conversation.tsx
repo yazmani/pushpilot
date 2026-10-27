@@ -6,6 +6,7 @@ import type { Chat, Push, User } from '@/core/pushbullet/types';
 import { clockTime, isImage, looksLikeUrl, normalizeUrl, personName, pushOpenUrl } from '@/core/utils/format';
 import { Avatar, Empty, IconButton, MessageComposer } from '@/ui/components';
 import { useRun } from '@/ui/hooks/use-toast';
+import { i18n } from '#i18n';
 
 /** Chat-style view of everything exchanged with one person. */
 export function Conversation({
@@ -50,8 +51,8 @@ export function Conversation({
   return (
     <div className="flex h-full flex-col">
       <div className="flex shrink-0 items-center gap-2.5 border-b border-line bg-surface/60 px-2 py-2">
-        <IconButton label="Back to feed" onClick={onBack}>
-          <ArrowLeft size={16} />
+        <IconButton label={i18n.t('chat.back')} onClick={onBack}>
+          <ArrowLeft size={16} className="rtl:-scale-x-100" />
         </IconButton>
         <Avatar src={chat?.with.image_url} name={name} size={30} />
         <div className="min-w-0 flex-1">
@@ -60,11 +61,11 @@ export function Conversation({
         </div>
         {chat && (
           <IconButton
-            label={chat.muted ? 'Unmute' : 'Mute notifications'}
+            label={chat.muted ? i18n.t('chat.unmute') : i18n.t('chat.mute')}
             onClick={() =>
               run(
                 () => call('chat.mute', { iden: chat.iden, muted: !chat.muted }),
-                chat.muted ? `Notifications on for ${first}` : `${first} muted`,
+                chat.muted ? i18n.t('chat.unmuted', [first!]) : i18n.t('chat.muted', [first!]),
               )
             }
           >
@@ -73,9 +74,7 @@ export function Conversation({
         )}
       </div>
       <div className="scroll-area min-h-0 flex-1 px-3.5 py-3">
-        {ordered.length === 0 && (
-          <Empty title={`Say hi to ${first}`}>Anything you send here reaches all of {first}’s devices.</Empty>
-        )}
+        {ordered.length === 0 && <Empty title={i18n.t('chat.emptyTitle', [first!])}>{i18n.t('chat.emptyBody', [first!])}</Empty>}
         <div className="flex flex-col gap-2">
           {ordered.map((p) => {
             const mine = p.direction === 'outgoing' || p.sender_email_normalized === me?.email_normalized;
@@ -85,7 +84,7 @@ export function Conversation({
                 <div
                   className={clsx(
                     'rounded-2xl px-3.5 py-2 text-sm',
-                    mine ? 'rounded-br-md bg-accent text-on-accent' : 'rounded-bl-md border border-line bg-surface',
+                    mine ? 'rounded-ee-md bg-accent text-on-accent' : 'rounded-es-md border border-line bg-surface',
                   )}
                 >
                   {p.title && <p className="font-bold">{p.title}</p>}
@@ -109,7 +108,13 @@ export function Conversation({
         </div>
         <div ref={end} />
       </div>
-      <MessageComposer value={text} onChange={setText} onSend={send} busy={busy} placeholder={`Message ${first}`} />
+      <MessageComposer
+        value={text}
+        onChange={setText}
+        onSend={send}
+        busy={busy}
+        placeholder={i18n.t('chat.placeholder', [first!])}
+      />
     </div>
   );
 }

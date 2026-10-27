@@ -4,6 +4,7 @@ import { pushClipboard, sendClipboard, sendQuietly } from '@/background/services
 import { show } from '@/background/platform/notifications';
 import { readClipboard } from '@/background/platform/offscreen';
 import { openPopout } from '@/background/platform/windows';
+import { i18n } from '#i18n';
 
 /** Keyboard shortcuts declared in wxt.config.ts (`commands`). */
 export function registerCommands() {
@@ -22,10 +23,14 @@ export function registerCommands() {
       if (!text) return;
       try {
         await sendClipboard(text);
-        await show(`info:clip-sent-${Date.now()}`, { title: 'Clipboard sent', message: text.slice(0, 200), silent: true });
+        await show(`info:clip-sent-${Date.now()}`, {
+          title: i18n.t('bg.clipboardSent'),
+          message: text.slice(0, 200),
+          silent: true,
+        });
       } catch (err) {
         await show(`info:clip-fail-${Date.now()}`, {
-          title: 'Couldn’t send clipboard',
+          title: i18n.t('bg.clipboardFailed'),
           message: err instanceof Error ? err.message : String(err),
           silent: true,
         });

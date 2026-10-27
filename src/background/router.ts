@@ -12,6 +12,7 @@ import { clearAllPushNotifications, deletePush, dismissPush } from '@/background
 import { pushClipboard, sendClipboard, sendPush } from '@/background/services/send';
 import { fetchThread, fetchThreads, sendSms } from '@/background/services/sms';
 import { reconnect } from '@/background/services/stream';
+import { i18n } from '#i18n';
 
 type Handlers = { [K in RpcName]: (req: Rpc[K]['req']) => Promise<Rpc[K]['res']> };
 
@@ -63,10 +64,10 @@ const handlers: Handlers = {
   'preview.save': ({ url, preview }) => savePreview(url, preview),
   'notify.test': () =>
     show(`info:test-${Date.now()}`, {
-      title: 'This is how pushes arrive',
-      message: 'Links open in a new tab when you click them.',
-      context: 'From Pushpilot',
-      buttons: ['Open', 'Dismiss'],
+      title: i18n.t('bg.testTitle'),
+      message: i18n.t('bg.testMessage'),
+      context: i18n.t('bg.testContext'),
+      buttons: [i18n.t('actions.open'), i18n.t('common.dismiss')],
     }),
 };
 

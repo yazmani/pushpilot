@@ -7,6 +7,7 @@ import { type LinkPreview, urlPreview, youtubeId } from '@/core/utils/links';
 import { useNow } from '@/ui/hooks/use-now';
 import { useRun, useToast } from '@/ui/hooks/use-toast';
 import { counterpart } from './classify';
+import { i18n } from '#i18n';
 
 export interface FeedContext {
   devices: Device[];
@@ -23,15 +24,18 @@ function describe(p: Push, ctx: FeedContext, who: string | null, chat?: Chat, su
   const fromHere = !!source && source.iden === ctx.selfDeviceIden;
   const toHere = !!target && target.iden === ctx.selfDeviceIden;
   if (sub) return sub.channel.name;
-  if (who) return p.direction === 'incoming' ? `From ${p.sender_name || personName(chat, who)}` : `To ${personName(chat, who)}`;
-  if (fromHere && toHere) return 'Saved for later';
-  if (fromHere) return `Sent to ${target ? deviceName(target) : 'all devices'}`;
-  if (source && toHere) return `From ${deviceName(source)}`;
-  if (source && target) return `${deviceName(source)} to ${deviceName(target)}`;
-  if (source) return `From ${deviceName(source)} to all devices`;
-  if (toHere) return 'Sent to this browser';
-  if (target) return `Sent to ${deviceName(target)}`;
-  return 'Sent to all devices';
+  if (who)
+    return p.direction === 'incoming'
+      ? i18n.t('route.from', [p.sender_name || personName(chat, who)])
+      : i18n.t('route.to', [personName(chat, who)]);
+  if (fromHere && toHere) return i18n.t('route.saved');
+  if (fromHere) return target ? i18n.t('route.sentTo', [deviceName(target)]) : i18n.t('route.sentToAll');
+  if (source && toHere) return i18n.t('route.from', [deviceName(source)]);
+  if (source && target) return i18n.t('route.between', [deviceName(source), deviceName(target)]);
+  if (source) return i18n.t('route.fromToAll', [deviceName(source)]);
+  if (toHere) return i18n.t('route.sentToHere');
+  if (target) return i18n.t('route.sentTo', [deviceName(target)]);
+  return i18n.t('route.sentToAll');
 }
 
 /** What we know about a link: fetched or saved metadata over what the URL alone says. */
@@ -71,9 +75,9 @@ export function FeedItem({
     p.type === 'link'
       ? pushTitle ||
         preview?.title ||
-        (preview?.kind === 'video' ? `${preview.siteName?.split(',')[0] ?? host(p.url)} video` : host(p.url))
+        (preview?.kind === 'video' ? i18n.t('feed.siteVideo', [preview.siteName?.split(',')[0] ?? host(p.url)]) : host(p.url))
       : p.type === 'file'
-        ? p.file_name || 'File'
+        ? p.file_name || i18n.t('kind.file')
         : p.title || '';
   const site = preview ? preview.siteName?.split(',')[0] || host(p.url) : undefined;
   const subtitle = p.body || preview?.description || site;
@@ -88,7 +92,7 @@ export function FeedItem({
   ) : who ? (
     <button
       onClick={() => onPerson(who)}
-      aria-label={`Open conversation with ${personName(chat, who)}`}
+      aria-label={i18n.t('feed.openConversation', [personName(chat, who)])}
       className="grid h-12 w-[85px] place-items-center rounded-xl bg-raised"
     >
       <Avatar src={chat?.with.image_url} name={personName(chat, who)} size={36} />
@@ -103,7 +107,9 @@ export function FeedItem({
 
   return (
     <li className="group relative flex items-start gap-3 px-3.5 py-3 transition-colors hover:bg-raised/50">
-      {isNew && <span className="absolute left-1.5 top-[26px] size-1.5 rounded-full bg-accent" aria-label="New" />}
+      {isNew && (
+        <span className="absolute start-1.5 top-[26px] size-1.5 rounded-full bg-accent" aria-label={i18n.t('feed.new')} />
+      )}
       <a href={url} target="_blank" rel="noreferrer" tabIndex={-1} className={url ? 'shrink-0' : 'pointer-events-none shrink-0'}>
         {leading}
       </a>
@@ -135,10 +141,10 @@ export function FeedItem({
         )}
         <div className="mt-0.5 flex h-5 items-center gap-2">
           <p className="min-w-0 flex-1 truncate text-2xs font-medium text-faint">{describe(p, ctx, who, chat, sub)}</p>
-          <div className="-mr-1.5 flex items-center opacity-0 transition-opacity group-focus-within:opacity-100 group-hover:opacity-100">
+          <div className="-me-1.5 flex items-center opacity-0 transition-opacity group-focus-within:opacity-100 group-hover:opacity-100">
             {url && (
               <IconButton
-                label={p.type === 'file' ? 'Download' : 'Open'}
+                label={p.type === 'file' ? i18n.t('actions.download') : i18n.t('actions.open')}
                 className="size-6"
                 onClick={() => window.open(url, '_blank')}
               >
@@ -146,28 +152,28 @@ export function FeedItem({
               </IconButton>
             )}
             <IconButton
-              label="Copy"
+              label={i18n.t('actions.copy')}
               className="size-6"
               onClick={async () => {
                 await navigator.clipboard.writeText(pushText(p));
-                notify('Copied');
+                notify(i18n.t('actions.copied'));
               }}
             >
               <Copy size={14} />
             </IconButton>
             {!p.dismissed && p.direction !== 'outgoing' && (
               <IconButton
-                label="Mark as done"
+                label={i18n.t('actions.done')}
                 className="size-6"
-                onClick={() => run(() => call('push.dismiss', { iden: p.iden }), 'Marked as done')}
+                onClick={() => run(() => call('push.dismiss', { iden: p.iden }), i18n.t('actions.doneToast'))}
               >
                 <Check size={14} />
               </IconButton>
             )}
             <IconButton
-              label="Delete everywhere"
+              label={i18n.t('actions.deleteEverywhere')}
               className="size-6 hover:!text-danger"
-              onClick={() => run(() => call('push.delete', { iden: p.iden }), 'Deleted')}
+              onClick={() => run(() => call('push.delete', { iden: p.iden }), i18n.t('actions.deleted'))}
             >
               <Trash size={14} />
             </IconButton>

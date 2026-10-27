@@ -9,7 +9,7 @@ const STORE_PUBLIC_KEY =
 
 // See https://wxt.dev/api/config.html
 export default defineConfig({
-  modules: ['@wxt-dev/module-react'],
+  modules: ['@wxt-dev/module-react', '@wxt-dev/i18n/module'],
   srcDir: 'src',
   // Every extension context lives here: the popup, side panel, options and
   // offscreen pages, plus background.ts (WXT discovers all entrypoints in one folder).
@@ -21,10 +21,11 @@ export default defineConfig({
     plugins: [tailwindcss()],
   }),
   manifest: {
-    name: 'Pushpilot for Pushbullet',
+    // Strings come from src/locales/<language>.yml.
+    default_locale: 'en',
+    name: '__MSG_extName__',
     short_name: 'Pushpilot',
-    description:
-      'Send tabs, notes and files to your phone, see Android notifications and text from your browser. Unofficial Pushbullet client.',
+    description: '__MSG_extDescription__',
     ...(process.env.STORE_BUILD ? {} : { key: STORE_PUBLIC_KEY }),
     minimum_chrome_version: '127',
     homepage_url: 'https://yazmani.github.io/pushpilot/',
@@ -61,27 +62,27 @@ export default defineConfig({
     commands: {
       _execute_action: {
         suggested_key: { default: 'Alt+Shift+R' },
-        description: 'Open Pushpilot',
+        description: '__MSG_cmdOpen__',
       },
       'push-current-page': {
         suggested_key: { default: 'Alt+Shift+P' },
-        description: 'Push the current page to your default device',
+        description: '__MSG_cmdPushPage__',
       },
       // Global: they work from any app while the browser runs. Chrome allows
       // at most four suggested keys, and only Ctrl+Shift+[0-9] for global ones
       // (⌘⇧ on a Mac).
       'push-clipboard': {
         suggested_key: { default: 'Ctrl+Shift+9' },
-        description: 'Push what you copied to your default device, from any app',
+        description: '__MSG_cmdPushClipboard__',
         global: true,
       },
       'open-window': {
         suggested_key: { default: 'Ctrl+Shift+8' },
-        description: 'Open Pushpilot in a window, from any app',
+        description: '__MSG_cmdOpenWindow__',
         global: true,
       },
       'send-clipboard': {
-        description: 'Send your clipboard to your other devices (universal copy and paste)',
+        description: '__MSG_cmdSendClipboard__',
       },
     },
   },

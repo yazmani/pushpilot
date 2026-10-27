@@ -13,6 +13,7 @@ import { useStore } from '@/ui/hooks/use-store';
 import { useTheme } from '@/ui/hooks/use-theme';
 import { ToastProvider } from '@/ui/hooks/use-toast';
 import { Header } from './Header';
+import { i18n } from '#i18n';
 
 /** Where the app is rendered: toolbar popup, side panel, or the pop-out window. */
 export type Mode = 'popup' | 'panel' | 'window';
@@ -90,16 +91,14 @@ function Shell({ mode }: { mode: Mode }) {
 
       {(connection === 'offline' || lastError) && (
         <div className="flex shrink-0 items-center gap-2 border-b border-line bg-note-bg px-3.5 py-2 text-xs text-ink">
-          <span className="flex-1 leading-relaxed">
-            {connection === 'offline' ? 'Can’t reach Pushbullet. Retrying in the background.' : lastError}
-          </span>
+          <span className="flex-1 leading-relaxed">{connection === 'offline' ? i18n.t('app.offline') : lastError}</span>
           {connection === 'offline' ? (
             <button className="flex items-center gap-1 font-bold text-note-fg" onClick={() => void call('reconnect')}>
-              <RefreshCw size={12} /> Retry
+              <RefreshCw size={12} /> {i18n.t('common.retry')}
             </button>
           ) : (
             <button className="font-bold text-note-fg" onClick={() => void store.set({ lastError: null })}>
-              Dismiss
+              {i18n.t('common.dismiss')}
             </button>
           )}
         </div>

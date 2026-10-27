@@ -5,6 +5,7 @@ import { host } from '@/core/utils/format';
 import { formatDuration, type LinkPreview, supportsTimestamp } from '@/core/utils/links';
 import { IconButton, KindBadge, LinkThumb } from '@/ui/components';
 import type { PageInfo } from './page';
+import { i18n } from '#i18n';
 
 /**
  * The link you're about to send as a share-sheet header: thumbnail, title,
@@ -46,8 +47,8 @@ export function LinkCard({
             value={title}
             onChange={(e) => onTitle(e.target.value.replace(/\n/g, ' '))}
             rows={1}
-            placeholder="Title"
-            aria-label="Link title"
+            placeholder={i18n.t('link.title')}
+            aria-label={i18n.t('link.titleLabel')}
             className="line-clamp-2 max-h-[2.7em] w-full resize-none bg-transparent text-sm font-bold leading-snug outline-none [field-sizing:content] placeholder:text-faint focus:line-clamp-none focus:max-h-none"
           />
           <div className="mt-1 flex min-w-0 items-center gap-1.5">
@@ -63,7 +64,7 @@ export function LinkCard({
               onChange={(e) => onUrl(e.target.value)}
               onBlur={() => setEditingUrl(false)}
               onKeyDown={(e) => e.key === 'Enter' && setEditingUrl(false)}
-              aria-label="Link address"
+              aria-label={i18n.t('link.address')}
               spellCheck={false}
               className="mt-1 w-full rounded-md border border-accent bg-surface px-1.5 py-0.5 text-2xs font-semibold text-accent-strong outline-none"
             />
@@ -71,14 +72,14 @@ export function LinkCard({
             <button
               onClick={() => setEditingUrl(true)}
               className="group mt-0.5 flex max-w-full items-center gap-1 text-2xs font-semibold text-accent-strong"
-              title="Edit link"
+              title={i18n.t('link.edit')}
             >
               <span className="truncate">{url.replace(/^https?:\/\/(www\.)?/, '')}</span>
               <Pencil size={10} className="shrink-0 opacity-0 transition-opacity group-hover:opacity-100" />
             </button>
           )}
         </div>
-        <IconButton label="Remove link" onClick={onRemove} className="-mr-1.5 -mt-1 size-7">
+        <IconButton label={i18n.t('link.remove')} onClick={onRemove} className="-me-1.5 -mt-1 size-7">
           <X size={14} />
         </IconButton>
       </div>
@@ -95,7 +96,7 @@ export function LinkCard({
                 timestamp ? 'border-accent bg-accent-soft text-accent-strong' : 'border-line text-muted hover:text-ink',
               )}
             >
-              <Timer size={13} /> Start at {formatDuration(page!.videoTime!)}
+              <Timer size={13} /> {i18n.t('link.startAt', [formatDuration(page!.videoTime!)])}
             </button>
           )}
           {onSendImage && (
@@ -104,7 +105,7 @@ export function LinkCard({
               onClick={onSendImage}
               className="flex h-7 items-center gap-1.5 rounded-full border border-line px-2.5 text-xs font-bold text-muted transition-colors hover:text-ink"
             >
-              <ImageDown size={13} /> Send the image itself
+              <ImageDown size={13} /> {i18n.t('link.sendImage')}
             </button>
           )}
         </div>

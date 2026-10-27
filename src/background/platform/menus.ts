@@ -2,13 +2,14 @@ import { browser, type Browser } from 'wxt/browser';
 import * as store from '@/core/storage/store';
 import { deviceName, isReachable, personName } from '@/core/utils/format';
 import { sendImage, sendQuietly } from '@/background/services/send';
+import { i18n } from '#i18n';
 
 type Ctx = 'page' | 'link' | 'image' | 'selection';
-const ROOTS: { ctx: Ctx; title: string }[] = [
-  { ctx: 'page', title: 'Push this page' },
-  { ctx: 'link', title: 'Push this link' },
-  { ctx: 'image', title: 'Push this image' },
-  { ctx: 'selection', title: 'Push selected text' },
+const ROOTS: { ctx: Ctx; title: () => string }[] = [
+  { ctx: 'page', title: () => i18n.t('menu.page') },
+  { ctx: 'link', title: () => i18n.t('menu.link') },
+  { ctx: 'image', title: () => i18n.t('menu.image') },
+  { ctx: 'selection', title: () => i18n.t('menu.selection') },
 ];
 
 let building: Promise<void> = Promise.resolve();
@@ -31,7 +32,7 @@ async function build() {
   if (!token || !settings.contextMenu) return;
 
   const targets: { key: string; title: string }[] = [
-    { key: 'all', title: 'All my other devices' },
+    { key: 'all', title: i18n.t('menu.allOther') },
     ...devices
       .filter((d) => isReachable(d) && d.iden !== selfDeviceIden)
       .map((d) => ({ key: `device:${d.iden}`, title: deviceName(d) })),
@@ -40,7 +41,7 @@ async function build() {
 
   for (const root of ROOTS) {
     const parent = `root|${root.ctx}`;
-    browser.contextMenus.create({ id: parent, title: root.title, contexts: [root.ctx] });
+    browser.contextMenus.create({ id: parent, title: root.title(), contexts: [root.ctx] });
     for (const t of targets) {
       browser.contextMenus.create({ id: `${root.ctx}|${t.key}`, parentId: parent, title: t.title, contexts: [root.ctx] });
     }

@@ -3,6 +3,7 @@ import { Check } from 'lucide-react';
 import type { MouseEvent } from 'react';
 import { browser } from 'wxt/browser';
 import type { TargetOption } from './targets';
+import { i18n } from '#i18n';
 
 /**
  * AirDrop-style row of round targets: devices first, then people. Click picks
@@ -30,10 +31,10 @@ export function TargetGrid({
   const firstPerson = targets.findIndex((t) => t.kind === 'person');
 
   return (
-    <section className="mt-4" aria-label="Send to">
+    <section className="mt-4" aria-label={i18n.t('targets.heading')}>
       <div className="mb-1 flex items-baseline px-0.5">
-        <h3 className="text-xs font-bold text-muted">Send to</h3>
-        {targets.length > 2 && <span className="ml-auto text-2xs font-medium text-faint">⌘-click for several</span>}
+        <h3 className="text-xs font-bold text-muted">{i18n.t('targets.heading')}</h3>
+        {targets.length > 2 && <span className="ms-auto text-2xs font-medium text-faint">{i18n.t('targets.multiHint')}</span>}
       </div>
       <div className="fade-x no-scrollbar -mx-3.5 flex overflow-x-auto px-2.5 pb-1">
         {targets.map((t, i) => {
@@ -62,7 +63,7 @@ export function TargetGrid({
                 >
                   {t.icon}
                   {on && (
-                    <span className="absolute -bottom-0.5 -right-0.5 grid size-[18px] place-items-center rounded-full bg-accent text-on-accent ring-2 ring-bg">
+                    <span className="absolute -bottom-0.5 -end-0.5 grid size-[18px] place-items-center rounded-full bg-accent text-on-accent ring-2 ring-bg">
                       <Check size={11} strokeWidth={3.2} />
                     </span>
                   )}
@@ -83,13 +84,12 @@ export function TargetGrid({
 
       {unreachable > 0 && (
         <p className="mt-1 px-0.5 text-2xs leading-relaxed text-faint">
-          {unreachable} older {unreachable === 1 ? 'device isn’t' : 'devices aren’t'} receiving pushes, so{' '}
-          {unreachable === 1 ? 'it’s' : 'they’re'} hidden.{' '}
+          {i18n.t('targets.hidden', unreachable)}{' '}
           <button
             className="font-semibold text-accent-strong hover:underline"
             onClick={() => void browser.tabs.create({ url: browser.runtime.getURL('/options.html#devices') })}
           >
-            See devices
+            {i18n.t('targets.seeDevices')}
           </button>
         </p>
       )}

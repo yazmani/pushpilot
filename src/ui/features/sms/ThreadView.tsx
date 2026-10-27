@@ -6,6 +6,7 @@ import type { SmsMessage, SmsRecipient, SmsThread } from '@/core/pushbullet/type
 import { clockTime, dayLabel, threadName } from '@/core/utils/format';
 import { Avatar, Centered, IconButton, MessageComposer, Notice, Spinner } from '@/ui/components';
 import { errorText, useToast } from '@/ui/hooks/use-toast';
+import { i18n } from '#i18n';
 
 export function recipientImage(r?: SmsRecipient) {
   if (r?.thumbnail) return `data:image/jpeg;base64,${r.thumbnail}`;
@@ -75,8 +76,8 @@ export function ThreadView({ device, thread, onBack }: { device: string; thread:
   return (
     <div className="flex h-full flex-col">
       <div className="flex shrink-0 items-center gap-2.5 border-b border-line bg-surface/60 px-2 py-2">
-        <IconButton label="Back to conversations" onClick={onBack}>
-          <ArrowLeft size={16} />
+        <IconButton label={i18n.t('sms.back')} onClick={onBack}>
+          <ArrowLeft size={16} className="rtl:-scale-x-100" />
         </IconButton>
         <Avatar src={thread.recipients.length === 1 ? recipientImage(thread.recipients[0]) : undefined} name={name} size={30} />
         <div className="min-w-0 flex-1">
@@ -112,7 +113,7 @@ export function ThreadView({ device, thread, onBack }: { device: string; thread:
                   <div
                     className={clsx(
                       'rounded-2xl px-3.5 py-2 text-sm',
-                      mine ? 'rounded-br-md bg-accent text-on-accent' : 'rounded-bl-md border border-line bg-surface',
+                      mine ? 'rounded-ee-md bg-accent text-on-accent' : 'rounded-es-md border border-line bg-surface',
                       m.pending && 'opacity-60',
                     )}
                   >
@@ -121,7 +122,9 @@ export function ThreadView({ device, thread, onBack }: { device: string; thread:
                     ))}
                     {m.body && <p className="whitespace-pre-wrap break-words">{m.body}</p>}
                   </div>
-                  <span className="mt-0.5 px-1 text-2xs text-faint">{m.pending ? 'Sending…' : clockTime(m.timestamp)}</span>
+                  <span className="mt-0.5 px-1 text-2xs text-faint">
+                    {m.pending ? i18n.t('send.sending') : clockTime(m.timestamp)}
+                  </span>
                 </div>
               </div>
             );
@@ -129,7 +132,7 @@ export function ThreadView({ device, thread, onBack }: { device: string; thread:
         </div>
         <div ref={end} />
       </div>
-      <MessageComposer value={text} onChange={setText} onSend={send} placeholder="Text message" />
+      <MessageComposer value={text} onChange={setText} onSend={send} placeholder={i18n.t('sms.placeholder')} />
     </div>
   );
 }

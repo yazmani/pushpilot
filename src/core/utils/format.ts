@@ -1,8 +1,9 @@
 import type { Chat, Device, Push, SmsThread } from '@/core/pushbullet/types';
+import { i18n } from '#i18n';
 
 export function deviceName(d: Device | undefined): string {
-  if (!d) return 'Unknown device';
-  return d.nickname || [d.manufacturer, d.model].filter(Boolean).join(' ') || 'Unnamed device';
+  if (!d) return i18n.t('device.unknown');
+  return d.nickname || [d.manufacturer, d.model].filter(Boolean).join(' ') || i18n.t('device.unnamed');
 }
 
 /** Pushbullet keeps stale registrations around with `pushable: false`; pushes to them go nowhere. */
@@ -10,29 +11,31 @@ export function isReachable(d: Device): boolean {
   return d.active && d.pushable !== false;
 }
 
-export function deviceKind(d: Device | undefined): string {
+export type DeviceCategory = 'phone' | 'tablet' | 'laptop' | 'watch' | 'browser' | 'website' | 'computer';
+
+export function deviceCategory(d: Device | undefined): DeviceCategory {
   switch (d?.icon) {
     case 'phone':
-      return 'Phone';
     case 'tablet':
-      return 'Tablet';
     case 'laptop':
-      return 'Laptop';
     case 'watch':
-      return 'Watch';
     case 'browser':
-      return 'Browser';
     case 'website':
-      return 'Website';
+      return d.icon;
     case 'system':
-      return 'Computer';
+      return 'computer';
     default:
-      if (d?.type === 'android' || d?.type === 'ios') return 'Phone';
-      return d?.type === 'chrome' || d?.type === 'firefox' ? 'Browser' : 'Computer';
+      if (d?.type === 'android' || d?.type === 'ios') return 'phone';
+      return d?.type === 'chrome' || d?.type === 'firefox' ? 'browser' : 'computer';
   }
 }
 
-export function personName(c: Chat | undefined, fallback = 'Someone'): string {
+/** "Phone", "Browser"… in the UI language. */
+export function deviceKind(d: Device | undefined): string {
+  return i18n.t(`device.kind.${deviceCategory(d)}`);
+}
+
+export function personName(c: Chat | undefined, fallback = i18n.t('device.someone')): string {
   return c?.with.name || c?.with.email || fallback;
 }
 
@@ -79,7 +82,7 @@ const rtf = new Intl.RelativeTimeFormat(undefined, { numeric: 'auto', style: 'na
 export function timeAgo(seconds: number): string {
   const diff = seconds - Date.now() / 1000;
   const abs = Math.abs(diff);
-  if (abs < 45) return 'now';
+  if (abs < 45) return i18n.t('time.now');
   if (abs < 3600) return rtf.format(Math.round(diff / 60), 'minute');
   if (abs < 86400) return rtf.format(Math.round(diff / 3600), 'hour');
   if (abs < 86400 * 6) return rtf.format(Math.round(diff / 86400), 'day');
@@ -99,8 +102,8 @@ export function dayLabel(seconds: number): string {
   const d = new Date(seconds * 1000);
   const today = new Date();
   const yesterday = new Date(Date.now() - 86400000);
-  if (d.toDateString() === today.toDateString()) return 'Today';
-  if (d.toDateString() === yesterday.toDateString()) return 'Yesterday';
+  if (d.toDateString() === today.toDateString()) return i18n.t('time.today');
+  if (d.toDateString() === yesterday.toDateString()) return i18n.t('time.yesterday');
   return d.toLocaleDateString(undefined, { weekday: 'long', month: 'short', day: 'numeric' });
 }
 

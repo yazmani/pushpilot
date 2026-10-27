@@ -8,12 +8,13 @@ import * as store from '@/core/storage/store';
 import type { Tab, Unread } from '@/core/storage/store';
 import { Avatar, LogoMark } from '@/ui/components';
 import type { Mode } from './App';
+import { i18n } from '#i18n';
 
-const TABS: { id: Tab; label: string }[] = [
-  { id: 'send', label: 'Send' },
-  { id: 'feed', label: 'Feed' },
-  { id: 'phone', label: 'Phone' },
-  { id: 'sms', label: 'SMS' },
+const TABS: { id: Tab; label: () => string }[] = [
+  { id: 'send', label: () => i18n.t('tabs.send') },
+  { id: 'feed', label: () => i18n.t('tabs.feed') },
+  { id: 'phone', label: () => i18n.t('tabs.phone') },
+  { id: 'sms', label: () => i18n.t('tabs.sms') },
 ];
 
 /**
@@ -44,9 +45,9 @@ export function Header({
 
   return (
     <header className="bg-band relative shrink-0 text-on-band">
-      <div className="flex h-[52px] items-center gap-1 pl-3.5 pr-2.5">
-        <LogoMark size={28} className="mr-1.5 shrink-0 drop-shadow-[0_2px_4px_rgba(0,40,20,0.3)]" />
-        <nav className="flex min-w-0 flex-1 items-center gap-0.5" role="tablist" aria-label="Sections">
+      <div className="flex h-[52px] items-center gap-1 ps-3.5 pe-2.5">
+        <LogoMark size={28} className="me-1.5 shrink-0 drop-shadow-[0_2px_4px_rgba(0,40,20,0.3)]" />
+        <nav className="flex min-w-0 flex-1 items-center gap-0.5" role="tablist" aria-label={i18n.t('header.sections')}>
           {TABS.filter((t) => t.id !== 'sms' || showSms).map((t) => {
             const on = tab === t.id;
             const count = t.id === 'send' ? 0 : unread[t.id];
@@ -63,7 +64,7 @@ export function Header({
                     : 'text-on-band/80 hover:bg-white/12 hover:text-on-band',
                 )}
               >
-                {t.label}
+                {t.label()}
                 {count > 0 && (
                   <span
                     className={clsx(
@@ -81,7 +82,7 @@ export function Header({
 
         {snoozed && (
           <button
-            title="Notifications are paused. Click to turn them back on."
+            title={i18n.t('header.pausedHint')}
             onClick={() => void store.updateSettings({ snoozeUntil: 0 })}
             className="grid size-8 place-items-center rounded-full text-on-band/85 hover:bg-white/12"
           >
@@ -91,7 +92,7 @@ export function Header({
         <div className="relative">
           <button
             onClick={() => setMenu((v) => !v)}
-            aria-label="Account and options"
+            aria-label={i18n.t('header.accountMenu')}
             aria-expanded={menu}
             className="relative rounded-full p-0.5 transition-colors hover:bg-white/15"
           >
@@ -111,7 +112,7 @@ function StatusDot({ state }: { state: ConnectionState }) {
   return (
     <span
       className={clsx(
-        'absolute bottom-0 right-0 size-2.5 rounded-full ring-2 ring-[#13a257] dark:ring-[#0f4a2b]',
+        'absolute bottom-0 end-0 size-2.5 rounded-full ring-2 ring-[#13a257] dark:ring-[#0f4a2b]',
         state === 'live' && 'bg-[#7dffb4]',
         state === 'connecting' && 'animate-pulse bg-amber-300',
         (state === 'offline' || state === 'signed-out') && 'bg-zinc-300',
@@ -166,14 +167,20 @@ function AccountMenu({
     window.close();
   };
 
-  const item = 'flex w-full items-center gap-2.5 rounded-lg px-2.5 py-2 text-left text-sm font-semibold text-ink hover:bg-raised';
-  const status = connection === 'live' ? 'Connected' : connection === 'connecting' ? 'Connecting…' : 'Offline';
+  const item =
+    'flex w-full items-center gap-2.5 rounded-lg px-2.5 py-2 text-start text-sm font-semibold text-ink hover:bg-raised';
+  const status =
+    connection === 'live'
+      ? i18n.t('header.connected')
+      : connection === 'connecting'
+        ? i18n.t('header.connecting')
+        : i18n.t('header.offline');
 
   return (
     <div
       ref={ref}
       role="menu"
-      className="animate-rise absolute right-0 top-11 z-50 w-64 rounded-2xl border border-line bg-surface p-1.5 text-ink shadow-card"
+      className="animate-rise absolute end-0 top-11 z-50 w-64 rounded-2xl border border-line bg-surface p-1.5 text-ink shadow-card"
     >
       <div className="flex items-center gap-2.5 px-2.5 pb-2.5 pt-2">
         <Avatar src={me?.image_url} name={me?.name || me?.email} size={34} />
@@ -188,8 +195,8 @@ function AccountMenu({
             />
             {status}
             {connection === 'offline' && (
-              <button className="ml-1 flex items-center gap-1 text-accent-strong" onClick={() => void call('reconnect')}>
-                <RefreshCw size={10} /> Retry
+              <button className="ms-1 flex items-center gap-1 text-accent-strong" onClick={() => void call('reconnect')}>
+                <RefreshCw size={10} /> {i18n.t('common.retry')}
               </button>
             )}
           </p>
@@ -198,31 +205,33 @@ function AccountMenu({
 
       <div className="border-t border-line px-2.5 pb-1 pt-2.5 text-2xs font-bold text-muted">
         {snoozed
-          ? `Quiet until ${new Date(snoozeUntil).toLocaleTimeString(undefined, { hour: 'numeric', minute: '2-digit' })}`
-          : 'Pause notifications'}
+          ? i18n.t('header.quietUntil', [
+              new Date(snoozeUntil).toLocaleTimeString(undefined, { hour: 'numeric', minute: '2-digit' }),
+            ])
+          : i18n.t('header.pause')}
       </div>
       <div className="grid grid-cols-4 gap-1 px-1.5 pb-2">
         {(
           [
-            ['30m', 30 * 60_000],
-            ['1h', 3_600_000],
-            ['8h', 8 * 3_600_000],
-            ['Night', tomorrowMorning()],
+            ['30m', i18n.t('header.snooze30m'), 30 * 60_000],
+            ['1h', i18n.t('header.snooze1h'), 3_600_000],
+            ['8h', i18n.t('header.snooze8h'), 8 * 3_600_000],
+            ['night', i18n.t('header.snoozeNight'), tomorrowMorning()],
           ] as const
-        ).map(([label, ms]) => (
+        ).map(([id, label, ms]) => (
           <button
-            key={label}
+            key={id}
             onClick={() => snooze(ms)}
             className="flex h-8 items-center justify-center gap-1 rounded-lg bg-raised text-xs font-bold hover:bg-accent-soft hover:text-accent-strong"
           >
-            {label === 'Night' && <Moon size={11} />}
+            {id === 'night' && <Moon size={11} />}
             {label}
           </button>
         ))}
       </div>
       {snoozed && (
         <button className={clsx(item, 'text-accent-strong')} onClick={() => snooze(0)}>
-          <Check size={15} /> Turn notifications back on
+          <Check size={15} /> {i18n.t('header.unpause')}
         </button>
       )}
 
@@ -230,10 +239,10 @@ function AccountMenu({
         {mode === 'popup' && (
           <>
             <button className={item} onClick={openPanel}>
-              <PanelRight size={15} className="text-muted" /> Open in side panel
+              <PanelRight size={15} className="text-muted" /> {i18n.t('header.openPanel')}
             </button>
             <button className={item} onClick={popOut}>
-              <ExternalLink size={15} className="text-muted" /> Open in a window
+              <ExternalLink size={15} className="text-muted" /> {i18n.t('header.openWindow')}
             </button>
           </>
         )}
@@ -241,7 +250,7 @@ function AccountMenu({
           <Globe size={15} className="text-muted" /> Pushbullet.com
         </a>
         <button className={item} onClick={() => void browser.runtime.openOptionsPage()}>
-          <Settings size={15} className="text-muted" /> Settings
+          <Settings size={15} className="text-muted" /> {i18n.t('header.settings')}
         </button>
       </div>
     </div>

@@ -4,10 +4,11 @@ import * as store from '@/core/storage/store';
 import { ensureSelfDevice, syncPeople } from '@/background/services/account';
 import { syncPushes } from '@/background/services/pushes';
 import { connect, disconnect } from '@/background/services/stream';
+import { i18n } from '#i18n';
 
 export async function signInWithToken(token: string) {
   token = token.trim();
-  if (!token) throw new Error('Paste an access token first.');
+  if (!token) throw new Error(i18n.t('bg.pasteToken'));
   const me = await new Pushbullet(token).me();
   await store.set({ token, me, connection: 'connecting', lastError: null });
   await bootstrap();

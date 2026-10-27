@@ -7,6 +7,7 @@ import { clear, isSnoozed, onNotification, show, toDataUrl } from '@/background/
 import { copyText } from '@/background/platform/offscreen';
 import { openApp, openUrl } from '@/background/platform/windows';
 import { guard, requireClient } from '@/background/session';
+import { i18n } from '#i18n';
 
 const KEEP = 600;
 
@@ -124,7 +125,7 @@ async function deliver(p: Push, reconnect: boolean) {
   let icon: string | undefined;
   if (p.channel_iden) {
     const sub = subscriptions.find((s) => s.channel.iden === p.channel_iden);
-    from = sub?.channel.name ?? p.sender_name ?? 'Channel';
+    from = sub?.channel.name ?? p.sender_name ?? i18n.t('bg.channel');
     icon = await toDataUrl(sub?.channel.image_url);
   } else if (fromPerson) {
     const chat = chats.find((c) => c.with.email_normalized === p.sender_email_normalized);
@@ -137,10 +138,10 @@ async function deliver(p: Push, reconnect: boolean) {
   const preview = p.type === 'link' && p.url ? (previews[p.url] ?? urlPreview(p.url)) : undefined;
   const title =
     p.type === 'link'
-      ? p.title || preview?.title || host(p.url) || 'Link'
+      ? p.title || preview?.title || host(p.url) || i18n.t('kind.link')
       : p.type === 'file'
-        ? p.file_name || 'File'
-        : p.title || (p.body ? (p.body.split('\n')[0] ?? '').slice(0, 80) : 'Note');
+        ? p.file_name || i18n.t('kind.file')
+        : p.title || (p.body ? (p.body.split('\n')[0] ?? '').slice(0, 80) : i18n.t('kind.note'));
   const message =
     p.type === 'link' ? [p.body, host(p.url)].filter(Boolean).join('\n') : p.type === 'note' && !p.title ? '' : p.body || '';
   const image = isImage(p) ? p.image_url || p.file_url : preview?.image;
@@ -150,10 +151,13 @@ async function deliver(p: Push, reconnect: boolean) {
     {
       title,
       message: message || (p.type === 'file' ? p.file_type || '' : ''),
-      context: [from && `From ${from}`, opens && 'Opened in a new tab'].filter(Boolean).join(', ') || undefined,
+      context: [from && i18n.t('route.from', [from]), opens && i18n.t('bg.opened')].filter(Boolean).join(', ') || undefined,
       icon,
       image: await toDataUrl(image),
-      buttons: [url ? (p.type === 'file' ? 'Download' : 'Open') : 'Copy', 'Done'],
+      buttons: [
+        url ? (p.type === 'file' ? i18n.t('actions.download') : i18n.t('actions.open')) : i18n.t('actions.copy'),
+        i18n.t('bg.done'),
+      ],
     },
     { sticky: settings.sticky },
   );

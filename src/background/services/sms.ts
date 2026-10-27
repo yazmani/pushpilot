@@ -4,6 +4,7 @@ import { uid } from '@/core/utils/format';
 import { isSnoozed, onNotification, show, toDataUrl } from '@/background/platform/notifications';
 import { openApp } from '@/background/platform/windows';
 import { guard, requireClient } from '@/background/session';
+import { i18n } from '#i18n';
 
 export interface SmsChangedPush {
   type: 'sms_changed';
@@ -43,9 +44,9 @@ export async function handleSmsChanged(push: SmsChangedPush) {
     await show(`sms:${device}|${n.thread_id}`, {
       title: n.title,
       message: n.body,
-      context: 'Text message',
+      context: i18n.t('sms.placeholder'),
       icon: await toDataUrl(n.image_url),
-      buttons: ['Reply'],
+      buttons: [i18n.t('phone.reply')],
     });
   }
 }

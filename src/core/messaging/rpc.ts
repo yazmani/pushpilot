@@ -2,6 +2,7 @@ import { browser } from 'wxt/browser';
 import type { SmsMessage, SmsThread, Target } from '@/core/pushbullet/types';
 import type { SoundChoice } from '@/core/storage/store';
 import type { LinkPreview } from '@/core/utils/links';
+import { i18n } from '#i18n';
 
 export interface OutgoingPush {
   type: 'note' | 'link' | 'file';
@@ -48,7 +49,7 @@ type Reply<T> = { ok: true; data: T } | { ok: false; error: string };
 
 export async function call<K extends RpcName>(rpc: K, req: Rpc[K]['req'] = {} as Rpc[K]['req']): Promise<Rpc[K]['res']> {
   const reply = (await browser.runtime.sendMessage({ rpc, ...req })) as Reply<Rpc[K]['res']> | undefined;
-  if (!reply) throw new Error('Pushpilot’s background worker did not answer. Try again.');
+  if (!reply) throw new Error(i18n.t('bg.noAnswer'));
   if (!reply.ok) throw new Error(reply.error);
   return reply.data;
 }

@@ -9,6 +9,7 @@ import { useNow } from '@/ui/hooks/use-now';
 import { useStore } from '@/ui/hooks/use-store';
 import { errorText, useToast } from '@/ui/hooks/use-toast';
 import { recipientImage, ThreadView } from './ThreadView';
+import { i18n } from '#i18n';
 
 function lastSeen(d: Device) {
   return new Date(d.modified * 1000).toLocaleDateString(undefined, { month: 'short', day: 'numeric', year: 'numeric' });
@@ -73,8 +74,8 @@ export function SmsView({ device: wantDevice, thread: wantThread }: { device?: s
 
   if (!phones.length) {
     return (
-      <Empty icon={<MessageSquareText size={24} />} title="No phone can text from here">
-        Install Pushbullet on an Android phone and allow it to send and read SMS.
+      <Empty icon={<MessageSquareText size={24} />} title={i18n.t('sms.noPhoneTitle')}>
+        {i18n.t('sms.noPhoneBody')}
       </Empty>
     );
   }
@@ -106,19 +107,19 @@ export function SmsView({ device: wantDevice, thread: wantThread }: { device?: s
             setDevice(e.target.value);
             setThreadId(undefined);
           }}
-          aria-label="Phone"
+          aria-label={i18n.t('sms.phone')}
           className={clsx(fieldClass, 'h-9 min-w-0 flex-1 font-semibold')}
         >
           {phones.map((p) => (
             <option key={p.iden} value={p.iden}>
-              {deviceName(p)} {isReachable(p) ? '' : `(last seen ${lastSeen(p)})`}
+              {deviceName(p)} {isReachable(p) ? '' : i18n.t('sms.lastSeen', [lastSeen(p)])}
             </option>
           ))}
         </select>
-        <IconButton label="Refresh" onClick={refresh} disabled={loading}>
+        <IconButton label={i18n.t('sms.refresh')} onClick={refresh} disabled={loading}>
           <RefreshCw size={15} className={clsx(loading && 'animate-spin')} />
         </IconButton>
-        <IconButton label="New text" onClick={() => setComposing(true)}>
+        <IconButton label={i18n.t('sms.newText')} onClick={() => setComposing(true)}>
           <SquarePen size={15} />
         </IconButton>
       </div>
@@ -143,7 +144,7 @@ export function SmsView({ device: wantDevice, thread: wantThread }: { device?: s
           </Centered>
         )}
         {!threads.length && !loading && !error && (
-          <Empty title="No conversations">This phone hasn’t shared any text threads yet.</Empty>
+          <Empty title={i18n.t('sms.noThreadsTitle')}>{i18n.t('sms.noThreadsBody')}</Empty>
         )}
         {threads.length > 0 && (
           <Group className="mx-1.5">
@@ -164,17 +165,17 @@ function ThreadRow({ t, onOpen }: { t: SmsThread; onOpen: () => void }) {
     <li>
       <button
         onClick={onOpen}
-        className="flex w-full items-center gap-3 px-3.5 py-2.5 text-left transition-colors hover:bg-raised/50"
+        className="flex w-full items-center gap-3 px-3.5 py-2.5 text-start transition-colors hover:bg-raised/50"
       >
         <Avatar src={t.recipients.length === 1 ? recipientImage(t.recipients[0]) : undefined} name={name} size={38} />
         <span className="min-w-0 flex-1">
           <span className="flex items-baseline gap-2">
             <span className="truncate text-sm font-bold">{name}</span>
-            {t.latest && <span className="ml-auto shrink-0 text-2xs font-medium text-faint">{timeAgo(t.latest.timestamp)}</span>}
+            {t.latest && <span className="ms-auto shrink-0 text-2xs font-medium text-faint">{timeAgo(t.latest.timestamp)}</span>}
           </span>
           <span className="mt-0.5 block truncate text-xs text-muted">
-            {t.latest?.direction === 'outgoing' && 'You: '}
-            {t.latest?.body || (t.latest?.image_urls?.length ? 'Photo' : '')}
+            {t.latest?.direction === 'outgoing' && i18n.t('sms.you')}
+            {t.latest?.body || (t.latest?.image_urls?.length ? i18n.t('sms.photo') : '')}
           </span>
         </span>
       </button>
@@ -191,11 +192,11 @@ function NewMessage({ device, onBack, onSent }: { device: string; onBack: () => 
       .split(/[,;]/)
       .map((a) => a.trim())
       .filter(Boolean);
-    if (!addresses.length) return notify('Add a phone number.', 'error');
+    if (!addresses.length) return notify(i18n.t('sms.addNumber'), 'error');
     if (!text.trim()) return;
     try {
       await call('sms.send', { device, addresses, message: text.trim() });
-      notify('Text sent');
+      notify(i18n.t('sms.sent'));
       onSent();
     } catch (err) {
       notify(errorText(err), 'error');
@@ -204,24 +205,24 @@ function NewMessage({ device, onBack, onSent }: { device: string; onBack: () => 
   return (
     <div className="flex h-full flex-col">
       <div className="flex shrink-0 items-center gap-2 border-b border-line bg-surface/60 px-2 py-2">
-        <IconButton label="Back to conversations" onClick={onBack}>
-          <ArrowLeft size={16} />
+        <IconButton label={i18n.t('sms.back')} onClick={onBack}>
+          <ArrowLeft size={16} className="rtl:-scale-x-100" />
         </IconButton>
-        <p className="text-sm font-bold">New text</p>
+        <p className="text-sm font-bold">{i18n.t('sms.newText')}</p>
       </div>
       <label className="flex shrink-0 items-center gap-2 border-b border-line px-4 py-3">
-        <span className="text-sm font-semibold text-muted">To</span>
+        <span className="text-sm font-semibold text-muted">{i18n.t('sms.to')}</span>
         <input
           autoFocus
           value={to}
           onChange={(e) => setTo(e.target.value)}
-          placeholder="Phone number, or several separated by commas"
+          placeholder={i18n.t('sms.toPlaceholder')}
           inputMode="tel"
           className="min-w-0 flex-1 bg-transparent text-sm outline-none placeholder:text-faint"
         />
       </label>
       <div className="flex-1" />
-      <MessageComposer value={text} onChange={setText} onSend={send} placeholder="Text message" />
+      <MessageComposer value={text} onChange={setText} onSend={send} placeholder={i18n.t('sms.placeholder')} />
     </div>
   );
 }

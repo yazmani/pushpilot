@@ -5,6 +5,7 @@ import { clear, isSnoozed, onNotification, show } from '@/background/platform/no
 import { copyText } from '@/background/platform/offscreen';
 import { openApp } from '@/background/platform/windows';
 import { guard, requireClient } from '@/background/session';
+import { i18n } from '#i18n';
 
 const KEEP = 150;
 
@@ -86,19 +87,19 @@ export async function handleMirror(push: MirrorPush) {
   const device = devices.find((d) => d.iden === entry.source_device_iden);
   const primary = code
     ? settings.autoCopyCodes
-      ? `Copied ${code}`
-      : `Copy ${code}`
+      ? i18n.t('phone.copiedCode', [code])
+      : i18n.t('bg.copyCode', [code])
     : entry.conversation_iden
-      ? 'Reply'
+      ? i18n.t('phone.reply')
       : entry.actions?.[0]?.label;
   await show(
     `mirror:${entry.id}`,
     {
       title: entry.title || app,
       message: entry.body || '',
-      context: device ? `${app} on ${deviceName(device)}` : app,
+      context: device ? i18n.t('bg.appOnDevice', [app ?? '', deviceName(device)]) : app,
       icon: entry.icon ? `data:image/jpeg;base64,${entry.icon}` : undefined,
-      buttons: [primary, entry.dismissible !== false ? 'Dismiss' : undefined].filter((b): b is string => !!b),
+      buttons: [primary, entry.dismissible !== false ? i18n.t('common.dismiss') : undefined].filter((b): b is string => !!b),
       silent: isUpdate,
     },
     { sticky: settings.stickyMirrors },
@@ -156,7 +157,7 @@ export async function triggerMirrorAction(id: string, key: string) {
 /** Quick reply to messaging apps (WhatsApp, Telegram, Messages…) via the phone. */
 export async function replyToMirror(id: string, message: string) {
   const m = await find(id);
-  if (!m?.conversation_iden) throw new Error('This app does not accept replies from Pushbullet.');
+  if (!m?.conversation_iden) throw new Error(i18n.t('bg.noReplies'));
   const pb = await requireClient();
   const me = await store.get('me');
   await guard(() =>

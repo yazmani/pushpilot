@@ -6,6 +6,7 @@ import { Button, Empty, Group, SectionLabel } from '@/ui/components';
 import { useStore } from '@/ui/hooks/use-store';
 import { useRun } from '@/ui/hooks/use-toast';
 import { MirrorCard } from './MirrorCard';
+import { i18n } from '#i18n';
 
 export function PhoneView({ focus }: { focus?: string }) {
   const { mirrors, devices, settings } = useStore(['mirrors', 'devices', 'settings']);
@@ -17,23 +18,22 @@ export function PhoneView({ focus }: { focus?: string }) {
     return (
       <Empty
         icon={<BellRing size={24} />}
-        title="Phone notifications are off"
+        title={i18n.t('phone.offTitle')}
         action={
           <Button onClick={() => void browser.tabs.create({ url: browser.runtime.getURL('/options.html#phone') })}>
-            Open settings
+            {i18n.t('phone.openSettings')}
           </Button>
         }
       >
-        Turn on notification mirroring to see your Android notifications here.
+        {i18n.t('phone.offBody')}
       </Empty>
     );
   }
 
   if (!mirrors.length) {
     return (
-      <Empty icon={<Smartphone size={24} />} title="No phone notifications yet">
-        In the Pushbullet app on your Android phone, open Notification mirroring and switch it on. New notifications appear here
-        and as desktop alerts.
+      <Empty icon={<Smartphone size={24} />} title={i18n.t('phone.emptyTitle')}>
+        {i18n.t('phone.emptyBody')}
       </Empty>
     );
   }
@@ -42,7 +42,7 @@ export function PhoneView({ focus }: { focus?: string }) {
     <div className="scroll-area h-full px-3.5 pb-4 pt-3">
       {live.length > 0 && (
         <section>
-          <SectionLabel>On your phone now</SectionLabel>
+          <SectionLabel>{i18n.t('phone.now')}</SectionLabel>
           <Group>
             {live.map((m) => (
               <MirrorCard key={m.id} m={m} devices={devices} autoFocus={m.id === focus} />
@@ -56,13 +56,13 @@ export function PhoneView({ focus }: { focus?: string }) {
             action={
               <button
                 className="text-xs font-bold text-muted hover:text-ink"
-                onClick={() => run(() => call('mirror.clear'), 'Cleared')}
+                onClick={() => run(() => call('mirror.clear'), i18n.t('phone.cleared'))}
               >
-                Clear all
+                {i18n.t('phone.clearAll')}
               </button>
             }
           >
-            Earlier
+            {i18n.t('phone.earlier')}
           </SectionLabel>
           <Group>
             {earlier.map((m) => (

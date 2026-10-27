@@ -1,5 +1,6 @@
 import { ApiError, Pushbullet } from '@/core/pushbullet/client';
 import * as store from '@/core/storage/store';
+import { i18n } from '#i18n';
 
 let cached: Pushbullet | null = null;
 
@@ -13,7 +14,7 @@ export async function client(): Promise<Pushbullet | null> {
 
 export async function requireClient(): Promise<Pushbullet> {
   const pb = await client();
-  if (!pb) throw new Error('Sign in to Pushbullet first.');
+  if (!pb) throw new Error(i18n.t('bg.signInFirst'));
   return pb;
 }
 
@@ -30,7 +31,7 @@ export async function guard<T>(task: () => Promise<T>): Promise<T> {
     return await task();
   } catch (err) {
     if (err instanceof ApiError && err.status === 401) {
-      await store.set({ lastError: 'Pushbullet rejected the saved access token. Sign in again.' });
+      await store.set({ lastError: i18n.t('bg.tokenRejected') });
       await onExpired();
     }
     throw err;
