@@ -2,17 +2,15 @@
 
 All notable changes are listed here. The format follows [Keep a Changelog](https://keepachangelog.com/), and versions follow [Semantic Versioning](https://semver.org/).
 
-## [Unreleased]
-
-### Fixed
-
-- The Clipboard button no longer fails with "Pushbullet Pro is required". It now pastes what you copied into the composer, ready to send: an image as a file, an address as a link, anything else as a note. Universal copy and paste (Pushbullet Pro) keeps its keyboard shortcut, and explains that it needs Pro instead of failing.
-
 ## [1.2.0] - 2026-10-27
 
 ### Added
 
 - Pushpilot speaks 17 languages: English, Arabic, German, Spanish, French, Indonesian, Italian, Japanese, Korean, Dutch, Polish, Portuguese (Brazil), Russian, Turkish, Vietnamese and Chinese (Simplified and Traditional). It follows the browser's language, and Arabic gets a mirrored right-to-left layout.
+
+### Fixed
+
+- The Clipboard button no longer fails with "Pushbullet Pro is required". It now pastes what you copied into the composer, ready to send: an image as a file, an address as a link, anything else as a note. Universal copy and paste (Pushbullet Pro) keeps its keyboard shortcut, and explains that it needs Pro instead of failing.
 
 ## [1.1.1] - 2026-10-26
 
