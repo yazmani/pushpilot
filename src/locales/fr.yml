@@ -105,7 +105,7 @@ feed:
   searchPlaceholder: Rechercher dans vos envois
   searchLabel: Rechercher des envois
   closeSearch: Fermer la recherche
-  everything: Tout
+  all: 'Tout'
   show: 'Afficher'
   fileKind:
     all: 'Tous'

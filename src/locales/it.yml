@@ -104,7 +104,7 @@ feed:
   searchPlaceholder: Cerca nei tuoi push
   searchLabel: Cerca push
   closeSearch: Chiudi ricerca
-  everything: Tutto
+  all: 'Tutto'
   show: 'Mostra'
   fileKind:
     all: 'Tutti'

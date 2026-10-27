@@ -105,7 +105,7 @@ feed:
   searchPlaceholder: Search your pushes
   searchLabel: Search pushes
   closeSearch: Close search
-  everything: Everything
+  all: 'All'
   show: 'Show'
   fileKind:
     all: 'All files'

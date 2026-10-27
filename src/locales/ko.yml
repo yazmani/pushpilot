@@ -105,7 +105,7 @@ feed:
   searchPlaceholder: 푸시 검색
   searchLabel: 푸시 검색
   closeSearch: 검색 닫기
-  everything: 전체
+  all: '전체'
   show: '보기'
   fileKind:
     all: '전체'

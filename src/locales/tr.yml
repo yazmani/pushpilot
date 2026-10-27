@@ -103,7 +103,7 @@ feed:
   searchPlaceholder: Gönderilerinde ara
   searchLabel: Gönderilerde ara
   closeSearch: Aramayı kapat
-  everything: Tümü
+  all: 'Tümü'
   show: 'Göster'
   fileKind:
     all: 'Tümü'

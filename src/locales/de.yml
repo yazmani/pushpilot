@@ -104,7 +104,7 @@ feed:
   searchPlaceholder: Deine Pushes durchsuchen
   searchLabel: Pushes durchsuchen
   closeSearch: Suche schließen
-  everything: Alles
+  all: 'Alle'
   show: 'Anzeigen'
   fileKind:
     all: 'Alle'

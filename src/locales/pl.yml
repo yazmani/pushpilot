@@ -103,7 +103,7 @@ feed:
   searchPlaceholder: Szukaj w pushach
   searchLabel: Szukaj w pushach
   closeSearch: Zamknij wyszukiwanie
-  everything: Wszystko
+  all: 'Wszystko'
   show: 'Pokaż'
   fileKind:
     all: 'Wszystkie'

@@ -105,7 +105,7 @@ feed:
   searchPlaceholder: プッシュを検索
   searchLabel: プッシュを検索
   closeSearch: 検索を閉じる
-  everything: すべて
+  all: 'すべて'
   show: '表示'
   fileKind:
     all: 'すべて'

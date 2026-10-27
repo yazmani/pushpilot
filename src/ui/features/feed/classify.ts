@@ -18,7 +18,7 @@ export const FILE_KINDS: FileKind[] = ['image', 'video', 'pdf', 'doc', 'audio', 
 export type Filter =
   { kind: 'all' } | { kind: 'type'; type: PushKind; file?: FileKind } | { kind: 'channels' } | { kind: 'person'; email: string };
 
-const DOC_EXTENSIONS = /\.(docx?|xlsx?|pptx?|odt|ods|odp|rtf|txt|md|csv|json|epub|pages|numbers|key)$/i;
+const DOC_EXTENSIONS = /\.(docx?|xlsx?|pptx?|odt|ods|odp|rtf|txt|md|csv|json|epub|pages|numbers|key|html?)$/i;
 const BY_EXTENSION: [RegExp, FileKind][] = [
   [/\.(jpe?g|png|gif|webp|heic|heif|bmp|svg|avif)$/i, 'image'],
   [/\.(mp4|mov|m4v|webm|mkv|avi|3gp)$/i, 'video'],

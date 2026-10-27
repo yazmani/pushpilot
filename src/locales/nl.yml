@@ -104,7 +104,7 @@ feed:
   searchPlaceholder: Doorzoek je pushes
   searchLabel: Pushes doorzoeken
   closeSearch: Zoeken sluiten
-  everything: Alles
+  all: 'Alles'
   show: 'Tonen'
   fileKind:
     all: 'Alle'

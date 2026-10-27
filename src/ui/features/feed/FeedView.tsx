@@ -185,7 +185,7 @@ export function FeedView() {
                     )}
                   >
                     <Icon size={14} strokeWidth={2.2} className="shrink-0" />
-                    <span className="truncate">{type === 'all' ? i18n.t('feed.everything') : i18n.t(`feed.only.${type}`)}</span>
+                    <span className="truncate">{type === 'all' ? i18n.t('feed.all') : i18n.t(`feed.only.${type}`)}</span>
                   </button>
                 );
               })}

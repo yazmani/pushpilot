@@ -6,11 +6,14 @@ All notable changes are listed here. The format follows [Keep a Changelog](https
 
 ### Added
 
+- Files split into Images, Videos, PDFs, Documents, Audio and Other, and images open as a gallery with a full-screen viewer (arrow keys, open original, download). File rows show their type and extension.
+- A notice when Pushbullet rate-limits your account, with the time Pushpilot catches up.
 - Sign-in codes in texts get a copy button: in the SMS list (while fresh), in the conversation, and on the desktop notification. "Copy one-time codes automatically" now covers texts too.
 
 ### Changed
 
-- The feed's "My devices" filter is replaced by Links, Notes and Files.
+- The feed's filters are a single bar with icons (All, Links, Notes, Files); "My devices" is gone.
+- Pushpilot asks Pushbullet less often: SMS conversations and device lists are reused for a few seconds to minutes and refreshed the moment something changes, which spares the request allowance your account shares with the phone app.
 - The Phone tab names the phone only when notifications come from more than one, and the SMS tab shows the phone's name instead of a menu when there's only one.
 
 ### Fixed

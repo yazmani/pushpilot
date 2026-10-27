@@ -17,6 +17,7 @@ describe('fileKind', () => {
     expect(fileKind(file('IMG_1234.HEIC', 'application/octet-stream'))).toBe('image');
     expect(fileKind(file('clip.mov'))).toBe('video');
     expect(fileKind(file('notes.md', 'application/octet-stream'))).toBe('doc');
+    expect(fileKind(file('Saved page.html', 'application/octet-stream'))).toBe('doc');
     expect(fileKind(file('backup.zip', 'application/zip'))).toBe('other');
   });
 });

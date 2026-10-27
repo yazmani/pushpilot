@@ -105,7 +105,7 @@ feed:
   searchPlaceholder: Tìm trong các mục gửi
   searchLabel: Tìm mục gửi
   closeSearch: Đóng tìm kiếm
-  everything: Tất cả
+  all: 'Tất cả'
   show: 'Hiển thị'
   fileKind:
     all: 'Tất cả'

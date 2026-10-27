@@ -103,7 +103,7 @@ feed:
   searchPlaceholder: Поиск по пушам
   searchLabel: Поиск по пушам
   closeSearch: Закрыть поиск
-  everything: Всё
+  all: 'Все'
   show: 'Показать'
   fileKind:
     all: 'Все'
