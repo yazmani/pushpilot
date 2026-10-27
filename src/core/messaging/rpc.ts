@@ -23,6 +23,7 @@ export interface Rpc {
   'push.send': { req: { push: OutgoingPush; targets: string[] }; res: void };
   'push.dismiss': { req: { iden: string }; res: void };
   'push.delete': { req: { iden: string }; res: void };
+  'pushes.older': { req: object; res: { added: number; done: boolean } };
   'unread.clear': { req: { view: 'feed' | 'phone' | 'sms' }; res: void };
   'mirror.dismiss': { req: { id: string }; res: void };
   'mirror.action': { req: { id: string; key: string }; res: void };

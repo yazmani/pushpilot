@@ -105,7 +105,10 @@ feed:
   searchLabel: 搜索推送
   closeSearch: 关闭搜索
   everything: 全部
-  myDevices: 我的设备
+  only:
+    link: '链接'
+    note: '笔记'
+    file: '文件'
   channels: 频道
   search: 搜索
   noMatchTitle: 没有匹配的结果

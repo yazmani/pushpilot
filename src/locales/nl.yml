@@ -104,7 +104,10 @@ feed:
   searchLabel: Pushes doorzoeken
   closeSearch: Zoeken sluiten
   everything: Alles
-  myDevices: Mijn apparaten
+  only:
+    link: 'Links'
+    note: 'Notities'
+    file: 'Bestanden'
   channels: Kanalen
   search: Zoeken
   noMatchTitle: Geen resultaten

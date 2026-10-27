@@ -105,6 +105,17 @@ export class Pushbullet {
     return all;
   }
 
+  /**
+   * One page of the full history, newest first. Pages are small (~20) and
+   * include deleted pushes; asking for active ones only leaves most pages
+   * empty, so callers filter instead. No cursor back means the end.
+   */
+  pushesPage(cursor?: string) {
+    const q = new URLSearchParams({ limit: '500' });
+    if (cursor) q.set('cursor', cursor);
+    return this.call<{ pushes: Push[]; cursor?: string }>(`/v2/pushes?${q}`);
+  }
+
   createPush(push: Json) {
     return this.call<Push>('/v2/pushes', { body: push });
   }

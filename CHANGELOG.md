@@ -10,10 +10,12 @@ All notable changes are listed here. The format follows [Keep a Changelog](https
 
 ### Changed
 
+- The feed's "My devices" filter is replaced by Links, Notes and Files.
 - The Phone tab names the phone only when notifications come from more than one, and the SMS tab shows the phone's name instead of a menu when there's only one.
 
 ### Fixed
 
+- The feed shows your whole history: about 100 pushes at sign-in, then older ones as you scroll, like the phone app. It used to show only the last few days.
 - Sending texts from the SMS tab works again. Pushbullet retired the endpoint Pushpilot used, so texts failed with "Insufficient authorization"; Pushpilot now uses the current one.
 
 ## [1.2.0] - 2026-10-27

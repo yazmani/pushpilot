@@ -4,7 +4,7 @@ import { type ReactNode, useEffect, useMemo, useRef, useState } from 'react';
 import { call } from '@/core/messaging/rpc';
 import type { Push } from '@/core/pushbullet/types';
 import { dayLabel, personName } from '@/core/utils/format';
-import { Avatar, Empty, Group, IconButton } from '@/ui/components';
+import { Avatar, Empty, Group, IconButton, Spinner } from '@/ui/components';
 import { useStore } from '@/ui/hooks/use-store';
 import { counterpart, type Filter, matches } from './classify';
 import { Conversation } from './Conversation';
@@ -29,6 +29,9 @@ export function FeedView() {
   const [query, setQuery] = useState('');
   const [searching, setSearching] = useState(false);
   const [limit, setLimit] = useState(PAGE);
+  const { historyCursor } = useStore(['historyCursor']);
+  const [loadingOlder, setLoadingOlder] = useState(false);
+  const moreOnServer = historyCursor !== null;
 
   // Snapshot "last visit" once per open so new items stay marked while you look.
   const seenAt = useMemo(() => {
@@ -67,14 +70,28 @@ export function FeedView() {
     if (missingKey && settings.linkPreviews) void call('preview.fetch', { urls: missingKey.split('|') }).catch(() => undefined);
   }, [missingKey, settings.linkPreviews]);
 
+  // Scrolling to the end shows more of what's stored, then fetches older
+  // pushes from Pushbullet, like the phone app.
   const sentinel = useRef<HTMLDivElement>(null);
+  const atEnd = visible.length <= limit;
   useEffect(() => {
     const el = sentinel.current;
     if (!el) return;
-    const io = new IntersectionObserver(([e]) => e?.isIntersecting && setLimit((l) => l + PAGE));
+    const io = new IntersectionObserver(([e]) => {
+      if (!e?.isIntersecting) return;
+      if (!atEnd) return setLimit((l) => l + PAGE);
+      if (!moreOnServer || loadingOlder) return;
+      setLoadingOlder(true);
+      void call('pushes.older')
+        .catch(() => undefined)
+        .finally(() => {
+          setLoadingOlder(false);
+          setLimit((l) => l + PAGE);
+        });
+    });
     io.observe(el);
     return () => io.disconnect();
-  }, [visible.length]);
+  }, [visible.length, limit, atEnd, moreOnServer, loadingOlder]);
 
   if (filter.kind === 'person') {
     return (
@@ -118,9 +135,17 @@ export function FeedView() {
               <Chip on={filter.kind === 'all'} onClick={() => setFilter({ kind: 'all' })}>
                 {i18n.t('feed.everything')}
               </Chip>
-              <Chip on={filter.kind === 'me'} onClick={() => setFilter({ kind: 'me' })}>
-                {i18n.t('feed.myDevices')}
-              </Chip>
+              {(['link', 'note', 'file'] as const).map((type) => (
+                <Chip
+                  key={type}
+                  on={filter.kind === 'type' && filter.type === type}
+                  onClick={() =>
+                    setFilter(filter.kind === 'type' && filter.type === type ? { kind: 'all' } : { kind: 'type', type })
+                  }
+                >
+                  {i18n.t(`feed.only.${type}`)}
+                </Chip>
+              ))}
               {hasChannels && (
                 <Chip on={filter.kind === 'channels'} onClick={() => setFilter({ kind: 'channels' })}>
                   {i18n.t('feed.channels')}
@@ -164,7 +189,11 @@ export function FeedView() {
             )}
           </DayGroups>
         )}
-        {visible.length > limit && <div ref={sentinel} className="h-8" />}
+        {(visible.length > limit || moreOnServer) && (
+          <div ref={sentinel} className="grid h-12 place-items-center">
+            {loadingOlder && <Spinner />}
+          </div>
+        )}
       </div>
     </div>
   );

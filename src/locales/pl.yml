@@ -103,7 +103,10 @@ feed:
   searchLabel: Szukaj w pushach
   closeSearch: Zamknij wyszukiwanie
   everything: Wszystko
-  myDevices: Moje urządzenia
+  only:
+    link: 'Linki'
+    note: 'Notatki'
+    file: 'Pliki'
   channels: Kanały
   search: Szukaj
   noMatchTitle: Brak wyników

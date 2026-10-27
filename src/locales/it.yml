@@ -104,7 +104,10 @@ feed:
   searchLabel: Cerca push
   closeSearch: Chiudi ricerca
   everything: Tutto
-  myDevices: I miei dispositivi
+  only:
+    link: 'Link'
+    note: 'Note'
+    file: 'File'
   channels: Canali
   search: Cerca
   noMatchTitle: Nessun risultato

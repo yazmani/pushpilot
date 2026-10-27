@@ -105,7 +105,10 @@ feed:
   searchLabel: プッシュを検索
   closeSearch: 検索を閉じる
   everything: すべて
-  myDevices: 自分のデバイス
+  only:
+    link: 'リンク'
+    note: 'メモ'
+    file: 'ファイル'
   channels: チャンネル
   search: 検索
   noMatchTitle: 一致する項目はありません

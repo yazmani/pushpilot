@@ -105,7 +105,10 @@ feed:
   searchLabel: 搜尋推送
   closeSearch: 關閉搜尋
   everything: 全部
-  myDevices: 我的裝置
+  only:
+    link: '連結'
+    note: '筆記'
+    file: '檔案'
   channels: 頻道
   search: 搜尋
   noMatchTitle: 沒有符合的結果

@@ -105,7 +105,10 @@ feed:
   searchLabel: Cari kiriman
   closeSearch: Tutup pencarian
   everything: Semua
-  myDevices: Perangkat saya
+  only:
+    link: 'Tautan'
+    note: 'Catatan'
+    file: 'File'
   channels: Saluran
   search: Cari
   noMatchTitle: Tidak ada yang cocok
