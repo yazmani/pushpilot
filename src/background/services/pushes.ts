@@ -184,7 +184,7 @@ async function collectHistory(pb: Pushbullet, start: string, want: number) {
 }
 
 /** The feed scrolled to the end: fetch the next stretch of older pushes. */
-export async function loadOlderPushes(): Promise<{ added: number; done: boolean }> {
+export async function loadOlderPushes(depth = 0): Promise<{ added: number; done: boolean }> {
   const start = await store.get('historyCursor');
   if (start === null) return { added: 0, done: true };
   const pb = await requireClient();
@@ -197,8 +197,9 @@ export async function loadOlderPushes(): Promise<{ added: number; done: boolean 
     return [...all, ...older].sort((a, b) => b.created - a.created).slice(0, KEEP);
   });
   // Starting over from the newest page (installs from before this) can find
-  // nothing new at first; keep going until something older turns up.
-  if (!added && !done) return loadOlderPushes();
+  // nothing new at first; keep going a little, and let the next scroll go on,
+  // so a long history doesn't use up the account's API allowance in one go.
+  if (!added && !done && depth < 2) return loadOlderPushes(depth + 1);
   return { added, done };
 }
 
