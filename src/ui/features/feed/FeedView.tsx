@@ -1,29 +1,34 @@
 import clsx from 'clsx';
 import {
   Archive,
+  Check,
   FileText,
   Film,
   Image,
   Inbox,
   Layers,
   Link2,
+  ListChecks,
   Music,
   Paperclip,
   Radio,
   Search,
   StickyNote,
+  Trash2,
   X,
 } from 'lucide-react';
 import { type ReactNode, useEffect, useMemo, useRef, useState } from 'react';
 import { call } from '@/core/messaging/rpc';
 import type { Push } from '@/core/pushbullet/types';
 import { dayLabel, personName } from '@/core/utils/format';
-import { Avatar, Empty, Group, IconButton, Spinner } from '@/ui/components';
+import { Avatar, Button, Empty, Group, IconButton, Spinner } from '@/ui/components';
 import { useStore } from '@/ui/hooks/use-store';
+import { useRun } from '@/ui/hooks/use-toast';
 import { counterpart, FILE_KINDS, fileKind, type FileKind, type Filter, matches } from './classify';
 import { Conversation } from './Conversation';
 import { type FeedContext, FeedItem } from './FeedItem';
 import { Gallery } from './Gallery';
+import { Outbox } from './Outbox';
 import { i18n } from '#i18n';
 
 const SEEN_KEY = 'pushpilot.feedSeenAt';
@@ -63,6 +68,10 @@ export function FeedView() {
   const { historyCursor } = useStore(['historyCursor']);
   const [loadingOlder, setLoadingOlder] = useState(false);
   const moreOnServer = historyCursor !== null;
+  // Selection mode for acting on many pushes at once.
+  const [selected, setSelected] = useState<Set<string> | null>(null);
+  const [bulkBusy, setBulkBusy] = useState(false);
+  const run = useRun();
 
   // Snapshot "last visit" once per open so new items stay marked while you look.
   const seenAt = useMemo(() => {
@@ -148,6 +157,26 @@ export function FeedView() {
     setSearching(false);
   };
 
+  const shown = visible.slice(0, limit);
+  const toggle = (iden: string) =>
+    setSelected((s) => {
+      const next = new Set(s);
+      if (next.has(iden)) next.delete(iden);
+      else next.add(iden);
+      return next;
+    });
+  const allSelected = !!selected && shown.length > 0 && shown.every((p) => selected.has(p.iden));
+  const bulk = async (method: 'push.dismissMany' | 'push.deleteMany', done: string) => {
+    if (!selected?.size) return;
+    let idens = [...selected];
+    // Only active pushes can be marked as done.
+    if (method === 'push.dismissMany') idens = idens.filter((i) => pushes.find((p) => p.iden === i && !p.dismissed));
+    setBulkBusy(true);
+    const ok = await run(() => (idens.length ? call(method, { idens }) : Promise.resolve()), done);
+    setBulkBusy(false);
+    if (ok) setSelected(null);
+  };
+
   return (
     <div className="flex h-full flex-col">
       <div className="flex shrink-0 items-center gap-1.5 px-3.5 pb-2 pt-3">
@@ -193,6 +222,15 @@ export function FeedView() {
             <IconButton label={i18n.t('feed.search')} onClick={() => setSearching(true)}>
               <Search size={16} />
             </IconButton>
+            {!gallery && visible.length > 0 && (
+              <IconButton
+                label={i18n.t('feed.select')}
+                active={!!selected}
+                onClick={() => setSelected(selected ? null : new Set())}
+              >
+                <ListChecks size={16} />
+              </IconButton>
+            )}
           </>
         )}
       </div>
@@ -232,6 +270,7 @@ export function FeedView() {
         </div>
       )}
       <div className="scroll-area min-h-0 flex-1 px-3.5 pb-4">
+        {!gallery && <Outbox />}
         {visible.length === 0 ? (
           query ? (
             <Empty icon={<Search size={24} />} title={i18n.t('feed.noMatchTitle')}>
@@ -245,7 +284,7 @@ export function FeedView() {
         ) : gallery ? (
           <Gallery pushes={visible.slice(0, limit)} />
         ) : (
-          <DayGroups pushes={visible.slice(0, limit)}>
+          <DayGroups pushes={shown}>
             {(p) => (
               <FeedItem
                 key={p.iden}
@@ -253,6 +292,7 @@ export function FeedView() {
                 ctx={ctx}
                 isNew={p.created > seenAt && p.source_device_iden !== selfDeviceIden && p.direction !== 'outgoing'}
                 onPerson={(email) => setFilter({ kind: 'person', email })}
+                select={selected ? { on: selected.has(p.iden), toggle: () => toggle(p.iden) } : undefined}
               />
             )}
           </DayGroups>
@@ -263,6 +303,42 @@ export function FeedView() {
           </div>
         )}
       </div>
+      {selected && !gallery && (
+        <div className="flex shrink-0 items-center gap-1.5 border-t border-line bg-surface px-3.5 py-2">
+          <button
+            type="button"
+            onClick={() => setSelected(allSelected ? new Set() : new Set(shown.map((p) => p.iden)))}
+            className="me-auto truncate text-xs font-bold text-accent-strong hover:underline"
+          >
+            {allSelected
+              ? i18n.t('feed.selectNone')
+              : selected.size
+                ? i18n.t('feed.selected', selected.size)
+                : i18n.t('feed.selectAll')}
+          </button>
+          <Button
+            size="sm"
+            className="h-8"
+            busy={bulkBusy}
+            disabled={!selected.size}
+            onClick={() => bulk('push.dismissMany', i18n.t('actions.doneToast'))}
+          >
+            <Check size={13} /> {i18n.t('feed.markDone')}
+          </Button>
+          <Button
+            size="sm"
+            variant="danger"
+            className="h-8"
+            disabled={!selected.size || bulkBusy}
+            onClick={() => bulk('push.deleteMany', i18n.t('actions.deleted'))}
+          >
+            <Trash2 size={13} /> {i18n.t('feed.delete')}
+          </Button>
+          <Button size="sm" variant="primary" className="h-8" onClick={() => setSelected(null)}>
+            {i18n.t('feed.selectDone')}
+          </Button>
+        </div>
+      )}
     </div>
   );
 }

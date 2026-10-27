@@ -11,6 +11,7 @@ import type {
   User,
 } from '@/core/pushbullet/types';
 import type { LinkPreview } from '@/core/utils/links';
+import type { OutboxItem } from '@/background/services/outbox';
 
 export type Theme = 'system' | 'light' | 'dark';
 export type Tab = 'send' | 'feed' | 'phone' | 'sms';
@@ -150,6 +151,8 @@ export interface Schema {
   lastError: string | null;
   /** Pushbullet is rate-limiting the account until then (ms since epoch). */
   rateLimitedUntil: number;
+  /** Pushes waiting for the connection to come back (see background/services/outbox.ts). */
+  outbox: OutboxItem[];
   /** Hand-off from the context menu / notifications to the popup. */
   intent: { view: Tab; thread?: string; device?: string; mirror?: string } | null;
   /** Successful sends from this install, for the one-time support prompt. */
@@ -184,6 +187,7 @@ export const defaults: Schema = {
   connection: 'signed-out',
   lastError: null,
   rateLimitedUntil: 0,
+  outbox: [],
   intent: null,
   sendCount: 0,
   supportPromptSeen: false,
@@ -265,6 +269,7 @@ export const accountKeys: Key[] = [
   'pushes',
   'pushCursor',
   'historyCursor',
+  'outbox',
   'mirrors',
   'smsThreads',
   'smsNotices',

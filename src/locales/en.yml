@@ -58,6 +58,7 @@ send:
   uploading: Uploading…
   sending: Sending…
   sendTo: Send to $1
+  queued: No connection. It'll send when you're back online.
 targets:
   all: All devices
   allSub: Everywhere
@@ -128,6 +129,15 @@ feed:
   siteVideo: $1 video
   openConversation: Open conversation with $1
   new: New
+  select: Select pushes
+  selectAll: Select all
+  selectNone: Select none
+  selected:
+    1: 1 selected
+    n: $1 selected
+  markDone: Done
+  delete: Delete
+  selectDone: Finish
 device:
   unknown: Unknown device
   unnamed: Unnamed device
@@ -412,3 +422,9 @@ gallery:
   next: 'Next'
   open: 'Open original'
   count: '$1 of $2'
+outbox:
+  title: Waiting to send
+  hint: These go out as soon as you're back online.
+  retry: Retry
+  cancel: Cancel
+  failed: "Couldn't send: $1"

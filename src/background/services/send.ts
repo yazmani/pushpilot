@@ -5,6 +5,8 @@ import { deviceName, looksLikeUrl, normalizeUrl, personName } from '@/core/utils
 import { show } from '@/background/platform/notifications';
 import { readClipboard } from '@/background/platform/offscreen';
 import { rememberPush } from '@/background/services/pushes';
+// Imports each other; both only use the other inside functions.
+import { sendOrQueue } from '@/background/services/outbox';
 import { guard, requireClient } from '@/background/session';
 import { i18n } from '#i18n';
 
@@ -53,7 +55,10 @@ async function describeTargets(targets: string[]): Promise<string> {
 /** Pushes from places without UI (context menu, shortcut) confirm with a quiet toast. */
 export async function sendQuietly(push: OutgoingPush, targets: string[], label: string) {
   try {
-    await sendPush(push, targets);
+    if ((await sendOrQueue(push, targets)).queued) {
+      await show(`info:queued-${Date.now()}`, { title: i18n.t('send.queued'), message: label, silent: true });
+      return;
+    }
     await show(`info:sent-${Date.now()}`, {
       title: i18n.t('send.sentTo', [await describeTargets(targets)]),
       message: label,

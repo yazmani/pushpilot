@@ -1,3 +1,4 @@
+import clsx from 'clsx';
 import {
   Check,
   Copy,
@@ -82,11 +83,14 @@ export function FeedItem({
   ctx,
   isNew,
   onPerson,
+  select,
 }: {
   push: Push;
   ctx: FeedContext;
   isNew: boolean;
   onPerson: (email: string) => void;
+  /** Selection mode: a click toggles the item instead of opening it. */
+  select?: { on: boolean; toggle: () => void };
 }) {
   useNow();
   const notify = useToast();
@@ -135,8 +139,35 @@ export function FeedItem({
   );
 
   return (
-    <li className="group relative flex items-start gap-3 px-3.5 py-3 transition-colors hover:bg-raised/50">
-      {isNew && (
+    <li
+      className={clsx(
+        'group relative flex items-start gap-3 px-3.5 py-3 transition-colors',
+        select?.on ? 'bg-accent-soft/60' : 'hover:bg-raised/50',
+        select && 'cursor-pointer select-none',
+      )}
+      aria-selected={select?.on}
+      onClickCapture={
+        select
+          ? (e) => {
+              e.preventDefault();
+              e.stopPropagation();
+              select.toggle();
+            }
+          : undefined
+      }
+    >
+      {select && (
+        <span
+          className={clsx(
+            'absolute start-2 top-2 z-10 grid size-5 place-items-center rounded-full ring-2 ring-surface',
+            select.on ? 'bg-accent text-on-accent' : 'bg-surface text-transparent ring-line',
+          )}
+          aria-hidden="true"
+        >
+          <Check size={12} strokeWidth={3} />
+        </span>
+      )}
+      {isNew && !select && (
         <span className="absolute start-1.5 top-[26px] size-1.5 rounded-full bg-accent" aria-label={i18n.t('feed.new')} />
       )}
       <a href={url} target="_blank" rel="noreferrer" tabIndex={-1} className={url ? 'shrink-0' : 'pointer-events-none shrink-0'}>
@@ -177,7 +208,12 @@ export function FeedItem({
         )}
         <div className="mt-0.5 flex h-5 items-center gap-2">
           <p className="min-w-0 flex-1 truncate text-2xs font-medium text-faint">{describe(p, ctx, who, chat, sub)}</p>
-          <div className="-me-1.5 flex items-center opacity-0 transition-opacity group-focus-within:opacity-100 group-hover:opacity-100">
+          <div
+            className={clsx(
+              '-me-1.5 flex items-center opacity-0 transition-opacity group-focus-within:opacity-100 group-hover:opacity-100',
+              select && 'invisible',
+            )}
+          >
             {url && (
               <IconButton
                 label={p.type === 'file' ? i18n.t('actions.download') : i18n.t('actions.open')}

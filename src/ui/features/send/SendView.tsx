@@ -196,6 +196,7 @@ export function SendView({ mode, onOpenFeed }: { mode: Mode; onOpenFeed: () => v
     if (!canSend) return;
     setSending(true);
     const where = targetLabel(selected, targets);
+    let queued = false;
     try {
       if (kind === 'file') {
         const { token, e2eKey } = await store.getMany(['token', 'e2eKey']);
@@ -204,7 +205,11 @@ export function SendView({ mode, onOpenFeed }: { mode: Mode; onOpenFeed: () => v
           const uploaded = await pb.upload(a.file, a.file.name || 'file', (p) =>
             setFiles((fs) => fs.map((x) => (x.id === a.id ? { ...x, progress: p } : x))),
           );
-          await call('push.send', { push: { type: 'file', ...uploaded, body: body.trim() || undefined }, targets: selected });
+          const r = await call('push.send', {
+            push: { type: 'file', ...uploaded, body: body.trim() || undefined },
+            targets: selected,
+          });
+          queued ||= r.queued;
         }
       } else {
         let push: OutgoingPush;
@@ -214,13 +219,16 @@ export function SendView({ mode, onOpenFeed }: { mode: Mode; onOpenFeed: () => v
           if (preview.title || preview.image) void call('preview.save', { url: finalUrl, preview }).catch(() => undefined);
         } else if (!title.trim() && looksLikeUrl(body)) push = { type: 'link', url: normalizeUrl(body.trim()) };
         else push = { type: 'note', title: title.trim() || undefined, body: body.trim() };
-        await call('push.send', { push, targets: selected });
+        queued = (await call('push.send', { push, targets: selected })).queued;
       }
       if (selected.length === 1 && selected[0] !== settings.defaultTarget)
         void store.updateSettings({ defaultTarget: selected[0] });
-      trail.current?.fire();
-      void store.update('sendCount', (n) => n + 1);
-      notify(i18n.t('send.sentTo', [where]));
+      if (queued) notify(i18n.t('send.queued'));
+      else {
+        trail.current?.fire();
+        void store.update('sendCount', (n) => n + 1);
+        notify(i18n.t('send.sentTo', [where]));
+      }
       if (settings.closeAfterSend && mode === 'popup') setTimeout(() => window.close(), 700);
       else reset();
     } catch (err) {
