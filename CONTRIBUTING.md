@@ -35,6 +35,11 @@ If you have a Pushbullet account, also run the live checks (see the README): `np
 - Keep the worker as the only place that talks to the network (except file uploads); the UI reads from storage and calls the worker through `src/core/messaging/rpc.ts`.
 - New settings go in `src/core/storage/store.ts` with a default, and must be wired to real behaviour. No placeholder options.
 - UI copy is plain, sentence case, and describes what happens ("Send to Pixel", not "Submit").
+- Every user-facing string lives in `src/locales/en.yml` and is read with `i18n.t('key')` from `#i18n`. Add the key to every other language file too (English text is fine as a placeholder; `npm run build && npm run locales` lists what's missing). Use logical classes (`ms-`, `pe-`, `start-`, `text-start`) rather than left/right so Arabic stays mirrored.
+
+## Translations
+
+Each language is one file in `src/locales/` (`fr.yml`, `pt_BR.yml`…), with the same keys as `en.yml`. `$1`–`$9` are filled in at runtime and must stay; keys with `1:` and `n:` are singular and plural. To fix a translation or add a language, edit or copy a file and open a pull request; `npm run build && npm run locales` checks it against English. Pushpilot follows the browser's language.
 
 ## Commits
 

@@ -1,0 +1,388 @@
+# Arabic strings, translated from en.yml.
+# $1–$9 are substitutions; keys with 1/n are plural forms (i18n.t(key, count)).
+extName: Pushpilot لـ Pushbullet
+extDescription: أرسل علامات التبويب والملاحظات والملفات إلى هاتفك، واطّلع على إشعارات Android وراسل من متصفحك. عميل Pushbullet غير رسمي.
+cmdOpen: فتح Pushpilot
+cmdPushPage: إرسال الصفحة الحالية إلى جهازك الافتراضي
+cmdPushClipboard: إرسال ما نسخته إلى جهازك الافتراضي، من أي تطبيق
+cmdOpenWindow: فتح Pushpilot في نافذة، من أي تطبيق
+cmdSendClipboard: إرسال الحافظة إلى أجهزتك الأخرى (نسخ ولصق بين الأجهزة)
+common:
+  retry: إعادة المحاولة
+  dismiss: تجاهل
+  loading: جارٍ التحميل
+tabs:
+  send: إرسال
+  feed: الموجز
+  phone: الهاتف
+  sms: الرسائل
+app:
+  offline: تعذّر الوصول إلى Pushbullet. تجري إعادة المحاولة في الخلفية.
+header:
+  sections: الأقسام
+  pausedHint: الإشعارات متوقفة مؤقتًا. انقر لإعادة تشغيلها.
+  accountMenu: الحساب والخيارات
+  connected: متصل
+  connecting: جارٍ الاتصال…
+  offline: غير متصل
+  quietUntil: الإشعارات صامتة حتى $1
+  pause: إيقاف الإشعارات مؤقتًا
+  snooze30m: 30 د
+  snooze1h: 1 س
+  snooze8h: 8 س
+  snoozeNight: الليل
+  unpause: إعادة تشغيل الإشعارات
+  openPanel: فتح في اللوحة الجانبية
+  openWindow: فتح في نافذة
+  settings: الإعدادات
+send:
+  tooBig: يتجاوز $1 حدّ Pushbullet البالغ $2.
+  imageUnreadable: تعذّرت قراءة هذه الصورة. جرّب سحبها وإفلاتها بدلًا من ذلك.
+  sentTo: تم الإرسال إلى $1
+  clipboardEmpty: الحافظة فارغة.
+  clipboardSent: تم إرسال الحافظة إلى أجهزتك
+  pastedImage: صورة ملصقة
+  removeFile: إزالة $1
+  titlePlaceholder: العنوان (اختياري)
+  noteTitle: عنوان الملاحظة
+  notePlaceholder: اكتب ملاحظة أو الصق رابطًا أو أفلت ملفًا
+  messagePlaceholder: أضف رسالة (اختياري)
+  message: الرسالة
+  thisPage: هذه الصفحة
+  note: ملاحظة
+  addFile: إضافة ملف
+  file: ملف
+  clipboard: الحافظة
+  clipboardHint: إرسال الحافظة إلى أجهزتك (نسخ ولصق بين الأجهزة)
+  uploading: جارٍ الرفع…
+  sending: جارٍ الإرسال…
+  sendTo: إرسال إلى $1
+targets:
+  all: كل الأجهزة
+  allSub: في كل مكان
+  self: هذا المتصفح
+  selfSub: حفظ لوقت لاحق
+  device: جهاز
+  two: $1 و$2
+  many: 'الوجهات: $1'
+  heading: إرسال إلى
+  multiHint: انقر مع ⌘ لاختيار أكثر من وجهة
+  hidden:
+    1: يوجد جهاز قديم لا يستقبل عمليات الإرسال، لذا تم إخفاؤه.
+    n: 'عدد الأجهزة القديمة المخفية: $1، لأنها لا تستقبل عمليات الإرسال.'
+  seeDevices: عرض الأجهزة
+link:
+  title: العنوان
+  titleLabel: عنوان الرابط
+  address: عنوان URL
+  edit: تعديل الرابط
+  remove: إزالة الرابط
+  startAt: البدء من $1
+  sendImage: إرسال الصورة نفسها
+recent:
+  heading: الأحدث
+  seeAll: عرض الكل
+support:
+  count: 'عدد ما أرسلته باستخدام Pushpilot: $1.'
+  pitch: مجاني ومفتوح المصدر وبلا إعلانات دائمًا. إن كان يوفّر وقتك، فقهوة تشتريها لي أو تقييم منك يساعد على استمراره.
+  never: لا تسألني مجددًا
+  coffee: اشترِ لي قهوة
+  sponsor: الرعاية على GitHub
+  review: اكتب تقييمًا
+whatsNew:
+  title: الجديد في Pushpilot $1
+  seeAll: عرض كل التغييرات
+  label: ما الجديد
+  v1_1:
+    pushAnywhere: 'أرسل من أي تطبيق: انسخ شيئًا واضغط ⌘⇧9 (Ctrl+Shift+9).'
+    filesOpen: تُفتح الصور وملفات PDF وغيرها من الملفات في علامة تبويب جديدة فور وصولها.
+    shortcut: 'على iPhone وiPad وMac: يُرسل اختصار Pushpilot من قائمة المشاركة.'
+    polish: مظهر فاتح، ونافذة منبثقة أرحب، وإصلاحات في الاستقبال.
+feed:
+  searchPlaceholder: ابحث في عمليات الإرسال
+  searchLabel: البحث في عمليات الإرسال
+  closeSearch: إغلاق البحث
+  everything: الكل
+  myDevices: أجهزتي
+  channels: القنوات
+  search: بحث
+  noMatchTitle: لا توجد نتائج
+  noMatchBody: جرّب كلمات أقل، أو جزءًا من رابط.
+  emptyTitle: ستظهر عمليات الإرسال هنا
+  emptyBody: تظهر في هذا الموجز الروابط والملاحظات والملفات التي ترسلها أو تستقبلها.
+  siteVideo: فيديو $1
+  openConversation: فتح المحادثة مع $1
+  new: جديد
+device:
+  unknown: جهاز غير معروف
+  unnamed: جهاز بلا اسم
+  someone: شخص ما
+  kind:
+    phone: هاتف
+    tablet: جهاز لوحي
+    laptop: كمبيوتر محمول
+    watch: ساعة
+    browser: متصفح
+    website: موقع ويب
+    computer: كمبيوتر
+time:
+  now: الآن
+  today: اليوم
+  yesterday: أمس
+route:
+  from: من $1
+  to: إلى $1
+  saved: محفوظ لوقت لاحق
+  sentTo: أُرسل إلى $1
+  sentToAll: أُرسل إلى كل الأجهزة
+  sentToHere: أُرسل إلى هذا المتصفح
+  between: من $1 إلى $2
+  fromToAll: من $1 إلى كل الأجهزة
+kind:
+  link: رابط
+  note: ملاحظة
+  file: ملف
+  image: صورة
+actions:
+  download: تنزيل
+  open: فتح
+  copy: نسخ
+  copied: تم النسخ
+  done: التعليم كمكتمل
+  doneToast: تم التعليم كمكتمل
+  deleteEverywhere: الحذف من كل مكان
+  deleted: تم الحذف
+chat:
+  back: العودة إلى الموجز
+  unmute: إلغاء الكتم
+  mute: كتم الإشعارات
+  unmuted: تم تفعيل إشعارات $1
+  muted: تم كتم $1
+  emptyTitle: ألقِ التحية على $1
+  emptyBody: كل ما ترسله هنا يصل إلى جميع أجهزة $1.
+  placeholder: رسالة إلى $1
+phone:
+  offTitle: إشعارات الهاتف متوقفة
+  openSettings: فتح الإعدادات
+  offBody: فعّل عكس الإشعارات لترى إشعارات Android هنا.
+  emptyTitle: لا توجد إشعارات من الهاتف بعد
+  emptyBody: في تطبيق Pushbullet على هاتف Android، افتح «عكس الإشعارات» وفعّله. ستظهر الإشعارات الجديدة هنا وكتنبيهات على سطح المكتب.
+  now: على هاتفك الآن
+  cleared: تم مسحها
+  clearAll: مسح الكل
+  earlier: في وقت سابق
+  replySent: تم إرسال الرد
+  onDevice: على $1
+  copiedCode: تم نسخ $1
+  copyCode: نسخ الرمز
+  reply: رد
+  replyIn: الرد في $1
+  sendReply: إرسال الرد
+  dismiss: إزالة من الهاتف
+sms:
+  noPhoneTitle: لا يوجد هاتف يمكنه إرسال الرسائل من هنا
+  noPhoneBody: ثبّت Pushbullet على هاتف Android واسمح له بإرسال الرسائل القصيرة وقراءتها.
+  phone: الهاتف
+  lastSeen: (آخر ظهور $1)
+  refresh: تحديث
+  newText: رسالة جديدة
+  noThreadsTitle: لا توجد محادثات
+  noThreadsBody: لم يشارك هذا الهاتف أي محادثات نصية بعد.
+  you: 'أنت: '
+  photo: صورة
+  addNumber: أضف رقم هاتف.
+  sent: تم إرسال الرسالة
+  back: العودة إلى المحادثات
+  to: إلى
+  toPlaceholder: رقم هاتف، أو عدة أرقام مفصولة بفواصل
+  placeholder: رسالة نصية
+signIn:
+  title: أرسل هذه الصفحة إلى هاتفك.
+  intro: ينقل Pushpilot الروابط والملاحظات والملفات والرسائل بين أجهزتك عبر حسابك في Pushbullet، ويعرض إشعارات هاتفك على سطح المكتب.
+  button: تسجيل الدخول عبر Pushbullet
+  buttonHint: يفتح Pushbullet لتوافق على Pushpilot. لا تصل كلمة مرورك إلى الإضافة أبدًا.
+  useToken: استخدام رمز وصول بدلًا من ذلك
+  token: رمز الوصول
+  connect: اتصال
+  createBefore: أنشئ رمزًا من
+  createLink: Settings › Account
+  createAfter: في pushbullet.com.
+  cancelled: تم إلغاء تسجيل الدخول.
+  openFailed: 'تعذّر فتح صفحة تسجيل الدخول في Pushbullet: $1'
+  noToken: لم يُرجع Pushbullet رمز وصول$1.
+linkKind:
+  video: فيديو
+  image: صورة
+  article: مقال
+  code: رمز برمجي
+  music: موسيقى
+  map: مكان
+  document: مستند
+  social: منشور
+  shop: منتج
+  web: صفحة
+  readTime: $1، مدة القراءة $2 د
+settings:
+  section:
+    account: الحساب
+    devices: الأجهزة
+    devicesDesc: يحتفظ Pushbullet بالتسجيلات القديمة. وحدها الأجهزة المعلَّمة بـ«يستقبل» تصلها عمليات الإرسال.
+    sending: الإرسال
+    receiving: الاستقبال
+    receivingDesc: ما يُرسل مباشرةً إلى هذا المتصفح يصل دائمًا. اختر ما يُستقبل أيضًا.
+    autoOpen: الفتح التلقائي
+    notifications: الإشعارات
+    toolbarBadge: شارة شريط الأدوات
+    phone: الهاتف
+    feed: الموجز
+    encryption: التشفير
+    appearance: المظهر
+    shortcuts: الاختصارات
+    yourData: بياناتك
+    supportPushpilot: ادعم Pushpilot
+  startWithThePage: البدء بالصفحة الحالية
+  startWithThePageHint: عند فتح Pushpilot يُملأ عنوان علامة التبويب الحالية ورابطها، جاهزَين للإرسال.
+  closeThePopupAfter: إغلاق النافذة المنبثقة بعد الإرسال
+  rightClickMenu: قائمة النقر بزر الماوس الأيمن
+  rightClickMenuHint: أرسل الصفحات والروابط والصور والنص المحدد من قائمة السياق في أي صفحة.
+  pushesSentToAll: ما يُرسل إلى كل الأجهزة
+  pushesSentToAllHint: ما يرسله هاتفك عندما لا تختار جهازًا.
+  pushesSentToYour: ما يُرسل إلى أجهزتك الأخرى
+  pushesSentToYourHint: اطّلع على كل شيء، حتى ما أُرسل إلى جهازك اللوحي أو كمبيوتر آخر.
+  pushesYouSendFrom: ما ترسله من هذا المتصفح
+  pushesYouSendFromHint: اعرض إشعارات ما ترسله بنفسك وافتحه هنا أيضًا، مثلًا عند الإرسال إلى كل الأجهزة من قائمة النقر بزر الماوس الأيمن.
+  channelSubscriptions: اشتراكات القنوات
+  channelSubscriptionsHint: ما يصل من القنوات والخلاصات التي تتابعها.
+  openLinksAsSoon: فتح الروابط فور وصولها
+  openLinksAsSoonHint: تُفتح الروابط المرسلة إلى هذا المتصفح في علامة تبويب جديدة، كما في إضافة Pushbullet الأصلية. وكذلك الملاحظة التي لا تحتوي إلا على عنوان.
+  switchToTheNew: الانتقال إلى علامة التبويب الجديدة
+  switchToTheNewHint: وإلا فستُفتح في الخلفية.
+  alsoOpenImagesPdfs: فتح الصور وملفات PDF والملفات الأخرى أيضًا
+  alsoOpenLinksFrom: فتح الروابط الواردة من الأشخاص أيضًا
+  alsoOpenLinksFromHint: وليس من أجهزتك فقط.
+  openLinksThatArrived: فتح الروابط التي وصلت أثناء عدم الاتصال
+  openLinksThatArrivedHint: عند بدء تشغيل المتصفح أو استيقاظ الكمبيوتر، يُفتح ما أُرسل في هذه الأثناء.
+  skipTheNotificationFor: عدم عرض إشعار للروابط المفتوحة
+  pushes: عمليات الإرسال
+  pushesHint: الروابط والملاحظات والملفات.
+  phoneNotifications: إشعارات الهاتف
+  textMessages: الرسائل النصية
+  playASound: تشغيل صوت
+  keepPushNotificationsOn: إبقاء إشعارات الإرسال على الشاشة
+  keepPushNotificationsOnHint: تبقى حتى تنقر عليها أو تغلقها.
+  keepPhoneNotificationsOn: إبقاء إشعارات الهاتف على الشاشة
+  closingANotificationDismisses: إغلاق الإشعار يزيله
+  closingANotificationDismissesHint: أغلق إشعار إرسال فيُعلَّم كمكتمل في كل مكان، وأغلق إشعار هاتف فيُمسح من هاتفك.
+  showUnreadCountsOn: عرض عدد غير المقروء على أيقونة شريط الأدوات
+  countPushes: احتساب عمليات الإرسال
+  countPhoneNotifications: احتساب إشعارات الهاتف
+  keepCountingPhoneNotifications: مواصلة احتساب إشعارات الهاتف حتى تُمسح
+  keepCountingPhoneNotificationsHint: بدلًا من إعادة التعيين عند فتح علامة التبويب «الهاتف»، ينخفض العدد كلما تجاهلت إشعارًا.
+  countTextMessages: احتساب الرسائل النصية
+  showMyPhonesNotifications: عرض إشعارات هاتفي
+  showMyPhonesNotificationsHint: يتطلب تفعيل «عكس الإشعارات» في تطبيق Pushbullet على Android.
+  copyOneTimeCodes: نسخ الرموز لمرة واحدة تلقائيًا
+  copyOneTimeCodesHint: عندما يحتوي إشعار على رمز تحقق، يُنسخ مباشرةً إلى الحافظة.
+  receiveCopiedTextFrom: استقبال النص المنسوخ من الأجهزة الأخرى
+  receiveCopiedTextFromHint: نسخ ولصق بين الأجهزة. يتطلب Pushbullet Pro وتفعيل هذا الإعداد في تطبيقاتك الأخرى.
+  theme: السمة
+  openOn: الفتح في
+  sendToByDefault: الإرسال افتراضيًا إلى
+  encryptionPassword: كلمة مرور التشفير
+  showPreviewsForLinks: عرض معاينات الروابط
+  navSupport: الدعم
+  signOut: تسجيل الخروج
+  renamed: تمت إعادة التسمية
+  testNotification: إرسال إشعار تجريبي
+  endSnooze: إنهاء الإيقاف المؤقت
+  passwordSaved: تم حفظ كلمة مرور التشفير
+  encryptionOff: تم إيقاف التشفير
+  themeSystem: النظام
+  themeLight: فاتح
+  themeDark: داكن
+  dataBody: يحتفظ Pushpilot بسجلّك في هذا المتصفح ولا يتواصل إلا مع Pushbullet. مسح السجل هنا لا يحذف أي شيء من حسابك.
+  synced: تمت المزامنة مع Pushbullet
+  syncNow: المزامنة الآن
+  historyCleared: تم مسح السجل
+  clearHistory: مسح السجل المحلي
+  supportBody: Pushpilot مجاني ومفتوح المصدر، بلا إعلانات أو تتبّع، وسيبقى كذلك. إن كان مفيدًا لك، يمكنك المساعدة على استمراره.
+  rate: قيّمه في Chrome Web Store
+  star: أضف نجمة على GitHub
+  report: الإبلاغ عن مشكلة
+  thisBrowser: هذا المتصفح
+  deviceLine: $1. آخر نشاط $2
+  deviceLineSms: $1، يمكنه إرسال الرسائل. آخر نشاط $2
+  receiving: يستقبل
+  notConnected: غير متصل
+  removeOldBefore: أزل الأجهزة القديمة من
+  removeOldLink: pushbullet.com › Devices
+  removeOldAfter: '. يظهر الهاتف بحالة «يستقبل» من جديد بعد فتح تطبيق Pushbullet عليه.'
+  otherBrowsers: ما يُرسل إلى متصفح آخر
+  otherBrowsersHint: قد يظل هاتفك يعرض إضافة Pushbullet القديمة باسم «Chrome». حدّد أي متصفح تريد أن تصل إلى هنا عمليات الإرسال الموجّهة إليه.
+  renameLabel: اسم هذا المتصفح على أجهزتك الأخرى
+  rename: إعادة تسمية
+  e2eOn: التشفير التام بين الطرفين مفعّل
+  e2eOff: التشفير التام بين الطرفين متوقف
+  e2eBody: استخدم كلمة المرور نفسها التي عيّنتها في تطبيق Pushbullet على هاتفك. فهي تشفّر الإشعارات والرسائل والنص المنسوخ أثناء النقل. لا يخزّن Pushpilot سوى المفتاح المشتق منها.
+  changePassword: تغيير كلمة المرور
+  savePassword: حفظ كلمة المرور
+  turnOff: إيقاف
+  shortcutsHint: تعمل اختصارات «من أي تطبيق» حتى عندما يكون المتصفح في الخلفية. إن لم يعمل أحدها، افتح صفحة الاختصارات واضبط نطاقه على «عام».
+  changeShortcuts: تغيير الاختصارات
+  soundTakeoff: إقلاع
+  soundChime: رنين
+  soundPop: فرقعة
+  soundDing: طنين
+  soundCustom: صوتك الخاص
+  soundTooBig: اختر صوتًا أصغر من 1 MB.
+  soundUnplayable: تعذّر تشغيل هذا الملف. جرّب ملف MP3 أو OGG أو WAV.
+  play: تشغيل
+  soundUsing: يُستخدم صوتك.
+  soundNone: لم يتم اختيار صوت بعد.
+  soundChooseAnother: اختيار صوت آخر
+  soundChoose: اختيار ملف
+  soundFormats: '. بصيغة MP3 أو OGG أو WAV، وبحجم أقصاه 1 MB.'
+  previewsNeedPermission: يتطلب إذنًا لقراءة الصفحات التي تشير إليها روابطك. فعّل هذا الخيار لمنحه.
+  previewsHint: صور وعناوين وأوصاف للروابط في الموجز. لا يقرأ Pushpilot سوى ترويسة الصفحة لكل رابط.
+  notSet: غير معيّن
+  sound: الصوت
+menu:
+  page: إرسال هذه الصفحة
+  link: إرسال هذا الرابط
+  image: إرسال هذه الصورة
+  selection: إرسال النص المحدد
+  allOther: كل أجهزتي الأخرى
+bg:
+  testTitle: هكذا تصل عمليات الإرسال
+  testMessage: تُفتح الروابط في علامة تبويب جديدة عند النقر عليها.
+  testContext: من Pushpilot
+  signInFirst: سجّل الدخول إلى Pushbullet أولًا.
+  tokenRejected: رفض Pushbullet رمز الوصول المحفوظ. سجّل الدخول مجددًا.
+  clipboardSent: تم إرسال الحافظة
+  clipboardFailed: تعذّر إرسال الحافظة
+  badgeSignIn: 'Pushpilot: سجّل الدخول إلى Pushbullet'
+  badgeOffline: 'Pushpilot: غير متصل، تجري إعادة المحاولة'
+  badgeNew: 'Pushpilot: عناصر جديدة ($1)'
+  badgeSnoozed: (الإشعارات متوقفة مؤقتًا)
+  needPassword: يرسل هاتفك بيانات مشفّرة تشفيرًا تامًا بين الطرفين. أضف كلمة مرور التشفير في الإعدادات.
+  decryptFailed: تعذّر فك تشفير البيانات الواردة من هاتفك. تحقّق من كلمة مرور التشفير في الإعدادات.
+  clipboardUpdated: تم تحديث الحافظة
+  copiedFrom: نُسخ من $1
+  pasteToken: الصق رمز وصول أولًا.
+  copyCode: نسخ $1
+  appOnDevice: $1 على $2
+  noReplies: هذا التطبيق لا يقبل الردود من Pushbullet.
+  channel: قناة
+  opened: فُتح في علامة تبويب جديدة
+  done: تم
+  partial: تم الإرسال إلى $1 من أصل $2. $3
+  yourOtherDevices: أجهزتك الأخرى
+  sendFailed: تعذّر الإرسال
+  nothingTitle: لا يوجد ما يُرسل
+  nothingBody: انسخ رابطًا أو نصًا أولًا.
+  requestFailed: فشل الطلب ($1)
+  uploadFailed: فشل الرفع
+  uploadOffline: فشل الرفع. تحقّق من اتصالك.
+  smsOff: هذا الهاتف لا يشارك رسائله مع Pushbullet. افتح Pushbullet عليه وفعّل الرسائل القصيرة (SMS).
+  encrypted: هذه البيانات مشفّرة تشفيرًا تامًا بين الطرفين. أضف كلمة مرور التشفير في الإعدادات.
+  noAnswer: لم تستجب العملية الخلفية في Pushpilot. حاول مرة أخرى.

@@ -78,7 +78,7 @@ export function LinkThumb({
           <span className="absolute inset-0 bg-black/15" />
           <span
             className={clsx(
-              'absolute start-1/2 top-1/2 grid -translate-x-1/2 -translate-y-1/2 place-items-center rounded-full bg-white/95 text-black shadow-sm',
+              'absolute left-1/2 top-1/2 grid -translate-x-1/2 -translate-y-1/2 place-items-center rounded-full bg-white/95 text-black shadow-sm',
               size < 56 ? 'size-[22px]' : 'size-7',
             )}
           >
@@ -129,7 +129,7 @@ export function LinkMedia({
         className={clsx('h-full w-full', isImage && !height ? 'max-h-56 object-contain' : 'object-cover')}
       />
       {isVideo && (
-        <span className="absolute start-1/2 top-1/2 grid size-11 -translate-x-1/2 -translate-y-1/2 place-items-center rounded-full bg-white/95 text-black shadow-card">
+        <span className="absolute left-1/2 top-1/2 grid size-11 -translate-x-1/2 -translate-y-1/2 place-items-center rounded-full bg-white/95 text-black shadow-card">
           <Play size={18} fill="currentColor" className="ms-0.5" />
         </span>
       )}

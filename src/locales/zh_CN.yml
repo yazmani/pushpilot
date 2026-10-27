@@ -1,0 +1,388 @@
+# Simplified Chinese strings, translated from en.yml (the source for every language in this folder).
+# $1–$9 are substitutions; keys with 1/n are plural forms (i18n.t(key, count)).
+extName: Pushpilot for Pushbullet
+extDescription: 将标签页、笔记和文件发送到手机，在浏览器中查看 Android 通知并收发短信。非官方 Pushbullet 客户端。
+cmdOpen: 打开 Pushpilot
+cmdPushPage: 将当前页面推送到默认设备
+cmdPushClipboard: 将复制的内容推送到默认设备（可在任意应用中使用）
+cmdOpenWindow: 在窗口中打开 Pushpilot（可在任意应用中使用）
+cmdSendClipboard: 将剪贴板发送到你的其他设备（通用复制粘贴）
+common:
+  retry: 重试
+  dismiss: 关闭
+  loading: 正在加载
+tabs:
+  send: 发送
+  feed: 动态
+  phone: 手机
+  sms: 短信
+app:
+  offline: 无法连接到 Pushbullet，正在后台重试。
+header:
+  sections: 分区
+  pausedHint: 通知已暂停。点击即可重新开启。
+  accountMenu: 账号和选项
+  connected: 已连接
+  connecting: 正在连接…
+  offline: 离线
+  quietUntil: 免打扰至 $1
+  pause: 暂停通知
+  snooze30m: 30 分钟
+  snooze1h: 1 小时
+  snooze8h: 8 小时
+  snoozeNight: 夜间
+  unpause: 重新开启通知
+  openPanel: 在侧边栏中打开
+  openWindow: 在窗口中打开
+  settings: 设置
+send:
+  tooBig: $1 超出了 Pushbullet 的 $2 限制。
+  imageUnreadable: 无法读取该图片。请尝试直接拖入。
+  sentTo: 已发送到 $1
+  clipboardEmpty: 剪贴板为空。
+  clipboardSent: 已将剪贴板发送到你的设备
+  pastedImage: 粘贴的图片
+  removeFile: 移除 $1
+  titlePlaceholder: 标题（可选）
+  noteTitle: 笔记标题
+  notePlaceholder: 写笔记、粘贴链接或拖入文件
+  messagePlaceholder: 添加消息（可选）
+  message: 消息
+  thisPage: 当前页面
+  note: 笔记
+  addFile: 添加文件
+  file: 文件
+  clipboard: 剪贴板
+  clipboardHint: 将剪贴板发送到你的设备（通用复制粘贴）
+  uploading: 正在上传…
+  sending: 正在发送…
+  sendTo: 发送到 $1
+targets:
+  all: 所有设备
+  allSub: 全部发送
+  self: 此浏览器
+  selfSub: 保存以便稍后查看
+  device: 设备
+  two: $1 和 $2
+  many: $1 个目标
+  heading: 发送到
+  multiHint: ⌘+点击可多选
+  hidden:
+    1: 1 台旧设备不再接收推送，已隐藏。
+    n: $1 台旧设备不再接收推送，已隐藏。
+  seeDevices: 查看设备
+link:
+  title: 标题
+  titleLabel: 链接标题
+  address: 链接地址
+  edit: 编辑链接
+  remove: 移除链接
+  startAt: 从 $1 开始播放
+  sendImage: 发送图片本身
+recent:
+  heading: 最近
+  seeAll: 查看全部
+support:
+  count: 已通过 Pushpilot 发送 $1 条推送。
+  pitch: 免费、开源、无广告，永远如此。如果它帮你节省了时间，请我喝杯咖啡或留个评价，让它继续走下去。
+  never: 不再询问
+  coffee: 请我喝杯咖啡
+  sponsor: 在 GitHub 上赞助
+  review: 留下评价
+whatsNew:
+  title: Pushpilot $1 新功能
+  seeAll: 查看所有更新
+  label: 新功能
+  v1_1:
+    pushAnywhere: 在任意应用中推送：复制内容后按 ⌘⇧9（Ctrl+Shift+9）即可。
+    filesOpen: 图片、PDF 和其他文件到达后会在新标签页中打开。
+    shortcut: iPhone、iPad 和 Mac：使用 Pushpilot 快捷指令，从共享表单推送。
+    polish: 浅色主题、更宽敞的弹出窗口，以及接收方面的修复。
+feed:
+  searchPlaceholder: 搜索你的推送
+  searchLabel: 搜索推送
+  closeSearch: 关闭搜索
+  everything: 全部
+  myDevices: 我的设备
+  channels: 频道
+  search: 搜索
+  noMatchTitle: 没有匹配的结果
+  noMatchBody: 试试减少关键词，或输入链接的一部分。
+  emptyTitle: 你的推送会显示在这里
+  emptyBody: 你发送或接收的链接、笔记和文件都会显示在此动态中。
+  siteVideo: $1 视频
+  openConversation: 打开与 $1 的对话
+  new: 新
+device:
+  unknown: 未知设备
+  unnamed: 未命名设备
+  someone: 某人
+  kind:
+    phone: 手机
+    tablet: 平板电脑
+    laptop: 笔记本电脑
+    watch: 手表
+    browser: 浏览器
+    website: 网站
+    computer: 电脑
+time:
+  now: 刚刚
+  today: 今天
+  yesterday: 昨天
+route:
+  from: 来自 $1
+  to: 发给 $1
+  saved: 已保存，稍后查看
+  sentTo: 已发送到 $1
+  sentToAll: 已发送到所有设备
+  sentToHere: 已发送到此浏览器
+  between: $1 发给 $2
+  fromToAll: $1 发给所有设备
+kind:
+  link: 链接
+  note: 笔记
+  file: 文件
+  image: 图片
+actions:
+  download: 下载
+  open: 打开
+  copy: 复制
+  copied: 已复制
+  done: 标记为完成
+  doneToast: 已标记为完成
+  deleteEverywhere: 在所有设备上删除
+  deleted: 已删除
+chat:
+  back: 返回动态
+  unmute: 取消静音
+  mute: 静音通知
+  unmuted: 已开启 $1 的通知
+  muted: 已将 $1 静音
+  emptyTitle: 跟 $1 打个招呼吧
+  emptyBody: 在这里发送的内容会送达 $1 的所有设备。
+  placeholder: 给 $1 发消息
+phone:
+  offTitle: 手机通知已关闭
+  openSettings: 打开设置
+  offBody: 开启通知镜像，即可在这里查看 Android 通知。
+  emptyTitle: 暂无手机通知
+  emptyBody: 在 Android 手机上的 Pushbullet 应用中打开“通知镜像”并开启。新通知会显示在这里，并以桌面通知提醒。
+  now: 手机上的当前通知
+  cleared: 已清除
+  clearAll: 全部清除
+  earlier: 更早
+  replySent: 回复已发送
+  onDevice: 来自 $1
+  copiedCode: 已复制 $1
+  copyCode: 复制验证码
+  reply: 回复
+  replyIn: 在 $1 中回复
+  sendReply: 发送回复
+  dismiss: 在手机上清除
+sms:
+  noPhoneTitle: 没有可以从这里发短信的手机
+  noPhoneBody: 在 Android 手机上安装 Pushbullet，并允许它发送和读取短信。
+  phone: 手机
+  lastSeen: （上次在线：$1）
+  refresh: 刷新
+  newText: 新短信
+  noThreadsTitle: 没有对话
+  noThreadsBody: 这部手机尚未共享任何短信对话。
+  you: 我：
+  photo: 照片
+  addNumber: 请添加电话号码。
+  sent: 短信已发送
+  back: 返回对话列表
+  to: 收件人
+  toPlaceholder: 电话号码，多个号码用逗号分隔
+  placeholder: 短信
+signIn:
+  title: 把这个页面发送到手机。
+  intro: Pushpilot 借助你的 Pushbullet 账号，在设备之间传送链接、笔记、文件和短信，并将手机通知带到电脑上。
+  button: 使用 Pushbullet 登录
+  buttonHint: 将打开 Pushbullet 以授权 Pushpilot。你的密码不会经过此扩展程序。
+  useToken: 改用访问令牌
+  token: 访问令牌
+  connect: 连接
+  createBefore: 可在 pushbullet.com 的
+  createLink: Settings › Account
+  createAfter: 中创建。
+  cancelled: 登录已取消。
+  openFailed: 无法打开 Pushbullet 登录页面：$1
+  noToken: Pushbullet 未返回访问令牌$1。
+linkKind:
+  video: 视频
+  image: 图片
+  article: 文章
+  code: 代码
+  music: 音乐
+  map: 地点
+  document: 文档
+  social: 帖子
+  shop: 商品
+  web: 网页
+  readTime: $1 · 阅读约 $2 分钟
+settings:
+  section:
+    account: '账号'
+    devices: '设备'
+    devicesDesc: 'Pushbullet 会保留旧的设备注册。只有标记为“接收中”的设备才会收到你的推送。'
+    sending: '发送'
+    receiving: '接收'
+    receivingDesc: '直接发送到此浏览器的推送总会送达。选择还要接收哪些推送。'
+    autoOpen: '自动打开'
+    notifications: '通知'
+    toolbarBadge: '工具栏徽章'
+    phone: '手机'
+    feed: '动态'
+    encryption: '加密'
+    appearance: '外观'
+    shortcuts: '快捷键'
+    yourData: '你的数据'
+    supportPushpilot: '支持 Pushpilot'
+  startWithThePage: '从当前页面开始'
+  startWithThePageHint: '打开 Pushpilot 时自动填入当前标签页的标题和链接，随时可以发送。'
+  closeThePopupAfter: '发送后关闭弹出窗口'
+  rightClickMenu: '右键菜单'
+  rightClickMenuHint: '在任意页面的右键菜单中推送页面、链接、图片和选中的文字。'
+  pushesSentToAll: '发送到所有设备的推送'
+  pushesSentToAllHint: '在手机上未选择设备时发送的内容。'
+  pushesSentToYour: '发送到你其他设备的推送'
+  pushesSentToYourHint: '查看所有推送，包括发给你的平板电脑或另一台电脑的推送。'
+  pushesYouSendFrom: '你从此浏览器发送的推送'
+  pushesYouSendFromHint: '你自己的推送也在这里通知并打开，例如从右键菜单推送到所有设备时。'
+  channelSubscriptions: '频道订阅'
+  channelSubscriptionsHint: '来自你关注的频道和订阅源的推送。'
+  openLinksAsSoon: '链接到达后立即打开'
+  openLinksAsSoonHint: '推送到此浏览器的链接会在新标签页中打开，和原版 Pushbullet 扩展程序一样。只有一个网址的笔记也会打开。'
+  switchToTheNew: '切换到新标签页'
+  switchToTheNewHint: '否则会在后台打开。'
+  alsoOpenImagesPdfs: '同时打开图片、PDF 和其他文件'
+  alsoOpenLinksFrom: '同时打开他人发来的链接'
+  alsoOpenLinksFromHint: '不仅限于你自己的设备。'
+  openLinksThatArrived: '打开离线期间收到的链接'
+  openLinksThatArrivedHint: '浏览器启动或电脑唤醒时，打开在此期间推送的内容。'
+  skipTheNotificationFor: '已打开的链接不再通知'
+  pushes: '推送'
+  pushesHint: '链接、笔记和文件。'
+  phoneNotifications: '手机通知'
+  textMessages: '短信'
+  playASound: '播放提示音'
+  keepPushNotificationsOn: '推送通知保留在屏幕上'
+  keepPushNotificationsOnHint: '在你点击或关闭之前一直显示。'
+  keepPhoneNotificationsOn: '手机通知保留在屏幕上'
+  closingANotificationDismisses: '关闭通知即清除'
+  closingANotificationDismissesHint: '关闭推送通知会在所有设备上将其标记为完成；关闭手机通知会在手机上将其清除。'
+  showUnreadCountsOn: '在工具栏图标上显示未读数'
+  countPushes: '统计推送'
+  countPhoneNotifications: '统计手机通知'
+  keepCountingPhoneNotifications: '持续统计手机通知，直到它们被清除'
+  keepCountingPhoneNotificationsHint: '打开“手机”标签页时不会清零，而是随着你清除通知逐个减少。'
+  countTextMessages: '统计短信'
+  showMyPhonesNotifications: '显示我的手机通知'
+  showMyPhonesNotificationsHint: '需要在 Android 版 Pushbullet 应用中开启通知镜像。'
+  copyOneTimeCodes: '自动复制一次性验证码'
+  copyOneTimeCodesHint: '通知中包含验证码时，会直接复制到剪贴板。'
+  receiveCopiedTextFrom: '接收其他设备复制的文字'
+  receiveCopiedTextFromHint: '通用复制粘贴。需要 Pushbullet Pro，并在你的其他应用中开启此设置。'
+  theme: '主题'
+  openOn: '打开位置'
+  sendToByDefault: '默认发送到'
+  encryptionPassword: '加密密码'
+  showPreviewsForLinks: '显示链接预览'
+  navSupport: '支持'
+  signOut: '退出登录'
+  renamed: '已重命名'
+  testNotification: '发送测试通知'
+  endSnooze: '结束免打扰'
+  passwordSaved: '加密密码已保存'
+  encryptionOff: '加密已关闭'
+  themeSystem: '跟随系统'
+  themeLight: '浅色'
+  themeDark: '深色'
+  dataBody: 'Pushpilot 将你的历史记录保存在此浏览器中，并且只与 Pushbullet 通信。在这里清除不会删除你账号中的任何内容。'
+  synced: '已与 Pushbullet 同步'
+  syncNow: '立即同步'
+  historyCleared: '历史记录已清除'
+  clearHistory: '清除本地历史记录'
+  supportBody: 'Pushpilot 免费、开源，没有广告和跟踪，并将一直如此。如果它对你有用，欢迎帮助它持续发展。'
+  rate: '在 Chrome Web Store 中评分'
+  star: '在 GitHub 上加星标'
+  report: '报告问题'
+  thisBrowser: '此浏览器'
+  deviceLine: '$1。上次活跃：$2'
+  deviceLineSms: '$1，可发短信。上次活跃：$2'
+  receiving: '接收中'
+  notConnected: '未连接'
+  removeOldBefore: '可在'
+  removeOldLink: 'pushbullet.com › Devices'
+  removeOldAfter: ' 中移除旧设备。在手机上打开 Pushbullet 应用后，它会重新显示为“接收中”。'
+  otherBrowsers: '发送到其他浏览器的推送'
+  otherBrowsersHint: '你的手机可能仍将旧版 Pushbullet 扩展程序显示为“Chrome”。勾选希望在这里接收其推送的浏览器。'
+  renameLabel: '此浏览器在你其他设备上显示的名称'
+  rename: '重命名'
+  e2eOn: '端到端加密已开启'
+  e2eOff: '端到端加密已关闭'
+  e2eBody: '请使用你在手机上的 Pushbullet 应用中设置的同一密码。它会在传输过程中加密通知、短信和复制的文字。Pushpilot 只保存由密码派生的密钥。'
+  changePassword: '更改密码'
+  savePassword: '保存密码'
+  turnOff: '关闭'
+  shortcutsHint: '“在任意应用中”的快捷键即使在浏览器处于后台时也能使用。如果某个快捷键无效，请打开快捷键页面，将其作用范围设为“全局”。'
+  changeShortcuts: '更改快捷键'
+  soundTakeoff: '起飞'
+  soundChime: '钟声'
+  soundPop: '啵'
+  soundDing: '叮'
+  soundCustom: '自定义'
+  soundTooBig: '请选择小于 1 MB 的音频。'
+  soundUnplayable: '无法播放该文件。请尝试 MP3、OGG 或 WAV。'
+  play: '播放'
+  soundUsing: '正在使用你的提示音。'
+  soundNone: '尚未选择提示音。'
+  soundChooseAnother: '另选一个'
+  soundChoose: '选择文件'
+  soundFormats: '（MP3、OGG 或 WAV，最大 1 MB）'
+  previewsNeedPermission: '需要权限来读取链接指向的页面。开启此项即可授予权限。'
+  previewsHint: '为动态中的链接显示图片、标题和描述。Pushpilot 只读取每个链接的页面头部信息。'
+  notSet: '未设置'
+  sound: '提示音'
+menu:
+  page: 推送此页面
+  link: 推送此链接
+  image: 推送此图片
+  selection: 推送选中的文字
+  allOther: 我的所有其他设备
+bg:
+  testTitle: 推送会这样送达
+  testMessage: 点击链接会在新标签页中打开。
+  testContext: 来自 Pushpilot
+  signInFirst: 请先登录 Pushbullet。
+  tokenRejected: Pushbullet 拒绝了已保存的访问令牌。请重新登录。
+  clipboardSent: 剪贴板已发送
+  clipboardFailed: 无法发送剪贴板
+  badgeSignIn: 'Pushpilot: 请登录 Pushbullet'
+  badgeOffline: 'Pushpilot: 离线，正在重试'
+  badgeNew: 'Pushpilot: $1 条新内容'
+  badgeSnoozed: （通知已暂停）
+  needPassword: 你的手机发送了端到端加密的数据。请在设置中添加加密密码。
+  decryptFailed: 无法解密来自手机的数据。请在设置中检查加密密码。
+  clipboardUpdated: 剪贴板已更新
+  copiedFrom: 复制自 $1
+  pasteToken: 请先粘贴访问令牌。
+  copyCode: 复制 $1
+  appOnDevice: $2 上的 $1
+  noReplies: 此应用不接受来自 Pushbullet 的回复。
+  channel: 频道
+  opened: 已在新标签页中打开
+  done: 完成
+  partial: 已发送到 $2 台中的 $1 台。$3
+  yourOtherDevices: 你的其他设备
+  sendFailed: 无法发送
+  nothingTitle: 没有可推送的内容
+  nothingBody: 请先复制链接或一些文字。
+  requestFailed: 请求失败（$1）
+  uploadFailed: 上传失败
+  uploadOffline: 上传失败。请检查网络连接。
+  smsOff: 这部手机没有与 Pushbullet 共享短信。请在手机上打开 Pushbullet 并开启短信功能。
+  encrypted: 此数据经过端到端加密。请在设置中添加加密密码。
+  noAnswer: Pushpilot 后台进程没有响应。请重试。

@@ -1,0 +1,387 @@
+# Dutch strings, translated from en.yml (keep keys and $1–$9 in sync).
+extName: Pushpilot voor Pushbullet
+extDescription: Stuur tabbladen, notities en bestanden naar je telefoon, zie Android-meldingen en sms in je browser. Onofficiële Pushbullet-client.
+cmdOpen: Pushpilot openen
+cmdPushPage: Huidige pagina naar je standaardapparaat pushen
+cmdPushClipboard: Wat je hebt gekopieerd naar je standaardapparaat pushen, vanuit elke app
+cmdOpenWindow: Pushpilot in een venster openen, vanuit elke app
+cmdSendClipboard: Je klembord naar je andere apparaten sturen (universeel kopiëren en plakken)
+common:
+  retry: Opnieuw proberen
+  dismiss: Sluiten
+  loading: Laden
+tabs:
+  send: Versturen
+  feed: Feed
+  phone: Telefoon
+  sms: Sms
+app:
+  offline: Pushbullet is niet bereikbaar. We proberen het op de achtergrond opnieuw.
+header:
+  sections: Secties
+  pausedHint: Meldingen zijn gepauzeerd. Klik om ze weer aan te zetten.
+  accountMenu: Account en opties
+  connected: Verbonden
+  connecting: Verbinden…
+  offline: Offline
+  quietUntil: Stil tot $1
+  pause: Meldingen pauzeren
+  snooze30m: 30 min
+  snooze1h: 1 u
+  snooze8h: 8 u
+  snoozeNight: Nacht
+  unpause: Meldingen weer aanzetten
+  openPanel: Openen in zijpaneel
+  openWindow: Openen in een venster
+  settings: Instellingen
+send:
+  tooBig: $1 is groter dan de limiet van $2 bij Pushbullet.
+  imageUnreadable: Kan die afbeelding niet lezen. Sleep hem er liever in.
+  sentTo: Verstuurd naar $1
+  clipboardEmpty: Je klembord is leeg.
+  clipboardSent: Klembord naar je apparaten verstuurd
+  pastedImage: Geplakte afbeelding
+  removeFile: $1 verwijderen
+  titlePlaceholder: Titel (optioneel)
+  noteTitle: Titel van notitie
+  notePlaceholder: Schrijf een notitie, plak een link of sleep een bestand hierheen
+  messagePlaceholder: Voeg een bericht toe (optioneel)
+  message: Bericht
+  thisPage: Deze pagina
+  note: Notitie
+  addFile: Bestand toevoegen
+  file: Bestand
+  clipboard: Klembord
+  clipboardHint: Stuur je klembord naar je apparaten (universeel kopiëren en plakken)
+  uploading: Uploaden…
+  sending: Versturen…
+  sendTo: Versturen naar $1
+targets:
+  all: Alle apparaten
+  allSub: Overal
+  self: Deze browser
+  selfSub: Bewaren voor later
+  device: apparaat
+  two: $1 en $2
+  many: $1 bestemmingen
+  heading: Versturen naar
+  multiHint: ⌘-klik voor meerdere
+  hidden:
+    1: 1 ouder apparaat ontvangt geen pushes en is daarom verborgen.
+    n: $1 oudere apparaten ontvangen geen pushes en zijn daarom verborgen.
+  seeDevices: Apparaten bekijken
+link:
+  title: Titel
+  titleLabel: Titel van link
+  address: Linkadres
+  edit: Link bewerken
+  remove: Link verwijderen
+  startAt: Starten bij $1
+  sendImage: De afbeelding zelf versturen
+recent:
+  heading: Recent
+  seeAll: Alles bekijken
+support:
+  count: $1 pushes verstuurd met Pushpilot.
+  pitch: Gratis, open source en voorgoed zonder advertenties. Bespaart het je tijd? Dan houdt een kop koffie of een review het draaiende.
+  never: Niet meer vragen
+  coffee: Trakteer me op koffie
+  sponsor: Sponsor op GitHub
+  review: Schrijf een review
+whatsNew:
+  title: Nieuw in Pushpilot $1
+  seeAll: Alle wijzigingen bekijken
+  label: Wat is er nieuw
+  v1_1:
+    pushAnywhere: 'Push vanuit elke app: kopieer iets en druk op ⌘⇧9 (Ctrl+Shift+9).'
+    filesOpen: Afbeeldingen, pdf’s en andere bestanden openen in een nieuw tabblad zodra ze binnenkomen.
+    shortcut: 'iPhone, iPad en Mac: met de Pushpilot-opdracht push je rechtstreeks vanuit het deelmenu.'
+    polish: Een licht thema, een ruimere pop-up en verbeteringen bij het ontvangen.
+feed:
+  searchPlaceholder: Doorzoek je pushes
+  searchLabel: Pushes doorzoeken
+  closeSearch: Zoeken sluiten
+  everything: Alles
+  myDevices: Mijn apparaten
+  channels: Kanalen
+  search: Zoeken
+  noMatchTitle: Geen resultaten
+  noMatchBody: Probeer minder woorden of een deel van een link.
+  emptyTitle: Hier komen je pushes binnen
+  emptyBody: Links, notities en bestanden die je verstuurt of ontvangt, verschijnen in deze feed.
+  siteVideo: $1-video
+  openConversation: Gesprek met $1 openen
+  new: Nieuw
+device:
+  unknown: Onbekend apparaat
+  unnamed: Naamloos apparaat
+  someone: Iemand
+  kind:
+    phone: Telefoon
+    tablet: Tablet
+    laptop: Laptop
+    watch: Horloge
+    browser: Browser
+    website: Website
+    computer: Computer
+time:
+  now: nu
+  today: Vandaag
+  yesterday: Gisteren
+route:
+  from: Van $1
+  to: Naar $1
+  saved: Bewaard voor later
+  sentTo: Verstuurd naar $1
+  sentToAll: Verstuurd naar alle apparaten
+  sentToHere: Verstuurd naar deze browser
+  between: $1 naar $2
+  fromToAll: Van $1 naar alle apparaten
+kind:
+  link: Link
+  note: Notitie
+  file: Bestand
+  image: Afbeelding
+actions:
+  download: Downloaden
+  open: Openen
+  copy: Kopiëren
+  copied: Gekopieerd
+  done: Markeren als klaar
+  doneToast: Gemarkeerd als klaar
+  deleteEverywhere: Overal verwijderen
+  deleted: Verwijderd
+chat:
+  back: Terug naar feed
+  unmute: Dempen opheffen
+  mute: Meldingen dempen
+  unmuted: Meldingen aan voor $1
+  muted: $1 gedempt
+  emptyTitle: Zeg hallo tegen $1
+  emptyBody: Alles wat je hier verstuurt, komt aan op alle apparaten van $1.
+  placeholder: Bericht aan $1
+phone:
+  offTitle: Telefoonmeldingen staan uit
+  openSettings: Instellingen openen
+  offBody: Zet meldingen spiegelen aan om je Android-meldingen hier te zien.
+  emptyTitle: Nog geen telefoonmeldingen
+  emptyBody: Open in de Pushbullet-app op je Android-telefoon Meldingen spiegelen en zet het aan. Nieuwe meldingen verschijnen hier en als bureaubladmeldingen.
+  now: Nu op je telefoon
+  cleared: Gewist
+  clearAll: Alles wissen
+  earlier: Eerder
+  replySent: Antwoord verstuurd
+  onDevice: op $1
+  copiedCode: $1 gekopieerd
+  copyCode: Code kopiëren
+  reply: Beantwoorden
+  replyIn: Beantwoorden in $1
+  sendReply: Antwoord versturen
+  dismiss: Sluiten op telefoon
+sms:
+  noPhoneTitle: Geen telefoon kan vanaf hier sms’en
+  noPhoneBody: Installeer Pushbullet op een Android-telefoon en geef de app toestemming om sms’jes te versturen en te lezen.
+  phone: Telefoon
+  lastSeen: (laatst gezien op $1)
+  refresh: Vernieuwen
+  newText: Nieuwe sms
+  noThreadsTitle: Geen gesprekken
+  noThreadsBody: Deze telefoon heeft nog geen sms-gesprekken gedeeld.
+  you: 'Jij: '
+  photo: Foto
+  addNumber: Voeg een telefoonnummer toe.
+  sent: Sms verstuurd
+  back: Terug naar gesprekken
+  to: Aan
+  toPlaceholder: Telefoonnummer, of meerdere gescheiden door komma’s
+  placeholder: Sms-bericht
+signIn:
+  title: Stuur deze pagina naar je telefoon.
+  intro: Pushpilot verplaatst links, notities, bestanden en sms’jes tussen je apparaten via je Pushbullet-account, en brengt de meldingen van je telefoon naar je computer.
+  button: Inloggen met Pushbullet
+  buttonHint: Opent Pushbullet zodat je Pushpilot kunt goedkeuren. Je wachtwoord komt nooit bij de extensie terecht.
+  useToken: Gebruik liever een toegangstoken
+  token: Toegangstoken
+  connect: Verbinden
+  createBefore: Maak er een aan onder
+  createLink: Settings › Account
+  createAfter: op pushbullet.com.
+  cancelled: Inloggen is geannuleerd.
+  openFailed: 'Kan inloggen bij Pushbullet niet openen: $1'
+  noToken: Pushbullet heeft geen toegangstoken teruggegeven$1.
+linkKind:
+  video: Video
+  image: Afbeelding
+  article: Artikel
+  code: Code
+  music: Muziek
+  map: Plaats
+  document: Document
+  social: Bericht
+  shop: Product
+  web: Pagina
+  readTime: $1, $2 min lezen
+settings:
+  section:
+    account: Account
+    devices: Apparaten
+    devicesDesc: Pushbullet bewaart oude registraties. Alleen apparaten met de status ‘Ontvangt’ krijgen je pushes.
+    sending: Versturen
+    receiving: Ontvangen
+    receivingDesc: Pushes die rechtstreeks naar deze browser gaan, komen altijd aan. Kies wat er verder meetelt.
+    autoOpen: Automatisch openen
+    notifications: Meldingen
+    toolbarBadge: Badge op werkbalk
+    phone: Telefoon
+    feed: Feed
+    encryption: Versleuteling
+    appearance: Weergave
+    shortcuts: Sneltoetsen
+    yourData: Je gegevens
+    supportPushpilot: Pushpilot steunen
+  startWithThePage: Beginnen met de huidige pagina
+  startWithThePageHint: Als je Pushpilot opent, zijn de titel en link van het huidige tabblad al ingevuld, klaar om te versturen.
+  closeThePopupAfter: Pop-up sluiten na versturen
+  rightClickMenu: Rechtsklikmenu
+  rightClickMenuHint: Push pagina’s, links, afbeeldingen en geselecteerde tekst via het contextmenu van elke pagina.
+  pushesSentToAll: Pushes naar alle apparaten
+  pushesSentToAllHint: Wat je telefoon verstuurt als je geen apparaat kiest.
+  pushesSentToYour: Pushes naar je andere apparaten
+  pushesSentToYourHint: Zie alles, ook pushes voor je tablet of een andere computer.
+  pushesYouSendFrom: Pushes die je vanuit deze browser verstuurt
+  pushesYouSendFromHint: Krijg ook hier meldingen van je eigen pushes en open ze, bijvoorbeeld als je via het rechtsklikmenu naar alle apparaten pusht.
+  channelSubscriptions: Kanaalabonnementen
+  channelSubscriptionsHint: Pushes van kanalen en feeds die je volgt.
+  openLinksAsSoon: Links openen zodra ze binnenkomen
+  openLinksAsSoonHint: Links die naar deze browser worden gepusht, openen in een nieuw tabblad, net als bij de originele Pushbullet-extensie. Dat geldt ook voor een notitie die alleen een adres bevat.
+  switchToTheNew: Naar het nieuwe tabblad gaan
+  switchToTheNewHint: Anders opent het op de achtergrond.
+  alsoOpenImagesPdfs: Ook afbeeldingen, pdf’s en andere bestanden openen
+  alsoOpenLinksFrom: Ook links van andere mensen openen
+  alsoOpenLinksFromHint: Niet alleen van je eigen apparaten.
+  openLinksThatArrived: Links openen die binnenkwamen terwijl je offline was
+  openLinksThatArrivedHint: Als de browser start of je computer uit de slaapstand komt, wordt geopend wat er intussen is gepusht.
+  skipTheNotificationFor: Geen melding voor geopende links
+  pushes: Pushes
+  pushesHint: Links, notities en bestanden.
+  phoneNotifications: Telefoonmeldingen
+  textMessages: Sms-berichten
+  playASound: Geluid afspelen
+  keepPushNotificationsOn: Pushmeldingen in beeld houden
+  keepPushNotificationsOnHint: Ze blijven staan tot je erop klikt of ze sluit.
+  keepPhoneNotificationsOn: Telefoonmeldingen in beeld houden
+  closingANotificationDismisses: Een melding sluiten wist hem
+  closingANotificationDismissesHint: Sluit je een push, dan wordt hij overal als klaar gemarkeerd. Sluit je een telefoonmelding, dan wordt die op je telefoon gewist.
+  showUnreadCountsOn: Aantal ongelezen tonen op het werkbalkpictogram
+  countPushes: Pushes tellen
+  countPhoneNotifications: Telefoonmeldingen tellen
+  keepCountingPhoneNotifications: Telefoonmeldingen blijven tellen tot ze gewist zijn
+  keepCountingPhoneNotificationsHint: In plaats van te resetten als je het tabblad Telefoon opent, daalt het aantal naarmate je ze sluit.
+  countTextMessages: Sms-berichten tellen
+  showMyPhonesNotifications: Meldingen van mijn telefoon tonen
+  showMyPhonesNotificationsHint: Hiervoor moet Meldingen spiegelen aanstaan in de Pushbullet-app op Android.
+  copyOneTimeCodes: Eenmalige codes automatisch kopiëren
+  copyOneTimeCodesHint: Als een melding een verificatiecode bevat, gaat die meteen naar je klembord.
+  receiveCopiedTextFrom: Gekopieerde tekst van andere apparaten ontvangen
+  receiveCopiedTextFromHint: Universeel kopiëren en plakken. Vereist Pushbullet Pro en dat de instelling aanstaat in je andere apps.
+  theme: Thema
+  openOn: Openen op
+  sendToByDefault: Standaard versturen naar
+  encryptionPassword: Versleutelingswachtwoord
+  showPreviewsForLinks: Linkvoorbeelden tonen
+  navSupport: Steunen
+  signOut: Uitloggen
+  renamed: Naam gewijzigd
+  testNotification: Testmelding versturen
+  endSnooze: Pauze beëindigen
+  passwordSaved: Versleutelingswachtwoord opgeslagen
+  encryptionOff: Versleuteling uitgezet
+  themeSystem: Systeem
+  themeLight: Licht
+  themeDark: Donker
+  dataBody: Pushpilot bewaart je geschiedenis in deze browser en praat alleen met Pushbullet. Als je die hier wist, wordt er niets uit je account verwijderd.
+  synced: Gesynchroniseerd met Pushbullet
+  syncNow: Nu synchroniseren
+  historyCleared: Geschiedenis gewist
+  clearHistory: Lokale geschiedenis wissen
+  supportBody: Pushpilot is gratis en open source, zonder advertenties of tracking, en dat blijft zo. Heb je er iets aan? Dan kun je helpen het draaiende te houden.
+  rate: Beoordeel het in de Chrome Web Store
+  star: Ster geven op GitHub
+  report: Probleem melden
+  thisBrowser: deze browser
+  deviceLine: $1. Laatst actief op $2
+  deviceLineSms: $1, kan sms’en. Laatst actief op $2
+  receiving: Ontvangt
+  notConnected: Niet verbonden
+  removeOldBefore: Verwijder oude apparaten op
+  removeOldLink: pushbullet.com › Devices
+  removeOldAfter: '. Een telefoon staat weer op ‘Ontvangt’ zodra je de Pushbullet-app erop opent.'
+  otherBrowsers: Pushes naar een andere browser
+  otherBrowsersHint: Je telefoon toont de oude Pushbullet-extensie misschien nog als ‘Chrome’. Vink elke browser aan waarvan de pushes hier moeten binnenkomen.
+  renameLabel: Naam van deze browser op je andere apparaten
+  rename: Naam wijzigen
+  e2eOn: End-to-end-versleuteling staat aan
+  e2eOff: End-to-end-versleuteling staat uit
+  e2eBody: Gebruik hetzelfde wachtwoord dat je in de Pushbullet-app op je telefoon hebt ingesteld. Het versleutelt meldingen, sms’jes en gekopieerde tekst onderweg. Pushpilot bewaart alleen de afgeleide sleutel.
+  changePassword: Wachtwoord wijzigen
+  savePassword: Wachtwoord opslaan
+  turnOff: Uitzetten
+  shortcutsHint: De sneltoetsen ‘vanuit elke app’ werken ook als de browser op de achtergrond staat. Werkt er een niet? Open dan de pagina met sneltoetsen en zet het bereik op ‘Algemeen’.
+  changeShortcuts: Sneltoetsen wijzigen
+  soundTakeoff: Opstijgen
+  soundChime: Belletje
+  soundPop: Plop
+  soundDing: Ding
+  soundCustom: Je eigen geluid
+  soundTooBig: Kies een geluid kleiner dan 1 MB.
+  soundUnplayable: Dat bestand kan niet worden afgespeeld. Probeer een MP3, OGG of WAV.
+  play: Afspelen
+  soundUsing: Je eigen geluid wordt gebruikt.
+  soundNone: Nog geen geluid gekozen.
+  soundChooseAnother: Ander kiezen
+  soundChoose: Bestand kiezen
+  soundFormats: '. MP3, OGG of WAV, tot 1 MB.'
+  previewsNeedPermission: Heeft toestemming nodig om de pagina’s te lezen waar je links naar verwijzen. Zet dit aan om die te geven.
+  previewsHint: Afbeeldingen, titels en beschrijvingen bij links in je feed. Pushpilot leest alleen de paginakop van elke link.
+  notSet: Niet ingesteld
+  sound: Geluid
+menu:
+  page: Deze pagina pushen
+  link: Deze link pushen
+  image: Deze afbeelding pushen
+  selection: Geselecteerde tekst pushen
+  allOther: Al mijn andere apparaten
+bg:
+  testTitle: Zo komen pushes binnen
+  testMessage: Links openen in een nieuw tabblad als je erop klikt.
+  testContext: Van Pushpilot
+  signInFirst: Log eerst in bij Pushbullet.
+  tokenRejected: Pushbullet heeft het opgeslagen toegangstoken geweigerd. Log opnieuw in.
+  clipboardSent: Klembord verstuurd
+  clipboardFailed: Kan klembord niet versturen
+  badgeSignIn: 'Pushpilot: log in bij Pushbullet'
+  badgeOffline: 'Pushpilot: offline, opnieuw proberen'
+  badgeNew: 'Pushpilot: $1 nieuw'
+  badgeSnoozed: (meldingen gepauzeerd)
+  needPassword: Je telefoon verstuurt end-to-end versleutelde gegevens. Voeg je versleutelingswachtwoord toe in Instellingen.
+  decryptFailed: Kan gegevens van je telefoon niet ontsleutelen. Controleer je versleutelingswachtwoord in Instellingen.
+  clipboardUpdated: Klembord bijgewerkt
+  copiedFrom: Gekopieerd van $1
+  pasteToken: Plak eerst een toegangstoken.
+  copyCode: $1 kopiëren
+  appOnDevice: $1 op $2
+  noReplies: Deze app accepteert geen antwoorden via Pushbullet.
+  channel: Kanaal
+  opened: Geopend in een nieuw tabblad
+  done: Klaar
+  partial: Verstuurd naar $1 van de $2. $3
+  yourOtherDevices: je andere apparaten
+  sendFailed: Versturen mislukt
+  nothingTitle: Niets om te pushen
+  nothingBody: Kopieer eerst een link of wat tekst.
+  requestFailed: Verzoek mislukt ($1)
+  uploadFailed: Uploaden mislukt
+  uploadOffline: Uploaden mislukt. Controleer je verbinding.
+  smsOff: Deze telefoon deelt zijn sms’jes niet met Pushbullet. Open Pushbullet op de telefoon en zet sms aan.
+  encrypted: Deze gegevens zijn end-to-end versleuteld. Voeg je versleutelingswachtwoord toe in Instellingen.
+  noAnswer: Het achtergrondproces van Pushpilot reageerde niet. Probeer het opnieuw.

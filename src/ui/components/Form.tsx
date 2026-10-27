@@ -39,8 +39,8 @@ export function Toggle({
       >
         <span
           className={clsx(
-            'absolute top-[3px] size-4 rounded-full bg-white shadow-sm transition-transform',
-            checked ? 'translate-x-[19px]' : 'translate-x-[3px]',
+            'absolute start-0 top-[3px] size-4 rounded-full bg-white shadow-sm transition-transform',
+            checked ? 'translate-x-[19px] rtl:-translate-x-[19px]' : 'translate-x-[3px] rtl:-translate-x-[3px]',
           )}
         />
       </span>

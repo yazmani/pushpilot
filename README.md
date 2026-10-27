@@ -55,6 +55,9 @@ The official Pushbullet extension is built on Manifest V2, which current version
 **SMS** (Android)
 - Read conversations and send texts from your browser.
 
+**In your language**
+- English, العربية, Deutsch, Español, Français, Bahasa Indonesia, Italiano, 日本語, 한국어, Nederlands, Polski, Português (Brasil), Русский, Türkçe, Tiếng Việt, 简体中文 and 繁體中文, following your browser's language, with a right-to-left layout for Arabic. Corrections are welcome: see [Translations](CONTRIBUTING.md#translations).
+
 **Also**
 - End-to-end encryption compatible with the Pushbullet apps, universal copy and paste, snooze, a side panel that follows your tab, a pop-out window, light and dark themes, unread badge.
 

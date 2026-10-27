@@ -1,0 +1,388 @@
+# Vietnamese strings, translated from en.yml.
+# $1–$9 are substitutions; keys with 1/n are plural forms (i18n.t(key, count)).
+extName: Pushpilot cho Pushbullet
+extDescription: Gửi tab, ghi chú và tệp tới điện thoại, xem thông báo Android và nhắn tin từ trình duyệt. Ứng dụng Pushbullet không chính thức.
+cmdOpen: Mở Pushpilot
+cmdPushPage: Gửi trang hiện tại tới thiết bị mặc định
+cmdPushClipboard: Gửi nội dung bạn đã sao chép tới thiết bị mặc định, từ mọi ứng dụng
+cmdOpenWindow: Mở Pushpilot trong cửa sổ, từ mọi ứng dụng
+cmdSendClipboard: Gửi bảng nhớ tạm tới các thiết bị khác (sao chép và dán đa thiết bị)
+common:
+  retry: Thử lại
+  dismiss: Bỏ qua
+  loading: Đang tải
+tabs:
+  send: Gửi
+  feed: Bảng tin
+  phone: Điện thoại
+  sms: SMS
+app:
+  offline: Không kết nối được với Pushbullet. Đang thử lại trong nền.
+header:
+  sections: Mục
+  pausedHint: Thông báo đang tạm dừng. Nhấp để bật lại.
+  accountMenu: Tài khoản và tùy chọn
+  connected: Đã kết nối
+  connecting: Đang kết nối…
+  offline: Ngoại tuyến
+  quietUntil: Im lặng đến $1
+  pause: Tạm dừng thông báo
+  snooze30m: 30 phút
+  snooze1h: 1 giờ
+  snooze8h: 8 giờ
+  snoozeNight: Qua đêm
+  unpause: Bật lại thông báo
+  openPanel: Mở trong bảng bên
+  openWindow: Mở trong cửa sổ
+  settings: Cài đặt
+send:
+  tooBig: $1 vượt quá giới hạn $2 của Pushbullet.
+  imageUnreadable: Không đọc được hình ảnh đó. Hãy thử kéo thả vào.
+  sentTo: Đã gửi tới $1
+  clipboardEmpty: Bảng nhớ tạm đang trống.
+  clipboardSent: Đã gửi bảng nhớ tạm tới các thiết bị
+  pastedImage: Ảnh đã dán
+  removeFile: Xóa $1
+  titlePlaceholder: Tiêu đề (không bắt buộc)
+  noteTitle: Tiêu đề ghi chú
+  notePlaceholder: Viết ghi chú, dán liên kết hoặc thả tệp vào
+  messagePlaceholder: Thêm lời nhắn (không bắt buộc)
+  message: Lời nhắn
+  thisPage: Trang này
+  note: Ghi chú
+  addFile: Thêm tệp
+  file: Tệp
+  clipboard: Bảng nhớ tạm
+  clipboardHint: Gửi bảng nhớ tạm tới các thiết bị (sao chép & dán đa thiết bị)
+  uploading: Đang tải lên…
+  sending: Đang gửi…
+  sendTo: Gửi tới $1
+targets:
+  all: Tất cả thiết bị
+  allSub: Mọi nơi
+  self: Trình duyệt này
+  selfSub: Lưu để xem sau
+  device: thiết bị
+  two: $1 và $2
+  many: $1 nơi
+  heading: Gửi tới
+  multiHint: ⌘-nhấp để chọn nhiều
+  hidden:
+    1: 1 thiết bị cũ không nhận được mục gửi nên đã bị ẩn.
+    n: $1 thiết bị cũ không nhận được mục gửi nên đã bị ẩn.
+  seeDevices: Xem thiết bị
+link:
+  title: Tiêu đề
+  titleLabel: Tiêu đề liên kết
+  address: Địa chỉ liên kết
+  edit: Sửa liên kết
+  remove: Xóa liên kết
+  startAt: Bắt đầu từ $1
+  sendImage: Gửi chính hình ảnh
+recent:
+  heading: Gần đây
+  seeAll: Xem tất cả
+support:
+  count: Đã gửi $1 mục bằng Pushpilot.
+  pitch: Miễn phí, mã nguồn mở và mãi mãi không quảng cáo. Nếu nó giúp bạn tiết kiệm thời gian, một ly cà phê hoặc một đánh giá sẽ giúp dự án tiếp tục.
+  never: Đừng hỏi lại
+  coffee: Mời tôi một ly cà phê
+  sponsor: Tài trợ trên GitHub
+  review: Viết đánh giá
+whatsNew:
+  title: Có gì mới trong Pushpilot $1
+  seeAll: Xem mọi thay đổi
+  label: Có gì mới
+  v1_1:
+    pushAnywhere: 'Gửi từ mọi ứng dụng: sao chép nội dung rồi nhấn ⌘⇧9 (Ctrl+Shift+9).'
+    filesOpen: Hình ảnh, PDF và các tệp khác mở trong tab mới ngay khi nhận được.
+    shortcut: 'iPhone, iPad và Mac: lối tắt Pushpilot gửi từ bảng Chia sẻ.'
+    polish: Giao diện sáng, cửa sổ bật lên rộng rãi hơn và các bản sửa lỗi khi nhận.
+feed:
+  searchPlaceholder: Tìm trong các mục gửi
+  searchLabel: Tìm mục gửi
+  closeSearch: Đóng tìm kiếm
+  everything: Tất cả
+  myDevices: Thiết bị của tôi
+  channels: Kênh
+  search: Tìm kiếm
+  noMatchTitle: Không có kết quả phù hợp
+  noMatchBody: Hãy thử ít từ hơn, hoặc một phần của liên kết.
+  emptyTitle: Các mục gửi sẽ xuất hiện ở đây
+  emptyBody: Liên kết, ghi chú và tệp bạn gửi hoặc nhận sẽ hiện trong bảng tin này.
+  siteVideo: Video $1
+  openConversation: Mở cuộc trò chuyện với $1
+  new: Mới
+device:
+  unknown: Thiết bị không xác định
+  unnamed: Thiết bị chưa đặt tên
+  someone: Ai đó
+  kind:
+    phone: Điện thoại
+    tablet: Máy tính bảng
+    laptop: Máy tính xách tay
+    watch: Đồng hồ
+    browser: Trình duyệt
+    website: Trang web
+    computer: Máy tính
+time:
+  now: vừa xong
+  today: Hôm nay
+  yesterday: Hôm qua
+route:
+  from: Từ $1
+  to: Tới $1
+  saved: Đã lưu để xem sau
+  sentTo: Đã gửi tới $1
+  sentToAll: Đã gửi tới tất cả thiết bị
+  sentToHere: Đã gửi tới trình duyệt này
+  between: $1 tới $2
+  fromToAll: Từ $1 tới tất cả thiết bị
+kind:
+  link: Liên kết
+  note: Ghi chú
+  file: Tệp
+  image: Hình ảnh
+actions:
+  download: Tải xuống
+  open: Mở
+  copy: Sao chép
+  copied: Đã sao chép
+  done: Đánh dấu là xong
+  doneToast: Đã đánh dấu là xong
+  deleteEverywhere: Xóa ở mọi nơi
+  deleted: Đã xóa
+chat:
+  back: Quay lại bảng tin
+  unmute: Bật tiếng
+  mute: Tắt tiếng thông báo
+  unmuted: Đã bật thông báo cho $1
+  muted: Đã tắt tiếng $1
+  emptyTitle: Gửi lời chào tới $1
+  emptyBody: Mọi thứ bạn gửi ở đây sẽ tới tất cả thiết bị của $1.
+  placeholder: Nhắn cho $1
+phone:
+  offTitle: Thông báo điện thoại đang tắt
+  openSettings: Mở cài đặt
+  offBody: Bật tính năng phản chiếu thông báo để xem thông báo Android tại đây.
+  emptyTitle: Chưa có thông báo điện thoại
+  emptyBody: Trong ứng dụng Pushbullet trên điện thoại Android, hãy mở Phản chiếu thông báo và bật lên. Thông báo mới sẽ hiện ở đây và dưới dạng cảnh báo trên máy tính.
+  now: Đang có trên điện thoại
+  cleared: Đã xóa
+  clearAll: Xóa tất cả
+  earlier: Trước đó
+  replySent: Đã gửi trả lời
+  onDevice: trên $1
+  copiedCode: Đã sao chép $1
+  copyCode: Sao chép mã
+  reply: Trả lời
+  replyIn: Trả lời trong $1
+  sendReply: Gửi trả lời
+  dismiss: Bỏ qua trên điện thoại
+sms:
+  noPhoneTitle: Không có điện thoại nào nhắn tin được từ đây
+  noPhoneBody: Cài Pushbullet trên điện thoại Android và cho phép ứng dụng gửi và đọc SMS.
+  phone: Điện thoại
+  lastSeen: (hoạt động lần cuối $1)
+  refresh: Làm mới
+  newText: Tin nhắn mới
+  noThreadsTitle: Không có cuộc trò chuyện
+  noThreadsBody: Điện thoại này chưa chia sẻ chuỗi tin nhắn nào.
+  you: 'Bạn: '
+  photo: Ảnh
+  addNumber: Thêm số điện thoại.
+  sent: Đã gửi tin nhắn
+  back: Quay lại các cuộc trò chuyện
+  to: Tới
+  toPlaceholder: Số điện thoại, hoặc nhiều số cách nhau bằng dấu phẩy
+  placeholder: Tin nhắn văn bản
+signIn:
+  title: Gửi trang này tới điện thoại của bạn.
+  intro: Pushpilot chuyển liên kết, ghi chú, tệp và tin nhắn giữa các thiết bị của bạn bằng tài khoản Pushbullet, đồng thời đưa thông báo điện thoại lên máy tính.
+  button: Đăng nhập bằng Pushbullet
+  buttonHint: Mở Pushbullet để bạn cấp quyền cho Pushpilot. Mật khẩu của bạn không bao giờ đến tiện ích.
+  useToken: Dùng mã truy cập thay thế
+  token: Mã truy cập
+  connect: Kết nối
+  createBefore: Tạo mã trong
+  createLink: Settings › Account
+  createAfter: trên pushbullet.com.
+  cancelled: Đã hủy đăng nhập.
+  openFailed: 'Không mở được trang đăng nhập Pushbullet: $1'
+  noToken: Pushbullet không trả về mã truy cập$1.
+linkKind:
+  video: Video
+  image: Hình ảnh
+  article: Bài viết
+  code: Mã
+  music: Nhạc
+  map: Địa điểm
+  document: Tài liệu
+  social: Bài đăng
+  shop: Sản phẩm
+  web: Trang
+  readTime: $1, đọc trong $2 phút
+settings:
+  section:
+    account: Tài khoản
+    devices: Thiết bị
+    devicesDesc: Pushbullet giữ lại các đăng ký cũ. Chỉ thiết bị được đánh dấu Đang nhận mới nhận được mục gửi của bạn.
+    sending: Gửi
+    receiving: Nhận
+    receivingDesc: Mục gửi thẳng tới trình duyệt này luôn được nhận. Chọn thêm những gì cần nhận.
+    autoOpen: Tự động mở
+    notifications: Thông báo
+    toolbarBadge: Huy hiệu trên thanh công cụ
+    phone: Điện thoại
+    feed: Bảng tin
+    encryption: Mã hóa
+    appearance: Giao diện
+    shortcuts: Phím tắt
+    yourData: Dữ liệu của bạn
+    supportPushpilot: Ủng hộ Pushpilot
+  startWithThePage: Bắt đầu với trang đang mở
+  startWithThePageHint: Khi mở Pushpilot, tiêu đề và liên kết của tab hiện tại được điền sẵn để gửi.
+  closeThePopupAfter: Đóng cửa sổ bật lên sau khi gửi
+  rightClickMenu: Menu chuột phải
+  rightClickMenuHint: Gửi trang, liên kết, hình ảnh và văn bản đã chọn từ menu ngữ cảnh của mọi trang.
+  pushesSentToAll: Mục gửi tới tất cả thiết bị
+  pushesSentToAllHint: Những gì điện thoại gửi khi bạn không chọn thiết bị.
+  pushesSentToYour: Mục gửi tới các thiết bị khác của bạn
+  pushesSentToYourHint: Xem mọi thứ, kể cả mục gửi dành cho máy tính bảng hoặc máy tính khác.
+  pushesYouSendFrom: Mục bạn gửi từ trình duyệt này
+  pushesYouSendFromHint: Hiện thông báo và mở cả các mục bạn tự gửi tại đây, ví dụ khi bạn gửi tới tất cả thiết bị từ menu chuột phải.
+  channelSubscriptions: Kênh đã đăng ký
+  channelSubscriptionsHint: Mục gửi từ các kênh và nguồn tin bạn theo dõi.
+  openLinksAsSoon: Mở liên kết ngay khi nhận được
+  openLinksAsSoonHint: Liên kết gửi tới trình duyệt này sẽ mở trong tab mới, giống tiện ích Pushbullet gốc. Ghi chú chỉ chứa một địa chỉ cũng vậy.
+  switchToTheNew: Chuyển sang tab mới
+  switchToTheNewHint: Nếu không, tab sẽ mở trong nền.
+  alsoOpenImagesPdfs: Mở cả hình ảnh, PDF và các tệp khác
+  alsoOpenLinksFrom: Mở cả liên kết từ người khác
+  alsoOpenLinksFromHint: Không chỉ từ thiết bị của bạn.
+  openLinksThatArrived: Mở liên kết nhận được khi ngoại tuyến
+  openLinksThatArrivedHint: Khi trình duyệt khởi động hoặc máy tính thức dậy, mở những gì đã được gửi trong lúc đó.
+  skipTheNotificationFor: Bỏ qua thông báo cho liên kết đã mở
+  pushes: Mục gửi
+  pushesHint: Liên kết, ghi chú và tệp.
+  phoneNotifications: Thông báo điện thoại
+  textMessages: Tin nhắn văn bản
+  playASound: Phát âm thanh
+  keepPushNotificationsOn: Giữ thông báo mục gửi trên màn hình
+  keepPushNotificationsOnHint: Thông báo sẽ ở lại cho đến khi bạn nhấp hoặc đóng.
+  keepPhoneNotificationsOn: Giữ thông báo điện thoại trên màn hình
+  closingANotificationDismisses: Đóng thông báo cũng là bỏ qua nó
+  closingANotificationDismissesHint: Đóng thông báo mục gửi thì mục đó được đánh dấu xong ở mọi nơi; đóng thông báo điện thoại thì nó bị xóa trên điện thoại.
+  showUnreadCountsOn: Hiện số mục chưa đọc trên biểu tượng thanh công cụ
+  countPushes: Đếm mục gửi
+  countPhoneNotifications: Đếm thông báo điện thoại
+  keepCountingPhoneNotifications: Tiếp tục đếm thông báo điện thoại cho đến khi chúng bị xóa
+  keepCountingPhoneNotificationsHint: Thay vì đặt lại khi bạn mở tab Điện thoại, số đếm sẽ giảm dần khi bạn bỏ qua từng thông báo.
+  countTextMessages: Đếm tin nhắn văn bản
+  showMyPhonesNotifications: Hiện thông báo của điện thoại
+  showMyPhonesNotificationsHint: Cần bật Phản chiếu thông báo trong ứng dụng Pushbullet trên Android.
+  copyOneTimeCodes: Tự động sao chép mã dùng một lần
+  copyOneTimeCodesHint: Khi thông báo có mã xác minh, mã sẽ được chép thẳng vào bảng nhớ tạm.
+  receiveCopiedTextFrom: Nhận văn bản đã sao chép từ thiết bị khác
+  receiveCopiedTextFromHint: Sao chép và dán đa thiết bị. Cần Pushbullet Pro và bật cài đặt này trong các ứng dụng khác của bạn.
+  theme: Chủ đề
+  openOn: Mở trong
+  sendToByDefault: Gửi mặc định tới
+  encryptionPassword: Mật khẩu mã hóa
+  showPreviewsForLinks: Hiện bản xem trước cho liên kết
+  navSupport: Ủng hộ
+  signOut: Đăng xuất
+  renamed: Đã đổi tên
+  testNotification: Gửi thông báo thử
+  endSnooze: Kết thúc tạm hoãn
+  passwordSaved: Đã lưu mật khẩu mã hóa
+  encryptionOff: Đã tắt mã hóa
+  themeSystem: Hệ thống
+  themeLight: Sáng
+  themeDark: Tối
+  dataBody: Pushpilot lưu lịch sử của bạn trong trình duyệt này và chỉ giao tiếp với Pushbullet. Xóa lịch sử tại đây không xóa gì khỏi tài khoản của bạn.
+  synced: Đã đồng bộ với Pushbullet
+  syncNow: Đồng bộ ngay
+  historyCleared: Đã xóa lịch sử
+  clearHistory: Xóa lịch sử cục bộ
+  supportBody: Pushpilot miễn phí và mã nguồn mở, không quảng cáo hay theo dõi, và sẽ luôn như vậy. Nếu nó hữu ích với bạn, bạn có thể giúp dự án tiếp tục.
+  rate: Đánh giá trên Chrome Web Store
+  star: Gắn sao trên GitHub
+  report: Báo cáo sự cố
+  thisBrowser: trình duyệt này
+  deviceLine: $1. Hoạt động lần cuối $2
+  deviceLineSms: $1, nhắn tin được. Hoạt động lần cuối $2
+  receiving: Đang nhận
+  notConnected: Chưa kết nối
+  removeOldBefore: Xóa thiết bị cũ tại
+  removeOldLink: pushbullet.com › Devices
+  removeOldAfter: '. Điện thoại sẽ hiện lại là Đang nhận sau khi bạn mở ứng dụng Pushbullet trên máy đó.'
+  otherBrowsers: Mục gửi tới trình duyệt khác
+  otherBrowsersHint: Điện thoại có thể vẫn liệt kê tiện ích Pushbullet cũ là “Chrome”. Đánh dấu những trình duyệt có mục gửi cần nhận tại đây.
+  renameLabel: Tên của trình duyệt này trên các thiết bị khác
+  rename: Đổi tên
+  e2eOn: Mã hóa đầu cuối đang bật
+  e2eOff: Mã hóa đầu cuối đang tắt
+  e2eBody: Dùng cùng mật khẩu bạn đã đặt trong ứng dụng Pushbullet trên điện thoại. Mật khẩu này mã hóa thông báo, tin nhắn và văn bản đã sao chép khi truyền đi. Pushpilot chỉ lưu khóa được tạo từ mật khẩu.
+  changePassword: Đổi mật khẩu
+  savePassword: Lưu mật khẩu
+  turnOff: Tắt
+  shortcutsHint: Các phím tắt “từ mọi ứng dụng” vẫn hoạt động khi trình duyệt chạy trong nền. Nếu một phím tắt không hoạt động, hãy mở trang phím tắt và đặt phạm vi của nó thành Toàn cầu.
+  changeShortcuts: Thay đổi phím tắt
+  soundTakeoff: Cất cánh
+  soundChime: Chuông ngân
+  soundPop: Bốp
+  soundDing: Ting
+  soundCustom: Âm thanh của bạn
+  soundTooBig: Chọn âm thanh dưới 1 MB.
+  soundUnplayable: Không phát được tệp đó. Hãy thử MP3, OGG hoặc WAV.
+  play: Phát
+  soundUsing: Đang dùng âm thanh của bạn.
+  soundNone: Chưa chọn âm thanh nào.
+  soundChooseAnother: Chọn tệp khác
+  soundChoose: Chọn tệp
+  soundFormats: '. MP3, OGG hoặc WAV, tối đa 1 MB.'
+  previewsNeedPermission: Cần quyền đọc các trang mà liên kết của bạn trỏ tới. Bật mục này để cấp quyền.
+  previewsHint: Hình ảnh, tiêu đề và mô tả cho liên kết trong bảng tin. Pushpilot chỉ đọc phần đầu trang của mỗi liên kết.
+  notSet: Chưa đặt
+  sound: Âm thanh
+menu:
+  page: Gửi trang này
+  link: Gửi liên kết này
+  image: Gửi hình ảnh này
+  selection: Gửi văn bản đã chọn
+  allOther: Tất cả thiết bị khác của tôi
+bg:
+  testTitle: Mục gửi sẽ đến như thế này
+  testMessage: Liên kết sẽ mở trong tab mới khi bạn nhấp vào.
+  testContext: Từ Pushpilot
+  signInFirst: Hãy đăng nhập Pushbullet trước.
+  tokenRejected: Pushbullet đã từ chối mã truy cập đã lưu. Hãy đăng nhập lại.
+  clipboardSent: Đã gửi bảng nhớ tạm
+  clipboardFailed: Không gửi được bảng nhớ tạm
+  badgeSignIn: 'Pushpilot: đăng nhập Pushbullet'
+  badgeOffline: 'Pushpilot: ngoại tuyến, đang thử lại'
+  badgeNew: 'Pushpilot: $1 mục mới'
+  badgeSnoozed: (đã tạm hoãn thông báo)
+  needPassword: Điện thoại của bạn gửi dữ liệu được mã hóa đầu cuối. Hãy thêm mật khẩu mã hóa trong Cài đặt.
+  decryptFailed: Không giải mã được dữ liệu từ điện thoại. Hãy kiểm tra mật khẩu mã hóa trong Cài đặt.
+  clipboardUpdated: Đã cập nhật bảng nhớ tạm
+  copiedFrom: Đã sao chép từ $1
+  pasteToken: Hãy dán mã truy cập trước.
+  copyCode: Sao chép $1
+  appOnDevice: $1 trên $2
+  noReplies: Ứng dụng này không nhận câu trả lời từ Pushbullet.
+  channel: Kênh
+  opened: Đã mở trong tab mới
+  done: Xong
+  partial: Đã gửi tới $1 trên $2. $3
+  yourOtherDevices: các thiết bị khác của bạn
+  sendFailed: Không gửi được
+  nothingTitle: Không có gì để gửi
+  nothingBody: Hãy sao chép một liên kết hoặc văn bản trước.
+  requestFailed: Yêu cầu thất bại ($1)
+  uploadFailed: Tải lên thất bại
+  uploadOffline: Tải lên thất bại. Hãy kiểm tra kết nối.
+  smsOff: Điện thoại này không chia sẻ tin nhắn với Pushbullet. Mở Pushbullet trên điện thoại đó và bật SMS.
+  encrypted: Dữ liệu này được mã hóa đầu cuối. Hãy thêm mật khẩu mã hóa trong Cài đặt.
+  noAnswer: Tiến trình nền của Pushpilot không phản hồi. Hãy thử lại.
