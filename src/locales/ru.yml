@@ -1,0 +1,388 @@
+extName: Pushpilot для Pushbullet
+extDescription: Вкладки, заметки и файлы — на телефон, уведомления Android и SMS — в браузере. Неофициальный клиент Pushbullet.
+cmdOpen: Открыть Pushpilot
+cmdPushPage: Отправить текущую страницу на устройство по умолчанию
+cmdPushClipboard: Отправить скопированное на устройство по умолчанию из любого приложения
+cmdOpenWindow: Открыть Pushpilot в окне из любого приложения
+cmdSendClipboard: Отправить буфер обмена на другие ваши устройства (универсальное копирование и вставка)
+common:
+  retry: Повторить
+  dismiss: Закрыть
+  loading: Загрузка
+tabs:
+  send: Отправка
+  feed: Лента
+  phone: Телефон
+  sms: SMS
+app:
+  offline: Нет связи с Pushbullet. Повторяем попытки в фоне.
+header:
+  sections: Разделы
+  pausedHint: Уведомления приостановлены. Нажмите, чтобы включить их снова.
+  accountMenu: Аккаунт и настройки
+  connected: Подключено
+  connecting: Подключение…
+  offline: Не в сети
+  quietUntil: Без звука до $1
+  pause: Приостановить уведомления
+  snooze30m: 30 мин
+  snooze1h: 1 ч
+  snooze8h: 8 ч
+  snoozeNight: На ночь
+  unpause: Включить уведомления снова
+  openPanel: Открыть в боковой панели
+  openWindow: Открыть в окне
+  settings: Настройки
+send:
+  tooBig: $1 превышает лимит Pushbullet ($2).
+  imageUnreadable: Не удалось прочитать изображение. Попробуйте перетащить его.
+  sentTo: 'Отправлено: $1'
+  clipboardEmpty: Буфер обмена пуст.
+  clipboardSent: Буфер обмена отправлен на ваши устройства
+  pastedImage: Вставленное изображение
+  removeFile: Удалить $1
+  titlePlaceholder: Заголовок (необязательно)
+  noteTitle: Заголовок заметки
+  notePlaceholder: Напишите заметку, вставьте ссылку или перетащите файл
+  messagePlaceholder: Добавьте сообщение (необязательно)
+  message: Сообщение
+  thisPage: Эта страница
+  note: Заметка
+  addFile: Добавить файл
+  file: Файл
+  clipboard: Буфер обмена
+  clipboardHint: Отправить буфер обмена на ваши устройства (универсальное копирование и вставка)
+  uploading: Загрузка…
+  sending: Отправка…
+  sendTo: 'Отправить: $1'
+targets:
+  all: Все устройства
+  allSub: Везде
+  self: Этот браузер
+  selfSub: Сохранить на потом
+  device: устройство
+  two: $1 и $2
+  many: получатели ($1)
+  heading: Куда отправить
+  multiHint: ⌘-клик, чтобы выбрать несколько
+  hidden:
+    1: Одно старое устройство не получает пуши, поэтому оно скрыто.
+    n: 'Скрыто старых устройств: $1. Они не получают пуши.'
+  seeDevices: Показать устройства
+link:
+  title: Заголовок
+  titleLabel: Заголовок ссылки
+  address: Адрес ссылки
+  edit: Изменить ссылку
+  remove: Удалить ссылку
+  startAt: Начать с $1
+  sendImage: Отправить само изображение
+recent:
+  heading: Недавние
+  seeAll: Показать все
+support:
+  count: 'Пушей отправлено через Pushpilot: $1.'
+  pitch: Бесплатно, с открытым кодом и без рекламы — навсегда. Если Pushpilot экономит вам время, кофе или отзыв помогут ему развиваться.
+  never: Больше не спрашивать
+  coffee: Угостить кофе
+  sponsor: Стать спонсором на GitHub
+  review: Оставить отзыв
+whatsNew:
+  title: Новое в Pushpilot $1
+  seeAll: Все изменения
+  label: Что нового
+  v1_2:
+    languages: 'Pushpilot теперь поддерживает 17 языков и использует язык вашего браузера.'
+  v1_1:
+    pushAnywhere: 'Отправка из любого приложения: скопируйте что-нибудь и нажмите ⌘⇧9 (Ctrl+Shift+9).'
+    filesOpen: Изображения, PDF и другие файлы открываются в новой вкладке сразу после получения.
+    shortcut: 'iPhone, iPad и Mac: быстрая команда Pushpilot отправляет из меню «Поделиться».'
+    polish: Светлая тема, более просторное окно и исправления в получении.
+feed:
+  searchPlaceholder: Поиск по пушам
+  searchLabel: Поиск по пушам
+  closeSearch: Закрыть поиск
+  everything: Всё
+  myDevices: Мои устройства
+  channels: Каналы
+  search: Поиск
+  noMatchTitle: Ничего не найдено
+  noMatchBody: Попробуйте меньше слов или часть ссылки.
+  emptyTitle: Здесь будут ваши пуши
+  emptyBody: Ссылки, заметки и файлы, которые вы отправляете и получаете, появляются в этой ленте.
+  siteVideo: Видео $1
+  openConversation: 'Открыть чат: $1'
+  new: Новое
+device:
+  unknown: Неизвестное устройство
+  unnamed: Устройство без названия
+  someone: Кто-то
+  kind:
+    phone: Телефон
+    tablet: Планшет
+    laptop: Ноутбук
+    watch: Часы
+    browser: Браузер
+    website: Сайт
+    computer: Компьютер
+time:
+  now: сейчас
+  today: Сегодня
+  yesterday: Вчера
+route:
+  from: 'От: $1'
+  to: 'Кому: $1'
+  saved: Сохранено на потом
+  sentTo: 'Отправлено: $1'
+  sentToAll: Отправлено на все устройства
+  sentToHere: Отправлено в этот браузер
+  between: $1 → $2
+  fromToAll: $1 → все устройства
+kind:
+  link: Ссылка
+  note: Заметка
+  file: Файл
+  image: Изображение
+actions:
+  download: Скачать
+  open: Открыть
+  copy: Копировать
+  copied: Скопировано
+  done: Отметить как выполненное
+  doneToast: Отмечено как выполненное
+  deleteEverywhere: Удалить везде
+  deleted: Удалено
+chat:
+  back: Назад к ленте
+  unmute: Включить уведомления
+  mute: Отключить уведомления
+  unmuted: 'Уведомления включены: $1'
+  muted: 'Уведомления отключены: $1'
+  emptyTitle: Напишите первое сообщение для $1
+  emptyBody: Всё, что вы отправите здесь, получат все устройства пользователя $1.
+  placeholder: Сообщение для $1
+phone:
+  offTitle: Уведомления с телефона выключены
+  openSettings: Открыть настройки
+  offBody: Включите зеркалирование уведомлений, чтобы видеть здесь уведомления Android.
+  emptyTitle: Уведомлений с телефона пока нет
+  emptyBody: В приложении Pushbullet на телефоне Android откройте «Зеркалирование уведомлений» и включите его. Новые уведомления появятся здесь и на рабочем столе.
+  now: Сейчас на телефоне
+  cleared: Убрано
+  clearAll: Очистить всё
+  earlier: Ранее
+  replySent: Ответ отправлен
+  onDevice: на $1
+  copiedCode: 'Скопировано: $1'
+  copyCode: Скопировать код
+  reply: Ответить
+  replyIn: Ответить в $1
+  sendReply: Отправить ответ
+  dismiss: Закрыть на телефоне
+sms:
+  noPhoneTitle: Нет телефона, с которого можно отправлять SMS
+  noPhoneBody: Установите Pushbullet на телефон Android и разрешите ему отправлять и читать SMS.
+  phone: Телефон
+  lastSeen: '(последняя активность: $1)'
+  refresh: Обновить
+  newText: Новое SMS
+  noThreadsTitle: Нет переписок
+  noThreadsBody: Этот телефон пока не поделился ни одной перепиской.
+  you: 'Вы: '
+  photo: Фото
+  addNumber: Добавьте номер телефона.
+  sent: SMS отправлено
+  back: Назад к перепискам
+  to: Кому
+  toPlaceholder: Номер телефона или несколько через запятую
+  placeholder: Текст SMS
+signIn:
+  title: Отправьте эту страницу на телефон.
+  intro: Pushpilot передаёт ссылки, заметки, файлы и SMS между вашими устройствами через аккаунт Pushbullet и выводит уведомления телефона на компьютер.
+  button: Войти через Pushbullet
+  buttonHint: Откроется Pushbullet, где вы подтвердите доступ для Pushpilot. Ваш пароль никогда не попадает в расширение.
+  useToken: Использовать токен доступа
+  token: Токен доступа
+  connect: Подключить
+  createBefore: Создайте его в разделе
+  createLink: Settings › Account
+  createAfter: на pushbullet.com.
+  cancelled: Вход отменён.
+  openFailed: 'Не удалось открыть вход в Pushbullet: $1'
+  noToken: Pushbullet не вернул токен доступа$1.
+linkKind:
+  video: Видео
+  image: Изображение
+  article: Статья
+  code: Код
+  music: Музыка
+  map: Место
+  document: Документ
+  social: Пост
+  shop: Товар
+  web: Страница
+  readTime: $1, $2 мин чтения
+settings:
+  section:
+    account: Аккаунт
+    devices: Устройства
+    devicesDesc: Pushbullet хранит старые регистрации устройств. Пуши получают только устройства с отметкой «Получает».
+    sending: Отправка
+    receiving: Получение
+    receivingDesc: Пуши, отправленные прямо в этот браузер, приходят всегда. Выберите, что ещё учитывать.
+    autoOpen: Автооткрытие
+    notifications: Уведомления
+    toolbarBadge: Значок на панели
+    phone: Телефон
+    feed: Лента
+    encryption: Шифрование
+    appearance: Оформление
+    shortcuts: Быстрые клавиши
+    yourData: Ваши данные
+    supportPushpilot: Поддержать Pushpilot
+  startWithThePage: Начинать с открытой страницы
+  startWithThePageHint: При открытии Pushpilot подставляет заголовок и ссылку текущей вкладки — остаётся только отправить.
+  closeThePopupAfter: Закрывать окно после отправки
+  rightClickMenu: Контекстное меню
+  rightClickMenuHint: Отправляйте страницы, ссылки, изображения и выделенный текст из контекстного меню на любой странице.
+  pushesSentToAll: Пуши на все устройства
+  pushesSentToAllHint: Что отправляет телефон, если вы не выбрали устройство.
+  pushesSentToYour: Пуши на другие ваши устройства
+  pushesSentToYourHint: Показывать всё, даже пуши для планшета или другого компьютера.
+  pushesYouSendFrom: Пуши, отправленные из этого браузера
+  pushesYouSendFromHint: Показывать уведомления и открывать здесь и ваши собственные пуши — например, когда вы отправляете на все устройства из контекстного меню.
+  channelSubscriptions: Подписки на каналы
+  channelSubscriptionsHint: Пуши из каналов и лент, на которые вы подписаны.
+  openLinksAsSoon: Открывать ссылки сразу после получения
+  openLinksAsSoonHint: Ссылки, отправленные в этот браузер, открываются в новой вкладке, как в оригинальном расширении Pushbullet. Заметка, в которой только адрес, — тоже.
+  switchToTheNew: Переключаться на новую вкладку
+  switchToTheNewHint: Иначе она откроется в фоне.
+  alsoOpenImagesPdfs: Открывать также изображения, PDF и другие файлы
+  alsoOpenLinksFrom: Открывать также ссылки от других людей
+  alsoOpenLinksFromHint: Не только с ваших устройств.
+  openLinksThatArrived: Открывать ссылки, полученные офлайн
+  openLinksThatArrivedHint: При запуске браузера или выходе компьютера из сна открывать всё, что пришло за это время.
+  skipTheNotificationFor: Не показывать уведомление для открытых ссылок
+  pushes: Пуши
+  pushesHint: Ссылки, заметки и файлы.
+  phoneNotifications: Уведомления с телефона
+  textMessages: SMS
+  playASound: Воспроизводить звук
+  keepPushNotificationsOn: Не скрывать уведомления о пушах
+  keepPushNotificationsOnHint: Они остаются на экране, пока вы не нажмёте на них или не закроете.
+  keepPhoneNotificationsOn: Не скрывать уведомления с телефона
+  closingANotificationDismisses: Закрытие уведомления убирает его везде
+  closingANotificationDismissesHint: Закройте пуш — и он будет отмечен как выполненный везде; закройте уведомление с телефона — и оно исчезнет на телефоне.
+  showUnreadCountsOn: Показывать число непрочитанных на значке в панели
+  countPushes: Считать пуши
+  countPhoneNotifications: Считать уведомления с телефона
+  keepCountingPhoneNotifications: Считать уведомления с телефона, пока они не убраны
+  keepCountingPhoneNotificationsHint: Счётчик не сбрасывается при открытии вкладки «Телефон», а уменьшается по мере того, как вы закрываете уведомления.
+  countTextMessages: Считать SMS
+  showMyPhonesNotifications: Показывать уведомления с моего телефона
+  showMyPhonesNotificationsHint: Нужно включить «Зеркалирование уведомлений» в приложении Pushbullet на Android.
+  copyOneTimeCodes: Автоматически копировать одноразовые коды
+  copyOneTimeCodesHint: Если в уведомлении есть код подтверждения, он сразу попадает в буфер обмена.
+  receiveCopiedTextFrom: Получать скопированный текст с других устройств
+  receiveCopiedTextFromHint: Универсальное копирование и вставка. Нужны Pushbullet Pro и включённая настройка в других ваших приложениях.
+  theme: Тема
+  openOn: Начальная вкладка
+  sendToByDefault: Получатель по умолчанию
+  encryptionPassword: Пароль шифрования
+  showPreviewsForLinks: Показывать превью ссылок
+  navSupport: Поддержка
+  signOut: Выйти
+  renamed: Переименовано
+  testNotification: Отправить тестовое уведомление
+  endSnooze: Снять паузу
+  passwordSaved: Пароль шифрования сохранён
+  encryptionOff: Шифрование выключено
+  themeSystem: Системная
+  themeLight: Светлая
+  themeDark: Тёмная
+  dataBody: Pushpilot хранит историю в этом браузере и общается только с Pushbullet. Очистка здесь ничего не удаляет из вашего аккаунта.
+  synced: Синхронизировано с Pushbullet
+  syncNow: Синхронизировать
+  historyCleared: История очищена
+  clearHistory: Очистить локальную историю
+  supportBody: Pushpilot бесплатный, с открытым кодом, без рекламы и слежки — и таким останется. Если он вам полезен, вы можете помочь его развитию.
+  rate: Оценить в Chrome Web Store
+  star: Поставить звезду на GitHub
+  report: Сообщить о проблеме
+  thisBrowser: этот браузер
+  deviceLine: '$1. Последняя активность: $2'
+  deviceLineSms: '$1, может отправлять SMS. Последняя активность: $2'
+  receiving: Получает
+  notConnected: Не подключено
+  removeOldBefore: Удалите старые устройства на странице
+  removeOldLink: pushbullet.com › Devices
+  removeOldAfter: '. Телефон снова получит отметку «Получает», когда вы откроете на нём приложение Pushbullet.'
+  otherBrowsers: Пуши в другой браузер
+  otherBrowsersHint: Телефон может по-прежнему показывать старое расширение Pushbullet как «Chrome». Отметьте браузеры, пуши для которых должны приходить сюда.
+  renameLabel: Название этого браузера на других ваших устройствах
+  rename: Переименовать
+  e2eOn: Сквозное шифрование включено
+  e2eOff: Сквозное шифрование выключено
+  e2eBody: Используйте тот же пароль, что и в приложении Pushbullet на телефоне. Он шифрует уведомления, SMS и скопированный текст при передаче. Pushpilot хранит только производный ключ.
+  changePassword: Изменить пароль
+  savePassword: Сохранить пароль
+  turnOff: Выключить
+  shortcutsHint: Быстрые клавиши «из любого приложения» работают, даже когда браузер в фоне. Если какая-то не срабатывает, откройте страницу быстрых клавиш и выберите для неё вариант «Глобально».
+  changeShortcuts: Изменить быстрые клавиши
+  soundTakeoff: Взлёт
+  soundChime: Перезвон
+  soundPop: Хлопок
+  soundDing: Дзынь
+  soundCustom: Свой
+  soundTooBig: Выберите звук размером до 1 МБ.
+  soundUnplayable: Не удалось воспроизвести этот файл. Попробуйте MP3, OGG или WAV.
+  play: Воспроизвести
+  soundUsing: Используется ваш звук.
+  soundNone: Звук ещё не выбран.
+  soundChooseAnother: Выбрать другой
+  soundChoose: Выбрать файл
+  soundFormats: '. MP3, OGG или WAV, до 1 МБ.'
+  previewsNeedPermission: Нужно разрешение на чтение страниц, на которые ведут ссылки. Включите, чтобы его выдать.
+  previewsHint: Картинки, заголовки и описания для ссылок в ленте. Pushpilot читает только заголовочную часть страницы по каждой ссылке.
+  notSet: Не задано
+  sound: Звук
+menu:
+  page: Отправить эту страницу
+  link: Отправить эту ссылку
+  image: Отправить это изображение
+  selection: Отправить выделенный текст
+  allOther: Все мои другие устройства
+bg:
+  testTitle: Так приходят пуши
+  testMessage: Ссылки открываются в новой вкладке по нажатию.
+  testContext: От Pushpilot
+  signInFirst: Сначала войдите в Pushbullet.
+  tokenRejected: Pushbullet отклонил сохранённый токен доступа. Войдите снова.
+  clipboardSent: Буфер обмена отправлен
+  clipboardFailed: Не удалось отправить буфер обмена
+  badgeSignIn: 'Pushpilot: войдите в Pushbullet'
+  badgeOffline: 'Pushpilot: нет сети, повторяем попытки'
+  badgeNew: 'Pushpilot: новые ($1)'
+  badgeSnoozed: (уведомления на паузе)
+  needPassword: Телефон отправляет данные со сквозным шифрованием. Добавьте пароль шифрования в настройках.
+  decryptFailed: Не удалось расшифровать данные с телефона. Проверьте пароль шифрования в настройках.
+  clipboardUpdated: Буфер обмена обновлён
+  copiedFrom: Скопировано с устройства $1
+  pasteToken: Сначала вставьте токен доступа.
+  copyCode: Скопировать $1
+  appOnDevice: $1 на $2
+  noReplies: Это приложение не принимает ответы из Pushbullet.
+  channel: Канал
+  opened: Открыто в новой вкладке
+  done: Готово
+  partial: 'Отправлено: $1 из $2. $3'
+  yourOtherDevices: ваши другие устройства
+  sendFailed: Не удалось отправить
+  nothingTitle: Нечего отправлять
+  nothingBody: Сначала скопируйте ссылку или текст.
+  requestFailed: Ошибка запроса ($1)
+  uploadFailed: Не удалось загрузить
+  uploadOffline: Не удалось загрузить. Проверьте подключение.
+  smsOff: Этот телефон не передаёт SMS в Pushbullet. Откройте на нём Pushbullet и включите SMS.
+  encrypted: Эти данные защищены сквозным шифрованием. Добавьте пароль шифрования в настройках.
+  noAnswer: Фоновый процесс Pushpilot не ответил. Попробуйте ещё раз.

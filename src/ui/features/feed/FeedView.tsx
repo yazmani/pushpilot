@@ -9,6 +9,7 @@ import { useStore } from '@/ui/hooks/use-store';
 import { counterpart, type Filter, matches } from './classify';
 import { Conversation } from './Conversation';
 import { type FeedContext, FeedItem } from './FeedItem';
+import { i18n } from '#i18n';
 
 const SEEN_KEY = 'pushpilot.feedSeenAt';
 const PAGE = 50;
@@ -103,11 +104,11 @@ export function FeedView() {
               value={query}
               onChange={(e) => setQuery(e.target.value)}
               onKeyDown={(e) => e.key === 'Escape' && closeSearch()}
-              placeholder="Search your pushes"
-              aria-label="Search pushes"
+              placeholder={i18n.t('feed.searchPlaceholder')}
+              aria-label={i18n.t('feed.searchLabel')}
               className="min-w-0 flex-1 bg-transparent text-sm outline-none placeholder:text-faint"
             />
-            <button aria-label="Close search" onClick={closeSearch} className="text-faint hover:text-ink">
+            <button aria-label={i18n.t('feed.closeSearch')} onClick={closeSearch} className="text-faint hover:text-ink">
               <X size={14} />
             </button>
           </div>
@@ -115,14 +116,14 @@ export function FeedView() {
           <>
             <div className="no-scrollbar flex min-w-0 flex-1 gap-1.5 overflow-x-auto">
               <Chip on={filter.kind === 'all'} onClick={() => setFilter({ kind: 'all' })}>
-                Everything
+                {i18n.t('feed.everything')}
               </Chip>
               <Chip on={filter.kind === 'me'} onClick={() => setFilter({ kind: 'me' })}>
-                My devices
+                {i18n.t('feed.myDevices')}
               </Chip>
               {hasChannels && (
                 <Chip on={filter.kind === 'channels'} onClick={() => setFilter({ kind: 'channels' })}>
-                  Channels
+                  {i18n.t('feed.channels')}
                 </Chip>
               )}
               {people.map((c) => (
@@ -132,7 +133,7 @@ export function FeedView() {
                 </Chip>
               ))}
             </div>
-            <IconButton label="Search" onClick={() => setSearching(true)}>
+            <IconButton label={i18n.t('feed.search')} onClick={() => setSearching(true)}>
               <Search size={16} />
             </IconButton>
           </>
@@ -142,12 +143,12 @@ export function FeedView() {
       <div className="scroll-area min-h-0 flex-1 px-3.5 pb-4">
         {visible.length === 0 ? (
           query ? (
-            <Empty icon={<Search size={24} />} title="Nothing matches">
-              Try fewer words, or part of a link.
+            <Empty icon={<Search size={24} />} title={i18n.t('feed.noMatchTitle')}>
+              {i18n.t('feed.noMatchBody')}
             </Empty>
           ) : (
-            <Empty icon={<Inbox size={24} />} title="Your pushes land here">
-              Links, notes and files you send or receive show up in this feed.
+            <Empty icon={<Inbox size={24} />} title={i18n.t('feed.emptyTitle')}>
+              {i18n.t('feed.emptyBody')}
             </Empty>
           )
         ) : (

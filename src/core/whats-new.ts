@@ -1,11 +1,14 @@
+import { i18n } from '#i18n';
+
 // Highlights shown once in the popup after an update to a new minor version.
 // Patch releases show nothing new; the full list is in CHANGELOG.md.
-export const WHATS_NEW: Record<string, string[]> = {
-  '1.1': [
-    'Push from any app: copy something and press ⌘⇧9 (Ctrl+Shift+9).',
-    'Images, PDFs and other files open in a new tab as they arrive.',
-    'iPhone, iPad and Mac: the Pushpilot shortcut pushes from the Share sheet.',
-    'Light theme, a roomier popup, and receiving fixes.',
+export const WHATS_NEW: Record<string, () => string[]> = {
+  '1.2': () => [i18n.t('whatsNew.v1_2.languages')],
+  '1.1': () => [
+    i18n.t('whatsNew.v1_1.pushAnywhere'),
+    i18n.t('whatsNew.v1_1.filesOpen'),
+    i18n.t('whatsNew.v1_1.shortcut'),
+    i18n.t('whatsNew.v1_1.polish'),
   ],
 };
 

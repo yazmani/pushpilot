@@ -1,0 +1,388 @@
+extName: Pushpilot – Pushbullet için
+extDescription: Sekme, not ve dosyaları telefona gönder; Android bildirimlerini gör, tarayıcıdan SMS at. Resmi olmayan Pushbullet istemcisi.
+cmdOpen: Pushpilot’u aç
+cmdPushPage: Geçerli sayfayı varsayılan cihazına gönder
+cmdPushClipboard: Kopyaladığını herhangi bir uygulamadan varsayılan cihazına gönder
+cmdOpenWindow: Pushpilot’u herhangi bir uygulamadan pencerede aç
+cmdSendClipboard: Panonu diğer cihazlarına gönder (evrensel kopyala-yapıştır)
+common:
+  retry: Tekrar dene
+  dismiss: Kapat
+  loading: Yükleniyor
+tabs:
+  send: Gönder
+  feed: Akış
+  phone: Telefon
+  sms: SMS
+app:
+  offline: Pushbullet’a ulaşılamıyor. Arka planda yeniden deneniyor.
+header:
+  sections: Bölümler
+  pausedHint: Bildirimler duraklatıldı. Tekrar açmak için tıkla.
+  accountMenu: Hesap ve seçenekler
+  connected: Bağlı
+  connecting: Bağlanıyor…
+  offline: Çevrimdışı
+  quietUntil: 'Sessiz mod bitişi: $1'
+  pause: Bildirimleri duraklat
+  snooze30m: 30 dk
+  snooze1h: 1 sa
+  snooze8h: 8 sa
+  snoozeNight: Gece
+  unpause: Bildirimleri tekrar aç
+  openPanel: Yan panelde aç
+  openWindow: Pencerede aç
+  settings: Ayarlar
+send:
+  tooBig: '$1, Pushbullet’ın $2 sınırını aşıyor.'
+  imageUnreadable: Bu görsel okunamadı. Sürükleyip bırakmayı dene.
+  sentTo: 'Gönderildi: $1'
+  clipboardEmpty: Panon boş.
+  clipboardSent: Pano cihazlarına gönderildi
+  pastedImage: Yapıştırılan görsel
+  removeFile: 'Kaldır: $1'
+  titlePlaceholder: Başlık (isteğe bağlı)
+  noteTitle: Not başlığı
+  notePlaceholder: Not yaz, bağlantı yapıştır ya da dosya bırak
+  messagePlaceholder: Mesaj ekle (isteğe bağlı)
+  message: Mesaj
+  thisPage: Bu sayfa
+  note: Not
+  addFile: Dosya ekle
+  file: Dosya
+  clipboard: Pano
+  clipboardHint: Panonu cihazlarına gönder (evrensel kopyala-yapıştır)
+  uploading: Yükleniyor…
+  sending: Gönderiliyor…
+  sendTo: 'Gönder: $1'
+targets:
+  all: Tüm cihazlar
+  allSub: Her yere
+  self: Bu tarayıcı
+  selfSub: Sonrası için kaydet
+  device: cihaz
+  two: $1 ve $2
+  many: $1 alıcı
+  heading: Alıcı
+  multiHint: Birden fazlası için ⌘-tıkla
+  hidden:
+    1: Gönderi almayan 1 eski cihaz gizlendi.
+    n: Gönderi almayan $1 eski cihaz gizlendi.
+  seeDevices: Cihazları gör
+link:
+  title: Başlık
+  titleLabel: Bağlantı başlığı
+  address: Bağlantı adresi
+  edit: Bağlantıyı düzenle
+  remove: Bağlantıyı kaldır
+  startAt: 'Başlangıç: $1'
+  sendImage: Görselin kendisini gönder
+recent:
+  heading: Son gönderiler
+  seeAll: Tümünü gör
+support:
+  count: 'Pushpilot ile gönderilen: $1.'
+  pitch: Ücretsiz, açık kaynak ve sonsuza dek reklamsız. Zaman kazandırıyorsa bir kahve ya da bir değerlendirme yaşamasına yardım eder.
+  never: Bir daha sorma
+  coffee: Bana bir kahve ısmarla
+  sponsor: GitHub’da sponsor ol
+  review: Değerlendirme yaz
+whatsNew:
+  title: Pushpilot $1 sürümündeki yenilikler
+  seeAll: Tüm değişiklikleri gör
+  label: Yenilikler
+  v1_2:
+    languages: 'Pushpilot artık 17 dili destekliyor ve tarayıcının dilini kullanıyor.'
+  v1_1:
+    pushAnywhere: 'Her uygulamadan gönder: bir şey kopyala ve ⌘⇧9 (Ctrl+Shift+9) tuşlarına bas.'
+    filesOpen: Görseller, PDF’ler ve diğer dosyalar gelir gelmez yeni sekmede açılır.
+    shortcut: 'iPhone, iPad ve Mac: Pushpilot kestirmesi Paylaş menüsünden gönderir.'
+    polish: Açık tema, daha geniş bir açılır pencere ve alma düzeltmeleri.
+feed:
+  searchPlaceholder: Gönderilerinde ara
+  searchLabel: Gönderilerde ara
+  closeSearch: Aramayı kapat
+  everything: Tümü
+  myDevices: Cihazlarım
+  channels: Kanallar
+  search: Ara
+  noMatchTitle: Eşleşen bir şey yok
+  noMatchBody: Daha az kelime ya da bağlantının bir kısmını dene.
+  emptyTitle: Gönderilerin burada
+  emptyBody: Gönderdiğin ya da aldığın bağlantılar, notlar ve dosyalar bu akışta görünür.
+  siteVideo: $1 videosu
+  openConversation: $1 ile sohbeti aç
+  new: Yeni
+device:
+  unknown: Bilinmeyen cihaz
+  unnamed: Adsız cihaz
+  someone: Biri
+  kind:
+    phone: Telefon
+    tablet: Tablet
+    laptop: Dizüstü
+    watch: Saat
+    browser: Tarayıcı
+    website: Web sitesi
+    computer: Bilgisayar
+time:
+  now: şimdi
+  today: Bugün
+  yesterday: Dün
+route:
+  from: 'Gönderen: $1'
+  to: 'Alıcı: $1'
+  saved: Sonrası için kaydedildi
+  sentTo: 'Gönderildi: $1'
+  sentToAll: Tüm cihazlara gönderildi
+  sentToHere: Bu tarayıcıya gönderildi
+  between: $1 → $2
+  fromToAll: $1 → tüm cihazlar
+kind:
+  link: Bağlantı
+  note: Not
+  file: Dosya
+  image: Görsel
+actions:
+  download: İndir
+  open: Aç
+  copy: Kopyala
+  copied: Kopyalandı
+  done: Tamamlandı olarak işaretle
+  doneToast: Tamamlandı olarak işaretlendi
+  deleteEverywhere: Her yerden sil
+  deleted: Silindi
+chat:
+  back: Akışa dön
+  unmute: Bildirimleri aç
+  mute: Bildirimleri sessize al
+  unmuted: $1 için bildirimler açık
+  muted: $1 sessize alındı
+  emptyTitle: $1 ile sohbete başla
+  emptyBody: Buradan gönderdiğin her şey $1 adlı kişinin tüm cihazlarına ulaşır.
+  placeholder: $1 için mesaj
+phone:
+  offTitle: Telefon bildirimleri kapalı
+  openSettings: Ayarları aç
+  offBody: Android bildirimlerini burada görmek için bildirim yansıtmayı aç.
+  emptyTitle: Henüz telefon bildirimi yok
+  emptyBody: Android telefonundaki Pushbullet uygulamasında Bildirim yansıtma bölümünü açıp etkinleştir. Yeni bildirimler burada ve masaüstü uyarısı olarak görünür.
+  now: Şu an telefonunda
+  cleared: Temizlendi
+  clearAll: Tümünü temizle
+  earlier: Daha önce
+  replySent: Yanıt gönderildi
+  onDevice: $1 cihazında
+  copiedCode: 'Kopyalandı: $1'
+  copyCode: Kodu kopyala
+  reply: Yanıtla
+  replyIn: $1 uygulamasında yanıtla
+  sendReply: Yanıtı gönder
+  dismiss: Telefonda kapat
+sms:
+  noPhoneTitle: Buradan SMS gönderebilecek telefon yok
+  noPhoneBody: Pushbullet’ı bir Android telefona yükle ve SMS gönderip okumasına izin ver.
+  phone: Telefon
+  lastSeen: '(son görülme: $1)'
+  refresh: Yenile
+  newText: Yeni SMS
+  noThreadsTitle: Sohbet yok
+  noThreadsBody: Bu telefon henüz hiçbir SMS sohbeti paylaşmadı.
+  you: 'Sen: '
+  photo: Fotoğraf
+  addNumber: Bir telefon numarası ekle.
+  sent: SMS gönderildi
+  back: Sohbetlere dön
+  to: Alıcı
+  toPlaceholder: Telefon numarası ya da virgülle ayrılmış birkaç numara
+  placeholder: SMS mesajı
+signIn:
+  title: Bu sayfayı telefonuna gönder.
+  intro: Pushpilot, Pushbullet hesabınla bağlantıları, notları, dosyaları ve SMS’leri cihazların arasında taşır; telefonunun bildirimlerini de masaüstüne getirir.
+  button: Pushbullet ile giriş yap
+  buttonHint: Pushpilot’a onay vermen için Pushbullet açılır. Şifren asla eklentiye ulaşmaz.
+  useToken: Bunun yerine erişim jetonu kullan
+  token: Erişim jetonu
+  connect: Bağlan
+  createBefore: pushbullet.com’da
+  createLink: Settings › Account
+  createAfter: bölümünden bir tane oluştur.
+  cancelled: Giriş iptal edildi.
+  openFailed: 'Pushbullet girişi açılamadı: $1'
+  noToken: Pushbullet erişim jetonu döndürmedi$1.
+linkKind:
+  video: Video
+  image: Görsel
+  article: Makale
+  code: Kod
+  music: Müzik
+  map: Yer
+  document: Belge
+  social: Paylaşım
+  shop: Ürün
+  web: Sayfa
+  readTime: $1, $2 dk okuma
+settings:
+  section:
+    account: Hesap
+    devices: Cihazlar
+    devicesDesc: Pushbullet eski kayıtları saklar. Gönderileri yalnızca Alıyor olarak işaretli cihazlar alır.
+    sending: Gönderme
+    receiving: Alma
+    receivingDesc: Doğrudan bu tarayıcıya gönderilenler her zaman gelir. Başka neyin sayılacağını seç.
+    autoOpen: Otomatik açma
+    notifications: Bildirimler
+    toolbarBadge: Araç çubuğu rozeti
+    phone: Telefon
+    feed: Akış
+    encryption: Şifreleme
+    appearance: Görünüm
+    shortcuts: Kısayollar
+    yourData: Verilerin
+    supportPushpilot: Pushpilot’u destekle
+  startWithThePage: Bulunduğun sayfayla başla
+  startWithThePageHint: Pushpilot açılınca geçerli sekmenin başlığını ve bağlantısını doldurur, göndermeye hazır olur.
+  closeThePopupAfter: Gönderdikten sonra açılır pencereyi kapat
+  rightClickMenu: Sağ tık menüsü
+  rightClickMenuHint: Herhangi bir sayfanın sağ tık menüsünden sayfa, bağlantı, görsel ve seçili metin gönder.
+  pushesSentToAll: Tüm cihazlara gönderilenler
+  pushesSentToAllHint: Bir cihaz seçmediğinde telefonunun gönderdikleri.
+  pushesSentToYour: Diğer cihazlarına gönderilenler
+  pushesSentToYourHint: Tabletine ya da başka bir bilgisayara gidenler dahil her şeyi gör.
+  pushesYouSendFrom: Bu tarayıcıdan gönderdiklerin
+  pushesYouSendFromHint: Kendi gönderilerin için de burada bildirim göster ve onları aç; örneğin sağ tık menüsünden tüm cihazlara gönderdiğinde.
+  channelSubscriptions: Kanal abonelikleri
+  channelSubscriptionsHint: Takip ettiğin kanal ve akışlardan gelen gönderiler.
+  openLinksAsSoon: Bağlantıları gelir gelmez aç
+  openLinksAsSoonHint: Bu tarayıcıya gönderilen bağlantılar, orijinal Pushbullet eklentisindeki gibi yeni sekmede açılır. Yalnızca adres içeren bir not da öyle.
+  switchToTheNew: Yeni sekmeye geç
+  switchToTheNewHint: Aksi halde arka planda açılır.
+  alsoOpenImagesPdfs: Görselleri, PDF’leri ve diğer dosyaları da aç
+  alsoOpenLinksFrom: Başkalarından gelen bağlantıları da aç
+  alsoOpenLinksFromHint: Yalnızca kendi cihazlarından gelenleri değil.
+  openLinksThatArrived: Çevrimdışıyken gelen bağlantıları aç
+  openLinksThatArrivedHint: Tarayıcı başladığında ya da bilgisayarın uyandığında, bu arada gönderilenleri aç.
+  skipTheNotificationFor: Açılan bağlantılar için bildirim gösterme
+  pushes: Gönderiler
+  pushesHint: Bağlantılar, notlar ve dosyalar.
+  phoneNotifications: Telefon bildirimleri
+  textMessages: SMS’ler
+  playASound: Ses çal
+  keepPushNotificationsOn: Gönderi bildirimlerini ekranda tut
+  keepPushNotificationsOnHint: Tıklayana ya da kapatana kadar ekranda kalır.
+  keepPhoneNotificationsOn: Telefon bildirimlerini ekranda tut
+  closingANotificationDismisses: Bildirimi kapatmak onu her yerde kapatır
+  closingANotificationDismissesHint: Bir gönderiyi kapatırsan her yerde tamamlandı olarak işaretlenir; bir telefon bildirimini kapatırsan telefonunda da temizlenir.
+  showUnreadCountsOn: Okunmamış sayısını araç çubuğu simgesinde göster
+  countPushes: Gönderileri say
+  countPhoneNotifications: Telefon bildirimlerini say
+  keepCountingPhoneNotifications: Telefon bildirimlerini temizlenene kadar saymaya devam et
+  keepCountingPhoneNotificationsHint: Sayı, Telefon sekmesini açınca sıfırlanmak yerine bildirimleri kapattıkça azalır.
+  countTextMessages: SMS’leri say
+  showMyPhonesNotifications: Telefonumun bildirimlerini göster
+  showMyPhonesNotificationsHint: Android’deki Pushbullet uygulamasında Bildirim yansıtma’nın açık olması gerekir.
+  copyOneTimeCodes: Tek kullanımlık kodları otomatik kopyala
+  copyOneTimeCodesHint: Bir bildirimde doğrulama kodu varsa doğrudan panona kopyalanır.
+  receiveCopiedTextFrom: Diğer cihazlardan kopyalanan metni al
+  receiveCopiedTextFromHint: Evrensel kopyala-yapıştır. Pushbullet Pro ve diğer uygulamalarında bu ayarın açık olması gerekir.
+  theme: Tema
+  openOn: Açılış sekmesi
+  sendToByDefault: Varsayılan alıcı
+  encryptionPassword: Şifreleme parolası
+  showPreviewsForLinks: Bağlantı önizlemelerini göster
+  navSupport: Destek
+  signOut: Çıkış yap
+  renamed: Yeniden adlandırıldı
+  testNotification: Test bildirimi gönder
+  endSnooze: Ertelemeyi bitir
+  passwordSaved: Şifreleme parolası kaydedildi
+  encryptionOff: Şifreleme kapatıldı
+  themeSystem: Sistem
+  themeLight: Açık
+  themeDark: Koyu
+  dataBody: Pushpilot geçmişini bu tarayıcıda tutar ve yalnızca Pushbullet ile iletişim kurar. Burada temizlemek hesabından hiçbir şey silmez.
+  synced: Pushbullet ile eşitlendi
+  syncNow: Şimdi eşitle
+  historyCleared: Geçmiş temizlendi
+  clearHistory: Yerel geçmişi temizle
+  supportBody: Pushpilot ücretsiz ve açık kaynak; reklam ya da takip yok ve hep böyle kalacak. İşine yarıyorsa devam etmesine yardım edebilirsin.
+  rate: Chrome Web Store’da puan ver
+  star: GitHub’da yıldız ver
+  report: Sorun bildir
+  thisBrowser: bu tarayıcı
+  deviceLine: '$1. Son etkinlik: $2'
+  deviceLineSms: '$1, SMS gönderebilir. Son etkinlik: $2'
+  receiving: Alıyor
+  notConnected: Bağlı değil
+  removeOldBefore: Eski cihazları
+  removeOldLink: pushbullet.com › Devices
+  removeOldAfter: ' sayfasından kaldır. Bir telefon, üzerinde Pushbullet uygulamasını açtığında yeniden Alıyor olarak görünür.'
+  otherBrowsers: Başka bir tarayıcıya gönderilenler
+  otherBrowsersHint: Telefonun eski Pushbullet eklentisini hâlâ “Chrome” olarak listeleyebilir. Gönderileri buraya gelmesi gereken tarayıcıları işaretle.
+  renameLabel: Bu tarayıcının diğer cihazlarındaki adı
+  rename: Yeniden adlandır
+  e2eOn: Uçtan uca şifreleme açık
+  e2eOff: Uçtan uca şifreleme kapalı
+  e2eBody: Telefonundaki Pushbullet uygulamasında belirlediğin parolanın aynısını kullan. Bildirimleri, SMS’leri ve kopyalanan metni aktarım sırasında şifreler. Pushpilot yalnızca türetilmiş anahtarı saklar.
+  changePassword: Parolayı değiştir
+  savePassword: Parolayı kaydet
+  turnOff: Kapat
+  shortcutsHint: “Her uygulamadan” kısayolları tarayıcı arka plandayken bile çalışır. Biri çalışmazsa kısayollar sayfasını aç ve kapsamını “Genel” olarak ayarla.
+  changeShortcuts: Kısayolları değiştir
+  soundTakeoff: Kalkış
+  soundChime: Çan
+  soundPop: Pıt
+  soundDing: Dıng
+  soundCustom: Kendi sesin
+  soundTooBig: 1 MB’tan küçük bir ses seç.
+  soundUnplayable: Bu dosya çalınamadı. MP3, OGG ya da WAV dene.
+  play: Çal
+  soundUsing: Kendi sesin kullanılıyor.
+  soundNone: Henüz ses seçilmedi.
+  soundChooseAnother: Başka seç
+  soundChoose: Dosya seç
+  soundFormats: '. MP3, OGG ya da WAV, en fazla 1 MB.'
+  previewsNeedPermission: Bağlantıların gittiği sayfaları okuma izni gerekir. İzin vermek için bunu aç.
+  previewsHint: Akıştaki bağlantılar için görseller, başlıklar ve açıklamalar. Pushpilot her bağlantının yalnızca sayfa üst bilgisini okur.
+  notSet: Ayarlanmadı
+  sound: Ses
+menu:
+  page: Bu sayfayı gönder
+  link: Bu bağlantıyı gönder
+  image: Bu görseli gönder
+  selection: Seçili metni gönder
+  allOther: Diğer tüm cihazlarım
+bg:
+  testTitle: Gönderiler böyle gelir
+  testMessage: Bağlantılar tıklayınca yeni sekmede açılır.
+  testContext: Pushpilot’tan
+  signInFirst: Önce Pushbullet’a giriş yap.
+  tokenRejected: Pushbullet kayıtlı erişim jetonunu reddetti. Tekrar giriş yap.
+  clipboardSent: Pano gönderildi
+  clipboardFailed: Pano gönderilemedi
+  badgeSignIn: 'Pushpilot: Pushbullet’a giriş yap'
+  badgeOffline: 'Pushpilot: çevrimdışı, yeniden deneniyor'
+  badgeNew: 'Pushpilot: $1 yeni'
+  badgeSnoozed: (bildirimler ertelendi)
+  needPassword: Telefonun uçtan uca şifreli veri gönderiyor. Şifreleme parolanı Ayarlar’a ekle.
+  decryptFailed: Telefonundan gelen verinin şifresi çözülemedi. Ayarlar’daki şifreleme parolanı kontrol et.
+  clipboardUpdated: Pano güncellendi
+  copiedFrom: 'Kaynak: $1'
+  pasteToken: Önce bir erişim jetonu yapıştır.
+  copyCode: 'Kopyala: $1'
+  appOnDevice: $1, $2 cihazında
+  noReplies: Bu uygulama Pushbullet’tan yanıt kabul etmiyor.
+  channel: Kanal
+  opened: Yeni sekmede açıldı
+  done: Tamamlandı
+  partial: 'Gönderildi: $1/$2. $3'
+  yourOtherDevices: diğer cihazların
+  sendFailed: Gönderilemedi
+  nothingTitle: Gönderilecek bir şey yok
+  nothingBody: Önce bir bağlantı ya da metin kopyala.
+  requestFailed: İstek başarısız ($1)
+  uploadFailed: Yükleme başarısız
+  uploadOffline: Yükleme başarısız. Bağlantını kontrol et.
+  smsOff: Bu telefon SMS’lerini Pushbullet ile paylaşmıyor. Telefonda Pushbullet’ı açıp SMS’i etkinleştir.
+  encrypted: Bu veri uçtan uca şifreli. Şifreleme parolanı Ayarlar’a ekle.
+  noAnswer: Pushpilot’un arka plan işlemi yanıt vermedi. Tekrar dene.

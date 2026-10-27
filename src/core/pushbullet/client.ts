@@ -1,5 +1,6 @@
 import { decryptJson, encrypt } from './crypto';
 import type { Chat, Device, Push, SmsMessage, SmsThread, Subscription, User } from './types';
+import { i18n } from '#i18n';
 
 export const API = 'https://api.pushbullet.com';
 export const STREAM = 'wss://stream.pushbullet.com/websocket/';
@@ -49,7 +50,7 @@ export class Pushbullet {
       } catch {
         // non-JSON error body
       }
-      throw new ApiError(res.status, message || `Request failed (${res.status})`);
+      throw new ApiError(res.status, message || i18n.t('bg.requestFailed', [String(res.status)]));
     }
     const text = await res.text();
     return (text ? JSON.parse(text) : {}) as T;
@@ -136,7 +137,7 @@ export class Pushbullet {
       // XHR (when present) for progress events; the service worker falls back to fetch.
       if (typeof XMLHttpRequest === 'undefined') {
         fetch(ticket.upload_url, { method: 'POST', body: form }).then(
-          (r) => (r.ok ? resolve() : reject(new ApiError(r.status, 'Upload failed'))),
+          (r) => (r.ok ? resolve() : reject(new ApiError(r.status, i18n.t('bg.uploadFailed')))),
           reject,
         );
         return;
@@ -144,8 +145,8 @@ export class Pushbullet {
       const xhr = new XMLHttpRequest();
       xhr.open('POST', ticket.upload_url);
       xhr.upload.onprogress = (e) => e.lengthComputable && onProgress?.(e.loaded / e.total);
-      xhr.onload = () => (xhr.status < 300 ? resolve() : reject(new ApiError(xhr.status, 'Upload failed')));
-      xhr.onerror = () => reject(new Error('Upload failed. Check your connection.'));
+      xhr.onload = () => (xhr.status < 300 ? resolve() : reject(new ApiError(xhr.status, i18n.t('bg.uploadFailed'))));
+      xhr.onerror = () => reject(new Error(i18n.t('bg.uploadOffline')));
       xhr.send(form);
     });
     return { file_name: ticket.file_name, file_type: ticket.file_type, file_url: ticket.file_url };
@@ -158,12 +159,12 @@ export class Pushbullet {
     } catch (err) {
       // Pushbullet answers 404 for phones that stopped syncing texts.
       if (err instanceof ApiError && err.status === 404) {
-        throw new ApiError(404, 'This phone isn’t sharing its texts with Pushbullet. Open Pushbullet on it and turn on SMS.');
+        throw new ApiError(404, i18n.t('bg.smsOff'));
       }
       throw err;
     }
     if (res.encrypted) {
-      if (!this.e2eKey) throw new Error('This data is end-to-end encrypted. Add your encryption password in Settings.');
+      if (!this.e2eKey) throw new Error(i18n.t('bg.encrypted'));
       return decryptJson<T>(this.e2eKey, res.ciphertext as string);
     }
     return res as T;

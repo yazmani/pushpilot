@@ -6,6 +6,7 @@ import { show } from '@/background/platform/notifications';
 import { readClipboard } from '@/background/platform/offscreen';
 import { rememberPush } from '@/background/services/pushes';
 import { guard, requireClient } from '@/background/session';
+import { i18n } from '#i18n';
 
 /** Creates one push per target (Pushbullet takes a single target per push). */
 export async function sendPush(push: OutgoingPush, targets: string[]) {
@@ -29,16 +30,18 @@ export async function sendPush(push: OutgoingPush, targets: string[]) {
   for (const r of results) if (r.status === 'fulfilled') await rememberPush(r.value);
   if (failed.length === results.length) throw failed[0]!.reason;
   if (failed.length)
-    throw new Error(`Sent to ${results.length - failed.length} of ${results.length}. ${failed[0]!.reason?.message ?? ''}`);
+    throw new Error(
+      i18n.t('bg.partial', [String(results.length - failed.length), String(results.length), failed[0]!.reason?.message ?? '']),
+    );
 }
 
 async function describeTargets(targets: string[]): Promise<string> {
   const { devices, chats, selfDeviceIden } = await store.getMany(['devices', 'chats', 'selfDeviceIden']);
   const names = targets.map((key) => {
     const t = parseTarget(key);
-    if (t.kind === 'all') return 'your other devices';
+    if (t.kind === 'all') return i18n.t('bg.yourOtherDevices');
     if (t.kind === 'device')
-      return t.iden === selfDeviceIden ? 'this browser' : deviceName(devices.find((d) => d.iden === t.iden));
+      return t.iden === selfDeviceIden ? i18n.t('settings.thisBrowser') : deviceName(devices.find((d) => d.iden === t.iden));
     return personName(
       chats.find((c) => c.with.email === t.email),
       t.email,
@@ -51,10 +54,14 @@ async function describeTargets(targets: string[]): Promise<string> {
 export async function sendQuietly(push: OutgoingPush, targets: string[], label: string) {
   try {
     await sendPush(push, targets);
-    await show(`info:sent-${Date.now()}`, { title: `Sent to ${await describeTargets(targets)}`, message: label, silent: true });
+    await show(`info:sent-${Date.now()}`, {
+      title: i18n.t('send.sentTo', [await describeTargets(targets)]),
+      message: label,
+      silent: true,
+    });
   } catch (err) {
     await show(`info:fail-${Date.now()}`, {
-      title: 'Couldn’t send',
+      title: i18n.t('bg.sendFailed'),
       message: err instanceof Error ? err.message : String(err),
       silent: true,
     });
@@ -74,7 +81,7 @@ export async function sendImage(srcUrl: string, targets: string[], pageUrl?: str
     await sendQuietly({ type: 'file', ...file, body: pageUrl }, targets, file.file_name);
   } catch {
     // Cross-origin or data the worker can’t read: send the address instead.
-    await sendQuietly({ type: 'link', title: 'Image', url: srcUrl }, targets, srcUrl);
+    await sendQuietly({ type: 'link', title: i18n.t('kind.image'), url: srcUrl }, targets, srcUrl);
   }
 }
 
@@ -96,8 +103,8 @@ export async function pushClipboard() {
   const text = (await readClipboard()).trim();
   if (!text) {
     await show(`info:clip-empty-${Date.now()}`, {
-      title: 'Nothing to push',
-      message: 'Copy a link or some text first.',
+      title: i18n.t('bg.nothingTitle'),
+      message: i18n.t('bg.nothingBody'),
       silent: true,
     });
     return;

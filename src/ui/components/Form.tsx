@@ -2,6 +2,7 @@ import clsx from 'clsx';
 import { SendHorizontal } from 'lucide-react';
 import { type ReactNode, useRef } from 'react';
 import { IconButton } from './Button';
+import { i18n } from '#i18n';
 
 export function Toggle({
   checked,
@@ -38,8 +39,8 @@ export function Toggle({
       >
         <span
           className={clsx(
-            'absolute top-[3px] size-4 rounded-full bg-white shadow-sm transition-transform',
-            checked ? 'translate-x-[19px]' : 'translate-x-[3px]',
+            'absolute start-0 top-[3px] size-4 rounded-full bg-white shadow-sm transition-transform',
+            checked ? 'translate-x-[19px] rtl:-translate-x-[19px]' : 'translate-x-[3px] rtl:-translate-x-[3px]',
           )}
         />
       </span>
@@ -122,7 +123,13 @@ export function MessageComposer({
         aria-label={placeholder}
         className={clsx(fieldClass, 'max-h-28 min-h-10 flex-1 resize-none py-2.5 [field-sizing:content]')}
       />
-      <IconButton label="Send" type="submit" tone="accent" disabled={busy || !value.trim()} className="size-10 rounded-xl">
+      <IconButton
+        label={i18n.t('tabs.send')}
+        type="submit"
+        tone="accent"
+        disabled={busy || !value.trim()}
+        className="size-10 rounded-xl"
+      >
         <SendHorizontal size={17} />
       </IconButton>
     </form>

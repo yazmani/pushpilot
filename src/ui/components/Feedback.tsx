@@ -2,6 +2,7 @@ import clsx from 'clsx';
 import { LoaderCircle } from 'lucide-react';
 import type { ReactNode } from 'react';
 import type { ToastState } from '@/ui/hooks/use-toast';
+import { i18n } from '#i18n';
 
 export function Empty({
   icon,
@@ -25,7 +26,7 @@ export function Empty({
 }
 
 export function Spinner({ className }: { className?: string }) {
-  return <LoaderCircle size={18} className={clsx('animate-spin text-accent', className)} aria-label="Loading" />;
+  return <LoaderCircle size={18} className={clsx('animate-spin text-accent', className)} aria-label={i18n.t('common.loading')} />;
 }
 
 export function Centered({ children }: { children: ReactNode }) {
@@ -77,7 +78,7 @@ export function SectionLabel({ children, action }: { children: ReactNode; action
   return (
     <div className="mb-2 flex items-center">
       <h3 className="text-xs font-bold text-muted">{children}</h3>
-      {action && <div className="ml-auto">{action}</div>}
+      {action && <div className="ms-auto">{action}</div>}
     </div>
   );
 }

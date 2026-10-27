@@ -1,0 +1,388 @@
+extName: Pushpilot dla Pushbullet
+extDescription: Wysyłaj karty, notatki i pliki na telefon. Powiadomienia z Androida i SMS-y w przeglądarce. Nieoficjalny klient Pushbullet.
+cmdOpen: Otwórz Pushpilot
+cmdPushPage: Wyślij bieżącą stronę na domyślne urządzenie
+cmdPushClipboard: Wyślij skopiowaną treść na domyślne urządzenie z dowolnej aplikacji
+cmdOpenWindow: Otwórz Pushpilot w oknie z dowolnej aplikacji
+cmdSendClipboard: Wyślij schowek na inne urządzenia (uniwersalne kopiowanie i wklejanie)
+common:
+  retry: Ponów
+  dismiss: Zamknij
+  loading: Wczytywanie
+tabs:
+  send: Wyślij
+  feed: Aktywność
+  phone: Telefon
+  sms: SMS
+app:
+  offline: Brak połączenia z Pushbullet. Ponawianie w tle.
+header:
+  sections: Sekcje
+  pausedHint: Powiadomienia są wstrzymane. Kliknij, aby je włączyć.
+  accountMenu: Konto i opcje
+  connected: Połączono
+  connecting: Łączenie…
+  offline: Offline
+  quietUntil: Wyciszone do $1
+  pause: Wstrzymaj powiadomienia
+  snooze30m: 30 min
+  snooze1h: 1 godz.
+  snooze8h: 8 godz.
+  snoozeNight: Na noc
+  unpause: Włącz powiadomienia
+  openPanel: Otwórz w panelu bocznym
+  openWindow: Otwórz w oknie
+  settings: Ustawienia
+send:
+  tooBig: $1 przekracza limit Pushbullet ($2).
+  imageUnreadable: Nie udało się odczytać obrazu. Spróbuj go przeciągnąć.
+  sentTo: 'Wysłano: $1'
+  clipboardEmpty: Schowek jest pusty.
+  clipboardSent: Schowek wysłany na twoje urządzenia
+  pastedImage: Wklejony obraz
+  removeFile: Usuń $1
+  titlePlaceholder: Tytuł (opcjonalnie)
+  noteTitle: Tytuł notatki
+  notePlaceholder: Napisz notatkę, wklej link lub upuść plik
+  messagePlaceholder: Dodaj wiadomość (opcjonalnie)
+  message: Wiadomość
+  thisPage: Ta strona
+  note: Notatka
+  addFile: Dodaj plik
+  file: Plik
+  clipboard: Schowek
+  clipboardHint: Wyślij schowek na swoje urządzenia (uniwersalne kopiowanie i wklejanie)
+  uploading: Przesyłanie…
+  sending: Wysyłanie…
+  sendTo: 'Wyślij: $1'
+targets:
+  all: Wszystkie urządzenia
+  allSub: Wszędzie
+  self: Ta przeglądarka
+  selfSub: Zapisz na później
+  device: urządzenie
+  two: $1 i $2
+  many: odbiorcy ($1)
+  heading: Wyślij do
+  multiHint: ⌘+klik, aby wybrać kilka
+  hidden:
+    1: Jedno starsze urządzenie nie odbiera pushy, więc je ukryto.
+    n: 'Ukryte starsze urządzenia: $1. Nie odbierają pushy.'
+  seeDevices: Pokaż urządzenia
+link:
+  title: Tytuł
+  titleLabel: Tytuł linku
+  address: Adres linku
+  edit: Edytuj link
+  remove: Usuń link
+  startAt: Zacznij od $1
+  sendImage: Wyślij sam obraz
+recent:
+  heading: Ostatnie
+  seeAll: Zobacz wszystkie
+support:
+  count: 'Pushe wysłane przez Pushpilot: $1.'
+  pitch: Darmowy, open source i bez reklam – na zawsze. Jeśli oszczędza ci czas, kawa albo recenzja pomogą go rozwijać.
+  never: Nie pytaj ponownie
+  coffee: Postaw mi kawę
+  sponsor: Wesprzyj na GitHubie
+  review: Wystaw recenzję
+whatsNew:
+  title: Nowości w Pushpilot $1
+  seeAll: Zobacz wszystkie zmiany
+  label: Co nowego
+  v1_2:
+    languages: 'Pushpilot obsługuje teraz 17 języków i używa języka Twojej przeglądarki.'
+  v1_1:
+    pushAnywhere: 'Wysyłaj z dowolnej aplikacji: skopiuj coś i naciśnij ⌘⇧9 (Ctrl+Shift+9).'
+    filesOpen: Obrazy, pliki PDF i inne pliki otwierają się w nowej karcie zaraz po odebraniu.
+    shortcut: 'iPhone, iPad i Mac: skrót Pushpilot wysyła z menu Udostępnij.'
+    polish: Jasny motyw, większe okienko i poprawki w odbieraniu.
+feed:
+  searchPlaceholder: Szukaj w pushach
+  searchLabel: Szukaj w pushach
+  closeSearch: Zamknij wyszukiwanie
+  everything: Wszystko
+  myDevices: Moje urządzenia
+  channels: Kanały
+  search: Szukaj
+  noMatchTitle: Brak wyników
+  noMatchBody: Spróbuj mniej słów albo fragmentu linku.
+  emptyTitle: Tu trafiają twoje pushe
+  emptyBody: Linki, notatki i pliki, które wysyłasz lub odbierasz, pojawiają się tutaj.
+  siteVideo: Wideo $1
+  openConversation: 'Otwórz rozmowę: $1'
+  new: Nowe
+device:
+  unknown: Nieznane urządzenie
+  unnamed: Urządzenie bez nazwy
+  someone: Ktoś
+  kind:
+    phone: Telefon
+    tablet: Tablet
+    laptop: Laptop
+    watch: Zegarek
+    browser: Przeglądarka
+    website: Witryna
+    computer: Komputer
+time:
+  now: teraz
+  today: Dzisiaj
+  yesterday: Wczoraj
+route:
+  from: 'Od: $1'
+  to: 'Do: $1'
+  saved: Zapisano na później
+  sentTo: 'Wysłano: $1'
+  sentToAll: Wysłano na wszystkie urządzenia
+  sentToHere: Wysłano do tej przeglądarki
+  between: $1 → $2
+  fromToAll: $1 → wszystkie urządzenia
+kind:
+  link: Link
+  note: Notatka
+  file: Plik
+  image: Obraz
+actions:
+  download: Pobierz
+  open: Otwórz
+  copy: Kopiuj
+  copied: Skopiowano
+  done: Oznacz jako gotowe
+  doneToast: Oznaczono jako gotowe
+  deleteEverywhere: Usuń wszędzie
+  deleted: Usunięto
+chat:
+  back: Wróć do aktywności
+  unmute: Wyłącz wyciszenie
+  mute: Wycisz powiadomienia
+  unmuted: 'Powiadomienia włączone: $1'
+  muted: 'Wyciszono: $1'
+  emptyTitle: 'Przywitaj się: $1'
+  emptyBody: Wszystko, co tu wyślesz, trafi na wszystkie urządzenia tej osoby ($1).
+  placeholder: Wiadomość do $1
+phone:
+  offTitle: Powiadomienia z telefonu są wyłączone
+  openSettings: Otwórz ustawienia
+  offBody: Włącz powielanie powiadomień, aby widzieć tu powiadomienia z Androida.
+  emptyTitle: Na razie brak powiadomień z telefonu
+  emptyBody: W aplikacji Pushbullet na telefonie z Androidem otwórz „Powielanie powiadomień” i włącz je. Nowe powiadomienia pojawią się tutaj i jako alerty na pulpicie.
+  now: Teraz na telefonie
+  cleared: Wyczyszczono
+  clearAll: Wyczyść wszystko
+  earlier: Wcześniej
+  replySent: Wysłano odpowiedź
+  onDevice: na $1
+  copiedCode: Skopiowano $1
+  copyCode: Kopiuj kod
+  reply: Odpowiedz
+  replyIn: Odpowiedz w $1
+  sendReply: Wyślij odpowiedź
+  dismiss: Zamknij na telefonie
+sms:
+  noPhoneTitle: Żaden telefon nie może stąd wysyłać SMS-ów
+  noPhoneBody: Zainstaluj Pushbullet na telefonie z Androidem i zezwól mu na wysyłanie i odczytywanie SMS-ów.
+  phone: Telefon
+  lastSeen: '(ostatnia aktywność: $1)'
+  refresh: Odśwież
+  newText: Nowy SMS
+  noThreadsTitle: Brak rozmów
+  noThreadsBody: Ten telefon nie udostępnił jeszcze żadnych rozmów SMS.
+  you: 'Ty: '
+  photo: Zdjęcie
+  addNumber: Dodaj numer telefonu.
+  sent: Wysłano SMS
+  back: Wróć do rozmów
+  to: Do
+  toPlaceholder: Numer telefonu lub kilka numerów oddzielonych przecinkami
+  placeholder: Wiadomość SMS
+signIn:
+  title: Wyślij tę stronę na telefon.
+  intro: Pushpilot przesyła linki, notatki, pliki i SMS-y między twoimi urządzeniami przez konto Pushbullet i pokazuje powiadomienia z telefonu na komputerze.
+  button: Zaloguj się przez Pushbullet
+  buttonHint: Otwiera Pushbullet, aby zatwierdzić Pushpilot. Twoje hasło nigdy nie trafia do rozszerzenia.
+  useToken: Użyj tokena dostępu
+  token: Token dostępu
+  connect: Połącz
+  createBefore: Utwórz go w sekcji
+  createLink: Settings › Account
+  createAfter: na pushbullet.com.
+  cancelled: Logowanie anulowano.
+  openFailed: 'Nie udało się otworzyć logowania Pushbullet: $1'
+  noToken: Pushbullet nie zwrócił tokena dostępu$1.
+linkKind:
+  video: Wideo
+  image: Obraz
+  article: Artykuł
+  code: Kod
+  music: Muzyka
+  map: Miejsce
+  document: Dokument
+  social: Post
+  shop: Produkt
+  web: Strona
+  readTime: $1, $2 min czytania
+settings:
+  section:
+    account: Konto
+    devices: Urządzenia
+    devicesDesc: Pushbullet przechowuje stare rejestracje. Pushe dostają tylko urządzenia oznaczone jako „Odbiera”.
+    sending: Wysyłanie
+    receiving: Odbieranie
+    receivingDesc: Pushe wysłane bezpośrednio do tej przeglądarki docierają zawsze. Wybierz, co jeszcze ma się liczyć.
+    autoOpen: Automatyczne otwieranie
+    notifications: Powiadomienia
+    toolbarBadge: Plakietka na pasku narzędzi
+    phone: Telefon
+    feed: Aktywność
+    encryption: Szyfrowanie
+    appearance: Wygląd
+    shortcuts: Skróty klawiszowe
+    yourData: Twoje dane
+    supportPushpilot: Wesprzyj Pushpilot
+  startWithThePage: Zaczynaj od bieżącej strony
+  startWithThePageHint: Po otwarciu Pushpilot uzupełnia tytuł i link bieżącej karty – gotowe do wysłania.
+  closeThePopupAfter: Zamykaj okienko po wysłaniu
+  rightClickMenu: Menu kontekstowe
+  rightClickMenuHint: Wysyłaj strony, linki, obrazy i zaznaczony tekst z menu kontekstowego na dowolnej stronie.
+  pushesSentToAll: Pushe wysłane na wszystkie urządzenia
+  pushesSentToAllHint: To, co wysyła telefon, gdy nie wybierzesz urządzenia.
+  pushesSentToYour: Pushe wysłane na inne twoje urządzenia
+  pushesSentToYourHint: Pokazuj wszystko, nawet pushe przeznaczone dla tabletu lub innego komputera.
+  pushesYouSendFrom: Pushe wysłane z tej przeglądarki
+  pushesYouSendFromHint: Powiadamiaj o własnych pushach i otwieraj je również tutaj, np. gdy wysyłasz na wszystkie urządzenia z menu kontekstowego.
+  channelSubscriptions: Subskrypcje kanałów
+  channelSubscriptionsHint: Pushe z kanałów i źródeł, które obserwujesz.
+  openLinksAsSoon: Otwieraj linki od razu po odebraniu
+  openLinksAsSoonHint: Linki wysłane do tej przeglądarki otwierają się w nowej karcie, jak w oryginalnym rozszerzeniu Pushbullet. Tak samo notatka zawierająca tylko adres.
+  switchToTheNew: Przełączaj na nową kartę
+  switchToTheNewHint: W przeciwnym razie otworzy się w tle.
+  alsoOpenImagesPdfs: Otwieraj też obrazy, pliki PDF i inne pliki
+  alsoOpenLinksFrom: Otwieraj też linki od innych osób
+  alsoOpenLinksFromHint: Nie tylko z twoich urządzeń.
+  openLinksThatArrived: Otwieraj linki odebrane w trybie offline
+  openLinksThatArrivedHint: Po uruchomieniu przeglądarki lub wybudzeniu komputera otwieraj to, co przyszło w międzyczasie.
+  skipTheNotificationFor: Pomijaj powiadomienie dla otwartych linków
+  pushes: Pushe
+  pushesHint: Linki, notatki i pliki.
+  phoneNotifications: Powiadomienia z telefonu
+  textMessages: SMS-y
+  playASound: Odtwarzaj dźwięk
+  keepPushNotificationsOn: Zostawiaj powiadomienia o pushach na ekranie
+  keepPushNotificationsOnHint: Zostają, dopóki ich nie klikniesz lub nie zamkniesz.
+  keepPhoneNotificationsOn: Zostawiaj powiadomienia z telefonu na ekranie
+  closingANotificationDismisses: Zamknięcie powiadomienia zamyka je wszędzie
+  closingANotificationDismissesHint: Zamknij pusha, a zostanie oznaczony jako gotowy wszędzie; zamknij powiadomienie z telefonu, a zniknie z telefonu.
+  showUnreadCountsOn: Pokazuj liczbę nieprzeczytanych na ikonie na pasku narzędzi
+  countPushes: Licz pushe
+  countPhoneNotifications: Licz powiadomienia z telefonu
+  keepCountingPhoneNotifications: Licz powiadomienia z telefonu, dopóki nie zostaną wyczyszczone
+  keepCountingPhoneNotificationsHint: Licznik nie zeruje się po otwarciu karty Telefon, tylko maleje, gdy zamykasz powiadomienia.
+  countTextMessages: Licz SMS-y
+  showMyPhonesNotifications: Pokazuj powiadomienia z mojego telefonu
+  showMyPhonesNotificationsHint: Wymaga włączenia „Powielania powiadomień” w aplikacji Pushbullet na Androidzie.
+  copyOneTimeCodes: Automatycznie kopiuj kody jednorazowe
+  copyOneTimeCodesHint: Gdy powiadomienie zawiera kod weryfikacyjny, trafia on prosto do schowka.
+  receiveCopiedTextFrom: Odbieraj skopiowany tekst z innych urządzeń
+  receiveCopiedTextFromHint: Uniwersalne kopiowanie i wklejanie. Wymaga Pushbullet Pro i włączenia tej opcji w innych aplikacjach.
+  theme: Motyw
+  openOn: Karta startowa
+  sendToByDefault: Domyślny odbiorca
+  encryptionPassword: Hasło szyfrowania
+  showPreviewsForLinks: Pokazuj podglądy linków
+  navSupport: Wsparcie
+  signOut: Wyloguj się
+  renamed: Zmieniono nazwę
+  testNotification: Wyślij powiadomienie testowe
+  endSnooze: Zakończ wyciszenie
+  passwordSaved: Zapisano hasło szyfrowania
+  encryptionOff: Wyłączono szyfrowanie
+  themeSystem: Systemowy
+  themeLight: Jasny
+  themeDark: Ciemny
+  dataBody: Pushpilot przechowuje historię w tej przeglądarce i komunikuje się tylko z Pushbullet. Wyczyszczenie jej tutaj niczego nie usuwa z twojego konta.
+  synced: Zsynchronizowano z Pushbullet
+  syncNow: Synchronizuj teraz
+  historyCleared: Wyczyszczono historię
+  clearHistory: Wyczyść lokalną historię
+  supportBody: Pushpilot jest darmowy i open source, bez reklam i śledzenia – i tak zostanie. Jeśli ci się przydaje, możesz pomóc go rozwijać.
+  rate: Oceń w Chrome Web Store
+  star: Daj gwiazdkę na GitHubie
+  report: Zgłoś problem
+  thisBrowser: ta przeglądarka
+  deviceLine: '$1. Ostatnia aktywność: $2'
+  deviceLineSms: '$1, obsługuje SMS-y. Ostatnia aktywność: $2'
+  receiving: Odbiera
+  notConnected: Niepołączone
+  removeOldBefore: Usuń stare urządzenia na stronie
+  removeOldLink: pushbullet.com › Devices
+  removeOldAfter: '. Telefon znów będzie oznaczony jako „Odbiera”, gdy otworzysz na nim aplikację Pushbullet.'
+  otherBrowsers: Pushe wysłane do innej przeglądarki
+  otherBrowsersHint: Telefon może nadal pokazywać stare rozszerzenie Pushbullet jako „Chrome”. Zaznacz przeglądarki, których pushe mają trafiać tutaj.
+  renameLabel: Nazwa tej przeglądarki na innych twoich urządzeniach
+  rename: Zmień nazwę
+  e2eOn: Szyfrowanie end-to-end jest włączone
+  e2eOff: Szyfrowanie end-to-end jest wyłączone
+  e2eBody: Użyj tego samego hasła, które ustawiono w aplikacji Pushbullet na telefonie. Szyfruje ono powiadomienia, SMS-y i skopiowany tekst podczas przesyłania. Pushpilot przechowuje tylko klucz wyprowadzony z hasła.
+  changePassword: Zmień hasło
+  savePassword: Zapisz hasło
+  turnOff: Wyłącz
+  shortcutsHint: Skróty „z dowolnej aplikacji” działają nawet wtedy, gdy przeglądarka jest w tle. Jeśli któryś nie działa, otwórz stronę skrótów i ustaw jego zakres na „Globalnie”.
+  changeShortcuts: Zmień skróty
+  soundTakeoff: Start
+  soundChime: Dzwoneczek
+  soundPop: Pyk
+  soundDing: Dzyń
+  soundCustom: Własny
+  soundTooBig: Wybierz dźwięk mniejszy niż 1 MB.
+  soundUnplayable: Nie udało się odtworzyć tego pliku. Spróbuj MP3, OGG lub WAV.
+  play: Odtwórz
+  soundUsing: Używasz własnego dźwięku.
+  soundNone: Nie wybrano jeszcze dźwięku.
+  soundChooseAnother: Wybierz inny
+  soundChoose: Wybierz plik
+  soundFormats: '. MP3, OGG lub WAV, do 1 MB.'
+  previewsNeedPermission: Wymaga uprawnienia do odczytu stron, do których prowadzą linki. Włącz, aby je przyznać.
+  previewsHint: Obrazy, tytuły i opisy linków w aktywności. Pushpilot odczytuje tylko nagłówek strony każdego linku.
+  notSet: Nie ustawiono
+  sound: Dźwięk
+menu:
+  page: Wyślij tę stronę
+  link: Wyślij ten link
+  image: Wyślij ten obraz
+  selection: Wyślij zaznaczony tekst
+  allOther: Wszystkie moje inne urządzenia
+bg:
+  testTitle: Tak przychodzą pushe
+  testMessage: Linki otwierają się w nowej karcie po kliknięciu.
+  testContext: Od Pushpilot
+  signInFirst: Najpierw zaloguj się do Pushbullet.
+  tokenRejected: Pushbullet odrzucił zapisany token dostępu. Zaloguj się ponownie.
+  clipboardSent: Wysłano schowek
+  clipboardFailed: Nie udało się wysłać schowka
+  badgeSignIn: 'Pushpilot: zaloguj się do Pushbullet'
+  badgeOffline: 'Pushpilot: offline, ponawianie'
+  badgeNew: 'Pushpilot: nowe ($1)'
+  badgeSnoozed: (powiadomienia wyciszone)
+  needPassword: Telefon wysyła dane zaszyfrowane end-to-end. Dodaj hasło szyfrowania w Ustawieniach.
+  decryptFailed: Nie udało się odszyfrować danych z telefonu. Sprawdź hasło szyfrowania w Ustawieniach.
+  clipboardUpdated: Zaktualizowano schowek
+  copiedFrom: 'Skopiowano z: $1'
+  pasteToken: Najpierw wklej token dostępu.
+  copyCode: Kopiuj $1
+  appOnDevice: $1 na $2
+  noReplies: Ta aplikacja nie przyjmuje odpowiedzi z Pushbullet.
+  channel: Kanał
+  opened: Otwarto w nowej karcie
+  done: Gotowe
+  partial: 'Wysłano: $1 z $2. $3'
+  yourOtherDevices: twoje inne urządzenia
+  sendFailed: Nie udało się wysłać
+  nothingTitle: Nie ma czego wysłać
+  nothingBody: Najpierw skopiuj link lub tekst.
+  requestFailed: Błąd żądania ($1)
+  uploadFailed: Nie udało się przesłać
+  uploadOffline: Nie udało się przesłać. Sprawdź połączenie.
+  smsOff: Ten telefon nie udostępnia SMS-ów w Pushbullet. Otwórz na nim Pushbullet i włącz SMS.
+  encrypted: Te dane są zaszyfrowane end-to-end. Dodaj hasło szyfrowania w Ustawieniach.
+  noAnswer: Proces w tle Pushpilot nie odpowiedział. Spróbuj ponownie.

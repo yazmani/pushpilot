@@ -1,6 +1,7 @@
 import { browser } from 'wxt/browser';
 import { OAUTH } from '@/core/links';
 import { call } from '@/core/messaging/rpc';
+import { i18n } from '#i18n';
 
 /**
  * Signs in through Pushbullet's OAuth page (implicit flow) and hands the token
@@ -20,10 +21,10 @@ export async function signInWithPushbullet() {
     result = await browser.identity.launchWebAuthFlow({ url: url.toString(), interactive: true });
   } catch (err) {
     const message = err instanceof Error ? err.message : String(err);
-    if (/did not approve|cancel|closed/i.test(message)) throw new Error('Sign-in was cancelled.');
-    throw new Error(`Couldn’t open Pushbullet’s sign-in: ${message}`);
+    if (/did not approve|cancel|closed/i.test(message)) throw new Error(i18n.t('signIn.cancelled'));
+    throw new Error(i18n.t('signIn.openFailed', [message]));
   }
-  if (!result) throw new Error('Sign-in was cancelled.');
+  if (!result) throw new Error(i18n.t('signIn.cancelled'));
 
   const returned = new URL(result);
   const params = new URLSearchParams(returned.hash.slice(1));
@@ -31,9 +32,7 @@ export async function signInWithPushbullet() {
   const error = params.get('error') ?? returned.searchParams.get('error');
   if (!token) {
     throw new Error(
-      error === 'access_denied'
-        ? 'Sign-in was cancelled.'
-        : `Pushbullet didn’t return an access token${error ? ` (${error})` : ''}.`,
+      error === 'access_denied' ? i18n.t('signIn.cancelled') : i18n.t('signIn.noToken', [error ? ` (${error})` : '']),
     );
   }
   await call('auth.token', { token });

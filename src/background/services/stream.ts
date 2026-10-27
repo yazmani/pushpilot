@@ -8,6 +8,7 @@ import { show } from '@/background/platform/notifications';
 import { copyText } from '@/background/platform/offscreen';
 import { syncPushes } from '@/background/services/pushes';
 import { handleSmsChanged, type SmsChangedPush } from '@/background/services/sms';
+import { i18n } from '#i18n';
 
 // Pushbullet's realtime stream. Chrome 116+ keeps a service worker alive while
 // its WebSocket is active, so we ping every 20s; the server sends a nop every
@@ -149,13 +150,13 @@ async function onMessage(raw: string) {
   if (push.encrypted && push.ciphertext) {
     const key = await store.get('e2eKey');
     if (!key) {
-      await store.set({ lastError: 'Your phone sends end-to-end encrypted data. Add your encryption password in Settings.' });
+      await store.set({ lastError: i18n.t('bg.needPassword') });
       return;
     }
     try {
       push = await decryptJson(key, push.ciphertext);
     } catch {
-      await store.set({ lastError: 'Couldn’t decrypt data from your phone. Check your encryption password in Settings.' });
+      await store.set({ lastError: i18n.t('bg.decryptFailed') });
       return;
     }
   }
@@ -178,9 +179,9 @@ async function onClip(push: { body?: string; source_device_iden?: string }) {
   await copyText(push.body);
   const from = devices.find((d) => d.iden === push.source_device_iden);
   await show(`info:clip-${Date.now()}`, {
-    title: 'Clipboard updated',
+    title: i18n.t('bg.clipboardUpdated'),
     message: push.body.slice(0, 200),
-    context: from ? `Copied from ${from.nickname ?? from.model}` : undefined,
+    context: from ? i18n.t('bg.copiedFrom', [from.nickname ?? from.model ?? '']) : undefined,
     silent: true,
   });
 }

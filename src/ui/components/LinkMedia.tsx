@@ -4,30 +4,31 @@ import { useState } from 'react';
 import type { LinkKind, LinkPreview } from '@/core/utils/links';
 import { formatDuration } from '@/core/utils/links';
 import { Favicon } from './Identity';
+import { i18n } from '#i18n';
 
-const KINDS: Record<LinkKind, { label: string; icon: typeof Globe }> = {
-  video: { label: 'Video', icon: Play },
-  image: { label: 'Image', icon: Image },
-  article: { label: 'Article', icon: Newspaper },
-  code: { label: 'Code', icon: CodeXml },
-  music: { label: 'Music', icon: Headphones },
-  map: { label: 'Place', icon: MapPin },
-  document: { label: 'Document', icon: FileText },
-  social: { label: 'Post', icon: MessageCircle },
-  shop: { label: 'Product', icon: ShoppingBag },
-  web: { label: 'Page', icon: Globe },
+const KINDS: Record<LinkKind, typeof Globe> = {
+  video: Play,
+  image: Image,
+  article: Newspaper,
+  code: CodeXml,
+  music: Headphones,
+  map: MapPin,
+  document: FileText,
+  social: MessageCircle,
+  shop: ShoppingBag,
+  web: Globe,
 };
 
 /** "Video 12:04", "Article, 6 min read"… */
 export function kindLabel(p: LinkPreview): string {
-  const base = KINDS[p.kind].label;
+  const base = i18n.t(`linkKind.${p.kind}`);
   if (p.kind === 'video' && p.duration) return `${base} ${formatDuration(p.duration)}`;
-  if (p.readMinutes) return `${base}, ${p.readMinutes} min read`;
+  if (p.readMinutes) return i18n.t('linkKind.readTime', [base, String(p.readMinutes)]);
   return base;
 }
 
 export function KindBadge({ preview, className }: { preview: LinkPreview; className?: string }) {
-  const Icon = KINDS[preview.kind].icon;
+  const Icon = KINDS[preview.kind];
   return (
     <span className={clsx('inline-flex items-center gap-1 rounded-md px-1.5 py-0.5 text-2xs font-bold', className)}>
       <Icon size={11} strokeWidth={2.4} aria-hidden="true" />
@@ -81,10 +82,10 @@ export function LinkThumb({
               size < 56 ? 'size-[22px]' : 'size-7',
             )}
           >
-            <Play size={size < 56 ? 10 : 12} fill="currentColor" className="ml-px" />
+            <Play size={size < 56 ? 10 : 12} fill="currentColor" className="ms-px" />
           </span>
           {preview.duration ? (
-            <span className="absolute bottom-1 right-1 rounded bg-black/75 px-1 text-[9px] font-bold leading-[14px] text-white">
+            <span className="absolute bottom-1 end-1 rounded bg-black/75 px-1 text-[9px] font-bold leading-[14px] text-white">
               {formatDuration(preview.duration)}
             </span>
           ) : null}
@@ -129,7 +130,7 @@ export function LinkMedia({
       />
       {isVideo && (
         <span className="absolute left-1/2 top-1/2 grid size-11 -translate-x-1/2 -translate-y-1/2 place-items-center rounded-full bg-white/95 text-black shadow-card">
-          <Play size={18} fill="currentColor" className="ml-0.5" />
+          <Play size={18} fill="currentColor" className="ms-0.5" />
         </span>
       )}
     </div>

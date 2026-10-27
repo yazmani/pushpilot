@@ -7,6 +7,7 @@ import { deviceName, timeAgo } from '@/core/utils/format';
 import { Button, fieldClass, IconButton } from '@/ui/components';
 import { useNow } from '@/ui/hooks/use-now';
 import { useRun, useToast } from '@/ui/hooks/use-toast';
+import { i18n } from '#i18n';
 
 export function MirrorCard({ m, devices, autoFocus }: { m: Mirror; devices: Device[]; autoFocus?: boolean }) {
   useNow();
@@ -39,7 +40,7 @@ export function MirrorCard({ m, devices, autoFocus }: { m: Mirror; devices: Devi
       await call('mirror.reply', { id: m.id, message: reply.trim() });
       setReply('');
       setReplying(false);
-    }, 'Reply sent');
+    }, i18n.t('phone.replySent'));
 
   return (
     <li ref={card} className={clsx('group relative px-3.5 py-3', autoFocus && 'bg-accent-soft/50', m.dismissed && 'opacity-70')}>
@@ -51,11 +52,11 @@ export function MirrorCard({ m, devices, autoFocus }: { m: Mirror; devices: Devi
             <Smartphone size={16} />
           </span>
         )}
-        <div className="min-w-0 flex-1 pr-6">
+        <div className="min-w-0 flex-1 pe-6">
           <p className="flex items-center gap-1.5 text-2xs text-faint">
             <span className="truncate font-bold text-muted">{app}</span>
-            {device && <span className="truncate">on {deviceName(device)}</span>}
-            <span className="ml-auto shrink-0">{timeAgo(m.created)}</span>
+            {device && <span className="truncate">{i18n.t('phone.onDevice', [deviceName(device)])}</span>}
+            <span className="ms-auto shrink-0">{timeAgo(m.created)}</span>
           </p>
           {m.title && <p className="mt-0.5 break-words text-sm font-bold leading-snug">{m.title}</p>}
           {m.body && <p className="line-clamp-5 whitespace-pre-wrap break-words text-sm leading-relaxed text-ink/85">{m.body}</p>}
@@ -67,9 +68,9 @@ export function MirrorCard({ m, devices, autoFocus }: { m: Mirror; devices: Devi
                   className="flex h-8 items-center gap-2 rounded-xl bg-accent-soft px-3 text-base font-extrabold tracking-[0.12em] text-accent-strong transition hover:brightness-95"
                   onClick={async () => {
                     await navigator.clipboard.writeText(m.code!);
-                    notify(`Copied ${m.code}`);
+                    notify(i18n.t('phone.copiedCode', [m.code!]));
                   }}
-                  title="Copy code"
+                  title={i18n.t('phone.copyCode')}
                 >
                   {m.code}
                   <Copy size={14} />
@@ -77,7 +78,7 @@ export function MirrorCard({ m, devices, autoFocus }: { m: Mirror; devices: Devi
               )}
               {m.conversation_iden && !replying && (
                 <Button size="sm" className="h-8" onClick={() => setReplying(true)}>
-                  <Reply size={13} /> Reply
+                  <Reply size={13} /> {i18n.t('phone.reply')}
                 </Button>
               )}
               {!m.dismissed &&
@@ -108,12 +109,12 @@ export function MirrorCard({ m, devices, autoFocus }: { m: Mirror; devices: Devi
                 value={reply}
                 onChange={(e) => setReply(e.target.value)}
                 onKeyDown={(e) => e.key === 'Escape' && setReplying(false)}
-                placeholder={`Reply in ${app}`}
-                aria-label="Reply"
+                placeholder={i18n.t('phone.replyIn', [app])}
+                aria-label={i18n.t('phone.reply')}
                 className={clsx(fieldClass, 'h-9 min-w-0 flex-1 bg-bg')}
               />
               <IconButton
-                label="Send reply"
+                label={i18n.t('phone.sendReply')}
                 type="submit"
                 tone="accent"
                 disabled={busy || !reply.trim()}
@@ -127,8 +128,8 @@ export function MirrorCard({ m, devices, autoFocus }: { m: Mirror; devices: Devi
       </div>
       {!m.dismissed && m.dismissible !== false && (
         <IconButton
-          label="Dismiss on phone"
-          className="absolute right-2 top-2 size-7"
+          label={i18n.t('phone.dismiss')}
+          className="absolute end-2 top-2 size-7"
           disabled={busy}
           onClick={() => act(() => call('mirror.dismiss', { id: m.id }))}
         >

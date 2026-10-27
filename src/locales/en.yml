@@ -1,0 +1,390 @@
+# English strings, the source for every other language in this folder.
+# $1–$9 are substitutions; keys with 1/n are plural forms (i18n.t(key, count)).
+extName: Pushpilot for Pushbullet
+extDescription: Send tabs, notes and files to your phone, see Android notifications and text from your browser. Unofficial Pushbullet client.
+cmdOpen: Open Pushpilot
+cmdPushPage: Push the current page to your default device
+cmdPushClipboard: Push what you copied to your default device, from any app
+cmdOpenWindow: Open Pushpilot in a window, from any app
+cmdSendClipboard: Send your clipboard to your other devices (universal copy and paste)
+common:
+  retry: Retry
+  dismiss: Dismiss
+  loading: Loading
+tabs:
+  send: Send
+  feed: Feed
+  phone: Phone
+  sms: SMS
+app:
+  offline: Can’t reach Pushbullet. Retrying in the background.
+header:
+  sections: Sections
+  pausedHint: Notifications are paused. Click to turn them back on.
+  accountMenu: Account and options
+  connected: Connected
+  connecting: Connecting…
+  offline: Offline
+  quietUntil: Quiet until $1
+  pause: Pause notifications
+  snooze30m: 30m
+  snooze1h: 1h
+  snooze8h: 8h
+  snoozeNight: Night
+  unpause: Turn notifications back on
+  openPanel: Open in side panel
+  openWindow: Open in a window
+  settings: Settings
+send:
+  tooBig: $1 is over Pushbullet’s $2 limit.
+  imageUnreadable: Couldn’t read that image. Try dragging it in instead.
+  sentTo: Sent to $1
+  clipboardEmpty: Your clipboard is empty.
+  clipboardSent: Clipboard sent to your devices
+  pastedImage: Pasted image
+  removeFile: Remove $1
+  titlePlaceholder: Title (optional)
+  noteTitle: Note title
+  notePlaceholder: Write a note, paste a link, or drop a file
+  messagePlaceholder: Add a message (optional)
+  message: Message
+  thisPage: This page
+  note: Note
+  addFile: Add file
+  file: File
+  clipboard: Clipboard
+  clipboardHint: Send your clipboard to your devices (universal copy & paste)
+  uploading: Uploading…
+  sending: Sending…
+  sendTo: Send to $1
+targets:
+  all: All devices
+  allSub: Everywhere
+  self: This browser
+  selfSub: Save for later
+  device: device
+  two: $1 and $2
+  many: $1 places
+  heading: Send to
+  multiHint: ⌘-click for several
+  hidden:
+    1: 1 older device isn’t receiving pushes, so it’s hidden.
+    n: $1 older devices aren’t receiving pushes, so they’re hidden.
+  seeDevices: See devices
+link:
+  title: Title
+  titleLabel: Link title
+  address: Link address
+  edit: Edit link
+  remove: Remove link
+  startAt: Start at $1
+  sendImage: Send the image itself
+recent:
+  heading: Recent
+  seeAll: See all
+support:
+  count: $1 pushes sent with Pushpilot.
+  pitch: Free, open source and ad-free for good. If it saves you time, a coffee or a review keeps it going.
+  never: Don’t ask again
+  coffee: Buy me a coffee
+  sponsor: Sponsor on GitHub
+  review: Leave a review
+whatsNew:
+  title: New in Pushpilot $1
+  seeAll: See all changes
+  label: What’s new
+  v1_2:
+    languages: 'Pushpilot now speaks 17 languages and follows your browser’s language.'
+  v1_1:
+    pushAnywhere: 'Push from any app: copy something and press ⌘⇧9 (Ctrl+Shift+9).'
+    filesOpen: Images, PDFs and other files open in a new tab as they arrive.
+    shortcut: 'iPhone, iPad and Mac: the Pushpilot shortcut pushes from the Share sheet.'
+    polish: Light theme, a roomier popup, and receiving fixes.
+feed:
+  searchPlaceholder: Search your pushes
+  searchLabel: Search pushes
+  closeSearch: Close search
+  everything: Everything
+  myDevices: My devices
+  channels: Channels
+  search: Search
+  noMatchTitle: Nothing matches
+  noMatchBody: Try fewer words, or part of a link.
+  emptyTitle: Your pushes land here
+  emptyBody: Links, notes and files you send or receive show up in this feed.
+  siteVideo: $1 video
+  openConversation: Open conversation with $1
+  new: New
+device:
+  unknown: Unknown device
+  unnamed: Unnamed device
+  someone: Someone
+  kind:
+    phone: Phone
+    tablet: Tablet
+    laptop: Laptop
+    watch: Watch
+    browser: Browser
+    website: Website
+    computer: Computer
+time:
+  now: now
+  today: Today
+  yesterday: Yesterday
+route:
+  from: From $1
+  to: To $1
+  saved: Saved for later
+  sentTo: Sent to $1
+  sentToAll: Sent to all devices
+  sentToHere: Sent to this browser
+  between: $1 to $2
+  fromToAll: From $1 to all devices
+kind:
+  link: Link
+  note: Note
+  file: File
+  image: Image
+actions:
+  download: Download
+  open: Open
+  copy: Copy
+  copied: Copied
+  done: Mark as done
+  doneToast: Marked as done
+  deleteEverywhere: Delete everywhere
+  deleted: Deleted
+chat:
+  back: Back to feed
+  unmute: Unmute
+  mute: Mute notifications
+  unmuted: Notifications on for $1
+  muted: $1 muted
+  emptyTitle: Say hi to $1
+  emptyBody: Anything you send here reaches all of $1’s devices.
+  placeholder: Message $1
+phone:
+  offTitle: Phone notifications are off
+  openSettings: Open settings
+  offBody: Turn on notification mirroring to see your Android notifications here.
+  emptyTitle: No phone notifications yet
+  emptyBody: In the Pushbullet app on your Android phone, open Notification mirroring and switch it on. New notifications appear here and as desktop alerts.
+  now: On your phone now
+  cleared: Cleared
+  clearAll: Clear all
+  earlier: Earlier
+  replySent: Reply sent
+  onDevice: on $1
+  copiedCode: Copied $1
+  copyCode: Copy code
+  reply: Reply
+  replyIn: Reply in $1
+  sendReply: Send reply
+  dismiss: Dismiss on phone
+sms:
+  noPhoneTitle: No phone can text from here
+  noPhoneBody: Install Pushbullet on an Android phone and allow it to send and read SMS.
+  phone: Phone
+  lastSeen: (last seen $1)
+  refresh: Refresh
+  newText: New text
+  noThreadsTitle: No conversations
+  noThreadsBody: This phone hasn’t shared any text threads yet.
+  you: 'You: '
+  photo: Photo
+  addNumber: Add a phone number.
+  sent: Text sent
+  back: Back to conversations
+  to: To
+  toPlaceholder: Phone number, or several separated by commas
+  placeholder: Text message
+signIn:
+  title: Send this page to your phone.
+  intro: Pushpilot moves links, notes, files and texts between your devices with your Pushbullet account, and brings your phone’s notifications to your desktop.
+  button: Sign in with Pushbullet
+  buttonHint: Opens Pushbullet so you can approve Pushpilot. Your password never reaches the extension.
+  useToken: Use an access token instead
+  token: Access token
+  connect: Connect
+  createBefore: Create one under
+  createLink: Settings › Account
+  createAfter: on pushbullet.com.
+  cancelled: Sign-in was cancelled.
+  openFailed: 'Couldn’t open Pushbullet’s sign-in: $1'
+  noToken: Pushbullet didn’t return an access token$1.
+linkKind:
+  video: Video
+  image: Image
+  article: Article
+  code: Code
+  music: Music
+  map: Place
+  document: Document
+  social: Post
+  shop: Product
+  web: Page
+  readTime: $1, $2 min read
+settings:
+  section:
+    account: 'Account'
+    devices: 'Devices'
+    devicesDesc: 'Pushbullet keeps old registrations around. Only devices marked Receiving get your pushes.'
+    sending: 'Sending'
+    receiving: 'Receiving'
+    receivingDesc: 'Pushes sent straight to this browser always arrive. Choose what else counts.'
+    autoOpen: 'Auto-open'
+    notifications: 'Notifications'
+    toolbarBadge: 'Toolbar badge'
+    phone: 'Phone'
+    feed: 'Feed'
+    encryption: 'Encryption'
+    appearance: 'Appearance'
+    shortcuts: 'Shortcuts'
+    yourData: 'Your data'
+    supportPushpilot: 'Support Pushpilot'
+  startWithThePage: 'Start with the page you’re on'
+  startWithThePageHint: 'Opening Pushpilot fills in the current tab’s title and link, ready to send.'
+  closeThePopupAfter: 'Close the popup after sending'
+  rightClickMenu: 'Right-click menu'
+  rightClickMenuHint: 'Push pages, links, images and selected text from any page’s context menu.'
+  pushesSentToAll: 'Pushes sent to all devices'
+  pushesSentToAllHint: 'What your phone sends when you don’t pick a device.'
+  pushesSentToYour: 'Pushes sent to your other devices'
+  pushesSentToYourHint: 'See everything, even pushes meant for your tablet or another computer.'
+  pushesYouSendFrom: 'Pushes you send from this browser'
+  pushesYouSendFromHint: 'Notify and open your own pushes here too, for example when you push to all devices from the right-click menu.'
+  channelSubscriptions: 'Channel subscriptions'
+  channelSubscriptionsHint: 'Pushes from channels and feeds you follow.'
+  openLinksAsSoon: 'Open links as soon as they arrive'
+  openLinksAsSoonHint: 'Links pushed to this browser open in a new tab, like the original Pushbullet extension. So does a note that’s just an address.'
+  switchToTheNew: 'Switch to the new tab'
+  switchToTheNewHint: 'Otherwise it opens in the background.'
+  alsoOpenImagesPdfs: 'Also open images, PDFs and other files'
+  alsoOpenLinksFrom: 'Also open links from people'
+  alsoOpenLinksFromHint: 'Not just your own devices.'
+  openLinksThatArrived: 'Open links that arrived while offline'
+  openLinksThatArrivedHint: 'When the browser starts or your computer wakes up, open what was pushed in the meantime.'
+  skipTheNotificationFor: 'Skip the notification for opened links'
+  pushes: 'Pushes'
+  pushesHint: 'Links, notes and files.'
+  phoneNotifications: 'Phone notifications'
+  textMessages: 'Text messages'
+  playASound: 'Play a sound'
+  keepPushNotificationsOn: 'Keep push notifications on screen'
+  keepPushNotificationsOnHint: 'They stay until you click or close them.'
+  keepPhoneNotificationsOn: 'Keep phone notifications on screen'
+  closingANotificationDismisses: 'Closing a notification dismisses it'
+  closingANotificationDismissesHint: 'Close a push and it’s marked done everywhere; close a phone notification and it’s cleared on your phone.'
+  showUnreadCountsOn: 'Show unread counts on the toolbar icon'
+  countPushes: 'Count pushes'
+  countPhoneNotifications: 'Count phone notifications'
+  keepCountingPhoneNotifications: 'Keep counting phone notifications until they’re cleared'
+  keepCountingPhoneNotificationsHint: 'Instead of resetting when you open the Phone tab, the count drops as you dismiss them.'
+  countTextMessages: 'Count text messages'
+  showMyPhonesNotifications: 'Show my phone’s notifications'
+  showMyPhonesNotificationsHint: 'Needs Notification mirroring switched on in the Pushbullet app on Android.'
+  copyOneTimeCodes: 'Copy one-time codes automatically'
+  copyOneTimeCodesHint: 'When a notification contains a verification code, it goes straight to your clipboard.'
+  receiveCopiedTextFrom: 'Receive copied text from other devices'
+  receiveCopiedTextFromHint: 'Universal copy and paste. Needs Pushbullet Pro and the setting turned on in your other apps.'
+  theme: 'Theme'
+  openOn: 'Open on'
+  sendToByDefault: 'Send to, by default'
+  encryptionPassword: 'Encryption password'
+  showPreviewsForLinks: 'Show previews for links'
+  navSupport: 'Support'
+  signOut: 'Sign out'
+  renamed: 'Renamed'
+  testNotification: 'Send a test notification'
+  endSnooze: 'End snooze'
+  passwordSaved: 'Encryption password saved'
+  encryptionOff: 'Encryption turned off'
+  themeSystem: 'System'
+  themeLight: 'Light'
+  themeDark: 'Dark'
+  dataBody: 'Pushpilot keeps your history in this browser and talks only to Pushbullet. Clearing it here doesn’t delete anything from your account.'
+  synced: 'Synced with Pushbullet'
+  syncNow: 'Sync now'
+  historyCleared: 'History cleared'
+  clearHistory: 'Clear local history'
+  supportBody: 'Pushpilot is free and open source, with no ads or tracking, and it stays that way. If it’s useful to you, you can help keep it going.'
+  rate: 'Rate it in the Chrome Web Store'
+  star: 'Star on GitHub'
+  report: 'Report a problem'
+  thisBrowser: 'this browser'
+  deviceLine: '$1. Last active $2'
+  deviceLineSms: '$1, can text. Last active $2'
+  receiving: 'Receiving'
+  notConnected: 'Not connected'
+  removeOldBefore: 'Remove old devices on'
+  removeOldLink: 'pushbullet.com › Devices'
+  removeOldAfter: '. A phone shows up as Receiving again after you open the Pushbullet app on it.'
+  otherBrowsers: 'Pushes sent to another browser'
+  otherBrowsersHint: 'Your phone may still list the old Pushbullet extension as “Chrome”. Tick any browser whose pushes should arrive here.'
+  renameLabel: 'This browser’s name on your other devices'
+  rename: 'Rename'
+  e2eOn: 'End-to-end encryption is on'
+  e2eOff: 'End-to-end encryption is off'
+  e2eBody: 'Use the same password you set in the Pushbullet app on your phone. It encrypts notifications, texts and copied text in transit. Pushpilot stores only the derived key.'
+  changePassword: 'Change password'
+  savePassword: 'Save password'
+  turnOff: 'Turn off'
+  shortcutsHint: 'The “from any app” shortcuts work even when the browser is in the background. If one doesn’t, open the shortcuts page and set its scope to Global.'
+  changeShortcuts: 'Change shortcuts'
+  soundTakeoff: 'Takeoff'
+  soundChime: 'Chime'
+  soundPop: 'Pop'
+  soundDing: 'Ding'
+  soundCustom: 'Your own'
+  soundTooBig: 'Pick a sound under 1 MB.'
+  soundUnplayable: 'That file couldn’t be played. Try an MP3, OGG or WAV.'
+  play: 'Play'
+  soundUsing: 'Using your sound.'
+  soundNone: 'No sound chosen yet.'
+  soundChooseAnother: 'Choose another'
+  soundChoose: 'Choose a file'
+  soundFormats: '. MP3, OGG or WAV, up to 1 MB.'
+  previewsNeedPermission: 'Needs permission to read the pages your links point to. Turn this on to grant it.'
+  previewsHint: 'Pictures, titles and descriptions for links in your feed. Pushpilot reads only the page header of each link.'
+  notSet: 'Not set'
+  sound: 'Sound'
+menu:
+  page: Push this page
+  link: Push this link
+  image: Push this image
+  selection: Push selected text
+  allOther: All my other devices
+bg:
+  testTitle: This is how pushes arrive
+  testMessage: Links open in a new tab when you click them.
+  testContext: From Pushpilot
+  signInFirst: Sign in to Pushbullet first.
+  tokenRejected: Pushbullet rejected the saved access token. Sign in again.
+  clipboardSent: Clipboard sent
+  clipboardFailed: Couldn’t send clipboard
+  badgeSignIn: 'Pushpilot: sign in to Pushbullet'
+  badgeOffline: 'Pushpilot: offline, retrying'
+  badgeNew: 'Pushpilot: $1 new'
+  badgeSnoozed: (notifications snoozed)
+  needPassword: Your phone sends end-to-end encrypted data. Add your encryption password in Settings.
+  decryptFailed: Couldn’t decrypt data from your phone. Check your encryption password in Settings.
+  clipboardUpdated: Clipboard updated
+  copiedFrom: Copied from $1
+  pasteToken: Paste an access token first.
+  copyCode: Copy $1
+  appOnDevice: $1 on $2
+  noReplies: This app does not accept replies from Pushbullet.
+  channel: Channel
+  opened: Opened in a new tab
+  done: Done
+  partial: Sent to $1 of $2. $3
+  yourOtherDevices: your other devices
+  sendFailed: Couldn’t send
+  nothingTitle: Nothing to push
+  nothingBody: Copy a link or some text first.
+  requestFailed: Request failed ($1)
+  uploadFailed: Upload failed
+  uploadOffline: Upload failed. Check your connection.
+  smsOff: This phone isn’t sharing its texts with Pushbullet. Open Pushbullet on it and turn on SMS.
+  encrypted: This data is end-to-end encrypted. Add your encryption password in Settings.
+  noAnswer: Pushpilot’s background worker did not answer. Try again.

@@ -1,0 +1,390 @@
+# Korean strings, translated from en.yml (the source for every language in this folder).
+# $1–$9 are substitutions; keys with 1/n are plural forms (i18n.t(key, count)).
+extName: Pushpilot for Pushbullet
+extDescription: 탭, 메모, 파일을 휴대폰으로 보내고 Android 알림 확인과 문자 전송을 브라우저에서 하세요. 비공식 Pushbullet 클라이언트예요.
+cmdOpen: Pushpilot 열기
+cmdPushPage: 현재 페이지를 기본 기기로 푸시
+cmdPushClipboard: 복사한 내용을 기본 기기로 푸시 (모든 앱에서)
+cmdOpenWindow: Pushpilot을 창으로 열기 (모든 앱에서)
+cmdSendClipboard: 클립보드를 다른 기기로 보내기 (유니버설 복사/붙여넣기)
+common:
+  retry: 다시 시도
+  dismiss: 닫기
+  loading: 로드 중
+tabs:
+  send: 보내기
+  feed: 피드
+  phone: 휴대폰
+  sms: SMS
+app:
+  offline: Pushbullet에 연결할 수 없어요. 백그라운드에서 다시 시도하는 중이에요.
+header:
+  sections: 섹션
+  pausedHint: 알림이 일시중지되었어요. 클릭하면 다시 켜져요.
+  accountMenu: 계정 및 옵션
+  connected: 연결됨
+  connecting: 연결 중…
+  offline: 오프라인
+  quietUntil: $1까지 알림 끔
+  pause: 알림 일시중지
+  snooze30m: 30분
+  snooze1h: 1시간
+  snooze8h: 8시간
+  snoozeNight: 밤 동안
+  unpause: 알림 다시 켜기
+  openPanel: 사이드 패널에서 열기
+  openWindow: 창으로 열기
+  settings: 설정
+send:
+  tooBig: $1이(가) Pushbullet의 $2 제한을 초과해요.
+  imageUnreadable: 이미지를 읽을 수 없어요. 대신 끌어다 놓아 보세요.
+  sentTo: $1(으)로 보냈어요
+  clipboardEmpty: 클립보드가 비어 있어요.
+  clipboardSent: 클립보드를 기기로 보냈어요
+  pastedImage: 붙여넣은 이미지
+  removeFile: $1 삭제
+  titlePlaceholder: 제목 (선택 사항)
+  noteTitle: 메모 제목
+  notePlaceholder: 메모를 쓰거나, 링크를 붙여넣거나, 파일을 끌어다 놓으세요
+  messagePlaceholder: 메시지 추가 (선택 사항)
+  message: 메시지
+  thisPage: 이 페이지
+  note: 메모
+  addFile: 파일 추가
+  file: 파일
+  clipboard: 클립보드
+  clipboardHint: 클립보드를 기기로 보내기 (유니버설 복사/붙여넣기)
+  uploading: 업로드 중…
+  sending: 보내는 중…
+  sendTo: $1(으)로 보내기
+targets:
+  all: 모든 기기
+  allSub: 어디서나
+  self: 이 브라우저
+  selfSub: 나중에 보기용으로 저장
+  device: 기기
+  two: $1, $2
+  many: $1곳
+  heading: 보낼 대상
+  multiHint: ⌘-클릭으로 여러 개 선택
+  hidden:
+    1: 푸시를 받지 않는 오래된 기기 1대는 숨겨져 있어요.
+    n: 푸시를 받지 않는 오래된 기기 $1대는 숨겨져 있어요.
+  seeDevices: 기기 보기
+link:
+  title: 제목
+  titleLabel: 링크 제목
+  address: 링크 주소
+  edit: 링크 수정
+  remove: 링크 삭제
+  startAt: $1부터 재생
+  sendImage: 이미지 자체 보내기
+recent:
+  heading: 최근
+  seeAll: 모두 보기
+support:
+  count: Pushpilot으로 푸시를 $1개 보냈어요.
+  pitch: 앞으로도 계속 무료, 오픈 소스, 광고 없이 운영돼요. 시간을 아껴 줬다면 커피 한 잔이나 리뷰로 응원해 주세요.
+  never: 다시 묻지 않기
+  coffee: 커피 한 잔 사 주기
+  sponsor: GitHub에서 후원하기
+  review: 리뷰 남기기
+whatsNew:
+  title: Pushpilot $1의 새로운 기능
+  seeAll: 모든 변경 사항 보기
+  label: 새로운 기능
+  v1_2:
+    languages: '이제 Pushpilot이 17개 언어를 지원하며 브라우저 언어를 따릅니다.'
+  v1_1:
+    pushAnywhere: '모든 앱에서 푸시: 무언가를 복사하고 ⌘⇧9(Ctrl+Shift+9)를 누르세요.'
+    filesOpen: 이미지, PDF 등의 파일이 도착하면 새 탭에서 열려요.
+    shortcut: 'iPhone, iPad, Mac: Pushpilot 단축어로 공유 시트에서 푸시할 수 있어요.'
+    polish: 라이트 테마, 더 넓어진 팝업, 수신 관련 수정.
+feed:
+  searchPlaceholder: 푸시 검색
+  searchLabel: 푸시 검색
+  closeSearch: 검색 닫기
+  everything: 전체
+  myDevices: 내 기기
+  channels: 채널
+  search: 검색
+  noMatchTitle: 일치하는 항목이 없어요
+  noMatchBody: 단어 수를 줄이거나 링크의 일부로 검색해 보세요.
+  emptyTitle: 푸시가 여기에 도착해요
+  emptyBody: 보내거나 받은 링크, 메모, 파일이 이 피드에 표시돼요.
+  siteVideo: $1 동영상
+  openConversation: $1님과의 대화 열기
+  new: 새 항목
+device:
+  unknown: 알 수 없는 기기
+  unnamed: 이름 없는 기기
+  someone: 누군가
+  kind:
+    phone: 휴대폰
+    tablet: 태블릿
+    laptop: 노트북
+    watch: 워치
+    browser: 브라우저
+    website: 웹사이트
+    computer: 컴퓨터
+time:
+  now: 방금
+  today: 오늘
+  yesterday: 어제
+route:
+  from: $1에서
+  to: $1(으)로
+  saved: 나중에 보기용으로 저장됨
+  sentTo: $1(으)로 보냄
+  sentToAll: 모든 기기로 보냄
+  sentToHere: 이 브라우저로 보냄
+  between: $1에서 $2(으)로
+  fromToAll: $1에서 모든 기기로
+kind:
+  link: 링크
+  note: 메모
+  file: 파일
+  image: 이미지
+actions:
+  download: 다운로드
+  open: 열기
+  copy: 복사
+  copied: 복사됨
+  done: 완료로 표시
+  doneToast: 완료로 표시했어요
+  deleteEverywhere: 모든 곳에서 삭제
+  deleted: 삭제됨
+chat:
+  back: 피드로 돌아가기
+  unmute: 음소거 해제
+  mute: 알림 음소거
+  unmuted: $1 알림을 켰어요
+  muted: $1 음소거됨
+  emptyTitle: $1님에게 인사해 보세요
+  emptyBody: 여기서 보내는 내용은 $1님의 모든 기기에 전달돼요.
+  placeholder: $1님에게 메시지 보내기
+phone:
+  offTitle: 휴대폰 알림이 꺼져 있어요
+  openSettings: 설정 열기
+  offBody: 알림 미러링을 켜면 여기서 Android 알림을 볼 수 있어요.
+  emptyTitle: 아직 휴대폰 알림이 없어요
+  emptyBody: Android 휴대폰의 Pushbullet 앱에서 알림 미러링을 열고 켜세요. 새 알림이 여기와 데스크톱 알림으로 표시돼요.
+  now: 지금 휴대폰에 있는 알림
+  cleared: 지워짐
+  clearAll: 모두 지우기
+  earlier: 이전
+  replySent: 답장을 보냈어요
+  onDevice: $1에서
+  copiedCode: $1 복사됨
+  copyCode: 코드 복사
+  reply: 답장
+  replyIn: $1에서 답장
+  sendReply: 답장 보내기
+  dismiss: 휴대폰에서 지우기
+sms:
+  noPhoneTitle: 여기서 문자를 보낼 수 있는 휴대폰이 없어요
+  noPhoneBody: Android 휴대폰에 Pushbullet을 설치하고 SMS 보내기 및 읽기를 허용하세요.
+  phone: 휴대폰
+  lastSeen: '(마지막 접속: $1)'
+  refresh: 새로고침
+  newText: 새 문자
+  noThreadsTitle: 대화 없음
+  noThreadsBody: 이 휴대폰은 아직 문자 대화를 공유하지 않았어요.
+  you: '나: '
+  photo: 사진
+  addNumber: 전화번호를 추가하세요.
+  sent: 문자를 보냈어요
+  back: 대화 목록으로 돌아가기
+  to: 받는 사람
+  toPlaceholder: 전화번호 (여러 개는 쉼표로 구분)
+  placeholder: 문자 메시지
+signIn:
+  title: 이 페이지를 휴대폰으로 보내 보세요.
+  intro: Pushpilot은 Pushbullet 계정으로 기기 간에 링크, 메모, 파일, 문자를 주고받고, 휴대폰 알림을 데스크톱으로 가져와요.
+  button: Pushbullet으로 로그인
+  buttonHint: Pushbullet이 열리면 Pushpilot을 승인할 수 있어요. 비밀번호는 확장 프로그램에 전달되지 않아요.
+  useToken: 대신 액세스 토큰 사용
+  token: 액세스 토큰
+  connect: 연결
+  createBefore: pushbullet.com의
+  createLink: Settings › Account
+  createAfter: 메뉴에서 만들 수 있어요.
+  cancelled: 로그인이 취소되었어요.
+  openFailed: 'Pushbullet 로그인을 열 수 없어요: $1'
+  noToken: Pushbullet이 액세스 토큰을 반환하지 않았어요$1.
+linkKind:
+  video: 동영상
+  image: 이미지
+  article: 기사
+  code: 코드
+  music: 음악
+  map: 장소
+  document: 문서
+  social: 게시물
+  shop: 상품
+  web: 페이지
+  readTime: $1 · 읽는 데 $2분
+settings:
+  section:
+    account: '계정'
+    devices: '기기'
+    devicesDesc: 'Pushbullet은 오래된 등록 정보를 그대로 남겨 둬요. ‘수신 중’으로 표시된 기기만 푸시를 받아요.'
+    sending: '보내기'
+    receiving: '받기'
+    receivingDesc: '이 브라우저로 바로 보낸 푸시는 항상 도착해요. 그 밖에 받을 항목을 선택하세요.'
+    autoOpen: '자동 열기'
+    notifications: '알림'
+    toolbarBadge: '툴바 배지'
+    phone: '휴대폰'
+    feed: '피드'
+    encryption: '암호화'
+    appearance: '모양'
+    shortcuts: '단축키'
+    yourData: '내 데이터'
+    supportPushpilot: 'Pushpilot 후원하기'
+  startWithThePage: '지금 보고 있는 페이지로 시작'
+  startWithThePageHint: 'Pushpilot을 열면 현재 탭의 제목과 링크가 채워져 바로 보낼 수 있어요.'
+  closeThePopupAfter: '보낸 후 팝업 닫기'
+  rightClickMenu: '우클릭 메뉴'
+  rightClickMenuHint: '모든 페이지의 컨텍스트 메뉴에서 페이지, 링크, 이미지, 선택한 텍스트를 푸시할 수 있어요.'
+  pushesSentToAll: '모든 기기로 보낸 푸시'
+  pushesSentToAllHint: '기기를 고르지 않았을 때 휴대폰이 보내는 푸시예요.'
+  pushesSentToYour: '다른 기기로 보낸 푸시'
+  pushesSentToYourHint: '태블릿이나 다른 컴퓨터로 보낸 푸시까지 모두 볼 수 있어요.'
+  pushesYouSendFrom: '이 브라우저에서 보낸 푸시'
+  pushesYouSendFromHint: '내가 보낸 푸시도 여기서 알리고 열어요. 예를 들어 우클릭 메뉴에서 모든 기기로 푸시할 때요.'
+  channelSubscriptions: '채널 구독'
+  channelSubscriptionsHint: '팔로우하는 채널과 피드의 푸시예요.'
+  openLinksAsSoon: '링크가 도착하면 바로 열기'
+  openLinksAsSoonHint: '이 브라우저로 푸시된 링크가 원래 Pushbullet 확장 프로그램처럼 새 탭에서 열려요. 주소만 있는 메모도 마찬가지예요.'
+  switchToTheNew: '새 탭으로 전환'
+  switchToTheNewHint: '끄면 백그라운드에서 열려요.'
+  alsoOpenImagesPdfs: '이미지, PDF 등의 파일도 열기'
+  alsoOpenLinksFrom: '다른 사람이 보낸 링크도 열기'
+  alsoOpenLinksFromHint: '내 기기에서 온 링크 외에도 열어요.'
+  openLinksThatArrived: '오프라인일 때 도착한 링크 열기'
+  openLinksThatArrivedHint: '브라우저가 시작되거나 컴퓨터가 절전 모드에서 깨어나면 그동안 푸시된 항목을 열어요.'
+  skipTheNotificationFor: '열린 링크는 알림 건너뛰기'
+  pushes: '푸시'
+  pushesHint: '링크, 메모, 파일.'
+  phoneNotifications: '휴대폰 알림'
+  textMessages: '문자 메시지'
+  playASound: '소리 재생'
+  keepPushNotificationsOn: '푸시 알림을 화면에 계속 표시'
+  keepPushNotificationsOnHint: '클릭하거나 닫을 때까지 표시돼요.'
+  keepPhoneNotificationsOn: '휴대폰 알림을 화면에 계속 표시'
+  closingANotificationDismisses: '알림을 닫으면 해제'
+  closingANotificationDismissesHint: '푸시를 닫으면 모든 곳에서 완료로 표시되고, 휴대폰 알림을 닫으면 휴대폰에서도 지워져요.'
+  showUnreadCountsOn: '툴바 아이콘에 읽지 않은 개수 표시'
+  countPushes: '푸시 개수 세기'
+  countPhoneNotifications: '휴대폰 알림 개수 세기'
+  keepCountingPhoneNotifications: '휴대폰 알림이 지워질 때까지 계속 세기'
+  keepCountingPhoneNotificationsHint: '휴대폰 탭을 열어도 초기화되지 않고, 알림을 닫을 때마다 개수가 줄어요.'
+  countTextMessages: '문자 메시지 개수 세기'
+  showMyPhonesNotifications: '내 휴대폰 알림 표시'
+  showMyPhonesNotificationsHint: 'Android의 Pushbullet 앱에서 알림 미러링을 켜야 해요.'
+  copyOneTimeCodes: '일회용 코드 자동 복사'
+  copyOneTimeCodesHint: '알림에 인증 코드가 있으면 바로 클립보드에 복사돼요.'
+  receiveCopiedTextFrom: '다른 기기에서 복사한 텍스트 받기'
+  receiveCopiedTextFromHint: '유니버설 복사/붙여넣기. Pushbullet Pro가 필요하고, 다른 앱에서도 이 설정을 켜야 해요.'
+  theme: '테마'
+  openOn: '열 위치'
+  sendToByDefault: '기본 보낼 대상'
+  encryptionPassword: '암호화 비밀번호'
+  showPreviewsForLinks: '링크 미리보기 표시'
+  navSupport: '후원'
+  signOut: '로그아웃'
+  renamed: '이름을 바꿨어요'
+  testNotification: '테스트 알림 보내기'
+  endSnooze: '일시중지 끝내기'
+  passwordSaved: '암호화 비밀번호를 저장했어요'
+  encryptionOff: '암호화를 껐어요'
+  themeSystem: '시스템'
+  themeLight: '라이트'
+  themeDark: '다크'
+  dataBody: 'Pushpilot은 기록을 이 브라우저에 저장하고 Pushbullet하고만 통신해요. 여기서 지워도 계정에서는 아무것도 삭제되지 않아요.'
+  synced: 'Pushbullet과 동기화됨'
+  syncNow: '지금 동기화'
+  historyCleared: '기록을 지웠어요'
+  clearHistory: '로컬 기록 지우기'
+  supportBody: 'Pushpilot은 무료 오픈 소스이고 광고나 추적이 없으며, 앞으로도 그럴 거예요. 유용하다면 계속 이어 갈 수 있도록 도와주세요.'
+  rate: 'Chrome Web Store에서 평가하기'
+  star: 'GitHub에서 별표 주기'
+  report: '문제 신고'
+  thisBrowser: '이 브라우저'
+  deviceLine: '$1. 마지막 활동: $2'
+  deviceLineSms: '$1, 문자 가능. 마지막 활동: $2'
+  receiving: '수신 중'
+  notConnected: '연결 안 됨'
+  removeOldBefore: '오래된 기기는'
+  removeOldLink: 'pushbullet.com › Devices'
+  removeOldAfter: '에서 삭제하세요. 휴대폰에서 Pushbullet 앱을 열면 다시 ‘수신 중’으로 표시돼요.'
+  otherBrowsers: '다른 브라우저로 보낸 푸시'
+  otherBrowsersHint: '휴대폰에는 예전 Pushbullet 확장 프로그램이 ‘Chrome’으로 표시될 수 있어요. 여기서 푸시를 받을 브라우저를 선택하세요.'
+  renameLabel: '다른 기기에 표시되는 이 브라우저의 이름'
+  rename: '이름 바꾸기'
+  e2eOn: '엔드투엔드 암호화 사용 중'
+  e2eOff: '엔드투엔드 암호화 사용 안 함'
+  e2eBody: '휴대폰의 Pushbullet 앱에서 설정한 것과 같은 비밀번호를 사용하세요. 알림, 문자, 복사한 텍스트를 전송 중에 암호화해요. Pushpilot은 비밀번호에서 만든 키만 저장해요.'
+  changePassword: '비밀번호 변경'
+  savePassword: '비밀번호 저장'
+  turnOff: '끄기'
+  shortcutsHint: '‘모든 앱에서’ 단축키는 브라우저가 백그라운드에 있어도 작동해요. 작동하지 않으면 단축키 페이지를 열고 범위를 ‘전역’으로 설정하세요.'
+  changeShortcuts: '단축키 변경'
+  soundTakeoff: '이륙'
+  soundChime: '차임'
+  soundPop: '팝'
+  soundDing: '딩'
+  soundCustom: '내 소리'
+  soundTooBig: '1 MB 미만의 소리를 선택하세요.'
+  soundUnplayable: '이 파일을 재생할 수 없어요. MP3, OGG, WAV 파일을 사용해 보세요.'
+  play: '재생'
+  soundUsing: '내 소리를 사용 중이에요.'
+  soundNone: '아직 선택한 소리가 없어요.'
+  soundChooseAnother: '다른 파일 선택'
+  soundChoose: '파일 선택'
+  soundFormats: '. MP3, OGG 또는 WAV, 최대 1 MB.'
+  previewsNeedPermission: '링크가 가리키는 페이지를 읽을 권한이 필요해요. 켜면 권한을 부여할 수 있어요.'
+  previewsHint: '피드의 링크에 사진, 제목, 설명을 표시해요. Pushpilot은 각 링크의 페이지 헤더만 읽어요.'
+  notSet: '설정 안 됨'
+  sound: '소리'
+menu:
+  page: 이 페이지 푸시
+  link: 이 링크 푸시
+  image: 이 이미지 푸시
+  selection: 선택한 텍스트 푸시
+  allOther: 내 다른 모든 기기
+bg:
+  testTitle: 푸시는 이렇게 도착해요
+  testMessage: 링크를 클릭하면 새 탭에서 열려요.
+  testContext: Pushpilot에서
+  signInFirst: 먼저 Pushbullet에 로그인하세요.
+  tokenRejected: Pushbullet이 저장된 액세스 토큰을 거부했어요. 다시 로그인하세요.
+  clipboardSent: 클립보드를 보냈어요
+  clipboardFailed: 클립보드를 보낼 수 없어요
+  badgeSignIn: 'Pushpilot: Pushbullet에 로그인하세요'
+  badgeOffline: 'Pushpilot: 오프라인, 다시 시도 중'
+  badgeNew: 'Pushpilot: 새 항목 $1개'
+  badgeSnoozed: (알림 일시중지됨)
+  needPassword: 휴대폰이 엔드투엔드 암호화된 데이터를 보내고 있어요. 설정에서 암호화 비밀번호를 추가하세요.
+  decryptFailed: 휴대폰에서 받은 데이터를 복호화할 수 없어요. 설정에서 암호화 비밀번호를 확인하세요.
+  clipboardUpdated: 클립보드가 업데이트되었어요
+  copiedFrom: $1에서 복사됨
+  pasteToken: 먼저 액세스 토큰을 붙여넣으세요.
+  copyCode: $1 복사
+  appOnDevice: $2의 $1
+  noReplies: 이 앱은 Pushbullet에서 보낸 답장을 받지 않아요.
+  channel: 채널
+  opened: 새 탭에서 열었어요
+  done: 완료
+  partial: $2개 중 $1개 기기로 보냈어요. $3
+  yourOtherDevices: 내 다른 기기
+  sendFailed: 보낼 수 없어요
+  nothingTitle: 푸시할 항목이 없어요
+  nothingBody: 먼저 링크나 텍스트를 복사하세요.
+  requestFailed: 요청 실패 ($1)
+  uploadFailed: 업로드 실패
+  uploadOffline: 업로드에 실패했어요. 연결을 확인하세요.
+  smsOff: 이 휴대폰은 Pushbullet과 문자를 공유하지 않고 있어요. 휴대폰에서 Pushbullet을 열고 SMS를 켜세요.
+  encrypted: 이 데이터는 엔드투엔드 암호화되어 있어요. 설정에서 암호화 비밀번호를 추가하세요.
+  noAnswer: Pushpilot의 백그라운드 작업이 응답하지 않았어요. 다시 시도하세요.

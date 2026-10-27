@@ -3,6 +3,7 @@ import { type ReactNode, useMemo } from 'react';
 import { deviceKind, deviceName, isReachable, personName } from '@/core/utils/format';
 import { Avatar, DeviceGlyph } from '@/ui/components';
 import { useStore } from '@/ui/hooks/use-store';
+import { i18n } from '#i18n';
 
 export interface TargetOption {
   key: string;
@@ -18,7 +19,13 @@ export function useTargets(): { targets: TargetOption[]; unreachable: number } {
   return useMemo(() => {
     const reachable = devices.filter((d) => isReachable(d) && d.iden !== selfDeviceIden).sort((a, b) => b.modified - a.modified);
     const targets: TargetOption[] = [
-      { key: 'all', label: 'All devices', sub: 'Everywhere', kind: 'all', icon: <Layers size={22} strokeWidth={1.9} /> },
+      {
+        key: 'all',
+        label: i18n.t('targets.all'),
+        sub: i18n.t('targets.allSub'),
+        kind: 'all',
+        icon: <Layers size={22} strokeWidth={1.9} />,
+      },
       ...reachable.map((d) => ({
         key: `device:${d.iden}`,
         label: deviceName(d),
@@ -31,8 +38,8 @@ export function useTargets(): { targets: TargetOption[]; unreachable: number } {
         ? [
             {
               key: `device:${selfDeviceIden}`,
-              label: 'This browser',
-              sub: 'Save for later',
+              label: i18n.t('targets.self'),
+              sub: i18n.t('targets.selfSub'),
               kind: 'device' as const,
               icon: <DeviceGlyph device={{ icon: 'browser' }} size={22} />,
             },
@@ -53,8 +60,8 @@ export function useTargets(): { targets: TargetOption[]; unreachable: number } {
 
 export function targetLabel(selected: string[], targets: TargetOption[]): string {
   if (!selected.length) return '…';
-  const names = selected.map((k) => targets.find((t) => t.key === k)?.label ?? 'device');
+  const names = selected.map((k) => targets.find((t) => t.key === k)?.label ?? i18n.t('targets.device'));
   if (names.length === 1) return names[0]!;
-  if (names.length === 2) return `${names[0]} and ${names[1]}`;
-  return `${names.length} places`;
+  if (names.length === 2) return i18n.t('targets.two', [names[0]!, names[1]!]);
+  return i18n.t('targets.many', [String(names.length)]);
 }

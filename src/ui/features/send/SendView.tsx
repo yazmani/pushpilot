@@ -19,6 +19,7 @@ import { grabImage, type PageInfo, readPage } from './page';
 import { TargetGrid } from './TargetGrid';
 import { targetLabel, useTargets } from './targets';
 import { Trail, type TrailHandle } from './Trail';
+import { i18n } from '#i18n';
 
 type Kind = 'link' | 'note' | 'file';
 
@@ -111,7 +112,7 @@ export function SendView({ mode, onOpenFeed }: { mode: Mode; onOpenFeed: () => v
     if (!next.length) return;
     const limit = me?.max_upload_size ?? 25 * 1024 * 1024;
     const tooBig = next.find((a) => a.file.size > limit);
-    if (tooBig) return notify(`${tooBig.file.name} is over Pushbullet’s ${formatBytes(limit)} limit.`, 'error');
+    if (tooBig) return notify(i18n.t('send.tooBig', [tooBig.file.name, formatBytes(limit)]), 'error');
     edited.current = true;
     setFiles((f) => [...f, ...next]);
     setKind('file');
@@ -183,7 +184,7 @@ export function SendView({ mode, onOpenFeed }: { mode: Mode; onOpenFeed: () => v
     if (!page?.tabId) return;
     const file = await grabImage(page.tabId, page.url);
     if (file) addFiles([file]);
-    else notify('Couldn’t read that image. Try dragging it in instead.', 'error');
+    else notify(i18n.t('send.imageUnreadable'), 'error');
   };
 
   const send = async () => {
@@ -214,7 +215,7 @@ export function SendView({ mode, onOpenFeed }: { mode: Mode; onOpenFeed: () => v
         void store.updateSettings({ defaultTarget: selected[0] });
       trail.current?.fire();
       void store.update('sendCount', (n) => n + 1);
-      notify(`Sent to ${where}`);
+      notify(i18n.t('send.sentTo', [where]));
       if (settings.closeAfterSend && mode === 'popup') setTimeout(() => window.close(), 700);
       else reset();
     } catch (err) {
@@ -227,9 +228,9 @@ export function SendView({ mode, onOpenFeed }: { mode: Mode; onOpenFeed: () => v
   const sendClipboard = async () => {
     try {
       const text = await navigator.clipboard.readText();
-      if (!text) return notify('Your clipboard is empty.', 'error');
+      if (!text) return notify(i18n.t('send.clipboardEmpty'), 'error');
       await call('clip.send', { text });
-      notify('Clipboard sent to your devices');
+      notify(i18n.t('send.clipboardSent'));
     } catch (err) {
       notify(errorText(err), 'error');
     }
@@ -303,18 +304,18 @@ export function SendView({ mode, onOpenFeed }: { mode: Mode; onOpenFeed: () => v
                 <li key={a.id} className="relative flex items-center gap-2.5 overflow-hidden rounded-xl bg-raised p-2">
                   {sending && (
                     <span
-                      className="absolute inset-y-0 left-0 bg-accent/20 transition-[width]"
+                      className="absolute inset-y-0 start-0 bg-accent/20 transition-[width]"
                       style={{ width: `${Math.round(a.progress * 100)}%` }}
                     />
                   )}
                   <FileThumb file={a.file} />
                   <span className="relative min-w-0 flex-1">
-                    <span className="block truncate text-sm font-semibold">{a.file.name || 'Pasted image'}</span>
+                    <span className="block truncate text-sm font-semibold">{a.file.name || i18n.t('send.pastedImage')}</span>
                     <span className="block text-2xs text-muted">{formatBytes(a.file.size)}</span>
                   </span>
                   {!sending && (
                     <IconButton
-                      label={`Remove ${a.file.name}`}
+                      label={i18n.t('send.removeFile', [a.file.name])}
                       className="relative size-7"
                       onClick={() => {
                         const left = files.filter((x) => x.id !== a.id);
@@ -334,8 +335,8 @@ export function SendView({ mode, onOpenFeed }: { mode: Mode; onOpenFeed: () => v
             <input
               value={title}
               onChange={(e) => setTitle(e.target.value)}
-              placeholder="Title (optional)"
-              aria-label="Note title"
+              placeholder={i18n.t('send.titlePlaceholder')}
+              aria-label={i18n.t('send.noteTitle')}
               className="w-full bg-transparent px-4 pt-4 text-[15px] font-bold outline-none placeholder:text-faint"
             />
           )}
@@ -348,8 +349,8 @@ export function SendView({ mode, onOpenFeed }: { mode: Mode; onOpenFeed: () => v
               setBody(e.target.value);
             }}
             rows={kind === 'note' ? (expanded ? 5 : 1) : 2}
-            placeholder={kind === 'note' ? 'Write a note, paste a link, or drop a file' : 'Add a message (optional)'}
-            aria-label="Message"
+            placeholder={kind === 'note' ? i18n.t('send.notePlaceholder') : i18n.t('send.messagePlaceholder')}
+            aria-label={i18n.t('send.message')}
             className={clsx(
               'block max-h-56 w-full resize-none bg-transparent px-4 py-3 text-sm leading-relaxed outline-none [field-sizing:content] placeholder:text-faint',
               kind !== 'note' && 'mt-2 border-t border-line',
@@ -361,23 +362,19 @@ export function SendView({ mode, onOpenFeed }: { mode: Mode; onOpenFeed: () => v
         <div className="mt-2 flex items-center gap-1.5">
           {kind !== 'link' && (
             <ActionPill icon={<Link2 size={14} />} onClick={() => switchTo('link')}>
-              This page
+              {i18n.t('send.thisPage')}
             </ActionPill>
           )}
           {kind !== 'note' && (
             <ActionPill icon={<StickyNote size={14} />} onClick={() => switchTo('note')}>
-              Note
+              {i18n.t('send.note')}
             </ActionPill>
           )}
           <ActionPill icon={<Paperclip size={14} />} onClick={() => switchTo('file')}>
-            {kind === 'file' ? 'Add file' : 'File'}
+            {kind === 'file' ? i18n.t('send.addFile') : i18n.t('send.file')}
           </ActionPill>
-          <ActionPill
-            icon={<ClipboardPaste size={14} />}
-            onClick={sendClipboard}
-            title="Send your clipboard to your devices (universal copy & paste)"
-          >
-            Clipboard
+          <ActionPill icon={<ClipboardPaste size={14} />} onClick={sendClipboard} title={i18n.t('send.clipboardHint')}>
+            {i18n.t('send.clipboard')}
           </ActionPill>
           <input
             ref={fileInput}
@@ -401,10 +398,14 @@ export function SendView({ mode, onOpenFeed }: { mode: Mode; onOpenFeed: () => v
         <Button variant="primary" size="lg" className="w-full" onClick={send} disabled={!canSend} busy={sending}>
           {!sending && <SendHorizontal size={18} strokeWidth={2.2} />}
           <span className="truncate">
-            {sending ? (kind === 'file' ? 'Uploading…' : 'Sending…') : `Send to ${targetLabel(selected, targets)}`}
+            {sending
+              ? kind === 'file'
+                ? i18n.t('send.uploading')
+                : i18n.t('send.sending')
+              : i18n.t('send.sendTo', [targetLabel(selected, targets)])}
           </span>
           {!sending && (
-            <kbd className="ml-auto rounded-md bg-black/10 px-1.5 py-0.5 font-sans text-2xs font-bold dark:bg-black/15">
+            <kbd className="ms-auto rounded-md bg-black/10 px-1.5 py-0.5 font-sans text-2xs font-bold dark:bg-black/15">
               {isMac ? '⌘' : 'Ctrl'} ↵
             </kbd>
           )}

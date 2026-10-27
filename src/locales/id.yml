@@ -1,0 +1,390 @@
+# Indonesian strings, translated from en.yml.
+# $1–$9 are substitutions; keys with 1/n are plural forms (i18n.t(key, count)).
+extName: Pushpilot untuk Pushbullet
+extDescription: Kirim tab, catatan, dan file ke ponsel, lihat notifikasi Android, dan kirim SMS dari browser. Klien Pushbullet tidak resmi.
+cmdOpen: Buka Pushpilot
+cmdPushPage: Kirim halaman ini ke perangkat default Anda
+cmdPushClipboard: Kirim yang Anda salin ke perangkat default, dari aplikasi apa pun
+cmdOpenWindow: Buka Pushpilot di jendela, dari aplikasi apa pun
+cmdSendClipboard: Kirim papan klip ke perangkat Anda yang lain (salin dan tempel universal)
+common:
+  retry: Coba lagi
+  dismiss: Tutup
+  loading: Memuat
+tabs:
+  send: Kirim
+  feed: Feed
+  phone: Ponsel
+  sms: SMS
+app:
+  offline: Tidak dapat terhubung ke Pushbullet. Mencoba lagi di latar belakang.
+header:
+  sections: Bagian
+  pausedHint: Notifikasi dijeda. Klik untuk mengaktifkannya lagi.
+  accountMenu: Akun dan opsi
+  connected: Terhubung
+  connecting: Menghubungkan…
+  offline: Offline
+  quietUntil: Senyap hingga $1
+  pause: Jeda notifikasi
+  snooze30m: 30 mnt
+  snooze1h: 1 j
+  snooze8h: 8 j
+  snoozeNight: Malam
+  unpause: Aktifkan lagi notifikasi
+  openPanel: Buka di panel samping
+  openWindow: Buka di jendela
+  settings: Setelan
+send:
+  tooBig: $1 melebihi batas $2 dari Pushbullet.
+  imageUnreadable: Gambar itu tidak dapat dibaca. Coba seret ke sini.
+  sentTo: Terkirim ke $1
+  clipboardEmpty: Papan klip Anda kosong.
+  clipboardSent: Papan klip terkirim ke perangkat Anda
+  pastedImage: Gambar yang ditempel
+  removeFile: Hapus $1
+  titlePlaceholder: Judul (opsional)
+  noteTitle: Judul catatan
+  notePlaceholder: Tulis catatan, tempel link, atau letakkan file
+  messagePlaceholder: Tambahkan pesan (opsional)
+  message: Pesan
+  thisPage: Halaman ini
+  note: Catatan
+  addFile: Tambahkan file
+  file: File
+  clipboard: Papan klip
+  clipboardHint: Kirim papan klip ke perangkat Anda (salin & tempel universal)
+  uploading: Mengunggah…
+  sending: Mengirim…
+  sendTo: Kirim ke $1
+targets:
+  all: Semua perangkat
+  allSub: Di mana saja
+  self: Browser ini
+  selfSub: Simpan untuk nanti
+  device: perangkat
+  two: $1 dan $2
+  many: $1 tujuan
+  heading: Kirim ke
+  multiHint: ⌘-klik untuk memilih beberapa
+  hidden:
+    1: 1 perangkat lama tidak menerima kiriman, jadi disembunyikan.
+    n: $1 perangkat lama tidak menerima kiriman, jadi disembunyikan.
+  seeDevices: Lihat perangkat
+link:
+  title: Judul
+  titleLabel: Judul link
+  address: Alamat link
+  edit: Edit link
+  remove: Hapus link
+  startAt: Mulai di $1
+  sendImage: Kirim gambarnya langsung
+recent:
+  heading: Terbaru
+  seeAll: Lihat semua
+support:
+  count: $1 kiriman dikirim dengan Pushpilot.
+  pitch: Gratis, open source, dan bebas iklan selamanya. Jika menghemat waktu Anda, secangkir kopi atau ulasan membantunya terus berjalan.
+  never: Jangan tanya lagi
+  coffee: Traktir saya kopi
+  sponsor: Sponsori di GitHub
+  review: Tulis ulasan
+whatsNew:
+  title: Baru di Pushpilot $1
+  seeAll: Lihat semua perubahan
+  label: Yang baru
+  v1_2:
+    languages: 'Pushpilot kini tersedia dalam 17 bahasa dan mengikuti bahasa browser Anda.'
+  v1_1:
+    pushAnywhere: 'Kirim dari aplikasi apa pun: salin sesuatu lalu tekan ⌘⇧9 (Ctrl+Shift+9).'
+    filesOpen: Gambar, PDF, dan file lain terbuka di tab baru begitu tiba.
+    shortcut: 'iPhone, iPad, dan Mac: pintasan Pushpilot mengirim dari menu Bagikan.'
+    polish: Tema terang, popup yang lebih lega, dan perbaikan penerimaan.
+feed:
+  searchPlaceholder: Cari kiriman Anda
+  searchLabel: Cari kiriman
+  closeSearch: Tutup pencarian
+  everything: Semua
+  myDevices: Perangkat saya
+  channels: Saluran
+  search: Cari
+  noMatchTitle: Tidak ada yang cocok
+  noMatchBody: Coba lebih sedikit kata, atau sebagian link.
+  emptyTitle: Kiriman Anda muncul di sini
+  emptyBody: Link, catatan, dan file yang Anda kirim atau terima muncul di feed ini.
+  siteVideo: Video $1
+  openConversation: Buka percakapan dengan $1
+  new: Baru
+device:
+  unknown: Perangkat tidak dikenal
+  unnamed: Perangkat tanpa nama
+  someone: Seseorang
+  kind:
+    phone: Ponsel
+    tablet: Tablet
+    laptop: Laptop
+    watch: Jam tangan
+    browser: Browser
+    website: Situs web
+    computer: Komputer
+time:
+  now: sekarang
+  today: Hari ini
+  yesterday: Kemarin
+route:
+  from: Dari $1
+  to: Ke $1
+  saved: Disimpan untuk nanti
+  sentTo: Terkirim ke $1
+  sentToAll: Terkirim ke semua perangkat
+  sentToHere: Terkirim ke browser ini
+  between: $1 ke $2
+  fromToAll: Dari $1 ke semua perangkat
+kind:
+  link: Link
+  note: Catatan
+  file: File
+  image: Gambar
+actions:
+  download: Unduh
+  open: Buka
+  copy: Salin
+  copied: Disalin
+  done: Tandai selesai
+  doneToast: Ditandai selesai
+  deleteEverywhere: Hapus di semua perangkat
+  deleted: Dihapus
+chat:
+  back: Kembali ke feed
+  unmute: Aktifkan suara
+  mute: Bisukan notifikasi
+  unmuted: Notifikasi aktif untuk $1
+  muted: $1 dibisukan
+  emptyTitle: Sapa $1
+  emptyBody: Apa pun yang Anda kirim di sini sampai ke semua perangkat $1.
+  placeholder: Kirim pesan ke $1
+phone:
+  offTitle: Notifikasi ponsel nonaktif
+  openSettings: Buka setelan
+  offBody: Aktifkan pencerminan notifikasi untuk melihat notifikasi Android di sini.
+  emptyTitle: Belum ada notifikasi ponsel
+  emptyBody: Di aplikasi Pushbullet pada ponsel Android Anda, buka Pencerminan notifikasi dan aktifkan. Notifikasi baru muncul di sini dan sebagai peringatan desktop.
+  now: Di ponsel Anda sekarang
+  cleared: Dihapus
+  clearAll: Hapus semua
+  earlier: Sebelumnya
+  replySent: Balasan terkirim
+  onDevice: di $1
+  copiedCode: $1 disalin
+  copyCode: Salin kode
+  reply: Balas
+  replyIn: Balas di $1
+  sendReply: Kirim balasan
+  dismiss: Tutup di ponsel
+sms:
+  noPhoneTitle: Tidak ada ponsel yang bisa mengirim SMS dari sini
+  noPhoneBody: Instal Pushbullet di ponsel Android dan izinkan aplikasi itu mengirim dan membaca SMS.
+  phone: Ponsel
+  lastSeen: (terakhir terlihat $1)
+  refresh: Muat ulang
+  newText: SMS baru
+  noThreadsTitle: Tidak ada percakapan
+  noThreadsBody: Ponsel ini belum membagikan percakapan SMS apa pun.
+  you: 'Anda: '
+  photo: Foto
+  addNumber: Tambahkan nomor telepon.
+  sent: SMS terkirim
+  back: Kembali ke percakapan
+  to: Ke
+  toPlaceholder: Nomor telepon, atau beberapa nomor dipisahkan koma
+  placeholder: Pesan teks
+signIn:
+  title: Kirim halaman ini ke ponsel Anda.
+  intro: Pushpilot memindahkan link, catatan, file, dan SMS antarperangkat Anda lewat akun Pushbullet, serta menampilkan notifikasi ponsel di desktop.
+  button: Login dengan Pushbullet
+  buttonHint: Membuka Pushbullet agar Anda bisa menyetujui Pushpilot. Sandi Anda tidak pernah sampai ke ekstensi.
+  useToken: Gunakan token akses sebagai gantinya
+  token: Token akses
+  connect: Hubungkan
+  createBefore: Buat token di
+  createLink: Settings › Account
+  createAfter: di pushbullet.com.
+  cancelled: Login dibatalkan.
+  openFailed: 'Tidak dapat membuka halaman login Pushbullet: $1'
+  noToken: Pushbullet tidak mengembalikan token akses$1.
+linkKind:
+  video: Video
+  image: Gambar
+  article: Artikel
+  code: Kode
+  music: Musik
+  map: Tempat
+  document: Dokumen
+  social: Postingan
+  shop: Produk
+  web: Halaman
+  readTime: $1, baca $2 mnt
+settings:
+  section:
+    account: Akun
+    devices: Perangkat
+    devicesDesc: Pushbullet menyimpan pendaftaran lama. Hanya perangkat bertanda Menerima yang mendapat kiriman Anda.
+    sending: Pengiriman
+    receiving: Penerimaan
+    receivingDesc: Kiriman yang langsung ditujukan ke browser ini selalu diterima. Pilih apa lagi yang ikut diterima.
+    autoOpen: Buka otomatis
+    notifications: Notifikasi
+    toolbarBadge: Badge toolbar
+    phone: Ponsel
+    feed: Feed
+    encryption: Enkripsi
+    appearance: Tampilan
+    shortcuts: Pintasan
+    yourData: Data Anda
+    supportPushpilot: Dukung Pushpilot
+  startWithThePage: Mulai dengan halaman yang sedang dibuka
+  startWithThePageHint: Saat dibuka, Pushpilot mengisi judul dan link tab saat ini, siap dikirim.
+  closeThePopupAfter: Tutup popup setelah mengirim
+  rightClickMenu: Menu klik kanan
+  rightClickMenuHint: Kirim halaman, link, gambar, dan teks yang dipilih dari menu konteks halaman mana pun.
+  pushesSentToAll: Kiriman ke semua perangkat
+  pushesSentToAllHint: Yang dikirim ponsel Anda saat Anda tidak memilih perangkat.
+  pushesSentToYour: Kiriman ke perangkat Anda yang lain
+  pushesSentToYourHint: Lihat semuanya, bahkan kiriman untuk tablet atau komputer lain.
+  pushesYouSendFrom: Kiriman Anda dari browser ini
+  pushesYouSendFromHint: Tampilkan notifikasi dan buka kiriman Anda sendiri di sini juga, misalnya saat Anda mengirim ke semua perangkat dari menu klik kanan.
+  channelSubscriptions: Langganan saluran
+  channelSubscriptionsHint: Kiriman dari saluran dan feed yang Anda ikuti.
+  openLinksAsSoon: Buka link begitu tiba
+  openLinksAsSoonHint: Link yang dikirim ke browser ini terbuka di tab baru, seperti ekstensi Pushbullet asli. Begitu juga catatan yang hanya berisi alamat.
+  switchToTheNew: Beralih ke tab baru
+  switchToTheNewHint: Jika tidak, tab dibuka di latar belakang.
+  alsoOpenImagesPdfs: Buka juga gambar, PDF, dan file lain
+  alsoOpenLinksFrom: Buka juga link dari orang lain
+  alsoOpenLinksFromHint: Bukan hanya dari perangkat Anda sendiri.
+  openLinksThatArrived: Buka link yang tiba saat offline
+  openLinksThatArrivedHint: Saat browser dimulai atau komputer aktif kembali, buka apa yang dikirim selama itu.
+  skipTheNotificationFor: Lewati notifikasi untuk link yang dibuka
+  pushes: Kiriman
+  pushesHint: Link, catatan, dan file.
+  phoneNotifications: Notifikasi ponsel
+  textMessages: Pesan teks
+  playASound: Putar suara
+  keepPushNotificationsOn: Tetap tampilkan notifikasi kiriman di layar
+  keepPushNotificationsOnHint: Notifikasi tetap ada sampai Anda mengklik atau menutupnya.
+  keepPhoneNotificationsOn: Tetap tampilkan notifikasi ponsel di layar
+  closingANotificationDismisses: Menutup notifikasi juga menyelesaikannya
+  closingANotificationDismissesHint: Tutup notifikasi kiriman, maka kiriman ditandai selesai di semua perangkat; tutup notifikasi ponsel, maka notifikasi dihapus di ponsel Anda.
+  showUnreadCountsOn: Tampilkan jumlah belum dibaca di ikon toolbar
+  countPushes: Hitung kiriman
+  countPhoneNotifications: Hitung notifikasi ponsel
+  keepCountingPhoneNotifications: Terus hitung notifikasi ponsel sampai dihapus
+  keepCountingPhoneNotificationsHint: Alih-alih direset saat Anda membuka tab Ponsel, jumlahnya berkurang saat Anda menutup notifikasi.
+  countTextMessages: Hitung pesan teks
+  showMyPhonesNotifications: Tampilkan notifikasi ponsel saya
+  showMyPhonesNotificationsHint: Memerlukan Pencerminan notifikasi yang aktif di aplikasi Pushbullet di Android.
+  copyOneTimeCodes: Salin kode sekali pakai secara otomatis
+  copyOneTimeCodesHint: Saat notifikasi berisi kode verifikasi, kode langsung masuk ke papan klip Anda.
+  receiveCopiedTextFrom: Terima teks yang disalin dari perangkat lain
+  receiveCopiedTextFromHint: Salin dan tempel universal. Memerlukan Pushbullet Pro dan setelan ini aktif di aplikasi Anda yang lain.
+  theme: Tema
+  openOn: Buka di
+  sendToByDefault: Tujuan pengiriman default
+  encryptionPassword: Sandi enkripsi
+  showPreviewsForLinks: Tampilkan pratinjau link
+  navSupport: Dukungan
+  signOut: Logout
+  renamed: Nama diubah
+  testNotification: Kirim notifikasi uji
+  endSnooze: Akhiri penundaan
+  passwordSaved: Sandi enkripsi disimpan
+  encryptionOff: Enkripsi dinonaktifkan
+  themeSystem: Sistem
+  themeLight: Terang
+  themeDark: Gelap
+  dataBody: Pushpilot menyimpan riwayat Anda di browser ini dan hanya berkomunikasi dengan Pushbullet. Menghapusnya di sini tidak menghapus apa pun dari akun Anda.
+  synced: Disinkronkan dengan Pushbullet
+  syncNow: Sinkronkan sekarang
+  historyCleared: Riwayat dihapus
+  clearHistory: Hapus riwayat lokal
+  supportBody: Pushpilot gratis dan open source, tanpa iklan atau pelacakan, dan akan tetap begitu. Jika bermanfaat bagi Anda, Anda bisa membantunya terus berjalan.
+  rate: Beri rating di Chrome Web Store
+  star: Beri bintang di GitHub
+  report: Laporkan masalah
+  thisBrowser: browser ini
+  deviceLine: $1. Terakhir aktif $2
+  deviceLineSms: $1, bisa mengirim SMS. Terakhir aktif $2
+  receiving: Menerima
+  notConnected: Tidak terhubung
+  removeOldBefore: Hapus perangkat lama di
+  removeOldLink: pushbullet.com › Devices
+  removeOldAfter: '. Ponsel akan kembali muncul sebagai Menerima setelah Anda membuka aplikasi Pushbullet di ponsel itu.'
+  otherBrowsers: Kiriman ke browser lain
+  otherBrowsersHint: Ponsel Anda mungkin masih mencantumkan ekstensi Pushbullet lama sebagai “Chrome”. Centang browser mana pun yang kirimannya harus sampai di sini.
+  renameLabel: Nama browser ini di perangkat Anda yang lain
+  rename: Ganti nama
+  e2eOn: Enkripsi end-to-end aktif
+  e2eOff: Enkripsi end-to-end nonaktif
+  e2eBody: Gunakan sandi yang sama dengan yang Anda atur di aplikasi Pushbullet di ponsel. Sandi ini mengenkripsi notifikasi, SMS, dan teks yang disalin selama pengiriman. Pushpilot hanya menyimpan kunci turunannya.
+  changePassword: Ubah sandi
+  savePassword: Simpan sandi
+  turnOff: Nonaktifkan
+  shortcutsHint: Pintasan “dari aplikasi apa pun” tetap berfungsi meskipun browser berada di latar belakang. Jika salah satunya tidak berfungsi, buka halaman pintasan dan setel cakupannya ke Global.
+  changeShortcuts: Ubah pintasan
+  soundTakeoff: Lepas landas
+  soundChime: Denting
+  soundPop: Pop
+  soundDing: Ding
+  soundCustom: Suara Anda sendiri
+  soundTooBig: Pilih suara di bawah 1 MB.
+  soundUnplayable: File itu tidak dapat diputar. Coba MP3, OGG, atau WAV.
+  play: Putar
+  soundUsing: Menggunakan suara Anda.
+  soundNone: Belum ada suara yang dipilih.
+  soundChooseAnother: Pilih yang lain
+  soundChoose: Pilih file
+  soundFormats: '. MP3, OGG, atau WAV, maksimal 1 MB.'
+  previewsNeedPermission: Memerlukan izin untuk membaca halaman yang dituju link Anda. Aktifkan untuk memberikan izin.
+  previewsHint: Gambar, judul, dan deskripsi untuk link di feed Anda. Pushpilot hanya membaca header halaman setiap link.
+  notSet: Belum diatur
+  sound: Suara
+menu:
+  page: Kirim halaman ini
+  link: Kirim link ini
+  image: Kirim gambar ini
+  selection: Kirim teks yang dipilih
+  allOther: Semua perangkat saya yang lain
+bg:
+  testTitle: Beginilah kiriman tiba
+  testMessage: Link terbuka di tab baru saat Anda mengkliknya.
+  testContext: Dari Pushpilot
+  signInFirst: Login ke Pushbullet terlebih dahulu.
+  tokenRejected: Pushbullet menolak token akses yang tersimpan. Login lagi.
+  clipboardSent: Papan klip terkirim
+  clipboardFailed: Tidak dapat mengirim papan klip
+  badgeSignIn: 'Pushpilot: login ke Pushbullet'
+  badgeOffline: 'Pushpilot: offline, mencoba lagi'
+  badgeNew: 'Pushpilot: $1 baru'
+  badgeSnoozed: (notifikasi ditunda)
+  needPassword: Ponsel Anda mengirim data terenkripsi end-to-end. Tambahkan sandi enkripsi Anda di Setelan.
+  decryptFailed: Tidak dapat mendekripsi data dari ponsel Anda. Periksa sandi enkripsi di Setelan.
+  clipboardUpdated: Papan klip diperbarui
+  copiedFrom: Disalin dari $1
+  pasteToken: Tempel token akses terlebih dahulu.
+  copyCode: Salin $1
+  appOnDevice: $1 di $2
+  noReplies: Aplikasi ini tidak menerima balasan dari Pushbullet.
+  channel: Saluran
+  opened: Dibuka di tab baru
+  done: Selesai
+  partial: Terkirim ke $1 dari $2. $3
+  yourOtherDevices: perangkat Anda yang lain
+  sendFailed: Tidak dapat mengirim
+  nothingTitle: Tidak ada yang bisa dikirim
+  nothingBody: Salin link atau teks terlebih dahulu.
+  requestFailed: Permintaan gagal ($1)
+  uploadFailed: Gagal mengunggah
+  uploadOffline: Gagal mengunggah. Periksa koneksi Anda.
+  smsOff: Ponsel ini tidak membagikan SMS-nya dengan Pushbullet. Buka Pushbullet di ponsel itu dan aktifkan SMS.
+  encrypted: Data ini terenkripsi end-to-end. Tambahkan sandi enkripsi Anda di Setelan.
+  noAnswer: Proses latar belakang Pushpilot tidak merespons. Coba lagi.

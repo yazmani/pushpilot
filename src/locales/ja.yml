@@ -1,0 +1,390 @@
+# Japanese strings, translated from en.yml (the source for every language in this folder).
+# $1–$9 are substitutions; keys with 1/n are plural forms (i18n.t(key, count)).
+extName: Pushpilot for Pushbullet
+extDescription: タブ、メモ、ファイルをスマートフォンに送信。Android の通知確認や SMS もブラウザから。非公式の Pushbullet クライアントです。
+cmdOpen: Pushpilot を開く
+cmdPushPage: 現在のページをデフォルトのデバイスにプッシュ
+cmdPushClipboard: コピーした内容をデフォルトのデバイスにプッシュ（どのアプリからでも）
+cmdOpenWindow: Pushpilot をウィンドウで開く（どのアプリからでも）
+cmdSendClipboard: クリップボードを他のデバイスに送信（ユニバーサル コピー＆ペースト）
+common:
+  retry: 再試行
+  dismiss: 閉じる
+  loading: 読み込み中
+tabs:
+  send: 送信
+  feed: フィード
+  phone: スマホ
+  sms: SMS
+app:
+  offline: Pushbullet に接続できません。バックグラウンドで再試行しています。
+header:
+  sections: セクション
+  pausedHint: 通知は一時停止中です。クリックすると再開します。
+  accountMenu: アカウントとオプション
+  connected: 接続済み
+  connecting: 接続中…
+  offline: オフライン
+  quietUntil: $1 まで通知オフ
+  pause: 通知を一時停止
+  snooze30m: 30分
+  snooze1h: 1時間
+  snooze8h: 8時間
+  snoozeNight: 夜間
+  unpause: 通知を再開
+  openPanel: サイドパネルで開く
+  openWindow: ウィンドウで開く
+  settings: 設定
+send:
+  tooBig: $1 は Pushbullet の上限（$2）を超えています。
+  imageUnreadable: 画像を読み込めませんでした。ドラッグして追加してみてください。
+  sentTo: $1 に送信しました
+  clipboardEmpty: クリップボードが空です。
+  clipboardSent: クリップボードをデバイスに送信しました
+  pastedImage: 貼り付けた画像
+  removeFile: $1 を削除
+  titlePlaceholder: タイトル（任意）
+  noteTitle: メモのタイトル
+  notePlaceholder: メモを書く、リンクを貼り付ける、またはファイルをドロップ
+  messagePlaceholder: メッセージを追加（任意）
+  message: メッセージ
+  thisPage: このページ
+  note: メモ
+  addFile: ファイルを追加
+  file: ファイル
+  clipboard: クリップボード
+  clipboardHint: クリップボードをデバイスに送信（ユニバーサル コピー＆ペースト）
+  uploading: アップロード中…
+  sending: 送信中…
+  sendTo: $1 に送信
+targets:
+  all: すべてのデバイス
+  allSub: すべての場所へ
+  self: このブラウザ
+  selfSub: 後で見るために保存
+  device: デバイス
+  two: $1 と $2
+  many: $1 か所
+  heading: 送信先
+  multiHint: ⌘+クリックで複数選択
+  hidden:
+    1: プッシュを受信していない古いデバイス 1 台を非表示にしています。
+    n: プッシュを受信していない古いデバイス $1 台を非表示にしています。
+  seeDevices: デバイスを表示
+link:
+  title: タイトル
+  titleLabel: リンクのタイトル
+  address: リンクのアドレス
+  edit: リンクを編集
+  remove: リンクを削除
+  startAt: $1 から再生
+  sendImage: 画像そのものを送信
+recent:
+  heading: 最近
+  seeAll: すべて表示
+support:
+  count: Pushpilot で $1 件プッシュしました。
+  pitch: 無料・オープンソース・広告なし。これからもずっとです。時間の節約になっているなら、コーヒーやレビューで応援してください。
+  never: 今後表示しない
+  coffee: コーヒーをおごる
+  sponsor: GitHub でスポンサーになる
+  review: レビューを書く
+whatsNew:
+  title: Pushpilot $1 の新機能
+  seeAll: すべての変更を表示
+  label: 新機能
+  v1_2:
+    languages: 'Pushpilot が 17 言語に対応し、ブラウザの言語で表示されるようになりました。'
+  v1_1:
+    pushAnywhere: どのアプリからでもプッシュ：コピーして ⌘⇧9（Ctrl+Shift+9）を押すだけです。
+    filesOpen: 画像、PDF などのファイルは、届いたときに新しいタブで開きます。
+    shortcut: iPhone・iPad・Mac：Pushpilot ショートカットで共有シートからプッシュできます。
+    polish: ライトテーマ、ゆったりしたポップアップ、受信まわりの修正。
+feed:
+  searchPlaceholder: プッシュを検索
+  searchLabel: プッシュを検索
+  closeSearch: 検索を閉じる
+  everything: すべて
+  myDevices: 自分のデバイス
+  channels: チャンネル
+  search: 検索
+  noMatchTitle: 一致する項目はありません
+  noMatchBody: 単語を減らすか、リンクの一部で検索してみてください。
+  emptyTitle: プッシュはここに届きます
+  emptyBody: 送受信したリンク、メモ、ファイルがこのフィードに表示されます。
+  siteVideo: $1 の動画
+  openConversation: $1 との会話を開く
+  new: 新着
+device:
+  unknown: 不明なデバイス
+  unnamed: 名前のないデバイス
+  someone: 誰か
+  kind:
+    phone: スマートフォン
+    tablet: タブレット
+    laptop: ノートパソコン
+    watch: ウォッチ
+    browser: ブラウザ
+    website: ウェブサイト
+    computer: パソコン
+time:
+  now: たった今
+  today: 今日
+  yesterday: 昨日
+route:
+  from: $1 から
+  to: $1 へ
+  saved: 後で見るために保存
+  sentTo: $1 に送信
+  sentToAll: すべてのデバイスに送信
+  sentToHere: このブラウザに送信
+  between: $1 から $2 へ
+  fromToAll: $1 からすべてのデバイスへ
+kind:
+  link: リンク
+  note: メモ
+  file: ファイル
+  image: 画像
+actions:
+  download: ダウンロード
+  open: 開く
+  copy: コピー
+  copied: コピーしました
+  done: 完了にする
+  doneToast: 完了にしました
+  deleteEverywhere: すべての場所から削除
+  deleted: 削除しました
+chat:
+  back: フィードに戻る
+  unmute: ミュート解除
+  mute: 通知をミュート
+  unmuted: $1 の通知をオンにしました
+  muted: $1 をミュートしました
+  emptyTitle: $1 にあいさつしましょう
+  emptyBody: ここで送信した内容は、$1 のすべてのデバイスに届きます。
+  placeholder: $1 にメッセージ
+phone:
+  offTitle: スマートフォンの通知はオフです
+  openSettings: 設定を開く
+  offBody: 通知ミラーリングをオンにすると、Android の通知がここに表示されます。
+  emptyTitle: スマートフォンの通知はまだありません
+  emptyBody: Android スマートフォンの Pushbullet アプリで「通知ミラーリング」を開き、オンにしてください。新しい通知がここに表示され、デスクトップにも通知されます。
+  now: スマートフォンに表示中
+  cleared: 消去済み
+  clearAll: すべて消去
+  earlier: 以前
+  replySent: 返信しました
+  onDevice: （$1）
+  copiedCode: $1 をコピーしました
+  copyCode: コードをコピー
+  reply: 返信
+  replyIn: $1 で返信
+  sendReply: 返信を送信
+  dismiss: スマートフォンで消去
+sms:
+  noPhoneTitle: ここから SMS を送れるスマートフォンがありません
+  noPhoneBody: Android スマートフォンに Pushbullet をインストールし、SMS の送信と読み取りを許可してください。
+  phone: スマートフォン
+  lastSeen: （最終接続：$1）
+  refresh: 更新
+  newText: 新規メッセージ
+  noThreadsTitle: 会話はありません
+  noThreadsBody: このスマートフォンはまだメッセージのスレッドを共有していません。
+  you: 自分：
+  photo: 写真
+  addNumber: 電話番号を追加してください。
+  sent: メッセージを送信しました
+  back: 会話一覧に戻る
+  to: 宛先
+  toPlaceholder: 電話番号（複数の場合はカンマ区切り）
+  placeholder: テキストメッセージ
+signIn:
+  title: このページをスマートフォンに送信しましょう。
+  intro: Pushpilot は Pushbullet アカウントを使って、リンク、メモ、ファイル、SMS をデバイス間でやり取りし、スマートフォンの通知をデスクトップに届けます。
+  button: Pushbullet でサインイン
+  buttonHint: Pushbullet が開き、Pushpilot を承認できます。パスワードが拡張機能に渡ることはありません。
+  useToken: 代わりにアクセストークンを使う
+  token: アクセストークン
+  connect: 接続
+  createBefore: pushbullet.com の
+  createLink: Settings › Account
+  createAfter: で作成できます。
+  cancelled: サインインはキャンセルされました。
+  openFailed: Pushbullet のサインインを開けませんでした：$1
+  noToken: Pushbullet からアクセストークンが返されませんでした$1。
+linkKind:
+  video: 動画
+  image: 画像
+  article: 記事
+  code: コード
+  music: 音楽
+  map: 場所
+  document: ドキュメント
+  social: 投稿
+  shop: 商品
+  web: ページ
+  readTime: $1・$2 分で読めます
+settings:
+  section:
+    account: 'アカウント'
+    devices: 'デバイス'
+    devicesDesc: 'Pushbullet は古い登録をそのまま残します。プッシュが届くのは「受信中」と表示されたデバイスだけです。'
+    sending: '送信'
+    receiving: '受信'
+    receivingDesc: 'このブラウザ宛てのプッシュは常に届きます。ほかに受け取るものを選んでください。'
+    autoOpen: '自動で開く'
+    notifications: '通知'
+    toolbarBadge: 'ツールバーのバッジ'
+    phone: 'スマートフォン'
+    feed: 'フィード'
+    encryption: '暗号化'
+    appearance: '外観'
+    shortcuts: 'ショートカット'
+    yourData: 'データ'
+    supportPushpilot: 'Pushpilot を応援'
+  startWithThePage: '表示中のページから始める'
+  startWithThePageHint: 'Pushpilot を開くと、現在のタブのタイトルとリンクが入力され、すぐに送信できます。'
+  closeThePopupAfter: '送信後にポップアップを閉じる'
+  rightClickMenu: '右クリックメニュー'
+  rightClickMenuHint: 'どのページでも、コンテキストメニューからページ、リンク、画像、選択したテキストをプッシュできます。'
+  pushesSentToAll: 'すべてのデバイス宛てのプッシュ'
+  pushesSentToAllHint: 'デバイスを選ばずにスマートフォンから送信したものです。'
+  pushesSentToYour: '他のデバイス宛てのプッシュ'
+  pushesSentToYourHint: 'タブレットや別のパソコン宛てのプッシュも含めて、すべて表示します。'
+  pushesYouSendFrom: 'このブラウザから送信したプッシュ'
+  pushesYouSendFromHint: '自分のプッシュもここで通知して開きます。右クリックメニューからすべてのデバイスにプッシュした場合などです。'
+  channelSubscriptions: 'チャンネルの購読'
+  channelSubscriptionsHint: 'フォロー中のチャンネルやフィードからのプッシュです。'
+  openLinksAsSoon: 'リンクが届いたらすぐに開く'
+  openLinksAsSoonHint: 'このブラウザにプッシュされたリンクを、元の Pushbullet 拡張機能と同じように新しいタブで開きます。アドレスだけのメモも同様です。'
+  switchToTheNew: '新しいタブに切り替える'
+  switchToTheNewHint: 'オフの場合はバックグラウンドで開きます。'
+  alsoOpenImagesPdfs: '画像、PDF などのファイルも開く'
+  alsoOpenLinksFrom: '他のユーザーからのリンクも開く'
+  alsoOpenLinksFromHint: '自分のデバイス以外から届いたリンクも対象になります。'
+  openLinksThatArrived: 'オフライン中に届いたリンクを開く'
+  openLinksThatArrivedHint: 'ブラウザの起動時やパソコンのスリープ解除時に、その間にプッシュされたものを開きます。'
+  skipTheNotificationFor: '開いたリンクの通知を表示しない'
+  pushes: 'プッシュ'
+  pushesHint: 'リンク、メモ、ファイル。'
+  phoneNotifications: 'スマートフォンの通知'
+  textMessages: 'SMS'
+  playASound: '音を鳴らす'
+  keepPushNotificationsOn: 'プッシュの通知を画面に表示したままにする'
+  keepPushNotificationsOnHint: 'クリックするか閉じるまで表示されます。'
+  keepPhoneNotificationsOn: 'スマートフォンの通知を画面に表示したままにする'
+  closingANotificationDismisses: '通知を閉じたら消去する'
+  closingANotificationDismissesHint: 'プッシュの通知を閉じるとすべての場所で完了になり、スマートフォンの通知を閉じるとスマートフォンからも消去されます。'
+  showUnreadCountsOn: 'ツールバーのアイコンに未読数を表示'
+  countPushes: 'プッシュを数える'
+  countPhoneNotifications: 'スマートフォンの通知を数える'
+  keepCountingPhoneNotifications: 'スマートフォンの通知は消去されるまで数え続ける'
+  keepCountingPhoneNotificationsHint: '「スマホ」タブを開いてもリセットせず、通知を消去するたびに数が減ります。'
+  countTextMessages: 'SMS を数える'
+  showMyPhonesNotifications: 'スマートフォンの通知を表示'
+  showMyPhonesNotificationsHint: 'Android の Pushbullet アプリで通知ミラーリングをオンにする必要があります。'
+  copyOneTimeCodes: 'ワンタイムコードを自動でコピー'
+  copyOneTimeCodesHint: '通知に確認コードが含まれていると、そのままクリップボードにコピーされます。'
+  receiveCopiedTextFrom: '他のデバイスでコピーしたテキストを受け取る'
+  receiveCopiedTextFromHint: 'ユニバーサル コピー＆ペースト。Pushbullet Pro が必要で、他のアプリでもこの設定をオンにする必要があります。'
+  theme: 'テーマ'
+  openOn: '開く場所'
+  sendToByDefault: 'デフォルトの送信先'
+  encryptionPassword: '暗号化パスワード'
+  showPreviewsForLinks: 'リンクのプレビューを表示'
+  navSupport: '応援'
+  signOut: 'サインアウト'
+  renamed: '名前を変更しました'
+  testNotification: 'テスト通知を送信'
+  endSnooze: 'スヌーズを終了'
+  passwordSaved: '暗号化パスワードを保存しました'
+  encryptionOff: '暗号化をオフにしました'
+  themeSystem: 'システム'
+  themeLight: 'ライト'
+  themeDark: 'ダーク'
+  dataBody: 'Pushpilot は履歴をこのブラウザに保存し、Pushbullet とだけ通信します。ここで消去しても、アカウントからは何も削除されません。'
+  synced: 'Pushbullet と同期済み'
+  syncNow: '今すぐ同期'
+  historyCleared: '履歴を消去しました'
+  clearHistory: 'ローカルの履歴を消去'
+  supportBody: 'Pushpilot は無料のオープンソースで、広告もトラッキングもありません。これからも変わりません。役に立っているなら、続けていくための応援をお願いします。'
+  rate: 'Chrome Web Store で評価する'
+  star: 'GitHub でスターを付ける'
+  report: '問題を報告'
+  thisBrowser: 'このブラウザ'
+  deviceLine: '$1・最終アクティブ：$2'
+  deviceLineSms: '$1・SMS 対応・最終アクティブ：$2'
+  receiving: '受信中'
+  notConnected: '未接続'
+  removeOldBefore: '古いデバイスは'
+  removeOldLink: 'pushbullet.com › Devices'
+  removeOldAfter: ' で削除できます。スマートフォンで Pushbullet アプリを開くと、再び「受信中」と表示されます。'
+  otherBrowsers: '他のブラウザ宛てのプッシュ'
+  otherBrowsersHint: 'スマートフォンでは、古い Pushbullet 拡張機能が「Chrome」と表示されている場合があります。プッシュをここで受け取りたいブラウザにチェックを入れてください。'
+  renameLabel: '他のデバイスに表示されるこのブラウザの名前'
+  rename: '名前を変更'
+  e2eOn: 'エンドツーエンド暗号化はオンです'
+  e2eOff: 'エンドツーエンド暗号化はオフです'
+  e2eBody: 'スマートフォンの Pushbullet アプリで設定したものと同じパスワードを使ってください。通知、SMS、コピーしたテキストを転送中に暗号化します。Pushpilot が保存するのは、パスワードから生成した鍵だけです。'
+  changePassword: 'パスワードを変更'
+  savePassword: 'パスワードを保存'
+  turnOff: 'オフにする'
+  shortcutsHint: '「どのアプリからでも」使えるショートカットは、ブラウザがバックグラウンドにあっても動作します。動作しない場合は、ショートカットのページを開いて範囲を「グローバル」に設定してください。'
+  changeShortcuts: 'ショートカットを変更'
+  soundTakeoff: 'テイクオフ'
+  soundChime: 'チャイム'
+  soundPop: 'ポップ'
+  soundDing: 'ディン'
+  soundCustom: '自分の音'
+  soundTooBig: '1 MB 未満のサウンドを選んでください。'
+  soundUnplayable: 'そのファイルは再生できませんでした。MP3、OGG、WAV をお試しください。'
+  play: '再生'
+  soundUsing: '自分の音を使用しています。'
+  soundNone: 'まだ音が選ばれていません。'
+  soundChooseAnother: '別のファイルを選ぶ'
+  soundChoose: 'ファイルを選ぶ'
+  soundFormats: '（MP3、OGG、WAV、最大 1 MB）'
+  previewsNeedPermission: 'リンク先のページを読み取る権限が必要です。オンにすると権限を付与できます。'
+  previewsHint: 'フィードのリンクに画像、タイトル、説明を表示します。Pushpilot が読み取るのは各リンクのページヘッダーだけです。'
+  notSet: '未設定'
+  sound: 'サウンド'
+menu:
+  page: このページをプッシュ
+  link: このリンクをプッシュ
+  image: この画像をプッシュ
+  selection: 選択したテキストをプッシュ
+  allOther: 他のすべてのデバイス
+bg:
+  testTitle: プッシュはこのように届きます
+  testMessage: リンクはクリックすると新しいタブで開きます。
+  testContext: Pushpilot から
+  signInFirst: 先に Pushbullet にサインインしてください。
+  tokenRejected: 保存されたアクセストークンが Pushbullet に拒否されました。もう一度サインインしてください。
+  clipboardSent: クリップボードを送信しました
+  clipboardFailed: クリップボードを送信できませんでした
+  badgeSignIn: 'Pushpilot: Pushbullet にサインインしてください'
+  badgeOffline: 'Pushpilot: オフライン、再試行中'
+  badgeNew: 'Pushpilot: 新着 $1 件'
+  badgeSnoozed: （通知はスヌーズ中）
+  needPassword: スマートフォンからエンドツーエンド暗号化されたデータが届いています。設定で暗号化パスワードを追加してください。
+  decryptFailed: スマートフォンからのデータを復号できませんでした。設定で暗号化パスワードを確認してください。
+  clipboardUpdated: クリップボードを更新しました
+  copiedFrom: $1 からコピー
+  pasteToken: 先にアクセストークンを貼り付けてください。
+  copyCode: $1 をコピー
+  appOnDevice: $2 の $1
+  noReplies: このアプリは Pushbullet からの返信に対応していません。
+  channel: チャンネル
+  opened: 新しいタブで開きました
+  done: 完了
+  partial: $2 台中 $1 台に送信しました。$3
+  yourOtherDevices: 他のデバイス
+  sendFailed: 送信できませんでした
+  nothingTitle: プッシュするものがありません
+  nothingBody: 先にリンクかテキストをコピーしてください。
+  requestFailed: リクエストに失敗しました（$1）
+  uploadFailed: アップロードに失敗しました
+  uploadOffline: アップロードに失敗しました。接続を確認してください。
+  smsOff: このスマートフォンは Pushbullet と SMS を共有していません。スマートフォンで Pushbullet を開き、SMS をオンにしてください。
+  encrypted: このデータはエンドツーエンド暗号化されています。設定で暗号化パスワードを追加してください。
+  noAnswer: Pushpilot のバックグラウンド処理が応答しませんでした。もう一度お試しください。

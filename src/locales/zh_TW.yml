@@ -1,0 +1,390 @@
+# Traditional Chinese (Taiwan) strings, translated from en.yml (the source for every language in this folder).
+# $1–$9 are substitutions; keys with 1/n are plural forms (i18n.t(key, count)).
+extName: Pushpilot for Pushbullet
+extDescription: 將分頁、筆記和檔案傳送到手機，在瀏覽器中查看 Android 通知並收發簡訊。非官方 Pushbullet 用戶端。
+cmdOpen: 開啟 Pushpilot
+cmdPushPage: 將目前的頁面推送到預設裝置
+cmdPushClipboard: 將複製的內容推送到預設裝置（可在任何應用程式中使用）
+cmdOpenWindow: 在視窗中開啟 Pushpilot（可在任何應用程式中使用）
+cmdSendClipboard: 將剪貼簿傳送到你的其他裝置（通用複製貼上）
+common:
+  retry: 重試
+  dismiss: 關閉
+  loading: 載入中
+tabs:
+  send: 傳送
+  feed: 動態
+  phone: 手機
+  sms: 簡訊
+app:
+  offline: 無法連線到 Pushbullet，正在背景重試。
+header:
+  sections: 區段
+  pausedHint: 通知已暫停。按一下即可重新開啟。
+  accountMenu: 帳號和選項
+  connected: 已連線
+  connecting: 連線中…
+  offline: 離線
+  quietUntil: 勿擾至 $1
+  pause: 暫停通知
+  snooze30m: 30 分鐘
+  snooze1h: 1 小時
+  snooze8h: 8 小時
+  snoozeNight: 夜間
+  unpause: 重新開啟通知
+  openPanel: 在側邊面板中開啟
+  openWindow: 在視窗中開啟
+  settings: 設定
+send:
+  tooBig: $1 超過 Pushbullet 的 $2 上限。
+  imageUnreadable: 無法讀取這張圖片。請試著直接拖曳進來。
+  sentTo: 已傳送到 $1
+  clipboardEmpty: 剪貼簿是空的。
+  clipboardSent: 已將剪貼簿傳送到你的裝置
+  pastedImage: 貼上的圖片
+  removeFile: 移除 $1
+  titlePlaceholder: 標題（選填）
+  noteTitle: 筆記標題
+  notePlaceholder: 寫筆記、貼上連結或拖放檔案
+  messagePlaceholder: 新增訊息（選填）
+  message: 訊息
+  thisPage: 這個頁面
+  note: 筆記
+  addFile: 新增檔案
+  file: 檔案
+  clipboard: 剪貼簿
+  clipboardHint: 將剪貼簿傳送到你的裝置（通用複製貼上）
+  uploading: 上傳中…
+  sending: 傳送中…
+  sendTo: 傳送到 $1
+targets:
+  all: 所有裝置
+  allSub: 全部傳送
+  self: 這個瀏覽器
+  selfSub: 儲存以便稍後查看
+  device: 裝置
+  two: $1 和 $2
+  many: $1 個目標
+  heading: 傳送到
+  multiHint: ⌘+按一下可多選
+  hidden:
+    1: 1 台舊裝置已不再接收推送，因此已隱藏。
+    n: $1 台舊裝置已不再接收推送，因此已隱藏。
+  seeDevices: 查看裝置
+link:
+  title: 標題
+  titleLabel: 連結標題
+  address: 連結網址
+  edit: 編輯連結
+  remove: 移除連結
+  startAt: 從 $1 開始播放
+  sendImage: 傳送圖片本身
+recent:
+  heading: 最近
+  seeAll: 查看全部
+support:
+  count: 已透過 Pushpilot 傳送 $1 則推送。
+  pitch: 免費、開放原始碼、沒有廣告，永遠如此。如果它幫你省下時間，請我喝杯咖啡或留個評論，就能讓它繼續走下去。
+  never: 不要再詢問
+  coffee: 請我喝杯咖啡
+  sponsor: 在 GitHub 上贊助
+  review: 留下評論
+whatsNew:
+  title: Pushpilot $1 新功能
+  seeAll: 查看所有變更
+  label: 新功能
+  v1_2:
+    languages: 'Pushpilot 現已支援 17 種語言，並依瀏覽器的語言顯示。'
+  v1_1:
+    pushAnywhere: 在任何應用程式中推送：複製內容後按下 ⌘⇧9（Ctrl+Shift+9）即可。
+    filesOpen: 圖片、PDF 和其他檔案送達後會在新分頁中開啟。
+    shortcut: iPhone、iPad 和 Mac：使用 Pushpilot 捷徑，從分享表單推送。
+    polish: 淺色主題、更寬敞的彈出式視窗，以及接收方面的修正。
+feed:
+  searchPlaceholder: 搜尋你的推送
+  searchLabel: 搜尋推送
+  closeSearch: 關閉搜尋
+  everything: 全部
+  myDevices: 我的裝置
+  channels: 頻道
+  search: 搜尋
+  noMatchTitle: 沒有符合的結果
+  noMatchBody: 試著減少關鍵字，或輸入連結的一部分。
+  emptyTitle: 你的推送會出現在這裡
+  emptyBody: 你傳送或接收的連結、筆記和檔案都會顯示在這個動態中。
+  siteVideo: $1 影片
+  openConversation: 開啟與 $1 的對話
+  new: 新
+device:
+  unknown: 不明裝置
+  unnamed: 未命名的裝置
+  someone: 某人
+  kind:
+    phone: 手機
+    tablet: 平板電腦
+    laptop: 筆電
+    watch: 手錶
+    browser: 瀏覽器
+    website: 網站
+    computer: 電腦
+time:
+  now: 剛剛
+  today: 今天
+  yesterday: 昨天
+route:
+  from: 來自 $1
+  to: 傳給 $1
+  saved: 已儲存，稍後查看
+  sentTo: 已傳送到 $1
+  sentToAll: 已傳送到所有裝置
+  sentToHere: 已傳送到這個瀏覽器
+  between: $1 傳給 $2
+  fromToAll: $1 傳給所有裝置
+kind:
+  link: 連結
+  note: 筆記
+  file: 檔案
+  image: 圖片
+actions:
+  download: 下載
+  open: 開啟
+  copy: 複製
+  copied: 已複製
+  done: 標示為完成
+  doneToast: 已標示為完成
+  deleteEverywhere: 在所有裝置上刪除
+  deleted: 已刪除
+chat:
+  back: 返回動態
+  unmute: 取消靜音
+  mute: 將通知靜音
+  unmuted: 已開啟 $1 的通知
+  muted: 已將 $1 靜音
+  emptyTitle: 跟 $1 打聲招呼吧
+  emptyBody: 你在這裡傳送的內容會送達 $1 的所有裝置。
+  placeholder: 傳訊息給 $1
+phone:
+  offTitle: 手機通知已關閉
+  openSettings: 開啟設定
+  offBody: 開啟通知鏡像，即可在這裡查看 Android 通知。
+  emptyTitle: 還沒有手機通知
+  emptyBody: 在 Android 手機上的 Pushbullet 應用程式中開啟「通知鏡像」並啟用。新通知會顯示在這裡，也會以桌面通知提醒。
+  now: 手機上目前的通知
+  cleared: 已清除
+  clearAll: 全部清除
+  earlier: 較早
+  replySent: 已傳送回覆
+  onDevice: 來自 $1
+  copiedCode: 已複製 $1
+  copyCode: 複製驗證碼
+  reply: 回覆
+  replyIn: 在 $1 中回覆
+  sendReply: 傳送回覆
+  dismiss: 在手機上清除
+sms:
+  noPhoneTitle: 沒有可以從這裡傳簡訊的手機
+  noPhoneBody: 在 Android 手機上安裝 Pushbullet，並允許它傳送和讀取簡訊。
+  phone: 手機
+  lastSeen: （上次上線：$1）
+  refresh: 重新整理
+  newText: 新簡訊
+  noThreadsTitle: 沒有對話
+  noThreadsBody: 這支手機尚未分享任何簡訊對話。
+  you: 我：
+  photo: 相片
+  addNumber: 請新增電話號碼。
+  sent: 已傳送簡訊
+  back: 返回對話清單
+  to: 收件者
+  toPlaceholder: 電話號碼，多個號碼請以逗號分隔
+  placeholder: 簡訊
+signIn:
+  title: 把這個頁面傳送到手機。
+  intro: Pushpilot 透過你的 Pushbullet 帳號，在裝置之間傳送連結、筆記、檔案和簡訊，並把手機通知帶到電腦上。
+  button: 使用 Pushbullet 登入
+  buttonHint: 將開啟 Pushbullet 讓你授權 Pushpilot。你的密碼絕不會經過這個擴充功能。
+  useToken: 改用存取權杖
+  token: 存取權杖
+  connect: 連線
+  createBefore: 可在 pushbullet.com 的
+  createLink: Settings › Account
+  createAfter: 中建立。
+  cancelled: 已取消登入。
+  openFailed: 無法開啟 Pushbullet 登入頁面：$1
+  noToken: Pushbullet 沒有傳回存取權杖$1。
+linkKind:
+  video: 影片
+  image: 圖片
+  article: 文章
+  code: 程式碼
+  music: 音樂
+  map: 地點
+  document: 文件
+  social: 貼文
+  shop: 商品
+  web: 網頁
+  readTime: $1 · 約 $2 分鐘可讀完
+settings:
+  section:
+    account: '帳號'
+    devices: '裝置'
+    devicesDesc: 'Pushbullet 會保留舊的裝置註冊。只有標示為「接收中」的裝置才會收到你的推送。'
+    sending: '傳送'
+    receiving: '接收'
+    receivingDesc: '直接傳送到這個瀏覽器的推送一律會送達。選擇還要接收哪些推送。'
+    autoOpen: '自動開啟'
+    notifications: '通知'
+    toolbarBadge: '工具列徽章'
+    phone: '手機'
+    feed: '動態'
+    encryption: '加密'
+    appearance: '外觀'
+    shortcuts: '快速鍵'
+    yourData: '你的資料'
+    supportPushpilot: '支持 Pushpilot'
+  startWithThePage: '從目前的頁面開始'
+  startWithThePageHint: '開啟 Pushpilot 時會自動填入目前分頁的標題和連結，隨時可以傳送。'
+  closeThePopupAfter: '傳送後關閉彈出式視窗'
+  rightClickMenu: '右鍵選單'
+  rightClickMenuHint: '在任何頁面的右鍵選單中推送頁面、連結、圖片和選取的文字。'
+  pushesSentToAll: '傳送到所有裝置的推送'
+  pushesSentToAllHint: '在手機上沒有選擇裝置時傳送的內容。'
+  pushesSentToYour: '傳送到你其他裝置的推送'
+  pushesSentToYourHint: '查看所有推送，包括傳給你的平板電腦或另一台電腦的推送。'
+  pushesYouSendFrom: '你從這個瀏覽器傳送的推送'
+  pushesYouSendFromHint: '你自己的推送也會在這裡通知並開啟，例如從右鍵選單推送到所有裝置時。'
+  channelSubscriptions: '頻道訂閱'
+  channelSubscriptionsHint: '來自你追蹤的頻道和訂閱來源的推送。'
+  openLinksAsSoon: '連結送達後立即開啟'
+  openLinksAsSoonHint: '推送到這個瀏覽器的連結會在新分頁中開啟，和原本的 Pushbullet 擴充功能一樣。只有一個網址的筆記也會開啟。'
+  switchToTheNew: '切換到新分頁'
+  switchToTheNewHint: '否則會在背景開啟。'
+  alsoOpenImagesPdfs: '同時開啟圖片、PDF 和其他檔案'
+  alsoOpenLinksFrom: '同時開啟其他人傳來的連結'
+  alsoOpenLinksFromHint: '不只限於你自己的裝置。'
+  openLinksThatArrived: '開啟離線期間收到的連結'
+  openLinksThatArrivedHint: '瀏覽器啟動或電腦從睡眠中喚醒時，開啟這段期間推送的內容。'
+  skipTheNotificationFor: '已開啟的連結不再通知'
+  pushes: '推送'
+  pushesHint: '連結、筆記和檔案。'
+  phoneNotifications: '手機通知'
+  textMessages: '簡訊'
+  playASound: '播放音效'
+  keepPushNotificationsOn: '推送通知保留在畫面上'
+  keepPushNotificationsOnHint: '在你按一下或關閉之前會一直顯示。'
+  keepPhoneNotificationsOn: '手機通知保留在畫面上'
+  closingANotificationDismisses: '關閉通知即清除'
+  closingANotificationDismissesHint: '關閉推送通知會在所有裝置上標示為完成；關閉手機通知會在手機上將其清除。'
+  showUnreadCountsOn: '在工具列圖示上顯示未讀數'
+  countPushes: '計算推送'
+  countPhoneNotifications: '計算手機通知'
+  keepCountingPhoneNotifications: '持續計算手機通知，直到清除為止'
+  keepCountingPhoneNotificationsHint: '開啟「手機」分頁時不會歸零，而是隨著你清除通知逐一減少。'
+  countTextMessages: '計算簡訊'
+  showMyPhonesNotifications: '顯示我的手機通知'
+  showMyPhonesNotificationsHint: '需要在 Android 版 Pushbullet 應用程式中開啟通知鏡像。'
+  copyOneTimeCodes: '自動複製一次性驗證碼'
+  copyOneTimeCodesHint: '通知中含有驗證碼時，會直接複製到剪貼簿。'
+  receiveCopiedTextFrom: '接收其他裝置複製的文字'
+  receiveCopiedTextFromHint: '通用複製貼上。需要 Pushbullet Pro，並在你的其他應用程式中開啟這項設定。'
+  theme: '主題'
+  openOn: '開啟位置'
+  sendToByDefault: '預設傳送到'
+  encryptionPassword: '加密密碼'
+  showPreviewsForLinks: '顯示連結預覽'
+  navSupport: '支持'
+  signOut: '登出'
+  renamed: '已重新命名'
+  testNotification: '傳送測試通知'
+  endSnooze: '結束勿擾'
+  passwordSaved: '已儲存加密密碼'
+  encryptionOff: '已關閉加密'
+  themeSystem: '跟隨系統'
+  themeLight: '淺色'
+  themeDark: '深色'
+  dataBody: 'Pushpilot 會將你的記錄儲存在這個瀏覽器中，且只與 Pushbullet 通訊。在這裡清除不會刪除你帳號中的任何內容。'
+  synced: '已與 Pushbullet 同步'
+  syncNow: '立即同步'
+  historyCleared: '已清除記錄'
+  clearHistory: '清除本機記錄'
+  supportBody: 'Pushpilot 免費、開放原始碼，沒有廣告和追蹤，而且會一直如此。如果它對你有幫助，歡迎協助它持續發展。'
+  rate: '在 Chrome Web Store 中評分'
+  star: '在 GitHub 上加星號'
+  report: '回報問題'
+  thisBrowser: '這個瀏覽器'
+  deviceLine: '$1。上次使用：$2'
+  deviceLineSms: '$1，可傳簡訊。上次使用：$2'
+  receiving: '接收中'
+  notConnected: '未連線'
+  removeOldBefore: '可在'
+  removeOldLink: 'pushbullet.com › Devices'
+  removeOldAfter: ' 中移除舊裝置。在手機上開啟 Pushbullet 應用程式後，它會再次顯示為「接收中」。'
+  otherBrowsers: '傳送到其他瀏覽器的推送'
+  otherBrowsersHint: '你的手機可能仍將舊版 Pushbullet 擴充功能顯示為「Chrome」。勾選希望在這裡接收其推送的瀏覽器。'
+  renameLabel: '這個瀏覽器在你其他裝置上顯示的名稱'
+  rename: '重新命名'
+  e2eOn: '端對端加密已開啟'
+  e2eOff: '端對端加密已關閉'
+  e2eBody: '請使用你在手機上的 Pushbullet 應用程式中設定的相同密碼。它會在傳輸過程中加密通知、簡訊和複製的文字。Pushpilot 只會儲存由密碼衍生的金鑰。'
+  changePassword: '變更密碼'
+  savePassword: '儲存密碼'
+  turnOff: '關閉'
+  shortcutsHint: '「在任何應用程式中」的快速鍵即使在瀏覽器位於背景時也能使用。如果某個快速鍵沒有作用，請開啟快速鍵頁面，將其範圍設為「全域」。'
+  changeShortcuts: '變更快速鍵'
+  soundTakeoff: '起飛'
+  soundChime: '鐘聲'
+  soundPop: '啵'
+  soundDing: '叮'
+  soundCustom: '自訂'
+  soundTooBig: '請選擇小於 1 MB 的音效。'
+  soundUnplayable: '無法播放這個檔案。請試試 MP3、OGG 或 WAV。'
+  play: '播放'
+  soundUsing: '正在使用你的音效。'
+  soundNone: '尚未選擇音效。'
+  soundChooseAnother: '另選一個'
+  soundChoose: '選擇檔案'
+  soundFormats: '（MP3、OGG 或 WAV，最大 1 MB）'
+  previewsNeedPermission: '需要權限才能讀取連結指向的頁面。開啟這個選項即可授予權限。'
+  previewsHint: '為動態中的連結顯示圖片、標題和說明。Pushpilot 只會讀取每個連結的頁面標頭。'
+  notSet: '未設定'
+  sound: '音效'
+menu:
+  page: 推送這個頁面
+  link: 推送這個連結
+  image: 推送這張圖片
+  selection: 推送選取的文字
+  allOther: 我的所有其他裝置
+bg:
+  testTitle: 推送會這樣送達
+  testMessage: 按一下連結即可在新分頁中開啟。
+  testContext: 來自 Pushpilot
+  signInFirst: 請先登入 Pushbullet。
+  tokenRejected: Pushbullet 拒絕了已儲存的存取權杖。請重新登入。
+  clipboardSent: 已傳送剪貼簿
+  clipboardFailed: 無法傳送剪貼簿
+  badgeSignIn: 'Pushpilot: 請登入 Pushbullet'
+  badgeOffline: 'Pushpilot: 離線，正在重試'
+  badgeNew: 'Pushpilot: $1 則新內容'
+  badgeSnoozed: （通知已暫停）
+  needPassword: 你的手機傳送了端對端加密的資料。請在設定中新增加密密碼。
+  decryptFailed: 無法解密來自手機的資料。請在設定中檢查加密密碼。
+  clipboardUpdated: 剪貼簿已更新
+  copiedFrom: 複製自 $1
+  pasteToken: 請先貼上存取權杖。
+  copyCode: 複製 $1
+  appOnDevice: $2 上的 $1
+  noReplies: 這個應用程式不接受來自 Pushbullet 的回覆。
+  channel: 頻道
+  opened: 已在新分頁中開啟
+  done: 完成
+  partial: 已傳送到 $2 台中的 $1 台。$3
+  yourOtherDevices: 你的其他裝置
+  sendFailed: 無法傳送
+  nothingTitle: 沒有可推送的內容
+  nothingBody: 請先複製連結或一些文字。
+  requestFailed: 要求失敗（$1）
+  uploadFailed: 上傳失敗
+  uploadOffline: 上傳失敗。請檢查網路連線。
+  smsOff: 這支手機沒有與 Pushbullet 分享簡訊。請在手機上開啟 Pushbullet 並啟用簡訊功能。
+  encrypted: 這份資料經過端對端加密。請在設定中新增加密密碼。
+  noAnswer: Pushpilot 的背景程序沒有回應。請再試一次。

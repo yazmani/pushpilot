@@ -25,6 +25,8 @@ jobs:
       - run: npm test
       - run: npm run format:check
       - run: npm run zip
+      - name: Check translations match English
+        run: npm run locales
       - uses: actions/upload-artifact@v7
         with:
           name: pushpilot-chrome

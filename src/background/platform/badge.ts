@@ -1,5 +1,6 @@
 import { browser } from 'wxt/browser';
 import * as store from '@/core/storage/store';
+import { i18n } from '#i18n';
 
 export async function updateBadge() {
   const { unread, settings, connection, token, mirrors } = await store.getMany([
@@ -11,14 +12,14 @@ export async function updateBadge() {
   ]);
   if (!token) {
     await browser.action.setBadgeText({ text: '' });
-    await browser.action.setTitle({ title: 'Pushpilot: sign in to Pushbullet' });
+    await browser.action.setTitle({ title: i18n.t('bg.badgeSignIn') });
     return;
   }
   if (connection === 'offline') {
     await browser.action.setBadgeBackgroundColor({ color: '#587063' });
     await browser.action.setBadgeTextColor({ color: '#FFFFFF' });
     await browser.action.setBadgeText({ text: '!' });
-    await browser.action.setTitle({ title: 'Pushpilot: offline, retrying' });
+    await browser.action.setTitle({ title: i18n.t('bg.badgeOffline') });
     return;
   }
   const phone = settings.badgePhoneLive ? mirrors.filter((m) => !m.dismissed).length : unread.phone;
@@ -30,7 +31,9 @@ export async function updateBadge() {
   await browser.action.setBadgeText({ text: total ? (total > 99 ? '99+' : String(total)) : '' });
   const snoozed = settings.snoozeUntil > Date.now();
   await browser.action.setTitle({
-    title: `Pushpilot${total ? `: ${total} new` : ''}${snoozed ? ' (notifications snoozed)' : ''}`,
+    title: [total ? i18n.t('bg.badgeNew', [String(total)]) : 'Pushpilot', snoozed ? i18n.t('bg.badgeSnoozed') : '']
+      .filter(Boolean)
+      .join(' '),
   });
 }
 

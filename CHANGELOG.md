@@ -2,6 +2,12 @@
 
 All notable changes are listed here. The format follows [Keep a Changelog](https://keepachangelog.com/), and versions follow [Semantic Versioning](https://semver.org/).
 
+## [1.2.0] - 2026-10-27
+
+### Added
+
+- Pushpilot speaks 17 languages: English, Arabic, German, Spanish, French, Indonesian, Italian, Japanese, Korean, Dutch, Polish, Portuguese (Brazil), Russian, Turkish, Vietnamese and Chinese (Simplified and Traditional). It follows the browser's language, and Arabic gets a mirrored right-to-left layout.
+
 ## [1.1.1] - 2026-10-26
 
 ### Added
@@ -49,6 +55,7 @@ First public release.
 - Popup, side panel and pop-out window; light and dark themes; snooze; unread badge.
 - One-click sign-in through pushbullet.com, or an access token.
 
+[1.2.0]: https://github.com/yazmani/pushpilot/releases/tag/v1.2.0
 [1.1.1]: https://github.com/yazmani/pushpilot/releases/tag/v1.1.1
 [1.1.0]: https://github.com/yazmani/pushpilot/releases/tag/v1.1.0
 [1.0.0]: https://github.com/yazmani/pushpilot/releases/tag/v1.0.0
