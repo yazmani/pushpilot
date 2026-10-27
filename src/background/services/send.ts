@@ -115,6 +115,7 @@ export async function pushClipboard() {
     });
     return;
   }
+  void store.set({ triedShortcut: true });
   const { defaultTarget } = await store.get('settings');
   const push: OutgoingPush = looksLikeUrl(text) ? { type: 'link', url: normalizeUrl(text) } : { type: 'note', body: text };
   await sendQuietly(push, [defaultTarget], text.slice(0, 200));

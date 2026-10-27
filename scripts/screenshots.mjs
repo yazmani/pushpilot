@@ -28,7 +28,10 @@ const TYPES = {
   '.woff2': 'font/woff2',
   '.svg': 'image/svg+xml',
 };
-const demoScripts = '<script src="/__demo/data.js"></script><script src="/__demo/shim.js"></script>';
+// English messages for the shim's browser.i18n, from the build.
+const messages = await readFile(join(dist, '_locales/en/messages.json'), 'utf8');
+const manifest = await readFile(join(dist, 'manifest.json'), 'utf8');
+const demoScripts = `<script>window.__MESSAGES__=${messages};window.__MANIFEST__=${manifest}</script><script src="/__demo/data.js"></script><script src="/__demo/shim.js"></script>`;
 const logo = await readFile(join(root, 'src/assets/logo.svg'), 'utf8');
 
 const FONT =
@@ -36,7 +39,7 @@ const FONT =
 const BAND = 'linear-gradient(135deg, #0c8446 0%, #17a85b 60%, #22bd6a 100%)';
 
 function popupFrame(view, theme, scale = 1, extra = '') {
-  return `<iframe src="/popup.html?tab=${view}&theme=${theme}${extra}" width="400" height="588" style="border:0;border-radius:22px;background:#fff;box-shadow:0 30px 80px -20px rgba(0,30,15,.55),0 0 0 1px rgba(255,255,255,.18);transform:scale(${scale});transform-origin:top left"></iframe>`;
+  return `<iframe src="/popup.html?tab=${view}&theme=${theme}${extra}" width="400" height="600" style="border:0;border-radius:22px;background:#fff;box-shadow:0 30px 80px -20px rgba(0,30,15,.55),0 0 0 1px rgba(255,255,255,.18);transform:scale(${scale});transform-origin:top left"></iframe>`;
 }
 
 function storePage({ view, theme, headline, sub, extra = '' }) {
@@ -47,7 +50,7 @@ function storePage({ view, theme, headline, sub, extra = '' }) {
     .mark svg{width:44px;height:44px;border-radius:12px;box-shadow:0 0 0 2px rgba(255,255,255,.35)}
     h1{font-size:54px;line-height:1.05;letter-spacing:-.035em;margin:36px 0 18px;font-weight:800}
     p{font-size:21px;line-height:1.5;margin:0;opacity:.88;max-width:440px}
-    .shot{margin-left:auto;margin-right:110px;width:${400 * 1.2}px;height:${588 * 1.2}px}
+    .shot{margin-left:auto;margin-right:110px;width:${400 * 1.2}px;height:${600 * 1.2}px}
   </style></head><body>
     <div class="copy"><div class="mark">${logo}Pushpilot</div><h1>${headline}</h1><p>${sub}</p></div>
     <div class="shot">${popupFrame(view, theme, 1.2, extra)}</div>
@@ -57,7 +60,7 @@ function storePage({ view, theme, headline, sub, extra = '' }) {
 function heroPage(transparent = false) {
   return `<!doctype html><html><head><meta charset="utf-8">${FONT}<style>
     body{margin:0;width:1600px;height:860px;overflow:hidden;background:${transparent ? 'transparent' : BAND};display:flex;align-items:center;justify-content:center;gap:48px}
-    .f{width:400px;height:588px}.f.mid{transform:translateY(-24px)}
+    .f{width:400px;height:600px}.f.mid{transform:translateY(-24px)}
   </style></head><body>
     <div class="f">${popupFrame('feed', 'light')}</div>
     <div class="f mid">${popupFrame('send', 'light')}</div>
@@ -82,7 +85,7 @@ function promoPage(width, height) {
     h1{font-size:64px;letter-spacing:-.035em;margin:26px 0 10px;font-weight:800;line-height:1}
     p{font-size:24px;line-height:1.4;margin:0;opacity:.9;font-weight:500}
     .shots{position:absolute;left:690px;top:64px;display:flex;gap:22px}
-    .shots .f{width:${400 * 0.82}px;height:${588 * 0.82}px}
+    .shots .f{width:${400 * 0.82}px;height:${600 * 0.82}px}
   </style></head><body>
     <div class="copy"><div class="logo">${logo}</div><h1>Pushpilot</h1><p>Your pushes, cleared for takeoff.<br>A modern client for Pushbullet.</p></div>
     <div class="shots"><div class="f">${popupFrame('send', 'light', 0.82)}</div><div class="f">${popupFrame('phone', 'dark', 0.82)}</div></div>
@@ -98,7 +101,7 @@ function ogPage() {
     .mark svg{width:56px;height:56px;border-radius:15px;box-shadow:0 0 0 3px rgba(255,255,255,.3)}
     h1{font-size:62px;line-height:1.02;letter-spacing:-.04em;margin:30px 0 16px;font-weight:800}
     p{font-size:23px;line-height:1.45;margin:0;opacity:.9;font-weight:500}
-    .shot{position:absolute;left:740px;top:56px;width:${400 * 0.95}px;height:${588 * 0.95}px}
+    .shot{position:absolute;left:740px;top:56px;width:${400 * 0.95}px;height:${600 * 0.95}px}
   </style></head><body>
     <div class="copy"><div class="mark">${logo}Pushpilot</div><h1>Send this page to your phone.</h1><p>A free, open-source Pushbullet client for Chrome, Brave and Edge.</p></div>
     <div class="shot">${popupFrame('send', 'light', 0.95)}</div>
@@ -183,6 +186,11 @@ await new Promise((r) => server.listen(0, '127.0.0.1', r));
 const base = `http://127.0.0.1:${server.address().port}`;
 
 const browser = await puppeteer.launch({ headless: true });
+// A blank screenshot usually means the shim is missing an API; say which.
+browser.on('targetcreated', async (t) => {
+  const p = await t.page().catch(() => null);
+  p?.on('pageerror', (e) => console.error(`page error (${p.url()}): ${e.message}`));
+});
 const settle = (ms = 1800) => new Promise((r) => setTimeout(r, ms));
 
 async function openThread(frameOrPage) {
@@ -195,7 +203,7 @@ async function openThread(frameOrPage) {
 try {
   // Popup views for the README, light and dark.
   const page = await browser.newPage();
-  await page.setViewport({ width: 400, height: 588, deviceScaleFactor: 2 });
+  await page.setViewport({ width: 400, height: 600, deviceScaleFactor: 2 });
   for (const theme of ['light', 'dark']) {
     for (const view of ['send', 'feed', 'phone', 'sms']) {
       await page.goto(`${base}/popup.html?tab=${view}&theme=${theme}`, { waitUntil: 'networkidle2' });

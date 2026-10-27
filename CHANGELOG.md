@@ -9,6 +9,11 @@ All notable changes are listed here. The format follows [Keep a Changelog](https
 - Files split into Images, Videos, PDFs, Documents, Audio and Other, and images open as a gallery with a full-screen viewer (arrow keys, open original, download). File rows show their type and extension.
 - A notice when Pushbullet rate-limits your account, with the time Pushpilot catches up.
 - Sign-in codes in texts get a copy button: in the SMS list (while fresh), in the conversation, and on the desktop notification. "Copy one-time codes automatically" now covers texts too.
+- Pushes that can't go out because you're offline, Pushbullet is down or the account is rate-limited wait in the feed under "Waiting to send" and go out on their own when the connection is back, with Retry and Cancel. They used to be lost.
+- Select many pushes in the feed to mark them done or delete them at once.
+- Settings › Devices warns when a phone has stopped taking pushes, has been silent for two months, or two devices share a name; the popup shows the warning once.
+- A setup checklist for new installs: connect a phone, pin Pushpilot, notification mirroring, texts and the push-clipboard shortcut. It ticks itself off as you go.
+- Settings › Support › Copy diagnostics puts versions, settings and counts on the clipboard for a bug report, without names, devices or push contents.
 
 ### Changed
 

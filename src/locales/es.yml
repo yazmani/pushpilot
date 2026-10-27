@@ -58,6 +58,7 @@ send:
   uploading: Subiendo…
   sending: Enviando…
   sendTo: Enviar a $1
+  queued: 'Sin conexión. Se enviará cuando vuelvas a estar en línea.'
 targets:
   all: Todos los dispositivos
   allSub: En todas partes
@@ -94,6 +95,11 @@ whatsNew:
   title: Novedades de Pushpilot $1
   seeAll: Ver todos los cambios
   label: Novedades
+  v1_3:
+    history: 'Todo tu historial de envíos, con las imágenes en una galería y los archivos ordenados por tipo.'
+    codes: 'Los códigos de inicio de sesión en los SMS tienen un botón para copiarlos.'
+    outbox: 'Lo que envías sin conexión espera y sale cuando vuelves. Selecciona varios envíos para quitarlos de una vez.'
+    phones: 'Una advertencia cuando un teléfono deja de recibir envíos sin que te des cuenta, y Copiar diagnóstico para reportar errores.'
   v1_2:
     languages: 'Pushpilot ahora habla 17 idiomas y usa el idioma de tu navegador.'
   v1_1:
@@ -128,6 +134,15 @@ feed:
   siteVideo: Video de $1
   openConversation: Abrir conversación con $1
   new: Nuevo
+  select: 'Seleccionar envíos'
+  selectAll: 'Seleccionar todo'
+  selectNone: 'Quitar selección'
+  selected:
+    1: '1 seleccionado'
+    n: '$1 seleccionados'
+  markDone: 'Hecho'
+  delete: 'Eliminar'
+  selectDone: 'Terminar'
 device:
   unknown: Dispositivo desconocido
   unnamed: Dispositivo sin nombre
@@ -325,6 +340,9 @@ settings:
   rate: 'Califícalo en Chrome Web Store'
   star: 'Dar una estrella en GitHub'
   report: 'Reportar un problema'
+  diagnostics: 'Copiar diagnóstico'
+  diagnosticsHint: '¿Vas a reportar un problema? Pega esto en tu reporte. Incluye versiones, ajustes y cantidades, nunca nombres, dispositivos ni lo que enviaste.'
+  diagnosticsCopied: 'Diagnóstico copiado'
   thisBrowser: 'este navegador'
   deviceLine: '$1. Última actividad: $2'
   deviceLineSms: '$1, puede enviar SMS. Última actividad: $2'
@@ -412,3 +430,34 @@ gallery:
   next: 'Siguiente'
   open: 'Abrir original'
   count: '$1 de $2'
+setup:
+  noPhoneTitle: 'Ningún teléfono conectado'
+  noPhoneBody: 'Instala Pushbullet en tu teléfono e inicia sesión con la misma cuenta para enviarle cosas, ver sus notificaciones y mandar SMS desde aquí.'
+  getApp: 'Descargar la app'
+  phoneGoneTitle: '$1 dejó de recibir envíos'
+  phoneGoneBody: 'Abre Pushbullet en él y vuelve a iniciar sesión. Si reemplazaste este teléfono, quítalo de tus dispositivos de Pushbullet.'
+  quietTitle: '¿$1 sigue conectado?'
+  quietBody: 'No ha llegado nada de él desde $1. Abre Pushbullet en el teléfono y comprueba que el ahorro de batería no esté suspendiendo la app.'
+  sameNameTitle: 'Dos dispositivos se llaman “$1”'
+  sameNameBody: 'Cambia el nombre de uno para saber a cuál estás enviando.'
+guide:
+  title: 'Configuración inicial'
+  progress: '$1 de $2'
+  done: 'Hecho'
+  todo: 'Pendiente'
+  phone: 'Conecta tu teléfono'
+  phoneHint: 'Instala Pushbullet en tu teléfono e inicia sesión con la misma cuenta.'
+  pin: 'Fija Pushpilot en la barra de herramientas'
+  pinHint: 'Haz clic en la pieza de rompecabezas junto a la barra de direcciones y luego en el pin junto a Pushpilot.'
+  mirror: 'Ve aquí las notificaciones de tu teléfono'
+  mirrorHint: 'En Pushbullet en tu teléfono, activa Duplicación de notificaciones. La próxima notificación aparecerá en la pestaña Teléfono.'
+  sms: 'Envía SMS desde tu computadora'
+  smsHint: 'En Pushbullet en tu teléfono, activa los SMS y luego abre aquí la pestaña SMS.'
+  shortcut: 'Presiona $1 para enviar lo que copiaste'
+  shortcutHint: 'Copia un enlace o algo de texto en cualquier lugar, presiona el atajo y llegará a tu teléfono.'
+outbox:
+  title: 'Pendiente de envío'
+  hint: 'Se enviarán en cuanto vuelvas a estar en línea.'
+  retry: 'Reintentar'
+  cancel: 'Cancelar'
+  failed: 'No se pudo enviar: $1'

@@ -57,6 +57,7 @@ send:
   uploading: Uploaden…
   sending: Versturen…
   sendTo: Versturen naar $1
+  queued: 'Geen verbinding. Wordt verstuurd zodra je weer online bent.'
 targets:
   all: Alle apparaten
   allSub: Overal
@@ -93,6 +94,11 @@ whatsNew:
   title: Nieuw in Pushpilot $1
   seeAll: Alle wijzigingen bekijken
   label: Wat is er nieuw
+  v1_3:
+    history: 'Je hele pushgeschiedenis in de feed, met afbeeldingen in een galerij en bestanden gesorteerd op type.'
+    codes: 'Inlogcodes in sms’jes krijgen een kopieerknop.'
+    outbox: 'Pushes die je offline verstuurt, wachten en gaan eruit zodra je weer online bent. Selecteer meerdere pushes om ze in één keer op te ruimen.'
+    phones: 'Een waarschuwing als een telefoon ongemerkt geen pushes meer krijgt, en Diagnose kopiëren voor bugmeldingen.'
   v1_2:
     languages: 'Pushpilot spreekt nu 17 talen en volgt de taal van je browser.'
   v1_1:
@@ -127,6 +133,15 @@ feed:
   siteVideo: $1-video
   openConversation: Gesprek met $1 openen
   new: Nieuw
+  select: 'Pushes selecteren'
+  selectAll: 'Alles selecteren'
+  selectNone: 'Niets selecteren'
+  selected:
+    1: '1 geselecteerd'
+    n: '$1 geselecteerd'
+  markDone: 'Klaar'
+  delete: 'Verwijderen'
+  selectDone: 'Sluiten'
 device:
   unknown: Onbekend apparaat
   unnamed: Naamloos apparaat
@@ -324,6 +339,9 @@ settings:
   rate: Beoordeel het in de Chrome Web Store
   star: Ster geven op GitHub
   report: Probleem melden
+  diagnostics: 'Diagnose kopiëren'
+  diagnosticsHint: 'Meld je een probleem? Plak dit in je melding. Het bevat versies, instellingen en aantallen, nooit namen, apparaten of wat je hebt gepusht.'
+  diagnosticsCopied: 'Diagnose gekopieerd'
   thisBrowser: deze browser
   deviceLine: $1. Laatst actief op $2
   deviceLineSms: $1, kan sms’en. Laatst actief op $2
@@ -411,3 +429,34 @@ gallery:
   next: 'Volgende'
   open: 'Origineel openen'
   count: '$1 van $2'
+setup:
+  noPhoneTitle: 'Geen telefoon verbonden'
+  noPhoneBody: 'Installeer Pushbullet op je telefoon en log in met hetzelfde account om ernaar te versturen, de meldingen ervan te zien en vanaf hier te sms’en.'
+  getApp: 'Download de app'
+  phoneGoneTitle: '$1 ontvangt geen pushes meer'
+  phoneGoneBody: 'Open Pushbullet erop en log opnieuw in. Heb je deze telefoon vervangen? Verwijder hem dan uit je Pushbullet-apparaten.'
+  quietTitle: 'Is $1 nog verbonden?'
+  quietBody: 'Er is sinds $1 niets meer van binnengekomen. Open Pushbullet op de telefoon en controleer of batterijbesparing de app niet in slaap brengt.'
+  sameNameTitle: 'Twee apparaten heten ‘$1’'
+  sameNameBody: 'Hernoem er een, zodat je weet naar welke je verstuurt.'
+guide:
+  title: 'Aan de slag'
+  progress: '$1 van $2'
+  done: 'Klaar'
+  todo: 'Te doen'
+  phone: 'Verbind je telefoon'
+  phoneHint: 'Installeer Pushbullet op je telefoon en log in met hetzelfde account.'
+  pin: 'Zet Pushpilot vast op de werkbalk'
+  pinHint: 'Klik op het puzzelstukje naast de adresbalk en dan op de punaise naast Pushpilot.'
+  mirror: 'Zie hier de meldingen van je telefoon'
+  mirrorHint: 'Zet in Pushbullet op je telefoon Meldingen spiegelen aan. De volgende melding verschijnt op het tabblad Telefoon.'
+  sms: 'Sms’en vanaf je computer'
+  smsHint: 'Zet in Pushbullet op je telefoon Sms aan en open daarna hier het tabblad Sms.'
+  shortcut: 'Druk op $1 om te pushen wat je hebt gekopieerd'
+  shortcutHint: 'Kopieer ergens een link of wat tekst, druk op de sneltoets en het komt op je telefoon terecht.'
+outbox:
+  title: 'Wacht op versturen'
+  hint: 'Deze worden verstuurd zodra je weer online bent.'
+  retry: 'Opnieuw proberen'
+  cancel: 'Annuleren'
+  failed: 'Versturen mislukt: $1'

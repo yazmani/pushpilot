@@ -95,6 +95,11 @@ whatsNew:
   title: New in Pushpilot $1
   seeAll: See all changes
   label: What’s new
+  v1_3:
+    history: 'Your whole push history in the feed, with images in a gallery and files sorted by type.'
+    codes: 'Sign-in codes in texts get a copy button.'
+    outbox: 'Pushes sent while offline wait and go out when you’re back. Select many pushes to clear them at once.'
+    phones: 'A warning when a phone quietly stops getting pushes, and Copy diagnostics for bug reports.'
   v1_2:
     languages: 'Pushpilot now speaks 17 languages and follows your browser’s language.'
   v1_1:
@@ -335,6 +340,9 @@ settings:
   rate: 'Rate it in the Chrome Web Store'
   star: 'Star on GitHub'
   report: 'Report a problem'
+  diagnostics: Copy diagnostics
+  diagnosticsHint: Reporting a problem? Paste this into your report. It lists versions, settings and counts, never names, devices or what you pushed.
+  diagnosticsCopied: Diagnostics copied
   thisBrowser: 'this browser'
   deviceLine: '$1. Last active $2'
   deviceLineSms: '$1, can text. Last active $2'
@@ -422,6 +430,31 @@ gallery:
   next: 'Next'
   open: 'Open original'
   count: '$1 of $2'
+setup:
+  noPhoneTitle: No phone connected
+  noPhoneBody: Install Pushbullet on your phone and sign in with the same account to send to it, see its notifications and text from here.
+  getApp: Get the app
+  phoneGoneTitle: $1 stopped taking pushes
+  phoneGoneBody: Open Pushbullet on it and sign in again. If you replaced this phone, remove it from your Pushbullet devices.
+  quietTitle: Is $1 still connected?
+  quietBody: Nothing has come from it since $1. Open Pushbullet on the phone, and check that battery saving isn't putting the app to sleep.
+  sameNameTitle: Two devices are called “$1”
+  sameNameBody: Rename one so you know which you're sending to.
+guide:
+  title: Get set up
+  progress: $1 of $2
+  done: Done
+  todo: To do
+  phone: Connect your phone
+  phoneHint: Install Pushbullet on your phone and sign in with the same account.
+  pin: Pin Pushpilot to the toolbar
+  pinHint: Click the puzzle piece next to the address bar, then the pin beside Pushpilot.
+  mirror: See your phone's notifications here
+  mirrorHint: In Pushbullet on your phone, turn on Notification mirroring. The next notification shows up in the Phone tab.
+  sms: Text from your computer
+  smsHint: In Pushbullet on your phone, turn on SMS, then open the SMS tab here.
+  shortcut: Press $1 to push what you copied
+  shortcutHint: Copy a link or some text anywhere, press the shortcut, and it lands on your phone.
 outbox:
   title: Waiting to send
   hint: These go out as soon as you're back online.

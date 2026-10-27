@@ -58,6 +58,7 @@ send:
   uploading: Mengunggah…
   sending: Mengirim…
   sendTo: Kirim ke $1
+  queued: 'Tidak ada koneksi. Akan dikirim saat Anda kembali online.'
 targets:
   all: Semua perangkat
   allSub: Di mana saja
@@ -94,6 +95,11 @@ whatsNew:
   title: Baru di Pushpilot $1
   seeAll: Lihat semua perubahan
   label: Yang baru
+  v1_3:
+    history: 'Seluruh riwayat kiriman Anda di feed, dengan gambar di galeri dan file diurutkan menurut jenis.'
+    codes: 'Kode masuk di SMS kini punya tombol salin.'
+    outbox: 'Kiriman yang dikirim saat offline menunggu dan terkirim saat Anda kembali online. Pilih banyak kiriman untuk membereskannya sekaligus.'
+    phones: 'Peringatan saat ponsel diam-diam berhenti menerima kiriman, dan Salin diagnostik untuk laporan bug.'
   v1_2:
     languages: 'Pushpilot kini tersedia dalam 17 bahasa dan mengikuti bahasa browser Anda.'
   v1_1:
@@ -128,6 +134,15 @@ feed:
   siteVideo: Video $1
   openConversation: Buka percakapan dengan $1
   new: Baru
+  select: 'Pilih kiriman'
+  selectAll: 'Pilih semua'
+  selectNone: 'Batalkan pilihan'
+  selected:
+    1: '1 dipilih'
+    n: '$1 dipilih'
+  markDone: 'Selesai'
+  delete: 'Hapus'
+  selectDone: 'Tutup'
 device:
   unknown: Perangkat tidak dikenal
   unnamed: Perangkat tanpa nama
@@ -325,6 +340,9 @@ settings:
   rate: Beri rating di Chrome Web Store
   star: Beri bintang di GitHub
   report: Laporkan masalah
+  diagnostics: 'Salin diagnostik'
+  diagnosticsHint: 'Melaporkan masalah? Tempelkan ini ke laporan Anda. Isinya versi, pengaturan, dan jumlah, tidak pernah nama, perangkat, atau apa yang Anda kirim.'
+  diagnosticsCopied: 'Diagnostik disalin'
   thisBrowser: browser ini
   deviceLine: $1. Terakhir aktif $2
   deviceLineSms: $1, bisa mengirim SMS. Terakhir aktif $2
@@ -412,3 +430,34 @@ gallery:
   next: 'Berikutnya'
   open: 'Buka asli'
   count: '$1 dari $2'
+setup:
+  noPhoneTitle: 'Tidak ada ponsel yang terhubung'
+  noPhoneBody: 'Instal Pushbullet di ponsel Anda dan masuk dengan akun yang sama untuk mengirim ke ponsel itu, melihat notifikasinya, dan mengirim SMS dari sini.'
+  getApp: 'Dapatkan aplikasinya'
+  phoneGoneTitle: '$1 berhenti menerima kiriman'
+  phoneGoneBody: 'Buka Pushbullet di ponsel itu dan masuk lagi. Jika Anda sudah mengganti ponsel ini, hapus dari perangkat Pushbullet Anda.'
+  quietTitle: 'Apakah $1 masih terhubung?'
+  quietBody: 'Tidak ada apa pun darinya sejak $1. Buka Pushbullet di ponsel, dan pastikan penghemat baterai tidak menidurkan aplikasinya.'
+  sameNameTitle: 'Dua perangkat bernama “$1”'
+  sameNameBody: 'Ganti nama salah satunya agar Anda tahu ke mana Anda mengirim.'
+guide:
+  title: 'Siapkan'
+  progress: '$1 dari $2'
+  done: 'Selesai'
+  todo: 'Belum'
+  phone: 'Hubungkan ponsel Anda'
+  phoneHint: 'Instal Pushbullet di ponsel Anda dan masuk dengan akun yang sama.'
+  pin: 'Sematkan Pushpilot ke toolbar'
+  pinHint: 'Klik ikon kepingan puzzle di samping bilah alamat, lalu ikon pin di samping Pushpilot.'
+  mirror: 'Lihat notifikasi ponsel Anda di sini'
+  mirrorHint: 'Di Pushbullet pada ponsel Anda, aktifkan Pencerminan notifikasi. Notifikasi berikutnya muncul di tab Ponsel.'
+  sms: 'Kirim SMS dari komputer'
+  smsHint: 'Di Pushbullet pada ponsel Anda, aktifkan SMS, lalu buka tab SMS di sini.'
+  shortcut: 'Tekan $1 untuk mengirim yang Anda salin'
+  shortcutHint: 'Salin link atau teks di mana saja, tekan pintasannya, dan itu akan sampai di ponsel Anda.'
+outbox:
+  title: 'Menunggu dikirim'
+  hint: 'Ini akan dikirim begitu Anda kembali online.'
+  retry: 'Coba lagi'
+  cancel: 'Batal'
+  failed: 'Tidak dapat mengirim: $1'

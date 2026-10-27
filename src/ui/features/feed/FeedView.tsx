@@ -350,8 +350,8 @@ function SubChip({ on, onClick, children }: { on: boolean; onClick: () => void; 
       onClick={onClick}
       aria-pressed={on}
       className={clsx(
-        'flex h-8 shrink-0 items-center gap-1.5 rounded-full px-3 text-xs font-bold transition-colors',
-        on ? 'bg-accent text-on-accent shadow-sm' : 'bg-surface text-muted ring-1 ring-line hover:text-ink',
+        'flex h-8 shrink-0 items-center gap-1.5 rounded-full border px-3 text-xs font-bold transition-colors',
+        on ? 'border-accent bg-accent text-on-accent shadow-sm' : 'border-line bg-surface text-muted hover:text-ink',
       )}
     >
       {children}

@@ -1,5 +1,5 @@
 import clsx from 'clsx';
-import { Coffee, Heart, LockKeyhole, LogOut, Pencil, RefreshCw, Star } from 'lucide-react';
+import { ClipboardCopy, Coffee, Heart, LockKeyhole, LogOut, Pencil, RefreshCw, Star } from 'lucide-react';
 import { type ReactNode, useEffect, useRef, useState } from 'react';
 import { browser, type Browser } from 'wxt/browser';
 import { LINKS } from '@/core/links';
@@ -11,6 +11,7 @@ import { deviceCategory, deviceKind, deviceName, isReachable } from '@/core/util
 import { Avatar, Button, DeviceGlyph, fieldClass, LinkButton, LogoMark, Segmented, Toggle, ToastBar } from '@/ui/components';
 import { SignIn } from '@/ui/features/auth/SignIn';
 import { useTargets } from '@/ui/features/send/targets';
+import { IssueList } from '@/ui/features/setup/SetupIssues';
 import { useStore } from '@/ui/hooks/use-store';
 import { useTheme } from '@/ui/hooks/use-theme';
 import { ToastProvider, useRun, useToast } from '@/ui/hooks/use-toast';
@@ -127,6 +128,7 @@ function SettingsContent() {
           </Section>
 
           <Section id="devices" title={i18n.t('settings.section.devices')} description={i18n.t('settings.section.devicesDesc')}>
+            <IssueList />
             <DeviceList devices={devices} selfIden={selfDeviceIden} />
           </Section>
 
@@ -411,11 +413,78 @@ function SettingsContent() {
                 {i18n.t('settings.report')}
               </LinkButton>
             </div>
+            <div className="flex flex-wrap items-center gap-3 py-3.5">
+              <p className="min-w-0 flex-1 text-xs leading-relaxed text-muted">{i18n.t('settings.diagnosticsHint')}</p>
+              <Button
+                size="sm"
+                onClick={() =>
+                  run(async () => navigator.clipboard.writeText(await diagnostics()), i18n.t('settings.diagnosticsCopied'))
+                }
+              >
+                <ClipboardCopy size={14} /> {i18n.t('settings.diagnostics')}
+              </Button>
+            </div>
           </Section>
         </main>
       </div>
     </div>
   );
+}
+
+/**
+ * A plain-text report to paste into a bug report. Counts and states only:
+ * no names, emails, device names or push contents.
+ */
+async function diagnostics() {
+  const s = await store.getMany([
+    'connection',
+    'lastError',
+    'rateLimitedUntil',
+    'devices',
+    'selfDeviceIden',
+    'outbox',
+    'pushes',
+    'historyCursor',
+    'mirrors',
+    'me',
+    'settings',
+  ]);
+  const ua = navigator.userAgent;
+  const brands = (navigator as Navigator & { userAgentData?: { brands: { brand: string; version: string }[]; platform: string } })
+    .userAgentData;
+  const browserName =
+    brands?.brands
+      .filter((b) => !/not.?a.?brand|chromium/i.test(b.brand))
+      .map((b) => `${b.brand} ${b.version}`)
+      .join(', ') ||
+    ua.match(/(Edg|OPR|Chrome|Firefox)\/[\d.]+/)?.[0] ||
+    ua;
+  const isBrave = await (navigator as Navigator & { brave?: { isBrave: () => Promise<boolean> } }).brave
+    ?.isBrave()
+    .catch(() => false);
+  const kinds = new Map<string, [number, number]>();
+  for (const d of s.devices) {
+    const k = deviceCategory(d);
+    const [all, live] = kinds.get(k) ?? [0, 0];
+    kinds.set(k, [all + 1, live + Number(isReachable(d))]);
+  }
+  const on = (v: boolean) => (v ? 'on' : 'off');
+  return [
+    `Pushpilot ${browser.runtime.getManifest().version}`,
+    `Browser: ${browserName}${isBrave ? ' (Brave)' : ''}`,
+    `OS: ${brands?.platform || navigator.platform}`,
+    `UI language: ${browser.i18n.getUILanguage()}`,
+    `Pro: ${s.me?.pro ? 'yes' : 'no'}`,
+    `Connection: ${s.connection}`,
+    `Last error: ${s.lastError ?? 'none'}`,
+    `Rate-limited: ${s.rateLimitedUntil > Date.now() ? `until ${new Date(s.rateLimitedUntil).toISOString()}` : 'no'}`,
+    `Devices: ${[...kinds].map(([k, [all, live]]) => `${k} ${live}/${all}`).join(', ') || 'none'} (connected/total)`,
+    `This browser registered: ${s.devices.some((d) => d.iden === s.selfDeviceIden) ? 'yes' : 'no'}`,
+    `Waiting to send: ${s.outbox.length}`,
+    `Pushes stored: ${s.pushes.length}, history ${s.historyCursor === null ? 'fully loaded' : 'partly loaded'}`,
+    `Phone notifications stored: ${s.mirrors.length}`,
+    `Mirroring ${on(s.settings.mirrorEnabled)}, notifications ${on(s.settings.notifyPushes)}, auto-open links ${on(s.settings.autoOpenLinks)}, files ${on(s.settings.autoOpenFiles)}`,
+  ].join('\n');
 }
 
 function Section({ id, title, description, children }: { id: string; title: string; description?: string; children: ReactNode }) {

@@ -56,6 +56,7 @@ send:
   uploading: Yükleniyor…
   sending: Gönderiliyor…
   sendTo: 'Gönder: $1'
+  queued: 'Bağlantı yok. Tekrar çevrimiçi olduğunda gönderilecek.'
 targets:
   all: Tüm cihazlar
   allSub: Her yere
@@ -92,6 +93,11 @@ whatsNew:
   title: Pushpilot $1 sürümündeki yenilikler
   seeAll: Tüm değişiklikleri gör
   label: Yenilikler
+  v1_3:
+    history: 'Tüm gönderi geçmişin akışta; görseller bir galeride, dosyalar türe göre sıralı.'
+    codes: 'SMS’lerdeki giriş kodları için kopyalama düğmesi.'
+    outbox: 'Çevrimdışıyken gönderilenler bekler ve geri döndüğünde gider. Birden çok gönderiyi seçip tek seferde temizle.'
+    phones: 'Bir telefon sessizce gönderi almayı bıraktığında uyarı ve hata bildirimleri için Tanılamayı kopyala.'
   v1_2:
     languages: 'Pushpilot artık 17 dili destekliyor ve tarayıcının dilini kullanıyor.'
   v1_1:
@@ -126,6 +132,15 @@ feed:
   siteVideo: $1 videosu
   openConversation: $1 ile sohbeti aç
   new: Yeni
+  select: 'Gönderileri seç'
+  selectAll: 'Tümünü seç'
+  selectNone: 'Seçimi kaldır'
+  selected:
+    1: '1 seçildi'
+    n: '$1 seçildi'
+  markDone: 'Tamamlandı'
+  delete: 'Sil'
+  selectDone: 'Bitir'
 device:
   unknown: Bilinmeyen cihaz
   unnamed: Adsız cihaz
@@ -323,6 +338,9 @@ settings:
   rate: Chrome Web Store’da puan ver
   star: GitHub’da yıldız ver
   report: Sorun bildir
+  diagnostics: 'Tanılamayı kopyala'
+  diagnosticsHint: 'Bir sorun mu bildiriyorsun? Bunu raporuna yapıştır. Sürümleri, ayarları ve sayıları içerir; adları, cihazları ya da gönderdiklerini asla içermez.'
+  diagnosticsCopied: 'Tanılama kopyalandı'
   thisBrowser: bu tarayıcı
   deviceLine: '$1. Son etkinlik: $2'
   deviceLineSms: '$1, SMS gönderebilir. Son etkinlik: $2'
@@ -410,3 +428,34 @@ gallery:
   next: 'Sonraki'
   open: 'Orijinali aç'
   count: '$1 / $2'
+setup:
+  noPhoneTitle: 'Bağlı telefon yok'
+  noPhoneBody: 'Telefonuna Pushbullet’ı yükle ve aynı hesapla oturum aç; böylece ona gönderi yollayabilir, bildirimlerini görebilir ve buradan SMS yazabilirsin.'
+  getApp: 'Uygulamayı edin'
+  phoneGoneTitle: '$1 artık gönderi almıyor'
+  phoneGoneBody: 'Üzerinde Pushbullet’ı aç ve yeniden oturum aç. Bu telefonu değiştirdiysen onu Pushbullet cihazlarından kaldır.'
+  quietTitle: '$1 hâlâ bağlı mı?'
+  quietBody: '$1 tarihinden beri ondan bir şey gelmedi. Telefonda Pushbullet’ı aç ve pil tasarrufunun uygulamayı uyutmadığından emin ol.'
+  sameNameTitle: 'İki cihazın adı “$1”'
+  sameNameBody: 'Hangisine gönderdiğini bilmek için birini yeniden adlandır.'
+guide:
+  title: 'Kurulum'
+  progress: '$1 / $2'
+  done: 'Tamamlandı'
+  todo: 'Yapılacak'
+  phone: 'Telefonunu bağla'
+  phoneHint: 'Telefonuna Pushbullet’ı yükle ve aynı hesapla oturum aç.'
+  pin: 'Pushpilot’ı araç çubuğuna sabitle'
+  pinHint: 'Adres çubuğunun yanındaki yapboz parçasına, ardından Pushpilot’ın yanındaki raptiyeye tıkla.'
+  mirror: 'Telefonunun bildirimlerini burada gör'
+  mirrorHint: 'Telefonundaki Pushbullet’ta Bildirim yansıtma’yı aç. Sonraki bildirim Telefon sekmesinde görünür.'
+  sms: 'Bilgisayarından SMS gönder'
+  smsHint: 'Telefonundaki Pushbullet’ta SMS’i aç, ardından buradaki SMS sekmesine geç.'
+  shortcut: 'Kopyaladığını göndermek için $1 tuşlarına bas'
+  shortcutHint: 'Herhangi bir yerde bir bağlantı ya da metin kopyala, kısayola bas; telefonuna ulaşsın.'
+outbox:
+  title: 'Gönderilmeyi bekliyor'
+  hint: 'Tekrar çevrimiçi olduğunda hemen gönderilecekler.'
+  retry: 'Tekrar dene'
+  cancel: 'İptal'
+  failed: 'Gönderilemedi: $1'

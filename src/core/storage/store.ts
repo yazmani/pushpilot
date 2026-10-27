@@ -163,6 +163,12 @@ export interface Schema {
   settingsVersion: number;
   /** Minor version ("1.1") whose What's new card was dismissed, or set on a fresh install. */
   whatsNewSeen: string;
+  /** The first-run checklist in the Send view; on for new installs until finished or dismissed. */
+  setupGuide: boolean;
+  /** The push-clipboard shortcut was used at least once (a step of the checklist). */
+  triedShortcut: boolean;
+  /** Device warnings (see core/setup.ts) dismissed from the popup, by issueKey(). */
+  dismissedIssues: string[];
 }
 
 export const defaults: Schema = {
@@ -193,6 +199,9 @@ export const defaults: Schema = {
   supportPromptSeen: false,
   settingsVersion: 0,
   whatsNewSeen: '',
+  setupGuide: false,
+  triedShortcut: false,
+  dismissedIssues: [],
 };
 
 export type Key = keyof Schema;

@@ -58,6 +58,7 @@ send:
   uploading: Đang tải lên…
   sending: Đang gửi…
   sendTo: Gửi tới $1
+  queued: 'Không có kết nối. Sẽ gửi khi bạn trực tuyến trở lại.'
 targets:
   all: Tất cả thiết bị
   allSub: Mọi nơi
@@ -94,6 +95,11 @@ whatsNew:
   title: Có gì mới trong Pushpilot $1
   seeAll: Xem mọi thay đổi
   label: Có gì mới
+  v1_3:
+    history: 'Toàn bộ lịch sử mục gửi trong bảng tin, hình ảnh trong thư viện và tệp được sắp xếp theo loại.'
+    codes: 'Mã đăng nhập trong tin nhắn có nút sao chép.'
+    outbox: 'Mục gửi lúc ngoại tuyến sẽ chờ và được gửi đi khi bạn trực tuyến lại. Chọn nhiều mục gửi để dọn cùng lúc.'
+    phones: 'Cảnh báo khi điện thoại âm thầm ngừng nhận mục gửi, và Sao chép thông tin chẩn đoán để báo lỗi.'
   v1_2:
     languages: 'Pushpilot giờ hỗ trợ 17 ngôn ngữ và dùng ngôn ngữ của trình duyệt bạn.'
   v1_1:
@@ -128,6 +134,15 @@ feed:
   siteVideo: Video $1
   openConversation: Mở cuộc trò chuyện với $1
   new: Mới
+  select: 'Chọn mục gửi'
+  selectAll: 'Chọn tất cả'
+  selectNone: 'Bỏ chọn tất cả'
+  selected:
+    1: 'Đã chọn 1'
+    n: 'Đã chọn $1'
+  markDone: 'Xong'
+  delete: 'Xóa'
+  selectDone: 'Đóng'
 device:
   unknown: Thiết bị không xác định
   unnamed: Thiết bị chưa đặt tên
@@ -325,6 +340,9 @@ settings:
   rate: Đánh giá trên Chrome Web Store
   star: Gắn sao trên GitHub
   report: Báo cáo sự cố
+  diagnostics: 'Sao chép thông tin chẩn đoán'
+  diagnosticsHint: 'Bạn đang báo cáo sự cố? Hãy dán nội dung này vào báo cáo. Nó gồm phiên bản, cài đặt và số lượng, không bao giờ có tên, thiết bị hay nội dung bạn đã gửi.'
+  diagnosticsCopied: 'Đã sao chép thông tin chẩn đoán'
   thisBrowser: trình duyệt này
   deviceLine: $1. Hoạt động lần cuối $2
   deviceLineSms: $1, nhắn tin được. Hoạt động lần cuối $2
@@ -412,3 +430,34 @@ gallery:
   next: 'Tiếp'
   open: 'Mở bản gốc'
   count: '$1 / $2'
+setup:
+  noPhoneTitle: 'Chưa kết nối điện thoại'
+  noPhoneBody: 'Cài Pushbullet trên điện thoại và đăng nhập cùng tài khoản để gửi tới điện thoại, xem thông báo của nó và nhắn tin từ đây.'
+  getApp: 'Tải ứng dụng'
+  phoneGoneTitle: '$1 không còn nhận mục gửi'
+  phoneGoneBody: 'Mở Pushbullet trên máy đó và đăng nhập lại. Nếu bạn đã thay điện thoại này, hãy xóa nó khỏi danh sách thiết bị Pushbullet.'
+  quietTitle: '$1 vẫn còn kết nối chứ?'
+  quietBody: 'Không có gì từ máy này kể từ $1. Hãy mở Pushbullet trên điện thoại và kiểm tra xem chế độ tiết kiệm pin có đang cho ứng dụng ngủ không.'
+  sameNameTitle: 'Có hai thiết bị cùng tên “$1”'
+  sameNameBody: 'Hãy đổi tên một thiết bị để biết bạn đang gửi tới máy nào.'
+guide:
+  title: 'Thiết lập'
+  progress: '$1 / $2'
+  done: 'Xong'
+  todo: 'Cần làm'
+  phone: 'Kết nối điện thoại'
+  phoneHint: 'Cài Pushbullet trên điện thoại và đăng nhập cùng tài khoản.'
+  pin: 'Ghim Pushpilot vào thanh công cụ'
+  pinHint: 'Nhấp vào biểu tượng mảnh ghép cạnh thanh địa chỉ, rồi nhấp vào ghim cạnh Pushpilot.'
+  mirror: 'Xem thông báo điện thoại tại đây'
+  mirrorHint: 'Trong Pushbullet trên điện thoại, bật Phản chiếu thông báo. Thông báo tiếp theo sẽ hiện trong tab Điện thoại.'
+  sms: 'Nhắn tin từ máy tính'
+  smsHint: 'Trong Pushbullet trên điện thoại, bật SMS, rồi mở tab SMS tại đây.'
+  shortcut: 'Nhấn $1 để gửi nội dung đã sao chép'
+  shortcutHint: 'Sao chép liên kết hoặc văn bản ở bất cứ đâu, nhấn phím tắt và nội dung sẽ tới điện thoại của bạn.'
+outbox:
+  title: 'Đang chờ gửi'
+  hint: 'Các mục này sẽ được gửi ngay khi bạn trực tuyến trở lại.'
+  retry: 'Thử lại'
+  cancel: 'Hủy'
+  failed: 'Không gửi được: $1'
