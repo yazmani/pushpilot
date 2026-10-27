@@ -31,7 +31,8 @@ export interface Rpc {
   'mirror.clear': { req: object; res: void };
   /** Reuses a recent answer unless `force` (the Refresh button). */
   'sms.threads': { req: { device: string; force?: boolean }; res: SmsThread[] };
-  'sms.thread': { req: { device: string; thread: string }; res: SmsMessage[] };
+  /** `maxAgeMs`: how old a cached copy may be (-1: any, to show something at once). */
+  'sms.thread': { req: { device: string; thread: string; maxAgeMs?: number }; res: SmsMessage[] };
   'sms.send': { req: { device: string; addresses: string[]; message: string }; res: void };
   'clip.push': { req: object; res: void };
   'e2e.set': { req: { password: string | null }; res: void };

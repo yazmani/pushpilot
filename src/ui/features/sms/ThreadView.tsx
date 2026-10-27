@@ -23,19 +23,24 @@ export function ThreadView({ device, thread, onBack }: { device: string; thread:
   const name = threadName(thread);
   const latestStamp = thread.latest?.timestamp;
 
+  const apply = useCallback((list: SmsMessage[]) => {
+    setMessages(list);
+    // Drop optimistic bubbles once the phone reports them.
+    setPending((p) =>
+      p.filter((m) => !list.some((x) => x.direction === 'outgoing' && x.body === m.body && x.timestamp >= m.timestamp - 120)),
+    );
+  }, []);
+
+  // Whatever is cached shows at once; a fresh copy follows when it's more than a few seconds old.
   const load = useCallback(async () => {
     try {
-      const list = await call('sms.thread', { device, thread: thread.id });
-      setMessages(list);
-      // Drop optimistic bubbles once the phone reports them.
-      setPending((p) =>
-        p.filter((m) => !list.some((x) => x.direction === 'outgoing' && x.body === m.body && x.timestamp >= m.timestamp - 120)),
-      );
+      apply(await call('sms.thread', { device, thread: thread.id, maxAgeMs: -1 }));
+      apply(await call('sms.thread', { device, thread: thread.id }));
       setError(null);
     } catch (err) {
       setError(errorText(err));
     }
-  }, [device, thread.id]);
+  }, [device, thread.id, apply]);
 
   // Reload whenever the background sees this thread change (sms_changed).
   useEffect(() => {

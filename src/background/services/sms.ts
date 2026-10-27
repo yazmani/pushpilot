@@ -14,10 +14,11 @@ export interface SmsChangedPush {
   notifications?: SmsNotice[];
 }
 
-// Each fetch asks the phone over Pushbullet, so recent answers are reused.
-// A new or changed text (sms_changed) invalidates them; Refresh forces a fetch.
-const THREADS_MAX_AGE = 2 * 60_000;
-const THREAD_MAX_AGE = 60_000;
+// Each fetch asks the phone over Pushbullet, so a very recent answer is reused,
+// but never for long: the views show what's cached at once and refetch when
+// it's older than a few seconds. A new text (sms_changed) or sending one
+// invalidates the cache outright, and Refresh always fetches.
+const THREADS_MAX_AGE = 30_000;
 
 export async function fetchThreads(device: string, force = false) {
   const cached = (await store.get('smsThreads'))[device];
@@ -28,13 +29,18 @@ export async function fetchThreads(device: string, force = false) {
   return threads;
 }
 
-export async function fetchThread(device: string, thread: string) {
+/**
+ * Messages in one conversation. `maxAgeMs` is how old a cached copy may be:
+ * the conversation view asks for any copy first (-1) to show something at
+ * once, then for a fresh one.
+ */
+export async function fetchThread(device: string, thread: string, maxAgeMs = 15_000) {
   const key = `smsThread:${device}:${thread}`;
-  const cached = (await browser.storage.session.get(key))[key] as SmsMessage[] | undefined;
-  if (cached && !(await due(key, THREAD_MAX_AGE))) return cached;
+  const cached = (await browser.storage.session.get(key))[key] as { at: number; list: SmsMessage[] } | undefined;
+  if (cached && (maxAgeMs < 0 || Date.now() - cached.at < maxAgeMs)) return cached.list;
   const pb = await requireClient();
   const list = await guard(() => pb.smsThread(device, thread));
-  await browser.storage.session.set({ [key]: list });
+  await browser.storage.session.set({ [key]: { at: Date.now(), list } });
   return list;
 }
 
@@ -42,11 +48,14 @@ export async function sendSms(device: string, addresses: string[], message: stri
   const pb = await requireClient();
   await guard(() => pb.sendText(device, addresses, message, uid()));
   await invalidate(`sms:${device}`);
+  // The sent text shows up in its conversation once the phone has sent it.
+  const keys = Object.keys(await browser.storage.session.get(null)).filter((k) => k.startsWith(`smsThread:${device}:`));
+  await browser.storage.session.remove(keys);
 }
 
 export async function handleSmsChanged(push: SmsChangedPush) {
   const device = push.source_device_iden;
-  for (const n of push.notifications ?? []) await invalidate(`smsThread:${device}:${n.thread_id}`);
+  for (const n of push.notifications ?? []) await browser.storage.session.remove(`smsThread:${device}:${n.thread_id}`);
   void fetchThreads(device, true).catch(() => undefined);
   const notices = push.notifications ?? [];
   if (!notices.length) return;
