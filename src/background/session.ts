@@ -30,6 +30,9 @@ export async function guard<T>(task: () => Promise<T>): Promise<T> {
   try {
     return await task();
   } catch (err) {
+    if (err instanceof ApiError && err.status === 429 && err.retryAt) {
+      await store.set({ rateLimitedUntil: err.retryAt });
+    }
     if (err instanceof ApiError && err.status === 401) {
       await store.set({ lastError: i18n.t('bg.tokenRejected') });
       await onExpired();

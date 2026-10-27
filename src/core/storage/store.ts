@@ -148,6 +148,8 @@ export interface Schema {
   unread: Unread;
   connection: ConnectionState;
   lastError: string | null;
+  /** Pushbullet is rate-limiting the account until then (ms since epoch). */
+  rateLimitedUntil: number;
   /** Hand-off from the context menu / notifications to the popup. */
   intent: { view: Tab; thread?: string; device?: string; mirror?: string } | null;
   /** Successful sends from this install, for the one-time support prompt. */
@@ -181,6 +183,7 @@ export const defaults: Schema = {
   unread: { feed: 0, phone: 0, sms: 0 },
   connection: 'signed-out',
   lastError: null,
+  rateLimitedUntil: 0,
   intent: null,
   sendCount: 0,
   supportPromptSeen: false,

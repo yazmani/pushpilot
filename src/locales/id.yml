@@ -18,6 +18,7 @@ tabs:
   sms: SMS
 app:
   offline: Tidak dapat terhubung ke Pushbullet. Mencoba lagi di latar belakang.
+  rateLimited: 'Pushbullet sedang membatasi permintaan dari akun Anda untuk sementara (semua aplikasi yang Anda pakai dengannya ikut dihitung). Pushpilot akan menyusul setelah $1.'
 header:
   sections: Bagian
   pausedHint: Notifikasi dijeda. Klik untuk mengaktifkannya lagi.

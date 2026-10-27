@@ -18,6 +18,7 @@ tabs:
   sms: 簡訊
 app:
   offline: 無法連線到 Pushbullet，正在背景重試。
+  rateLimited: 'Pushbullet 正暫時限制你帳戶的請求（你與它一起使用的所有應用程式都會計入）。Pushpilot 會在 $1 之後恢復同步。'
 header:
   sections: 區段
   pausedHint: 通知已暫停。按一下即可重新開啟。

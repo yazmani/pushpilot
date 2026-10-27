@@ -18,6 +18,7 @@ tabs:
   sms: SMS
 app:
   offline: Can’t reach Pushbullet. Retrying in the background.
+  rateLimited: 'Pushbullet is limiting requests from your account for a while (it counts every app you use with it). Pushpilot catches up after $1.'
 header:
   sections: Sections
   pausedHint: Notifications are paused. Click to turn them back on.

@@ -18,6 +18,7 @@ tabs:
   sms: SMS
 app:
   offline: No se puede conectar con Pushbullet. Reintentando en segundo plano.
+  rateLimited: 'Pushbullet está limitando por un tiempo las solicitudes de tu cuenta (cuenta todas las apps que usas con él). Pushpilot se pondrá al día después de las $1.'
 header:
   sections: Secciones
   pausedHint: Las notificaciones están en pausa. Haz clic para reactivarlas.

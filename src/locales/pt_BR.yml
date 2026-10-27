@@ -18,6 +18,7 @@ tabs:
   sms: SMS
 app:
   offline: Não foi possível acessar o Pushbullet. Tentando de novo em segundo plano.
+  rateLimited: 'O Pushbullet está limitando as solicitações da sua conta por um tempo (conta todos os apps que você usa com ele). O Pushpilot se atualiza depois das $1.'
 header:
   sections: Seções
   pausedHint: As notificações estão pausadas. Clique para reativá-las.

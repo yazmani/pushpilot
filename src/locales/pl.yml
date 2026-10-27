@@ -16,6 +16,7 @@ tabs:
   sms: SMS
 app:
   offline: Brak połączenia z Pushbullet. Ponawianie w tle.
+  rateLimited: 'Pushbullet tymczasowo ogranicza żądania z Twojego konta (liczą się wszystkie aplikacje, których z nim używasz). Pushpilot nadrobi zaległości po $1.'
 header:
   sections: Sekcje
   pausedHint: Powiadomienia są wstrzymane. Kliknij, aby je włączyć.

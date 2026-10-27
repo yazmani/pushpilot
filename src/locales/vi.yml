@@ -18,6 +18,7 @@ tabs:
   sms: SMS
 app:
   offline: Không kết nối được với Pushbullet. Đang thử lại trong nền.
+  rateLimited: 'Pushbullet đang tạm giới hạn yêu cầu từ tài khoản của bạn (tính cả mọi ứng dụng bạn dùng với nó). Pushpilot sẽ cập nhật lại sau $1.'
 header:
   sections: Mục
   pausedHint: Thông báo đang tạm dừng. Nhấp để bật lại.

@@ -18,6 +18,7 @@ tabs:
   sms: SMS
 app:
   offline: Pushbullet に接続できません。バックグラウンドで再試行しています。
+  rateLimited: 'Pushbullet がしばらくの間、このアカウントからのリクエストを制限しています（一緒に使っているすべてのアプリが対象です）。$1 以降に Pushpilot が追いつきます。'
 header:
   sections: セクション
   pausedHint: 通知は一時停止中です。クリックすると再開します。

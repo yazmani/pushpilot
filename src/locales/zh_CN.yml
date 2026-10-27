@@ -18,6 +18,7 @@ tabs:
   sms: 短信
 app:
   offline: 无法连接到 Pushbullet，正在后台重试。
+  rateLimited: 'Pushbullet 正在暂时限制你账户的请求（你与它一起使用的所有应用都计算在内）。Pushpilot 会在 $1 之后恢复同步。'
 header:
   sections: 分区
   pausedHint: 通知已暂停。点击即可重新开启。

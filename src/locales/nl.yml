@@ -17,6 +17,7 @@ tabs:
   sms: Sms
 app:
   offline: Pushbullet is niet bereikbaar. We proberen het op de achtergrond opnieuw.
+  rateLimited: 'Pushbullet beperkt tijdelijk de verzoeken van je account (alle apps die je ermee gebruikt tellen mee). Pushpilot haalt het na $1 in.'
 header:
   sections: Secties
   pausedHint: Meldingen zijn gepauzeerd. Klik om ze weer aan te zetten.

@@ -18,6 +18,7 @@ tabs:
   sms: SMS
 app:
   offline: Impossible de joindre Pushbullet. Nouvelle tentative en arrière-plan.
+  rateLimited: 'Pushbullet limite temporairement les requêtes de votre compte (toutes les apps que vous utilisez avec comptent). Pushpilot rattrapera son retard après $1.'
 header:
   sections: Sections
   pausedHint: Les notifications sont en pause. Cliquez pour les réactiver.

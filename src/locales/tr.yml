@@ -16,6 +16,7 @@ tabs:
   sms: SMS
 app:
   offline: Pushbullet’a ulaşılamıyor. Arka planda yeniden deneniyor.
+  rateLimited: 'Pushbullet bir süreliğine hesabındaki istekleri sınırlıyor (onunla kullandığın tüm uygulamalar sayılır). Pushpilot $1 sonrasında eksikleri tamamlar.'
 header:
   sections: Bölümler
   pausedHint: Bildirimler duraklatıldı. Tekrar açmak için tıkla.
