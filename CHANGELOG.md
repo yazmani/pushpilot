@@ -24,6 +24,7 @@ All notable changes are listed here. The format follows [Keep a Changelog](https
 ### Fixed
 
 - The feed shows your whole history: about 100 pushes at sign-in, then older ones as you scroll, like the phone app. It used to show only the last few days.
+- The outlines of cards and chips are no longer cut off along the top, most visible in dark mode.
 - Sending texts from the SMS tab works again. Pushbullet retired the endpoint Pushpilot used, so texts failed with "Insufficient authorization"; Pushpilot now uses the current one.
 
 ## [1.2.0] - 2026-10-27
