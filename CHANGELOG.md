@@ -4,6 +4,14 @@ All notable changes are listed here. The format follows [Keep a Changelog](https
 
 ## [Unreleased]
 
+### Added
+
+- Sign-in codes in texts get a copy button: in the SMS list (while fresh), in the conversation, and on the desktop notification. "Copy one-time codes automatically" now covers texts too.
+
+### Changed
+
+- The Phone tab names the phone only when notifications come from more than one, and the SMS tab shows the phone's name instead of a menu when there's only one.
+
 ### Fixed
 
 - Sending texts from the SMS tab works again. Pushbullet retired the endpoint Pushpilot used, so texts failed with "Insufficient authorization"; Pushpilot now uses the current one.
