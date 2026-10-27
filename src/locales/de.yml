@@ -104,6 +104,15 @@ feed:
   searchLabel: Pushes durchsuchen
   closeSearch: Suche schließen
   everything: Alles
+  show: 'Anzeigen'
+  fileKind:
+    all: 'Alle'
+    image: 'Bilder'
+    video: 'Videos'
+    pdf: 'PDFs'
+    doc: 'Dokumente'
+    audio: 'Audio'
+    other: 'Sonstige'
   only:
     link: 'Links'
     note: 'Notizen'
@@ -395,3 +404,9 @@ bg:
   encrypted: Diese Daten sind Ende-zu-Ende-verschlüsselt. Gib dein Verschlüsselungspasswort in den Einstellungen ein.
   noAnswer: Der Hintergrunddienst von Pushpilot hat nicht geantwortet. Versuch es noch einmal.
   needsPro: 'Universelles Kopieren und Einfügen braucht Pushbullet Pro.'
+gallery:
+  close: 'Schließen'
+  previous: 'Vorheriges'
+  next: 'Nächstes'
+  open: 'Original öffnen'
+  count: '$1 von $2'

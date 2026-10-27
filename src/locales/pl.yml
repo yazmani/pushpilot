@@ -103,6 +103,15 @@ feed:
   searchLabel: Szukaj w pushach
   closeSearch: Zamknij wyszukiwanie
   everything: Wszystko
+  show: 'Pokaż'
+  fileKind:
+    all: 'Wszystkie'
+    image: 'Obrazy'
+    video: 'Filmy'
+    pdf: 'PDF'
+    doc: 'Dokumenty'
+    audio: 'Audio'
+    other: 'Inne'
   only:
     link: 'Linki'
     note: 'Notatki'
@@ -394,3 +403,9 @@ bg:
   encrypted: Te dane są zaszyfrowane end-to-end. Dodaj hasło szyfrowania w Ustawieniach.
   noAnswer: Proces w tle Pushpilot nie odpowiedział. Spróbuj ponownie.
   needsPro: 'Uniwersalne kopiowanie i wklejanie wymaga Pushbullet Pro.'
+gallery:
+  close: 'Zamknij'
+  previous: 'Poprzednie'
+  next: 'Następne'
+  open: 'Otwórz oryginał'
+  count: '$1 z $2'

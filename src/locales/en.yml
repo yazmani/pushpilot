@@ -105,6 +105,15 @@ feed:
   searchLabel: Search pushes
   closeSearch: Close search
   everything: Everything
+  show: 'Show'
+  fileKind:
+    all: 'All files'
+    image: 'Images'
+    video: 'Videos'
+    pdf: 'PDFs'
+    doc: 'Documents'
+    audio: 'Audio'
+    other: 'Other'
   only:
     link: 'Links'
     note: 'Notes'
@@ -396,3 +405,9 @@ bg:
   encrypted: This data is end-to-end encrypted. Add your encryption password in Settings.
   noAnswer: Pushpilot’s background worker did not answer. Try again.
   needsPro: 'Universal copy and paste needs Pushbullet Pro.'
+gallery:
+  close: 'Close'
+  previous: 'Previous'
+  next: 'Next'
+  open: 'Open original'
+  count: '$1 of $2'

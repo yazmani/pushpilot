@@ -105,6 +105,15 @@ feed:
   searchLabel: 搜尋推送
   closeSearch: 關閉搜尋
   everything: 全部
+  show: '顯示'
+  fileKind:
+    all: '全部'
+    image: '圖片'
+    video: '影片'
+    pdf: 'PDF'
+    doc: '文件'
+    audio: '音訊'
+    other: '其他'
   only:
     link: '連結'
     note: '筆記'
@@ -396,3 +405,9 @@ bg:
   encrypted: 這份資料經過端對端加密。請在設定中新增加密密碼。
   noAnswer: Pushpilot 的背景程序沒有回應。請再試一次。
   needsPro: '通用複製貼上需要 Pushbullet Pro。'
+gallery:
+  close: '關閉'
+  previous: '上一張'
+  next: '下一張'
+  open: '開啟原圖'
+  count: '第 $1 / $2 張'

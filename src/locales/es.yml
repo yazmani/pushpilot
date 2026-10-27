@@ -105,6 +105,15 @@ feed:
   searchLabel: Buscar envíos
   closeSearch: Cerrar búsqueda
   everything: Todo
+  show: 'Mostrar'
+  fileKind:
+    all: 'Todos'
+    image: 'Imágenes'
+    video: 'Videos'
+    pdf: 'PDF'
+    doc: 'Documentos'
+    audio: 'Audio'
+    other: 'Otros'
   only:
     link: 'Enlaces'
     note: 'Notas'
@@ -396,3 +405,9 @@ bg:
   encrypted: Estos datos están cifrados de extremo a extremo. Agrega tu contraseña de cifrado en Configuración.
   noAnswer: El proceso en segundo plano de Pushpilot no respondió. Inténtalo de nuevo.
   needsPro: 'Copiar y pegar universal requiere Pushbullet Pro.'
+gallery:
+  close: 'Cerrar'
+  previous: 'Anterior'
+  next: 'Siguiente'
+  open: 'Abrir original'
+  count: '$1 de $2'

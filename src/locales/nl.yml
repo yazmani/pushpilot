@@ -104,6 +104,15 @@ feed:
   searchLabel: Pushes doorzoeken
   closeSearch: Zoeken sluiten
   everything: Alles
+  show: 'Tonen'
+  fileKind:
+    all: 'Alle'
+    image: 'Afbeeldingen'
+    video: 'Video’s'
+    pdf: 'Pdf’s'
+    doc: 'Documenten'
+    audio: 'Audio'
+    other: 'Overig'
   only:
     link: 'Links'
     note: 'Notities'
@@ -395,3 +404,9 @@ bg:
   encrypted: Deze gegevens zijn end-to-end versleuteld. Voeg je versleutelingswachtwoord toe in Instellingen.
   noAnswer: Het achtergrondproces van Pushpilot reageerde niet. Probeer het opnieuw.
   needsPro: 'Universeel kopiëren en plakken vereist Pushbullet Pro.'
+gallery:
+  close: 'Sluiten'
+  previous: 'Vorige'
+  next: 'Volgende'
+  open: 'Origineel openen'
+  count: '$1 van $2'

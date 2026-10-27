@@ -1,4 +1,16 @@
-import { Check, Copy, Download, ExternalLink, Trash } from 'lucide-react';
+import {
+  Check,
+  Copy,
+  Download,
+  ExternalLink,
+  File as FileIcon,
+  FileArchive,
+  FileAudio,
+  FileImage,
+  FileText,
+  FileVideo,
+  Trash,
+} from 'lucide-react';
 import { call } from '@/core/messaging/rpc';
 import type { Chat, Device, Push, Subscription, User } from '@/core/pushbullet/types';
 import { deviceName, host, isImage, looksLikeUrl, personName, pushOpenUrl, pushText, timeAgo } from '@/core/utils/format';
@@ -6,8 +18,23 @@ import { Avatar, IconButton, LinkThumb, TypeTile } from '@/ui/components';
 import { type LinkPreview, urlPreview, youtubeId } from '@/core/utils/links';
 import { useNow } from '@/ui/hooks/use-now';
 import { useRun, useToast } from '@/ui/hooks/use-toast';
-import { counterpart } from './classify';
+import { counterpart, fileKind, type FileKind } from './classify';
 import { i18n } from '#i18n';
+
+const FILE_ICONS: Record<FileKind, typeof FileIcon> = {
+  image: FileImage,
+  video: FileVideo,
+  pdf: FileText,
+  doc: FileText,
+  audio: FileAudio,
+  other: FileArchive,
+};
+
+/** "PDF", "HTML"… from a file name, when it has a short extension. */
+function extension(name?: string) {
+  const ext = name?.match(/\.([a-z0-9]{1,5})$/i)?.[1];
+  return ext?.toUpperCase();
+}
 
 export interface FeedContext {
   devices: Device[];
@@ -101,6 +128,8 @@ export function FeedItem({
     <LinkThumb preview={preview} url={url} size={48} shape="wide" />
   ) : imageFile ? (
     <img src={imageFile} alt="" loading="lazy" className="h-12 w-[85px] shrink-0 rounded-xl object-cover ring-1 ring-black/5" />
+  ) : p.type === 'file' ? (
+    <TypeTile type="file" size={48} width={85} icon={FILE_ICONS[fileKind(p)]} label={extension(p.file_name)} />
   ) : (
     <TypeTile type={p.type} size={48} width={85} />
   );

@@ -105,6 +105,15 @@ feed:
   searchLabel: Tìm mục gửi
   closeSearch: Đóng tìm kiếm
   everything: Tất cả
+  show: 'Hiển thị'
+  fileKind:
+    all: 'Tất cả'
+    image: 'Hình ảnh'
+    video: 'Video'
+    pdf: 'PDF'
+    doc: 'Tài liệu'
+    audio: 'Âm thanh'
+    other: 'Khác'
   only:
     link: 'Liên kết'
     note: 'Ghi chú'
@@ -396,3 +405,9 @@ bg:
   encrypted: Dữ liệu này được mã hóa đầu cuối. Hãy thêm mật khẩu mã hóa trong Cài đặt.
   noAnswer: Tiến trình nền của Pushpilot không phản hồi. Hãy thử lại.
   needsPro: 'Sao chép và dán toàn cầu cần Pushbullet Pro.'
+gallery:
+  close: 'Đóng'
+  previous: 'Trước'
+  next: 'Tiếp'
+  open: 'Mở bản gốc'
+  count: '$1 / $2'

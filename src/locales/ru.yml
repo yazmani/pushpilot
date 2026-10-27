@@ -103,6 +103,15 @@ feed:
   searchLabel: Поиск по пушам
   closeSearch: Закрыть поиск
   everything: Всё
+  show: 'Показать'
+  fileKind:
+    all: 'Все'
+    image: 'Изображения'
+    video: 'Видео'
+    pdf: 'PDF'
+    doc: 'Документы'
+    audio: 'Аудио'
+    other: 'Другое'
   only:
     link: 'Ссылки'
     note: 'Заметки'
@@ -394,3 +403,9 @@ bg:
   encrypted: Эти данные защищены сквозным шифрованием. Добавьте пароль шифрования в настройках.
   noAnswer: Фоновый процесс Pushpilot не ответил. Попробуйте ещё раз.
   needsPro: 'Для универсального копирования и вставки нужен Pushbullet Pro.'
+gallery:
+  close: 'Закрыть'
+  previous: 'Назад'
+  next: 'Вперёд'
+  open: 'Открыть оригинал'
+  count: '$1 из $2'

@@ -96,14 +96,33 @@ const TYPE_STYLE: Record<PushType, string> = {
 };
 
 /** Tinted tile that tells links, notes and files apart at a glance. */
-export function TypeTile({ type, size = 32, width }: { type: PushType; size?: number; width?: number }) {
-  const Icon = type === 'link' ? Link2 : type === 'file' ? File : StickyNote;
+export function TypeTile({
+  type,
+  size = 32,
+  width,
+  icon,
+  label,
+}: {
+  type: PushType;
+  size?: number;
+  width?: number;
+  /** A more specific icon (a film for videos, say). */
+  icon?: typeof File;
+  /** Short text under the icon, like a file's extension. */
+  label?: string;
+}) {
+  const Icon = icon ?? (type === 'link' ? Link2 : type === 'file' ? File : StickyNote);
   return (
     <span
-      className={clsx('grid shrink-0 place-items-center', size >= 40 ? 'rounded-xl' : 'rounded-[10px]', TYPE_STYLE[type])}
+      className={clsx(
+        'flex shrink-0 flex-col items-center justify-center gap-0.5',
+        size >= 40 ? 'rounded-xl' : 'rounded-[10px]',
+        TYPE_STYLE[type],
+      )}
       style={{ width: width ?? size, height: size }}
     >
-      <Icon size={size * 0.48} strokeWidth={2} aria-hidden="true" />
+      <Icon size={label ? size * 0.36 : size * 0.48} strokeWidth={2} aria-hidden="true" />
+      {label && <span className="text-[9px] font-extrabold leading-none tracking-wide">{label}</span>}
     </span>
   );
 }

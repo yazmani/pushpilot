@@ -105,6 +105,15 @@ feed:
   searchLabel: Cari kiriman
   closeSearch: Tutup pencarian
   everything: Semua
+  show: 'Tampilkan'
+  fileKind:
+    all: 'Semua'
+    image: 'Gambar'
+    video: 'Video'
+    pdf: 'PDF'
+    doc: 'Dokumen'
+    audio: 'Audio'
+    other: 'Lainnya'
   only:
     link: 'Tautan'
     note: 'Catatan'
@@ -396,3 +405,9 @@ bg:
   encrypted: Data ini terenkripsi end-to-end. Tambahkan sandi enkripsi Anda di Setelan.
   noAnswer: Proses latar belakang Pushpilot tidak merespons. Coba lagi.
   needsPro: 'Salin-tempel universal memerlukan Pushbullet Pro.'
+gallery:
+  close: 'Tutup'
+  previous: 'Sebelumnya'
+  next: 'Berikutnya'
+  open: 'Buka asli'
+  count: '$1 dari $2'

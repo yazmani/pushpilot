@@ -105,6 +105,15 @@ feed:
   searchLabel: Pesquisar envios
   closeSearch: Fechar pesquisa
   everything: Tudo
+  show: 'Mostrar'
+  fileKind:
+    all: 'Todos'
+    image: 'Imagens'
+    video: 'Vídeos'
+    pdf: 'PDFs'
+    doc: 'Documentos'
+    audio: 'Áudio'
+    other: 'Outros'
   only:
     link: 'Links'
     note: 'Notas'
@@ -396,3 +405,9 @@ bg:
   encrypted: Estes dados têm criptografia de ponta a ponta. Adicione sua senha de criptografia nas Configurações.
   noAnswer: O processo em segundo plano do Pushpilot não respondeu. Tente de novo.
   needsPro: 'Copiar e colar universal requer o Pushbullet Pro.'
+gallery:
+  close: 'Fechar'
+  previous: 'Anterior'
+  next: 'Próxima'
+  open: 'Abrir original'
+  count: '$1 de $2'

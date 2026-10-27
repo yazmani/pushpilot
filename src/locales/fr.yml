@@ -105,6 +105,15 @@ feed:
   searchLabel: Rechercher des envois
   closeSearch: Fermer la recherche
   everything: Tout
+  show: 'Afficher'
+  fileKind:
+    all: 'Tous'
+    image: 'Images'
+    video: 'Vidéos'
+    pdf: 'PDF'
+    doc: 'Documents'
+    audio: 'Audio'
+    other: 'Autres'
   only:
     link: 'Liens'
     note: 'Notes'
@@ -396,3 +405,9 @@ bg:
   encrypted: Ces données sont chiffrées de bout en bout. Ajoutez votre mot de passe de chiffrement dans les Paramètres.
   noAnswer: Le service d’arrière-plan de Pushpilot n’a pas répondu. Réessayez.
   needsPro: 'Le copier-coller universel nécessite Pushbullet Pro.'
+gallery:
+  close: 'Fermer'
+  previous: 'Précédente'
+  next: 'Suivante'
+  open: 'Ouvrir l’original'
+  count: '$1 sur $2'

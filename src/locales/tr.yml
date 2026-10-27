@@ -103,6 +103,15 @@ feed:
   searchLabel: Gönderilerde ara
   closeSearch: Aramayı kapat
   everything: Tümü
+  show: 'Göster'
+  fileKind:
+    all: 'Tümü'
+    image: 'Görseller'
+    video: 'Videolar'
+    pdf: 'PDF’ler'
+    doc: 'Belgeler'
+    audio: 'Ses'
+    other: 'Diğer'
   only:
     link: 'Bağlantılar'
     note: 'Notlar'
@@ -394,3 +403,9 @@ bg:
   encrypted: Bu veri uçtan uca şifreli. Şifreleme parolanı Ayarlar’a ekle.
   noAnswer: Pushpilot’un arka plan işlemi yanıt vermedi. Tekrar dene.
   needsPro: 'Evrensel kopyala-yapıştır için Pushbullet Pro gerekir.'
+gallery:
+  close: 'Kapat'
+  previous: 'Önceki'
+  next: 'Sonraki'
+  open: 'Orijinali aç'
+  count: '$1 / $2'

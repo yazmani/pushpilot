@@ -105,6 +105,15 @@ feed:
   searchLabel: البحث في عمليات الإرسال
   closeSearch: إغلاق البحث
   everything: الكل
+  show: 'عرض'
+  fileKind:
+    all: 'كل الملفات'
+    image: 'الصور'
+    video: 'الفيديوهات'
+    pdf: 'ملفات PDF'
+    doc: 'المستندات'
+    audio: 'الصوت'
+    other: 'أخرى'
   only:
     link: 'الروابط'
     note: 'الملاحظات'
@@ -396,3 +405,9 @@ bg:
   encrypted: هذه البيانات مشفّرة تشفيرًا تامًا بين الطرفين. أضف كلمة مرور التشفير في الإعدادات.
   noAnswer: لم تستجب العملية الخلفية في Pushpilot. حاول مرة أخرى.
   needsPro: 'تتطلب ميزة النسخ واللصق الشامل اشتراك Pushbullet Pro.'
+gallery:
+  close: 'إغلاق'
+  previous: 'السابق'
+  next: 'التالي'
+  open: 'فتح الأصل'
+  count: '$1 من $2'

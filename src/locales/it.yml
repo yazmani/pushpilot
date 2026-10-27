@@ -104,6 +104,15 @@ feed:
   searchLabel: Cerca push
   closeSearch: Chiudi ricerca
   everything: Tutto
+  show: 'Mostra'
+  fileKind:
+    all: 'Tutti'
+    image: 'Immagini'
+    video: 'Video'
+    pdf: 'PDF'
+    doc: 'Documenti'
+    audio: 'Audio'
+    other: 'Altro'
   only:
     link: 'Link'
     note: 'Note'
@@ -395,3 +404,9 @@ bg:
   encrypted: Questi dati sono crittografati end-to-end. Aggiungi la password di crittografia nelle Impostazioni.
   noAnswer: Il processo in background di Pushpilot non ha risposto. Riprova.
   needsPro: 'Il copia e incolla universale richiede Pushbullet Pro.'
+gallery:
+  close: 'Chiudi'
+  previous: 'Precedente'
+  next: 'Successiva'
+  open: 'Apri originale'
+  count: '$1 di $2'
