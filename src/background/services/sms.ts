@@ -44,18 +44,29 @@ export async function fetchThread(device: string, thread: string, maxAgeMs = 15_
   return list;
 }
 
+/** Forgets cached conversations of a phone: the given threads, or all of them. */
+async function dropThreads(device: string, threads: string[] | null) {
+  const prefix = `smsThread:${device}:`;
+  const keys = threads
+    ? threads.map((t) => prefix + t)
+    : Object.keys(await browser.storage.session.get(null)).filter((k) => k.startsWith(prefix));
+  await browser.storage.session.remove(keys);
+}
+
 export async function sendSms(device: string, addresses: string[], message: string) {
   const pb = await requireClient();
   await guard(() => pb.sendText(device, addresses, message, uid()));
   await invalidate(`sms:${device}`);
   // The sent text shows up in its conversation once the phone has sent it.
-  const keys = Object.keys(await browser.storage.session.get(null)).filter((k) => k.startsWith(`smsThread:${device}:`));
-  await browser.storage.session.remove(keys);
+  await dropThreads(device, null);
 }
 
 export async function handleSmsChanged(push: SmsChangedPush) {
   const device = push.source_device_iden;
-  for (const n of push.notifications ?? []) await browser.storage.session.remove(`smsThread:${device}:${n.thread_id}`);
+  // Pushbullet says which threads have new texts; for a sent text it lists none,
+  // so then every cached conversation of that phone is dropped.
+  const changed = push.notifications?.length ? push.notifications.map((n) => n.thread_id) : null;
+  await dropThreads(device, changed);
   void fetchThreads(device, true).catch(() => undefined);
   const notices = push.notifications ?? [];
   if (!notices.length) return;
