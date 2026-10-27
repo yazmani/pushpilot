@@ -35,6 +35,18 @@ Loads the real built extension in Chrome for Testing (or Brave with `BROWSER_PAT
 
 Everything it creates is deleted afterwards, including the test device.
 
+## Phone suite (`npm run test:phone`)
+
+Runs the built extension against an Android phone or the emulator (see the recipe below) with Pushbullet's SMS sync and notification mirroring on. Set `PHONE` to the phone's device iden (and `ADB` if `adb` isn't on your path).
+
+| Step | What it proves |
+| --- | --- |
+| SMS threads load | The phone's conversations come through |
+| Incoming text | A text arriving on the phone raises a desktop notification |
+| Send a text | A text sent from Pushpilot reaches the phone's sent box |
+| Phone notification | A notification posted on the phone is mirrored, with its sign-in code detected |
+| Dismiss | Dismissing it in Pushpilot clears it on the phone |
+
 ## Not yet covered by automated tests
 
 These are implemented against Pushbullet's protocol (the same calls the official apps and web app make), but the maintainer's test account couldn't exercise them end to end. Reports from people with the right setup are very welcome.
@@ -42,8 +54,7 @@ These are implemented against Pushbullet's protocol (the same calls the official
 | Feature | Why it isn't automated | How to help |
 | --- | --- | --- |
 | Sign in with Pushbullet (OAuth) | Needs an interactive Pushbullet login; the suite checks the redirect URL matches the store ID | Sign out, then sign in with the button, and report |
-| Notification mirroring: receive, dismiss, actions, quick reply | Needs an Android phone with mirroring on | Try each on a phone and report |
-| Sending SMS | Needs a connected Android phone with SMS sync | Send a text from the SMS tab |
+| Notification mirroring: actions, quick reply | Needs an app that offers them on a real phone (receive, code copy and dismiss are covered by `npm run test:phone`) | Try them on a phone and report |
 | SMS with end-to-end encryption on | Needs a phone with encryption enabled | Same as above with encryption on |
 | Universal copy and paste | Needs Pushbullet Pro | Copy on one device, check the other |
 | Right-click menu and keyboard shortcuts | Browser automation can't trigger them (the suite does run what ⌘⇧9 runs) | Use them, including ⌘⇧9 / ⌘⇧8 from another app, and report |

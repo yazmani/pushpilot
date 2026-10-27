@@ -187,6 +187,6 @@ export class Pushbullet {
         ciphertext: await encrypt(this.e2eKey, JSON.stringify(data)),
       };
     }
-    return this.call<Json>('/v3/create-text', { body: { data } });
+    return this.call<Json>('/v2/texts', { body: { data } });
   }
 }
