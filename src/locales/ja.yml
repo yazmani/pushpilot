@@ -53,6 +53,7 @@ send:
   file: ファイル
   clipboard: クリップボード
   clipboardHint: 'コピーした内容を貼り付けて、すぐに送信'
+  clear: 'クリア'
   uploading: アップロード中…
   sending: 送信中…
   sendTo: $1 に送信
@@ -321,6 +322,9 @@ settings:
   otherBrowsers: '他のブラウザ宛てのプッシュ'
   otherBrowsersHint: 'スマートフォンでは、古い Pushbullet 拡張機能が「Chrome」と表示されている場合があります。プッシュをここで受け取りたいブラウザにチェックを入れてください。'
   renameLabel: '他のデバイスに表示されるこのブラウザの名前'
+  renameDevice: '$1 の名前を変更'
+  save: '保存'
+  cancel: 'キャンセル'
   rename: '名前を変更'
   e2eOn: 'エンドツーエンド暗号化はオンです'
   e2eOff: 'エンドツーエンド暗号化はオフです'

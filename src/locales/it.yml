@@ -52,6 +52,7 @@ send:
   file: File
   clipboard: Appunti
   clipboardHint: 'Incolla ciò che hai copiato, pronto da inviare'
+  clear: 'Cancella'
   uploading: Caricamento…
   sending: Invio…
   sendTo: Invia a $1
@@ -320,6 +321,9 @@ settings:
   otherBrowsers: Push inviati a un altro browser
   otherBrowsersHint: Il telefono potrebbe ancora mostrare la vecchia estensione Pushbullet come «Chrome». Seleziona i browser i cui push devono arrivare qui.
   renameLabel: Nome di questo browser sugli altri tuoi dispositivi
+  renameDevice: 'Rinomina $1'
+  save: 'Salva'
+  cancel: 'Annulla'
   rename: Rinomina
   e2eOn: La crittografia end-to-end è attiva
   e2eOff: La crittografia end-to-end è disattivata

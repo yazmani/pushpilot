@@ -52,6 +52,7 @@ send:
   file: Datei
   clipboard: Zwischenablage
   clipboardHint: 'Füg ein, was du kopiert hast, bereit zum Senden'
+  clear: 'Leeren'
   uploading: Wird hochgeladen…
   sending: Wird gesendet…
   sendTo: An $1 senden
@@ -320,6 +321,9 @@ settings:
   otherBrowsers: Pushes an einen anderen Browser
   otherBrowsersHint: Dein Handy listet die alte Pushbullet-Erweiterung eventuell noch als „Chrome“. Hak jeden Browser an, dessen Pushes hier ankommen sollen.
   renameLabel: Name dieses Browsers auf deinen anderen Geräten
+  renameDevice: '$1 umbenennen'
+  save: 'Speichern'
+  cancel: 'Abbrechen'
   rename: Umbenennen
   e2eOn: Ende-zu-Ende-Verschlüsselung ist an
   e2eOff: Ende-zu-Ende-Verschlüsselung ist aus

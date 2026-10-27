@@ -53,6 +53,7 @@ send:
   file: File
   clipboard: Papan klip
   clipboardHint: 'Tempel yang Anda salin, siap dikirim'
+  clear: 'Hapus'
   uploading: Mengunggah…
   sending: Mengirim…
   sendTo: Kirim ke $1
@@ -321,6 +322,9 @@ settings:
   otherBrowsers: Kiriman ke browser lain
   otherBrowsersHint: Ponsel Anda mungkin masih mencantumkan ekstensi Pushbullet lama sebagai “Chrome”. Centang browser mana pun yang kirimannya harus sampai di sini.
   renameLabel: Nama browser ini di perangkat Anda yang lain
+  renameDevice: 'Ganti nama $1'
+  save: 'Simpan'
+  cancel: 'Batal'
   rename: Ganti nama
   e2eOn: Enkripsi end-to-end aktif
   e2eOff: Enkripsi end-to-end nonaktif

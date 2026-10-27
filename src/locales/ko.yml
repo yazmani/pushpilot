@@ -53,6 +53,7 @@ send:
   file: 파일
   clipboard: 클립보드
   clipboardHint: '복사한 내용을 붙여넣어 바로 보내기'
+  clear: '지우기'
   uploading: 업로드 중…
   sending: 보내는 중…
   sendTo: $1(으)로 보내기
@@ -321,6 +322,9 @@ settings:
   otherBrowsers: '다른 브라우저로 보낸 푸시'
   otherBrowsersHint: '휴대폰에는 예전 Pushbullet 확장 프로그램이 ‘Chrome’으로 표시될 수 있어요. 여기서 푸시를 받을 브라우저를 선택하세요.'
   renameLabel: '다른 기기에 표시되는 이 브라우저의 이름'
+  renameDevice: '$1 이름 바꾸기'
+  save: '저장'
+  cancel: '취소'
   rename: '이름 바꾸기'
   e2eOn: '엔드투엔드 암호화 사용 중'
   e2eOff: '엔드투엔드 암호화 사용 안 함'

@@ -7,9 +7,12 @@ All notable changes are listed here. The format follows [Keep a Changelog](https
 ### Added
 
 - Pushpilot speaks 17 languages: English, Arabic, German, Spanish, French, Indonesian, Italian, Japanese, Korean, Dutch, Polish, Portuguese (Brazil), Russian, Turkish, Vietnamese and Chinese (Simplified and Traditional). It follows the browser's language, and Arabic gets a mirrored right-to-left layout.
+- Rename any of your devices from Settings › Devices.
+- A Clear button empties a note you started writing.
 
 ### Fixed
 
+- Text you write or receive in a right-to-left language (Arabic, Hebrew…) now reads right to left in the composer, feed, chats, phone notifications and texts, whatever language Pushpilot is in.
 - The Clipboard button no longer fails with "Pushbullet Pro is required". It now pastes what you copied into the composer, ready to send: an image as a file, an address as a link, anything else as a note. Universal copy and paste (Pushbullet Pro) keeps its keyboard shortcut, and explains that it needs Pro instead of failing.
 
 ## [1.1.1] - 2026-10-26

@@ -53,6 +53,7 @@ send:
   file: Arquivo
   clipboard: Área de transferência
   clipboardHint: 'Cole o que você copiou, pronto para enviar'
+  clear: 'Limpar'
   uploading: Enviando arquivo…
   sending: Enviando…
   sendTo: Enviar para $1
@@ -321,6 +322,9 @@ settings:
   otherBrowsers: 'Envios para outro navegador'
   otherBrowsersHint: 'Seu celular ainda pode listar a antiga extensão do Pushbullet como “Chrome”. Marque os navegadores cujos envios devem chegar aqui.'
   renameLabel: 'Nome deste navegador nos seus outros dispositivos'
+  renameDevice: 'Renomear $1'
+  save: 'Salvar'
+  cancel: 'Cancelar'
   rename: 'Renomear'
   e2eOn: 'A criptografia de ponta a ponta está ativada'
   e2eOff: 'A criptografia de ponta a ponta está desativada'

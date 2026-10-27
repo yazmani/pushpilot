@@ -51,6 +51,7 @@ send:
   file: Dosya
   clipboard: Pano
   clipboardHint: 'Kopyaladığını yapıştır, göndermeye hazır'
+  clear: 'Temizle'
   uploading: Yükleniyor…
   sending: Gönderiliyor…
   sendTo: 'Gönder: $1'
@@ -319,6 +320,9 @@ settings:
   otherBrowsers: Başka bir tarayıcıya gönderilenler
   otherBrowsersHint: Telefonun eski Pushbullet eklentisini hâlâ “Chrome” olarak listeleyebilir. Gönderileri buraya gelmesi gereken tarayıcıları işaretle.
   renameLabel: Bu tarayıcının diğer cihazlarındaki adı
+  renameDevice: 'Yeniden adlandır: $1'
+  save: 'Kaydet'
+  cancel: 'İptal'
   rename: Yeniden adlandır
   e2eOn: Uçtan uca şifreleme açık
   e2eOff: Uçtan uca şifreleme kapalı

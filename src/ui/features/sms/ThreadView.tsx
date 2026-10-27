@@ -120,7 +120,11 @@ export function ThreadView({ device, thread, onBack }: { device: string; thread:
                     {m.image_urls?.map((u) => (
                       <img key={u} src={u} alt="" className="mb-1 max-h-48 rounded-lg" />
                     ))}
-                    {m.body && <p className="whitespace-pre-wrap break-words">{m.body}</p>}
+                    {m.body && (
+                      <p dir="auto" className="whitespace-pre-wrap break-words">
+                        {m.body}
+                      </p>
+                    )}
                   </div>
                   <span className="mt-0.5 px-1 text-2xs text-faint">
                     {m.pending ? i18n.t('send.sending') : clockTime(m.timestamp)}

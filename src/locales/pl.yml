@@ -51,6 +51,7 @@ send:
   file: Plik
   clipboard: Schowek
   clipboardHint: 'Wklej to, co skopiowano, i wyślij'
+  clear: 'Wyczyść'
   uploading: Przesyłanie…
   sending: Wysyłanie…
   sendTo: 'Wyślij: $1'
@@ -319,6 +320,9 @@ settings:
   otherBrowsers: Pushe wysłane do innej przeglądarki
   otherBrowsersHint: Telefon może nadal pokazywać stare rozszerzenie Pushbullet jako „Chrome”. Zaznacz przeglądarki, których pushe mają trafiać tutaj.
   renameLabel: Nazwa tej przeglądarki na innych twoich urządzeniach
+  renameDevice: 'Zmień nazwę: $1'
+  save: 'Zapisz'
+  cancel: 'Anuluj'
   rename: Zmień nazwę
   e2eOn: Szyfrowanie end-to-end jest włączone
   e2eOff: Szyfrowanie end-to-end jest wyłączone

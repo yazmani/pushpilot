@@ -173,7 +173,7 @@ function ThreadRow({ t, onOpen }: { t: SmsThread; onOpen: () => void }) {
             <span className="truncate text-sm font-bold">{name}</span>
             {t.latest && <span className="ms-auto shrink-0 text-2xs font-medium text-faint">{timeAgo(t.latest.timestamp)}</span>}
           </span>
-          <span className="mt-0.5 block truncate text-xs text-muted">
+          <span dir="auto" className="mt-0.5 block truncate text-xs text-muted">
             {t.latest?.direction === 'outgoing' && i18n.t('sms.you')}
             {t.latest?.body || (t.latest?.image_urls?.length ? i18n.t('sms.photo') : '')}
           </span>

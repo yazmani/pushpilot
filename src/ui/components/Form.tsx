@@ -109,6 +109,7 @@ export function MessageComposer({
       }}
     >
       <textarea
+        dir="auto"
         ref={ref}
         value={value}
         onChange={(e) => onChange(e.target.value)}

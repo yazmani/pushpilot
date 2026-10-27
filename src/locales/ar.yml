@@ -53,6 +53,7 @@ send:
   file: ملف
   clipboard: الحافظة
   clipboardHint: 'الصق ما نسخته، جاهزًا للإرسال'
+  clear: 'مسح'
   uploading: جارٍ الرفع…
   sending: جارٍ الإرسال…
   sendTo: إرسال إلى $1
@@ -321,6 +322,9 @@ settings:
   otherBrowsers: ما يُرسل إلى متصفح آخر
   otherBrowsersHint: قد يظل هاتفك يعرض إضافة Pushbullet القديمة باسم «Chrome». حدّد أي متصفح تريد أن تصل إلى هنا عمليات الإرسال الموجّهة إليه.
   renameLabel: اسم هذا المتصفح على أجهزتك الأخرى
+  renameDevice: 'إعادة تسمية $1'
+  save: 'حفظ'
+  cancel: 'إلغاء'
   rename: إعادة تسمية
   e2eOn: التشفير التام بين الطرفين مفعّل
   e2eOff: التشفير التام بين الطرفين متوقف
