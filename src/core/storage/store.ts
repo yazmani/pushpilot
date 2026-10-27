@@ -11,6 +11,7 @@ import type {
   User,
 } from '@/core/pushbullet/types';
 import type { LinkPreview } from '@/core/utils/links';
+import type { OutboxItem } from '@/background/services/outbox';
 
 export type Theme = 'system' | 'light' | 'dark';
 export type Tab = 'send' | 'feed' | 'phone' | 'sms';
@@ -150,6 +151,8 @@ export interface Schema {
   lastError: string | null;
   /** Pushbullet is rate-limiting the account until then (ms since epoch). */
   rateLimitedUntil: number;
+  /** Pushes waiting for the connection to come back (see background/services/outbox.ts). */
+  outbox: OutboxItem[];
   /** Hand-off from the context menu / notifications to the popup. */
   intent: { view: Tab; thread?: string; device?: string; mirror?: string } | null;
   /** Successful sends from this install, for the one-time support prompt. */
@@ -160,6 +163,12 @@ export interface Schema {
   settingsVersion: number;
   /** Minor version ("1.1") whose What's new card was dismissed, or set on a fresh install. */
   whatsNewSeen: string;
+  /** The first-run checklist in the Send view; on for new installs until finished or dismissed. */
+  setupGuide: boolean;
+  /** The push-clipboard shortcut was used at least once (a step of the checklist). */
+  triedShortcut: boolean;
+  /** Device warnings (see core/setup.ts) dismissed from the popup, by issueKey(). */
+  dismissedIssues: string[];
 }
 
 export const defaults: Schema = {
@@ -184,11 +193,15 @@ export const defaults: Schema = {
   connection: 'signed-out',
   lastError: null,
   rateLimitedUntil: 0,
+  outbox: [],
   intent: null,
   sendCount: 0,
   supportPromptSeen: false,
   settingsVersion: 0,
   whatsNewSeen: '',
+  setupGuide: false,
+  triedShortcut: false,
+  dismissedIssues: [],
 };
 
 export type Key = keyof Schema;
@@ -265,6 +278,7 @@ export const accountKeys: Key[] = [
   'pushes',
   'pushCursor',
   'historyCursor',
+  'outbox',
   'mirrors',
   'smsThreads',
   'smsNotices',

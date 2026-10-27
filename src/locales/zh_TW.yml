@@ -58,6 +58,7 @@ send:
   uploading: 上傳中…
   sending: 傳送中…
   sendTo: 傳送到 $1
+  queued: '沒有網路連線。恢復連線後會自動傳送。'
 targets:
   all: 所有裝置
   allSub: 全部傳送
@@ -94,6 +95,11 @@ whatsNew:
   title: Pushpilot $1 新功能
   seeAll: 查看所有變更
   label: 新功能
+  v1_3:
+    history: '在動態中查看完整推送記錄，圖片以相簿呈現，檔案依類型分類。'
+    codes: '簡訊中的登入驗證碼會附上複製按鈕。'
+    outbox: '離線時傳送的推送會排隊等候，恢復連線後自動送出。可一次選取多則推送並一併清除。'
+    phones: '手機悄悄停止接收推送時會提醒你；另新增「複製診斷資訊」，方便回報問題。'
   v1_2:
     languages: 'Pushpilot 現已支援 17 種語言，並依瀏覽器的語言顯示。'
   v1_1:
@@ -128,6 +134,15 @@ feed:
   siteVideo: $1 影片
   openConversation: 開啟與 $1 的對話
   new: 新
+  select: '選取推送'
+  selectAll: '全選'
+  selectNone: '取消全選'
+  selected:
+    1: '已選取 1 項'
+    n: '已選取 $1 項'
+  markDone: '標示完成'
+  delete: '刪除'
+  selectDone: '完成'
 device:
   unknown: 不明裝置
   unnamed: 未命名的裝置
@@ -325,6 +340,9 @@ settings:
   rate: '在 Chrome Web Store 中評分'
   star: '在 GitHub 上加星號'
   report: '回報問題'
+  diagnostics: '複製診斷資訊'
+  diagnosticsHint: '要回報問題嗎？請將這段內容貼到回報中。其中包含版本、設定和數量，絕不包含名稱、裝置或你推送的內容。'
+  diagnosticsCopied: '已複製診斷資訊'
   thisBrowser: '這個瀏覽器'
   deviceLine: '$1。上次使用：$2'
   deviceLineSms: '$1，可傳簡訊。上次使用：$2'
@@ -412,3 +430,34 @@ gallery:
   next: '下一張'
   open: '開啟原圖'
   count: '第 $1 / $2 張'
+setup:
+  noPhoneTitle: '沒有連線的手機'
+  noPhoneBody: '在手機上安裝 Pushbullet 並登入同一個帳戶，即可從這裡傳送內容給它、查看它的通知並傳送簡訊。'
+  getApp: '取得應用程式'
+  phoneGoneTitle: '$1 已停止接收推送'
+  phoneGoneBody: '在該裝置上開啟 Pushbullet 並重新登入。如果你已更換這支手機，請將它從 Pushbullet 裝置中移除。'
+  quietTitle: '$1 還在連線嗎？'
+  quietBody: '自 $1 起就沒有收到它的任何內容。請在手機上開啟 Pushbullet，並確認省電功能沒有讓應用程式進入休眠。'
+  sameNameTitle: '有兩台裝置都叫「$1」'
+  sameNameBody: '請重新命名其中一台，以便知道你要傳送到哪一台。'
+guide:
+  title: '開始設定'
+  progress: '$1 / $2'
+  done: '已完成'
+  todo: '待完成'
+  phone: '連線手機'
+  phoneHint: '在手機上安裝 Pushbullet 並登入同一個帳戶。'
+  pin: '將 Pushpilot 釘選到工具列'
+  pinHint: '按一下網址列旁的拼圖圖示，然後按一下 Pushpilot 旁的圖釘。'
+  mirror: '在這裡查看手機通知'
+  mirrorHint: '在手機上的 Pushbullet 中開啟「通知鏡像」。下一則通知會顯示在「手機」分頁中。'
+  sms: '在電腦上傳簡訊'
+  smsHint: '在手機上的 Pushbullet 中啟用簡訊功能，然後在這裡開啟「簡訊」分頁。'
+  shortcut: '按下 $1 推送複製的內容'
+  shortcutHint: '在任何地方複製連結或文字，按下快速鍵，內容就會送到你的手機。'
+outbox:
+  title: '等待傳送'
+  hint: '恢復連線後會立即傳送。'
+  retry: '重試'
+  cancel: '取消'
+  failed: '無法傳送：$1'

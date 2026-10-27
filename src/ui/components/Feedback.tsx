@@ -86,7 +86,7 @@ export function SectionLabel({ children, action }: { children: ReactNode; action
 /** Inset grouped list: one rounded container, hairlines between rows. */
 export function Group({ children, className }: { children: ReactNode; className?: string }) {
   return (
-    <ul className={clsx('divide-y divide-line overflow-hidden rounded-2xl bg-surface shadow-sm ring-1 ring-line', className)}>
+    <ul className={clsx('divide-y divide-line overflow-hidden rounded-2xl border border-line bg-surface shadow-sm', className)}>
       {children}
     </ul>
   );

@@ -58,6 +58,7 @@ send:
   uploading: 正在上传…
   sending: 正在发送…
   sendTo: 发送到 $1
+  queued: '无网络连接。恢复联网后会自动发送。'
 targets:
   all: 所有设备
   allSub: 全部发送
@@ -94,6 +95,11 @@ whatsNew:
   title: Pushpilot $1 新功能
   seeAll: 查看所有更新
   label: 新功能
+  v1_3:
+    history: '动态中可查看全部推送历史，图片以图库展示，文件按类型分类。'
+    codes: '短信中的登录验证码会附带复制按钮。'
+    outbox: '离线时发送的推送会排队等待，恢复联网后自动发出。可一次选择多条推送统一清理。'
+    phones: '手机悄悄停止接收推送时会发出提醒；另新增“复制诊断信息”，方便报告问题。'
   v1_2:
     languages: 'Pushpilot 现已支持 17 种语言，并跟随浏览器的语言显示。'
   v1_1:
@@ -128,6 +134,15 @@ feed:
   siteVideo: $1 视频
   openConversation: 打开与 $1 的对话
   new: 新
+  select: '选择推送'
+  selectAll: '全选'
+  selectNone: '取消全选'
+  selected:
+    1: '已选择 1 项'
+    n: '已选择 $1 项'
+  markDone: '标记完成'
+  delete: '删除'
+  selectDone: '完成'
 device:
   unknown: 未知设备
   unnamed: 未命名设备
@@ -325,6 +340,9 @@ settings:
   rate: '在 Chrome Web Store 中评分'
   star: '在 GitHub 上加星标'
   report: '报告问题'
+  diagnostics: '复制诊断信息'
+  diagnosticsHint: '要报告问题？把它粘贴到报告中。其中包含版本、设置和数量，绝不包含名称、设备或你推送的内容。'
+  diagnosticsCopied: '已复制诊断信息'
   thisBrowser: '此浏览器'
   deviceLine: '$1。上次活跃：$2'
   deviceLineSms: '$1，可发短信。上次活跃：$2'
@@ -412,3 +430,34 @@ gallery:
   next: '下一张'
   open: '打开原图'
   count: '第 $1 / $2 张'
+setup:
+  noPhoneTitle: '未连接手机'
+  noPhoneBody: '在手机上安装 Pushbullet 并登录同一账户，即可从这里向它发送内容、查看它的通知并发送短信。'
+  getApp: '获取应用'
+  phoneGoneTitle: '$1 已停止接收推送'
+  phoneGoneBody: '在该设备上打开 Pushbullet 并重新登录。如果你已更换这部手机，请将它从 Pushbullet 设备中移除。'
+  quietTitle: '$1 还在连接吗？'
+  quietBody: '自 $1 起没有收到它的任何内容。请在手机上打开 Pushbullet，并检查省电功能是否让应用进入了休眠。'
+  sameNameTitle: '有两台设备都叫“$1”'
+  sameNameBody: '请重命名其中一台，以便知道你在发送到哪一台。'
+guide:
+  title: '开始设置'
+  progress: '$1 / $2'
+  done: '已完成'
+  todo: '待完成'
+  phone: '连接手机'
+  phoneHint: '在手机上安装 Pushbullet 并登录同一账户。'
+  pin: '将 Pushpilot 固定到工具栏'
+  pinHint: '点击地址栏旁的拼图图标，然后点击 Pushpilot 旁的图钉。'
+  mirror: '在这里查看手机通知'
+  mirrorHint: '在手机上的 Pushbullet 中开启“通知镜像”。下一条通知将显示在“手机”标签页中。'
+  sms: '在电脑上发短信'
+  smsHint: '在手机上的 Pushbullet 中开启短信功能，然后在这里打开“短信”标签页。'
+  shortcut: '按 $1 推送复制的内容'
+  shortcutHint: '在任意位置复制链接或文字，按下快捷键，内容就会送到你的手机上。'
+outbox:
+  title: '等待发送'
+  hint: '恢复联网后会立即发送。'
+  retry: '重试'
+  cancel: '取消'
+  failed: '无法发送：$1'

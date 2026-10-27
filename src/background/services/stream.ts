@@ -8,6 +8,7 @@ import { type DismissalPush, handleDismissal, handleMirror, type MirrorPush } fr
 import { show } from '@/background/platform/notifications';
 import { copyText } from '@/background/platform/offscreen';
 import { syncPushes } from '@/background/services/pushes';
+import { flushOutbox } from '@/background/services/outbox';
 import { handleSmsChanged, type SmsChangedPush } from '@/background/services/sms';
 import { i18n } from '#i18n';
 
@@ -67,6 +68,7 @@ export async function connect() {
     // Catch up on anything pushed while we were away. Device changes come as
     // tickles; a reconnect only rechecks them every 10 minutes.
     void syncPushes({ reconnect: true }).catch(() => undefined);
+    void flushOutbox().catch(() => undefined);
     void due('devices', 10 * 60_000).then((stale) => {
       if (stale) void ensureSelfDevice().catch(() => undefined);
     });

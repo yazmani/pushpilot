@@ -38,7 +38,7 @@ export function startBackground() {
     void rebuildMenus();
     if (reason === 'install') {
       // New installs have nothing to catch up on; What's new is for updates.
-      await store.set({ whatsNewSeen: minorVersion(browser.runtime.getManifest().version) });
+      await store.set({ whatsNewSeen: minorVersion(browser.runtime.getManifest().version), setupGuide: true });
       if (!(await store.get('token'))) await browser.runtime.openOptionsPage();
     }
   });

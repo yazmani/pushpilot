@@ -8,8 +8,16 @@ import { show } from '@/background/platform/notifications';
 import { playSound } from '@/background/platform/offscreen';
 import { fetchPreviews, savePreview } from '@/background/services/previews';
 import { clearMirrors, dismissMirror, replyToMirror, triggerMirrorAction } from '@/background/services/mirror';
-import { clearAllPushNotifications, deletePush, dismissPush, loadOlderPushes } from '@/background/services/pushes';
-import { pushClipboard, sendPush } from '@/background/services/send';
+import {
+  clearAllPushNotifications,
+  deletePush,
+  deletePushes,
+  dismissPush,
+  dismissPushes,
+  loadOlderPushes,
+} from '@/background/services/pushes';
+import { pushClipboard } from '@/background/services/send';
+import { cancelOutboxItem, retryOutboxItem, sendOrQueue } from '@/background/services/outbox';
 import { fetchThread, fetchThreads, sendSms } from '@/background/services/sms';
 import { reconnect } from '@/background/services/stream';
 import { i18n } from '#i18n';
@@ -26,9 +34,15 @@ const handlers: Handlers = {
     await bootstrap();
   },
   reconnect: () => reconnect(),
-  'push.send': ({ push, targets }) => sendPush(push, targets),
+  'push.send': ({ push, targets }) => sendOrQueue(push, targets),
+  'outbox.retry': ({ id }) => retryOutboxItem(id),
+  'outbox.cancel': async ({ id }) => {
+    await cancelOutboxItem(id);
+  },
   'push.dismiss': ({ iden }) => dismissPush(iden),
   'push.delete': ({ iden }) => deletePush(iden),
+  'push.dismissMany': ({ idens }) => dismissPushes(idens),
+  'push.deleteMany': ({ idens }) => deletePushes(idens),
   'pushes.older': () => loadOlderPushes(),
   'unread.clear': async ({ view }) => {
     await store.update('unread', (u) => ({ ...u, [view]: 0 }));

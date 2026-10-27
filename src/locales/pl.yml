@@ -56,6 +56,7 @@ send:
   uploading: Przesyłanie…
   sending: Wysyłanie…
   sendTo: 'Wyślij: $1'
+  queued: 'Brak połączenia. Zostanie wysłane, gdy wrócisz online.'
 targets:
   all: Wszystkie urządzenia
   allSub: Wszędzie
@@ -92,6 +93,11 @@ whatsNew:
   title: Nowości w Pushpilot $1
   seeAll: Zobacz wszystkie zmiany
   label: Co nowego
+  v1_3:
+    history: 'Cała historia pushy w Aktywności, z obrazami w galerii i plikami posortowanymi według typu.'
+    codes: 'Kody logowania w SMS-ach mają przycisk kopiowania.'
+    outbox: 'Pushe wysłane offline czekają i wychodzą, gdy wrócisz online. Zaznacz wiele pushy, aby uporządkować je za jednym razem.'
+    phones: 'Ostrzeżenie, gdy telefon po cichu przestaje odbierać pushe, oraz Kopiuj diagnostykę do zgłaszania błędów.'
   v1_2:
     languages: 'Pushpilot obsługuje teraz 17 języków i używa języka Twojej przeglądarki.'
   v1_1:
@@ -126,6 +132,15 @@ feed:
   siteVideo: Wideo $1
   openConversation: 'Otwórz rozmowę: $1'
   new: Nowe
+  select: 'Zaznacz pushe'
+  selectAll: 'Zaznacz wszystkie'
+  selectNone: 'Odznacz wszystkie'
+  selected:
+    1: 'Zaznaczono 1'
+    n: 'Zaznaczono: $1'
+  markDone: 'Gotowe'
+  delete: 'Usuń'
+  selectDone: 'Zakończ'
 device:
   unknown: Nieznane urządzenie
   unnamed: Urządzenie bez nazwy
@@ -323,6 +338,9 @@ settings:
   rate: Oceń w Chrome Web Store
   star: Daj gwiazdkę na GitHubie
   report: Zgłoś problem
+  diagnostics: 'Kopiuj diagnostykę'
+  diagnosticsHint: 'Zgłaszasz problem? Wklej to do zgłoszenia. Zawiera wersje, ustawienia i liczniki, nigdy nazwy, urządzenia ani treść wysłanych pushy.'
+  diagnosticsCopied: 'Skopiowano diagnostykę'
   thisBrowser: ta przeglądarka
   deviceLine: '$1. Ostatnia aktywność: $2'
   deviceLineSms: '$1, obsługuje SMS-y. Ostatnia aktywność: $2'
@@ -410,3 +428,34 @@ gallery:
   next: 'Następne'
   open: 'Otwórz oryginał'
   count: '$1 z $2'
+setup:
+  noPhoneTitle: 'Brak połączonego telefonu'
+  noPhoneBody: 'Zainstaluj Pushbullet na telefonie i zaloguj się na to samo konto, aby wysyłać na niego treści, widzieć jego powiadomienia i pisać stąd SMS-y.'
+  getApp: 'Pobierz aplikację'
+  phoneGoneTitle: '$1 nie odbiera już pushy'
+  phoneGoneBody: 'Otwórz na nim Pushbullet i zaloguj się ponownie. Jeśli ten telefon został wymieniony, usuń go z urządzeń w Pushbullet.'
+  quietTitle: 'Czy $1 jest nadal połączony?'
+  quietBody: 'Od $1 nic z niego nie przyszło. Otwórz Pushbullet na telefonie i sprawdź, czy oszczędzanie baterii nie usypia aplikacji.'
+  sameNameTitle: 'Dwa urządzenia nazywają się „$1”'
+  sameNameBody: 'Zmień nazwę jednego, aby wiedzieć, na które wysyłasz.'
+guide:
+  title: 'Konfiguracja'
+  progress: '$1 z $2'
+  done: 'Zrobione'
+  todo: 'Do zrobienia'
+  phone: 'Połącz telefon'
+  phoneHint: 'Zainstaluj Pushbullet na telefonie i zaloguj się na to samo konto.'
+  pin: 'Przypnij Pushpilot do paska narzędzi'
+  pinHint: 'Kliknij ikonę puzzla obok paska adresu, a potem pinezkę obok Pushpilot.'
+  mirror: 'Zobacz tu powiadomienia z telefonu'
+  mirrorHint: 'W Pushbullet na telefonie włącz „Powielanie powiadomień”. Następne powiadomienie pojawi się na karcie Telefon.'
+  sms: 'Pisz SMS-y z komputera'
+  smsHint: 'W Pushbullet na telefonie włącz SMS, a potem otwórz tu kartę SMS.'
+  shortcut: 'Naciśnij $1, aby wysłać skopiowaną treść'
+  shortcutHint: 'Skopiuj gdziekolwiek link lub tekst, naciśnij skrót, a trafi on na Twój telefon.'
+outbox:
+  title: 'Czeka na wysłanie'
+  hint: 'Zostaną wysłane, gdy tylko wrócisz online.'
+  retry: 'Ponów'
+  cancel: 'Anuluj'
+  failed: 'Nie udało się wysłać: $1'

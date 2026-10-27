@@ -2,13 +2,18 @@
 
 All notable changes are listed here. The format follows [Keep a Changelog](https://keepachangelog.com/), and versions follow [Semantic Versioning](https://semver.org/).
 
-## [Unreleased]
+## [1.3.0] - 2026-10-27
 
 ### Added
 
 - Files split into Images, Videos, PDFs, Documents, Audio and Other, and images open as a gallery with a full-screen viewer (arrow keys, open original, download). File rows show their type and extension.
 - A notice when Pushbullet rate-limits your account, with the time Pushpilot catches up.
 - Sign-in codes in texts get a copy button: in the SMS list (while fresh), in the conversation, and on the desktop notification. "Copy one-time codes automatically" now covers texts too.
+- Pushes that can't go out because you're offline, Pushbullet is down or the account is rate-limited wait in the feed under "Waiting to send" and go out on their own when the connection is back, with Retry and Cancel. They used to be lost.
+- Select many pushes in the feed to mark them done or delete them at once.
+- Settings › Devices warns when a phone has stopped taking pushes, has been silent for two months, or two devices share a name; the popup shows the warning once.
+- A setup checklist for new installs: connect a phone, pin Pushpilot, notification mirroring, texts and the push-clipboard shortcut. It ticks itself off as you go.
+- Settings › Support › Copy diagnostics puts versions, settings and counts on the clipboard for a bug report, without names, devices or push contents.
 
 ### Changed
 
@@ -19,6 +24,7 @@ All notable changes are listed here. The format follows [Keep a Changelog](https
 ### Fixed
 
 - The feed shows your whole history: about 100 pushes at sign-in, then older ones as you scroll, like the phone app. It used to show only the last few days.
+- The outlines of cards and chips are no longer cut off along the top, most visible in dark mode.
 - Sending texts from the SMS tab works again. Pushbullet retired the endpoint Pushpilot used, so texts failed with "Insufficient authorization"; Pushpilot now uses the current one.
 
 ## [1.2.0] - 2026-10-27
@@ -81,6 +87,7 @@ First public release.
 - Popup, side panel and pop-out window; light and dark themes; snooze; unread badge.
 - One-click sign-in through pushbullet.com, or an access token.
 
+[1.3.0]: https://github.com/yazmani/pushpilot/releases/tag/v1.3.0
 [1.2.0]: https://github.com/yazmani/pushpilot/releases/tag/v1.2.0
 [1.1.1]: https://github.com/yazmani/pushpilot/releases/tag/v1.1.1
 [1.1.0]: https://github.com/yazmani/pushpilot/releases/tag/v1.1.0

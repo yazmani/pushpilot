@@ -5,6 +5,8 @@
   const params = new URLSearchParams(location.search);
   const store = {
     ...data,
+    // Keep the one-time What's new card out of the pictures.
+    whatsNewSeen: window.__MANIFEST__.version.split('.').slice(0, 2).join('.'),
     settings: {
       theme: params.get('theme') || 'light',
       defaultTab: params.get('tab') || 'send',
@@ -31,6 +33,7 @@
     runtime: {
       id: 'demo',
       getURL: (p) => p,
+      getManifest: () => window.__MANIFEST__,
       async sendMessage(msg) {
         if (msg.rpc === 'sms.thread') return { ok: true, data: data.smsMessages };
         if (msg.rpc === 'sms.threads') return { ok: true, data: data.smsThreads[msg.device] ?? [] };
@@ -72,12 +75,25 @@
       },
     },
     sidePanel: { open() {} },
+    i18n: {
+      getMessage(key, subs = []) {
+        const text = window.__MESSAGES__?.[key]?.message ?? '';
+        return [].concat(subs).reduce((t, s, i) => t.replaceAll(`$${i + 1}`, s), text);
+      },
+      getUILanguage: () => 'en',
+    },
+    action: {
+      async getUserSettings() {
+        return { isOnToolbar: true };
+      },
+    },
     commands: {
       async getAll() {
         return [
           { name: '_execute_action', shortcut: '⌥⇧R' },
           { name: 'push-current-page', description: 'Push the current page to your default device', shortcut: '⌥⇧P' },
-          { name: 'send-clipboard', description: 'Send your clipboard to your other devices', shortcut: '⌥⇧C' },
+          { name: 'push-clipboard', description: 'Push what you copied to your default device', shortcut: '⇧⌘9' },
+          { name: 'open-window', description: 'Open Pushpilot in a window', shortcut: '⇧⌘8' },
         ];
       },
     },

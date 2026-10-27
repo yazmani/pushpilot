@@ -20,9 +20,14 @@ export interface Rpc {
   'auth.signout': { req: object; res: void };
   sync: { req: object; res: void };
   reconnect: { req: object; res: void };
-  'push.send': { req: { push: OutgoingPush; targets: string[] }; res: void };
+  /** `queued`: offline, so the push waits in the outbox and goes out later. */
+  'push.send': { req: { push: OutgoingPush; targets: string[] }; res: { queued: boolean } };
+  'outbox.retry': { req: { id: string }; res: void };
+  'outbox.cancel': { req: { id: string }; res: void };
   'push.dismiss': { req: { iden: string }; res: void };
   'push.delete': { req: { iden: string }; res: void };
+  'push.dismissMany': { req: { idens: string[] }; res: void };
+  'push.deleteMany': { req: { idens: string[] }; res: void };
   'pushes.older': { req: object; res: { added: number; done: boolean } };
   'unread.clear': { req: { view: 'feed' | 'phone' | 'sms' }; res: void };
   'mirror.dismiss': { req: { id: string }; res: void };

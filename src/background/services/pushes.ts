@@ -222,6 +222,19 @@ export async function deletePush(iden: string) {
   void clear(`push:${iden}`);
 }
 
+/**
+ * Bulk versions, one request at a time so a long selection doesn't burn
+ * through the rate limit in a burst. Stops at the first failure and keeps
+ * what already went through.
+ */
+export async function dismissPushes(idens: string[]) {
+  for (const iden of idens) await dismissPush(iden);
+}
+
+export async function deletePushes(idens: string[]) {
+  for (const iden of idens) await deletePush(iden);
+}
+
 /** Records a push we just created so the UI shows it before the tickle lands. */
 export async function rememberPush(p: Push) {
   sentHere.add(p.iden);
