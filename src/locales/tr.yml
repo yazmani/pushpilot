@@ -38,7 +38,6 @@ send:
   imageUnreadable: Bu görsel okunamadı. Sürükleyip bırakmayı dene.
   sentTo: 'Gönderildi: $1'
   clipboardEmpty: Panon boş.
-  clipboardSent: Pano cihazlarına gönderildi
   pastedImage: Yapıştırılan görsel
   removeFile: 'Kaldır: $1'
   titlePlaceholder: Başlık (isteğe bağlı)
@@ -51,7 +50,7 @@ send:
   addFile: Dosya ekle
   file: Dosya
   clipboard: Pano
-  clipboardHint: Panonu cihazlarına gönder (evrensel kopyala-yapıştır)
+  clipboardHint: 'Kopyaladığını yapıştır, göndermeye hazır'
   uploading: Yükleniyor…
   sending: Gönderiliyor…
   sendTo: 'Gönder: $1'
@@ -386,3 +385,4 @@ bg:
   smsOff: Bu telefon SMS’lerini Pushbullet ile paylaşmıyor. Telefonda Pushbullet’ı açıp SMS’i etkinleştir.
   encrypted: Bu veri uçtan uca şifreli. Şifreleme parolanı Ayarlar’a ekle.
   noAnswer: Pushpilot’un arka plan işlemi yanıt vermedi. Tekrar dene.
+  needsPro: 'Evrensel kopyala-yapıştır için Pushbullet Pro gerekir.'

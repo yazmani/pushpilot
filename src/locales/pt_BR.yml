@@ -40,7 +40,6 @@ send:
   imageUnreadable: Não foi possível ler essa imagem. Tente arrastá-la para cá.
   sentTo: Enviado para $1
   clipboardEmpty: Sua área de transferência está vazia.
-  clipboardSent: Área de transferência enviada para seus dispositivos
   pastedImage: Imagem colada
   removeFile: Remover $1
   titlePlaceholder: Título (opcional)
@@ -53,7 +52,7 @@ send:
   addFile: Adicionar arquivo
   file: Arquivo
   clipboard: Área de transferência
-  clipboardHint: Envie sua área de transferência para seus dispositivos (copiar e colar universal)
+  clipboardHint: 'Cole o que você copiou, pronto para enviar'
   uploading: Enviando arquivo…
   sending: Enviando…
   sendTo: Enviar para $1
@@ -388,3 +387,4 @@ bg:
   smsOff: Este celular não está compartilhando os SMS com o Pushbullet. Abra o Pushbullet nele e ative o SMS.
   encrypted: Estes dados têm criptografia de ponta a ponta. Adicione sua senha de criptografia nas Configurações.
   noAnswer: O processo em segundo plano do Pushpilot não respondeu. Tente de novo.
+  needsPro: 'Copiar e colar universal requer o Pushbullet Pro.'

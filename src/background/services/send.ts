@@ -88,6 +88,7 @@ export async function sendImage(srcUrl: string, targets: string[], pageUrl?: str
 export async function sendClipboard(text: string) {
   const pb = await requireClient();
   const { me, selfDeviceIden } = await store.getMany(['me', 'selfDeviceIden']);
+  if (!me?.pro) throw new Error(i18n.t('bg.needsPro'));
   await guard(() =>
     pb.ephemeral({
       type: 'clip',

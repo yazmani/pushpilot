@@ -129,15 +129,20 @@ export function SendView({ mode, onOpenFeed }: { mode: Mode; onOpenFeed: () => v
     setDragging(false);
     if (e.dataTransfer.files.length) return addFiles(e.dataTransfer.files);
     const text = e.dataTransfer.getData('text/uri-list') || e.dataTransfer.getData('text/plain');
-    if (!text) return;
+    if (text) insertText(text);
+  };
+
+  /** An address becomes the link to send; other text goes into the message. */
+  const insertText = (text: string, asNote = false) => {
     edited.current = true;
     if (looksLikeUrl(text)) {
-      const dropped = normalizeUrl(text.trim());
+      const address = normalizeUrl(text.trim());
       setKind('link');
-      setUrl(dropped);
+      setUrl(address);
       setTitle('');
-      setPage({ url: dropped, title: '', preview: urlPreview(dropped) });
+      setPage({ url: address, title: '', preview: urlPreview(address) });
     } else {
+      if (asNote && kind === 'link') setKind('note');
       setBody((b) => (b ? `${b}\n${text}` : text));
     }
   };
@@ -225,12 +230,20 @@ export function SendView({ mode, onOpenFeed }: { mode: Mode; onOpenFeed: () => v
     }
   };
 
-  const sendClipboard = async () => {
+  // Puts what you copied in the composer, ready to send: an image as a file,
+  // an address as a link, anything else as a note.
+  const pasteClipboard = async () => {
     try {
-      const text = await navigator.clipboard.readText();
+      const items = await navigator.clipboard.read().catch(() => []);
+      for (const item of items) {
+        const type = item.types.find((t) => t.startsWith('image/'));
+        if (!type) continue;
+        const blob = await item.getType(type);
+        return addFiles([new File([blob], `clipboard.${type.split('/')[1]}`, { type })]);
+      }
+      const text = (await navigator.clipboard.readText()).trim();
       if (!text) return notify(i18n.t('send.clipboardEmpty'), 'error');
-      await call('clip.send', { text });
-      notify(i18n.t('send.clipboardSent'));
+      insertText(text, true);
     } catch (err) {
       notify(errorText(err), 'error');
     }
@@ -373,7 +386,7 @@ export function SendView({ mode, onOpenFeed }: { mode: Mode; onOpenFeed: () => v
           <ActionPill icon={<Paperclip size={14} />} onClick={() => switchTo('file')}>
             {kind === 'file' ? i18n.t('send.addFile') : i18n.t('send.file')}
           </ActionPill>
-          <ActionPill icon={<ClipboardPaste size={14} />} onClick={sendClipboard} title={i18n.t('send.clipboardHint')}>
+          <ActionPill icon={<ClipboardPaste size={14} />} onClick={pasteClipboard} title={i18n.t('send.clipboardHint')}>
             {i18n.t('send.clipboard')}
           </ActionPill>
           <input

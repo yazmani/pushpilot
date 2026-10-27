@@ -39,7 +39,6 @@ send:
   imageUnreadable: Das Bild konnte nicht gelesen werden. Zieh es stattdessen hinein.
   sentTo: 'Gesendet an: $1'
   clipboardEmpty: Deine Zwischenablage ist leer.
-  clipboardSent: Zwischenablage an deine Geräte gesendet
   pastedImage: Eingefügtes Bild
   removeFile: $1 entfernen
   titlePlaceholder: Titel (optional)
@@ -52,7 +51,7 @@ send:
   addFile: Datei hinzufügen
   file: Datei
   clipboard: Zwischenablage
-  clipboardHint: Zwischenablage an deine Geräte senden (universelles Kopieren & Einfügen)
+  clipboardHint: 'Füg ein, was du kopiert hast, bereit zum Senden'
   uploading: Wird hochgeladen…
   sending: Wird gesendet…
   sendTo: An $1 senden
@@ -387,3 +386,4 @@ bg:
   smsOff: Dieses Handy teilt seine SMS nicht mit Pushbullet. Öffne Pushbullet darauf und schalte SMS ein.
   encrypted: Diese Daten sind Ende-zu-Ende-verschlüsselt. Gib dein Verschlüsselungspasswort in den Einstellungen ein.
   noAnswer: Der Hintergrunddienst von Pushpilot hat nicht geantwortet. Versuch es noch einmal.
+  needsPro: 'Universelles Kopieren und Einfügen braucht Pushbullet Pro.'

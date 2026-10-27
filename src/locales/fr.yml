@@ -40,7 +40,6 @@ send:
   imageUnreadable: Impossible de lire cette image. Essayez plutôt de la faire glisser ici.
   sentTo: Envoyé à $1
   clipboardEmpty: Votre presse-papiers est vide.
-  clipboardSent: Presse-papiers envoyé à vos appareils
   pastedImage: Image collée
   removeFile: Retirer $1
   titlePlaceholder: Titre (facultatif)
@@ -53,7 +52,7 @@ send:
   addFile: Ajouter un fichier
   file: Fichier
   clipboard: Presse-papiers
-  clipboardHint: Envoyer votre presse-papiers à vos appareils (copier-coller universel)
+  clipboardHint: 'Collez ce que vous avez copié, prêt à envoyer'
   uploading: Envoi du fichier…
   sending: Envoi…
   sendTo: Envoyer à $1
@@ -388,3 +387,4 @@ bg:
   smsOff: Ce téléphone ne partage pas ses SMS avec Pushbullet. Ouvrez Pushbullet dessus et activez les SMS.
   encrypted: Ces données sont chiffrées de bout en bout. Ajoutez votre mot de passe de chiffrement dans les Paramètres.
   noAnswer: Le service d’arrière-plan de Pushpilot n’a pas répondu. Réessayez.
+  needsPro: 'Le copier-coller universel nécessite Pushbullet Pro.'

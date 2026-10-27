@@ -9,7 +9,7 @@ import { playSound } from '@/background/platform/offscreen';
 import { fetchPreviews, savePreview } from '@/background/services/previews';
 import { clearMirrors, dismissMirror, replyToMirror, triggerMirrorAction } from '@/background/services/mirror';
 import { clearAllPushNotifications, deletePush, dismissPush } from '@/background/services/pushes';
-import { pushClipboard, sendClipboard, sendPush } from '@/background/services/send';
+import { pushClipboard, sendPush } from '@/background/services/send';
 import { fetchThread, fetchThreads, sendSms } from '@/background/services/sms';
 import { reconnect } from '@/background/services/stream';
 import { i18n } from '#i18n';
@@ -40,7 +40,6 @@ const handlers: Handlers = {
   'sms.threads': ({ device }) => fetchThreads(device),
   'sms.thread': ({ device, thread }) => fetchThread(device, thread),
   'sms.send': ({ device, addresses, message }) => sendSms(device, addresses, message),
-  'clip.send': ({ text }) => sendClipboard(text),
   'clip.push': () => pushClipboard(),
   'e2e.set': async ({ password }) => {
     if (!password) {

@@ -40,7 +40,6 @@ send:
   imageUnreadable: Couldn’t read that image. Try dragging it in instead.
   sentTo: Sent to $1
   clipboardEmpty: Your clipboard is empty.
-  clipboardSent: Clipboard sent to your devices
   pastedImage: Pasted image
   removeFile: Remove $1
   titlePlaceholder: Title (optional)
@@ -53,7 +52,7 @@ send:
   addFile: Add file
   file: File
   clipboard: Clipboard
-  clipboardHint: Send your clipboard to your devices (universal copy & paste)
+  clipboardHint: 'Paste what you copied, ready to send'
   uploading: Uploading…
   sending: Sending…
   sendTo: Send to $1
@@ -388,3 +387,4 @@ bg:
   smsOff: This phone isn’t sharing its texts with Pushbullet. Open Pushbullet on it and turn on SMS.
   encrypted: This data is end-to-end encrypted. Add your encryption password in Settings.
   noAnswer: Pushpilot’s background worker did not answer. Try again.
+  needsPro: 'Universal copy and paste needs Pushbullet Pro.'

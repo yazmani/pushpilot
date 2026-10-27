@@ -40,7 +40,6 @@ send:
   imageUnreadable: No se pudo leer esa imagen. Intenta arrastrarla.
   sentTo: Enviado a $1
   clipboardEmpty: Tu portapapeles está vacío.
-  clipboardSent: Portapapeles enviado a tus dispositivos
   pastedImage: Imagen pegada
   removeFile: Quitar $1
   titlePlaceholder: Título (opcional)
@@ -53,7 +52,7 @@ send:
   addFile: Adjuntar archivo
   file: Archivo
   clipboard: Portapapeles
-  clipboardHint: Envía tu portapapeles a tus dispositivos (copiar y pegar universal)
+  clipboardHint: 'Pega lo que copiaste, listo para enviar'
   uploading: Subiendo…
   sending: Enviando…
   sendTo: Enviar a $1
@@ -388,3 +387,4 @@ bg:
   smsOff: Este teléfono no comparte sus SMS con Pushbullet. Abre Pushbullet en él y activa los SMS.
   encrypted: Estos datos están cifrados de extremo a extremo. Agrega tu contraseña de cifrado en Configuración.
   noAnswer: El proceso en segundo plano de Pushpilot no respondió. Inténtalo de nuevo.
+  needsPro: 'Copiar y pegar universal requiere Pushbullet Pro.'

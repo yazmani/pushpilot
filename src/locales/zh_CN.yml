@@ -40,7 +40,6 @@ send:
   imageUnreadable: 无法读取该图片。请尝试直接拖入。
   sentTo: 已发送到 $1
   clipboardEmpty: 剪贴板为空。
-  clipboardSent: 已将剪贴板发送到你的设备
   pastedImage: 粘贴的图片
   removeFile: 移除 $1
   titlePlaceholder: 标题（可选）
@@ -53,7 +52,7 @@ send:
   addFile: 添加文件
   file: 文件
   clipboard: 剪贴板
-  clipboardHint: 将剪贴板发送到你的设备（通用复制粘贴）
+  clipboardHint: '粘贴你复制的内容，随时发送'
   uploading: 正在上传…
   sending: 正在发送…
   sendTo: 发送到 $1
@@ -388,3 +387,4 @@ bg:
   smsOff: 这部手机没有与 Pushbullet 共享短信。请在手机上打开 Pushbullet 并开启短信功能。
   encrypted: 此数据经过端到端加密。请在设置中添加加密密码。
   noAnswer: Pushpilot 后台进程没有响应。请重试。
+  needsPro: '通用复制粘贴需要 Pushbullet Pro。'
