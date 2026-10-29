@@ -4,10 +4,6 @@ All notable changes are listed here. The format follows [Keep a Changelog](https
 
 ## [Unreleased]
 
-### Fixed
-
-- A phone notification without action buttons no longer shows a stray "0" under its text.
-
 ### Added
 
 - Pushpilot as a full page: account menu › Open as a full page. On a laptop-sized window it's a dashboard with a sidebar and a New push button that slides the composer in from the side:
@@ -18,6 +14,10 @@ All notable changes are listed here. The format follows [Keep a Changelog](https
   - Phone: notifications as cards, filtered by app.
   - SMS: the conversation list beside the open conversation.
   In a narrow window it keeps the popup's layout.
+
+### Fixed
+
+- A phone notification without action buttons no longer shows a stray "0" under its text.
 
 ## [1.4.0] - 2026-10-29
 
