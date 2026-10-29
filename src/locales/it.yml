@@ -99,6 +99,9 @@ whatsNew:
   title: Novità in Pushpilot $1
   seeAll: Vedi tutte le modifiche
   label: Novità
+  v1_4:
+    jump: 'Vai a qualsiasi mese nel feed o nella galleria: fai clic sull’intestazione di un giorno.'
+    numbers: 'I numeri di telefono negli SMS appaiono come sul telefono.'
   v1_3:
     history: 'Tutta la cronologia dei push nel feed, con le immagini in una galleria e i file ordinati per tipo.'
     codes: 'I codici di accesso negli SMS hanno un pulsante per copiarli.'

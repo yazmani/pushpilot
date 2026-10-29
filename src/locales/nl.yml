@@ -99,6 +99,9 @@ whatsNew:
   title: Nieuw in Pushpilot $1
   seeAll: Alle wijzigingen bekijken
   label: Wat is er nieuw
+  v1_4:
+    jump: 'Ga naar elke maand in je feed of galerij: klik op de kop van een dag.'
+    numbers: 'Telefoonnummers in je sms’jes zien eruit zoals op je telefoon.'
   v1_3:
     history: 'Je hele pushgeschiedenis in de feed, met afbeeldingen in een galerij en bestanden gesorteerd op type.'
     codes: 'Inlogcodes in sms’jes krijgen een kopieerknop.'

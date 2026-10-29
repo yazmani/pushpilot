@@ -100,6 +100,9 @@ whatsNew:
   title: Có gì mới trong Pushpilot $1
   seeAll: Xem mọi thay đổi
   label: Có gì mới
+  v1_4:
+    jump: 'Đi tới bất kỳ tháng nào trong bảng tin hoặc thư viện: nhấp vào tiêu đề của một ngày.'
+    numbers: 'Số điện thoại trong tin nhắn hiển thị giống trên điện thoại.'
   v1_3:
     history: 'Toàn bộ lịch sử mục gửi trong bảng tin, hình ảnh trong thư viện và tệp được sắp xếp theo loại.'
     codes: 'Mã đăng nhập trong tin nhắn có nút sao chép.'

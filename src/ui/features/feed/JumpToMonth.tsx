@@ -1,5 +1,5 @@
 import clsx from 'clsx';
-import { ArrowUp, ChevronLeft, ChevronRight } from 'lucide-react';
+import { ArrowUp, ChevronDown, ChevronLeft, ChevronRight } from 'lucide-react';
 import { useEffect, useMemo, useState } from 'react';
 import type { Push } from '@/core/pushbullet/types';
 import { IconButton, Spinner } from '@/ui/components';
@@ -140,3 +140,25 @@ export function monthKey(seconds: number) {
 }
 
 export { monthOf };
+
+/** A sticky day or month heading in the feed; with onPick, it opens the month picker. */
+export function SectionHeading({ label, onPick }: { label: string; onPick?: () => void }) {
+  return (
+    <h3 className="sticky top-0 z-10 bg-bg/95 pb-1.5 pt-2.5 text-xs font-bold text-muted backdrop-blur">
+      {onPick ? (
+        <button
+          type="button"
+          onClick={onPick}
+          aria-haspopup="dialog"
+          title={i18n.t('feed.jumpTitle')}
+          className="-ms-1 flex items-center gap-1 rounded-lg px-2 py-0.5 transition-colors hover:bg-raised hover:text-ink"
+        >
+          {label}
+          <ChevronDown size={13} strokeWidth={2.4} />
+        </button>
+      ) : (
+        <span className="px-1">{label}</span>
+      )}
+    </h3>
+  );
+}

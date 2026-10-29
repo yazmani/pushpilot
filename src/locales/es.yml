@@ -100,6 +100,9 @@ whatsNew:
   title: Novedades de Pushpilot $1
   seeAll: Ver todos los cambios
   label: Novedades
+  v1_4:
+    jump: 'Ve a cualquier mes del feed o la galería: haz clic en el encabezado de un día.'
+    numbers: 'Los números de teléfono de tus SMS se ven como en tu móvil.'
   v1_3:
     history: 'Todo tu historial de envíos, con las imágenes en una galería y los archivos ordenados por tipo.'
     codes: 'Los códigos de inicio de sesión en los SMS tienen un botón para copiarlos.'

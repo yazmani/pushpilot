@@ -100,6 +100,9 @@ whatsNew:
   title: Nouveautés de Pushpilot $1
   seeAll: Voir tous les changements
   label: Nouveautés
+  v1_4:
+    jump: 'Allez à n’importe quel mois du fil ou de la galerie : cliquez sur l’en-tête d’un jour.'
+    numbers: 'Les numéros dans vos SMS s’affichent comme sur votre téléphone.'
   v1_3:
     history: 'Tout votre historique d’envois dans le fil, avec les images dans une galerie et les fichiers triés par type.'
     codes: 'Les codes de connexion reçus par SMS ont un bouton pour les copier.'

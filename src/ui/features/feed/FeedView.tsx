@@ -2,7 +2,6 @@ import clsx from 'clsx';
 import {
   Archive,
   Check,
-  ChevronDown,
   FileText,
   Film,
   Image,
@@ -28,8 +27,8 @@ import { useRun } from '@/ui/hooks/use-toast';
 import { counterpart, FILE_KINDS, fileKind, type FileKind, type Filter, matches } from './classify';
 import { Conversation } from './Conversation';
 import { type FeedContext, FeedItem } from './FeedItem';
-import { Gallery } from './Gallery';
-import { JumpToMonth, type Month, monthKey, monthOf } from './JumpToMonth';
+import { Gallery, monthLabel } from './Gallery';
+import { JumpToMonth, type Month, monthKey, monthOf, SectionHeading } from './JumpToMonth';
 import { Outbox } from './Outbox';
 import { i18n } from '#i18n';
 
@@ -190,7 +189,7 @@ export function FeedView() {
     });
     if (i < 0) return;
     setLimit((l) => Math.max(l, i + PAGE));
-    setScrollTo(dayLabel(visible[i]!.created));
+    setScrollTo((gallery ? monthLabel : dayLabel)(visible[i]!.created));
   };
   const toNewest = () => {
     setPicking(null);
@@ -324,7 +323,7 @@ export function FeedView() {
             </Empty>
           )
         ) : gallery ? (
-          <Gallery pushes={visible.slice(0, limit)} />
+          <Gallery pushes={shown} onPick={canJump ? openPicker : undefined} />
         ) : (
           <DayGroups pushes={shown} onPick={canJump && !selected ? openPicker : undefined}>
             {(p) => (
@@ -432,22 +431,7 @@ function DayGroups({
     <>
       {groups.map((g) => (
         <section key={g.label} data-day={g.label} className="mb-3">
-          <h3 className="sticky top-0 z-10 bg-bg/95 pb-1.5 pt-2.5 text-xs font-bold text-muted backdrop-blur">
-            {onPick ? (
-              <button
-                type="button"
-                onClick={() => onPick(g.day)}
-                aria-haspopup="dialog"
-                title={i18n.t('feed.jumpTitle')}
-                className="-ms-1 flex items-center gap-1 rounded-lg px-2 py-0.5 transition-colors hover:bg-raised hover:text-ink"
-              >
-                {g.label}
-                <ChevronDown size={13} strokeWidth={2.4} />
-              </button>
-            ) : (
-              <span className="px-1">{g.label}</span>
-            )}
-          </h3>
+          <SectionHeading label={g.label} onPick={onPick && (() => onPick(g.day))} />
           <Group>{g.items.map(children)}</Group>
         </section>
       ))}
