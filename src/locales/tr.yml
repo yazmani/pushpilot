@@ -33,6 +33,7 @@ header:
   unpause: Bildirimleri tekrar aç
   openPanel: Yan panelde aç
   openWindow: Pencerede aç
+  openTab: 'Tam sayfa olarak aç'
   settings: Ayarlar
 send:
   tooBig: '$1, Pushbullet’ın $2 sınırını aşıyor.'
@@ -90,17 +91,20 @@ support:
   sponsor: GitHub’da sponsor ol
   review: Değerlendirme yaz
 rate:
-  title: 'Pushpilot''u beğendiniz mi?'
+  title: "Pushpilot'u beğendiniz mi?"
   body: 'Kısa bir puan, Pushbullet uzantısını özleyenlerin onu bulmasına yardımcı olur.'
-  action: 'Pushpilot''u puanla'
+  action: "Pushpilot'u puanla"
   later: 'Hayır, teşekkürler'
 whatsNew:
   title: Pushpilot $1 sürümündeki yenilikler
   seeAll: Tüm değişiklikleri gör
   label: Yenilikler
+  v1_5:
+    fullPage: 'Fotoğrafınızın yanındaki ⤢ düğmesiyle Pushpilot''u tam sayfa açın: genel bakış, büyük önizlemeli akış ve yan yana SMS''ler.'
+    files: 'Yeni Dosyalar ve Cihazlar sayfaları: gönderdiğiniz her şey galeri veya liste olarak, tüm cihazlarınız bir bakışta.'
   v1_4:
     jump: 'Akışta veya galeride istediğiniz aya gidin: bir günün başlığına tıklayın.'
-    numbers: 'SMS''lerdeki telefon numaraları telefonunuzdaki gibi görünür.'
+    numbers: "SMS'lerdeki telefon numaraları telefonunuzdaki gibi görünür."
   v1_3:
     history: 'Tüm gönderi geçmişin akışta; görseller bir galeride, dosyalar türe göre sıralı.'
     codes: 'SMS’lerdeki giriş kodları için kopyalama düğmesi.'
@@ -153,7 +157,7 @@ feed:
   olderYear: 'Önceki yıl'
   newerYear: 'Sonraki yıl'
   newest: 'En yeni'
-  loadingOlder: 'Eski push''lar yükleniyor…'
+  loadingOlder: "Eski push'lar yükleniyor…"
   monthCount:
     1: '1 push'
     n: '$1 push'
@@ -231,6 +235,8 @@ sms:
   offlineNotice: '$1, $2 tarihinden beri bağlanmadı. Eski mesajları okuyabilirsin, ancak yenileri tekrar çevrimiçi olana kadar gönderilmez.'
   refresh: Yenile
   newText: Yeni SMS
+  pickTitle: 'Bir konuşma seçin'
+  pickBody: "SMS'leriniz burada, listenin yanında açılır."
   noThreadsTitle: Sohbet yok
   noThreadsBody: Bu telefon henüz hiçbir SMS sohbeti paylaşmadı.
   you: 'Sen: '
@@ -469,9 +475,53 @@ guide:
   smsHint: 'Telefonundaki Pushbullet’ta SMS’i aç, ardından buradaki SMS sekmesine geç.'
   shortcut: 'Kopyaladığını göndermek için $1 tuşlarına bas'
   shortcutHint: 'Herhangi bir yerde bir bağlantı ya da metin kopyala, kısayola bas; telefonuna ulaşsın.'
+dash:
+  home: 'Genel bakış'
+  files: 'Dosyalar'
+  devices: 'Cihazlar'
+  newPush: 'Yeni gönderi'
+  greetMorning: 'Günaydın, $1'
+  greetAfternoon: 'İyi günler, $1'
+  greetEvening: 'İyi akşamlar, $1'
+  statWeek: 'Bu haftaki gönderiler'
+  statLoaded: 'Buradaki geçmişinde $1'
+  statFiles: 'Paylaşılan dosyalar'
+  statImages: '$1 görsel'
+  statDevices: 'Alan cihazlar'
+  statDevicesHint: 'Gönderilerine hazır'
+  statPhone: 'Şu an telefonunda'
+  recentPushes: 'Son gönderiler'
+  recentFiles: 'Son dosyalar'
+  latestTexts: 'Son mesajlar'
+  phoneQuiet: 'Şu an telefonunda bir şey yok.'
+  filesEmptyTitle: 'Henüz dosya yok'
+  filesEmpty: "Gönderdiğin fotoğraflar, PDF'ler ve diğer dosyalar burada görünür."
+  filesCount:
+    1: '1 dosya'
+    n: '$1 dosya'
+  feedCount:
+    1: 'Geçmişinde 1 gönderi'
+    n: 'Geçmişinde $1 gönderi'
+  phoneSubtitle: 'Telefonundan yansıtılan bildirimler'
+  smsSubtitle: 'Bilgisayarından SMS gönder'
+  viewGrid: 'Izgara'
+  viewList: 'Liste'
+  colName: 'Ad'
+  colFrom: 'Gönderen'
+  colType: 'Tür'
+  colDate: 'Tarih'
+  loadOlder: 'Eski dosyaları yükle'
+  devicesCount: '$2 cihazdan $1 tanesi gönderi alıyor'
+  manageDevices: 'Cihazları yönet'
+  attention: 'Dikkat gerektiriyor'
+  canText: 'SMS gönderebilir'
+  lastActive: 'Son etkinlik: $1'
+  sendTo: 'Bu cihaza gönder'
+  apps: 'Uygulamalar'
+  allApps: 'Tüm uygulamalar'
 outbox:
   title: 'Gönderilmeyi bekliyor'
-  hint: 'Pushbullet''a yeniden ulaşılabildiğinde bunlar kendiliğinden gider.'
+  hint: "Pushbullet'a yeniden ulaşılabildiğinde bunlar kendiliğinden gider."
   retry: 'Tekrar dene'
   cancel: 'İptal'
   failed: 'Gönderilemedi: $1'

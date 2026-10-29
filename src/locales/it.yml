@@ -34,6 +34,7 @@ header:
   unpause: Riattiva le notifiche
   openPanel: Apri nel pannello laterale
   openWindow: Apri in una finestra
+  openTab: 'Apri a pagina intera'
   settings: Impostazioni
 send:
   tooBig: $1 supera il limite di $2 di Pushbullet.
@@ -99,6 +100,9 @@ whatsNew:
   title: Novità in Pushpilot $1
   seeAll: Vedi tutte le modifiche
   label: Novità
+  v1_5:
+    fullPage: 'Apri Pushpilot a pagina intera con il pulsante ⤢ accanto alla tua foto: una panoramica, un feed con anteprime grandi e gli SMS affiancati.'
+    files: 'Nuove pagine File e Dispositivi: tutto ciò che hai inviato come galleria o elenco, e tutti i dispositivi a colpo d’occhio.'
   v1_4:
     jump: 'Vai a qualsiasi mese nel feed o nella galleria: fai clic sull’intestazione di un giorno.'
     numbers: 'I numeri di telefono negli SMS appaiono come sul telefono.'
@@ -232,6 +236,8 @@ sms:
   offlineNotice: '$1 non si collega dal $2. Puoi leggere i vecchi SMS, ma quelli nuovi non verranno inviati finché non torna online.'
   refresh: Aggiorna
   newText: Nuovo SMS
+  pickTitle: 'Scegli una conversazione'
+  pickBody: 'I tuoi SMS si aprono qui, accanto all’elenco.'
   noThreadsTitle: Nessuna conversazione
   noThreadsBody: Questo telefono non ha ancora condiviso conversazioni SMS.
   you: 'Tu: '
@@ -470,6 +476,50 @@ guide:
   smsHint: 'In Pushbullet sul telefono, attiva gli SMS, poi apri qui la scheda SMS.'
   shortcut: 'Premi $1 per inviare ciò che hai copiato'
   shortcutHint: 'Copia un link o del testo ovunque, premi la scorciatoia e arriva sul telefono.'
+dash:
+  home: 'Panoramica'
+  files: 'File'
+  devices: 'Dispositivi'
+  newPush: 'Nuovo push'
+  greetMorning: 'Buongiorno, $1'
+  greetAfternoon: 'Buon pomeriggio, $1'
+  greetEvening: 'Buonasera, $1'
+  statWeek: 'Push questa settimana'
+  statLoaded: '$1 nella tua cronologia qui'
+  statFiles: 'File condivisi'
+  statImages: '$1 immagini'
+  statDevices: 'Dispositivi in ricezione'
+  statDevicesHint: 'Pronti per i tuoi push'
+  statPhone: 'Ora sul telefono'
+  recentPushes: 'Push recenti'
+  recentFiles: 'File recenti'
+  latestTexts: 'Ultimi SMS'
+  phoneQuiet: 'Niente sul telefono in questo momento.'
+  filesEmptyTitle: 'Ancora nessun file'
+  filesEmpty: 'Foto, PDF e altri file che invii compaiono qui.'
+  filesCount:
+    1: '1 file'
+    n: '$1 file'
+  feedCount:
+    1: '1 push nella tua cronologia'
+    n: '$1 push nella tua cronologia'
+  phoneSubtitle: 'Notifiche replicate dal telefono'
+  smsSubtitle: 'Manda SMS dal computer'
+  viewGrid: 'Griglia'
+  viewList: 'Elenco'
+  colName: 'Nome'
+  colFrom: 'Da'
+  colType: 'Tipo'
+  colDate: 'Data'
+  loadOlder: 'Carica file meno recenti'
+  devicesCount: '$1 di $2 ricevono push'
+  manageDevices: 'Gestisci dispositivi'
+  attention: 'Richiede attenzione'
+  canText: 'Può inviare SMS'
+  lastActive: 'Ultima attività: $1'
+  sendTo: 'Invia a questo'
+  apps: 'App'
+  allApps: 'Tutte le app'
 outbox:
   title: 'In attesa di invio'
   hint: 'Partiranno da soli appena Pushbullet sarà di nuovo raggiungibile.'

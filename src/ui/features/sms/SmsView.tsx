@@ -18,6 +18,7 @@ import {
 } from '@/ui/components';
 import { useNow } from '@/ui/hooks/use-now';
 import { useStore } from '@/ui/hooks/use-store';
+import { useWide } from '@/ui/hooks/use-wide';
 import { errorText, useToast } from '@/ui/hooks/use-toast';
 import { recipientImage, ThreadView } from './ThreadView';
 import { i18n } from '#i18n';
@@ -26,7 +27,18 @@ function lastSeen(d: Device) {
   return new Date(d.modified * 1000).toLocaleDateString(undefined, { month: 'short', day: 'numeric', year: 'numeric' });
 }
 
-export function SmsView({ device: wantDevice, thread: wantThread }: { device?: string; thread?: string }) {
+export function SmsView({
+  device: wantDevice,
+  thread: wantThread,
+  split: canSplit = false,
+}: {
+  device?: string;
+  thread?: string;
+  /** On a full page: conversations on the left, the open one on the right. */
+  split?: boolean;
+}) {
+  const wide = useWide(768);
+  const split = canSplit && wide;
   const { devices, smsThreads } = useStore(['devices', 'smsThreads']);
   // Phones that are still connected first, then the most recently active.
   const phones = useMemo(
@@ -98,8 +110,8 @@ export function SmsView({ device: wantDevice, thread: wantThread }: { device?: s
   const threads = (device && smsThreads[device]) || [];
   const thread = threads.find((t) => t.id === threadId);
 
-  if (composing && device) {
-    return (
+  const detail =
+    composing && device ? (
       <NewMessage
         device={device}
         onBack={() => setComposing(false)}
@@ -108,11 +120,12 @@ export function SmsView({ device: wantDevice, thread: wantThread }: { device?: s
           setTimeout(() => void refresh(true), 2500);
         }}
       />
-    );
-  }
-  if (thread && device) return <ThreadView device={device} thread={thread} onBack={() => setThreadId(undefined)} />;
+    ) : thread && device ? (
+      <ThreadView key={thread.id} device={device} thread={thread} onBack={() => setThreadId(undefined)} />
+    ) : null;
+  if (detail && !split) return detail;
 
-  return (
+  const list = (
     <div className="flex h-full flex-col">
       <div className="flex shrink-0 items-center gap-2 px-3.5 pb-2 pt-3">
         {phones.length === 1 && phone ? (
@@ -169,23 +182,45 @@ export function SmsView({ device: wantDevice, thread: wantThread }: { device?: s
         {threads.length > 0 && (
           <Group className="mx-1.5">
             {threads.map((t) => (
-              <ThreadRow key={t.id} t={t} onOpen={() => setThreadId(t.id)} />
+              <ThreadRow
+                key={t.id}
+                t={t}
+                active={split && t.id === threadId}
+                onOpen={() => {
+                  setComposing(false);
+                  setThreadId(t.id);
+                }}
+              />
             ))}
           </Group>
         )}
       </div>
     </div>
   );
+  if (!split) return list;
+
+  return (
+    <div className="flex h-full overflow-hidden rounded-t-2xl border border-b-0 border-line bg-surface shadow-sm">
+      <div className="flex w-[340px] shrink-0 flex-col border-e border-line bg-bg">{list}</div>
+      <div className="flex min-w-0 flex-1 flex-col bg-bg">
+        {detail ?? (
+          <Empty icon={<MessageSquareText size={24} />} title={i18n.t('sms.pickTitle')}>
+            {i18n.t('sms.pickBody')}
+          </Empty>
+        )}
+      </div>
+    </div>
+  );
 }
 
-function ThreadRow({ t, onOpen }: { t: SmsThread; onOpen: () => void }) {
+function ThreadRow({ t, active, onOpen }: { t: SmsThread; active?: boolean; onOpen: () => void }) {
   useNow();
   const name = threadName(t);
   // Only a fresh code is worth a button; old ones are usually used up.
   const fresh = t.latest && Date.now() / 1000 - t.latest.timestamp < 30 * 60;
   const code = fresh && t.latest?.direction === 'incoming' ? extractCode(t.latest.body, { strict: true }) : undefined;
   return (
-    <li className="flex items-center transition-colors hover:bg-raised/50">
+    <li className={clsx('flex items-center transition-colors', active ? 'bg-accent-soft/70' : 'hover:bg-raised/50')}>
       <button onClick={onOpen} className="flex min-w-0 flex-1 items-center gap-3 py-2.5 ps-3.5 pe-2 text-start">
         <Avatar src={t.recipients.length === 1 ? recipientImage(t.recipients[0]) : undefined} name={name} size={38} />
         <span className="min-w-0 flex-1">

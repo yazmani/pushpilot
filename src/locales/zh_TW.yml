@@ -35,6 +35,7 @@ header:
   unpause: 重新開啟通知
   openPanel: 在側邊面板中開啟
   openWindow: 在視窗中開啟
+  openTab: '以完整頁面開啟'
   settings: 設定
 send:
   tooBig: $1 超過 Pushbullet 的 $2 上限。
@@ -100,6 +101,9 @@ whatsNew:
   title: Pushpilot $1 新功能
   seeAll: 查看所有變更
   label: 新功能
+  v1_5:
+    fullPage: '點按頭像旁的 ⤢ 按鈕，以完整頁面開啟 Pushpilot：概覽、附大型預覽的動態，簡訊並排顯示。'
+    files: '全新的「檔案」與「裝置」頁面：傳送過的內容以相簿或清單呈現，所有裝置一目了然。'
   v1_4:
     jump: '在動態或相簿中跳到任一月份：點按日期標題即可。'
     numbers: '簡訊中的電話號碼會依手機上的格式顯示。'
@@ -233,6 +237,8 @@ sms:
   offlineNotice: '$1 自 $2 起未連線。你可以查看舊簡訊，但在它重新上線前無法傳送新簡訊。'
   refresh: 重新整理
   newText: 新簡訊
+  pickTitle: '選擇一個對話'
+  pickBody: '簡訊會在清單旁邊開啟。'
   noThreadsTitle: 沒有對話
   noThreadsBody: 這支手機尚未分享任何簡訊對話。
   you: 我：
@@ -471,6 +477,50 @@ guide:
   smsHint: '在手機上的 Pushbullet 中啟用簡訊功能，然後在這裡開啟「簡訊」分頁。'
   shortcut: '按下 $1 推送複製的內容'
   shortcutHint: '在任何地方複製連結或文字，按下快速鍵，內容就會送到你的手機。'
+dash:
+  home: '總覽'
+  files: '檔案'
+  devices: '裝置'
+  newPush: '新推送'
+  greetMorning: '早安，$1'
+  greetAfternoon: '午安，$1'
+  greetEvening: '晚上好，$1'
+  statWeek: '本週推送'
+  statLoaded: '這裡的記錄共 $1 則'
+  statFiles: '已分享檔案'
+  statImages: '$1 張圖片'
+  statDevices: '接收中的裝置'
+  statDevicesHint: '隨時可接收你的推送'
+  statPhone: '手機上目前的通知'
+  recentPushes: '最近推送'
+  recentFiles: '最近檔案'
+  latestTexts: '最新簡訊'
+  phoneQuiet: '手機上目前沒有通知。'
+  filesEmptyTitle: '還沒有檔案'
+  filesEmpty: '你推送的照片、PDF 和其他檔案會顯示在這裡。'
+  filesCount:
+    1: '1 個檔案'
+    n: '$1 個檔案'
+  feedCount:
+    1: '記錄中有 1 則推送'
+    n: '記錄中有 $1 則推送'
+  phoneSubtitle: '從手機鏡像的通知'
+  smsSubtitle: '在電腦上傳簡訊'
+  viewGrid: '格狀'
+  viewList: '清單'
+  colName: '名稱'
+  colFrom: '來自'
+  colType: '類型'
+  colDate: '日期'
+  loadOlder: '載入更早的檔案'
+  devicesCount: '$2 台裝置中有 $1 台接收推送'
+  manageDevices: '管理裝置'
+  attention: '需要留意'
+  canText: '可傳簡訊'
+  lastActive: '上次使用：$1'
+  sendTo: '傳送到此裝置'
+  apps: '應用程式'
+  allApps: '所有應用程式'
 outbox:
   title: '等待傳送'
   hint: '能重新連上 Pushbullet 後，這些會自動送出。'

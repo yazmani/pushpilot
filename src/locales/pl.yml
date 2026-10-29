@@ -33,6 +33,7 @@ header:
   unpause: Włącz powiadomienia
   openPanel: Otwórz w panelu bocznym
   openWindow: Otwórz w oknie
+  openTab: 'Otwórz na całej stronie'
   settings: Ustawienia
 send:
   tooBig: $1 przekracza limit Pushbullet ($2).
@@ -98,6 +99,9 @@ whatsNew:
   title: Nowości w Pushpilot $1
   seeAll: Zobacz wszystkie zmiany
   label: Co nowego
+  v1_5:
+    fullPage: 'Otwórz Pushpilot na całej stronie przyciskiem ⤢ obok zdjęcia: przegląd, kanał z dużymi podglądami i SMS-y obok siebie.'
+    files: 'Nowe strony Pliki i Urządzenia: wszystko, co wysłałeś, jako galeria lub lista, i wszystkie urządzenia w jednym miejscu.'
   v1_4:
     jump: 'Przejdź do dowolnego miesiąca w kanale lub galerii: kliknij nagłówek dnia.'
     numbers: 'Numery telefonów w SMS-ach wyglądają jak na telefonie.'
@@ -231,6 +235,8 @@ sms:
   offlineNotice: '$1 nie łączył się od $2. Możesz czytać stare SMS-y, ale nowe nie zostaną wysłane, dopóki nie wróci online.'
   refresh: Odśwież
   newText: Nowy SMS
+  pickTitle: 'Wybierz rozmowę'
+  pickBody: 'SMS-y otwierają się tutaj, obok listy.'
   noThreadsTitle: Brak rozmów
   noThreadsBody: Ten telefon nie udostępnił jeszcze żadnych rozmów SMS.
   you: 'Ty: '
@@ -469,6 +475,50 @@ guide:
   smsHint: 'W Pushbullet na telefonie włącz SMS, a potem otwórz tu kartę SMS.'
   shortcut: 'Naciśnij $1, aby wysłać skopiowaną treść'
   shortcutHint: 'Skopiuj gdziekolwiek link lub tekst, naciśnij skrót, a trafi on na Twój telefon.'
+dash:
+  home: 'Przegląd'
+  files: 'Pliki'
+  devices: 'Urządzenia'
+  newPush: 'Nowy push'
+  greetMorning: 'Dzień dobry, $1'
+  greetAfternoon: 'Dzień dobry, $1'
+  greetEvening: 'Dobry wieczór, $1'
+  statWeek: 'Pushe w tym tygodniu'
+  statLoaded: 'W historii tutaj: $1'
+  statFiles: 'Udostępnione pliki'
+  statImages: 'Obrazy: $1'
+  statDevices: 'Odbierające urządzenia'
+  statDevicesHint: 'Gotowe na twoje pushe'
+  statPhone: 'Teraz na telefonie'
+  recentPushes: 'Ostatnie pushe'
+  recentFiles: 'Ostatnie pliki'
+  latestTexts: 'Najnowsze SMS-y'
+  phoneQuiet: 'Na telefonie nic teraz nie ma.'
+  filesEmptyTitle: 'Na razie brak plików'
+  filesEmpty: 'Tutaj pojawią się zdjęcia, PDF-y i inne pliki, które wysyłasz.'
+  filesCount:
+    1: '1 plik'
+    n: 'Pliki: $1'
+  feedCount:
+    1: '1 push w historii'
+    n: 'Pushe w historii: $1'
+  phoneSubtitle: 'Powiadomienia powielane z telefonu'
+  smsSubtitle: 'Pisz SMS-y z komputera'
+  viewGrid: 'Siatka'
+  viewList: 'Lista'
+  colName: 'Nazwa'
+  colFrom: 'Od'
+  colType: 'Typ'
+  colDate: 'Data'
+  loadOlder: 'Wczytaj starsze pliki'
+  devicesCount: 'Odbierają pushe: $1 z $2'
+  manageDevices: 'Zarządzaj urządzeniami'
+  attention: 'Wymaga uwagi'
+  canText: 'Obsługuje SMS-y'
+  lastActive: 'Ostatnia aktywność: $1'
+  sendTo: 'Wyślij na to urządzenie'
+  apps: 'Aplikacje'
+  allApps: 'Wszystkie aplikacje'
 outbox:
   title: 'Czeka na wysłanie'
   hint: 'Wyjdą same, gdy tylko Pushbullet znów będzie dostępny.'

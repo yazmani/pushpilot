@@ -35,6 +35,7 @@ header:
   unpause: Bật lại thông báo
   openPanel: Mở trong bảng bên
   openWindow: Mở trong cửa sổ
+  openTab: 'Mở toàn trang'
   settings: Cài đặt
 send:
   tooBig: $1 vượt quá giới hạn $2 của Pushbullet.
@@ -100,6 +101,9 @@ whatsNew:
   title: Có gì mới trong Pushpilot $1
   seeAll: Xem mọi thay đổi
   label: Có gì mới
+  v1_5:
+    fullPage: 'Mở Pushpilot toàn trang bằng nút ⤢ cạnh ảnh của bạn: tổng quan, bảng tin với bản xem trước lớn và tin nhắn hiển thị song song.'
+    files: 'Trang Tệp và Thiết bị mới: mọi thứ bạn đã gửi dưới dạng thư viện hoặc danh sách, và mọi thiết bị trong nháy mắt.'
   v1_4:
     jump: 'Đi tới bất kỳ tháng nào trong bảng tin hoặc thư viện: nhấp vào tiêu đề của một ngày.'
     numbers: 'Số điện thoại trong tin nhắn hiển thị giống trên điện thoại.'
@@ -233,6 +237,8 @@ sms:
   offlineNotice: '$1 chưa kết nối kể từ $2. Bạn vẫn đọc được tin nhắn cũ, nhưng tin mới sẽ không được gửi cho đến khi máy trực tuyến trở lại.'
   refresh: Làm mới
   newText: Tin nhắn mới
+  pickTitle: 'Chọn một cuộc trò chuyện'
+  pickBody: 'Tin nhắn sẽ mở ở đây, cạnh danh sách.'
   noThreadsTitle: Không có cuộc trò chuyện
   noThreadsBody: Điện thoại này chưa chia sẻ chuỗi tin nhắn nào.
   you: 'Bạn: '
@@ -471,6 +477,50 @@ guide:
   smsHint: 'Trong Pushbullet trên điện thoại, bật SMS, rồi mở tab SMS tại đây.'
   shortcut: 'Nhấn $1 để gửi nội dung đã sao chép'
   shortcutHint: 'Sao chép liên kết hoặc văn bản ở bất cứ đâu, nhấn phím tắt và nội dung sẽ tới điện thoại của bạn.'
+dash:
+  home: 'Tổng quan'
+  files: 'Tệp'
+  devices: 'Thiết bị'
+  newPush: 'Gửi mới'
+  greetMorning: 'Chào buổi sáng, $1'
+  greetAfternoon: 'Chào buổi chiều, $1'
+  greetEvening: 'Chào buổi tối, $1'
+  statWeek: 'Mục gửi tuần này'
+  statLoaded: '$1 trong lịch sử ở đây'
+  statFiles: 'Tệp đã chia sẻ'
+  statImages: '$1 hình ảnh'
+  statDevices: 'Thiết bị đang nhận'
+  statDevicesHint: 'Sẵn sàng nhận mục gửi của bạn'
+  statPhone: 'Đang có trên điện thoại'
+  recentPushes: 'Mục gửi gần đây'
+  recentFiles: 'Tệp gần đây'
+  latestTexts: 'Tin nhắn mới nhất'
+  phoneQuiet: 'Hiện không có gì trên điện thoại của bạn.'
+  filesEmptyTitle: 'Chưa có tệp nào'
+  filesEmpty: 'Ảnh, PDF và các tệp khác bạn gửi sẽ hiện ở đây.'
+  filesCount:
+    1: '1 tệp'
+    n: '$1 tệp'
+  feedCount:
+    1: '1 mục gửi trong lịch sử'
+    n: '$1 mục gửi trong lịch sử'
+  phoneSubtitle: 'Thông báo được phản chiếu từ điện thoại'
+  smsSubtitle: 'Nhắn tin từ máy tính'
+  viewGrid: 'Lưới'
+  viewList: 'Danh sách'
+  colName: 'Tên'
+  colFrom: 'Từ'
+  colType: 'Loại'
+  colDate: 'Ngày'
+  loadOlder: 'Tải tệp cũ hơn'
+  devicesCount: '$1 trên $2 thiết bị đang nhận mục gửi'
+  manageDevices: 'Quản lý thiết bị'
+  attention: 'Cần chú ý'
+  canText: 'Nhắn tin được'
+  lastActive: 'Hoạt động lần cuối $1'
+  sendTo: 'Gửi tới thiết bị này'
+  apps: 'Ứng dụng'
+  allApps: 'Tất cả ứng dụng'
 outbox:
   title: 'Đang chờ gửi'
   hint: 'Những mục này sẽ tự gửi khi kết nối lại được với Pushbullet.'

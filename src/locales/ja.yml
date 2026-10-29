@@ -35,6 +35,7 @@ header:
   unpause: 通知を再開
   openPanel: サイドパネルで開く
   openWindow: ウィンドウで開く
+  openTab: '全画面のページで開く'
   settings: 設定
 send:
   tooBig: $1 は Pushbullet の上限（$2）を超えています。
@@ -100,6 +101,9 @@ whatsNew:
   title: Pushpilot $1 の新機能
   seeAll: すべての変更を表示
   label: 新機能
+  v1_5:
+    fullPage: '写真の横の ⤢ ボタンで Pushpilot を全画面のページで開けます：概要、大きなプレビュー付きのフィード、SMS を並べて表示。'
+    files: '新しい「ファイル」「デバイス」ページ：送ったものをギャラリーやリストで、すべてのデバイスをひと目で。'
   v1_4:
     jump: 'フィードやギャラリーで好きな月へ移動：日付の見出しをクリック。'
     numbers: 'SMS の電話番号がスマートフォンと同じ形式で表示されます。'
@@ -233,6 +237,8 @@ sms:
   offlineNotice: '$1 は $2 以降接続されていません。過去のメッセージは読めますが、オンラインに戻るまで新しいメッセージは送信されません。'
   refresh: 更新
   newText: 新規メッセージ
+  pickTitle: '会話を選択'
+  pickBody: 'SMS はリストの横に表示されます。'
   noThreadsTitle: 会話はありません
   noThreadsBody: このスマートフォンはまだメッセージのスレッドを共有していません。
   you: 自分：
@@ -471,6 +477,50 @@ guide:
   smsHint: 'スマートフォンの Pushbullet で「SMS」をオンにしてから、ここで「SMS」タブを開いてください。'
   shortcut: '$1 でコピーした内容をプッシュ'
   shortcutHint: 'どこかでリンクやテキストをコピーしてショートカットを押すと、スマートフォンに届きます。'
+dash:
+  home: '概要'
+  files: 'ファイル'
+  devices: 'デバイス'
+  newPush: '新規プッシュ'
+  greetMorning: 'おはようございます、$1 さん'
+  greetAfternoon: 'こんにちは、$1 さん'
+  greetEvening: 'こんばんは、$1 さん'
+  statWeek: '今週のプッシュ'
+  statLoaded: 'この履歴に $1 件'
+  statFiles: '共有したファイル'
+  statImages: '画像 $1 件'
+  statDevices: '受信中のデバイス'
+  statDevicesHint: 'プッシュを受け取れます'
+  statPhone: 'スマートフォンに表示中'
+  recentPushes: '最近のプッシュ'
+  recentFiles: '最近のファイル'
+  latestTexts: '最新の SMS'
+  phoneQuiet: '現在スマートフォンに通知はありません。'
+  filesEmptyTitle: 'ファイルはまだありません'
+  filesEmpty: 'プッシュした写真、PDF、その他のファイルがここに表示されます。'
+  filesCount:
+    1: '1 件のファイル'
+    n: '$1 件のファイル'
+  feedCount:
+    1: '履歴に 1 件のプッシュ'
+    n: '履歴に $1 件のプッシュ'
+  phoneSubtitle: 'スマートフォンからミラーリングされた通知'
+  smsSubtitle: 'パソコンから SMS を送る'
+  viewGrid: 'グリッド'
+  viewList: 'リスト'
+  colName: '名前'
+  colFrom: '送信元'
+  colType: '種類'
+  colDate: '日付'
+  loadOlder: '以前のファイルを読み込む'
+  devicesCount: '$2 台中 $1 台がプッシュを受信中'
+  manageDevices: 'デバイスを管理'
+  attention: '要確認'
+  canText: 'SMS 対応'
+  lastActive: '最終アクティブ：$1'
+  sendTo: 'このデバイスに送信'
+  apps: 'アプリ'
+  allApps: 'すべてのアプリ'
 outbox:
   title: '送信待ち'
   hint: 'Pushbullet に再びつながると、自動で送信されます。'

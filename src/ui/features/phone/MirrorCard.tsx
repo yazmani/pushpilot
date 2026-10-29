@@ -14,7 +14,9 @@ export function MirrorCard({
   devices,
   autoFocus,
   showDevice,
+  className,
 }: {
+  className?: string;
   m: Mirror;
   devices: Device[];
   autoFocus?: boolean;
@@ -53,7 +55,10 @@ export function MirrorCard({
     }, i18n.t('phone.replySent'));
 
   return (
-    <li ref={card} className={clsx('group relative px-3.5 py-3', autoFocus && 'bg-accent-soft/50', m.dismissed && 'opacity-70')}>
+    <li
+      ref={card}
+      className={clsx('group relative px-3.5 py-3', autoFocus && 'bg-accent-soft/50', m.dismissed && 'opacity-70', className)}
+    >
       <div className="flex gap-3">
         {m.icon ? (
           <img src={`data:image/jpeg;base64,${m.icon}`} alt="" className="size-10 shrink-0 rounded-xl" />
@@ -79,7 +84,7 @@ export function MirrorCard({
             </p>
           )}
 
-          {(m.code || m.conversation_iden || (m.actions?.length && !m.dismissed)) && (
+          {(m.code || m.conversation_iden || (!!m.actions?.length && !m.dismissed)) && (
             <div className="mt-2.5 flex flex-wrap gap-1.5">
               {m.code && <CodeChip code={m.code} />}
               {m.conversation_iden && !replying && (

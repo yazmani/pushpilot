@@ -1,5 +1,5 @@
 import clsx from 'clsx';
-import { BellOff, Check, ExternalLink, Globe, Moon, PanelRight, RefreshCw, Settings } from 'lucide-react';
+import { AppWindow, BellOff, Check, ExternalLink, Globe, Maximize2, Moon, PanelRight, RefreshCw, Settings } from 'lucide-react';
 import { useEffect, useRef, useState } from 'react';
 import { browser } from 'wxt/browser';
 import { call } from '@/core/messaging/rpc';
@@ -10,7 +10,7 @@ import { Avatar, LogoMark } from '@/ui/components';
 import type { Mode } from './App';
 import { i18n } from '#i18n';
 
-const TABS: { id: Tab; label: () => string }[] = [
+export const TABS: { id: Tab; label: () => string }[] = [
   { id: 'send', label: () => i18n.t('tabs.send') },
   { id: 'feed', label: () => i18n.t('tabs.feed') },
   { id: 'phone', label: () => i18n.t('tabs.phone') },
@@ -30,7 +30,9 @@ export function Header({
   onTab,
   unread,
   showSms,
+  className,
 }: {
+  className?: string;
   mode: Mode;
   me: User | null;
   connection: ConnectionState;
@@ -44,7 +46,7 @@ export function Header({
   const snoozed = snoozeUntil > Date.now();
 
   return (
-    <header className="bg-band relative shrink-0 text-on-band">
+    <header className={clsx('bg-band relative shrink-0 text-on-band', className)}>
       <div className="flex h-[52px] items-center gap-1 ps-3.5 pe-2.5">
         <LogoMark size={28} className="me-1.5 shrink-0 drop-shadow-[0_2px_4px_rgba(0,40,20,0.3)]" />
         <nav className="flex min-w-0 flex-1 items-center gap-0.5" role="tablist" aria-label={i18n.t('header.sections')}>
@@ -80,6 +82,16 @@ export function Header({
           })}
         </nav>
 
+        {mode !== 'tab' && (
+          <button
+            title={i18n.t('header.openTab')}
+            aria-label={i18n.t('header.openTab')}
+            onClick={() => void openFullPage(mode)}
+            className="me-2 grid size-8 place-items-center rounded-full text-on-band/85 transition-colors hover:bg-white/12 hover:text-on-band"
+          >
+            <Maximize2 size={15} strokeWidth={2.2} />
+          </button>
+        )}
         {snoozed && (
           <button
             title={i18n.t('header.pausedHint')}
@@ -108,7 +120,18 @@ export function Header({
   );
 }
 
-function StatusDot({ state }: { state: ConnectionState }) {
+/** One full-page Pushpilot: focus it if it's already open, and get the popup out of the way. */
+export async function openFullPage(mode: Mode) {
+  const url = browser.runtime.getURL('/app.html');
+  const [open] = await browser.tabs.query({ url });
+  if (open?.id !== undefined) {
+    await browser.tabs.update(open.id, { active: true });
+    await browser.windows.update(open.windowId, { focused: true });
+  } else await browser.tabs.create({ url });
+  if (mode === 'popup') window.close();
+}
+
+export function StatusDot({ state }: { state: ConnectionState }) {
   return (
     <span
       className={clsx(
@@ -121,18 +144,21 @@ function StatusDot({ state }: { state: ConnectionState }) {
   );
 }
 
-function AccountMenu({
+export function AccountMenu({
   mode,
   me,
   connection,
   snoozeUntil,
   onClose,
+  up = false,
 }: {
   mode: Mode;
   me: User | null;
   connection: ConnectionState;
   snoozeUntil: number;
   onClose: () => void;
+  /** Open upwards, from the bottom of the full-page sidebar. */
+  up?: boolean;
 }) {
   const ref = useRef<HTMLDivElement>(null);
   useEffect(() => {
@@ -162,13 +188,18 @@ function AccountMenu({
     if (win.id !== undefined) await browser.sidePanel.open({ windowId: win.id });
     window.close();
   };
+  // One full-page Pushpilot: focus it if it's already open.
+  const openTab = async () => {
+    await openFullPage(mode);
+    onClose();
+  };
   const popOut = async () => {
     await browser.windows.create({ url: browser.runtime.getURL('/popup.html?window=1'), type: 'popup', width: 420, height: 660 });
     window.close();
   };
 
   const item =
-    'flex w-full items-center gap-2.5 rounded-lg px-2.5 py-2 text-start text-sm font-semibold text-ink hover:bg-raised';
+    'flex w-full items-center gap-2.5 rounded-lg px-2.5 py-2 text-start text-sm font-semibold text-ink hover:bg-raised dark:hover:bg-white/[0.07]';
   const status =
     connection === 'live'
       ? i18n.t('header.connected')
@@ -180,7 +211,11 @@ function AccountMenu({
     <div
       ref={ref}
       role="menu"
-      className="animate-rise absolute end-0 top-11 z-50 w-64 rounded-2xl border border-line bg-surface p-1.5 text-ink shadow-card"
+      className={clsx(
+        // A notch lighter than the surface in dark mode, so it stands out against the dark sidebar too.
+        'animate-rise absolute z-50 w-64 rounded-2xl border border-line bg-surface p-1.5 text-ink shadow-card dark:border-white/10 dark:bg-raised dark:shadow-[0_18px_50px_-12px_rgba(0,0,0,0.7)]',
+        up ? 'bottom-full start-0 mb-2' : 'end-0 top-11',
+      )}
     >
       <div className="flex items-center gap-2.5 px-2.5 pb-2.5 pt-2">
         <Avatar src={me?.image_url} name={me?.name || me?.email} size={34} />
@@ -210,7 +245,8 @@ function AccountMenu({
             ])
           : i18n.t('header.pause')}
       </div>
-      <div className="grid grid-cols-4 gap-1 px-1.5 pb-2">
+      {/* "Tonight" is the longest label in most languages; give it the room. */}
+      <div className="grid grid-cols-[1fr_1fr_1fr_1.7fr] gap-1 px-1.5 pb-2">
         {(
           [
             ['30m', i18n.t('header.snooze30m'), 30 * 60_000],
@@ -222,9 +258,9 @@ function AccountMenu({
           <button
             key={id}
             onClick={() => snooze(ms)}
-            className="flex h-8 items-center justify-center gap-1 rounded-lg bg-raised text-xs font-bold hover:bg-accent-soft hover:text-accent-strong"
+            className="flex h-8 min-w-0 items-center justify-center gap-1 whitespace-nowrap rounded-lg bg-raised px-1 text-xs font-bold hover:bg-accent-soft hover:text-accent-strong dark:bg-white/[0.07]"
           >
-            {id === 'night' && <Moon size={11} />}
+            {id === 'night' && <Moon size={12} className="shrink-0" />}
             {label}
           </button>
         ))}
@@ -236,6 +272,11 @@ function AccountMenu({
       )}
 
       <div className="mt-1 border-t border-line pt-1.5">
+        {mode !== 'tab' && (
+          <button className={item} onClick={openTab}>
+            <AppWindow size={15} className="text-muted" /> {i18n.t('header.openTab')}
+          </button>
+        )}
         {mode === 'popup' && (
           <>
             <button className={item} onClick={openPanel}>

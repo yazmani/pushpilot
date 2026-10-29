@@ -1,17 +1,26 @@
 name: Publish to Chrome Web Store
 
-# Run manually once the extension exists in the Chrome Web Store and these
-# repository secrets are set (CWS API v2, service account):
+# Uploads the current main to the Chrome Web Store by hand; tagged releases do
+# this on their own (release.yml). Needs four repository secrets for the
+# Chrome Web Store API v2 with a service account:
 #   CHROME_EXTENSION_ID, CHROME_PUBLISHER_ID,
 #   CHROME_SERVICE_ACCOUNT_CLIENT_EMAIL, CHROME_SERVICE_ACCOUNT_PRIVATE_KEY
-# `npx wxt submit init` walks through creating them.
+# Setup: Google Cloud project › enable "Chrome Web Store API" › service account
+# › JSON key; then add the service account's email under Account in the
+# Developer Dashboard. The publisher ID is in the dashboard's address
+# (chrome.google.com/webstore/devconsole/<publisher id>/...).
 on:
   workflow_dispatch:
     inputs:
-      dry_run:
-        description: Validate credentials without submitting
-        type: boolean
-        default: true
+      mode:
+        description: What to do with the upload
+        type: choice
+        default: staged
+        options:
+          - draft # upload only; submit it yourself in the dashboard
+          - staged # submit for review; publish yourself once approved
+          - publish # submit for review; goes live as soon as it's approved
+          - check # validate the credentials, upload nothing
 
 permissions:
   contents: read
@@ -31,8 +40,10 @@ jobs:
       - run: npm test
       - run: npm run zip
       - name: Submit
-        run: npx wxt submit ${{ inputs.dry_run && '--dry-run' || '' }} --chrome-zip dist/*-chrome.zip
+        run: npx wxt submit ${{ inputs.mode == 'check' && '--dry-run' || '' }} --chrome-zip dist/*-chrome.zip
         env:
+          CHROME_SKIP_SUBMIT_REVIEW: ${{ inputs.mode == 'draft' }}
+          CHROME_PUBLISH_TYPE: ${{ inputs.mode == 'publish' && 'DEFAULT_PUBLISH' || 'STAGED_PUBLISH' }}
           CHROME_API_VERSION: v2
           CHROME_EXTENSION_ID: ${{ secrets.CHROME_EXTENSION_ID }}
           CHROME_PUBLISHER_ID: ${{ secrets.CHROME_PUBLISHER_ID }}

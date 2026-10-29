@@ -35,6 +35,7 @@ header:
   unpause: Aktifkan lagi notifikasi
   openPanel: Buka di panel samping
   openWindow: Buka di jendela
+  openTab: 'Buka sebagai halaman penuh'
   settings: Setelan
 send:
   tooBig: $1 melebihi batas $2 dari Pushbullet.
@@ -100,6 +101,9 @@ whatsNew:
   title: Baru di Pushpilot $1
   seeAll: Lihat semua perubahan
   label: Yang baru
+  v1_5:
+    fullPage: 'Buka Pushpilot sebagai halaman penuh dengan tombol ⤢ di samping foto Anda: ringkasan, feed dengan pratinjau besar, dan SMS berdampingan.'
+    files: 'Halaman File dan Perangkat baru: semua yang Anda kirim sebagai galeri atau daftar, dan semua perangkat sekilas.'
   v1_4:
     jump: 'Lompat ke bulan mana pun di feed atau galeri: klik judul sebuah hari.'
     numbers: 'Nomor telepon di SMS tampil seperti di ponsel Anda.'
@@ -233,6 +237,8 @@ sms:
   offlineNotice: '$1 belum terhubung sejak $2. Anda bisa membaca SMS lama, tetapi SMS baru tidak akan terkirim sampai ponsel online kembali.'
   refresh: Muat ulang
   newText: SMS baru
+  pickTitle: 'Pilih percakapan'
+  pickBody: 'SMS Anda terbuka di sini, di samping daftar.'
   noThreadsTitle: Tidak ada percakapan
   noThreadsBody: Ponsel ini belum membagikan percakapan SMS apa pun.
   you: 'Anda: '
@@ -471,6 +477,50 @@ guide:
   smsHint: 'Di Pushbullet pada ponsel Anda, aktifkan SMS, lalu buka tab SMS di sini.'
   shortcut: 'Tekan $1 untuk mengirim yang Anda salin'
   shortcutHint: 'Salin link atau teks di mana saja, tekan pintasannya, dan itu akan sampai di ponsel Anda.'
+dash:
+  home: 'Ringkasan'
+  files: 'File'
+  devices: 'Perangkat'
+  newPush: 'Kiriman baru'
+  greetMorning: 'Selamat pagi, $1'
+  greetAfternoon: 'Selamat siang, $1'
+  greetEvening: 'Selamat malam, $1'
+  statWeek: 'Kiriman minggu ini'
+  statLoaded: '$1 di riwayat Anda di sini'
+  statFiles: 'File dibagikan'
+  statImages: '$1 gambar'
+  statDevices: 'Perangkat penerima'
+  statDevicesHint: 'Siap menerima kiriman Anda'
+  statPhone: 'Di ponsel Anda sekarang'
+  recentPushes: 'Kiriman terbaru'
+  recentFiles: 'File terbaru'
+  latestTexts: 'SMS terbaru'
+  phoneQuiet: 'Tidak ada apa pun di ponsel Anda saat ini.'
+  filesEmptyTitle: 'Belum ada file'
+  filesEmpty: 'Foto, PDF, dan file lain yang Anda kirim muncul di sini.'
+  filesCount:
+    1: '1 file'
+    n: '$1 file'
+  feedCount:
+    1: '1 kiriman di riwayat Anda'
+    n: '$1 kiriman di riwayat Anda'
+  phoneSubtitle: 'Notifikasi yang dicerminkan dari ponsel Anda'
+  smsSubtitle: 'Kirim SMS dari komputer'
+  viewGrid: 'Kisi'
+  viewList: 'Daftar'
+  colName: 'Nama'
+  colFrom: 'Dari'
+  colType: 'Jenis'
+  colDate: 'Tanggal'
+  loadOlder: 'Muat file lama'
+  devicesCount: '$1 dari $2 menerima kiriman'
+  manageDevices: 'Kelola perangkat'
+  attention: 'Perlu perhatian'
+  canText: 'Bisa mengirim SMS'
+  lastActive: 'Terakhir aktif $1'
+  sendTo: 'Kirim ke perangkat ini'
+  apps: 'Aplikasi'
+  allApps: 'Semua aplikasi'
 outbox:
   title: 'Menunggu dikirim'
   hint: 'Ini akan terkirim otomatis begitu Pushbullet bisa dijangkau lagi.'

@@ -22,7 +22,7 @@ import { useRun, useToast } from '@/ui/hooks/use-toast';
 import { counterpart, fileKind, type FileKind } from './classify';
 import { i18n } from '#i18n';
 
-const FILE_ICONS: Record<FileKind, typeof FileIcon> = {
+export const FILE_ICONS: Record<FileKind, typeof FileIcon> = {
   image: FileImage,
   video: FileVideo,
   pdf: FileText,
@@ -32,7 +32,7 @@ const FILE_ICONS: Record<FileKind, typeof FileIcon> = {
 };
 
 /** "PDF", "HTML"… from a file name, when it has a short extension. */
-function extension(name?: string) {
+export function extension(name?: string) {
   const ext = name?.match(/\.([a-z0-9]{1,5})$/i)?.[1];
   return ext?.toUpperCase();
 }
@@ -78,23 +78,8 @@ function mergePreview(url: string, cached?: LinkPreview): LinkPreview {
   return merged;
 }
 
-export function FeedItem({
-  push: p,
-  ctx,
-  isNew,
-  onPerson,
-  select,
-}: {
-  push: Push;
-  ctx: FeedContext;
-  isNew: boolean;
-  onPerson: (email: string) => void;
-  /** Selection mode: a click toggles the item instead of opening it. */
-  select?: { on: boolean; toggle: () => void };
-}) {
-  useNow();
-  const notify = useToast();
-  const run = useRun();
+/** What a push shows: its title, the line under it, its picture and who it's with. Shared by the feed's rows and the full page's preview. */
+export function summarize(p: Push, ctx: FeedContext) {
   const who = counterpart(p, ctx.me);
   const chat = who ? ctx.chats.find((c) => c.with.email_normalized === who) : undefined;
   const sub = p.channel_iden ? ctx.subscriptions.find((s) => s.channel.iden === p.channel_iden) : undefined;
@@ -113,6 +98,27 @@ export function FeedItem({
   const site = preview ? preview.siteName?.split(',')[0] || host(p.url) : undefined;
   const subtitle = p.body || preview?.description || site;
   const imageFile = isImage(p) ? (p.image_url ? `${p.image_url}=s160` : p.file_url) : undefined;
+  return { who, chat, sub, url, preview, title, site, subtitle, imageFile, line: describe(p, ctx, who, chat, sub) };
+}
+
+export function FeedItem({
+  push: p,
+  ctx,
+  isNew,
+  onPerson,
+  select,
+}: {
+  push: Push;
+  ctx: FeedContext;
+  isNew: boolean;
+  onPerson: (email: string) => void;
+  /** Selection mode: a click toggles the item instead of opening it. */
+  select?: { on: boolean; toggle: () => void };
+}) {
+  useNow();
+  const notify = useToast();
+  const run = useRun();
+  const { who, chat, sub, url, preview, title, subtitle, imageFile } = summarize(p, ctx);
 
   // Every row gets the same 16:9 slot, so text lines up and pictures stay big
   // enough to recognise. People and channels sit centred in it.

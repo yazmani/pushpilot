@@ -11,12 +11,15 @@ import { SendView } from '@/ui/features/send/SendView';
 import { SmsView } from '@/ui/features/sms/SmsView';
 import { useStore } from '@/ui/hooks/use-store';
 import { useTheme } from '@/ui/hooks/use-theme';
+import { useWide } from '@/ui/hooks/use-wide';
+import { Dashboard } from '@/ui/dashboard/Dashboard';
 import { ToastProvider } from '@/ui/hooks/use-toast';
 import { Header } from './Header';
+
 import { i18n } from '#i18n';
 
-/** Where the app is rendered: toolbar popup, side panel, or the pop-out window. */
-export type Mode = 'popup' | 'panel' | 'window';
+/** Where the app is rendered: toolbar popup, side panel, pop-out window, or a full browser tab. */
+export type Mode = 'popup' | 'panel' | 'window' | 'tab';
 
 /** Deep link from a notification click into a specific item. */
 export interface Intent {
@@ -35,25 +38,17 @@ export function App({ mode }: { mode: Mode }) {
 }
 
 function Shell({ mode }: { mode: Mode }) {
-  const { token, me, settings, unread, connection, lastError, devices, rateLimitedUntil, ready } = useStore([
-    'rateLimitedUntil',
+  const { token, me, settings, unread, connection, devices, ready } = useStore([
     'token',
     'me',
     'settings',
     'unread',
     'connection',
-    'lastError',
     'devices',
   ]);
   const [tab, setTab] = useState<Tab | null>(null);
   const [intent, setIntent] = useState<Intent>({});
-  // Re-render when a rate limit runs out, so its notice goes away by itself.
-  const [now, setNow] = useState(Date.now());
-  useEffect(() => {
-    if (rateLimitedUntil <= Date.now()) return;
-    const t = setTimeout(() => setNow(Date.now()), rateLimitedUntil - Date.now() + 1000);
-    return () => clearTimeout(t);
-  }, [rateLimitedUntil]);
+  const wide = useWide(1024);
 
   // Starting tab: a hand-off from a notification wins over the default.
   useEffect(() => {
@@ -82,7 +77,19 @@ function Shell({ mode }: { mode: Mode }) {
       </Centered>
     );
   }
-  if (!token) return <SignIn inPopup={mode === 'popup'} />;
+  if (!token) {
+    if (mode === 'tab')
+      return (
+        <div className="grid h-full place-items-center px-8">
+          <SignIn wide />
+        </div>
+      );
+    return <SignIn inPopup={mode === 'popup'} />;
+  }
+
+  const showSms = devices.some((d) => d.has_sms);
+  // A full page on a laptop-sized window or bigger gets the dashboard; smaller ones the popup's layout.
+  if (mode === 'tab' && wide) return <Dashboard initialTab={tab!} intent={intent} />;
 
   return (
     <div className="flex h-full flex-col bg-bg">
@@ -94,9 +101,32 @@ function Shell({ mode }: { mode: Mode }) {
         tab={tab!}
         onTab={setTab}
         unread={unread}
-        showSms={devices.some((d) => d.has_sms)}
+        showSms={showSms}
       />
+      <Banners />
+      <main className="relative min-h-0 flex-1 bg-bg">
+        {tab === 'send' && <SendView mode={mode} onOpenFeed={() => setTab('feed')} />}
+        {tab === 'feed' && <FeedView />}
+        {tab === 'phone' && <PhoneView focus={intent.mirror} />}
+        {tab === 'sms' && <SmsView device={intent.device} thread={intent.thread} />}
+      </main>
+    </div>
+  );
+}
 
+/** Rate limit and connection notices, under the header or above the dashboard's pages. */
+export function Banners() {
+  const { connection, lastError, rateLimitedUntil } = useStore(['connection', 'lastError', 'rateLimitedUntil']);
+  // Re-render when a rate limit runs out, so its notice goes away by itself.
+  const [now, setNow] = useState(Date.now());
+  useEffect(() => {
+    if (rateLimitedUntil <= Date.now()) return;
+    const t = setTimeout(() => setNow(Date.now()), rateLimitedUntil - Date.now() + 1000);
+    return () => clearTimeout(t);
+  }, [rateLimitedUntil]);
+
+  return (
+    <>
       {rateLimitedUntil > now && (
         <div className="flex shrink-0 items-center gap-2 border-b border-line bg-note-bg px-3.5 py-2 text-xs text-ink">
           <span className="flex-1 leading-relaxed">
@@ -123,13 +153,6 @@ function Shell({ mode }: { mode: Mode }) {
           )}
         </div>
       )}
-
-      <main className="relative min-h-0 flex-1 bg-bg">
-        {tab === 'send' && <SendView mode={mode} onOpenFeed={() => setTab('feed')} />}
-        {tab === 'feed' && <FeedView />}
-        {tab === 'phone' && <PhoneView focus={intent.mirror} />}
-        {tab === 'sms' && <SmsView device={intent.device} thread={intent.thread} />}
-      </main>
-    </div>
+    </>
   );
 }

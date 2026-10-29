@@ -2,6 +2,24 @@
 
 All notable changes are listed here. The format follows [Keep a Changelog](https://keepachangelog.com/), and versions follow [Semantic Versioning](https://semver.org/).
 
+## [1.5.0] - 2026-10-29
+
+### Added
+
+- Pushpilot as a full page: the new button next to your picture in the popup, or account menu › Open as a full page. On a laptop-sized window it's a dashboard with a sidebar and a New push button that slides the composer in from the side:
+  - Overview: a greeting, this week's pushes, files shared, devices receiving and what's on your phone, with recent pushes, phone notifications, latest texts, recent files and your devices.
+  - Files: every file you pushed as a gallery or a list, filtered by type, with the full-screen viewer for images.
+  - Devices: a card per device with whether it gets pushes, what it can do, and Send to it.
+  - Feed: a compact list beside the selected push in full (large picture or link preview, the whole note, video and audio players, file details) with Open, Copy, Mark as done and Delete; ↑/↓ or j/k move through it.
+  - Phone: notifications as cards, filtered by app.
+  - SMS: the conversation list beside the open conversation.
+  In a narrow window it keeps the popup's layout.
+
+### Fixed
+
+- A phone notification without action buttons no longer shows a stray "0" under its text.
+- The "Night" button in Pause notifications no longer runs out of its box, and the account menu stands out in dark mode.
+
 ## [1.4.0] - 2026-10-29
 
 ### Added
@@ -114,6 +132,7 @@ First public release.
 - Popup, side panel and pop-out window; light and dark themes; snooze; unread badge.
 - One-click sign-in through pushbullet.com, or an access token.
 
+[1.5.0]: https://github.com/yazmani/pushpilot/releases/tag/v1.5.0
 [1.4.0]: https://github.com/yazmani/pushpilot/releases/tag/v1.4.0
 [1.3.1]: https://github.com/yazmani/pushpilot/releases/tag/v1.3.1
 [1.3.0]: https://github.com/yazmani/pushpilot/releases/tag/v1.3.0

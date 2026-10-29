@@ -39,7 +39,16 @@ async function activeTab(mode: Mode) {
   return (await browser.tabs.query({ active: true, currentWindow: true }))[0];
 }
 
-export function SendView({ mode, onOpenFeed }: { mode: Mode; onOpenFeed: () => void }) {
+export function SendView({
+  mode,
+  onOpenFeed,
+  target,
+}: {
+  mode: Mode;
+  onOpenFeed: () => void;
+  /** Start on this target (a targetKey) instead of the remembered one. */
+  target?: string;
+}) {
   const { settings, me, ready } = useStore(['settings', 'me']);
   const { targets, unreachable } = useTargets();
   const notify = useToast();
@@ -63,9 +72,9 @@ export function SendView({ mode, onOpenFeed }: { mode: Mode; onOpenFeed: () => v
   // Start on the remembered target; fall back to all devices if it's gone.
   useEffect(() => {
     if (!ready || selected.length || targets.length < 2) return;
-    const wanted = settings.defaultTarget;
+    const wanted = target ?? settings.defaultTarget;
     setSelected([targets.some((t) => t.key === wanted) ? wanted : 'all']);
-  }, [ready, targets, settings.defaultTarget, selected.length]);
+  }, [ready, targets, settings.defaultTarget, selected.length, target]);
 
   const loadPage = useCallback(
     async (force = false) => {

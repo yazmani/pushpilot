@@ -35,6 +35,7 @@ header:
   unpause: Réactiver les notifications
   openPanel: Ouvrir dans le panneau latéral
   openWindow: Ouvrir dans une fenêtre
+  openTab: 'Ouvrir en pleine page'
   settings: Paramètres
 send:
   tooBig: $1 dépasse la limite de $2 de Pushbullet.
@@ -100,6 +101,9 @@ whatsNew:
   title: Nouveautés de Pushpilot $1
   seeAll: Voir tous les changements
   label: Nouveautés
+  v1_5:
+    fullPage: 'Ouvrez Pushpilot en pleine page avec le bouton ⤢ à côté de votre photo : une vue d’ensemble, un fil avec de grands aperçus, et les SMS côte à côte.'
+    files: 'Nouvelles pages Fichiers et Appareils : tout ce que vous avez envoyé en galerie ou en liste, et tous vos appareils d’un coup d’œil.'
   v1_4:
     jump: 'Allez à n’importe quel mois du fil ou de la galerie : cliquez sur l’en-tête d’un jour.'
     numbers: 'Les numéros dans vos SMS s’affichent comme sur votre téléphone.'
@@ -233,6 +237,8 @@ sms:
   offlineNotice: '$1 ne s’est pas connecté depuis $2. Vous pouvez lire les anciens SMS, mais les nouveaux ne partiront pas avant son retour en ligne.'
   refresh: Actualiser
   newText: Nouveau SMS
+  pickTitle: 'Choisissez une conversation'
+  pickBody: 'Vos SMS s’ouvrent ici, à côté de la liste.'
   noThreadsTitle: Aucune conversation
   noThreadsBody: Ce téléphone n’a encore partagé aucune conversation SMS.
   you: 'Vous : '
@@ -471,6 +477,50 @@ guide:
   smsHint: 'Dans Pushbullet sur votre téléphone, activez les SMS, puis ouvrez ici l’onglet SMS.'
   shortcut: 'Appuyez sur $1 pour envoyer ce que vous avez copié'
   shortcutHint: 'Copiez un lien ou du texte n’importe où, appuyez sur le raccourci, et il arrive sur votre téléphone.'
+dash:
+  home: 'Vue d’ensemble'
+  files: 'Fichiers'
+  devices: 'Appareils'
+  newPush: 'Nouvel envoi'
+  greetMorning: 'Bonjour, $1'
+  greetAfternoon: 'Bon après-midi, $1'
+  greetEvening: 'Bonsoir, $1'
+  statWeek: 'Envois cette semaine'
+  statLoaded: '$1 dans votre historique ici'
+  statFiles: 'Fichiers partagés'
+  statImages: '$1 images'
+  statDevices: 'Appareils en réception'
+  statDevicesHint: 'Prêts pour vos envois'
+  statPhone: 'Sur votre téléphone'
+  recentPushes: 'Envois récents'
+  recentFiles: 'Fichiers récents'
+  latestTexts: 'Derniers SMS'
+  phoneQuiet: 'Rien sur votre téléphone pour le moment.'
+  filesEmptyTitle: 'Aucun fichier pour l’instant'
+  filesEmpty: 'Les photos, PDF et autres fichiers que vous envoyez s’affichent ici.'
+  filesCount:
+    1: '1 fichier'
+    n: '$1 fichiers'
+  feedCount:
+    1: '1 envoi dans votre historique'
+    n: '$1 envois dans votre historique'
+  phoneSubtitle: 'Notifications recopiées depuis votre téléphone'
+  smsSubtitle: 'Envoyez des SMS depuis votre ordinateur'
+  viewGrid: 'Grille'
+  viewList: 'Liste'
+  colName: 'Nom'
+  colFrom: 'De'
+  colType: 'Type'
+  colDate: 'Date'
+  loadOlder: 'Charger des fichiers plus anciens'
+  devicesCount: '$1 sur $2 reçoivent vos envois'
+  manageDevices: 'Gérer les appareils'
+  attention: 'À vérifier'
+  canText: 'Peut envoyer des SMS'
+  lastActive: 'Dernière activité : $1'
+  sendTo: 'Y envoyer'
+  apps: 'Applis'
+  allApps: 'Toutes les applis'
 outbox:
   title: 'En attente d’envoi'
   hint: 'Ils partiront tout seuls dès que Pushbullet sera de nouveau joignable.'

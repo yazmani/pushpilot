@@ -310,7 +310,7 @@ export function FeedView() {
           ))}
         </div>
       )}
-      <div ref={scroller} className="scroll-area min-h-0 flex-1 px-3.5 pb-4">
+      <div ref={scroller} className="scroll-area @container min-h-0 flex-1 px-3.5 pb-4">
         {!gallery && <Outbox />}
         {visible.length === 0 ? (
           query ? (

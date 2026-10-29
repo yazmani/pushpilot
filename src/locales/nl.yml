@@ -34,6 +34,7 @@ header:
   unpause: Meldingen weer aanzetten
   openPanel: Openen in zijpaneel
   openWindow: Openen in een venster
+  openTab: 'Openen als volledige pagina'
   settings: Instellingen
 send:
   tooBig: $1 is groter dan de limiet van $2 bij Pushbullet.
@@ -99,6 +100,9 @@ whatsNew:
   title: Nieuw in Pushpilot $1
   seeAll: Alle wijzigingen bekijken
   label: Wat is er nieuw
+  v1_5:
+    fullPage: 'Open Pushpilot als volledige pagina met de ⤢-knop naast je foto: een overzicht, een feed met grote voorbeelden en sms’jes naast elkaar.'
+    files: 'Nieuwe pagina’s Bestanden en Apparaten: alles wat je pushte als galerij of lijst, en al je apparaten in één oogopslag.'
   v1_4:
     jump: 'Ga naar elke maand in je feed of galerij: klik op de kop van een dag.'
     numbers: 'Telefoonnummers in je sms’jes zien eruit zoals op je telefoon.'
@@ -232,6 +236,8 @@ sms:
   offlineNotice: '$1 is sinds $2 niet meer verbonden. Je kunt oude sms’jes lezen, maar nieuwe worden pas verstuurd als hij weer online is.'
   refresh: Vernieuwen
   newText: Nieuwe sms
+  pickTitle: 'Kies een gesprek'
+  pickBody: 'Je sms’jes openen hier, naast de lijst.'
   noThreadsTitle: Geen gesprekken
   noThreadsBody: Deze telefoon heeft nog geen sms-gesprekken gedeeld.
   you: 'Jij: '
@@ -470,6 +476,50 @@ guide:
   smsHint: 'Zet in Pushbullet op je telefoon Sms aan en open daarna hier het tabblad Sms.'
   shortcut: 'Druk op $1 om te pushen wat je hebt gekopieerd'
   shortcutHint: 'Kopieer ergens een link of wat tekst, druk op de sneltoets en het komt op je telefoon terecht.'
+dash:
+  home: 'Overzicht'
+  files: 'Bestanden'
+  devices: 'Apparaten'
+  newPush: 'Nieuwe push'
+  greetMorning: 'Goedemorgen, $1'
+  greetAfternoon: 'Goedemiddag, $1'
+  greetEvening: 'Goedenavond, $1'
+  statWeek: 'Pushes deze week'
+  statLoaded: '$1 in je geschiedenis hier'
+  statFiles: 'Gedeelde bestanden'
+  statImages: '$1 afbeeldingen'
+  statDevices: 'Ontvangende apparaten'
+  statDevicesHint: 'Klaar voor je pushes'
+  statPhone: 'Nu op je telefoon'
+  recentPushes: 'Recente pushes'
+  recentFiles: 'Recente bestanden'
+  latestTexts: 'Nieuwste sms’jes'
+  phoneQuiet: 'Er staat nu niets op je telefoon.'
+  filesEmptyTitle: 'Nog geen bestanden'
+  filesEmpty: 'Foto’s, pdf’s en andere bestanden die je pusht, verschijnen hier.'
+  filesCount:
+    1: '1 bestand'
+    n: '$1 bestanden'
+  feedCount:
+    1: '1 push in je geschiedenis'
+    n: '$1 pushes in je geschiedenis'
+  phoneSubtitle: 'Meldingen gespiegeld van je telefoon'
+  smsSubtitle: 'Sms’en vanaf je computer'
+  viewGrid: 'Raster'
+  viewList: 'Lijst'
+  colName: 'Naam'
+  colFrom: 'Van'
+  colType: 'Type'
+  colDate: 'Datum'
+  loadOlder: 'Oudere bestanden laden'
+  devicesCount: '$1 van $2 ontvangen pushes'
+  manageDevices: 'Apparaten beheren'
+  attention: 'Vraagt aandacht'
+  canText: 'Kan sms’en'
+  lastActive: 'Laatst actief op $1'
+  sendTo: 'Ernaartoe sturen'
+  apps: 'Apps'
+  allApps: 'Alle apps'
 outbox:
   title: 'Wacht op versturen'
   hint: 'Deze gaan vanzelf weg zodra Pushbullet weer bereikbaar is.'
