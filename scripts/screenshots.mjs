@@ -16,7 +16,8 @@ const root = fileURLToPath(new URL('..', import.meta.url));
 const dist = join(root, 'dist/chrome-mv3');
 const out = join(root, 'docs/screenshots');
 // Store listing images stay local (git-ignored) with the listing copy.
-const storeOut = join(root, '.local/store');
+// STORE_OUT renders them elsewhere first, to compare before replacing.
+const storeOut = join(root, process.env.STORE_OUT || '.local/store');
 await mkdir(out, { recursive: true });
 await mkdir(storeOut, { recursive: true });
 
@@ -42,7 +43,43 @@ function popupFrame(view, theme, scale = 1, extra = '') {
   return `<iframe src="/popup.html?tab=${view}&theme=${theme}${extra}" width="400" height="600" style="border:0;border-radius:22px;background:#fff;box-shadow:0 30px 80px -20px rgba(0,30,15,.55),0 0 0 1px rgba(255,255,255,.18);transform:scale(${scale});transform-origin:top left"></iframe>`;
 }
 
-function storePage({ view, theme, headline, sub, extra = '' }) {
+/**
+ * The full-page app in a plain browser window, rendered at laptop size and
+ * scaled down. `page` is the sidebar section to open once it has loaded.
+ */
+function appWindow(theme, scale, page = 'Overview') {
+  const w = 1440;
+  const h = 900;
+  return `<div class="win" style="width:${w * scale}px;height:${(h + 40) * scale}px">
+    <div class="bar" style="height:${40 * scale}px"><i></i><i></i><i></i><span>Pushpilot</span></div>
+    <iframe data-page="${page}" src="/app.html?tab=feed&theme=${theme}" width="${w}" height="${h}" style="transform:scale(${scale});transform-origin:top left"></iframe>
+  </div>`;
+}
+
+const WINDOW_CSS = `
+  .win{border-radius:16px;overflow:hidden;background:#fff;box-shadow:0 40px 100px -24px rgba(0,30,15,.6),0 0 0 1px rgba(255,255,255,.22)}
+  .bar{display:flex;align-items:center;gap:7px;padding:0 16px;background:#e9efeb;box-sizing:border-box}
+  .bar i{width:11px;height:11px;border-radius:50%;background:#c9d4cd}.bar i:first-child{background:#ff6159}.bar i:nth-child(2){background:#ffbd2e}.bar i:nth-child(3){background:#28c941}
+  .bar span{margin:0 auto;transform:translateX(-30px);font:600 12px 'Plus Jakarta Sans',sans-serif;color:#5d6f64;background:#fff;border-radius:7px;padding:4px 40px}
+  .win iframe{border:0;display:block}`;
+
+/** A store screenshot of the full-page app: the copy above, the window below running off the bottom. */
+function storeAppPage({ theme, page, headline, sub }) {
+  return `<!doctype html><html><head><meta charset="utf-8">${FONT}<style>
+    body{margin:0;width:1280px;height:800px;overflow:hidden;font-family:'Plus Jakarta Sans',sans-serif;background:${BAND};color:#fff;position:relative}
+    .copy{position:absolute;left:0;right:0;top:46px;text-align:center}
+    h1{font-size:46px;line-height:1.05;letter-spacing:-.035em;margin:0 0 12px;font-weight:800}
+    p{font-size:19px;line-height:1.45;margin:0 auto;opacity:.9;max-width:760px}
+    .place{position:absolute;left:110px;top:200px}
+    ${WINDOW_CSS}
+  </style></head><body>
+    <div class="copy"><h1>${headline}</h1><p>${sub}</p></div>
+    <div class="place">${appWindow(theme, 0.736, page)}</div>
+  </body></html>`;
+}
+
+function storePage({ view, theme, headline, sub, extra = '', page }) {
+  if (page) return storeAppPage({ theme, page, headline, sub });
   return `<!doctype html><html><head><meta charset="utf-8">${FONT}<style>
     body{margin:0;width:1280px;height:800px;overflow:hidden;font-family:'Plus Jakarta Sans',sans-serif;background:${BAND};color:#fff;display:flex;align-items:center}
     .copy{width:560px;padding-left:96px}
@@ -84,11 +121,11 @@ function promoPage(width, height) {
     .logo svg{width:96px;height:96px;border-radius:26px;box-shadow:0 0 0 3px rgba(255,255,255,.3),0 20px 50px -12px rgba(0,30,15,.5)}
     h1{font-size:64px;letter-spacing:-.035em;margin:26px 0 10px;font-weight:800;line-height:1}
     p{font-size:24px;line-height:1.4;margin:0;opacity:.9;font-weight:500}
-    .shots{position:absolute;left:690px;top:64px;display:flex;gap:22px}
-    .shots .f{width:${400 * 0.82}px;height:${600 * 0.82}px}
+    .shots{position:absolute;left:660px;top:58px}
+    ${WINDOW_CSS}
   </style></head><body>
     <div class="copy"><div class="logo">${logo}</div><h1>Pushpilot</h1><p>Your pushes, cleared for takeoff.<br>A modern client for Pushbullet.</p></div>
-    <div class="shots"><div class="f">${popupFrame('send', 'light', 0.82)}</div><div class="f">${popupFrame('phone', 'dark', 0.82)}</div></div>
+    <div class="shots">${appWindow('light', 0.56)}</div>
   </body></html>`;
 }
 
@@ -116,10 +153,10 @@ const STORE = [
     sub: 'Open Pushpilot on any page and it’s ready to go, even at the minute of the video you’re watching.',
   },
   {
-    view: 'feed',
+    page: 'Overview',
     theme: 'light',
-    headline: 'Everything you pushed, in one place.',
-    sub: 'Links, notes, files and photos from all your devices and friends, with rich previews.',
+    headline: 'A full page when you want room.',
+    sub: 'A dashboard of what came in, what’s on your phone, and all your files and devices.',
   },
   {
     view: 'phone',
@@ -128,17 +165,16 @@ const STORE = [
     sub: 'Copy sign-in codes in one click. Reply to messages without picking up your phone.',
   },
   {
-    view: 'sms',
+    page: 'Feed',
     theme: 'light',
-    headline: 'Text from your browser.',
-    sub: 'Read and answer SMS from your Android phone, right next to your work.',
-    extra: '&thread=1',
+    headline: 'Your whole history, at a glance.',
+    sub: 'Every link, note and file you pushed, with big previews. Jump to any month in a click.',
   },
   {
-    view: 'send',
+    page: 'SMS',
     theme: 'dark',
-    headline: 'Built for Manifest V3.',
-    sub: 'Auto-open links, notification sounds, end-to-end encryption and a side panel. Works in Chrome, Brave and Edge.',
+    headline: 'Text from your computer.',
+    sub: 'Your Android phone’s conversations side by side, right next to your work.',
   },
 ];
 
@@ -200,6 +236,22 @@ async function openThread(frameOrPage) {
   await frameOrPage.evaluate(() => [...document.querySelectorAll('button')].find((b) => b.textContent?.includes('Mom')).click());
 }
 
+/** In a page holding the full-page app in an iframe: pick a sidebar section, and open a texting thread on SMS. */
+async function openSection(page, section) {
+  const frame = page.frames().find((f) => f.url().includes('app.html'));
+  if (!frame) return;
+  await frame.waitForSelector('aside nav button', { timeout: 8000 });
+  await frame.evaluate(
+    (s) => [...document.querySelectorAll('aside nav button')].find((b) => b.textContent.trim().startsWith(s))?.click(),
+    section,
+  );
+  await settle(1200);
+  if (section === 'SMS') {
+    await openThread(frame);
+    await settle(1200);
+  }
+}
+
 try {
   // Popup views for the README, light and dark.
   const page = await browser.newPage();
@@ -214,6 +266,23 @@ try {
     await openThread(page);
     await settle(1200);
     await page.screenshot({ path: join(out, `sms-thread-${theme}.png`) });
+  }
+
+  // The full-page app for the README.
+  const app = await browser.newPage();
+  await app.setViewport({ width: 1440, height: 900, deviceScaleFactor: 1.5 });
+  for (const [section, theme, name] of [
+    ['Overview', 'light', 'app-overview-light'],
+    ['Feed', 'dark', 'app-feed-dark'],
+  ]) {
+    await app.goto(`${base}/app.html?tab=feed&theme=${theme}`, { waitUntil: 'networkidle2' });
+    await settle();
+    await app.evaluate(
+      (s) => [...document.querySelectorAll('aside nav button')].find((b) => b.textContent.trim().startsWith(s))?.click(),
+      section,
+    );
+    await settle(1200);
+    await app.screenshot({ path: join(out, `${name}.png`) });
   }
 
   const settings = await browser.newPage();
@@ -246,6 +315,7 @@ try {
     await store.setViewport({ width: 1280, height: 800, deviceScaleFactor: 1 });
     await store.goto(`${base}/__store-${i + 1}.html`, { waitUntil: 'networkidle2' });
     await settle(2200);
+    if (STORE[i].page) await openSection(store, STORE[i].page);
     if (STORE[i].extra?.includes('thread')) {
       const frame = store.frames().find((f) => f.url().includes('popup.html'));
       await openThread(frame);
@@ -260,6 +330,7 @@ try {
     await store.setViewport({ width: w, height: h, deviceScaleFactor: 1 });
     await store.goto(`${base}/__${name}.html`, { waitUntil: 'networkidle2' });
     await settle(2200);
+    if (name === 'promo-marquee') await openSection(store, 'Overview');
     await store.screenshot({ path: join(storeOut, `${name}.png`) });
   }
   console.log(`Screenshots in docs/screenshots, store images in .local/store`);

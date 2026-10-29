@@ -488,7 +488,9 @@ dash:
   statWeek: 'Envíos esta semana'
   statLoaded: '$1 en tu historial aquí'
   statFiles: 'Archivos compartidos'
-  statImages: '$1 imágenes'
+  statImages:
+    1: '1 imagen'
+    n: '$1 imágenes'
   statDevices: 'Dispositivos que reciben'
   statDevicesHint: 'Listos para tus envíos'
   statPhone: 'En tu teléfono ahora'

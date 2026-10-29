@@ -487,7 +487,9 @@ dash:
   statWeek: 'Pushes deze week'
   statLoaded: '$1 in je geschiedenis hier'
   statFiles: 'Gedeelde bestanden'
-  statImages: '$1 afbeeldingen'
+  statImages:
+    1: '1 afbeelding'
+    n: '$1 afbeeldingen'
   statDevices: 'Ontvangende apparaten'
   statDevicesHint: 'Klaar voor je pushes'
   statPhone: 'Nu op je telefoon'

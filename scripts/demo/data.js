@@ -137,6 +137,46 @@
         target_device_iden: 'd-mac',
       },
       {
+        iden: 'f-boarding',
+        active: true,
+        dismissed: true,
+        created: ago(26000),
+        modified: ago(26000),
+        type: 'file',
+        direction: 'self',
+        file_name: 'Boarding pass AF1234.pdf',
+        file_type: 'application/pdf',
+        file_url: 'https://example.com/boarding-pass.pdf',
+        source_device_iden: 'd-pixel',
+        target_device_iden: 'd-mac',
+      },
+      {
+        iden: 'f-lease',
+        active: true,
+        dismissed: true,
+        created: ago(3 * 86400),
+        modified: ago(3 * 86400),
+        type: 'file',
+        direction: 'self',
+        file_name: 'Lease agreement.docx',
+        file_type: 'application/vnd.openxmlformats-officedocument.wordprocessingml.document',
+        file_url: 'https://example.com/lease.docx',
+        source_device_iden: 'd-mac',
+      },
+      {
+        iden: 'f-slides',
+        active: true,
+        dismissed: true,
+        created: ago(12 * 86400),
+        modified: ago(12 * 86400),
+        type: 'file',
+        direction: 'self',
+        file_name: 'Product review.pptx',
+        file_type: 'application/vnd.openxmlformats-officedocument.presentationml.presentation',
+        file_url: 'https://example.com/review.pptx',
+        source_device_iden: 'd-work',
+      },
+      {
         iden: 'p5',
         active: true,
         dismissed: true,
@@ -276,4 +316,6 @@
       videoDuration: 635,
     },
   };
+  // Newest first, as the extension keeps them.
+  window.__DEMO_DATA__.pushes.sort((a, b) => b.created - a.created);
 })();

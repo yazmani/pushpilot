@@ -45,8 +45,8 @@ The official Pushbullet extension is built on Manifest V2, which current version
 - Each browser registers its own Pushbullet device ("Brave on macOS"), so pushes between your browsers just work.
 
 **Feed**
-- Everything you've sent and received, grouped by day and searchable, with video thumbnails, images and link previews.
-- Filter by your devices, channels or a friend. Picking a friend opens a chat view.
+- Everything you've sent and received, grouped by day and searchable, with video thumbnails, images and link previews. Older pushes load as you scroll, and a click on a day's heading jumps to any month.
+- Filter by links, notes or files (images open as a gallery), channels or a friend. Picking a friend opens a chat view.
 
 **Phone** (Android notification mirroring)
 - Your phone's notifications on your desktop, with one-click copy for sign-in codes (or copy them automatically).
@@ -54,6 +54,9 @@ The official Pushbullet extension is built on Manifest V2, which current version
 
 **SMS** (Android)
 - Read conversations and send texts from your browser.
+
+**Full page**
+- Click ⤢ next to your picture to open Pushpilot as a dashboard in its own tab: an overview of what came in, a feed with big previews (↑/↓ to browse), every file as a gallery or a list, your devices, phone notifications by app, and texts beside the open conversation.
 
 **In your language**
 - English, العربية, Deutsch, Español, Français, Bahasa Indonesia, Italiano, 日本語, 한국어, Nederlands, Polski, Português (Brasil), Русский, Türkçe, Tiếng Việt, 简体中文 and 繁體中文, following your browser's language, with a right-to-left layout for Arabic. Corrections are welcome: see [Translations](CONTRIBUTING.md#translations).
@@ -64,6 +67,10 @@ The official Pushbullet extension is built on Manifest V2, which current version
 | Send | Feed | Phone | SMS |
 | --- | --- | --- | --- |
 | <img src="docs/screenshots/send-light.png" width="200"> | <img src="docs/screenshots/feed-light.png" width="200"> | <img src="docs/screenshots/phone-dark.png" width="200"> | <img src="docs/screenshots/sms-thread-light.png" width="200"> |
+
+<img src="docs/screenshots/app-overview-light.png" alt="The full-page dashboard: overview" width="900">
+
+<img src="docs/screenshots/app-feed-dark.png" alt="The full-page dashboard: feed with a large preview, dark theme" width="900">
 
 <sub>Screenshots use a fictional demo account. Videos shown are Blender Foundation open movies.</sub>
 

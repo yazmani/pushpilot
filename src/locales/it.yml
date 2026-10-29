@@ -487,7 +487,9 @@ dash:
   statWeek: 'Push questa settimana'
   statLoaded: '$1 nella tua cronologia qui'
   statFiles: 'File condivisi'
-  statImages: '$1 immagini'
+  statImages:
+    1: '1 immagine'
+    n: '$1 immagini'
   statDevices: 'Dispositivi in ricezione'
   statDevicesHint: 'Pronti per i tuoi push'
   statPhone: 'Ora sul telefono'
