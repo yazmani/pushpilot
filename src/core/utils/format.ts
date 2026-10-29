@@ -1,3 +1,4 @@
+import { type CountryCode, parsePhoneNumberFromString } from 'libphonenumber-js/min';
 import type { Chat, Device, Push, SmsThread } from '@/core/pushbullet/types';
 import { i18n } from '#i18n';
 
@@ -39,8 +40,26 @@ export function personName(c: Chat | undefined, fallback = i18n.t('device.someon
   return c?.with.name || c?.with.email || fallback;
 }
 
+/** The browser's country (from "fr-FR" and the like), for showing local numbers the local way. */
+function region(): CountryCode | undefined {
+  const r = navigator.language?.split('-')[1]?.toUpperCase();
+  return r && /^[A-Z]{2}$/.test(r) ? (r as CountryCode) : undefined;
+}
+
+/**
+ * A phone number as the phone shows it: "+33 6 12 34 56 78", or "06 12 34 56 78"
+ * when it's from the browser's own country. Names, short codes and anything
+ * that doesn't look like a full number come back untouched.
+ */
+export function formatPhone(raw: string, country: CountryCode | undefined = region()): string {
+  if (!/^\+?[\d\s().-]+$/.test(raw) || raw.replace(/\D/g, '').length < 7) return raw;
+  const n = parsePhoneNumberFromString(raw, country);
+  if (!n?.isPossible()) return raw;
+  return n.country && n.country === country ? n.formatNational() : n.formatInternational();
+}
+
 export function threadName(t: SmsThread): string {
-  return t.recipients.map((r) => r.name || r.number || r.address).join(', ');
+  return t.recipients.map((r) => r.name || formatPhone(r.number || r.address)).join(', ');
 }
 
 export function host(url: string | undefined): string {

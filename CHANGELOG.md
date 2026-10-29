@@ -2,11 +2,12 @@
 
 All notable changes are listed here. The format follows [Keep a Changelog](https://keepachangelog.com/), and versions follow [Semantic Versioning](https://semver.org/).
 
-## [Unreleased]
+## [1.3.1] - 2026-10-29
 
 ### Added
 
 - After a few pushes, Pushpilot asks once for a rating in the store it was installed from. It doesn't ask again, and skips people who already saw the support prompt.
+- Phone numbers in the SMS tab read like they do on the phone: "+33 6 12 34 56 78", or "06 12 34 56 78" for numbers from your own country. Names and short codes stay as they are.
 
 ### Changed
 
@@ -103,6 +104,7 @@ First public release.
 - Popup, side panel and pop-out window; light and dark themes; snooze; unread badge.
 - One-click sign-in through pushbullet.com, or an access token.
 
+[1.3.1]: https://github.com/yazmani/pushpilot/releases/tag/v1.3.1
 [1.3.0]: https://github.com/yazmani/pushpilot/releases/tag/v1.3.0
 [1.2.0]: https://github.com/yazmani/pushpilot/releases/tag/v1.2.0
 [1.1.1]: https://github.com/yazmani/pushpilot/releases/tag/v1.1.1

@@ -3,7 +3,7 @@ import { ArrowLeft } from 'lucide-react';
 import { useCallback, useEffect, useMemo, useRef, useState } from 'react';
 import { call } from '@/core/messaging/rpc';
 import type { SmsMessage, SmsRecipient, SmsThread } from '@/core/pushbullet/types';
-import { clockTime, dayLabel, extractCode, threadName } from '@/core/utils/format';
+import { clockTime, dayLabel, extractCode, formatPhone, threadName } from '@/core/utils/format';
 import { Avatar, Centered, CodeChip, IconButton, MessageComposer, Notice, Spinner } from '@/ui/components';
 import { errorText, useToast } from '@/ui/hooks/use-toast';
 import { i18n } from '#i18n';
@@ -87,7 +87,9 @@ export function ThreadView({ device, thread, onBack }: { device: string; thread:
         <Avatar src={thread.recipients.length === 1 ? recipientImage(thread.recipients[0]) : undefined} name={name} size={30} />
         <div className="min-w-0 flex-1">
           <p className="truncate text-sm font-bold">{name}</p>
-          <p className="truncate text-2xs text-muted">{thread.recipients.map((r) => r.number || r.address).join(', ')}</p>
+          <p className="truncate text-2xs text-muted">
+            {thread.recipients.map((r) => formatPhone(r.number || r.address)).join(', ')}
+          </p>
         </div>
       </div>
       <div className="scroll-area min-h-0 flex-1 px-3.5 py-2">
@@ -113,7 +115,9 @@ export function ThreadView({ device, thread, onBack }: { device: string; thread:
                 {showDay && <p className="my-2.5 text-center text-2xs font-bold text-faint">{day}</p>}
                 <div className={clsx('flex max-w-[82%] flex-col', mine ? 'items-end self-end' : 'self-start')}>
                   {sender && (
-                    <span className="mb-0.5 px-1 text-2xs font-semibold text-muted">{sender.name || sender.address}</span>
+                    <span className="mb-0.5 px-1 text-2xs font-semibold text-muted">
+                      {sender.name || formatPhone(sender.address)}
+                    </span>
                   )}
                   <div
                     className={clsx(
