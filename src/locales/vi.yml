@@ -1,7 +1,7 @@
 # Vietnamese strings, translated from en.yml.
 # $1–$9 are substitutions; keys with 1/n are plural forms (i18n.t(key, count)).
 extName: Pushpilot cho Pushbullet
-extDescription: Gửi tab, ghi chú và tệp tới điện thoại, xem thông báo Android và nhắn tin từ trình duyệt. Ứng dụng Pushbullet không chính thức.
+extDescription: 'Tiện ích Pushbullet không chính thức cho Chrome, Brave, Edge: gửi tab, liên kết, tệp tới điện thoại, xem thông báo, nhắn SMS.'
 cmdOpen: Mở Pushpilot
 cmdPushPage: Gửi trang hiện tại tới thiết bị mặc định
 cmdPushClipboard: Gửi nội dung bạn đã sao chép tới thiết bị mặc định, từ mọi ứng dụng
@@ -91,6 +91,11 @@ support:
   coffee: Mời tôi một ly cà phê
   sponsor: Tài trợ trên GitHub
   review: Viết đánh giá
+rate:
+  title: 'Bạn thích Pushpilot chứ?'
+  body: 'Một đánh giá nhanh giúp những ai nhớ tiện ích Pushbullet tìm thấy nó.'
+  action: 'Đánh giá Pushpilot'
+  later: 'Không, cảm ơn'
 whatsNew:
   title: Có gì mới trong Pushpilot $1
   seeAll: Xem mọi thay đổi

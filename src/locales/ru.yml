@@ -1,5 +1,5 @@
 extName: Pushpilot для Pushbullet
-extDescription: Вкладки, заметки и файлы — на телефон, уведомления Android и SMS — в браузере. Неофициальный клиент Pushbullet.
+extDescription: 'Неофициальное расширение Pushbullet для Chrome, Brave и Edge: вкладки, ссылки и файлы — на телефон, уведомления и SMS — в браузере.'
 cmdOpen: Открыть Pushpilot
 cmdPushPage: Отправить текущую страницу на устройство по умолчанию
 cmdPushClipboard: Отправить скопированное на устройство по умолчанию из любого приложения
@@ -89,6 +89,11 @@ support:
   coffee: Угостить кофе
   sponsor: Стать спонсором на GitHub
   review: Оставить отзыв
+rate:
+  title: 'Нравится Pushpilot?'
+  body: 'Короткая оценка поможет тем, кому не хватает расширения Pushbullet, найти его.'
+  action: 'Оценить Pushpilot'
+  later: 'Нет, спасибо'
 whatsNew:
   title: Новое в Pushpilot $1
   seeAll: Все изменения

@@ -1,5 +1,5 @@
 extName: Pushpilot – Pushbullet için
-extDescription: Sekme, not ve dosyaları telefona gönder; Android bildirimlerini gör, tarayıcıdan SMS at. Resmi olmayan Pushbullet istemcisi.
+extDescription: 'Chrome, Brave, Edge için resmi olmayan Pushbullet uzantısı: sekme, bağlantı ve dosyaları telefona gönder, bildirimleri gör, SMS at.'
 cmdOpen: Pushpilot’u aç
 cmdPushPage: Geçerli sayfayı varsayılan cihazına gönder
 cmdPushClipboard: Kopyaladığını herhangi bir uygulamadan varsayılan cihazına gönder
@@ -89,6 +89,11 @@ support:
   coffee: Bana bir kahve ısmarla
   sponsor: GitHub’da sponsor ol
   review: Değerlendirme yaz
+rate:
+  title: 'Pushpilot''u beğendiniz mi?'
+  body: 'Kısa bir puan, Pushbullet uzantısını özleyenlerin onu bulmasına yardımcı olur.'
+  action: 'Pushpilot''u puanla'
+  later: 'Hayır, teşekkürler'
 whatsNew:
   title: Pushpilot $1 sürümündeki yenilikler
   seeAll: Tüm değişiklikleri gör

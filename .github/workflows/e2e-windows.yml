@@ -1,0 +1,41 @@
+name: E2E on Windows
+
+# Runs scripts/e2e.mjs on a Windows runner, in Chrome for Testing and in Edge.
+# Needs the ACCESS_TOKEN repository secret, ideally from a test Pushbullet
+# account: the run registers a temporary device, pushes to it and deletes
+# everything again, and it counts against that account's rate limit.
+on:
+  workflow_dispatch:
+  pull_request:
+    paths: ['.github/workflows/e2e-windows.yml']
+
+permissions:
+  contents: read
+
+jobs:
+  e2e:
+    runs-on: windows-latest
+    strategy:
+      fail-fast: false
+      max-parallel: 1 # one account, one rate limit
+      matrix:
+        browser: [chrome, edge]
+    steps:
+      - uses: actions/checkout@v7
+      - uses: actions/setup-node@v7
+        with:
+          node-version: 22
+          cache: npm
+      - run: npm ci
+      - run: npm run build
+      - name: Run e2e in ${{ matrix.browser }}
+        run: node scripts/e2e.mjs
+        env:
+          ACCESS_TOKEN: ${{ secrets.ACCESS_TOKEN }}
+          BROWSER_PATH: ${{ matrix.browser == 'edge' && 'C:\Program Files (x86)\Microsoft\Edge\Application\msedge.exe' || '' }}
+      - uses: actions/upload-artifact@v7
+        if: always()
+        with:
+          name: e2e-shots-${{ matrix.browser }}
+          path: e2e-shots/
+          if-no-files-found: ignore

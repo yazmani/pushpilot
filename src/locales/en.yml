@@ -1,7 +1,7 @@
 # English strings, the source for every other language in this folder.
 # $1–$9 are substitutions; keys with 1/n are plural forms (i18n.t(key, count)).
 extName: Pushpilot for Pushbullet
-extDescription: Send tabs, notes and files to your phone, see Android notifications and text from your browser. Unofficial Pushbullet client.
+extDescription: 'Unofficial Pushbullet extension for Chrome, Brave and Edge: push tabs, links and files to your phone, see notifications, send SMS.'
 cmdOpen: Open Pushpilot
 cmdPushPage: Push the current page to your default device
 cmdPushClipboard: Push what you copied to your default device, from any app
@@ -91,6 +91,11 @@ support:
   coffee: Buy me a coffee
   sponsor: Sponsor on GitHub
   review: Leave a review
+rate:
+  title: Enjoying Pushpilot?
+  body: A quick rating helps other people who miss the Pushbullet extension find it.
+  action: Rate Pushpilot
+  later: No thanks
 whatsNew:
   title: New in Pushpilot $1
   seeAll: See all changes

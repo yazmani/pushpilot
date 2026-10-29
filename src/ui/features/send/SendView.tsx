@@ -13,7 +13,7 @@ import { useStore } from '@/ui/hooks/use-store';
 import { errorText, useToast } from '@/ui/hooks/use-toast';
 import { LinkCard } from './LinkCard';
 import { RecentPushes } from './RecentPushes';
-import { SupportPrompt } from './SupportPrompt';
+import { RatePrompt, SupportPrompt } from './SupportPrompt';
 import { IssueBanner } from '@/ui/features/setup/SetupIssues';
 import { SetupGuide } from '@/ui/features/setup/SetupGuide';
 import { WhatsNew } from './WhatsNew';
@@ -432,6 +432,7 @@ export function SendView({ mode, onOpenFeed }: { mode: Mode; onOpenFeed: () => v
 
         <TargetGrid targets={targets} selected={selected} unreachable={unreachable} onChange={setSelected} />
         <SupportPrompt />
+        <RatePrompt />
         <RecentPushes onSeeAll={onOpenFeed} />
       </div>
 

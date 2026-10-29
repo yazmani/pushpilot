@@ -1,5 +1,5 @@
 extName: Pushpilot dla Pushbullet
-extDescription: Wysyłaj karty, notatki i pliki na telefon. Powiadomienia z Androida i SMS-y w przeglądarce. Nieoficjalny klient Pushbullet.
+extDescription: 'Nieoficjalne rozszerzenie Pushbullet do Chrome, Brave i Edge: karty, linki i pliki na telefon, powiadomienia i SMS-y w przeglądarce.'
 cmdOpen: Otwórz Pushpilot
 cmdPushPage: Wyślij bieżącą stronę na domyślne urządzenie
 cmdPushClipboard: Wyślij skopiowaną treść na domyślne urządzenie z dowolnej aplikacji
@@ -89,6 +89,11 @@ support:
   coffee: Postaw mi kawę
   sponsor: Wesprzyj na GitHubie
   review: Wystaw recenzję
+rate:
+  title: 'Podoba ci się Pushpilot?'
+  body: 'Szybka ocena pomaga innym, którym brakuje rozszerzenia Pushbullet, go znaleźć.'
+  action: 'Oceń Pushpilot'
+  later: 'Nie, dziękuję'
 whatsNew:
   title: Nowości w Pushpilot $1
   seeAll: Zobacz wszystkie zmiany

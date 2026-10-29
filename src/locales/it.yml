@@ -1,6 +1,6 @@
 # Italian strings, translated from en.yml (keep keys and $1–$9 in sync).
 extName: Pushpilot per Pushbullet
-extDescription: Invia schede, note e file al telefono, vedi le notifiche Android e manda SMS dal browser. Client Pushbullet non ufficiale.
+extDescription: 'Estensione Pushbullet non ufficiale per Chrome, Brave ed Edge: invia schede, link e file al telefono, vedi notifiche, manda SMS.'
 cmdOpen: Apri Pushpilot
 cmdPushPage: Invia la pagina corrente al dispositivo predefinito
 cmdPushClipboard: Invia ciò che hai copiato al dispositivo predefinito, da qualsiasi app
@@ -90,6 +90,11 @@ support:
   coffee: Offrimi un caffè
   sponsor: Sponsorizza su GitHub
   review: Lascia una recensione
+rate:
+  title: 'Ti piace Pushpilot?'
+  body: 'Una valutazione veloce aiuta chi rimpiange l’estensione Pushbullet a trovarlo.'
+  action: 'Valuta Pushpilot'
+  later: 'No, grazie'
 whatsNew:
   title: Novità in Pushpilot $1
   seeAll: Vedi tutte le modifiche

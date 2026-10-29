@@ -1,6 +1,6 @@
 # Dutch strings, translated from en.yml (keep keys and $1–$9 in sync).
 extName: Pushpilot voor Pushbullet
-extDescription: Stuur tabbladen, notities en bestanden naar je telefoon, zie Android-meldingen en sms in je browser. Onofficiële Pushbullet-client.
+extDescription: 'Onofficiële Pushbullet-extensie voor Chrome, Brave, Edge: stuur tabbladen, links en bestanden naar je telefoon, zie meldingen, sms.'
 cmdOpen: Pushpilot openen
 cmdPushPage: Huidige pagina naar je standaardapparaat pushen
 cmdPushClipboard: Wat je hebt gekopieerd naar je standaardapparaat pushen, vanuit elke app
@@ -90,6 +90,11 @@ support:
   coffee: Trakteer me op koffie
   sponsor: Sponsor op GitHub
   review: Schrijf een review
+rate:
+  title: 'Bevalt Pushpilot?'
+  body: 'Een snelle beoordeling helpt anderen die de Pushbullet-extensie missen het te vinden.'
+  action: 'Pushpilot beoordelen'
+  later: 'Nee, bedankt'
 whatsNew:
   title: Nieuw in Pushpilot $1
   seeAll: Alle wijzigingen bekijken

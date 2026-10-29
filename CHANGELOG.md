@@ -2,6 +2,17 @@
 
 All notable changes are listed here. The format follows [Keep a Changelog](https://keepachangelog.com/), and versions follow [Semantic Versioning](https://semver.org/).
 
+## [Unreleased]
+
+### Added
+
+- After a few pushes, Pushpilot asks once for a rating in the store it was installed from. It doesn't ask again, and skips people who already saw the support prompt.
+
+### Changed
+
+- The store description now says what Pushpilot is up front: an unofficial Pushbullet extension for Chrome, Brave and Edge.
+- Sign-in through Pushbullet is chosen per store, ready for an Edge Add-ons listing; a build without its own sign-in client asks for an access token instead.
+
 ## [1.3.0] - 2026-10-27
 
 ### Added

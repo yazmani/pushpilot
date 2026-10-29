@@ -1,6 +1,6 @@
 # German strings, translated from en.yml (keep keys and $1–$9 in sync).
 extName: Pushpilot für Pushbullet
-extDescription: Sende Tabs, Notizen und Dateien ans Handy, sieh Android-Benachrichtigungen, schreib SMS im Browser. Inoffizieller Pushbullet-Client.
+extDescription: 'Inoffizielle Pushbullet-Erweiterung für Chrome, Brave, Edge: Tabs, Links, Dateien ans Handy, Benachrichtigungen sehen, SMS senden.'
 cmdOpen: Pushpilot öffnen
 cmdPushPage: Aktuelle Seite an dein Standardgerät pushen
 cmdPushClipboard: Kopiertes aus jeder App an dein Standardgerät pushen
@@ -90,6 +90,11 @@ support:
   coffee: Spendier mir einen Kaffee
   sponsor: Auf GitHub sponsern
   review: Bewertung schreiben
+rate:
+  title: 'Gefällt dir Pushpilot?'
+  body: 'Eine kurze Bewertung hilft anderen, die die Pushbullet-Erweiterung vermissen, es zu finden.'
+  action: 'Pushpilot bewerten'
+  later: 'Nein, danke'
 whatsNew:
   title: Neu in Pushpilot $1
   seeAll: Alle Änderungen ansehen

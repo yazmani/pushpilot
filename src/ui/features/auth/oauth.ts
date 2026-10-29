@@ -3,6 +3,11 @@ import { OAUTH } from '@/core/links';
 import { call } from '@/core/messaging/rpc';
 import { i18n } from '#i18n';
 
+/** The OAuth client registered for this install's extension ID, if any (see OAUTH). */
+export function oauthClientId(): string | undefined {
+  return OAUTH.clients[browser.runtime.id];
+}
+
 /**
  * Signs in through Pushbullet's OAuth page (implicit flow) and hands the token
  * to the worker. Runs in an extension page that stays open: the auth window
@@ -10,8 +15,10 @@ import { i18n } from '#i18n';
  * the user is logging in.
  */
 export async function signInWithPushbullet() {
+  const clientId = oauthClientId();
+  if (!clientId) throw new Error(i18n.t('signIn.openFailed', ['no OAuth client for this extension ID']));
   const url = new URL(OAUTH.authorizeUrl);
-  url.searchParams.set('client_id', OAUTH.clientId);
+  url.searchParams.set('client_id', clientId);
   url.searchParams.set('redirect_uri', browser.identity.getRedirectURL());
   url.searchParams.set('response_type', 'token');
   url.searchParams.set('scope', 'everything');

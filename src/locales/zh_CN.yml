@@ -1,7 +1,7 @@
 # Simplified Chinese strings, translated from en.yml (the source for every language in this folder).
 # $1–$9 are substitutions; keys with 1/n are plural forms (i18n.t(key, count)).
 extName: Pushpilot for Pushbullet
-extDescription: 将标签页、笔记和文件发送到手机，在浏览器中查看 Android 通知并收发短信。非官方 Pushbullet 客户端。
+extDescription: '非官方 Pushbullet 扩展，适用于 Chrome、Brave 和 Edge：将标签页、链接和文件发送到手机，查看通知并收发短信。'
 cmdOpen: 打开 Pushpilot
 cmdPushPage: 将当前页面推送到默认设备
 cmdPushClipboard: 将复制的内容推送到默认设备（可在任意应用中使用）
@@ -91,6 +91,11 @@ support:
   coffee: 请我喝杯咖啡
   sponsor: 在 GitHub 上赞助
   review: 留下评价
+rate:
+  title: '喜欢 Pushpilot 吗？'
+  body: '花几秒打个分，能帮怀念 Pushbullet 扩展的人找到它。'
+  action: '为 Pushpilot 评分'
+  later: '不用了'
 whatsNew:
   title: Pushpilot $1 新功能
   seeAll: 查看所有更新
