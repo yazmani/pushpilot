@@ -123,7 +123,9 @@ export function dayLabel(seconds: number): string {
   const yesterday = new Date(Date.now() - 86400000);
   if (d.toDateString() === today.toDateString()) return i18n.t('time.today');
   if (d.toDateString() === yesterday.toDateString()) return i18n.t('time.yesterday');
-  return d.toLocaleDateString(undefined, { weekday: 'long', month: 'short', day: 'numeric' });
+  // Older history spans years; name the year once it isn't this one.
+  const year = d.getFullYear() !== today.getFullYear() ? 'numeric' : undefined;
+  return d.toLocaleDateString(undefined, { weekday: 'long', month: 'short', day: 'numeric', year });
 }
 
 // One-time codes: prefer digits next to a "code"-ish word, then any lone 4–8 digit run.

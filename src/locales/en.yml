@@ -100,6 +100,9 @@ whatsNew:
   title: New in Pushpilot $1
   seeAll: See all changes
   label: What’s new
+  v1_4:
+    jump: 'Jump to any month in your feed or gallery: click a day’s heading.'
+    numbers: 'Phone numbers in your texts read like they do on your phone.'
   v1_3:
     history: 'Your whole push history in the feed, with images in a gallery and files sorted by type.'
     codes: 'Sign-in codes in texts get a copy button.'
@@ -148,6 +151,14 @@ feed:
   markDone: Done
   delete: Delete
   selectDone: Finish
+  jumpTitle: Jump to a month
+  olderYear: Earlier year
+  newerYear: Later year
+  newest: Newest
+  loadingOlder: Loading older pushes…
+  monthCount:
+    1: 1 push
+    n: $1 pushes
 device:
   unknown: Unknown device
   unnamed: Unnamed device

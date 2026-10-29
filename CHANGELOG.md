@@ -2,6 +2,16 @@
 
 All notable changes are listed here. The format follows [Keep a Changelog](https://keepachangelog.com/), and versions follow [Semantic Versioning](https://semver.org/).
 
+## [1.4.0] - 2026-10-29
+
+### Added
+
+- Jump to any month in the feed or the image gallery: click a day's (or month's) heading for a small year-and-month picker that shows how many pushes each month has. Older months load in while it's open.
+
+### Changed
+
+- Days in earlier years show the year ("Saturday, Sep 21, 2024").
+
 ## [1.3.1] - 2026-10-29
 
 ### Added
@@ -104,6 +114,7 @@ First public release.
 - Popup, side panel and pop-out window; light and dark themes; snooze; unread badge.
 - One-click sign-in through pushbullet.com, or an access token.
 
+[1.4.0]: https://github.com/yazmani/pushpilot/releases/tag/v1.4.0
 [1.3.1]: https://github.com/yazmani/pushpilot/releases/tag/v1.3.1
 [1.3.0]: https://github.com/yazmani/pushpilot/releases/tag/v1.3.0
 [1.2.0]: https://github.com/yazmani/pushpilot/releases/tag/v1.2.0

@@ -14,6 +14,7 @@ import {
   deletePushes,
   dismissPush,
   dismissPushes,
+  loadAllPushes,
   loadOlderPushes,
 } from '@/background/services/pushes';
 import { pushClipboard } from '@/background/services/send';
@@ -44,6 +45,7 @@ const handlers: Handlers = {
   'push.dismissMany': ({ idens }) => dismissPushes(idens),
   'push.deleteMany': ({ idens }) => deletePushes(idens),
   'pushes.older': () => loadOlderPushes(),
+  'pushes.all': () => loadAllPushes(),
   'unread.clear': async ({ view }) => {
     await store.update('unread', (u) => ({ ...u, [view]: 0 }));
     if (view === 'feed') await clearAllPushNotifications();

@@ -27,7 +27,8 @@ import { useRun } from '@/ui/hooks/use-toast';
 import { counterpart, FILE_KINDS, fileKind, type FileKind, type Filter, matches } from './classify';
 import { Conversation } from './Conversation';
 import { type FeedContext, FeedItem } from './FeedItem';
-import { Gallery } from './Gallery';
+import { Gallery, monthLabel } from './Gallery';
+import { JumpToMonth, type Month, monthKey, monthOf, SectionHeading } from './JumpToMonth';
 import { Outbox } from './Outbox';
 import { i18n } from '#i18n';
 
@@ -72,6 +73,11 @@ export function FeedView() {
   const [selected, setSelected] = useState<Set<string> | null>(null);
   const [bulkBusy, setBulkBusy] = useState(false);
   const run = useRun();
+  // Month picker: the day in view when it opened, and a day to scroll to once rendered.
+  const [picking, setPicking] = useState<number | null>(null);
+  const [loadingAll, setLoadingAll] = useState(false);
+  const [scrollTo, setScrollTo] = useState<string | null>(null);
+  const scroller = useRef<HTMLDivElement>(null);
 
   // Snapshot "last visit" once per open so new items stay marked while you look.
   const seenAt = useMemo(() => {
@@ -140,6 +146,15 @@ export function FeedView() {
     return () => io.disconnect();
   }, [visible.length, limit, atEnd, moreOnServer, loadingOlder]);
 
+  // After a jump has rendered far enough down, bring that day to the top.
+  useEffect(() => {
+    if (!scrollTo) return;
+    const el = scroller.current?.querySelector(`[data-day="${CSS.escape(scrollTo)}"]`);
+    if (!el) return;
+    el.scrollIntoView({ block: 'start' });
+    setScrollTo(null);
+  }, [scrollTo, limit]);
+
   if (filter.kind === 'person') {
     return (
       <Conversation
@@ -156,6 +171,32 @@ export function FeedView() {
     setQuery('');
     setSearching(false);
   };
+
+  const openPicker = (day: number) => {
+    setPicking(day);
+    if (!moreOnServer || loadingAll) return;
+    setLoadingAll(true);
+    void call('pushes.all')
+      .catch(() => undefined)
+      .finally(() => setLoadingAll(false));
+  };
+  const jump = ({ year, month }: Month) => {
+    setPicking(null);
+    // The newest push of that month; render down to it, then scroll there.
+    const i = visible.findIndex((p) => {
+      const m = monthOf(p.created);
+      return m.year === year && m.month === month;
+    });
+    if (i < 0) return;
+    setLimit((l) => Math.max(l, i + PAGE));
+    setScrollTo((gallery ? monthLabel : dayLabel)(visible[i]!.created));
+  };
+  const toNewest = () => {
+    setPicking(null);
+    scroller.current?.scrollTo({ top: 0 });
+  };
+  // History that spans more than a month (or still has more to load) gets the picker.
+  const canJump = moreOnServer || (visible.length > 1 && monthKey(visible[0]!.created) !== monthKey(visible.at(-1)!.created));
 
   const shown = visible.slice(0, limit);
   const toggle = (iden: string) =>
@@ -178,7 +219,7 @@ export function FeedView() {
   };
 
   return (
-    <div className="flex h-full flex-col">
+    <div className="relative flex h-full flex-col">
       <div className="flex shrink-0 items-center gap-1.5 px-3.5 pb-2 pt-3">
         {searching ? (
           <div className="flex h-9 flex-1 items-center gap-2 rounded-xl border border-accent bg-surface px-3">
@@ -269,7 +310,7 @@ export function FeedView() {
           ))}
         </div>
       )}
-      <div className="scroll-area min-h-0 flex-1 px-3.5 pb-4">
+      <div ref={scroller} className="scroll-area min-h-0 flex-1 px-3.5 pb-4">
         {!gallery && <Outbox />}
         {visible.length === 0 ? (
           query ? (
@@ -282,9 +323,9 @@ export function FeedView() {
             </Empty>
           )
         ) : gallery ? (
-          <Gallery pushes={visible.slice(0, limit)} />
+          <Gallery pushes={shown} onPick={canJump ? openPicker : undefined} />
         ) : (
-          <DayGroups pushes={shown}>
+          <DayGroups pushes={shown} onPick={canJump && !selected ? openPicker : undefined}>
             {(p) => (
               <FeedItem
                 key={p.iden}
@@ -303,6 +344,16 @@ export function FeedView() {
           </div>
         )}
       </div>
+      {picking !== null && (
+        <JumpToMonth
+          pushes={visible}
+          current={picking}
+          loading={loadingAll}
+          onJump={jump}
+          onNewest={toNewest}
+          onClose={() => setPicking(null)}
+        />
+      )}
       {selected && !gallery && (
         <div className="flex shrink-0 items-center gap-1.5 border-t border-line bg-surface px-3.5 py-2">
           <button
@@ -359,19 +410,28 @@ function SubChip({ on, onClick, children }: { on: boolean; onClick: () => void; 
   );
 }
 
-function DayGroups({ pushes, children }: { pushes: Push[]; children: (p: Push) => ReactNode }) {
-  const groups: { label: string; items: Push[] }[] = [];
+function DayGroups({
+  pushes,
+  onPick,
+  children,
+}: {
+  pushes: Push[];
+  /** Opens the month picker from a day's heading. */
+  onPick?: (day: number) => void;
+  children: (p: Push) => ReactNode;
+}) {
+  const groups: { label: string; day: number; items: Push[] }[] = [];
   for (const p of pushes) {
     const label = dayLabel(p.created);
     const last = groups[groups.length - 1];
     if (last?.label === label) last.items.push(p);
-    else groups.push({ label, items: [p] });
+    else groups.push({ label, day: p.created, items: [p] });
   }
   return (
     <>
       {groups.map((g) => (
-        <section key={g.label} className="mb-3">
-          <h3 className="sticky top-0 z-10 bg-bg/95 px-1 pb-1.5 pt-2.5 text-xs font-bold text-muted backdrop-blur">{g.label}</h3>
+        <section key={g.label} data-day={g.label} className="mb-3">
+          <SectionHeading label={g.label} onPick={onPick && (() => onPick(g.day))} />
           <Group>{g.items.map(children)}</Group>
         </section>
       ))}

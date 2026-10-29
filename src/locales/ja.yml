@@ -100,6 +100,9 @@ whatsNew:
   title: Pushpilot $1 の新機能
   seeAll: すべての変更を表示
   label: 新機能
+  v1_4:
+    jump: 'フィードやギャラリーで好きな月へ移動：日付の見出しをクリック。'
+    numbers: 'SMS の電話番号がスマートフォンと同じ形式で表示されます。'
   v1_3:
     history: 'プッシュの全履歴をフィードで見られるようになりました。画像はギャラリーに、ファイルは種類別にまとまります。'
     codes: 'SMS に含まれるログインコードにコピーボタンが付きます。'
@@ -148,6 +151,14 @@ feed:
   markDone: '完了'
   delete: '削除'
   selectDone: '終了'
+  jumpTitle: '月を選んで移動'
+  olderYear: '前の年'
+  newerYear: '次の年'
+  newest: '最新'
+  loadingOlder: '以前のプッシュを読み込み中…'
+  monthCount:
+    1: '1 件のプッシュ'
+    n: '$1 件のプッシュ'
 device:
   unknown: 不明なデバイス
   unnamed: 名前のないデバイス

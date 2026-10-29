@@ -98,6 +98,9 @@ whatsNew:
   title: Nowości w Pushpilot $1
   seeAll: Zobacz wszystkie zmiany
   label: Co nowego
+  v1_4:
+    jump: 'Przejdź do dowolnego miesiąca w kanale lub galerii: kliknij nagłówek dnia.'
+    numbers: 'Numery telefonów w SMS-ach wyglądają jak na telefonie.'
   v1_3:
     history: 'Cała historia pushy w Aktywności, z obrazami w galerii i plikami posortowanymi według typu.'
     codes: 'Kody logowania w SMS-ach mają przycisk kopiowania.'
@@ -146,6 +149,14 @@ feed:
   markDone: 'Gotowe'
   delete: 'Usuń'
   selectDone: 'Zakończ'
+  jumpTitle: 'Przejdź do miesiąca'
+  olderYear: 'Poprzedni rok'
+  newerYear: 'Następny rok'
+  newest: 'Najnowsze'
+  loadingOlder: 'Wczytywanie starszych pushy…'
+  monthCount:
+    1: '1 push'
+    n: 'Pushe: $1'
 device:
   unknown: Nieznane urządzenie
   unnamed: Urządzenie bez nazwy

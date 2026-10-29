@@ -3,6 +3,7 @@ import { ChevronLeft, ChevronRight, Download, ExternalLink, X } from 'lucide-rea
 import { useEffect, useMemo, useState } from 'react';
 import type { Push } from '@/core/pushbullet/types';
 import { IconButton } from '@/ui/components';
+import { SectionHeading } from './JumpToMonth';
 import { i18n } from '#i18n';
 
 /** A sized copy from Google's image server when Pushbullet has one, else the file itself. */
@@ -10,12 +11,12 @@ function imageSrc(p: Push, size: string) {
   return p.image_url ? `${p.image_url}=${size}` : p.file_url;
 }
 
-function monthLabel(seconds: number) {
+export function monthLabel(seconds: number) {
   return new Date(seconds * 1000).toLocaleDateString(undefined, { month: 'long', year: 'numeric' });
 }
 
 /** Pushed images as a grid by month; one opens full size. */
-export function Gallery({ pushes }: { pushes: Push[] }) {
+export function Gallery({ pushes, onPick }: { pushes: Push[]; onPick?: (day: number) => void }) {
   const [open, setOpen] = useState<number | null>(null);
   const months = useMemo(() => {
     const out: { label: string; items: { p: Push; i: number }[] }[] = [];
@@ -31,8 +32,8 @@ export function Gallery({ pushes }: { pushes: Push[] }) {
   return (
     <>
       {months.map((m) => (
-        <section key={m.label} className="mb-3">
-          <h3 className="sticky top-0 z-10 bg-bg/95 px-1 pb-1.5 pt-2.5 text-xs font-bold text-muted backdrop-blur">{m.label}</h3>
+        <section key={m.label} data-day={m.label} className="mb-3">
+          <SectionHeading label={m.label} onPick={onPick && (() => onPick(m.items[0]!.p.created))} />
           <div className="grid grid-cols-3 gap-1">
             {m.items.map(({ p, i }) => (
               <button

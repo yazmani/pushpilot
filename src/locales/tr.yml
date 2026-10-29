@@ -98,6 +98,9 @@ whatsNew:
   title: Pushpilot $1 sürümündeki yenilikler
   seeAll: Tüm değişiklikleri gör
   label: Yenilikler
+  v1_4:
+    jump: 'Akışta veya galeride istediğiniz aya gidin: bir günün başlığına tıklayın.'
+    numbers: 'SMS''lerdeki telefon numaraları telefonunuzdaki gibi görünür.'
   v1_3:
     history: 'Tüm gönderi geçmişin akışta; görseller bir galeride, dosyalar türe göre sıralı.'
     codes: 'SMS’lerdeki giriş kodları için kopyalama düğmesi.'
@@ -146,6 +149,14 @@ feed:
   markDone: 'Tamamlandı'
   delete: 'Sil'
   selectDone: 'Bitir'
+  jumpTitle: 'Bir aya git'
+  olderYear: 'Önceki yıl'
+  newerYear: 'Sonraki yıl'
+  newest: 'En yeni'
+  loadingOlder: 'Eski push''lar yükleniyor…'
+  monthCount:
+    1: '1 push'
+    n: '$1 push'
 device:
   unknown: Bilinmeyen cihaz
   unnamed: Adsız cihaz

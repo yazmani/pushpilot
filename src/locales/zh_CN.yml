@@ -100,6 +100,9 @@ whatsNew:
   title: Pushpilot $1 新功能
   seeAll: 查看所有更新
   label: 新功能
+  v1_4:
+    jump: '在信息流或相册中跳转到任意月份：点击日期标题即可。'
+    numbers: '短信中的电话号码按手机上的格式显示。'
   v1_3:
     history: '动态中可查看全部推送历史，图片以图库展示，文件按类型分类。'
     codes: '短信中的登录验证码会附带复制按钮。'
@@ -148,6 +151,14 @@ feed:
   markDone: '标记完成'
   delete: '删除'
   selectDone: '完成'
+  jumpTitle: '跳转到月份'
+  olderYear: '上一年'
+  newerYear: '下一年'
+  newest: '最新'
+  loadingOlder: '正在加载更早的推送…'
+  monthCount:
+    1: '1 条推送'
+    n: '$1 条推送'
 device:
   unknown: 未知设备
   unnamed: 未命名设备
