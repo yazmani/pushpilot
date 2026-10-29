@@ -87,7 +87,7 @@ export function IssueBanner() {
   const { title, body } = issueText(issue);
   const dismiss = () => void store.update('dismissedIssues', (all) => [...all, issueKey(issue)]);
   return (
-    <section className="mb-3 rounded-2xl bg-note-bg p-3.5" role="status">
+    <section className="mb-3 rounded-2xl bg-note-bg p-3.5" aria-label={title}>
       <div className="flex items-start gap-2">
         <p className="flex flex-1 items-start gap-1.5 text-sm font-bold">
           <TriangleAlert size={15} className="mt-0.5 shrink-0" /> {title}
