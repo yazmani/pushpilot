@@ -58,7 +58,6 @@ export function FilesView() {
 
   return (
     <Page
-      width="max-w-7xl"
       title={i18n.t('dash.files')}
       subtitle={i18n.t('dash.filesCount', files.length)}
       actions={

@@ -68,7 +68,6 @@ export function Overview({
 
   return (
     <Page
-      width="max-w-7xl"
       title={greeting(first)}
       subtitle={today}
       actions={

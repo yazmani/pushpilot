@@ -205,7 +205,10 @@ function Thumb({ p, ctx, size }: { p: Push; ctx: FeedContext; size: number }) {
     return (
       <img src={s.preview.image} alt="" loading="lazy" style={style} className="shrink-0 rounded-xl bg-raised object-cover" />
     );
-  if (p.type === 'file') return <TypeTile type="file" size={size} icon={FILE_ICONS[fileKind(p)]} />;
+  if (p.type === 'file')
+    return (
+      <TypeTile type="file" size={size} icon={FILE_ICONS[fileKind(p)]} label={size >= 40 ? extension(p.file_name) : undefined} />
+    );
   return <TypeTile type={p.type} size={size} />;
 }
 
@@ -280,13 +283,20 @@ function Detail({ p, ctx, onGone }: { p: Push; ctx: FeedContext; onGone: () => v
         {kind === 'video' && <video src={p.file_url} controls className="mt-6 max-h-[60vh] w-full rounded-2xl bg-black" />}
         {kind === 'audio' && <audio src={p.file_url} controls className="mt-6 w-full" />}
         {p.type === 'file' && kind !== 'image' && kind !== 'video' && (
-          <div className="mt-6 flex items-center gap-4 rounded-2xl border border-line bg-surface p-5">
-            <TypeTile type="file" size={64} icon={FILE_ICONS[kind ?? 'other']} label={extension(p.file_name)} />
-            <div className="min-w-0">
-              <p className="truncate text-base font-bold">{p.file_name}</p>
-              <p className="text-xs text-muted">{p.file_type}</p>
-            </div>
-          </div>
+          // No preview for documents and archives: a large tile says what it is at a glance.
+          <a
+            href={p.file_url}
+            target="_blank"
+            rel="noreferrer"
+            className="group mt-6 grid aspect-[16/7] place-items-center rounded-2xl border border-file-fg/10 bg-file-bg/60 transition-colors hover:bg-file-bg"
+          >
+            <span className="flex flex-col items-center gap-3">
+              <span className="transition-transform group-hover:-translate-y-0.5">
+                <TypeTile type="file" size={96} icon={FILE_ICONS[kind ?? 'other']} label={extension(p.file_name)} />
+              </span>
+              {p.file_type && <span className="text-xs font-semibold text-file-fg/80">{p.file_type}</span>}
+            </span>
+          </a>
         )}
 
         {s.title && (

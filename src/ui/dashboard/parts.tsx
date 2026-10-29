@@ -3,13 +3,15 @@ import { ChevronRight } from 'lucide-react';
 import type { ReactNode } from 'react';
 import { i18n } from '#i18n';
 
+/** One width for every page, so switching sections doesn't make the content jump. */
+const WIDTH = 'max-w-[1440px]';
+
 /** A page of the full-page app: a title row, then the content. */
 export function Page({
   title,
   subtitle,
   actions,
   fill,
-  width = 'max-w-6xl',
   children,
 }: {
   title: string;
@@ -17,7 +19,6 @@ export function Page({
   actions?: ReactNode;
   /** The content manages its own scrolling (feed, texts) and should fill the height. */
   fill?: boolean;
-  width?: string;
   children: ReactNode;
 }) {
   const head = (
@@ -31,7 +32,7 @@ export function Page({
   );
   if (fill) {
     return (
-      <div className={clsx('mx-auto flex h-full w-full flex-col px-10', width)}>
+      <div className={clsx('mx-auto flex h-full w-full flex-col px-10', WIDTH)}>
         {head}
         <div className="relative min-h-0 flex-1">{children}</div>
       </div>
@@ -39,7 +40,7 @@ export function Page({
   }
   return (
     <div className="scroll-area h-full">
-      <div className={clsx('mx-auto w-full px-10 pb-12', width)}>
+      <div className={clsx('mx-auto w-full px-10 pb-12', WIDTH)}>
         {head}
         {children}
       </div>

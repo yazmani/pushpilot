@@ -62,18 +62,18 @@ export function Dashboard({ initialTab, intent }: { initialTab: Tab; intent: Int
             />
           )}
           {page === 'feed' && (
-            <Page fill width="max-w-[1500px]" title={i18n.t('tabs.feed')} subtitle={i18n.t('dash.feedCount', pushes.length)}>
+            <Page fill title={i18n.t('tabs.feed')} subtitle={i18n.t('dash.feedCount', pushes.length)}>
               <FeedDesk />
             </Page>
           )}
           {page === 'files' && <FilesView />}
           {page === 'phone' && (
-            <Page fill width="max-w-[1500px]" title={i18n.t('tabs.phone')} subtitle={i18n.t('dash.phoneSubtitle')}>
+            <Page fill title={i18n.t('tabs.phone')} subtitle={i18n.t('dash.phoneSubtitle')}>
               <PhoneDesk focus={intent.mirror} />
             </Page>
           )}
           {page === 'sms' && (
-            <Page fill width="max-w-[1500px]" title={i18n.t('tabs.sms')} subtitle={i18n.t('dash.smsSubtitle')}>
+            <Page fill title={i18n.t('tabs.sms')} subtitle={i18n.t('dash.smsSubtitle')}>
               <SmsView key={`${sms.device}:${sms.thread}`} device={sms.device} thread={sms.thread} split />
             </Page>
           )}
