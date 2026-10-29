@@ -1,7 +1,8 @@
 name: Release
 
 # Push a tag like v1.0.1 (matching package.json's version) to build the store
-# zip and publish a GitHub release with it attached.
+# zip, publish a GitHub release with it attached, and (when the store secrets
+# are set) submit it to the Chrome Web Store for review, staged.
 on:
   push:
     tags: ['v*']
@@ -14,6 +15,13 @@ jobs:
     runs-on: ubuntu-latest
     env:
       PUPPETEER_SKIP_DOWNLOAD: 'true'
+      # Chrome Web Store API v2 with a service account (see publish-chrome.yml).
+      # Without these secrets the store step is skipped.
+      CHROME_API_VERSION: v2
+      CHROME_EXTENSION_ID: ${{ secrets.CHROME_EXTENSION_ID }}
+      CHROME_PUBLISHER_ID: ${{ secrets.CHROME_PUBLISHER_ID }}
+      CHROME_SERVICE_ACCOUNT_CLIENT_EMAIL: ${{ secrets.CHROME_SERVICE_ACCOUNT_CLIENT_EMAIL }}
+      CHROME_SERVICE_ACCOUNT_PRIVATE_KEY: ${{ secrets.CHROME_SERVICE_ACCOUNT_PRIVATE_KEY }}
     steps:
       - uses: actions/checkout@v7
       - uses: actions/setup-node@v7
@@ -30,3 +38,10 @@ jobs:
         with:
           files: dist/*-chrome.zip
           generate_release_notes: true
+      # Upload the same zip and submit it for review, staged: once approved it
+      # waits in the dashboard until you press Publish.
+      - name: Submit to the Chrome Web Store (staged)
+        if: env.CHROME_PUBLISHER_ID != ''
+        run: npx wxt submit --chrome-zip dist/*-chrome.zip
+        env:
+          CHROME_PUBLISH_TYPE: STAGED_PUBLISH

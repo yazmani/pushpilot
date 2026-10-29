@@ -100,6 +100,9 @@ whatsNew:
   title: Nieuw in Pushpilot $1
   seeAll: Alle wijzigingen bekijken
   label: Wat is er nieuw
+  v1_5:
+    fullPage: 'Open Pushpilot als volledige pagina met de ⤢-knop naast je foto: een overzicht, een feed met grote voorbeelden en sms’jes naast elkaar.'
+    files: 'Nieuwe pagina’s Bestanden en Apparaten: alles wat je pushte als galerij of lijst, en al je apparaten in één oogopslag.'
   v1_4:
     jump: 'Ga naar elke maand in je feed of galerij: klik op de kop van een dag.'
     numbers: 'Telefoonnummers in je sms’jes zien eruit zoals op je telefoon.'

@@ -100,6 +100,9 @@ whatsNew:
   title: Novità in Pushpilot $1
   seeAll: Vedi tutte le modifiche
   label: Novità
+  v1_5:
+    fullPage: 'Apri Pushpilot a pagina intera con il pulsante ⤢ accanto alla tua foto: una panoramica, un feed con anteprime grandi e gli SMS affiancati.'
+    files: 'Nuove pagine File e Dispositivi: tutto ciò che hai inviato come galleria o elenco, e tutti i dispositivi a colpo d’occhio.'
   v1_4:
     jump: 'Vai a qualsiasi mese nel feed o nella galleria: fai clic sull’intestazione di un giorno.'
     numbers: 'I numeri di telefono negli SMS appaiono come sul telefono.'

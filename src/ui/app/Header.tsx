@@ -87,7 +87,7 @@ export function Header({
             title={i18n.t('header.openTab')}
             aria-label={i18n.t('header.openTab')}
             onClick={() => void openFullPage(mode)}
-            className="grid size-8 place-items-center rounded-full text-on-band/85 transition-colors hover:bg-white/12 hover:text-on-band"
+            className="me-2 grid size-8 place-items-center rounded-full text-on-band/85 transition-colors hover:bg-white/12 hover:text-on-band"
           >
             <Maximize2 size={15} strokeWidth={2.2} />
           </button>

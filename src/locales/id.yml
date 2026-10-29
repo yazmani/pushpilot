@@ -101,6 +101,9 @@ whatsNew:
   title: Baru di Pushpilot $1
   seeAll: Lihat semua perubahan
   label: Yang baru
+  v1_5:
+    fullPage: 'Buka Pushpilot sebagai halaman penuh dengan tombol ⤢ di samping foto Anda: ringkasan, feed dengan pratinjau besar, dan SMS berdampingan.'
+    files: 'Halaman File dan Perangkat baru: semua yang Anda kirim sebagai galeri atau daftar, dan semua perangkat sekilas.'
   v1_4:
     jump: 'Lompat ke bulan mana pun di feed atau galeri: klik judul sebuah hari.'
     numbers: 'Nomor telepon di SMS tampil seperti di ponsel Anda.'
