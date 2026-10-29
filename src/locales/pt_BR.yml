@@ -148,6 +148,14 @@ feed:
   markDone: 'Concluído'
   delete: 'Excluir'
   selectDone: 'Finalizar'
+  jumpTitle: 'Ir para um mês'
+  olderYear: 'Ano anterior'
+  newerYear: 'Próximo ano'
+  newest: 'Mais recentes'
+  loadingOlder: 'Carregando pushes mais antigos…'
+  monthCount:
+    1: '1 push'
+    n: '$1 pushes'
 device:
   unknown: Dispositivo desconhecido
   unnamed: Dispositivo sem nome

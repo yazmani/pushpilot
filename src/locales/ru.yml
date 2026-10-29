@@ -146,6 +146,14 @@ feed:
   markDone: 'Выполнено'
   delete: 'Удалить'
   selectDone: 'Готово'
+  jumpTitle: 'Перейти к месяцу'
+  olderYear: 'Предыдущий год'
+  newerYear: 'Следующий год'
+  newest: 'Новые'
+  loadingOlder: 'Загружаем более старые пуши…'
+  monthCount:
+    1: '1 пуш'
+    n: 'Пушей: $1'
 device:
   unknown: Неизвестное устройство
   unnamed: Устройство без названия

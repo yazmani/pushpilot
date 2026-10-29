@@ -183,13 +183,36 @@ async function collectHistory(pb: Pushbullet, start: string, want: number) {
   return { pushes, done: !cursor };
 }
 
+// One walk through the history at a time: the feed's scroll and the month
+// picker can both ask, and two walks from the same cursor fetch everything twice.
+let walking: Promise<{ added: number; done: boolean }> | undefined;
+
 /** The feed scrolled to the end: fetch the next stretch of older pushes. */
-export async function loadOlderPushes(depth = 0): Promise<{ added: number; done: boolean }> {
+export function loadOlderPushes(want = 60): Promise<{ added: number; done: boolean }> {
+  walking ??= walkOlder(want).finally(() => (walking = undefined));
+  return walking;
+}
+
+/**
+ * The month picker opened: load the rest of the history, a few hundred pushes
+ * per step so it fills in as it goes. Stops when it's all here, when the local
+ * history is full, or when Pushbullet starts rate-limiting.
+ */
+export async function loadAllPushes(): Promise<{ done: boolean }> {
+  for (let step = 0; step < 2; step++) {
+    const { done } = await loadOlderPushes(300);
+    if (done) return { done: true };
+    if ((await store.get('pushes')).length >= KEEP || (await isRateLimited())) break;
+  }
+  return { done: (await store.get('historyCursor')) === null };
+}
+
+async function walkOlder(want: number, depth = 0): Promise<{ added: number; done: boolean }> {
   const start = await store.get('historyCursor');
   if (start === null) return { added: 0, done: true };
   if (await isRateLimited()) return { added: 0, done: false };
   const pb = await requireClient();
-  const { pushes, done } = await collectHistory(pb, start, 60);
+  const { pushes, done } = await collectHistory(pb, start, want);
   let added = 0;
   await store.update('pushes', (all) => {
     const have = new Set(all.map((p) => p.iden));
@@ -200,7 +223,7 @@ export async function loadOlderPushes(depth = 0): Promise<{ added: number; done:
   // Starting over from the newest page (installs from before this) can find
   // nothing new at first; keep going a little, and let the next scroll go on,
   // so a long history doesn't use up the account's API allowance in one go.
-  if (!added && !done && depth < 2) return loadOlderPushes(depth + 1);
+  if (!added && !done && depth < 2) return walkOlder(want, depth + 1);
   return { added, done };
 }
 

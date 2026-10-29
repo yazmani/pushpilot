@@ -148,6 +148,14 @@ feed:
   markDone: 'Xong'
   delete: 'Xóa'
   selectDone: 'Đóng'
+  jumpTitle: 'Đi tới một tháng'
+  olderYear: 'Năm trước'
+  newerYear: 'Năm sau'
+  newest: 'Mới nhất'
+  loadingOlder: 'Đang tải push cũ hơn…'
+  monthCount:
+    1: '1 push'
+    n: '$1 push'
 device:
   unknown: Thiết bị không xác định
   unnamed: Thiết bị chưa đặt tên

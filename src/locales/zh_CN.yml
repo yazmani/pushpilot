@@ -148,6 +148,14 @@ feed:
   markDone: '标记完成'
   delete: '删除'
   selectDone: '完成'
+  jumpTitle: '跳转到月份'
+  olderYear: '上一年'
+  newerYear: '下一年'
+  newest: '最新'
+  loadingOlder: '正在加载更早的推送…'
+  monthCount:
+    1: '1 条推送'
+    n: '$1 条推送'
 device:
   unknown: 未知设备
   unnamed: 未命名设备

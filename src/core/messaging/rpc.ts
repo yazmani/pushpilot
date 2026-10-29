@@ -29,6 +29,7 @@ export interface Rpc {
   'push.dismissMany': { req: { idens: string[] }; res: void };
   'push.deleteMany': { req: { idens: string[] }; res: void };
   'pushes.older': { req: object; res: { added: number; done: boolean } };
+  'pushes.all': { req: object; res: { done: boolean } };
   'unread.clear': { req: { view: 'feed' | 'phone' | 'sms' }; res: void };
   'mirror.dismiss': { req: { id: string }; res: void };
   'mirror.action': { req: { id: string; key: string }; res: void };

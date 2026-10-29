@@ -146,6 +146,14 @@ feed:
   markDone: 'Tamamlandı'
   delete: 'Sil'
   selectDone: 'Bitir'
+  jumpTitle: 'Bir aya git'
+  olderYear: 'Önceki yıl'
+  newerYear: 'Sonraki yıl'
+  newest: 'En yeni'
+  loadingOlder: 'Eski push''lar yükleniyor…'
+  monthCount:
+    1: '1 push'
+    n: '$1 push'
 device:
   unknown: Bilinmeyen cihaz
   unnamed: Adsız cihaz

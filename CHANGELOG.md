@@ -2,6 +2,16 @@
 
 All notable changes are listed here. The format follows [Keep a Changelog](https://keepachangelog.com/), and versions follow [Semantic Versioning](https://semver.org/).
 
+## [Unreleased]
+
+### Added
+
+- Jump to any month in the feed: click a day's heading for a small year-and-month picker that shows how many pushes each month has. Older months load in while it's open.
+
+### Changed
+
+- Days in earlier years show the year ("Saturday, Sep 21, 2024").
+
 ## [1.3.1] - 2026-10-29
 
 ### Added

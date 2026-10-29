@@ -148,6 +148,14 @@ feed:
   markDone: 'Selesai'
   delete: 'Hapus'
   selectDone: 'Tutup'
+  jumpTitle: 'Lompat ke bulan'
+  olderYear: 'Tahun sebelumnya'
+  newerYear: 'Tahun berikutnya'
+  newest: 'Terbaru'
+  loadingOlder: 'Memuat push lama…'
+  monthCount:
+    1: '1 push'
+    n: '$1 push'
 device:
   unknown: Perangkat tidak dikenal
   unnamed: Perangkat tanpa nama

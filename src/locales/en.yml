@@ -148,6 +148,14 @@ feed:
   markDone: Done
   delete: Delete
   selectDone: Finish
+  jumpTitle: Jump to a month
+  olderYear: Earlier year
+  newerYear: Later year
+  newest: Newest
+  loadingOlder: Loading older pushes…
+  monthCount:
+    1: 1 push
+    n: $1 pushes
 device:
   unknown: Unknown device
   unnamed: Unnamed device

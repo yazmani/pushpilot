@@ -148,6 +148,14 @@ feed:
   markDone: 'مكتمل'
   delete: 'حذف'
   selectDone: 'إنهاء'
+  jumpTitle: 'انتقل إلى شهر'
+  olderYear: 'السنة السابقة'
+  newerYear: 'السنة التالية'
+  newest: 'الأحدث'
+  loadingOlder: 'جارٍ تحميل الأقدم…'
+  monthCount:
+    1: 'عملية إرسال واحدة'
+    n: '$1 من عمليات الإرسال'
 device:
   unknown: جهاز غير معروف
   unnamed: جهاز بلا اسم

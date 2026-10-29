@@ -147,6 +147,14 @@ feed:
   markDone: 'Klaar'
   delete: 'Verwijderen'
   selectDone: 'Sluiten'
+  jumpTitle: 'Naar een maand gaan'
+  olderYear: 'Vorig jaar'
+  newerYear: 'Volgend jaar'
+  newest: 'Nieuwste'
+  loadingOlder: 'Oudere pushes laden…'
+  monthCount:
+    1: '1 push'
+    n: '$1 pushes'
 device:
   unknown: Onbekend apparaat
   unnamed: Naamloos apparaat
