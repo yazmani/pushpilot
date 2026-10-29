@@ -1,7 +1,7 @@
 # Traditional Chinese (Taiwan) strings, translated from en.yml (the source for every language in this folder).
 # $1–$9 are substitutions; keys with 1/n are plural forms (i18n.t(key, count)).
 extName: Pushpilot for Pushbullet
-extDescription: 將分頁、筆記和檔案傳送到手機，在瀏覽器中查看 Android 通知並收發簡訊。非官方 Pushbullet 用戶端。
+extDescription: '非官方 Pushbullet 擴充功能，適用於 Chrome、Brave 和 Edge：將分頁、連結和檔案傳送到手機，查看通知並收發簡訊。'
 cmdOpen: 開啟 Pushpilot
 cmdPushPage: 將目前的頁面推送到預設裝置
 cmdPushClipboard: 將複製的內容推送到預設裝置（可在任何應用程式中使用）
@@ -58,7 +58,7 @@ send:
   uploading: 上傳中…
   sending: 傳送中…
   sendTo: 傳送到 $1
-  queued: '沒有網路連線。恢復連線後會自動傳送。'
+  queued: '暫時無法傳送，條件允許時會自動送出。'
 targets:
   all: 所有裝置
   allSub: 全部傳送
@@ -91,6 +91,11 @@ support:
   coffee: 請我喝杯咖啡
   sponsor: 在 GitHub 上贊助
   review: 留下評論
+rate:
+  title: '喜歡 Pushpilot 嗎？'
+  body: '花幾秒評個分，能幫懷念 Pushbullet 擴充功能的人找到它。'
+  action: '為 Pushpilot 評分'
+  later: '不用了'
 whatsNew:
   title: Pushpilot $1 新功能
   seeAll: 查看所有變更
@@ -457,7 +462,7 @@ guide:
   shortcutHint: '在任何地方複製連結或文字，按下快速鍵，內容就會送到你的手機。'
 outbox:
   title: '等待傳送'
-  hint: '恢復連線後會立即傳送。'
+  hint: '能重新連上 Pushbullet 後，這些會自動送出。'
   retry: '重試'
   cancel: '取消'
   failed: '無法傳送：$1'

@@ -2,7 +2,7 @@ import clsx from 'clsx';
 import { ClipboardCopy, Coffee, Heart, LockKeyhole, LogOut, Pencil, RefreshCw, Star } from 'lucide-react';
 import { type ReactNode, useEffect, useRef, useState } from 'react';
 import { browser, type Browser } from 'wxt/browser';
-import { LINKS } from '@/core/links';
+import { LINKS, REVIEWS } from '@/core/links';
 import { call } from '@/core/messaging/rpc';
 import type { Device } from '@/core/pushbullet/types';
 import * as store from '@/core/storage/store';
@@ -403,9 +403,11 @@ function SettingsContent() {
               <LinkButton href={LINKS.sponsor}>
                 <Heart size={15} /> {i18n.t('support.sponsor')}
               </LinkButton>
-              <LinkButton href={LINKS.review} variant="ghost">
-                <Star size={15} /> {i18n.t('settings.rate')}
-              </LinkButton>
+              {REVIEWS[browser.runtime.id] && (
+                <LinkButton href={REVIEWS[browser.runtime.id]} variant="ghost">
+                  <Star size={15} /> {i18n.t('settings.rate')}
+                </LinkButton>
+              )}
               <LinkButton href={LINKS.repo} variant="ghost">
                 {i18n.t('settings.star')}
               </LinkButton>

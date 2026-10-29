@@ -4,7 +4,7 @@ import { useEffect, useRef, useState } from 'react';
 import { call } from '@/core/messaging/rpc';
 import { Button, fieldClass, Logo, Notice } from '@/ui/components';
 import { errorText } from '@/ui/hooks/use-toast';
-import { continueSignInInSettings, signInWithPushbullet } from './oauth';
+import { continueSignInInSettings, oauthClientId, signInWithPushbullet } from './oauth';
 import { i18n } from '#i18n';
 
 export function SignIn({
@@ -16,7 +16,9 @@ export function SignIn({
   inPopup?: boolean;
   autoStart?: boolean;
 }) {
-  const [showToken, setShowToken] = useState(false);
+  // Without an OAuth client for this extension ID, the token is the only way in.
+  const web = !!oauthClientId();
+  const [showToken, setShowToken] = useState(!web);
   const [token, setToken] = useState('');
   const [error, setError] = useState<string | null>(null);
   const [busy, setBusy] = useState<'web' | 'token' | null>(null);
@@ -29,7 +31,7 @@ export function SignIn({
   // Settings opened from the popup's "Sign in" button: go straight to Pushbullet.
   const started = useRef(false);
   useEffect(() => {
-    if (!autoStart || started.current) return;
+    if (!autoStart || !web || started.current) return;
     started.current = true;
     history.replaceState(null, '', location.pathname);
     startWeb();
@@ -60,10 +62,14 @@ export function SignIn({
       <h1 className="relative mt-6 text-2xl font-extrabold leading-[1.15] tracking-[-0.03em]">{i18n.t('signIn.title')}</h1>
       <p className="relative mt-2.5 text-sm leading-relaxed text-muted">{i18n.t('signIn.intro')}</p>
 
-      <Button variant="primary" size="lg" className="relative mt-7 w-full" busy={busy === 'web'} onClick={startWeb}>
-        {i18n.t('signIn.button')}
-      </Button>
-      <p className="relative mt-2 text-xs leading-relaxed text-muted">{i18n.t('signIn.buttonHint')}</p>
+      {web && (
+        <>
+          <Button variant="primary" size="lg" className="relative mt-7 w-full" busy={busy === 'web'} onClick={startWeb}>
+            {i18n.t('signIn.button')}
+          </Button>
+          <p className="relative mt-2 text-xs leading-relaxed text-muted">{i18n.t('signIn.buttonHint')}</p>
+        </>
+      )}
 
       {!showToken ? (
         <button

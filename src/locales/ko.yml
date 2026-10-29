@@ -1,7 +1,7 @@
 # Korean strings, translated from en.yml (the source for every language in this folder).
 # $1–$9 are substitutions; keys with 1/n are plural forms (i18n.t(key, count)).
 extName: Pushpilot for Pushbullet
-extDescription: 탭, 메모, 파일을 휴대폰으로 보내고 Android 알림 확인과 문자 전송을 브라우저에서 하세요. 비공식 Pushbullet 클라이언트예요.
+extDescription: 'Chrome·Brave·Edge용 비공식 Pushbullet 확장 프로그램. 탭, 링크, 파일을 휴대폰으로 보내고 알림 확인과 문자 전송까지.'
 cmdOpen: Pushpilot 열기
 cmdPushPage: 현재 페이지를 기본 기기로 푸시
 cmdPushClipboard: 복사한 내용을 기본 기기로 푸시 (모든 앱에서)
@@ -58,7 +58,7 @@ send:
   uploading: 업로드 중…
   sending: 보내는 중…
   sendTo: $1(으)로 보내기
-  queued: '연결되지 않았어요. 다시 온라인이 되면 보내요.'
+  queued: '아직 보내지 못했어요. 가능해지면 자동으로 보내요.'
 targets:
   all: 모든 기기
   allSub: 어디서나
@@ -91,6 +91,11 @@ support:
   coffee: 커피 한 잔 사 주기
   sponsor: GitHub에서 후원하기
   review: 리뷰 남기기
+rate:
+  title: 'Pushpilot이 마음에 드시나요?'
+  body: '간단한 평가가 Pushbullet 확장 프로그램을 찾는 분들에게 큰 도움이 돼요.'
+  action: 'Pushpilot 평가하기'
+  later: '괜찮아요'
 whatsNew:
   title: Pushpilot $1의 새로운 기능
   seeAll: 모든 변경 사항 보기
@@ -457,7 +462,7 @@ guide:
   shortcutHint: '어디서든 링크나 텍스트를 복사하고 단축키를 누르면 휴대폰으로 전송돼요.'
 outbox:
   title: '보내기 대기 중'
-  hint: '다시 온라인이 되면 바로 보내요.'
+  hint: 'Pushbullet에 다시 연결되면 자동으로 보내져요.'
   retry: '다시 시도'
   cancel: '취소'
   failed: '보낼 수 없어요: $1'

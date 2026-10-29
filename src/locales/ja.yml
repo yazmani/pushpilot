@@ -1,7 +1,7 @@
 # Japanese strings, translated from en.yml (the source for every language in this folder).
 # $1–$9 are substitutions; keys with 1/n are plural forms (i18n.t(key, count)).
 extName: Pushpilot for Pushbullet
-extDescription: タブ、メモ、ファイルをスマートフォンに送信。Android の通知確認や SMS もブラウザから。非公式の Pushbullet クライアントです。
+extDescription: 'Chrome・Brave・Edge 用の非公式 Pushbullet 拡張機能。タブ、リンク、ファイルをスマートフォンへ送信し、通知の確認や SMS の送信も。'
 cmdOpen: Pushpilot を開く
 cmdPushPage: 現在のページをデフォルトのデバイスにプッシュ
 cmdPushClipboard: コピーした内容をデフォルトのデバイスにプッシュ（どのアプリからでも）
@@ -58,7 +58,7 @@ send:
   uploading: アップロード中…
   sending: 送信中…
   sendTo: $1 に送信
-  queued: '接続されていません。オンラインに戻ると送信されます。'
+  queued: 'まだ送信できません。可能になり次第、自動で送信します。'
 targets:
   all: すべてのデバイス
   allSub: すべての場所へ
@@ -91,6 +91,11 @@ support:
   coffee: コーヒーをおごる
   sponsor: GitHub でスポンサーになる
   review: レビューを書く
+rate:
+  title: 'Pushpilot を気に入っていただけましたか？'
+  body: '評価をいただけると、Pushbullet 拡張機能を探している方が見つけやすくなります。'
+  action: 'Pushpilot を評価'
+  later: '今はしない'
 whatsNew:
   title: Pushpilot $1 の新機能
   seeAll: すべての変更を表示
@@ -457,7 +462,7 @@ guide:
   shortcutHint: 'どこかでリンクやテキストをコピーしてショートカットを押すと、スマートフォンに届きます。'
 outbox:
   title: '送信待ち'
-  hint: 'オンラインに戻るとすぐに送信されます。'
+  hint: 'Pushbullet に再びつながると、自動で送信されます。'
   retry: '再試行'
   cancel: 'キャンセル'
   failed: '送信できませんでした：$1'

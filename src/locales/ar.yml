@@ -1,7 +1,7 @@
 # Arabic strings, translated from en.yml.
 # $1–$9 are substitutions; keys with 1/n are plural forms (i18n.t(key, count)).
 extName: Pushpilot لـ Pushbullet
-extDescription: أرسل علامات التبويب والملاحظات والملفات إلى هاتفك، واطّلع على إشعارات Android وراسل من متصفحك. عميل Pushbullet غير رسمي.
+extDescription: 'إضافة Pushbullet غير رسمية لـ Chrome وBrave وEdge: أرسل الصفحات والروابط والملفات إلى هاتفك، واطّلع على الإشعارات، وأرسل SMS.'
 cmdOpen: فتح Pushpilot
 cmdPushPage: إرسال الصفحة الحالية إلى جهازك الافتراضي
 cmdPushClipboard: إرسال ما نسخته إلى جهازك الافتراضي، من أي تطبيق
@@ -58,7 +58,7 @@ send:
   uploading: جارٍ الرفع…
   sending: جارٍ الإرسال…
   sendTo: إرسال إلى $1
-  queued: 'لا يوجد اتصال. سيُرسل عند عودتك متصلًا.'
+  queued: 'تعذّر الإرسال الآن. سيُرسَل تلقائيًا فور الإمكان.'
 targets:
   all: كل الأجهزة
   allSub: في كل مكان
@@ -91,6 +91,11 @@ support:
   coffee: اشترِ لي قهوة
   sponsor: الرعاية على GitHub
   review: اكتب تقييمًا
+rate:
+  title: 'هل يعجبك Pushpilot؟'
+  body: 'تقييم سريع يساعد من يفتقدون إضافة Pushbullet على العثور عليه.'
+  action: 'قيّم Pushpilot'
+  later: 'لا، شكرًا'
 whatsNew:
   title: الجديد في Pushpilot $1
   seeAll: عرض كل التغييرات
@@ -457,7 +462,7 @@ guide:
   shortcutHint: 'انسخ رابطًا أو نصًا من أي مكان، واضغط الاختصار، فيصل إلى هاتفك.'
 outbox:
   title: 'بانتظار الإرسال'
-  hint: 'ستُرسل فور عودتك متصلًا.'
+  hint: 'ستُرسَل هذه تلقائيًا عندما يصبح الوصول إلى Pushbullet ممكنًا مجددًا.'
   retry: 'إعادة المحاولة'
   cancel: 'إلغاء'
   failed: 'تعذّر الإرسال: $1'

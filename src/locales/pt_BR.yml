@@ -1,7 +1,7 @@
 # Brazilian Portuguese strings, translated from en.yml (the source for every language in this folder).
 # $1–$9 are substitutions; keys with 1/n are plural forms (i18n.t(key, count)).
 extName: Pushpilot para Pushbullet
-extDescription: Envie abas, notas e arquivos ao celular, veja notificações do Android e mande SMS do navegador. Cliente não oficial do Pushbullet.
+extDescription: 'Extensão não oficial do Pushbullet para Chrome, Brave e Edge: envie abas, links e arquivos ao celular, veja notificações, mande SMS.'
 cmdOpen: Abrir o Pushpilot
 cmdPushPage: Enviar a página atual para o dispositivo padrão
 cmdPushClipboard: Enviar o que você copiou para o dispositivo padrão, de qualquer app
@@ -58,7 +58,7 @@ send:
   uploading: Enviando arquivo…
   sending: Enviando…
   sendTo: Enviar para $1
-  queued: 'Sem conexão. Será enviado quando você voltar a ficar online.'
+  queued: 'Ainda não foi possível enviar. Será enviado sozinho assim que der.'
 targets:
   all: Todos os dispositivos
   allSub: Em todo lugar
@@ -91,6 +91,11 @@ support:
   coffee: Me pague um café
   sponsor: Patrocinar no GitHub
   review: Deixar uma avaliação
+rate:
+  title: 'Está gostando do Pushpilot?'
+  body: 'Uma avaliação rápida ajuda quem sente falta da extensão do Pushbullet a encontrá-lo.'
+  action: 'Avaliar o Pushpilot'
+  later: 'Não, obrigado'
 whatsNew:
   title: Novidades do Pushpilot $1
   seeAll: Ver todas as mudanças
@@ -457,7 +462,7 @@ guide:
   shortcutHint: 'Copie um link ou algum texto em qualquer lugar, pressione o atalho e ele chega ao seu celular.'
 outbox:
   title: 'Aguardando envio'
-  hint: 'Eles serão enviados assim que você voltar a ficar online.'
+  hint: 'Serão enviados sozinhos assim que o Pushbullet estiver acessível de novo.'
   retry: 'Tentar de novo'
   cancel: 'Cancelar'
   failed: 'Não foi possível enviar: $1'

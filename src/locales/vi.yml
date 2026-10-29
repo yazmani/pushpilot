@@ -1,7 +1,7 @@
 # Vietnamese strings, translated from en.yml.
 # $1–$9 are substitutions; keys with 1/n are plural forms (i18n.t(key, count)).
 extName: Pushpilot cho Pushbullet
-extDescription: Gửi tab, ghi chú và tệp tới điện thoại, xem thông báo Android và nhắn tin từ trình duyệt. Ứng dụng Pushbullet không chính thức.
+extDescription: 'Tiện ích Pushbullet không chính thức cho Chrome, Brave, Edge: gửi tab, liên kết, tệp tới điện thoại, xem thông báo, nhắn SMS.'
 cmdOpen: Mở Pushpilot
 cmdPushPage: Gửi trang hiện tại tới thiết bị mặc định
 cmdPushClipboard: Gửi nội dung bạn đã sao chép tới thiết bị mặc định, từ mọi ứng dụng
@@ -58,7 +58,7 @@ send:
   uploading: Đang tải lên…
   sending: Đang gửi…
   sendTo: Gửi tới $1
-  queued: 'Không có kết nối. Sẽ gửi khi bạn trực tuyến trở lại.'
+  queued: 'Chưa gửi được. Sẽ tự gửi ngay khi có thể.'
 targets:
   all: Tất cả thiết bị
   allSub: Mọi nơi
@@ -91,6 +91,11 @@ support:
   coffee: Mời tôi một ly cà phê
   sponsor: Tài trợ trên GitHub
   review: Viết đánh giá
+rate:
+  title: 'Bạn thích Pushpilot chứ?'
+  body: 'Một đánh giá nhanh giúp những ai nhớ tiện ích Pushbullet tìm thấy nó.'
+  action: 'Đánh giá Pushpilot'
+  later: 'Không, cảm ơn'
 whatsNew:
   title: Có gì mới trong Pushpilot $1
   seeAll: Xem mọi thay đổi
@@ -457,7 +462,7 @@ guide:
   shortcutHint: 'Sao chép liên kết hoặc văn bản ở bất cứ đâu, nhấn phím tắt và nội dung sẽ tới điện thoại của bạn.'
 outbox:
   title: 'Đang chờ gửi'
-  hint: 'Các mục này sẽ được gửi ngay khi bạn trực tuyến trở lại.'
+  hint: 'Những mục này sẽ tự gửi khi kết nối lại được với Pushbullet.'
   retry: 'Thử lại'
   cancel: 'Hủy'
   failed: 'Không gửi được: $1'

@@ -1,7 +1,7 @@
 # Indonesian strings, translated from en.yml.
 # $1–$9 are substitutions; keys with 1/n are plural forms (i18n.t(key, count)).
 extName: Pushpilot untuk Pushbullet
-extDescription: Kirim tab, catatan, dan file ke ponsel, lihat notifikasi Android, dan kirim SMS dari browser. Klien Pushbullet tidak resmi.
+extDescription: 'Ekstensi Pushbullet tidak resmi untuk Chrome, Brave, Edge: kirim tab, tautan, dan file ke ponsel, lihat notifikasi, kirim SMS.'
 cmdOpen: Buka Pushpilot
 cmdPushPage: Kirim halaman ini ke perangkat default Anda
 cmdPushClipboard: Kirim yang Anda salin ke perangkat default, dari aplikasi apa pun
@@ -58,7 +58,7 @@ send:
   uploading: Mengunggah…
   sending: Mengirim…
   sendTo: Kirim ke $1
-  queued: 'Tidak ada koneksi. Akan dikirim saat Anda kembali online.'
+  queued: 'Belum bisa dikirim. Akan terkirim otomatis begitu memungkinkan.'
 targets:
   all: Semua perangkat
   allSub: Di mana saja
@@ -91,6 +91,11 @@ support:
   coffee: Traktir saya kopi
   sponsor: Sponsori di GitHub
   review: Tulis ulasan
+rate:
+  title: 'Suka Pushpilot?'
+  body: 'Rating singkat membantu orang yang merindukan ekstensi Pushbullet menemukannya.'
+  action: 'Beri rating Pushpilot'
+  later: 'Tidak, terima kasih'
 whatsNew:
   title: Baru di Pushpilot $1
   seeAll: Lihat semua perubahan
@@ -457,7 +462,7 @@ guide:
   shortcutHint: 'Salin link atau teks di mana saja, tekan pintasannya, dan itu akan sampai di ponsel Anda.'
 outbox:
   title: 'Menunggu dikirim'
-  hint: 'Ini akan dikirim begitu Anda kembali online.'
+  hint: 'Ini akan terkirim otomatis begitu Pushbullet bisa dijangkau lagi.'
   retry: 'Coba lagi'
   cancel: 'Batal'
   failed: 'Tidak dapat mengirim: $1'
