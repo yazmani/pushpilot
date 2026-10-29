@@ -35,6 +35,7 @@ header:
   unpause: Réactiver les notifications
   openPanel: Ouvrir dans le panneau latéral
   openWindow: Ouvrir dans une fenêtre
+  openTab: 'Ouvrir en pleine page'
   settings: Paramètres
 send:
   tooBig: $1 dépasse la limite de $2 de Pushbullet.
@@ -233,6 +234,8 @@ sms:
   offlineNotice: '$1 ne s’est pas connecté depuis $2. Vous pouvez lire les anciens SMS, mais les nouveaux ne partiront pas avant son retour en ligne.'
   refresh: Actualiser
   newText: Nouveau SMS
+  pickTitle: 'Choisissez une conversation'
+  pickBody: 'Vos SMS s’ouvrent ici, à côté de la liste.'
   noThreadsTitle: Aucune conversation
   noThreadsBody: Ce téléphone n’a encore partagé aucune conversation SMS.
   you: 'Vous : '

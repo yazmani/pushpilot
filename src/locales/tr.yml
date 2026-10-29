@@ -33,6 +33,7 @@ header:
   unpause: Bildirimleri tekrar aç
   openPanel: Yan panelde aç
   openWindow: Pencerede aç
+  openTab: 'Tam sayfa olarak aç'
   settings: Ayarlar
 send:
   tooBig: '$1, Pushbullet’ın $2 sınırını aşıyor.'
@@ -90,9 +91,9 @@ support:
   sponsor: GitHub’da sponsor ol
   review: Değerlendirme yaz
 rate:
-  title: 'Pushpilot''u beğendiniz mi?'
+  title: "Pushpilot'u beğendiniz mi?"
   body: 'Kısa bir puan, Pushbullet uzantısını özleyenlerin onu bulmasına yardımcı olur.'
-  action: 'Pushpilot''u puanla'
+  action: "Pushpilot'u puanla"
   later: 'Hayır, teşekkürler'
 whatsNew:
   title: Pushpilot $1 sürümündeki yenilikler
@@ -100,7 +101,7 @@ whatsNew:
   label: Yenilikler
   v1_4:
     jump: 'Akışta veya galeride istediğiniz aya gidin: bir günün başlığına tıklayın.'
-    numbers: 'SMS''lerdeki telefon numaraları telefonunuzdaki gibi görünür.'
+    numbers: "SMS'lerdeki telefon numaraları telefonunuzdaki gibi görünür."
   v1_3:
     history: 'Tüm gönderi geçmişin akışta; görseller bir galeride, dosyalar türe göre sıralı.'
     codes: 'SMS’lerdeki giriş kodları için kopyalama düğmesi.'
@@ -153,7 +154,7 @@ feed:
   olderYear: 'Önceki yıl'
   newerYear: 'Sonraki yıl'
   newest: 'En yeni'
-  loadingOlder: 'Eski push''lar yükleniyor…'
+  loadingOlder: "Eski push'lar yükleniyor…"
   monthCount:
     1: '1 push'
     n: '$1 push'
@@ -231,6 +232,8 @@ sms:
   offlineNotice: '$1, $2 tarihinden beri bağlanmadı. Eski mesajları okuyabilirsin, ancak yenileri tekrar çevrimiçi olana kadar gönderilmez.'
   refresh: Yenile
   newText: Yeni SMS
+  pickTitle: 'Bir konuşma seçin'
+  pickBody: "SMS'leriniz burada, listenin yanında açılır."
   noThreadsTitle: Sohbet yok
   noThreadsBody: Bu telefon henüz hiçbir SMS sohbeti paylaşmadı.
   you: 'Sen: '
@@ -471,7 +474,7 @@ guide:
   shortcutHint: 'Herhangi bir yerde bir bağlantı ya da metin kopyala, kısayola bas; telefonuna ulaşsın.'
 outbox:
   title: 'Gönderilmeyi bekliyor'
-  hint: 'Pushbullet''a yeniden ulaşılabildiğinde bunlar kendiliğinden gider.'
+  hint: "Pushbullet'a yeniden ulaşılabildiğinde bunlar kendiliğinden gider."
   retry: 'Tekrar dene'
   cancel: 'İptal'
   failed: 'Gönderilemedi: $1'

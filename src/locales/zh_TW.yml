@@ -35,6 +35,7 @@ header:
   unpause: 重新開啟通知
   openPanel: 在側邊面板中開啟
   openWindow: 在視窗中開啟
+  openTab: '以完整頁面開啟'
   settings: 設定
 send:
   tooBig: $1 超過 Pushbullet 的 $2 上限。
@@ -233,6 +234,8 @@ sms:
   offlineNotice: '$1 自 $2 起未連線。你可以查看舊簡訊，但在它重新上線前無法傳送新簡訊。'
   refresh: 重新整理
   newText: 新簡訊
+  pickTitle: '選擇一個對話'
+  pickBody: '簡訊會在清單旁邊開啟。'
   noThreadsTitle: 沒有對話
   noThreadsBody: 這支手機尚未分享任何簡訊對話。
   you: 我：

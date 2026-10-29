@@ -35,6 +35,7 @@ header:
   unpause: 通知を再開
   openPanel: サイドパネルで開く
   openWindow: ウィンドウで開く
+  openTab: '全画面のページで開く'
   settings: 設定
 send:
   tooBig: $1 は Pushbullet の上限（$2）を超えています。
@@ -233,6 +234,8 @@ sms:
   offlineNotice: '$1 は $2 以降接続されていません。過去のメッセージは読めますが、オンラインに戻るまで新しいメッセージは送信されません。'
   refresh: 更新
   newText: 新規メッセージ
+  pickTitle: '会話を選択'
+  pickBody: 'SMS はリストの横に表示されます。'
   noThreadsTitle: 会話はありません
   noThreadsBody: このスマートフォンはまだメッセージのスレッドを共有していません。
   you: 自分：

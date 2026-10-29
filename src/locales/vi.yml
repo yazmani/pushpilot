@@ -35,6 +35,7 @@ header:
   unpause: Bật lại thông báo
   openPanel: Mở trong bảng bên
   openWindow: Mở trong cửa sổ
+  openTab: 'Mở toàn trang'
   settings: Cài đặt
 send:
   tooBig: $1 vượt quá giới hạn $2 của Pushbullet.
@@ -233,6 +234,8 @@ sms:
   offlineNotice: '$1 chưa kết nối kể từ $2. Bạn vẫn đọc được tin nhắn cũ, nhưng tin mới sẽ không được gửi cho đến khi máy trực tuyến trở lại.'
   refresh: Làm mới
   newText: Tin nhắn mới
+  pickTitle: 'Chọn một cuộc trò chuyện'
+  pickBody: 'Tin nhắn sẽ mở ở đây, cạnh danh sách.'
   noThreadsTitle: Không có cuộc trò chuyện
   noThreadsBody: Điện thoại này chưa chia sẻ chuỗi tin nhắn nào.
   you: 'Bạn: '

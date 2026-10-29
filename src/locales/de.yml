@@ -34,6 +34,7 @@ header:
   unpause: Benachrichtigungen wieder einschalten
   openPanel: In der Seitenleiste öffnen
   openWindow: In einem Fenster öffnen
+  openTab: 'Als ganze Seite öffnen'
   settings: Einstellungen
 send:
   tooBig: $1 überschreitet das Pushbullet-Limit von $2.
@@ -232,6 +233,8 @@ sms:
   offlineNotice: '$1 war seit $2 nicht mehr verbunden. Alte SMS kannst du lesen, neue werden erst gesendet, wenn es wieder online ist.'
   refresh: Aktualisieren
   newText: Neue SMS
+  pickTitle: 'Wähl eine Unterhaltung'
+  pickBody: 'Deine SMS öffnen sich hier, neben der Liste.'
   noThreadsTitle: Keine Unterhaltungen
   noThreadsBody: Dieses Handy hat noch keine SMS-Unterhaltungen geteilt.
   you: 'Du: '

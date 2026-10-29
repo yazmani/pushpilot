@@ -35,6 +35,7 @@ header:
   unpause: Aktifkan lagi notifikasi
   openPanel: Buka di panel samping
   openWindow: Buka di jendela
+  openTab: 'Buka sebagai halaman penuh'
   settings: Setelan
 send:
   tooBig: $1 melebihi batas $2 dari Pushbullet.
@@ -233,6 +234,8 @@ sms:
   offlineNotice: '$1 belum terhubung sejak $2. Anda bisa membaca SMS lama, tetapi SMS baru tidak akan terkirim sampai ponsel online kembali.'
   refresh: Muat ulang
   newText: SMS baru
+  pickTitle: 'Pilih percakapan'
+  pickBody: 'SMS Anda terbuka di sini, di samping daftar.'
   noThreadsTitle: Tidak ada percakapan
   noThreadsBody: Ponsel ini belum membagikan percakapan SMS apa pun.
   you: 'Anda: '

@@ -34,6 +34,7 @@ header:
   unpause: Meldingen weer aanzetten
   openPanel: Openen in zijpaneel
   openWindow: Openen in een venster
+  openTab: 'Openen als volledige pagina'
   settings: Instellingen
 send:
   tooBig: $1 is groter dan de limiet van $2 bij Pushbullet.
@@ -232,6 +233,8 @@ sms:
   offlineNotice: '$1 is sinds $2 niet meer verbonden. Je kunt oude sms’jes lezen, maar nieuwe worden pas verstuurd als hij weer online is.'
   refresh: Vernieuwen
   newText: Nieuwe sms
+  pickTitle: 'Kies een gesprek'
+  pickBody: 'Je sms’jes openen hier, naast de lijst.'
   noThreadsTitle: Geen gesprekken
   noThreadsBody: Deze telefoon heeft nog geen sms-gesprekken gedeeld.
   you: 'Jij: '

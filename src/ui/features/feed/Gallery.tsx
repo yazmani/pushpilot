@@ -34,7 +34,7 @@ export function Gallery({ pushes, onPick }: { pushes: Push[]; onPick?: (day: num
       {months.map((m) => (
         <section key={m.label} data-day={m.label} className="mb-3">
           <SectionHeading label={m.label} onPick={onPick && (() => onPick(m.items[0]!.p.created))} />
-          <div className="grid grid-cols-3 gap-1">
+          <div className="grid grid-cols-3 gap-1 @xl:grid-cols-4 @xl:gap-1.5 @3xl:grid-cols-5 @4xl:grid-cols-6">
             {m.items.map(({ p, i }) => (
               <button
                 key={p.iden}

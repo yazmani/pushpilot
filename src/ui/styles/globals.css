@@ -91,6 +91,10 @@
   --shadow-card: var(--shadow);
   --shadow-glow: var(--glow);
   --color-on-band: var(--on-band);
+}
+
+/* Text sizes stay variables (not inlined) so the full-page app can scale them. */
+@theme {
   --text-2xs: 11px;
   --text-xs: 12px;
   --text-sm: 13px;
@@ -121,6 +125,22 @@
   body.fill,
   body.fill #root {
     height: 100vh;
+  }
+
+  /* The full-page app reads from further away than a popup: everything about
+     a tenth larger. Spacing is in rem, so the root size scales it too. */
+  html.app,
+  html.app body {
+    font-size: 14.5px;
+  }
+  html.app {
+    --text-2xs: 12px;
+    --text-xs: 13px;
+    --text-sm: 14.5px;
+    --text-base: 15.5px;
+    --text-lg: 17.5px;
+    --text-xl: 22px;
+    --text-2xl: 28px;
   }
 
   #root {

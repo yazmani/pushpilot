@@ -35,6 +35,7 @@ header:
   unpause: Turn notifications back on
   openPanel: Open in side panel
   openWindow: Open in a window
+  openTab: Open as a full page
   settings: Settings
 send:
   tooBig: $1 is over Pushbullet’s $2 limit.
@@ -58,7 +59,7 @@ send:
   uploading: Uploading…
   sending: Sending…
   sendTo: Send to $1
-  queued: 'Couldn''t send yet. It''ll go out on its own as soon as it can.'
+  queued: "Couldn't send yet. It'll go out on its own as soon as it can."
 targets:
   all: All devices
   allSub: Everywhere
@@ -233,6 +234,8 @@ sms:
   offlineNotice: '$1 hasn’t connected since $2. You can read old texts, but new ones won’t send until it’s back online.'
   refresh: Refresh
   newText: New text
+  pickTitle: Pick a conversation
+  pickBody: Your texts open here, next to the list.
   noThreadsTitle: No conversations
   noThreadsBody: This phone hasn’t shared any text threads yet.
   you: 'You: '

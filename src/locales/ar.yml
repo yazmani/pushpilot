@@ -35,6 +35,7 @@ header:
   unpause: إعادة تشغيل الإشعارات
   openPanel: فتح في اللوحة الجانبية
   openWindow: فتح في نافذة
+  openTab: 'افتح كصفحة كاملة'
   settings: الإعدادات
 send:
   tooBig: يتجاوز $1 حدّ Pushbullet البالغ $2.
@@ -233,6 +234,8 @@ sms:
   offlineNotice: 'لم يتصل $1 منذ $2. يمكنك قراءة الرسائل القديمة، لكن الرسائل الجديدة لن تُرسل حتى يعود متصلًا.'
   refresh: تحديث
   newText: رسالة جديدة
+  pickTitle: 'اختر محادثة'
+  pickBody: 'تُفتح رسائلك هنا بجانب القائمة.'
   noThreadsTitle: لا توجد محادثات
   noThreadsBody: لم يشارك هذا الهاتف أي محادثات نصية بعد.
   you: 'أنت: '

@@ -1,3 +1,4 @@
+import clsx from 'clsx';
 import { RefreshCw } from 'lucide-react';
 import { useEffect, useState } from 'react';
 import { call } from '@/core/messaging/rpc';
@@ -13,10 +14,11 @@ import { useStore } from '@/ui/hooks/use-store';
 import { useTheme } from '@/ui/hooks/use-theme';
 import { ToastProvider } from '@/ui/hooks/use-toast';
 import { Header } from './Header';
+import { Sidebar } from './Sidebar';
 import { i18n } from '#i18n';
 
-/** Where the app is rendered: toolbar popup, side panel, or the pop-out window. */
-export type Mode = 'popup' | 'panel' | 'window';
+/** Where the app is rendered: toolbar popup, side panel, pop-out window, or a full browser tab. */
+export type Mode = 'popup' | 'panel' | 'window' | 'tab';
 
 /** Deep link from a notification click into a specific item. */
 export interface Intent {
@@ -82,54 +84,91 @@ function Shell({ mode }: { mode: Mode }) {
       </Centered>
     );
   }
-  if (!token) return <SignIn inPopup={mode === 'popup'} />;
+  if (!token) {
+    if (mode === 'tab')
+      return (
+        <div className="grid h-full place-items-center px-8">
+          <SignIn wide />
+        </div>
+      );
+    return <SignIn inPopup={mode === 'popup'} />;
+  }
+
+  const full = mode === 'tab';
+  const showSms = devices.some((d) => d.has_sms);
 
   return (
-    <div className="flex h-full flex-col bg-bg">
-      <Header
-        mode={mode}
-        me={me}
-        connection={connection}
-        snoozeUntil={settings.snoozeUntil}
-        tab={tab!}
-        onTab={setTab}
-        unread={unread}
-        showSms={devices.some((d) => d.has_sms)}
-      />
-
-      {rateLimitedUntil > now && (
-        <div className="flex shrink-0 items-center gap-2 border-b border-line bg-note-bg px-3.5 py-2 text-xs text-ink">
-          <span className="flex-1 leading-relaxed">
-            {i18n.t('app.rateLimited', [
-              new Date(rateLimitedUntil).toLocaleTimeString(undefined, { hour: 'numeric', minute: '2-digit' }),
-            ])}
-          </span>
-          <button className="font-bold text-note-fg" onClick={() => void store.set({ rateLimitedUntil: 0 })}>
-            {i18n.t('common.dismiss')}
-          </button>
-        </div>
+    <div className="flex h-full bg-bg">
+      {full && (
+        <Sidebar
+          className="hidden md:flex"
+          me={me}
+          connection={connection}
+          snoozeUntil={settings.snoozeUntil}
+          tab={tab!}
+          onTab={setTab}
+          unread={unread}
+          showSms={showSms}
+        />
       )}
-      {(connection === 'offline' || lastError) && (
-        <div className="flex shrink-0 items-center gap-2 border-b border-line bg-note-bg px-3.5 py-2 text-xs text-ink">
-          <span className="flex-1 leading-relaxed">{connection === 'offline' ? i18n.t('app.offline') : lastError}</span>
-          {connection === 'offline' ? (
-            <button className="flex items-center gap-1 font-bold text-note-fg" onClick={() => void call('reconnect')}>
-              <RefreshCw size={12} /> {i18n.t('common.retry')}
-            </button>
-          ) : (
-            <button className="font-bold text-note-fg" onClick={() => void store.set({ lastError: null })}>
+      <div className="flex min-w-0 flex-1 flex-col">
+        {/* A full page narrower than a laptop keeps the popup's band instead of the sidebar. */}
+        <Header
+          className={clsx(full && 'md:hidden')}
+          mode={mode}
+          me={me}
+          connection={connection}
+          snoozeUntil={settings.snoozeUntil}
+          tab={tab!}
+          onTab={setTab}
+          unread={unread}
+          showSms={showSms}
+        />
+
+        {rateLimitedUntil > now && (
+          <div className="flex shrink-0 items-center gap-2 border-b border-line bg-note-bg px-3.5 py-2 text-xs text-ink">
+            <span className="flex-1 leading-relaxed">
+              {i18n.t('app.rateLimited', [
+                new Date(rateLimitedUntil).toLocaleTimeString(undefined, { hour: 'numeric', minute: '2-digit' }),
+              ])}
+            </span>
+            <button className="font-bold text-note-fg" onClick={() => void store.set({ rateLimitedUntil: 0 })}>
               {i18n.t('common.dismiss')}
             </button>
-          )}
-        </div>
-      )}
+          </div>
+        )}
+        {(connection === 'offline' || lastError) && (
+          <div className="flex shrink-0 items-center gap-2 border-b border-line bg-note-bg px-3.5 py-2 text-xs text-ink">
+            <span className="flex-1 leading-relaxed">{connection === 'offline' ? i18n.t('app.offline') : lastError}</span>
+            {connection === 'offline' ? (
+              <button className="flex items-center gap-1 font-bold text-note-fg" onClick={() => void call('reconnect')}>
+                <RefreshCw size={12} /> {i18n.t('common.retry')}
+              </button>
+            ) : (
+              <button className="font-bold text-note-fg" onClick={() => void store.set({ lastError: null })}>
+                {i18n.t('common.dismiss')}
+              </button>
+            )}
+          </div>
+        )}
 
-      <main className="relative min-h-0 flex-1 bg-bg">
-        {tab === 'send' && <SendView mode={mode} onOpenFeed={() => setTab('feed')} />}
-        {tab === 'feed' && <FeedView />}
-        {tab === 'phone' && <PhoneView focus={intent.mirror} />}
-        {tab === 'sms' && <SmsView device={intent.device} thread={intent.thread} />}
-      </main>
+        <main className="relative min-h-0 flex-1 bg-bg">
+          <div className={clsx('relative h-full', full && ['mx-auto w-full md:px-4 md:pt-3', WIDTHS[tab!]])}>
+            {tab === 'send' && <SendView mode={mode} onOpenFeed={() => setTab('feed')} />}
+            {tab === 'feed' && <FeedView />}
+            {tab === 'phone' && <PhoneView focus={intent.mirror} />}
+            {tab === 'sms' && <SmsView device={intent.device} thread={intent.thread} split={full} />}
+          </div>
+        </main>
+      </div>
     </div>
   );
 }
+
+/** How wide each section gets on a full page: the feed and texts use the room, sending stays focused. */
+const WIDTHS: Record<Tab, string> = {
+  send: 'max-w-2xl',
+  feed: 'max-w-4xl',
+  phone: 'max-w-3xl',
+  sms: 'max-w-6xl',
+};

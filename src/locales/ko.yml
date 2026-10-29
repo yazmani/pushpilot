@@ -35,6 +35,7 @@ header:
   unpause: 알림 다시 켜기
   openPanel: 사이드 패널에서 열기
   openWindow: 창으로 열기
+  openTab: '전체 페이지로 열기'
   settings: 설정
 send:
   tooBig: $1이(가) Pushbullet의 $2 제한을 초과해요.
@@ -233,6 +234,8 @@ sms:
   offlineNotice: '$1이(가) $2 이후로 연결되지 않았어요. 이전 문자는 읽을 수 있지만, 다시 온라인이 될 때까지 새 문자는 보내지지 않아요.'
   refresh: 새로고침
   newText: 새 문자
+  pickTitle: '대화를 선택하세요'
+  pickBody: '문자는 목록 옆 여기에서 열려요.'
   noThreadsTitle: 대화 없음
   noThreadsBody: 이 휴대폰은 아직 문자 대화를 공유하지 않았어요.
   you: '나: '

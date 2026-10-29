@@ -35,6 +35,7 @@ header:
   unpause: 重新开启通知
   openPanel: 在侧边栏中打开
   openWindow: 在窗口中打开
+  openTab: '以完整页面打开'
   settings: 设置
 send:
   tooBig: $1 超出了 Pushbullet 的 $2 限制。
@@ -233,6 +234,8 @@ sms:
   offlineNotice: '$1 自 $2 起未连接。你可以查看旧短信，但在它重新上线前无法发送新短信。'
   refresh: 刷新
   newText: 新短信
+  pickTitle: '选择一个对话'
+  pickBody: '短信会在列表旁边打开。'
   noThreadsTitle: 没有对话
   noThreadsBody: 这部手机尚未共享任何短信对话。
   you: 我：

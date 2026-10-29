@@ -2,6 +2,12 @@
 
 All notable changes are listed here. The format follows [Keep a Changelog](https://keepachangelog.com/), and versions follow [Semantic Versioning](https://semver.org/).
 
+## [Unreleased]
+
+### Added
+
+- Pushpilot as a full page: account menu › Open as a full page. A dashboard with a sidebar, larger text, a wider feed, an image gallery that fills the width (up to six per row), and texts with the conversation list beside the open conversation. It falls back to the popup's layout in a narrow window.
+
 ## [1.4.0] - 2026-10-29
 
 ### Added
