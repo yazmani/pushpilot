@@ -89,7 +89,7 @@ export function Overview({
           icon={<FolderOpen size={19} />}
           label={i18n.t('dash.statFiles')}
           value={files.length}
-          hint={i18n.t('dash.statImages', [String(files.filter((p) => fileKind(p) === 'image').length)])}
+          hint={i18n.t('dash.statImages', files.filter((p) => fileKind(p) === 'image').length)}
           onClick={() => onPage('files')}
         />
         <Stat

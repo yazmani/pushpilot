@@ -488,7 +488,9 @@ dash:
   statWeek: Pushes this week
   statLoaded: $1 in your history here
   statFiles: Files shared
-  statImages: $1 images
+  statImages:
+    1: 1 image
+    n: $1 images
   statDevices: Devices receiving
   statDevicesHint: Ready for your pushes
   statPhone: On your phone now
