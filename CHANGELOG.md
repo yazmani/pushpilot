@@ -6,7 +6,12 @@ All notable changes are listed here. The format follows [Keep a Changelog](https
 
 ### Added
 
-- Pushpilot as a full page: account menu › Open as a full page. A dashboard with a sidebar, larger text, a wider feed, an image gallery that fills the width (up to six per row), and texts with the conversation list beside the open conversation. It falls back to the popup's layout in a narrow window.
+- Pushpilot as a full page: account menu › Open as a full page. On a laptop-sized window it's a dashboard with a sidebar and a New push button that slides the composer in from the side:
+  - Overview: a greeting, this week's pushes, files shared, devices receiving and what's on your phone, with recent pushes, phone notifications, latest texts, recent files and your devices.
+  - Files: every file you pushed as a gallery or a list, filtered by type, with the full-screen viewer for images.
+  - Devices: a card per device with whether it gets pushes, what it can do, and Send to it.
+  - Feed, Phone and SMS get room to breathe; texts show the conversation list beside the open conversation.
+  In a narrow window it keeps the popup's layout.
 
 ## [1.4.0] - 2026-10-29
 

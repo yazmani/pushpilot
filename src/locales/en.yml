@@ -474,6 +474,48 @@ guide:
   smsHint: In Pushbullet on your phone, turn on SMS, then open the SMS tab here.
   shortcut: Press $1 to push what you copied
   shortcutHint: Copy a link or some text anywhere, press the shortcut, and it lands on your phone.
+dash:
+  home: Overview
+  files: Files
+  devices: Devices
+  newPush: New push
+  greetMorning: Good morning, $1
+  greetAfternoon: Good afternoon, $1
+  greetEvening: Good evening, $1
+  statWeek: Pushes this week
+  statLoaded: $1 in your history here
+  statFiles: Files shared
+  statImages: $1 images
+  statDevices: Devices receiving
+  statDevicesHint: Ready for your pushes
+  statPhone: On your phone now
+  recentPushes: Recent pushes
+  recentFiles: Recent files
+  latestTexts: Latest texts
+  phoneQuiet: Nothing on your phone right now.
+  filesEmptyTitle: No files yet
+  filesEmpty: Photos, PDFs and other files you push show up here.
+  filesCount:
+    1: 1 file
+    n: $1 files
+  feedCount:
+    1: 1 push in your history
+    n: $1 pushes in your history
+  phoneSubtitle: Notifications mirrored from your phone
+  smsSubtitle: Text from your computer
+  viewGrid: Grid
+  viewList: List
+  colName: Name
+  colFrom: From
+  colType: Type
+  colDate: Date
+  loadOlder: Load older files
+  devicesCount: $1 of $2 receiving pushes
+  manageDevices: Manage devices
+  attention: Needs attention
+  canText: Can text
+  lastActive: Last active $1
+  sendTo: Send to it
 outbox:
   title: Waiting to send
   hint: 'These go out on their own once Pushbullet can be reached again.'

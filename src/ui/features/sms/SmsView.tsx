@@ -18,25 +18,13 @@ import {
 } from '@/ui/components';
 import { useNow } from '@/ui/hooks/use-now';
 import { useStore } from '@/ui/hooks/use-store';
+import { useWide } from '@/ui/hooks/use-wide';
 import { errorText, useToast } from '@/ui/hooks/use-toast';
 import { recipientImage, ThreadView } from './ThreadView';
 import { i18n } from '#i18n';
 
 function lastSeen(d: Device) {
   return new Date(d.modified * 1000).toLocaleDateString(undefined, { month: 'short', day: 'numeric', year: 'numeric' });
-}
-
-/** True while the window is at least `px` wide. */
-function useWide(px: number) {
-  const query = `(min-width: ${px}px)`;
-  const [wide, setWide] = useState(() => matchMedia(query).matches);
-  useEffect(() => {
-    const m = matchMedia(query);
-    const on = () => setWide(m.matches);
-    m.addEventListener('change', on);
-    return () => m.removeEventListener('change', on);
-  }, [query]);
-  return wide;
 }
 
 export function SmsView({

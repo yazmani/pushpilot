@@ -7,7 +7,7 @@ import { SectionHeading } from './JumpToMonth';
 import { i18n } from '#i18n';
 
 /** A sized copy from Google's image server when Pushbullet has one, else the file itself. */
-function imageSrc(p: Push, size: string) {
+export function imageSrc(p: Push, size: string) {
   return p.image_url ? `${p.image_url}=${size}` : p.file_url;
 }
 
@@ -58,7 +58,7 @@ export function Gallery({ pushes, onPick }: { pushes: Push[]; onPick?: (day: num
   );
 }
 
-function Lightbox({
+export function Lightbox({
   pushes,
   index,
   onIndex,

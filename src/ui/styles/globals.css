@@ -32,6 +32,8 @@
   --glow: 0 8px 24px -10px rgb(22 163 90 / 0.55);
   /* The green header band, a nod to the original Pushbullet extension. */
   --band: linear-gradient(135deg, #0c8446 0%, #17a85b 60%, #22bd6a 100%);
+  /* The full-page app's sidebar: the band, deeper. */
+  --rail: linear-gradient(175deg, #0d7a41 0%, #09612f 55%, #074a24 100%);
   --on-band: #ffffff;
   color-scheme: light;
 }
@@ -61,6 +63,7 @@
   --shadow: 0 1px 2px rgb(0 0 0 / 0.35), 0 14px 34px -16px rgb(0 0 0 / 0.7);
   --glow: 0 8px 26px -10px rgb(43 196 110 / 0.5);
   --band: linear-gradient(135deg, #0a3520 0%, #0f4a2b 60%, #135a34 100%);
+  --rail: linear-gradient(175deg, #0f2e1e 0%, #0b2216 60%, #08190f 100%);
   --on-band: #eafaf0;
   color-scheme: dark;
 }
@@ -185,6 +188,10 @@
   background-image: var(--band);
 }
 
+@utility bg-rail {
+  background: var(--rail);
+}
+
 /* Fades the right edge of a horizontal scroller so it reads as "more this way". */
 @utility fade-x {
   mask-image: linear-gradient(to right, #000 calc(100% - 28px), transparent);
@@ -197,8 +204,33 @@
   }
 }
 
+@keyframes fade {
+  from {
+    opacity: 0;
+  }
+}
+
+@keyframes slide {
+  from {
+    transform: translateX(calc(var(--slide-dir, 1) * 100%));
+  }
+}
+
+[dir='rtl'] {
+  --slide-dir: -1;
+}
+
 @utility animate-rise {
   animation: rise 180ms ease-out both;
+}
+
+@utility animate-fade {
+  animation: fade 180ms ease-out both;
+}
+
+/* The full page's composer sliding in from the side (mirrored in right-to-left). */
+@utility animate-slide {
+  animation: slide 240ms cubic-bezier(0.2, 0.8, 0.2, 1) both;
 }
 
 @media (prefers-reduced-motion: reduce) {

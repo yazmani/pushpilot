@@ -1,4 +1,3 @@
-import clsx from 'clsx';
 import { RefreshCw } from 'lucide-react';
 import { useEffect, useState } from 'react';
 import { call } from '@/core/messaging/rpc';
@@ -12,9 +11,11 @@ import { SendView } from '@/ui/features/send/SendView';
 import { SmsView } from '@/ui/features/sms/SmsView';
 import { useStore } from '@/ui/hooks/use-store';
 import { useTheme } from '@/ui/hooks/use-theme';
+import { useWide } from '@/ui/hooks/use-wide';
+import { Dashboard } from '@/ui/dashboard/Dashboard';
 import { ToastProvider } from '@/ui/hooks/use-toast';
 import { Header } from './Header';
-import { Sidebar } from './Sidebar';
+
 import { i18n } from '#i18n';
 
 /** Where the app is rendered: toolbar popup, side panel, pop-out window, or a full browser tab. */
@@ -37,25 +38,17 @@ export function App({ mode }: { mode: Mode }) {
 }
 
 function Shell({ mode }: { mode: Mode }) {
-  const { token, me, settings, unread, connection, lastError, devices, rateLimitedUntil, ready } = useStore([
-    'rateLimitedUntil',
+  const { token, me, settings, unread, connection, devices, ready } = useStore([
     'token',
     'me',
     'settings',
     'unread',
     'connection',
-    'lastError',
     'devices',
   ]);
   const [tab, setTab] = useState<Tab | null>(null);
   const [intent, setIntent] = useState<Intent>({});
-  // Re-render when a rate limit runs out, so its notice goes away by itself.
-  const [now, setNow] = useState(Date.now());
-  useEffect(() => {
-    if (rateLimitedUntil <= Date.now()) return;
-    const t = setTimeout(() => setNow(Date.now()), rateLimitedUntil - Date.now() + 1000);
-    return () => clearTimeout(t);
-  }, [rateLimitedUntil]);
+  const wide = useWide(1024);
 
   // Starting tab: a hand-off from a notification wins over the default.
   useEffect(() => {
@@ -94,81 +87,72 @@ function Shell({ mode }: { mode: Mode }) {
     return <SignIn inPopup={mode === 'popup'} />;
   }
 
-  const full = mode === 'tab';
   const showSms = devices.some((d) => d.has_sms);
+  // A full page on a laptop-sized window or bigger gets the dashboard; smaller ones the popup's layout.
+  if (mode === 'tab' && wide) return <Dashboard initialTab={tab!} intent={intent} />;
 
   return (
-    <div className="flex h-full bg-bg">
-      {full && (
-        <Sidebar
-          className="hidden md:flex"
-          me={me}
-          connection={connection}
-          snoozeUntil={settings.snoozeUntil}
-          tab={tab!}
-          onTab={setTab}
-          unread={unread}
-          showSms={showSms}
-        />
-      )}
-      <div className="flex min-w-0 flex-1 flex-col">
-        {/* A full page narrower than a laptop keeps the popup's band instead of the sidebar. */}
-        <Header
-          className={clsx(full && 'md:hidden')}
-          mode={mode}
-          me={me}
-          connection={connection}
-          snoozeUntil={settings.snoozeUntil}
-          tab={tab!}
-          onTab={setTab}
-          unread={unread}
-          showSms={showSms}
-        />
-
-        {rateLimitedUntil > now && (
-          <div className="flex shrink-0 items-center gap-2 border-b border-line bg-note-bg px-3.5 py-2 text-xs text-ink">
-            <span className="flex-1 leading-relaxed">
-              {i18n.t('app.rateLimited', [
-                new Date(rateLimitedUntil).toLocaleTimeString(undefined, { hour: 'numeric', minute: '2-digit' }),
-              ])}
-            </span>
-            <button className="font-bold text-note-fg" onClick={() => void store.set({ rateLimitedUntil: 0 })}>
-              {i18n.t('common.dismiss')}
-            </button>
-          </div>
-        )}
-        {(connection === 'offline' || lastError) && (
-          <div className="flex shrink-0 items-center gap-2 border-b border-line bg-note-bg px-3.5 py-2 text-xs text-ink">
-            <span className="flex-1 leading-relaxed">{connection === 'offline' ? i18n.t('app.offline') : lastError}</span>
-            {connection === 'offline' ? (
-              <button className="flex items-center gap-1 font-bold text-note-fg" onClick={() => void call('reconnect')}>
-                <RefreshCw size={12} /> {i18n.t('common.retry')}
-              </button>
-            ) : (
-              <button className="font-bold text-note-fg" onClick={() => void store.set({ lastError: null })}>
-                {i18n.t('common.dismiss')}
-              </button>
-            )}
-          </div>
-        )}
-
-        <main className="relative min-h-0 flex-1 bg-bg">
-          <div className={clsx('relative h-full', full && ['mx-auto w-full md:px-4 md:pt-3', WIDTHS[tab!]])}>
-            {tab === 'send' && <SendView mode={mode} onOpenFeed={() => setTab('feed')} />}
-            {tab === 'feed' && <FeedView />}
-            {tab === 'phone' && <PhoneView focus={intent.mirror} />}
-            {tab === 'sms' && <SmsView device={intent.device} thread={intent.thread} split={full} />}
-          </div>
-        </main>
-      </div>
+    <div className="flex h-full flex-col bg-bg">
+      <Header
+        mode={mode}
+        me={me}
+        connection={connection}
+        snoozeUntil={settings.snoozeUntil}
+        tab={tab!}
+        onTab={setTab}
+        unread={unread}
+        showSms={showSms}
+      />
+      <Banners />
+      <main className="relative min-h-0 flex-1 bg-bg">
+        {tab === 'send' && <SendView mode={mode} onOpenFeed={() => setTab('feed')} />}
+        {tab === 'feed' && <FeedView />}
+        {tab === 'phone' && <PhoneView focus={intent.mirror} />}
+        {tab === 'sms' && <SmsView device={intent.device} thread={intent.thread} />}
+      </main>
     </div>
   );
 }
 
-/** How wide each section gets on a full page: the feed and texts use the room, sending stays focused. */
-const WIDTHS: Record<Tab, string> = {
-  send: 'max-w-2xl',
-  feed: 'max-w-4xl',
-  phone: 'max-w-3xl',
-  sms: 'max-w-6xl',
-};
+/** Rate limit and connection notices, under the header or above the dashboard's pages. */
+export function Banners() {
+  const { connection, lastError, rateLimitedUntil } = useStore(['connection', 'lastError', 'rateLimitedUntil']);
+  // Re-render when a rate limit runs out, so its notice goes away by itself.
+  const [now, setNow] = useState(Date.now());
+  useEffect(() => {
+    if (rateLimitedUntil <= Date.now()) return;
+    const t = setTimeout(() => setNow(Date.now()), rateLimitedUntil - Date.now() + 1000);
+    return () => clearTimeout(t);
+  }, [rateLimitedUntil]);
+
+  return (
+    <>
+      {rateLimitedUntil > now && (
+        <div className="flex shrink-0 items-center gap-2 border-b border-line bg-note-bg px-3.5 py-2 text-xs text-ink">
+          <span className="flex-1 leading-relaxed">
+            {i18n.t('app.rateLimited', [
+              new Date(rateLimitedUntil).toLocaleTimeString(undefined, { hour: 'numeric', minute: '2-digit' }),
+            ])}
+          </span>
+          <button className="font-bold text-note-fg" onClick={() => void store.set({ rateLimitedUntil: 0 })}>
+            {i18n.t('common.dismiss')}
+          </button>
+        </div>
+      )}
+      {(connection === 'offline' || lastError) && (
+        <div className="flex shrink-0 items-center gap-2 border-b border-line bg-note-bg px-3.5 py-2 text-xs text-ink">
+          <span className="flex-1 leading-relaxed">{connection === 'offline' ? i18n.t('app.offline') : lastError}</span>
+          {connection === 'offline' ? (
+            <button className="flex items-center gap-1 font-bold text-note-fg" onClick={() => void call('reconnect')}>
+              <RefreshCw size={12} /> {i18n.t('common.retry')}
+            </button>
+          ) : (
+            <button className="font-bold text-note-fg" onClick={() => void store.set({ lastError: null })}>
+              {i18n.t('common.dismiss')}
+            </button>
+          )}
+        </div>
+      )}
+    </>
+  );
+}

@@ -22,7 +22,7 @@ import { useRun, useToast } from '@/ui/hooks/use-toast';
 import { counterpart, fileKind, type FileKind } from './classify';
 import { i18n } from '#i18n';
 
-const FILE_ICONS: Record<FileKind, typeof FileIcon> = {
+export const FILE_ICONS: Record<FileKind, typeof FileIcon> = {
   image: FileImage,
   video: FileVideo,
   pdf: FileText,
@@ -32,7 +32,7 @@ const FILE_ICONS: Record<FileKind, typeof FileIcon> = {
 };
 
 /** "PDF", "HTML"… from a file name, when it has a short extension. */
-function extension(name?: string) {
+export function extension(name?: string) {
   const ext = name?.match(/\.([a-z0-9]{1,5})$/i)?.[1];
   return ext?.toUpperCase();
 }
