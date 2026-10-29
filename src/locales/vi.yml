@@ -516,6 +516,8 @@ dash:
   canText: 'Nhắn tin được'
   lastActive: 'Hoạt động lần cuối $1'
   sendTo: 'Gửi tới thiết bị này'
+  apps: 'Ứng dụng'
+  allApps: 'Tất cả ứng dụng'
 outbox:
   title: 'Đang chờ gửi'
   hint: 'Những mục này sẽ tự gửi khi kết nối lại được với Pushbullet.'

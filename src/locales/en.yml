@@ -516,6 +516,8 @@ dash:
   canText: Can text
   lastActive: Last active $1
   sendTo: Send to it
+  apps: Apps
+  allApps: All apps
 outbox:
   title: Waiting to send
   hint: 'These go out on their own once Pushbullet can be reached again.'

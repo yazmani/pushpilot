@@ -5,12 +5,12 @@ import type { Tab } from '@/core/storage/store';
 import { IconButton } from '@/ui/components';
 import { Banners, type Intent } from '@/ui/app/App';
 import { type Page as PageId, Sidebar } from '@/ui/app/Sidebar';
-import { FeedView } from '@/ui/features/feed/FeedView';
-import { PhoneView } from '@/ui/features/phone/PhoneView';
 import { SendView } from '@/ui/features/send/SendView';
 import { SmsView } from '@/ui/features/sms/SmsView';
 import { useStore } from '@/ui/hooks/use-store';
 import { DevicesView } from './DevicesView';
+import { FeedDesk } from './FeedDesk';
+import { PhoneDesk } from './PhoneDesk';
 import { FilesView } from './FilesView';
 import { Overview } from './Overview';
 import { Page } from './parts';
@@ -62,23 +62,18 @@ export function Dashboard({ initialTab, intent }: { initialTab: Tab; intent: Int
             />
           )}
           {page === 'feed' && (
-            <Page fill width="max-w-4xl" title={i18n.t('tabs.feed')} subtitle={i18n.t('dash.feedCount', pushes.length)}>
-              {/* The feed pads itself for the popup; line it up with the page title instead. */}
-              <div className="-mx-3.5 h-full">
-                <FeedView />
-              </div>
+            <Page fill width="max-w-[1500px]" title={i18n.t('tabs.feed')} subtitle={i18n.t('dash.feedCount', pushes.length)}>
+              <FeedDesk />
             </Page>
           )}
           {page === 'files' && <FilesView />}
           {page === 'phone' && (
-            <Page fill width="max-w-3xl" title={i18n.t('tabs.phone')} subtitle={i18n.t('dash.phoneSubtitle')}>
-              <div className="-mx-3.5 h-full">
-                <PhoneView focus={intent.mirror} />
-              </div>
+            <Page fill width="max-w-[1500px]" title={i18n.t('tabs.phone')} subtitle={i18n.t('dash.phoneSubtitle')}>
+              <PhoneDesk focus={intent.mirror} />
             </Page>
           )}
           {page === 'sms' && (
-            <Page fill width="max-w-7xl" title={i18n.t('tabs.sms')} subtitle={i18n.t('dash.smsSubtitle')}>
+            <Page fill width="max-w-[1500px]" title={i18n.t('tabs.sms')} subtitle={i18n.t('dash.smsSubtitle')}>
               <SmsView key={`${sms.device}:${sms.thread}`} device={sms.device} thread={sms.thread} split />
             </Page>
           )}

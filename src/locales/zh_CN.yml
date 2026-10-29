@@ -516,6 +516,8 @@ dash:
   canText: '可发短信'
   lastActive: '上次活跃：$1'
   sendTo: '发送到此设备'
+  apps: '应用'
+  allApps: '所有应用'
 outbox:
   title: '等待发送'
   hint: '可以重新连接 Pushbullet 后，这些会自动发出。'

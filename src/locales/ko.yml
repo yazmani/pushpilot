@@ -516,6 +516,8 @@ dash:
   canText: '문자 가능'
   lastActive: '마지막 활동: $1'
   sendTo: '이 기기로 보내기'
+  apps: '앱'
+  allApps: '모든 앱'
 outbox:
   title: '보내기 대기 중'
   hint: 'Pushbullet에 다시 연결되면 자동으로 보내져요.'

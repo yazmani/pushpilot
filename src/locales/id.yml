@@ -516,6 +516,8 @@ dash:
   canText: 'Bisa mengirim SMS'
   lastActive: 'Terakhir aktif $1'
   sendTo: 'Kirim ke perangkat ini'
+  apps: 'Aplikasi'
+  allApps: 'Semua aplikasi'
 outbox:
   title: 'Menunggu dikirim'
   hint: 'Ini akan terkirim otomatis begitu Pushbullet bisa dijangkau lagi.'

@@ -516,6 +516,8 @@ dash:
   canText: 'SMS 対応'
   lastActive: '最終アクティブ：$1'
   sendTo: 'このデバイスに送信'
+  apps: 'アプリ'
+  allApps: 'すべてのアプリ'
 outbox:
   title: '送信待ち'
   hint: 'Pushbullet に再びつながると、自動で送信されます。'

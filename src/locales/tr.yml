@@ -492,7 +492,7 @@ dash:
   latestTexts: 'Son mesajlar'
   phoneQuiet: 'Şu an telefonunda bir şey yok.'
   filesEmptyTitle: 'Henüz dosya yok'
-  filesEmpty: 'Gönderdiğin fotoğraflar, PDF''ler ve diğer dosyalar burada görünür.'
+  filesEmpty: "Gönderdiğin fotoğraflar, PDF'ler ve diğer dosyalar burada görünür."
   filesCount:
     1: '1 dosya'
     n: '$1 dosya'
@@ -514,6 +514,8 @@ dash:
   canText: 'SMS gönderebilir'
   lastActive: 'Son etkinlik: $1'
   sendTo: 'Bu cihaza gönder'
+  apps: 'Uygulamalar'
+  allApps: 'Tüm uygulamalar'
 outbox:
   title: 'Gönderilmeyi bekliyor'
   hint: "Pushbullet'a yeniden ulaşılabildiğinde bunlar kendiliğinden gider."

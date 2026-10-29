@@ -516,6 +516,8 @@ dash:
   canText: 'Puede enviar SMS'
   lastActive: 'Última actividad: $1'
   sendTo: 'Enviar a este'
+  apps: 'Apps'
+  allApps: 'Todas las apps'
 outbox:
   title: 'Pendiente de envío'
   hint: 'Se enviarán solos en cuanto se pueda volver a contactar con Pushbullet.'

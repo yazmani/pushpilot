@@ -514,6 +514,8 @@ dash:
   canText: 'Obsługuje SMS-y'
   lastActive: 'Ostatnia aktywność: $1'
   sendTo: 'Wyślij na to urządzenie'
+  apps: 'Aplikacje'
+  allApps: 'Wszystkie aplikacje'
 outbox:
   title: 'Czeka na wysłanie'
   hint: 'Wyjdą same, gdy tylko Pushbullet znów będzie dostępny.'

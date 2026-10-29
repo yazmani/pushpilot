@@ -4,13 +4,19 @@ All notable changes are listed here. The format follows [Keep a Changelog](https
 
 ## [Unreleased]
 
+### Fixed
+
+- A phone notification without action buttons no longer shows a stray "0" under its text.
+
 ### Added
 
 - Pushpilot as a full page: account menu › Open as a full page. On a laptop-sized window it's a dashboard with a sidebar and a New push button that slides the composer in from the side:
   - Overview: a greeting, this week's pushes, files shared, devices receiving and what's on your phone, with recent pushes, phone notifications, latest texts, recent files and your devices.
   - Files: every file you pushed as a gallery or a list, filtered by type, with the full-screen viewer for images.
   - Devices: a card per device with whether it gets pushes, what it can do, and Send to it.
-  - Feed, Phone and SMS get room to breathe; texts show the conversation list beside the open conversation.
+  - Feed: a compact list beside the selected push in full (large picture or link preview, the whole note, video and audio players, file details) with Open, Copy, Mark as done and Delete; ↑/↓ or j/k move through it.
+  - Phone: notifications as cards, filtered by app.
+  - SMS: the conversation list beside the open conversation.
   In a narrow window it keeps the popup's layout.
 
 ## [1.4.0] - 2026-10-29

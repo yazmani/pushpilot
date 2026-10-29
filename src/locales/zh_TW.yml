@@ -516,6 +516,8 @@ dash:
   canText: '可傳簡訊'
   lastActive: '上次使用：$1'
   sendTo: '傳送到此裝置'
+  apps: '應用程式'
+  allApps: '所有應用程式'
 outbox:
   title: '等待傳送'
   hint: '能重新連上 Pushbullet 後，這些會自動送出。'
