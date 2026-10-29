@@ -1,5 +1,5 @@
 import { describe, expect, it } from 'vitest';
-import { extractCode, host, isReachable, looksLikeUrl, normalizeUrl } from '@/core/utils/format';
+import { extractCode, formatPhone, host, isReachable, looksLikeUrl, normalizeUrl } from '@/core/utils/format';
 import type { Device } from '@/core/pushbullet/types';
 
 describe('extractCode strict', () => {
@@ -62,5 +62,26 @@ describe('isReachable', () => {
     expect(isReachable(device({}))).toBe(true);
     expect(isReachable(device({ pushable: false }))).toBe(false);
     expect(isReachable(device({ active: false }))).toBe(false);
+  });
+});
+
+describe('formatPhone', () => {
+  it('shows international numbers the way the phone does', () => {
+    expect(formatPhone('+33612345678', 'US')).toBe('+33 6 12 34 56 78');
+    expect(formatPhone('+12025550142', 'FR')).toBe('+1 202 555 0142');
+  });
+
+  it('shows numbers from the browser’s own country in the national format', () => {
+    expect(formatPhone('+33612345678', 'FR')).toBe('06 12 34 56 78');
+    expect(formatPhone('0612345678', 'FR')).toBe('06 12 34 56 78');
+    expect(formatPhone('+12025550142', 'US')).toBe('(202) 555-0142');
+  });
+
+  it('leaves names, short codes and odd numbers alone', () => {
+    expect(formatPhone('Orange', 'FR')).toBe('Orange');
+    expect(formatPhone('36191', 'FR')).toBe('36191');
+    expect(formatPhone('555', 'US')).toBe('555');
+    expect(formatPhone('+15550142', 'US')).toBe('+15550142');
+    expect(formatPhone('0612345678', undefined)).toBe('0612345678');
   });
 });
