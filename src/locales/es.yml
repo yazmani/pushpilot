@@ -58,7 +58,7 @@ send:
   uploading: Subiendo…
   sending: Enviando…
   sendTo: Enviar a $1
-  queued: 'Sin conexión. Se enviará cuando vuelvas a estar en línea.'
+  queued: 'Aún no se pudo enviar. Saldrá solo en cuanto sea posible.'
 targets:
   all: Todos los dispositivos
   allSub: En todas partes
@@ -462,7 +462,7 @@ guide:
   shortcutHint: 'Copia un enlace o algo de texto en cualquier lugar, presiona el atajo y llegará a tu teléfono.'
 outbox:
   title: 'Pendiente de envío'
-  hint: 'Se enviarán en cuanto vuelvas a estar en línea.'
+  hint: 'Se enviarán solos en cuanto se pueda volver a contactar con Pushbullet.'
   retry: 'Reintentar'
   cancel: 'Cancelar'
   failed: 'No se pudo enviar: $1'

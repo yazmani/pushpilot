@@ -56,7 +56,7 @@ send:
   uploading: Yükleniyor…
   sending: Gönderiliyor…
   sendTo: 'Gönder: $1'
-  queued: 'Bağlantı yok. Tekrar çevrimiçi olduğunda gönderilecek.'
+  queued: 'Henüz gönderilemedi. Mümkün olur olmaz kendiliğinden gidecek.'
 targets:
   all: Tüm cihazlar
   allSub: Her yere
@@ -460,7 +460,7 @@ guide:
   shortcutHint: 'Herhangi bir yerde bir bağlantı ya da metin kopyala, kısayola bas; telefonuna ulaşsın.'
 outbox:
   title: 'Gönderilmeyi bekliyor'
-  hint: 'Tekrar çevrimiçi olduğunda hemen gönderilecekler.'
+  hint: 'Pushbullet''a yeniden ulaşılabildiğinde bunlar kendiliğinden gider.'
   retry: 'Tekrar dene'
   cancel: 'İptal'
   failed: 'Gönderilemedi: $1'

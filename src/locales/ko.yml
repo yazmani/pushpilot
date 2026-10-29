@@ -58,7 +58,7 @@ send:
   uploading: 업로드 중…
   sending: 보내는 중…
   sendTo: $1(으)로 보내기
-  queued: '연결되지 않았어요. 다시 온라인이 되면 보내요.'
+  queued: '아직 보내지 못했어요. 가능해지면 자동으로 보내요.'
 targets:
   all: 모든 기기
   allSub: 어디서나
@@ -462,7 +462,7 @@ guide:
   shortcutHint: '어디서든 링크나 텍스트를 복사하고 단축키를 누르면 휴대폰으로 전송돼요.'
 outbox:
   title: '보내기 대기 중'
-  hint: '다시 온라인이 되면 바로 보내요.'
+  hint: 'Pushbullet에 다시 연결되면 자동으로 보내져요.'
   retry: '다시 시도'
   cancel: '취소'
   failed: '보낼 수 없어요: $1'

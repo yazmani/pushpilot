@@ -58,7 +58,7 @@ send:
   uploading: アップロード中…
   sending: 送信中…
   sendTo: $1 に送信
-  queued: '接続されていません。オンラインに戻ると送信されます。'
+  queued: 'まだ送信できません。可能になり次第、自動で送信します。'
 targets:
   all: すべてのデバイス
   allSub: すべての場所へ
@@ -462,7 +462,7 @@ guide:
   shortcutHint: 'どこかでリンクやテキストをコピーしてショートカットを押すと、スマートフォンに届きます。'
 outbox:
   title: '送信待ち'
-  hint: 'オンラインに戻るとすぐに送信されます。'
+  hint: 'Pushbullet に再びつながると、自動で送信されます。'
   retry: '再試行'
   cancel: 'キャンセル'
   failed: '送信できませんでした：$1'

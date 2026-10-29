@@ -58,7 +58,7 @@ send:
   uploading: Mengunggah…
   sending: Mengirim…
   sendTo: Kirim ke $1
-  queued: 'Tidak ada koneksi. Akan dikirim saat Anda kembali online.'
+  queued: 'Belum bisa dikirim. Akan terkirim otomatis begitu memungkinkan.'
 targets:
   all: Semua perangkat
   allSub: Di mana saja
@@ -462,7 +462,7 @@ guide:
   shortcutHint: 'Salin link atau teks di mana saja, tekan pintasannya, dan itu akan sampai di ponsel Anda.'
 outbox:
   title: 'Menunggu dikirim'
-  hint: 'Ini akan dikirim begitu Anda kembali online.'
+  hint: 'Ini akan terkirim otomatis begitu Pushbullet bisa dijangkau lagi.'
   retry: 'Coba lagi'
   cancel: 'Batal'
   failed: 'Tidak dapat mengirim: $1'

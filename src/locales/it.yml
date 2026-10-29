@@ -57,7 +57,7 @@ send:
   uploading: Caricamento…
   sending: Invio…
   sendTo: Invia a $1
-  queued: 'Nessuna connessione. Verrà inviato quando torni online.'
+  queued: 'Non ancora inviato. Partirà da solo appena possibile.'
 targets:
   all: Tutti i dispositivi
   allSub: Ovunque
@@ -461,7 +461,7 @@ guide:
   shortcutHint: 'Copia un link o del testo ovunque, premi la scorciatoia e arriva sul telefono.'
 outbox:
   title: 'In attesa di invio'
-  hint: 'Partiranno appena torni online.'
+  hint: 'Partiranno da soli appena Pushbullet sarà di nuovo raggiungibile.'
   retry: 'Riprova'
   cancel: 'Annulla'
   failed: 'Invio non riuscito: $1'

@@ -58,7 +58,7 @@ send:
   uploading: 正在上传…
   sending: 正在发送…
   sendTo: 发送到 $1
-  queued: '无网络连接。恢复联网后会自动发送。'
+  queued: '暂时无法发送，条件允许时会自动发出。'
 targets:
   all: 所有设备
   allSub: 全部发送
@@ -462,7 +462,7 @@ guide:
   shortcutHint: '在任意位置复制链接或文字，按下快捷键，内容就会送到你的手机上。'
 outbox:
   title: '等待发送'
-  hint: '恢复联网后会立即发送。'
+  hint: '可以重新连接 Pushbullet 后，这些会自动发出。'
   retry: '重试'
   cancel: '取消'
   failed: '无法发送：$1'

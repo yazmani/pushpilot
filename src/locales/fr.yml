@@ -58,7 +58,7 @@ send:
   uploading: Envoi du fichier…
   sending: Envoi…
   sendTo: Envoyer à $1
-  queued: 'Pas de connexion. L’envoi partira dès votre retour en ligne.'
+  queued: 'Envoi impossible pour l’instant. Il partira tout seul dès que possible.'
 targets:
   all: Tous les appareils
   allSub: Partout
@@ -462,7 +462,7 @@ guide:
   shortcutHint: 'Copiez un lien ou du texte n’importe où, appuyez sur le raccourci, et il arrive sur votre téléphone.'
 outbox:
   title: 'En attente d’envoi'
-  hint: 'Ils partiront dès votre retour en ligne.'
+  hint: 'Ils partiront tout seuls dès que Pushbullet sera de nouveau joignable.'
   retry: 'Réessayer'
   cancel: 'Annuler'
   failed: 'Échec de l’envoi : $1'

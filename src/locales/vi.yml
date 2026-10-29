@@ -58,7 +58,7 @@ send:
   uploading: Đang tải lên…
   sending: Đang gửi…
   sendTo: Gửi tới $1
-  queued: 'Không có kết nối. Sẽ gửi khi bạn trực tuyến trở lại.'
+  queued: 'Chưa gửi được. Sẽ tự gửi ngay khi có thể.'
 targets:
   all: Tất cả thiết bị
   allSub: Mọi nơi
@@ -462,7 +462,7 @@ guide:
   shortcutHint: 'Sao chép liên kết hoặc văn bản ở bất cứ đâu, nhấn phím tắt và nội dung sẽ tới điện thoại của bạn.'
 outbox:
   title: 'Đang chờ gửi'
-  hint: 'Các mục này sẽ được gửi ngay khi bạn trực tuyến trở lại.'
+  hint: 'Những mục này sẽ tự gửi khi kết nối lại được với Pushbullet.'
   retry: 'Thử lại'
   cancel: 'Hủy'
   failed: 'Không gửi được: $1'

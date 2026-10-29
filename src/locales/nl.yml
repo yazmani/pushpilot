@@ -57,7 +57,7 @@ send:
   uploading: Uploaden…
   sending: Versturen…
   sendTo: Versturen naar $1
-  queued: 'Geen verbinding. Wordt verstuurd zodra je weer online bent.'
+  queued: 'Nog niet verstuurd. Gaat vanzelf weg zodra het kan.'
 targets:
   all: Alle apparaten
   allSub: Overal
@@ -461,7 +461,7 @@ guide:
   shortcutHint: 'Kopieer ergens een link of wat tekst, druk op de sneltoets en het komt op je telefoon terecht.'
 outbox:
   title: 'Wacht op versturen'
-  hint: 'Deze worden verstuurd zodra je weer online bent.'
+  hint: 'Deze gaan vanzelf weg zodra Pushbullet weer bereikbaar is.'
   retry: 'Opnieuw proberen'
   cancel: 'Annuleren'
   failed: 'Versturen mislukt: $1'

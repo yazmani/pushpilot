@@ -13,6 +13,11 @@ All notable changes are listed here. The format follows [Keep a Changelog](https
 - The store description now says what Pushpilot is up front: an unofficial Pushbullet extension for Chrome, Brave and Edge.
 - Sign-in through Pushbullet is chosen per store, ready for an Edge Add-ons listing; a build without its own sign-in client asks for an access token instead.
 
+### Fixed
+
+- A push held back because Pushbullet is rate-limiting the account no longer says "No connection".
+- The device warning in the popup is no longer announced by screen readers every time the popup opens.
+
 ## [1.3.0] - 2026-10-27
 
 ### Added

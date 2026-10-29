@@ -58,7 +58,7 @@ send:
   uploading: 上傳中…
   sending: 傳送中…
   sendTo: 傳送到 $1
-  queued: '沒有網路連線。恢復連線後會自動傳送。'
+  queued: '暫時無法傳送，條件允許時會自動送出。'
 targets:
   all: 所有裝置
   allSub: 全部傳送
@@ -462,7 +462,7 @@ guide:
   shortcutHint: '在任何地方複製連結或文字，按下快速鍵，內容就會送到你的手機。'
 outbox:
   title: '等待傳送'
-  hint: '恢復連線後會立即傳送。'
+  hint: '能重新連上 Pushbullet 後，這些會自動送出。'
   retry: '重試'
   cancel: '取消'
   failed: '無法傳送：$1'

@@ -58,7 +58,7 @@ send:
   uploading: Uploading…
   sending: Sending…
   sendTo: Send to $1
-  queued: No connection. It'll send when you're back online.
+  queued: 'Couldn''t send yet. It''ll go out on its own as soon as it can.'
 targets:
   all: All devices
   allSub: Everywhere
@@ -462,7 +462,7 @@ guide:
   shortcutHint: Copy a link or some text anywhere, press the shortcut, and it lands on your phone.
 outbox:
   title: Waiting to send
-  hint: These go out as soon as you're back online.
+  hint: 'These go out on their own once Pushbullet can be reached again.'
   retry: Retry
   cancel: Cancel
   failed: "Couldn't send: $1"

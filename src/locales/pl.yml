@@ -56,7 +56,7 @@ send:
   uploading: Przesyłanie…
   sending: Wysyłanie…
   sendTo: 'Wyślij: $1'
-  queued: 'Brak połączenia. Zostanie wysłane, gdy wrócisz online.'
+  queued: 'Nie udało się jeszcze wysłać. Wyjdzie samo, gdy tylko będzie można.'
 targets:
   all: Wszystkie urządzenia
   allSub: Wszędzie
@@ -460,7 +460,7 @@ guide:
   shortcutHint: 'Skopiuj gdziekolwiek link lub tekst, naciśnij skrót, a trafi on na Twój telefon.'
 outbox:
   title: 'Czeka na wysłanie'
-  hint: 'Zostaną wysłane, gdy tylko wrócisz online.'
+  hint: 'Wyjdą same, gdy tylko Pushbullet znów będzie dostępny.'
   retry: 'Ponów'
   cancel: 'Anuluj'
   failed: 'Nie udało się wysłać: $1'
