@@ -1,7 +1,7 @@
 # Traditional Chinese (Taiwan) strings, translated from en.yml (the source for every language in this folder).
 # $1–$9 are substitutions; keys with 1/n are plural forms (i18n.t(key, count)).
 extName: Pushpilot for Pushbullet
-extDescription: '非官方 Pushbullet 擴充功能，適用於 Chrome、Brave 和 Edge：將分頁、連結和檔案傳送到手機，查看通知並收發簡訊。'
+extDescription: '非官方 Pushbullet 擴充功能：將分頁、連結和檔案傳送到手機，在瀏覽器中查看手機通知並收發簡訊。'
 cmdOpen: 開啟 Pushpilot
 cmdPushPage: 將目前的頁面推送到預設裝置
 cmdPushClipboard: 將複製的內容推送到預設裝置（可在任何應用程式中使用）
@@ -359,7 +359,6 @@ settings:
   historyCleared: '已清除記錄'
   clearHistory: '清除本機記錄'
   supportBody: 'Pushpilot 免費、開放原始碼，沒有廣告和追蹤，而且會一直如此。如果它對你有幫助，歡迎協助它持續發展。'
-  rate: '在 Chrome Web Store 中評分'
   star: '在 GitHub 上加星號'
   report: '回報問題'
   diagnostics: '複製診斷資訊'

@@ -1,6 +1,6 @@
 # German strings, translated from en.yml (keep keys and $1–$9 in sync).
 extName: Pushpilot für Pushbullet
-extDescription: 'Inoffizielle Pushbullet-Erweiterung für Chrome, Brave, Edge: Tabs, Links, Dateien ans Handy, Benachrichtigungen sehen, SMS senden.'
+extDescription: 'Inoffizielle Pushbullet-Erweiterung: Tabs, Links und Dateien ans Handy, Benachrichtigungen sehen und SMS im Browser senden.'
 cmdOpen: Pushpilot öffnen
 cmdPushPage: Aktuelle Seite an dein Standardgerät pushen
 cmdPushClipboard: Kopiertes aus jeder App an dein Standardgerät pushen
@@ -358,7 +358,6 @@ settings:
   historyCleared: Verlauf gelöscht
   clearHistory: Lokalen Verlauf löschen
   supportBody: Pushpilot ist kostenlos und Open Source, ohne Werbung oder Tracking, und das bleibt so. Wenn es dir nützt, kannst du helfen, es am Laufen zu halten.
-  rate: Im Chrome Web Store bewerten
   star: Auf GitHub einen Stern geben
   report: Problem melden
   diagnostics: 'Diagnosedaten kopieren'

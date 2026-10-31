@@ -11,6 +11,9 @@ export const LINKS = {
 export const REVIEWS: Record<string, string> = {
   pdiijobemepbckkbdeacfngodbeddmcf:
     'https://chromewebstore.google.com/detail/pushpilot-for-pushbullet/pdiijobemepbckkbdeacfngodbeddmcf/reviews',
+  // Microsoft Edge Add-ons: reviews are on the listing page itself.
+  coeohelkfpdbkdjilgkdnpbeflgdlmjh:
+    'https://microsoftedge.microsoft.com/addons/detail/pushpilot-for-pushbullet/coeohelkfpdbkdjilgkdnpbeflgdlmjh',
 };
 
 /**
@@ -24,6 +27,8 @@ export const OAUTH = {
   clients: {
     // Chrome Web Store, and unpacked builds (they carry the store's key).
     pdiijobemepbckkbdeacfngodbeddmcf: 'yh0yaqlwPTLkFK9pzVk6RfGsgIxWEEZV',
+    // Microsoft Edge Add-ons.
+    coeohelkfpdbkdjilgkdnpbeflgdlmjh: '8Sz0Jtis3YV98cPKxpr2EYnMZKUTpgjX',
   } as Record<string, string>,
   authorizeUrl: 'https://www.pushbullet.com/authorize',
 } as const;

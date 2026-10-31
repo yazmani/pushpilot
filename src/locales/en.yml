@@ -1,7 +1,7 @@
 # English strings, the source for every other language in this folder.
 # $1–$9 are substitutions; keys with 1/n are plural forms (i18n.t(key, count)).
 extName: Pushpilot for Pushbullet
-extDescription: 'Unofficial Pushbullet extension for Chrome, Brave and Edge: push tabs, links and files to your phone, see notifications, send SMS.'
+extDescription: 'Unofficial Pushbullet extension: push tabs, links and files to your phone, see its notifications and send SMS from your browser.'
 cmdOpen: Open Pushpilot
 cmdPushPage: Push the current page to your default device
 cmdPushClipboard: Push what you copied to your default device, from any app
@@ -359,7 +359,6 @@ settings:
   historyCleared: 'History cleared'
   clearHistory: 'Clear local history'
   supportBody: 'Pushpilot is free and open source, with no ads or tracking, and it stays that way. If it’s useful to you, you can help keep it going.'
-  rate: 'Rate it in the Chrome Web Store'
   star: 'Star on GitHub'
   report: 'Report a problem'
   diagnostics: Copy diagnostics

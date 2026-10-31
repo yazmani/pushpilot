@@ -1,6 +1,6 @@
 # Italian strings, translated from en.yml (keep keys and $1–$9 in sync).
 extName: Pushpilot per Pushbullet
-extDescription: 'Estensione Pushbullet non ufficiale per Chrome, Brave ed Edge: invia schede, link e file al telefono, vedi notifiche, manda SMS.'
+extDescription: 'Estensione Pushbullet non ufficiale: invia schede, link e file al telefono, vedi le sue notifiche e manda SMS dal browser.'
 cmdOpen: Apri Pushpilot
 cmdPushPage: Invia la pagina corrente al dispositivo predefinito
 cmdPushClipboard: Invia ciò che hai copiato al dispositivo predefinito, da qualsiasi app
@@ -358,7 +358,6 @@ settings:
   historyCleared: Cronologia cancellata
   clearHistory: Cancella la cronologia locale
   supportBody: Pushpilot è gratuito e open source, senza pubblicità né tracciamento, e resterà così. Se ti è utile, puoi aiutarlo ad andare avanti.
-  rate: Valutalo sul Chrome Web Store
   star: Aggiungi una stella su GitHub
   report: Segnala un problema
   diagnostics: 'Copia diagnostica'

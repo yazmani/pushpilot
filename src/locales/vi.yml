@@ -1,7 +1,7 @@
 # Vietnamese strings, translated from en.yml.
 # $1–$9 are substitutions; keys with 1/n are plural forms (i18n.t(key, count)).
 extName: Pushpilot cho Pushbullet
-extDescription: 'Tiện ích Pushbullet không chính thức cho Chrome, Brave, Edge: gửi tab, liên kết, tệp tới điện thoại, xem thông báo, nhắn SMS.'
+extDescription: 'Tiện ích Pushbullet không chính thức: gửi tab, liên kết, tệp tới điện thoại, xem thông báo và nhắn SMS ngay từ trình duyệt.'
 cmdOpen: Mở Pushpilot
 cmdPushPage: Gửi trang hiện tại tới thiết bị mặc định
 cmdPushClipboard: Gửi nội dung bạn đã sao chép tới thiết bị mặc định, từ mọi ứng dụng
@@ -359,7 +359,6 @@ settings:
   historyCleared: Đã xóa lịch sử
   clearHistory: Xóa lịch sử cục bộ
   supportBody: Pushpilot miễn phí và mã nguồn mở, không quảng cáo hay theo dõi, và sẽ luôn như vậy. Nếu nó hữu ích với bạn, bạn có thể giúp dự án tiếp tục.
-  rate: Đánh giá trên Chrome Web Store
   star: Gắn sao trên GitHub
   report: Báo cáo sự cố
   diagnostics: 'Sao chép thông tin chẩn đoán'

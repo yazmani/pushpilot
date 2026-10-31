@@ -1,5 +1,5 @@
 extName: Pushpilot dla Pushbullet
-extDescription: 'Nieoficjalne rozszerzenie Pushbullet do Chrome, Brave i Edge: karty, linki i pliki na telefon, powiadomienia i SMS-y w przeglądarce.'
+extDescription: 'Nieoficjalne rozszerzenie Pushbullet: karty, linki i pliki na telefon, jego powiadomienia i SMS-y prosto w przeglądarce.'
 cmdOpen: Otwórz Pushpilot
 cmdPushPage: Wyślij bieżącą stronę na domyślne urządzenie
 cmdPushClipboard: Wyślij skopiowaną treść na domyślne urządzenie z dowolnej aplikacji
@@ -357,7 +357,6 @@ settings:
   historyCleared: Wyczyszczono historię
   clearHistory: Wyczyść lokalną historię
   supportBody: Pushpilot jest darmowy i open source, bez reklam i śledzenia – i tak zostanie. Jeśli ci się przydaje, możesz pomóc go rozwijać.
-  rate: Oceń w Chrome Web Store
   star: Daj gwiazdkę na GitHubie
   report: Zgłoś problem
   diagnostics: 'Kopiuj diagnostykę'

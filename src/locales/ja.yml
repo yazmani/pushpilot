@@ -1,7 +1,7 @@
 # Japanese strings, translated from en.yml (the source for every language in this folder).
 # $1–$9 are substitutions; keys with 1/n are plural forms (i18n.t(key, count)).
 extName: Pushpilot for Pushbullet
-extDescription: 'Chrome・Brave・Edge 用の非公式 Pushbullet 拡張機能。タブ、リンク、ファイルをスマートフォンへ送信し、通知の確認や SMS の送信も。'
+extDescription: '非公式の Pushbullet 拡張機能。タブ、リンク、ファイルをスマートフォンへ送信し、通知の確認や SMS の送信もブラウザから。'
 cmdOpen: Pushpilot を開く
 cmdPushPage: 現在のページをデフォルトのデバイスにプッシュ
 cmdPushClipboard: コピーした内容をデフォルトのデバイスにプッシュ（どのアプリからでも）
@@ -359,7 +359,6 @@ settings:
   historyCleared: '履歴を消去しました'
   clearHistory: 'ローカルの履歴を消去'
   supportBody: 'Pushpilot は無料のオープンソースで、広告もトラッキングもありません。これからも変わりません。役に立っているなら、続けていくための応援をお願いします。'
-  rate: 'Chrome Web Store で評価する'
   star: 'GitHub でスターを付ける'
   report: '問題を報告'
   diagnostics: '診断情報をコピー'

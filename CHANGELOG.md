@@ -2,6 +2,21 @@
 
 All notable changes are listed here. The format follows [Keep a Changelog](https://keepachangelog.com/), and versions follow [Semantic Versioning](https://semver.org/).
 
+## [1.5.1] - 2026-10-31
+
+### Added
+
+- Pushpilot is on Microsoft Edge Add-ons, with its own "Sign in with Pushbullet" and rating link.
+
+### Changed
+
+- The store description no longer names browsers (Edge's review asks for that).
+- The rating link in Settings reads "Rate Pushpilot" and goes to the store you installed from.
+
+### Fixed
+
+- The Overview's image count says "1 image", not "1 images".
+
 ## [1.5.0] - 2026-10-29
 
 ### Added
@@ -132,6 +147,7 @@ First public release.
 - Popup, side panel and pop-out window; light and dark themes; snooze; unread badge.
 - One-click sign-in through pushbullet.com, or an access token.
 
+[1.5.1]: https://github.com/yazmani/pushpilot/releases/tag/v1.5.1
 [1.5.0]: https://github.com/yazmani/pushpilot/releases/tag/v1.5.0
 [1.4.0]: https://github.com/yazmani/pushpilot/releases/tag/v1.4.0
 [1.3.1]: https://github.com/yazmani/pushpilot/releases/tag/v1.3.1
