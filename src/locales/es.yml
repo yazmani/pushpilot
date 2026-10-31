@@ -1,7 +1,7 @@
 # Spanish strings, translated from en.yml (the source for every language in this folder).
 # $1–$9 are substitutions; keys with 1/n are plural forms (i18n.t(key, count)).
 extName: Pushpilot para Pushbullet
-extDescription: 'Extensión no oficial de Pushbullet para Chrome, Brave y Edge: envía pestañas, enlaces y archivos al móvil, ve notificaciones y SMS.'
+extDescription: 'Extensión no oficial de Pushbullet: envía pestañas, enlaces y archivos al móvil, ve sus notificaciones y SMS en el navegador.'
 cmdOpen: Abrir Pushpilot
 cmdPushPage: Enviar la página actual a tu dispositivo predeterminado
 cmdPushClipboard: Enviar lo que copiaste a tu dispositivo predeterminado, desde cualquier app
@@ -359,7 +359,6 @@ settings:
   historyCleared: 'Historial borrado'
   clearHistory: 'Borrar historial local'
   supportBody: 'Pushpilot es gratis y de código abierto, sin anuncios ni rastreo, y seguirá así. Si te resulta útil, puedes ayudar a mantenerlo.'
-  rate: 'Califícalo en Chrome Web Store'
   star: 'Dar una estrella en GitHub'
   report: 'Reportar un problema'
   diagnostics: 'Copiar diagnóstico'

@@ -1,6 +1,6 @@
 # Dutch strings, translated from en.yml (keep keys and $1–$9 in sync).
 extName: Pushpilot voor Pushbullet
-extDescription: 'Onofficiële Pushbullet-extensie voor Chrome, Brave, Edge: stuur tabbladen, links en bestanden naar je telefoon, zie meldingen, sms.'
+extDescription: 'Onofficiële Pushbullet-extensie: stuur tabbladen, links en bestanden naar je telefoon, zie meldingen en sms vanuit je browser.'
 cmdOpen: Pushpilot openen
 cmdPushPage: Huidige pagina naar je standaardapparaat pushen
 cmdPushClipboard: Wat je hebt gekopieerd naar je standaardapparaat pushen, vanuit elke app
@@ -358,7 +358,6 @@ settings:
   historyCleared: Geschiedenis gewist
   clearHistory: Lokale geschiedenis wissen
   supportBody: Pushpilot is gratis en open source, zonder advertenties of tracking, en dat blijft zo. Heb je er iets aan? Dan kun je helpen het draaiende te houden.
-  rate: Beoordeel het in de Chrome Web Store
   star: Ster geven op GitHub
   report: Probleem melden
   diagnostics: 'Diagnose kopiëren'
