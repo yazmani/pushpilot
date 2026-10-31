@@ -1,7 +1,7 @@
 # Korean strings, translated from en.yml (the source for every language in this folder).
 # $1–$9 are substitutions; keys with 1/n are plural forms (i18n.t(key, count)).
 extName: Pushpilot for Pushbullet
-extDescription: 'Chrome·Brave·Edge용 비공식 Pushbullet 확장 프로그램. 탭, 링크, 파일을 휴대폰으로 보내고 알림 확인과 문자 전송까지.'
+extDescription: '비공식 Pushbullet 확장 프로그램. 탭, 링크, 파일을 휴대폰으로 보내고 알림 확인과 문자 전송을 브라우저에서.'
 cmdOpen: Pushpilot 열기
 cmdPushPage: 현재 페이지를 기본 기기로 푸시
 cmdPushClipboard: 복사한 내용을 기본 기기로 푸시 (모든 앱에서)
@@ -359,7 +359,6 @@ settings:
   historyCleared: '기록을 지웠어요'
   clearHistory: '로컬 기록 지우기'
   supportBody: 'Pushpilot은 무료 오픈 소스이고 광고나 추적이 없으며, 앞으로도 그럴 거예요. 유용하다면 계속 이어 갈 수 있도록 도와주세요.'
-  rate: 'Chrome Web Store에서 평가하기'
   star: 'GitHub에서 별표 주기'
   report: '문제 신고'
   diagnostics: '진단 정보 복사'

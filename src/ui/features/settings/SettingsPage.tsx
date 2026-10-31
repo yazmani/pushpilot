@@ -405,7 +405,7 @@ function SettingsContent() {
               </LinkButton>
               {REVIEWS[browser.runtime.id] && (
                 <LinkButton href={REVIEWS[browser.runtime.id]} variant="ghost">
-                  <Star size={15} /> {i18n.t('settings.rate')}
+                  <Star size={15} /> {i18n.t('rate.action')}
                 </LinkButton>
               )}
               <LinkButton href={LINKS.repo} variant="ghost">

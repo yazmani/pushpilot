@@ -1,7 +1,7 @@
 # Arabic strings, translated from en.yml.
 # $1–$9 are substitutions; keys with 1/n are plural forms (i18n.t(key, count)).
 extName: Pushpilot لـ Pushbullet
-extDescription: 'إضافة Pushbullet غير رسمية لـ Chrome وBrave وEdge: أرسل الصفحات والروابط والملفات إلى هاتفك، واطّلع على الإشعارات، وأرسل SMS.'
+extDescription: 'إضافة Pushbullet غير رسمية: أرسل الصفحات والروابط والملفات إلى هاتفك، واطّلع على إشعاراته، وأرسل SMS من متصفحك.'
 cmdOpen: فتح Pushpilot
 cmdPushPage: إرسال الصفحة الحالية إلى جهازك الافتراضي
 cmdPushClipboard: إرسال ما نسخته إلى جهازك الافتراضي، من أي تطبيق
@@ -359,7 +359,6 @@ settings:
   historyCleared: تم مسح السجل
   clearHistory: مسح السجل المحلي
   supportBody: Pushpilot مجاني ومفتوح المصدر، بلا إعلانات أو تتبّع، وسيبقى كذلك. إن كان مفيدًا لك، يمكنك المساعدة على استمراره.
-  rate: قيّمه في Chrome Web Store
   star: أضف نجمة على GitHub
   report: الإبلاغ عن مشكلة
   diagnostics: 'نسخ معلومات التشخيص'

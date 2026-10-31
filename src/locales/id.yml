@@ -1,7 +1,7 @@
 # Indonesian strings, translated from en.yml.
 # $1–$9 are substitutions; keys with 1/n are plural forms (i18n.t(key, count)).
 extName: Pushpilot untuk Pushbullet
-extDescription: 'Ekstensi Pushbullet tidak resmi untuk Chrome, Brave, Edge: kirim tab, tautan, dan file ke ponsel, lihat notifikasi, kirim SMS.'
+extDescription: 'Ekstensi Pushbullet tidak resmi: kirim tab, tautan, dan file ke ponsel, lihat notifikasinya, dan kirim SMS dari browser.'
 cmdOpen: Buka Pushpilot
 cmdPushPage: Kirim halaman ini ke perangkat default Anda
 cmdPushClipboard: Kirim yang Anda salin ke perangkat default, dari aplikasi apa pun
@@ -359,7 +359,6 @@ settings:
   historyCleared: Riwayat dihapus
   clearHistory: Hapus riwayat lokal
   supportBody: Pushpilot gratis dan open source, tanpa iklan atau pelacakan, dan akan tetap begitu. Jika bermanfaat bagi Anda, Anda bisa membantunya terus berjalan.
-  rate: Beri rating di Chrome Web Store
   star: Beri bintang di GitHub
   report: Laporkan masalah
   diagnostics: 'Salin diagnostik'

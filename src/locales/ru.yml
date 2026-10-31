@@ -1,5 +1,5 @@
 extName: Pushpilot для Pushbullet
-extDescription: 'Неофициальное расширение Pushbullet для Chrome, Brave и Edge: вкладки, ссылки и файлы — на телефон, уведомления и SMS — в браузере.'
+extDescription: 'Неофициальное расширение Pushbullet: вкладки, ссылки и файлы — на телефон, его уведомления и SMS — прямо в браузере.'
 cmdOpen: Открыть Pushpilot
 cmdPushPage: Отправить текущую страницу на устройство по умолчанию
 cmdPushClipboard: Отправить скопированное на устройство по умолчанию из любого приложения
@@ -357,7 +357,6 @@ settings:
   historyCleared: История очищена
   clearHistory: Очистить локальную историю
   supportBody: Pushpilot бесплатный, с открытым кодом, без рекламы и слежки — и таким останется. Если он вам полезен, вы можете помочь его развитию.
-  rate: Оценить в Chrome Web Store
   star: Поставить звезду на GitHub
   report: Сообщить о проблеме
   diagnostics: 'Скопировать диагностику'

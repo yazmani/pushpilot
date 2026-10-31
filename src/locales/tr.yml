@@ -1,5 +1,5 @@
 extName: Pushpilot – Pushbullet için
-extDescription: 'Chrome, Brave, Edge için resmi olmayan Pushbullet uzantısı: sekme, bağlantı ve dosyaları telefona gönder, bildirimleri gör, SMS at.'
+extDescription: 'Resmi olmayan Pushbullet uzantısı: sekme, bağlantı ve dosyaları telefona gönder, bildirimlerini gör, tarayıcıdan SMS at.'
 cmdOpen: Pushpilot’u aç
 cmdPushPage: Geçerli sayfayı varsayılan cihazına gönder
 cmdPushClipboard: Kopyaladığını herhangi bir uygulamadan varsayılan cihazına gönder
@@ -357,7 +357,6 @@ settings:
   historyCleared: Geçmiş temizlendi
   clearHistory: Yerel geçmişi temizle
   supportBody: Pushpilot ücretsiz ve açık kaynak; reklam ya da takip yok ve hep böyle kalacak. İşine yarıyorsa devam etmesine yardım edebilirsin.
-  rate: Chrome Web Store’da puan ver
   star: GitHub’da yıldız ver
   report: Sorun bildir
   diagnostics: 'Tanılamayı kopyala'
