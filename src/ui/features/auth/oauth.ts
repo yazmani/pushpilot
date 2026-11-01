@@ -42,11 +42,65 @@ export async function signInWithPushbullet() {
       error === 'access_denied' ? i18n.t('signIn.cancelled') : i18n.t('signIn.noToken', [error ? ` (${error})` : '']),
     );
   }
-  await call('auth.token', { token });
+  await call('auth.token', { token, kind: 'oauth' });
 }
 
 /** From the toolbar popup: continue in Settings, which stays open during sign-in. */
 export function continueSignInInSettings() {
   void browser.tabs.create({ url: browser.runtime.getURL('/options.html#signin') });
   window.close();
+}
+
+const SITE = 'https://www.pushbullet.com/*';
+const SITE_TIMEOUT = 5 * 60_000;
+
+/** Whether pushbullet.com access was already granted (asking needs a click). */
+export function hasSiteAccess() {
+  return browser.permissions.contains({ origins: [SITE] });
+}
+
+/**
+ * Signs in with the key pushbullet.com keeps for its own signed-in session,
+ * the way the original Pushbullet extension did. Pushes made with it are
+ * yours, so the Pushbullet apps show them under Me; an OAuth app's pushes
+ * land under Following › <app> instead. Needs pushbullet.com access, asked
+ * for here (it's within the optional host permission the manifest declares).
+ *
+ * `sameAccount` switches an existing sign-in over without touching history.
+ */
+export async function signInWithPushbulletSite({ sameAccount = false } = {}) {
+  // request() first: it has to run while the click still counts.
+  if (!(await browser.permissions.request({ origins: [SITE] }))) throw new Error(i18n.t('signIn.siteDenied'));
+  const token = await readSiteKey();
+  await call('auth.token', { token, kind: 'site', sameAccount });
+}
+
+/** The api_key from a pushbullet.com tab: one that's open, or one opened for this. Waits while you sign in there. */
+async function readSiteKey(): Promise<string> {
+  const existing = (await browser.tabs.query({ url: SITE }))[0];
+  const tab = existing ?? (await browser.tabs.create({ url: 'https://www.pushbullet.com/', active: true }));
+  const deadline = Date.now() + SITE_TIMEOUT;
+  try {
+    while (Date.now() < deadline) {
+      if (!(await browser.tabs.get(tab.id!).catch(() => null))) throw new Error(i18n.t('signIn.cancelled'));
+      const [result] = await browser.scripting
+        .executeScript({
+          target: { tabId: tab.id! },
+          func: () => {
+            try {
+              return (JSON.parse(localStorage.getItem('account') || '{}') as { api_key?: string }).api_key ?? null;
+            } catch {
+              return null;
+            }
+          },
+        })
+        // The page is still loading, or showing Google's sign-in.
+        .catch(() => []);
+      if (typeof result?.result === 'string' && result.result) return result.result;
+      await new Promise((r) => setTimeout(r, 1000));
+    }
+    throw new Error(i18n.t('signIn.siteTimeout'));
+  } finally {
+    if (!existing && tab.id !== undefined) void browser.tabs.remove(tab.id).catch(() => undefined);
+  }
 }

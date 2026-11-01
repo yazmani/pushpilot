@@ -255,7 +255,7 @@ signIn:
   title: Gửi trang này tới điện thoại của bạn.
   intro: Pushpilot chuyển liên kết, ghi chú, tệp và tin nhắn giữa các thiết bị của bạn bằng tài khoản Pushbullet, đồng thời đưa thông báo điện thoại lên máy tính.
   button: Đăng nhập bằng Pushbullet
-  buttonHint: Mở Pushbullet để bạn cấp quyền cho Pushpilot. Mật khẩu của bạn không bao giờ đến tiện ích.
+  buttonHint: 'Dùng phiên đăng nhập pushbullet.com của bạn (Pushpilot chỉ xin quyền đọc một lần). Mật khẩu của bạn không bao giờ đến tiện ích.'
   useToken: Dùng mã truy cập thay thế
   token: Mã truy cập
   connect: Kết nối
@@ -265,6 +265,9 @@ signIn:
   cancelled: Đã hủy đăng nhập.
   openFailed: 'Không mở được trang đăng nhập Pushbullet: $1'
   noToken: Pushbullet không trả về mã truy cập$1.
+  siteDenied: 'Pushpilot cần đọc phiên đăng nhập pushbullet.com của bạn. Hoặc dùng mã truy cập bên dưới.'
+  siteTimeout: 'Bạn chưa đăng nhập pushbullet.com. Hãy đăng nhập ở đó rồi thử lại.'
+  otherAccount: 'pushbullet.com đang đăng nhập bằng một tài khoản Pushbullet khác.'
 linkKind:
   video: Video
   image: Hình ảnh
@@ -522,6 +525,11 @@ dash:
   sendTo: 'Gửi tới thiết bị này'
   apps: 'Ứng dụng'
   allApps: 'Tất cả ứng dụng'
+meFix:
+  title: 'Các mục gửi của bạn nằm trong Following trên ứng dụng Pushbullet'
+  body: 'Pushbullet xếp các mục gửi từ ứng dụng vào Following › Pushpilot. Chuyển sang phiên đăng nhập pushbullet.com và chúng sẽ hiện trong Me như trước.'
+  action: 'Hiện trong Me'
+  done: 'Xong. Các mục gửi mới sẽ hiện trong Me.'
 outbox:
   title: 'Đang chờ gửi'
   hint: 'Những mục này sẽ tự gửi khi kết nối lại được với Pushbullet.'

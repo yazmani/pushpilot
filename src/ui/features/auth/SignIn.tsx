@@ -4,7 +4,7 @@ import { useEffect, useRef, useState } from 'react';
 import { call } from '@/core/messaging/rpc';
 import { Button, fieldClass, Logo, Notice } from '@/ui/components';
 import { errorText } from '@/ui/hooks/use-toast';
-import { continueSignInInSettings, oauthClientId, signInWithPushbullet } from './oauth';
+import { continueSignInInSettings, hasSiteAccess, oauthClientId, signInWithPushbullet, signInWithPushbulletSite } from './oauth';
 import { i18n } from '#i18n';
 
 export function SignIn({
@@ -16,25 +16,34 @@ export function SignIn({
   inPopup?: boolean;
   autoStart?: boolean;
 }) {
-  // Without an OAuth client for this extension ID, the token is the only way in.
-  const web = !!oauthClientId();
-  const [showToken, setShowToken] = useState(!web);
+  const [showToken, setShowToken] = useState(false);
   const [token, setToken] = useState('');
   const [error, setError] = useState<string | null>(null);
   const [busy, setBusy] = useState<'web' | 'token' | null>(null);
 
   const startWeb = () => {
     if (inPopup) return continueSignInInSettings();
-    void attempt('web', signInWithPushbullet);
+    void attempt('web', async () => {
+      try {
+        await signInWithPushbulletSite();
+      } catch (err) {
+        // Declined access or closed the tab: that's an answer. Anything else, try the OAuth app.
+        const message = err instanceof Error ? err.message : '';
+        if (!oauthClientId() || message === i18n.t('signIn.siteDenied') || message === i18n.t('signIn.cancelled')) throw err;
+        await signInWithPushbullet();
+      }
+    });
   };
 
-  // Settings opened from the popup's "Sign in" button: go straight to Pushbullet.
+  // Settings opened from the popup's "Sign in" button: go straight on when we
+  // may already read pushbullet.com. Asking for that needs a click, so otherwise
+  // the button waits for one.
   const started = useRef(false);
   useEffect(() => {
-    if (!autoStart || !web || started.current) return;
+    if (!autoStart || started.current) return;
     started.current = true;
     history.replaceState(null, '', location.pathname);
-    startWeb();
+    void hasSiteAccess().then((ok) => ok && startWeb());
   }, [autoStart]);
 
   const attempt = async (which: 'web' | 'token', fn: () => Promise<unknown>) => {
@@ -62,14 +71,10 @@ export function SignIn({
       <h1 className="relative mt-6 text-2xl font-extrabold leading-[1.15] tracking-[-0.03em]">{i18n.t('signIn.title')}</h1>
       <p className="relative mt-2.5 text-sm leading-relaxed text-muted">{i18n.t('signIn.intro')}</p>
 
-      {web && (
-        <>
-          <Button variant="primary" size="lg" className="relative mt-7 w-full" busy={busy === 'web'} onClick={startWeb}>
-            {i18n.t('signIn.button')}
-          </Button>
-          <p className="relative mt-2 text-xs leading-relaxed text-muted">{i18n.t('signIn.buttonHint')}</p>
-        </>
-      )}
+      <Button variant="primary" size="lg" className="relative mt-7 w-full" busy={busy === 'web'} onClick={startWeb}>
+        {i18n.t('signIn.button')}
+      </Button>
+      <p className="relative mt-2 text-xs leading-relaxed text-muted">{i18n.t('signIn.buttonHint')}</p>
 
       {!showToken ? (
         <button

@@ -254,7 +254,7 @@ signIn:
   title: Stuur deze pagina naar je telefoon.
   intro: Pushpilot verplaatst links, notities, bestanden en sms’jes tussen je apparaten via je Pushbullet-account, en brengt de meldingen van je telefoon naar je computer.
   button: Inloggen met Pushbullet
-  buttonHint: Opent Pushbullet zodat je Pushpilot kunt goedkeuren. Je wachtwoord komt nooit bij de extensie terecht.
+  buttonHint: 'Gebruikt je login op pushbullet.com (Pushpilot vraagt één keer toestemming om die te lezen). Je wachtwoord komt nooit bij de extensie terecht.'
   useToken: Gebruik liever een toegangstoken
   token: Toegangstoken
   connect: Verbinden
@@ -264,6 +264,9 @@ signIn:
   cancelled: Inloggen is geannuleerd.
   openFailed: 'Kan inloggen bij Pushbullet niet openen: $1'
   noToken: Pushbullet heeft geen toegangstoken teruggegeven$1.
+  siteDenied: 'Pushpilot moet je login op pushbullet.com kunnen lezen. Of gebruik hieronder een toegangstoken.'
+  siteTimeout: 'Je bent nog niet ingelogd op pushbullet.com. Log daar in en probeer het opnieuw.'
+  otherAccount: 'Op pushbullet.com is een ander Pushbullet-account ingelogd.'
 linkKind:
   video: Video
   image: Afbeelding
@@ -523,6 +526,11 @@ dash:
   sendTo: 'Ernaartoe sturen'
   apps: 'Apps'
   allApps: 'Alle apps'
+meFix:
+  title: 'Je pushes staan onder Following in de Pushbullet-app'
+  body: 'Pushbullet zet pushes van apps onder Following › Pushpilot. Schakel over naar je login op pushbullet.com en ze staan weer onder Me, zoals vroeger.'
+  action: 'Toon ze onder Me'
+  done: 'Klaar. Nieuwe pushes verschijnen onder Me.'
 outbox:
   title: 'Wacht op versturen'
   hint: 'Deze gaan vanzelf weg zodra Pushbullet weer bereikbaar is.'

@@ -2,6 +2,16 @@
 
 All notable changes are listed here. The format follows [Keep a Changelog](https://keepachangelog.com/), and versions follow [Semantic Versioning](https://semver.org/).
 
+## [Unreleased]
+
+### Changed
+
+- "Sign in with Pushbullet" now uses your pushbullet.com sign-in, like the original extension (Pushpilot asks once to read it). Pushes you send then show in the Pushbullet apps under **Me** again. Signing in through Pushbullet's OAuth page made them land under Following › Pushpilot; that stays as a fallback.
+
+### Added
+
+- Already signed in? Settings › Account (and a one-time note in the popup) offers "Show them under Me", which switches over without losing anything.
+
 ## [1.6.0] - 2026-11-01
 
 ### Added

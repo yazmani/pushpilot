@@ -16,6 +16,7 @@ import { RecentPushes } from './RecentPushes';
 import { RatePrompt, SupportPrompt } from './SupportPrompt';
 import { IssueBanner } from '@/ui/features/setup/SetupIssues';
 import { SetupGuide } from '@/ui/features/setup/SetupGuide';
+import { MeFixBanner } from '@/ui/features/setup/MeFix';
 import { WhatsNew } from './WhatsNew';
 import { grabImage, type PageInfo, readPage } from './page';
 import { TargetGrid } from './TargetGrid';
@@ -298,6 +299,7 @@ export function SendView({
         <WhatsNew />
         <SetupGuide />
         <IssueBanner />
+        <MeFixBanner />
         <div
           className={clsx(
             'overflow-hidden rounded-[20px] bg-surface shadow-card ring-1 transition-colors',

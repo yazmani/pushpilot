@@ -254,7 +254,7 @@ signIn:
   title: Invia questa pagina al tuo telefono.
   intro: Pushpilot sposta link, note, file e SMS tra i tuoi dispositivi con il tuo account Pushbullet e porta le notifiche del telefono sul tuo computer.
   button: Accedi con Pushbullet
-  buttonHint: Apre Pushbullet per autorizzare Pushpilot. La tua password non arriva mai all’estensione.
+  buttonHint: 'Usa il tuo accesso a pushbullet.com (Pushpilot chiede una sola volta il permesso di leggerlo). La tua password non arriva mai all’estensione.'
   useToken: Usa invece un token di accesso
   token: Token di accesso
   connect: Connetti
@@ -264,6 +264,9 @@ signIn:
   cancelled: Accesso annullato.
   openFailed: 'Impossibile aprire l’accesso a Pushbullet: $1'
   noToken: Pushbullet non ha restituito un token di accesso$1.
+  siteDenied: 'Pushpilot deve poter leggere il tuo accesso a pushbullet.com. Oppure usa un token di accesso qui sotto.'
+  siteTimeout: 'Non hai ancora effettuato l’accesso a pushbullet.com. Accedi lì, poi riprova.'
+  otherAccount: 'Su pushbullet.com è connesso un altro account Pushbullet.'
 linkKind:
   video: Video
   image: Immagine
@@ -523,6 +526,11 @@ dash:
   sendTo: 'Invia a questo'
   apps: 'App'
   allApps: 'Tutte le app'
+meFix:
+  title: 'I tuoi push sono in Following nell’app Pushbullet'
+  body: 'Pushbullet mette i push inviati dalle app in Following › Pushpilot. Passa al tuo accesso di pushbullet.com e torneranno in Me, come prima.'
+  action: 'Mostrali in Me'
+  done: 'Fatto. I nuovi push appaiono in Me.'
 outbox:
   title: 'In attesa di invio'
   hint: 'Partiranno da soli appena Pushbullet sarà di nuovo raggiungibile.'

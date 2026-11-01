@@ -255,7 +255,7 @@ signIn:
   title: Kirim halaman ini ke ponsel Anda.
   intro: Pushpilot memindahkan link, catatan, file, dan SMS antarperangkat Anda lewat akun Pushbullet, serta menampilkan notifikasi ponsel di desktop.
   button: Login dengan Pushbullet
-  buttonHint: Membuka Pushbullet agar Anda bisa menyetujui Pushpilot. Sandi Anda tidak pernah sampai ke ekstensi.
+  buttonHint: 'Menggunakan login pushbullet.com Anda (Pushpilot meminta izin sekali untuk membacanya). Sandi Anda tidak pernah sampai ke ekstensi.'
   useToken: Gunakan token akses sebagai gantinya
   token: Token akses
   connect: Hubungkan
@@ -265,6 +265,9 @@ signIn:
   cancelled: Login dibatalkan.
   openFailed: 'Tidak dapat membuka halaman login Pushbullet: $1'
   noToken: Pushbullet tidak mengembalikan token akses$1.
+  siteDenied: 'Pushpilot perlu membaca login pushbullet.com Anda. Atau gunakan token akses di bawah.'
+  siteTimeout: 'Anda belum login di pushbullet.com. Login di sana, lalu coba lagi.'
+  otherAccount: 'pushbullet.com sedang login ke akun Pushbullet yang berbeda.'
 linkKind:
   video: Video
   image: Gambar
@@ -522,6 +525,11 @@ dash:
   sendTo: 'Kirim ke perangkat ini'
   apps: 'Aplikasi'
   allApps: 'Semua aplikasi'
+meFix:
+  title: 'Kiriman Anda ada di Following pada aplikasi Pushbullet'
+  body: 'Pushbullet menaruh kiriman dari aplikasi di Following › Pushpilot. Beralihlah ke login pushbullet.com Anda agar kiriman kembali muncul di Me, seperti sebelumnya.'
+  action: 'Tampilkan di Me'
+  done: 'Selesai. Kiriman baru muncul di Me.'
 outbox:
   title: 'Menunggu dikirim'
   hint: 'Ini akan terkirim otomatis begitu Pushbullet bisa dijangkau lagi.'
