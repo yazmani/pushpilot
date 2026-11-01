@@ -2,6 +2,12 @@
 
 All notable changes are listed here. The format follows [Keep a Changelog](https://keepachangelog.com/), and versions follow [Semantic Versioning](https://semver.org/).
 
+## [Unreleased]
+
+### Added
+
+- Firefox users can rate Pushpilot on Firefox Add-ons from Settings and the rating prompt.
+
 ## [1.6.0] - 2026-11-01
 
 ### Added
