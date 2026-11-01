@@ -11,6 +11,11 @@ All notable changes are listed here. The format follows [Keep a Changelog](https
 ### Changed
 
 - Each Pushpilot refreshes its own device once a day, so an install you no longer use shows as unused after a month instead of looking active forever.
+- A fresh install (new profile, reinstall) reuses its old device when one with the same name has been unused for 30 days, instead of adding another "Brave on macOS".
+
+### Fixed
+
+- Firefox installs register as "Firefox on macOS" (and so on), not "Chrome on macOS".
 
 ## [1.6.0] - 2026-11-01
 

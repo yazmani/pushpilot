@@ -1,3 +1,4 @@
+import type { Device } from '@/core/pushbullet/types';
 import * as store from '@/core/storage/store';
 import { guard, requireClient } from '@/background/session';
 
@@ -25,15 +26,37 @@ export async function syncMe() {
 function browserNickname(): string {
   const ua = (navigator as Navigator & { userAgentData?: { brands: { brand: string }[]; platform: string } }).userAgentData;
   const brands = ua?.brands.map((b) => b.brand) ?? [];
-  const name =
-    ['Brave', 'Microsoft Edge', 'Opera', 'Vivaldi', 'Arc'].find((b) => brands.includes(b))?.replace('Microsoft ', '') ??
-    ('brave' in navigator ? 'Brave' : 'Chrome');
+  const name = import.meta.env.FIREFOX
+    ? 'Firefox'
+    : (['Brave', 'Microsoft Edge', 'Opera', 'Vivaldi', 'Arc'].find((b) => brands.includes(b))?.replace('Microsoft ', '') ??
+      ('brave' in navigator ? 'Brave' : 'Chrome'));
   const platform =
     ua?.platform || (/Mac/.test(navigator.userAgent) ? 'macOS' : /Win/.test(navigator.userAgent) ? 'Windows' : 'Linux');
   return `${name} on ${platform}`;
 }
 
 let ensuring: Promise<string> | null = null;
+
+/**
+ * A device this long without a check-in isn't running anywhere: every
+ * Pushpilot refreshes its own once a day (touchSelfDevice). Matches the
+ * "unused" clean-up in Settings › Devices.
+ */
+const ABANDONED_AFTER = 30 * 24 * 3600;
+
+/** The Pushpilot device a fresh install may take over: same name, abandoned, newest of those. */
+export function abandonedTwin(devices: Device[], nickname: string, exclude: string | null, now = Date.now() / 1000) {
+  return devices
+    .filter(
+      (d) =>
+        d.active &&
+        d.manufacturer === 'Pushpilot' &&
+        d.nickname === nickname &&
+        d.iden !== exclude &&
+        now - d.modified > ABANDONED_AFTER,
+    )
+    .sort((a, b) => b.modified - a.modified)[0];
+}
 
 /**
  * Every install registers a Pushbullet device of its own. Sharing one (say the
@@ -48,10 +71,24 @@ export function ensureSelfDevice(): Promise<string> {
     const { selfDeviceIden: saved, selfDeviceOwned } = await store.getMany(['selfDeviceIden', 'selfDeviceOwned']);
     if (saved && selfDeviceOwned && devices.some((d) => d.iden === saved && d.active)) return saved;
 
+    // A reinstall or new profile starts with empty storage, so it can't know its
+    // old device for sure. Reuse an abandoned Pushpilot device of the same name
+    // rather than adding yet another "Brave on macOS". Never a recent one: it may
+    // be another computer's, and two installs sharing a device mix up pushes.
+    const nickname = browserNickname();
+    const orphan = abandonedTwin(devices, nickname, saved);
+    if (orphan) {
+      // Touch it, so another install opening at the same time doesn't take it too.
+      await guard(() => pb.updateDevice(orphan.iden, { nickname }));
+      await store.set({ selfDeviceIden: orphan.iden, selfDeviceOwned: true });
+      await syncDevices();
+      return orphan.iden;
+    }
+
     const created = await guard(() =>
       pb.createDevice({
-        nickname: browserNickname(),
-        type: 'chrome',
+        nickname,
+        type: import.meta.env.FIREFOX ? 'firefox' : 'chrome',
         model: 'Pushpilot',
         manufacturer: 'Pushpilot',
         icon: 'browser',
