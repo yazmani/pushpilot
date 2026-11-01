@@ -29,6 +29,8 @@ export const OAUTH = {
     pdiijobemepbckkbdeacfngodbeddmcf: 'yh0yaqlwPTLkFK9pzVk6RfGsgIxWEEZV',
     // Microsoft Edge Add-ons.
     coeohelkfpdbkdjilgkdnpbeflgdlmjh: '8Sz0Jtis3YV98cPKxpr2EYnMZKUTpgjX',
+    // Firefox Add-ons (the add-on ID from wxt.config.ts).
+    'pushpilot@yazmani.github.io': '655pjacmUK163wMy3wZYQs1BOfYIanhP',
   } as Record<string, string>,
   authorizeUrl: 'https://www.pushbullet.com/authorize',
 } as const;

@@ -127,9 +127,9 @@ export function TypeTile({
   );
 }
 
-/** Site icon via Chrome's _favicon API (needs the "favicon" permission). */
+/** Site icon via Chrome's _favicon API (needs the "favicon" permission). Firefox has no equivalent. */
 export function Favicon({ url, size = 16, className }: { url?: string; size?: number; className?: string }) {
-  if (!url) return null;
+  if (!url || import.meta.env.FIREFOX) return null;
   return (
     <img
       src={`/_favicon/?pageUrl=${encodeURIComponent(url)}&size=${size * 2}`}

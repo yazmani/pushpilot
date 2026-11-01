@@ -101,6 +101,8 @@ whatsNew:
   title: Có gì mới trong Pushpilot $1
   seeAll: Xem mọi thay đổi
   label: Có gì mới
+  v1_6:
+    browsers: 'Pushpilot giờ chạy cả trên Firefox và có mặt trên Microsoft Edge Add-ons. Cùng tài khoản, cùng lịch sử ở mọi nơi.'
   v1_5:
     fullPage: 'Mở Pushpilot toàn trang bằng nút ⤢ cạnh ảnh của bạn: tổng quan, bảng tin với bản xem trước lớn và tin nhắn hiển thị song song.'
     files: 'Trang Tệp và Thiết bị mới: mọi thứ bạn đã gửi dưới dạng thư viện hoặc danh sách, và mọi thiết bị trong nháy mắt.'

@@ -63,7 +63,7 @@ export function LinkThumb({
         className="grid shrink-0 place-items-center rounded-xl bg-raised text-muted ring-1 ring-line"
         style={{ width, height: size }}
       >
-        {url ? <Favicon url={url} size={Math.round(size * 0.42)} /> : <Globe size={size * 0.42} />}
+        {url && !import.meta.env.FIREFOX ? <Favicon url={url} size={Math.round(size * 0.42)} /> : <Globe size={size * 0.42} />}
       </span>
     );
   }

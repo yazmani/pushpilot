@@ -101,9 +101,11 @@ whatsNew:
   title: New in Pushpilot $1
   seeAll: See all changes
   label: What’s new
+  v1_6:
+    browsers: 'Pushpilot now runs in Firefox too, and is on Microsoft Edge Add-ons. Same account, same history everywhere.'
   v1_5:
     fullPage: 'Open Pushpilot as a full page with the ⤢ button next to your picture: an overview, a feed with big previews, and texts side by side.'
-    files: 'New Files and Devices pages: everything you''ve pushed as a gallery or a list, and every device at a glance.'
+    files: "New Files and Devices pages: everything you've pushed as a gallery or a list, and every device at a glance."
   v1_4:
     jump: 'Jump to any month in your feed or gallery: click a day’s heading.'
     numbers: 'Phone numbers in your texts read like they do on your phone.'

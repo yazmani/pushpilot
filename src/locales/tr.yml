@@ -99,8 +99,10 @@ whatsNew:
   title: Pushpilot $1 sürümündeki yenilikler
   seeAll: Tüm değişiklikleri gör
   label: Yenilikler
+  v1_6:
+    browsers: 'Pushpilot artık Firefox''ta da çalışıyor ve Microsoft Edge Eklentileri''nde. Her yerde aynı hesap, aynı geçmiş.'
   v1_5:
-    fullPage: 'Fotoğrafınızın yanındaki ⤢ düğmesiyle Pushpilot''u tam sayfa açın: genel bakış, büyük önizlemeli akış ve yan yana SMS''ler.'
+    fullPage: "Fotoğrafınızın yanındaki ⤢ düğmesiyle Pushpilot'u tam sayfa açın: genel bakış, büyük önizlemeli akış ve yan yana SMS'ler."
     files: 'Yeni Dosyalar ve Cihazlar sayfaları: gönderdiğiniz her şey galeri veya liste olarak, tüm cihazlarınız bir bakışta.'
   v1_4:
     jump: 'Akışta veya galeride istediğiniz aya gidin: bir günün başlığına tıklayın.'

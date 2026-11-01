@@ -99,6 +99,8 @@ whatsNew:
   title: Nowości w Pushpilot $1
   seeAll: Zobacz wszystkie zmiany
   label: Co nowego
+  v1_6:
+    browsers: 'Pushpilot działa teraz także w Firefoksie i jest w Microsoft Edge Add-ons. To samo konto i ta sama historia wszędzie.'
   v1_5:
     fullPage: 'Otwórz Pushpilot na całej stronie przyciskiem ⤢ obok zdjęcia: przegląd, kanał z dużymi podglądami i SMS-y obok siebie.'
     files: 'Nowe strony Pliki i Urządzenia: wszystko, co wysłałeś, jako galeria lub lista, i wszystkie urządzenia w jednym miejscu.'

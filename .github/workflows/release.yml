@@ -2,7 +2,8 @@ name: Release
 
 # Push a tag like v1.0.1 (matching package.json's version) to build the store
 # zip, publish a GitHub release with it attached, and (when the store secrets
-# are set) submit it to the Chrome Web Store for review, staged.
+# are set) submit it to the Chrome Web Store for review, staged, and to
+# Firefox Add-ons.
 on:
   push:
     tags: ['v*']
@@ -22,6 +23,9 @@ jobs:
       CHROME_PUBLISHER_ID: ${{ secrets.CHROME_PUBLISHER_ID }}
       CHROME_SERVICE_ACCOUNT_CLIENT_EMAIL: ${{ secrets.CHROME_SERVICE_ACCOUNT_CLIENT_EMAIL }}
       CHROME_SERVICE_ACCOUNT_PRIVATE_KEY: ${{ secrets.CHROME_SERVICE_ACCOUNT_PRIVATE_KEY }}
+      FIREFOX_EXTENSION_ID: pushpilot@yazmani.github.io
+      FIREFOX_JWT_ISSUER: ${{ secrets.FIREFOX_JWT_ISSUER }}
+      FIREFOX_JWT_SECRET: ${{ secrets.FIREFOX_JWT_SECRET }}
     steps:
       - uses: actions/checkout@v7
       - uses: actions/setup-node@v7
@@ -34,9 +38,12 @@ jobs:
       - run: npm run compile
       - run: npm test
       - run: npm run zip
+      - run: npm run zip:firefox
       - uses: softprops/action-gh-release@v3
         with:
-          files: dist/*-chrome.zip
+          files: |
+            dist/*-chrome.zip
+            dist/*-firefox.zip
           generate_release_notes: true
       # Upload the same zip and submit it for review, staged: once approved it
       # waits in the dashboard until you press Publish.
@@ -45,3 +52,10 @@ jobs:
         run: npx wxt submit --chrome-zip dist/*-chrome.zip
         env:
           CHROME_PUBLISH_TYPE: STAGED_PUBLISH
+          # A newer release replaces one still waiting for review.
+          CHROME_CANCEL_PENDING: 'true'
+      # addons.mozilla.org: the Firefox zip plus its sources for review. Needs an
+      # AMO API key (addons.mozilla.org/developers/addon/api/key) as repo secrets.
+      - name: Submit to Firefox Add-ons
+        if: env.FIREFOX_JWT_ISSUER != ''
+        run: npx wxt submit --firefox-zip dist/*-firefox.zip --firefox-sources-zip dist/*-sources.zip

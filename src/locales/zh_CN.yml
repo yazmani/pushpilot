@@ -101,6 +101,8 @@ whatsNew:
   title: Pushpilot $1 新功能
   seeAll: 查看所有更新
   label: 新功能
+  v1_6:
+    browsers: 'Pushpilot 现已支持 Firefox，并上架 Microsoft Edge 加载项商店。任何地方都是同一账户、同一记录。'
   v1_5:
     fullPage: '点击头像旁的 ⤢ 按钮，以完整页面打开 Pushpilot：概览、带大预览的信息流，短信并排显示。'
     files: '全新的“文件”和“设备”页面：发送过的内容以相册或列表呈现，所有设备一目了然。'

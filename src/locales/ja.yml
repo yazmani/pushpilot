@@ -101,6 +101,8 @@ whatsNew:
   title: Pushpilot $1 の新機能
   seeAll: すべての変更を表示
   label: 新機能
+  v1_6:
+    browsers: 'Pushpilot が Firefox でも動くようになり、Microsoft Edge アドオンにも登場。どこでも同じアカウント、同じ履歴です。'
   v1_5:
     fullPage: '写真の横の ⤢ ボタンで Pushpilot を全画面のページで開けます：概要、大きなプレビュー付きのフィード、SMS を並べて表示。'
     files: '新しい「ファイル」「デバイス」ページ：送ったものをギャラリーやリストで、すべてのデバイスをひと目で。'
