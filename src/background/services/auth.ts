@@ -16,6 +16,9 @@ export async function signInWithToken(
   const me = await new Pushbullet(token).me();
   // Switching how you're signed in keeps your history, so it has to be the same account.
   if (sameAccount && (await store.get('me'))?.iden !== me.iden) throw new Error(i18n.t('signIn.otherAccount'));
+  // A switch of sign-in arrives with the stream still open on the old key; close
+  // it, or connect() sees it open, does nothing, and "Connecting" never clears.
+  disconnect();
   await store.set({ token, authKind: kind, me, connection: 'connecting', lastError: null });
   await bootstrap();
   return me;
