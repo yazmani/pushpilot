@@ -1,6 +1,7 @@
 import { browser } from 'wxt/browser';
 import { OAUTH } from '@/core/links';
 import { call } from '@/core/messaging/rpc';
+import { ApiError, Pushbullet } from '@/core/pushbullet/client';
 import { i18n } from '#i18n';
 
 /** The OAuth client registered for this install's extension ID, if any (see OAUTH). */
@@ -75,11 +76,21 @@ export async function signInWithPushbulletSite({ sameAccount = false } = {}) {
   await call('auth.token', { token, kind: 'site', sameAccount });
 }
 
-/** The api_key from a pushbullet.com tab: one that's open, or one opened for this. Waits while you sign in there. */
+/**
+ * The api_key from a pushbullet.com tab: one that's open, or one opened for
+ * this. Waits while you sign in there. Signing out of pushbullet.com can leave
+ * the old, revoked key behind, so a key only counts once Pushbullet accepts it.
+ */
 async function readSiteKey(): Promise<string> {
   const existing = (await browser.tabs.query({ url: SITE }))[0];
   const tab = existing ?? (await browser.tabs.create({ url: 'https://www.pushbullet.com/', active: true }));
+  // An open tab may sit in the background; bring it forward so you can sign in there.
+  if (existing) {
+    void browser.tabs.update(tab.id!, { active: true });
+    if (tab.windowId !== undefined) void browser.windows.update(tab.windowId, { focused: true });
+  }
   const deadline = Date.now() + SITE_TIMEOUT;
+  let revoked = '';
   try {
     while (Date.now() < deadline) {
       if (!(await browser.tabs.get(tab.id!).catch(() => null))) throw new Error(i18n.t('signIn.cancelled'));
@@ -96,7 +107,16 @@ async function readSiteKey(): Promise<string> {
         })
         // The page is still loading, or showing Google's sign-in.
         .catch(() => []);
-      if (typeof result?.result === 'string' && result.result) return result.result;
+      const key = typeof result?.result === 'string' ? result.result : '';
+      if (key && key !== revoked) {
+        try {
+          await new Pushbullet(key).me();
+          return key;
+        } catch (err) {
+          if (!(err instanceof ApiError && err.unauthorized)) throw err;
+          revoked = key;
+        }
+      }
       await new Promise((r) => setTimeout(r, 1000));
     }
     throw new Error(i18n.t('signIn.siteTimeout'));

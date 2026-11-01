@@ -23,16 +23,9 @@ export function SignIn({
 
   const startWeb = () => {
     if (inPopup) return continueSignInInSettings();
-    void attempt('web', async () => {
-      try {
-        await signInWithPushbulletSite();
-      } catch (err) {
-        // Declined access or closed the tab: that's an answer. Anything else, try the OAuth app.
-        const message = err instanceof Error ? err.message : '';
-        if (!oauthClientId() || message === i18n.t('signIn.siteDenied') || message === i18n.t('signIn.cancelled')) throw err;
-        await signInWithPushbullet();
-      }
-    });
+    // No quiet fallback to the approval page: its pushes land under Following
+    // rather than Me, so that's for you to pick, from the option below.
+    void attempt('web', () => signInWithPushbulletSite());
   };
 
   // Settings opened from the popup's "Sign in" button: go straight on when we
