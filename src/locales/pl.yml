@@ -369,9 +369,18 @@ settings:
   deviceLineSms: '$1, obsługuje SMS-y. Ostatnia aktywność: $2'
   receiving: Odbiera
   notConnected: Niepołączone
-  removeOldBefore: Usuń stare urządzenia na stronie
-  removeOldLink: pushbullet.com › Devices
-  removeOldAfter: '. Telefon znów będzie oznaczony jako „Odbiera”, gdy otworzysz na nim aplikację Pushbullet.'
+  removeDevice: 'Usuń $1'
+  remove: 'Usuń'
+  cleanupHint: 'Niepołączone lub nieaktywne od 30 dni (ostatnia aktywność):'
+  cleanup:
+    1: 'Usuń 1 nieużywane urządzenie'
+    n: 'Nieużywane urządzenia do usunięcia: $1'
+  cleanupConfirm:
+    1: 'Usuń'
+    n: 'Usuń wszystkie ($1)'
+  removedDevices:
+    1: 'Usunięto 1 urządzenie'
+    n: 'Usunięte urządzenia: $1'
   otherBrowsers: Pushe wysłane do innej przeglądarki
   otherBrowsersHint: Telefon może nadal pokazywać stare rozszerzenie Pushbullet jako „Chrome”. Zaznacz przeglądarki, których pushe mają trafiać tutaj.
   renameLabel: Nazwa tej przeglądarki na innych twoich urządzeniach

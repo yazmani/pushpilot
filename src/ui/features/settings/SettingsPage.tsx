@@ -1,5 +1,5 @@
 import clsx from 'clsx';
-import { ClipboardCopy, Coffee, Heart, LockKeyhole, LogOut, Pencil, RefreshCw, Star } from 'lucide-react';
+import { ClipboardCopy, Coffee, Heart, LockKeyhole, LogOut, Pencil, RefreshCw, Star, Trash2 } from 'lucide-react';
 import { type ReactNode, useEffect, useRef, useState } from 'react';
 import { browser, type Browser } from 'wxt/browser';
 import { LINKS, REVIEWS } from '@/core/links';
@@ -12,6 +12,7 @@ import { Avatar, Button, DeviceGlyph, fieldClass, LinkButton, LogoMark, Segmente
 import { SignIn } from '@/ui/features/auth/SignIn';
 import { useTargets } from '@/ui/features/send/targets';
 import { IssueList } from '@/ui/features/setup/SetupIssues';
+import { lastActivity } from '@/core/setup';
 import { useStore } from '@/ui/hooks/use-store';
 import { useTheme } from '@/ui/hooks/use-theme';
 import { ToastProvider, useRun, useToast } from '@/ui/hooks/use-toast';
@@ -508,9 +509,22 @@ function Row({ label, children }: { label: string; children: ReactNode }) {
   );
 }
 
+/** Devices that haven't been seen for this long count as unused in the clean-up. */
+const UNUSED_AFTER = 30 * 24 * 3600;
+
 function DeviceList({ devices, selfIden }: { devices: Device[]; selfIden: string | null }) {
   const run = useRun();
+  const { pushes, mirrors } = useStore(['pushes', 'mirrors']);
   const [editing, setEditing] = useState<string | null>(null);
+  const [removing, setRemoving] = useState<string | null>(null);
+  const [cleaning, setCleaning] = useState(false);
+  // Not connected, or no sign of life for a month: old installs, retired phones.
+  const now = Date.now() / 1000;
+  const unused = devices.filter(
+    (d) => d.iden !== selfIden && (!isReachable(d) || now - lastActivity(d, pushes, mirrors) > UNUSED_AFTER),
+  );
+  const remove = (idens: string[]) =>
+    run(() => call('device.delete', { idens }), i18n.t('settings.removedDevices', idens.length));
   const [draft, setDraft] = useState('');
   const save = (d: Device) => {
     setEditing(null);
@@ -575,6 +589,17 @@ function DeviceList({ devices, selfIden }: { devices: Device[]; selfIden: string
                   >
                     <Pencil size={12} />
                   </button>
+                  {d.iden !== selfIden && (
+                    <button
+                      type="button"
+                      title={i18n.t('settings.removeDevice', [deviceName(d)])}
+                      aria-label={i18n.t('settings.removeDevice', [deviceName(d)])}
+                      onClick={() => setRemoving(d.iden)}
+                      className="grid size-6 shrink-0 place-items-center rounded-md text-faint opacity-0 transition-opacity hover:bg-danger-soft hover:text-danger focus-visible:opacity-100 group-hover:opacity-100"
+                    >
+                      <Trash2 size={12} />
+                    </button>
+                  )}
                 </p>
               )}
               <p className="text-xs text-faint">
@@ -584,29 +609,78 @@ function DeviceList({ devices, selfIden }: { devices: Device[]; selfIden: string
                 ])}
               </p>
             </div>
-            <span
-              className={clsx(
-                'rounded-full px-2.5 py-1 text-2xs font-bold',
-                live ? 'bg-accent-soft text-accent-strong' : 'bg-raised text-faint',
-              )}
-            >
-              {live ? i18n.t('settings.receiving') : i18n.t('settings.notConnected')}
-            </span>
+            {removing === d.iden ? (
+              <span className="flex items-center gap-1.5">
+                <Button
+                  size="sm"
+                  variant="danger"
+                  onClick={async () => {
+                    setRemoving(null);
+                    await remove([d.iden]);
+                  }}
+                >
+                  {i18n.t('settings.remove')}
+                </Button>
+                <Button size="sm" variant="ghost" onClick={() => setRemoving(null)}>
+                  {i18n.t('settings.cancel')}
+                </Button>
+              </span>
+            ) : (
+              <span
+                className={clsx(
+                  'rounded-full px-2.5 py-1 text-2xs font-bold',
+                  live ? 'bg-accent-soft text-accent-strong' : 'bg-raised text-faint',
+                )}
+              >
+                {live ? i18n.t('settings.receiving') : i18n.t('settings.notConnected')}
+              </span>
+            )}
           </div>
         );
       })}
-      <p className="py-3 text-xs leading-relaxed text-muted">
-        {i18n.t('settings.removeOldBefore')}{' '}
-        <a
-          className="font-bold text-accent-strong hover:underline"
-          href="https://www.pushbullet.com/#settings/devices"
-          target="_blank"
-          rel="noreferrer"
-        >
-          {i18n.t('settings.removeOldLink')}
-        </a>
-        {i18n.t('settings.removeOldAfter')}
-      </p>
+      {unused.length > 0 && (
+        <div className="py-3.5">
+          {!cleaning ? (
+            <Button size="sm" onClick={() => setCleaning(true)}>
+              <Trash2 size={14} /> {i18n.t('settings.cleanup', unused.length)}
+            </Button>
+          ) : (
+            <div className="rounded-xl bg-raised/60 p-3.5">
+              <p className="text-xs font-semibold">{i18n.t('settings.cleanupHint')}</p>
+              <ul className="mt-1.5 list-disc ps-5 text-xs leading-relaxed text-muted">
+                {unused.map((d) => (
+                  <li key={d.iden}>
+                    {deviceName(d)}{' '}
+                    <span className="text-faint">
+                      ·{' '}
+                      {new Date(lastActivity(d, pushes, mirrors) * 1000).toLocaleDateString(undefined, {
+                        month: 'short',
+                        day: 'numeric',
+                        year: 'numeric',
+                      })}
+                    </span>
+                  </li>
+                ))}
+              </ul>
+              <div className="mt-3 flex gap-2">
+                <Button
+                  size="sm"
+                  variant="danger"
+                  onClick={async () => {
+                    setCleaning(false);
+                    await remove(unused.map((d) => d.iden));
+                  }}
+                >
+                  {i18n.t('settings.cleanupConfirm', unused.length)}
+                </Button>
+                <Button size="sm" variant="ghost" onClick={() => setCleaning(false)}>
+                  {i18n.t('settings.cancel')}
+                </Button>
+              </div>
+            </div>
+          )}
+        </div>
+      )}
     </>
   );
 }

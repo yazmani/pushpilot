@@ -370,9 +370,18 @@ settings:
   deviceLineSms: $1, kann SMS senden. Zuletzt aktiv am $2
   receiving: Empfängt
   notConnected: Nicht verbunden
-  removeOldBefore: Entferne alte Geräte unter
-  removeOldLink: pushbullet.com › Devices
-  removeOldAfter: '. Ein Handy wird wieder als „Empfängt“ angezeigt, sobald du die Pushbullet-App darauf öffnest.'
+  removeDevice: '$1 entfernen'
+  remove: 'Entfernen'
+  cleanupHint: 'Nicht verbunden oder seit 30 Tagen nichts von ihnen (zuletzt aktiv):'
+  cleanup:
+    1: '1 ungenutztes Gerät entfernen'
+    n: '$1 ungenutzte Geräte entfernen'
+  cleanupConfirm:
+    1: 'Entfernen'
+    n: 'Alle $1 entfernen'
+  removedDevices:
+    1: '1 Gerät entfernt'
+    n: '$1 Geräte entfernt'
   otherBrowsers: Pushes an einen anderen Browser
   otherBrowsersHint: Dein Handy listet die alte Pushbullet-Erweiterung eventuell noch als „Chrome“. Hak jeden Browser an, dessen Pushes hier ankommen sollen.
   renameLabel: Name dieses Browsers auf deinen anderen Geräten

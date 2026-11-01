@@ -2,6 +2,16 @@
 
 All notable changes are listed here. The format follows [Keep a Changelog](https://keepachangelog.com/), and versions follow [Semantic Versioning](https://semver.org/).
 
+## [Unreleased]
+
+### Added
+
+- Remove devices from Settings › Devices: one at a time (the bin next to the name), or all unused ones at once: not connected, or nothing from them in 30 days. This browser's own device is never removed.
+
+### Changed
+
+- Each Pushpilot refreshes its own device once a day, so an install you no longer use shows as unused after a month instead of looking active forever.
+
 ## [1.6.0] - 2026-11-01
 
 ### Added

@@ -74,6 +74,31 @@ export async function renameDevice(iden: string, name: string) {
   await syncDevices();
 }
 
+/**
+ * Bumps this browser's device record at most once a day, so its "last active"
+ * date means something: the device clean-up in Settings goes by it, and an
+ * install that stops running stands out after a month.
+ */
+export async function touchSelfDevice() {
+  const { selfDeviceIden, devices } = await store.getMany(['selfDeviceIden', 'devices']);
+  const self = devices.find((d) => d.iden === selfDeviceIden);
+  if (!self || Date.now() / 1000 - self.modified < 23 * 3600) return;
+  const pb = await requireClient();
+  await guard(() => pb.updateDevice(self.iden, { nickname: self.nickname }));
+  await syncDevices();
+}
+
+/**
+ * Removes devices from the account, one request at a time. Never this
+ * browser's own device: Pushpilot would just register it again.
+ */
+export async function deleteDevices(idens: string[]) {
+  const pb = await requireClient();
+  const self = await store.get('selfDeviceIden');
+  for (const iden of idens) if (iden !== self) await guard(() => pb.deleteDevice(iden));
+  await store.update('devices', (all) => all.filter((d) => d.iden === self || !idens.includes(d.iden)));
+}
+
 export async function renameSelfDevice(name: string) {
   const pb = await requireClient();
   const iden = await ensureSelfDevice();

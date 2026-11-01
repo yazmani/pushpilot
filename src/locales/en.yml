@@ -371,9 +371,18 @@ settings:
   deviceLineSms: '$1, can text. Last active $2'
   receiving: 'Receiving'
   notConnected: 'Not connected'
-  removeOldBefore: 'Remove old devices on'
-  removeOldLink: 'pushbullet.com › Devices'
-  removeOldAfter: '. A phone shows up as Receiving again after you open the Pushbullet app on it.'
+  removeDevice: 'Remove $1'
+  remove: 'Remove'
+  cleanupHint: 'Not connected, or nothing from them in 30 days (last active):'
+  cleanup:
+    1: 'Remove 1 unused device'
+    n: 'Remove $1 unused devices'
+  cleanupConfirm:
+    1: 'Remove it'
+    n: 'Remove all $1'
+  removedDevices:
+    1: 'Removed 1 device'
+    n: 'Removed $1 devices'
   otherBrowsers: 'Pushes sent to another browser'
   otherBrowsersHint: 'Your phone may still list the old Pushbullet extension as “Chrome”. Tick any browser whose pushes should arrive here.'
   renameLabel: 'This browser’s name on your other devices'

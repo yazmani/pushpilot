@@ -371,9 +371,18 @@ settings:
   deviceLineSms: '$1, peut envoyer des SMS. Dernière activité : $2'
   receiving: 'En réception'
   notConnected: 'Non connecté'
-  removeOldBefore: 'Supprimez les anciens appareils sur'
-  removeOldLink: 'pushbullet.com › Devices'
-  removeOldAfter: '. Un téléphone réapparaît « En réception » dès que vous y ouvrez l’app Pushbullet.'
+  removeDevice: 'Retirer $1'
+  remove: 'Retirer'
+  cleanupHint: 'Non connectés, ou rien reçu d’eux depuis 30 jours (dernière activité) :'
+  cleanup:
+    1: 'Retirer 1 appareil inutilisé'
+    n: 'Retirer $1 appareils inutilisés'
+  cleanupConfirm:
+    1: 'Le retirer'
+    n: 'Retirer les $1'
+  removedDevices:
+    1: '1 appareil retiré'
+    n: '$1 appareils retirés'
   otherBrowsers: 'Envois à un autre navigateur'
   otherBrowsersHint: 'Votre téléphone affiche peut-être encore l’ancienne extension Pushbullet sous le nom « Chrome ». Cochez chaque navigateur dont les envois doivent arriver ici.'
   renameLabel: 'Nom de ce navigateur sur vos autres appareils'

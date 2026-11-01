@@ -371,9 +371,18 @@ settings:
   deviceLineSms: $1, nhắn tin được. Hoạt động lần cuối $2
   receiving: Đang nhận
   notConnected: Chưa kết nối
-  removeOldBefore: Xóa thiết bị cũ tại
-  removeOldLink: pushbullet.com › Devices
-  removeOldAfter: '. Điện thoại sẽ hiện lại là Đang nhận sau khi bạn mở ứng dụng Pushbullet trên máy đó.'
+  removeDevice: 'Xóa $1'
+  remove: 'Xóa'
+  cleanupHint: 'Không kết nối, hoặc không hoạt động trong 30 ngày (hoạt động gần nhất):'
+  cleanup:
+    1: 'Xóa 1 thiết bị không dùng'
+    n: 'Xóa $1 thiết bị không dùng'
+  cleanupConfirm:
+    1: 'Xóa'
+    n: 'Xóa cả $1'
+  removedDevices:
+    1: 'Đã xóa 1 thiết bị'
+    n: 'Đã xóa $1 thiết bị'
   otherBrowsers: Mục gửi tới trình duyệt khác
   otherBrowsersHint: Điện thoại có thể vẫn liệt kê tiện ích Pushbullet cũ là “Chrome”. Đánh dấu những trình duyệt có mục gửi cần nhận tại đây.
   renameLabel: Tên của trình duyệt này trên các thiết bị khác

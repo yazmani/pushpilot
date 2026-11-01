@@ -46,6 +46,7 @@ export interface Rpc {
   'history.clear': { req: object; res: void };
   /** Renames this browser's device, or another device on the account when `iden` is given. */
   'device.rename': { req: { name: string; iden?: string }; res: void };
+  'device.delete': { req: { idens: string[] }; res: void };
   'notify.test': { req: object; res: void };
   'sound.preview': { req: { choice: SoundChoice }; res: void };
   'preview.fetch': { req: { urls: string[] }; res: void };

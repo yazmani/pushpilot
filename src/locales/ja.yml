@@ -371,9 +371,18 @@ settings:
   deviceLineSms: '$1・SMS 対応・最終アクティブ：$2'
   receiving: '受信中'
   notConnected: '未接続'
-  removeOldBefore: '古いデバイスは'
-  removeOldLink: 'pushbullet.com › Devices'
-  removeOldAfter: ' で削除できます。スマートフォンで Pushbullet アプリを開くと、再び「受信中」と表示されます。'
+  removeDevice: '$1 を削除'
+  remove: '削除'
+  cleanupHint: '未接続、または 30 日間使われていないデバイス（最終アクティブ）：'
+  cleanup:
+    1: '使っていないデバイス 1 台を削除'
+    n: '使っていないデバイス $1 台を削除'
+  cleanupConfirm:
+    1: '削除する'
+    n: '$1 台すべて削除'
+  removedDevices:
+    1: '1 台のデバイスを削除しました'
+    n: '$1 台のデバイスを削除しました'
   otherBrowsers: '他のブラウザ宛てのプッシュ'
   otherBrowsersHint: 'スマートフォンでは、古い Pushbullet 拡張機能が「Chrome」と表示されている場合があります。プッシュをここで受け取りたいブラウザにチェックを入れてください。'
   renameLabel: '他のデバイスに表示されるこのブラウザの名前'
