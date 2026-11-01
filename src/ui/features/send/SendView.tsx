@@ -20,6 +20,7 @@ import { WhatsNew } from './WhatsNew';
 import { grabImage, type PageInfo, readPage } from './page';
 import { TargetGrid } from './TargetGrid';
 import { targetLabel, useTargets } from './targets';
+import { Trail, type TrailHandle } from './Trail';
 import { i18n } from '#i18n';
 
 type Kind = 'link' | 'note' | 'file';
@@ -66,6 +67,8 @@ export function SendView({
   const edited = useRef(false);
   const fileInput = useRef<HTMLInputElement>(null);
   const bodyRef = useRef<HTMLTextAreaElement>(null);
+  const trail = useRef<TrailHandle>(null);
+  const sendButton = useRef<HTMLDivElement>(null);
 
   // Start on the remembered target; fall back to all devices if it's gone.
   useEffect(() => {
@@ -234,6 +237,7 @@ export function SendView({
         void store.updateSettings({ defaultTarget: selected[0] });
       if (queued) notify(i18n.t('send.queued'));
       else {
+        if (sendButton.current?.lastElementChild) trail.current?.fire(sendButton.current.lastElementChild);
         void store.update('sendCount', (n) => n + 1);
         notify(i18n.t('send.sentTo', [where]));
       }
@@ -282,7 +286,7 @@ export function SendView({
 
   return (
     <div
-      className="flex h-full flex-col"
+      className="relative flex h-full flex-col"
       onPaste={onPaste}
       onDragOver={(e) => {
         e.preventDefault();
@@ -388,7 +392,7 @@ export function SendView({
             </div>
           )}
 
-          <div className={clsx('flex items-end', kind !== 'note' && 'mt-2 border-t border-line')}>
+          <div ref={sendButton} className={clsx('flex items-end', kind !== 'note' && 'mt-2 border-t border-line')}>
             <textarea
               dir="auto"
               ref={bodyRef}
@@ -454,6 +458,7 @@ export function SendView({
         <RatePrompt />
         <RecentPushes onSeeAll={onOpenFeed} />
       </div>
+      <Trail ref={trail} />
     </div>
   );
 }
