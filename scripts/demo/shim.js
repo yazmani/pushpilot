@@ -49,6 +49,10 @@
       async query() {
         return [data.tab];
       },
+      // ?zoom=1.25 previews the popup at a browser zoom above 100%.
+      async getZoomSettings() {
+        return { defaultZoomFactor: Number(params.get('zoom') || 1) };
+      },
       onActivated: noop,
       onUpdated: noop,
       create() {},

@@ -14,6 +14,10 @@ All notable changes are listed here. The format follows [Keep a Changelog](https
 - Already signed in? Settings › Account (and a one-time note in the popup) offers "Show them under Me", which switches over without losing anything.
 - The sign-in page keeps Pushbullet's approval page as a second option, for anyone who'd rather not give Pushpilot pushbullet.com access, and says what it changes.
 
+### Fixed
+
+- With the browser zoomed above 100%, the popup's Send button no longer slides below the edge, where you had to scroll past your recent pushes to reach it.
+
 ## [1.6.0] - 2026-11-01
 
 ### Added
