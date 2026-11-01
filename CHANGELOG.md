@@ -6,7 +6,7 @@ All notable changes are listed here. The format follows [Keep a Changelog](https
 
 ### Changed
 
-- "Sign in with Pushbullet" now uses your pushbullet.com sign-in, like the original extension (Pushpilot asks once to read it). Pushes you send then show in the Pushbullet apps under **Me** again. Signing in through Pushbullet's OAuth page made them land under Following › Pushpilot; that stays available as an option you pick, never a silent fallback. If pushbullet.com still holds a key from before you signed out there, Pushpilot waits for you to sign in again instead of using it.
+- "Sign in with Pushbullet" now uses your pushbullet.com sign-in, like the original extension (Pushpilot asks once to read it). A pushbullet.com tab you already have open is used as is; otherwise a small sign-in window opens and closes once you're in. Pushes you send then show in the Pushbullet apps under **Me** again. Signing in through Pushbullet's OAuth page made them land under Following › Pushpilot; that stays available as an option you pick, never a silent fallback. If pushbullet.com still holds a key from before you signed out there, Pushpilot waits for you to sign in again instead of using it.
 
 ### Added
 

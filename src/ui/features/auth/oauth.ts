@@ -77,50 +77,78 @@ export async function signInWithPushbulletSite({ sameAccount = false } = {}) {
 }
 
 /**
- * The api_key from a pushbullet.com tab: one that's open, or one opened for
- * this. Waits while you sign in there. Signing out of pushbullet.com can leave
- * the old, revoked key behind, so a key only counts once Pushbullet accepts it.
+ * The api_key pushbullet.com keeps for its signed-in session. A pushbullet.com
+ * tab you have open answers without showing anything; otherwise a small
+ * sign-in window opens, as Pushbullet's approval page did, and closes once
+ * you're in. Signing out of pushbullet.com can leave the old, revoked key
+ * behind, so a key only counts once Pushbullet accepts it.
  */
 async function readSiteKey(): Promise<string> {
-  const existing = (await browser.tabs.query({ url: SITE }))[0];
-  const tab = existing ?? (await browser.tabs.create({ url: 'https://www.pushbullet.com/', active: true }));
-  // An open tab may sit in the background; bring it forward so you can sign in there.
-  if (existing) {
-    void browser.tabs.update(tab.id!, { active: true });
-    if (tab.windowId !== undefined) void browser.windows.update(tab.windowId, { focused: true });
+  const revoked = new Set<string>();
+  for (const tab of await browser.tabs.query({ url: SITE })) {
+    const key = tab.id !== undefined && (await acceptedKey(tab.id, revoked));
+    if (key) return key;
   }
+
+  const win = await openSignInWindow();
+  if (!win) throw new Error(i18n.t('signIn.openFailed', ['no window']));
+  const tabId = win.tabs?.[0]?.id ?? (await browser.tabs.query({ windowId: win.id }))[0]?.id;
   const deadline = Date.now() + SITE_TIMEOUT;
-  let revoked = '';
   try {
     while (Date.now() < deadline) {
-      if (!(await browser.tabs.get(tab.id!).catch(() => null))) throw new Error(i18n.t('signIn.cancelled'));
-      const [result] = await browser.scripting
-        .executeScript({
-          target: { tabId: tab.id! },
-          func: () => {
-            try {
-              return (JSON.parse(localStorage.getItem('account') || '{}') as { api_key?: string }).api_key ?? null;
-            } catch {
-              return null;
-            }
-          },
-        })
-        // The page is still loading, or showing Google's sign-in.
-        .catch(() => []);
-      const key = typeof result?.result === 'string' ? result.result : '';
-      if (key && key !== revoked) {
-        try {
-          await new Pushbullet(key).me();
-          return key;
-        } catch (err) {
-          if (!(err instanceof ApiError && err.unauthorized)) throw err;
-          revoked = key;
-        }
-      }
+      // Closing the window is the way to say no.
+      if (tabId === undefined || !(await browser.tabs.get(tabId).catch(() => null))) throw new Error(i18n.t('signIn.cancelled'));
+      const key = await acceptedKey(tabId, revoked);
+      if (key) return key;
       await new Promise((r) => setTimeout(r, 1000));
     }
     throw new Error(i18n.t('signIn.siteTimeout'));
   } finally {
-    if (!existing && tab.id !== undefined) void browser.tabs.remove(tab.id).catch(() => undefined);
+    if (win.id !== undefined) void browser.windows.remove(win.id).catch(() => undefined);
+  }
+}
+
+/** pushbullet.com's sign-in page in a popup window, centred over this one. */
+async function openSignInWindow() {
+  const width = 520;
+  const height = 680;
+  const current = await browser.windows.getCurrent().catch(() => undefined);
+  const centre = (start = 0, size = 0, own: number) => Math.max(0, Math.round(start + (size - own) / 2));
+  return browser.windows.create({
+    url: 'https://www.pushbullet.com/signin',
+    type: 'popup',
+    width,
+    height,
+    ...(current?.width && current.height
+      ? { left: centre(current.left, current.width, width), top: centre(current.top, current.height, height) }
+      : {}),
+    focused: true,
+  });
+}
+
+/** The tab's pushbullet.com key if Pushbullet accepts it. Rejected keys join `revoked`, so each is checked once. */
+async function acceptedKey(tabId: number, revoked: Set<string>): Promise<string | null> {
+  const [result] = await browser.scripting
+    .executeScript({
+      target: { tabId },
+      func: () => {
+        try {
+          return (JSON.parse(localStorage.getItem('account') || '{}') as { api_key?: string }).api_key ?? null;
+        } catch {
+          return null;
+        }
+      },
+    })
+    // The page is still loading, or showing Google's sign-in.
+    .catch(() => []);
+  const key = typeof result?.result === 'string' ? result.result : '';
+  if (!key || revoked.has(key)) return null;
+  try {
+    await new Pushbullet(key).me();
+    return key;
+  } catch (err) {
+    if (!(err instanceof ApiError && err.unauthorized)) throw err;
+    revoked.add(key);
+    return null;
   }
 }
