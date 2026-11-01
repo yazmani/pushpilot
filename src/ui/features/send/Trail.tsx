@@ -1,7 +1,8 @@
 import { forwardRef, useImperativeHandle, useRef, useState } from 'react';
 
 export interface TrailHandle {
-  fire: () => void;
+  /** Shoots from the middle of this element (the Send button). */
+  fire: (from: Element) => void;
 }
 
 interface Shot {
@@ -12,21 +13,22 @@ interface Shot {
 
 /**
  * The send confirmation and the app's one piece of ambient motion: a tracer
- * leaves the Send button, glances off the right edge and flies out the top.
+ * leaves the Send button, glances off the left edge and flies out the top.
  */
 export const Trail = forwardRef<TrailHandle>(function Trail(_, ref) {
   const box = useRef<HTMLDivElement>(null);
   const [shot, setShot] = useState<Shot | null>(null);
 
   useImperativeHandle(ref, () => ({
-    fire() {
+    fire(from) {
       if (matchMedia('(prefers-reduced-motion: reduce)').matches) return;
       const el = box.current;
       if (!el) return;
-      const { width: w, height: h } = el.getBoundingClientRect();
-      const start: [number, number] = [w * 0.42, h - 32];
-      const wall: [number, number] = [w - 4, h * 0.4];
-      const end: [number, number] = [w * 0.16, -24];
+      const b = el.getBoundingClientRect();
+      const f = from.getBoundingClientRect();
+      const start: [number, number] = [f.left + f.width / 2 - b.left, f.top + f.height / 2 - b.top];
+      const wall: [number, number] = [4, start[1] * 0.45];
+      const end: [number, number] = [b.width * 0.84, -24];
       const d = `M${start} L${wall} L${end}`;
       const len = Math.hypot(wall[0] - start[0], wall[1] - start[1]) + Math.hypot(end[0] - wall[0], end[1] - wall[1]);
       setShot({ id: Date.now(), d, len });
@@ -35,7 +37,7 @@ export const Trail = forwardRef<TrailHandle>(function Trail(_, ref) {
   }));
 
   return (
-    <div ref={box} aria-hidden="true" className="pointer-events-none absolute inset-x-0 bottom-0 z-30 h-[460px]">
+    <div ref={box} aria-hidden="true" className="pointer-events-none absolute inset-0 z-30">
       {shot && (
         <svg key={shot.id} className="absolute inset-0 h-full w-full overflow-visible">
           <path

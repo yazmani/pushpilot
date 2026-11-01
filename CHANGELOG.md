@@ -2,6 +2,12 @@
 
 All notable changes are listed here. The format follows [Keep a Changelog](https://keepachangelog.com/), and versions follow [Semantic Versioning](https://semver.org/).
 
+## [Unreleased]
+
+### Changed
+
+- The Send button sits inside the message box, right where you write, so it's never scrolled out of view (it was at the bottom of the popup). Its tooltip names the device; ⌘/Ctrl+Enter still sends.
+
 ## [1.6.0] - 2026-11-01
 
 ### Added
