@@ -256,6 +256,8 @@ signIn:
   intro: Pushpilot memindahkan link, catatan, file, dan SMS antarperangkat Anda lewat akun Pushbullet, serta menampilkan notifikasi ponsel di desktop.
   button: Login dengan Pushbullet
   buttonHint: 'Menggunakan login pushbullet.com Anda (Pushpilot meminta izin sekali untuk membacanya). Sandi Anda tidak pernah sampai ke ekstensi.'
+  useApproval: 'Setujui di halaman Pushbullet saja'
+  useApprovalHint: 'Tidak perlu akses ke pushbullet.com, tetapi aplikasi Pushbullet menampilkan kiriman Anda di Following › Pushpilot, bukan di Me.'
   useToken: Gunakan token akses sebagai gantinya
   token: Token akses
   connect: Hubungkan

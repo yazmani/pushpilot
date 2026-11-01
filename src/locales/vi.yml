@@ -256,6 +256,8 @@ signIn:
   intro: Pushpilot chuyển liên kết, ghi chú, tệp và tin nhắn giữa các thiết bị của bạn bằng tài khoản Pushbullet, đồng thời đưa thông báo điện thoại lên máy tính.
   button: Đăng nhập bằng Pushbullet
   buttonHint: 'Dùng phiên đăng nhập pushbullet.com của bạn (Pushpilot chỉ xin quyền đọc một lần). Mật khẩu của bạn không bao giờ đến tiện ích.'
+  useApproval: 'Phê duyệt trên trang Pushbullet thay thế'
+  useApprovalHint: 'Không cần quyền truy cập pushbullet.com, nhưng ứng dụng Pushbullet sẽ hiện mục gửi của bạn trong Following › Pushpilot thay vì Me.'
   useToken: Dùng mã truy cập thay thế
   token: Mã truy cập
   connect: Kết nối

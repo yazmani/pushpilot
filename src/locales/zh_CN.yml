@@ -256,6 +256,8 @@ signIn:
   intro: Pushpilot 借助你的 Pushbullet 账号，在设备之间传送链接、笔记、文件和短信，并将手机通知带到电脑上。
   button: 使用 Pushbullet 登录
   buttonHint: '使用你在 pushbullet.com 的登录状态（Pushpilot 只会请求一次读取权限）。你的密码不会经过此扩展程序。'
+  useApproval: '改为在 Pushbullet 页面上授权'
+  useApprovalHint: '无需访问 pushbullet.com，但 Pushbullet 应用会把你的推送显示在 Following › Pushpilot 而不是 Me。'
   useToken: 改用访问令牌
   token: 访问令牌
   connect: 连接

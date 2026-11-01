@@ -255,6 +255,8 @@ signIn:
   intro: Pushpilot überträgt Links, Notizen, Dateien und SMS über dein Pushbullet-Konto zwischen deinen Geräten und bringt die Benachrichtigungen deines Handys auf deinen Desktop.
   button: Mit Pushbullet anmelden
   buttonHint: 'Nutzt deine Anmeldung auf pushbullet.com (Pushpilot fragt einmal, ob es sie lesen darf). Dein Passwort erreicht die Erweiterung nie.'
+  useApproval: 'Stattdessen auf der Pushbullet-Seite zustimmen'
+  useApprovalHint: 'Kein Zugriff auf pushbullet.com nötig, aber die Pushbullet-Apps zeigen deine Pushes unter Following › Pushpilot statt unter Me.'
   useToken: Stattdessen einen Zugriffstoken verwenden
   token: Zugriffstoken
   connect: Verbinden

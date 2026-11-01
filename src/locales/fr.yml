@@ -256,6 +256,8 @@ signIn:
   intro: Pushpilot fait circuler liens, notes, fichiers et SMS entre vos appareils grâce à votre compte Pushbullet, et affiche les notifications de votre téléphone sur votre ordinateur.
   button: Se connecter avec Pushbullet
   buttonHint: 'Utilise votre connexion à pushbullet.com (Pushpilot demande une seule fois l’autorisation de la lire). Votre mot de passe n’est jamais transmis à l’extension.'
+  useApproval: 'Approuver plutôt sur la page de Pushbullet'
+  useApprovalHint: 'Pas besoin d’accès à pushbullet.com, mais les apps Pushbullet afficheront vos envois sous Following › Pushpilot au lieu de Me.'
   useToken: Utiliser plutôt un jeton d’accès
   token: Jeton d’accès
   connect: Connecter

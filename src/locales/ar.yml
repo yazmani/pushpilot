@@ -256,6 +256,8 @@ signIn:
   intro: ينقل Pushpilot الروابط والملاحظات والملفات والرسائل بين أجهزتك عبر حسابك في Pushbullet، ويعرض إشعارات هاتفك على سطح المكتب.
   button: تسجيل الدخول عبر Pushbullet
   buttonHint: 'يستخدم تسجيل دخولك في pushbullet.com (يطلب Pushpilot إذنًا لقراءته مرة واحدة فقط). لا تصل كلمة مرورك إلى الإضافة أبدًا.'
+  useApproval: 'الموافقة على صفحة Pushbullet بدلًا من ذلك'
+  useApprovalHint: 'لا حاجة إلى الوصول إلى pushbullet.com، لكن تطبيقات Pushbullet تعرض عمليات الإرسال ضمن Following › Pushpilot بدلًا من Me.'
   useToken: استخدام رمز وصول بدلًا من ذلك
   token: رمز الوصول
   connect: اتصال

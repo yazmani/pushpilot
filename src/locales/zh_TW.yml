@@ -256,6 +256,8 @@ signIn:
   intro: Pushpilot 透過你的 Pushbullet 帳號，在裝置之間傳送連結、筆記、檔案和簡訊，並把手機通知帶到電腦上。
   button: 使用 Pushbullet 登入
   buttonHint: '使用你在 pushbullet.com 的登入狀態（Pushpilot 只會要求一次讀取權限）。你的密碼絕不會經過這個擴充功能。'
+  useApproval: '改為在 Pushbullet 頁面上授權'
+  useApprovalHint: '不需要存取 pushbullet.com，但 Pushbullet 應用程式會把你的推送顯示在 Following › Pushpilot，而不是 Me。'
   useToken: 改用存取權杖
   token: 存取權杖
   connect: 連線

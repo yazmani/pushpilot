@@ -11,6 +11,7 @@ All notable changes are listed here. The format follows [Keep a Changelog](https
 ### Added
 
 - Already signed in? Settings › Account (and a one-time note in the popup) offers "Show them under Me", which switches over without losing anything.
+- The sign-in page keeps Pushbullet's approval page as a second option, for anyone who'd rather not give Pushpilot pushbullet.com access, and says what it changes.
 
 ## [1.6.0] - 2026-11-01
 

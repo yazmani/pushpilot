@@ -255,6 +255,8 @@ signIn:
   intro: Pushpilot verplaatst links, notities, bestanden en sms’jes tussen je apparaten via je Pushbullet-account, en brengt de meldingen van je telefoon naar je computer.
   button: Inloggen met Pushbullet
   buttonHint: 'Gebruikt je login op pushbullet.com (Pushpilot vraagt één keer toestemming om die te lezen). Je wachtwoord komt nooit bij de extensie terecht.'
+  useApproval: 'In plaats daarvan goedkeuren op de Pushbullet-pagina'
+  useApprovalHint: 'Geen toegang tot pushbullet.com nodig, maar de Pushbullet-apps tonen je pushes onder Following › Pushpilot in plaats van Me.'
   useToken: Gebruik liever een toegangstoken
   token: Toegangstoken
   connect: Verbinden

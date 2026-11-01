@@ -254,6 +254,8 @@ signIn:
   intro: Pushpilot, Pushbullet hesabınla bağlantıları, notları, dosyaları ve SMS’leri cihazların arasında taşır; telefonunun bildirimlerini de masaüstüne getirir.
   button: Pushbullet ile giriş yap
   buttonHint: 'pushbullet.com’daki girişini kullanır (Pushpilot bunu okumak için bir kez izin ister). Şifren asla eklentiye ulaşmaz.'
+  useApproval: 'Bunun yerine Pushbullet sayfasında onayla'
+  useApprovalHint: 'pushbullet.com erişimi gerekmez, ancak Pushbullet uygulamaları gönderilerini Me yerine Following › Pushpilot altında gösterir.'
   useToken: Bunun yerine erişim jetonu kullan
   token: Erişim jetonu
   connect: Bağlan

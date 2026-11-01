@@ -254,6 +254,8 @@ signIn:
   intro: Pushpilot передаёт ссылки, заметки, файлы и SMS между вашими устройствами через аккаунт Pushbullet и выводит уведомления телефона на компьютер.
   button: Войти через Pushbullet
   buttonHint: 'Использует ваш вход на pushbullet.com (Pushpilot один раз попросит разрешение его прочитать). Ваш пароль никогда не попадает в расширение.'
+  useApproval: 'Подтвердить на странице Pushbullet'
+  useApprovalHint: 'Доступ к pushbullet.com не нужен, но приложения Pushbullet покажут ваши пуши во вкладке Following › Pushpilot, а не в Me.'
   useToken: Использовать токен доступа
   token: Токен доступа
   connect: Подключить

@@ -254,6 +254,8 @@ signIn:
   intro: Pushpilot przesyła linki, notatki, pliki i SMS-y między twoimi urządzeniami przez konto Pushbullet i pokazuje powiadomienia z telefonu na komputerze.
   button: Zaloguj się przez Pushbullet
   buttonHint: 'Korzysta z twojego logowania na pushbullet.com (Pushpilot raz poprosi o zgodę na jego odczyt). Twoje hasło nigdy nie trafia do rozszerzenia.'
+  useApproval: 'Zamiast tego zatwierdź na stronie Pushbullet'
+  useApprovalHint: 'Bez dostępu do pushbullet.com, ale aplikacje Pushbullet pokażą pushe w zakładce Following › Pushpilot zamiast Me.'
   useToken: Użyj tokena dostępu
   token: Token dostępu
   connect: Połącz

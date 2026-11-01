@@ -256,6 +256,8 @@ signIn:
   intro: Pushpilot は Pushbullet アカウントを使って、リンク、メモ、ファイル、SMS をデバイス間でやり取りし、スマートフォンの通知をデスクトップに届けます。
   button: Pushbullet でサインイン
   buttonHint: 'pushbullet.com のサインイン状態を使います（Pushpilot が読み取りの許可を一度だけ求めます）。パスワードが拡張機能に渡ることはありません。'
+  useApproval: '代わりに Pushbullet のページで承認する'
+  useApprovalHint: 'pushbullet.com へのアクセスは不要ですが、Pushbullet アプリではプッシュが Me ではなく Following › Pushpilot に表示されます。'
   useToken: 代わりにアクセストークンを使う
   token: アクセストークン
   connect: 接続

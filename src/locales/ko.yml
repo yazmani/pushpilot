@@ -256,6 +256,8 @@ signIn:
   intro: Pushpilot은 Pushbullet 계정으로 기기 간에 링크, 메모, 파일, 문자를 주고받고, 휴대폰 알림을 데스크톱으로 가져와요.
   button: Pushbullet으로 로그인
   buttonHint: 'pushbullet.com 로그인을 사용해요(Pushpilot이 읽기 권한을 한 번만 요청해요). 비밀번호는 확장 프로그램에 전달되지 않아요.'
+  useApproval: '대신 Pushbullet 페이지에서 승인하기'
+  useApprovalHint: 'pushbullet.com 접근은 필요 없지만, Pushbullet 앱에서 푸시가 Me 대신 Following › Pushpilot에 표시돼요.'
   useToken: 대신 액세스 토큰 사용
   token: 액세스 토큰
   connect: 연결

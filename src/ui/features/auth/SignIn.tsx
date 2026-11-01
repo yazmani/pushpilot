@@ -1,5 +1,5 @@
 import clsx from 'clsx';
-import { KeyRound } from 'lucide-react';
+import { KeyRound, ShieldCheck } from 'lucide-react';
 import { useEffect, useRef, useState } from 'react';
 import { call } from '@/core/messaging/rpc';
 import { Button, fieldClass, Logo, Notice } from '@/ui/components';
@@ -19,7 +19,7 @@ export function SignIn({
   const [showToken, setShowToken] = useState(false);
   const [token, setToken] = useState('');
   const [error, setError] = useState<string | null>(null);
-  const [busy, setBusy] = useState<'web' | 'token' | null>(null);
+  const [busy, setBusy] = useState<'web' | 'oauth' | 'token' | null>(null);
 
   const startWeb = () => {
     if (inPopup) return continueSignInInSettings();
@@ -46,7 +46,7 @@ export function SignIn({
     void hasSiteAccess().then((ok) => ok && startWeb());
   }, [autoStart]);
 
-  const attempt = async (which: 'web' | 'token', fn: () => Promise<unknown>) => {
+  const attempt = async (which: 'web' | 'oauth' | 'token', fn: () => Promise<unknown>) => {
     setBusy(which);
     setError(null);
     try {
@@ -76,9 +76,24 @@ export function SignIn({
       </Button>
       <p className="relative mt-2 text-xs leading-relaxed text-muted">{i18n.t('signIn.buttonHint')}</p>
 
+      {/* The OAuth app: no pushbullet.com access needed, but the Pushbullet apps
+          then file your pushes under Following › Pushpilot rather than Me. */}
+      {oauthClientId() && !inPopup && (
+        <div className="relative mt-6">
+          <button
+            className="flex items-center gap-1.5 text-xs font-bold text-muted hover:text-ink disabled:opacity-50"
+            disabled={busy !== null}
+            onClick={() => void attempt('oauth', signInWithPushbullet)}
+          >
+            <ShieldCheck size={13} /> {i18n.t('signIn.useApproval')}
+          </button>
+          <p className="mt-1 ps-[19px] text-2xs leading-relaxed text-faint">{i18n.t('signIn.useApprovalHint')}</p>
+        </div>
+      )}
+
       {!showToken ? (
         <button
-          className="relative mt-6 flex items-center gap-1.5 self-start text-xs font-bold text-muted hover:text-ink"
+          className="relative mt-4 flex items-center gap-1.5 self-start text-xs font-bold text-muted hover:text-ink"
           onClick={() => setShowToken(true)}
         >
           <KeyRound size={13} /> {i18n.t('signIn.useToken')}
@@ -88,7 +103,7 @@ export function SignIn({
           className="relative mt-6"
           onSubmit={(e) => {
             e.preventDefault();
-            void attempt('token', () => call('auth.token', { token }));
+            void attempt('token', () => call('auth.token', { token, kind: 'token' }));
           }}
         >
           <label className="text-xs font-bold text-muted" htmlFor="token">

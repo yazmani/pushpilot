@@ -256,6 +256,8 @@ signIn:
   intro: Pushpilot moves links, notes, files and texts between your devices with your Pushbullet account, and brings your phone’s notifications to your desktop.
   button: Sign in with Pushbullet
   buttonHint: Uses your pushbullet.com sign-in (Pushpilot asks once to read it). Your password never reaches the extension.
+  useApproval: 'Approve on Pushbullet''s page instead'
+  useApprovalHint: 'No pushbullet.com access needed, but the Pushbullet apps show your pushes under Following › Pushpilot instead of Me.'
   useToken: Use an access token instead
   token: Access token
   connect: Connect
