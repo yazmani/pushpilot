@@ -376,9 +376,18 @@ settings:
   deviceLineSms: $1, bisa mengirim SMS. Terakhir aktif $2
   receiving: Menerima
   notConnected: Tidak terhubung
-  removeOldBefore: Hapus perangkat lama di
-  removeOldLink: pushbullet.com › Devices
-  removeOldAfter: '. Ponsel akan kembali muncul sebagai Menerima setelah Anda membuka aplikasi Pushbullet di ponsel itu.'
+  removeDevice: 'Hapus $1'
+  remove: 'Hapus'
+  cleanupHint: 'Tidak terhubung, atau tidak ada aktivitas selama 30 hari (terakhir aktif):'
+  cleanup:
+    1: 'Hapus 1 perangkat yang tidak dipakai'
+    n: 'Hapus $1 perangkat yang tidak dipakai'
+  cleanupConfirm:
+    1: 'Hapus'
+    n: 'Hapus semua ($1)'
+  removedDevices:
+    1: '1 perangkat dihapus'
+    n: '$1 perangkat dihapus'
   otherBrowsers: Kiriman ke browser lain
   otherBrowsersHint: Ponsel Anda mungkin masih mencantumkan ekstensi Pushbullet lama sebagai “Chrome”. Centang browser mana pun yang kirimannya harus sampai di sini.
   renameLabel: Nama browser ini di perangkat Anda yang lain

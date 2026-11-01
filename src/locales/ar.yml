@@ -376,9 +376,18 @@ settings:
   deviceLineSms: $1، يمكنه إرسال الرسائل. آخر نشاط $2
   receiving: يستقبل
   notConnected: غير متصل
-  removeOldBefore: أزل الأجهزة القديمة من
-  removeOldLink: pushbullet.com › Devices
-  removeOldAfter: '. يظهر الهاتف بحالة «يستقبل» من جديد بعد فتح تطبيق Pushbullet عليه.'
+  removeDevice: 'إزالة $1'
+  remove: 'إزالة'
+  cleanupHint: 'غير متصلة، أو لم يصل منها شيء منذ 30 يومًا (آخر نشاط):'
+  cleanup:
+    1: 'إزالة جهاز واحد غير مستخدم'
+    n: 'الأجهزة غير المستخدمة: إزالة $1'
+  cleanupConfirm:
+    1: 'إزالته'
+    n: 'إزالة الكل ($1)'
+  removedDevices:
+    1: 'تمت إزالة جهاز واحد'
+    n: 'تمت إزالة الأجهزة: $1'
   otherBrowsers: ما يُرسل إلى متصفح آخر
   otherBrowsersHint: قد يظل هاتفك يعرض إضافة Pushbullet القديمة باسم «Chrome». حدّد أي متصفح تريد أن تصل إلى هنا عمليات الإرسال الموجّهة إليه.
   renameLabel: اسم هذا المتصفح على أجهزتك الأخرى

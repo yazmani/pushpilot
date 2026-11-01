@@ -2,7 +2,7 @@ import { browser } from 'wxt/browser';
 import { STREAM } from '@/core/pushbullet/client';
 import { decryptJson } from '@/core/pushbullet/crypto';
 import * as store from '@/core/storage/store';
-import { ensureSelfDevice, syncPeople } from '@/background/services/account';
+import { ensureSelfDevice, syncPeople, touchSelfDevice } from '@/background/services/account';
 import { due } from '@/background/session';
 import { type DismissalPush, handleDismissal, handleMirror, type MirrorPush } from '@/background/services/mirror';
 import { show } from '@/background/platform/notifications';
@@ -71,6 +71,9 @@ export async function connect() {
     void flushOutbox().catch(() => undefined);
     void due('devices', 10 * 60_000).then((stale) => {
       if (stale) void ensureSelfDevice().catch(() => undefined);
+    });
+    void due('device-heartbeat', 24 * 3600_000).then((stale) => {
+      if (stale) void touchSelfDevice().catch(() => undefined);
     });
   };
 

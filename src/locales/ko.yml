@@ -376,9 +376,18 @@ settings:
   deviceLineSms: '$1, 문자 가능. 마지막 활동: $2'
   receiving: '수신 중'
   notConnected: '연결 안 됨'
-  removeOldBefore: '오래된 기기는'
-  removeOldLink: 'pushbullet.com › Devices'
-  removeOldAfter: '에서 삭제하세요. 휴대폰에서 Pushbullet 앱을 열면 다시 ‘수신 중’으로 표시돼요.'
+  removeDevice: '$1 삭제'
+  remove: '삭제'
+  cleanupHint: '연결되지 않았거나 30일 동안 사용되지 않은 기기(마지막 활동):'
+  cleanup:
+    1: '사용하지 않는 기기 1대 삭제'
+    n: '사용하지 않는 기기 $1대 삭제'
+  cleanupConfirm:
+    1: '삭제'
+    n: '$1대 모두 삭제'
+  removedDevices:
+    1: '기기 1대를 삭제했어요'
+    n: '기기 $1대를 삭제했어요'
   otherBrowsers: '다른 브라우저로 보낸 푸시'
   otherBrowsersHint: '휴대폰에는 예전 Pushbullet 확장 프로그램이 ‘Chrome’으로 표시될 수 있어요. 여기서 푸시를 받을 브라우저를 선택하세요.'
   renameLabel: '다른 기기에 표시되는 이 브라우저의 이름'

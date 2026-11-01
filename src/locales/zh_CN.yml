@@ -376,9 +376,18 @@ settings:
   deviceLineSms: '$1，可发短信。上次活跃：$2'
   receiving: '接收中'
   notConnected: '未连接'
-  removeOldBefore: '可在'
-  removeOldLink: 'pushbullet.com › Devices'
-  removeOldAfter: ' 中移除旧设备。在手机上打开 Pushbullet 应用后，它会重新显示为“接收中”。'
+  removeDevice: '移除 $1'
+  remove: '移除'
+  cleanupHint: '未连接或 30 天内无活动的设备（最近活动）：'
+  cleanup:
+    1: '移除 1 台未使用的设备'
+    n: '移除 $1 台未使用的设备'
+  cleanupConfirm:
+    1: '移除'
+    n: '全部移除（$1）'
+  removedDevices:
+    1: '已移除 1 台设备'
+    n: '已移除 $1 台设备'
   otherBrowsers: '发送到其他浏览器的推送'
   otherBrowsersHint: '你的手机可能仍将旧版 Pushbullet 扩展程序显示为“Chrome”。勾选希望在这里接收其推送的浏览器。'
   renameLabel: '此浏览器在你其他设备上显示的名称'

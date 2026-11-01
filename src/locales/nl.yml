@@ -375,9 +375,18 @@ settings:
   deviceLineSms: $1, kan sms’en. Laatst actief op $2
   receiving: Ontvangt
   notConnected: Niet verbonden
-  removeOldBefore: Verwijder oude apparaten op
-  removeOldLink: pushbullet.com › Devices
-  removeOldAfter: '. Een telefoon staat weer op ‘Ontvangt’ zodra je de Pushbullet-app erop opent.'
+  removeDevice: '$1 verwijderen'
+  remove: 'Verwijderen'
+  cleanupHint: 'Niet verbonden, of 30 dagen niets van gehoord (laatst actief):'
+  cleanup:
+    1: '1 ongebruikt apparaat verwijderen'
+    n: '$1 ongebruikte apparaten verwijderen'
+  cleanupConfirm:
+    1: 'Verwijderen'
+    n: 'Alle $1 verwijderen'
+  removedDevices:
+    1: '1 apparaat verwijderd'
+    n: '$1 apparaten verwijderd'
   otherBrowsers: Pushes naar een andere browser
   otherBrowsersHint: Je telefoon toont de oude Pushbullet-extensie misschien nog als ‘Chrome’. Vink elke browser aan waarvan de pushes hier moeten binnenkomen.
   renameLabel: Naam van deze browser op je andere apparaten

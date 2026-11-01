@@ -375,9 +375,18 @@ settings:
   deviceLineSms: '$1, può inviare SMS. Ultima attività: $2'
   receiving: In ricezione
   notConnected: Non connesso
-  removeOldBefore: Rimuovi i vecchi dispositivi su
-  removeOldLink: pushbullet.com › Devices
-  removeOldAfter: '. Un telefono torna «In ricezione» quando ci apri l’app Pushbullet.'
+  removeDevice: 'Rimuovi $1'
+  remove: 'Rimuovi'
+  cleanupHint: 'Non connessi o senza attività da 30 giorni (ultima attività):'
+  cleanup:
+    1: 'Rimuovi 1 dispositivo inutilizzato'
+    n: 'Rimuovi $1 dispositivi inutilizzati'
+  cleanupConfirm:
+    1: 'Rimuovilo'
+    n: 'Rimuovi tutti e $1'
+  removedDevices:
+    1: '1 dispositivo rimosso'
+    n: '$1 dispositivi rimossi'
   otherBrowsers: Push inviati a un altro browser
   otherBrowsersHint: Il telefono potrebbe ancora mostrare la vecchia estensione Pushbullet come «Chrome». Seleziona i browser i cui push devono arrivare qui.
   renameLabel: Nome di questo browser sugli altri tuoi dispositivi

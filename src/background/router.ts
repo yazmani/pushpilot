@@ -2,7 +2,7 @@ import { browser } from 'wxt/browser';
 import { deriveKey } from '@/core/pushbullet/crypto';
 import type { Rpc, RpcMessage, RpcName } from '@/core/messaging/rpc';
 import * as store from '@/core/storage/store';
-import { renameDevice, renameSelfDevice, setChatMuted, syncMe, syncPeople } from '@/background/services/account';
+import { deleteDevices, renameDevice, renameSelfDevice, setChatMuted, syncMe, syncPeople } from '@/background/services/account';
 import { bootstrap, signInWithToken, signOut } from '@/background/services/auth';
 import { show } from '@/background/platform/notifications';
 import { playSound } from '@/background/platform/offscreen';
@@ -80,6 +80,7 @@ const handlers: Handlers = {
     void syncPeople().catch(() => undefined);
   },
   'device.rename': ({ name, iden }) => (iden ? renameDevice(iden, name) : renameSelfDevice(name)),
+  'device.delete': ({ idens }) => deleteDevices(idens),
   'sound.preview': async ({ choice }) => {
     await playSound(choice);
   },

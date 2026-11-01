@@ -374,9 +374,18 @@ settings:
   deviceLineSms: '$1, SMS gönderebilir. Son etkinlik: $2'
   receiving: Alıyor
   notConnected: Bağlı değil
-  removeOldBefore: Eski cihazları
-  removeOldLink: pushbullet.com › Devices
-  removeOldAfter: ' sayfasından kaldır. Bir telefon, üzerinde Pushbullet uygulamasını açtığında yeniden Alıyor olarak görünür.'
+  removeDevice: '$1 kaldır'
+  remove: 'Kaldır'
+  cleanupHint: 'Bağlı değil veya 30 gündür kullanılmıyor (son etkinlik):'
+  cleanup:
+    1: 'Kullanılmayan 1 cihazı kaldır'
+    n: 'Kullanılmayan $1 cihazı kaldır'
+  cleanupConfirm:
+    1: 'Kaldır'
+    n: '$1 cihazın hepsini kaldır'
+  removedDevices:
+    1: '1 cihaz kaldırıldı'
+    n: '$1 cihaz kaldırıldı'
   otherBrowsers: Başka bir tarayıcıya gönderilenler
   otherBrowsersHint: Telefonun eski Pushbullet eklentisini hâlâ “Chrome” olarak listeleyebilir. Gönderileri buraya gelmesi gereken tarayıcıları işaretle.
   renameLabel: Bu tarayıcının diğer cihazlarındaki adı
