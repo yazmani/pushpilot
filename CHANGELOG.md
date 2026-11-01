@@ -2,7 +2,7 @@
 
 All notable changes are listed here. The format follows [Keep a Changelog](https://keepachangelog.com/), and versions follow [Semantic Versioning](https://semver.org/).
 
-## [Unreleased]
+## [1.7.0] - 2026-11-01
 
 ### Added
 
@@ -19,7 +19,7 @@ All notable changes are listed here. The format follows [Keep a Changelog](https
 
 ### Fixed
 
-- With the browser zoomed above 100%, the popup's Send button no longer slides below the edge, where you had to scroll past your recent pushes to reach it.
+- With the browser zoomed above 100%, the popup no longer runs past its bottom edge.
 - Firefox installs register as "Firefox on macOS" (and so on), not "Chrome on macOS".
 
 ## [1.6.0] - 2026-11-01
@@ -173,6 +173,7 @@ First public release.
 - Popup, side panel and pop-out window; light and dark themes; snooze; unread badge.
 - One-click sign-in through pushbullet.com, or an access token.
 
+[1.7.0]: https://github.com/yazmani/pushpilot/releases/tag/v1.7.0
 [1.6.0]: https://github.com/yazmani/pushpilot/releases/tag/v1.6.0
 [1.5.1]: https://github.com/yazmani/pushpilot/releases/tag/v1.5.1
 [1.5.0]: https://github.com/yazmani/pushpilot/releases/tag/v1.5.0

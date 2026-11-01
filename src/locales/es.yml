@@ -101,6 +101,10 @@ whatsNew:
   title: Novedades de Pushpilot $1
   seeAll: Ver todos los cambios
   label: Novedades
+  v1_7:
+    me: 'Inicia sesión con tu cuenta de pushbullet.com y tus envíos vuelven a aparecer en Me en las apps de Pushbullet.'
+    devices: 'Quita dispositivos antiguos en Configuración › Dispositivos. Reinstalar ya no añade un duplicado.'
+    send: 'El botón Enviar ahora está dentro del cuadro del mensaje, siempre a la vista.'
   v1_6:
     browsers: 'Pushpilot ya funciona también en Firefox y está en Microsoft Edge Add-ons. La misma cuenta y el mismo historial en todas partes.'
   v1_5:

@@ -101,6 +101,10 @@ whatsNew:
   title: Pushpilot $1 の新機能
   seeAll: すべての変更を表示
   label: 新機能
+  v1_7:
+    me: 'pushbullet.com のアカウントでサインインすると、プッシュが Pushbullet アプリの Me に再び表示されます。'
+    devices: '古いデバイスは 設定 › デバイス から削除できます。再インストールしても重複は増えません。'
+    send: '送信ボタンがメッセージ欄の中に移り、いつでも見えるようになりました。'
   v1_6:
     browsers: 'Pushpilot が Firefox でも動くようになり、Microsoft Edge アドオンにも登場。どこでも同じアカウント、同じ履歴です。'
   v1_5:
