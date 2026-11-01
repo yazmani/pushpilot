@@ -1,3 +1,4 @@
+import { browser } from 'wxt/browser';
 import type { Device } from '@/core/pushbullet/types';
 import * as store from '@/core/storage/store';
 import { guard, requireClient } from '@/background/session';
@@ -59,6 +60,48 @@ export function abandonedTwin(devices: Device[], nickname: string, exclude: stri
 }
 
 /**
+ * The existing device a fresh install should take over, if any: the one this
+ * browser remembers registering (see rememberDevice), or else an abandoned twin.
+ */
+export function deviceToReuse(
+  devices: Device[],
+  { remembered, nickname, exclude }: { remembered: string | null; nickname: string; exclude: string | null },
+  now = Date.now() / 1000,
+) {
+  const mine = devices.find((d) => d.iden === remembered && d.active && d.manufacturer === 'Pushpilot');
+  return mine ?? abandonedTwin(devices, nickname, exclude, now);
+}
+
+/**
+ * Where this browser notes its device, outside extension storage (which an
+ * uninstall wipes): a cookie in the browser profile's own cookie jar. It sits
+ * on a Pushbullet API path no request uses and is secure, HTTP-only and
+ * same-site, so it's never sent anywhere; another computer or profile never
+ * sees it. A reinstall, or signing out and back in, finds its device again.
+ */
+const MARK = { url: 'https://api.pushbullet.com/pushpilot', name: 'device' };
+// Browsers cap cookie lifetimes at 400 days; the daily heartbeat renews it.
+const MARK_DAYS = 395;
+
+async function rememberedDevice(): Promise<string | null> {
+  return (await browser.cookies.get(MARK).catch(() => null))?.value ?? null;
+}
+
+async function rememberDevice(iden: string) {
+  await browser.cookies
+    .set({
+      ...MARK,
+      value: iden,
+      path: '/pushpilot',
+      secure: true,
+      httpOnly: true,
+      sameSite: 'strict',
+      expirationDate: Math.floor(Date.now() / 1000) + MARK_DAYS * 86_400,
+    })
+    .catch(() => undefined);
+}
+
+/**
  * Every install registers a Pushbullet device of its own. Sharing one (say the
  * "Chrome" device left behind by the official extension, which other clients
  * may also use) makes pushes from the other browser look like they came from
@@ -69,18 +112,24 @@ export function ensureSelfDevice(): Promise<string> {
     const pb = await requireClient();
     const devices = await syncDevices();
     const { selfDeviceIden: saved, selfDeviceOwned } = await store.getMany(['selfDeviceIden', 'selfDeviceOwned']);
-    if (saved && selfDeviceOwned && devices.some((d) => d.iden === saved && d.active)) return saved;
+    if (saved && selfDeviceOwned && devices.some((d) => d.iden === saved && d.active)) {
+      // Installs from before the cookie note one now, so their next reinstall finds it.
+      if ((await rememberedDevice()) !== saved) await rememberDevice(saved);
+      return saved;
+    }
 
-    // A reinstall or new profile starts with empty storage, so it can't know its
-    // old device for sure. Reuse an abandoned Pushpilot device of the same name
-    // rather than adding yet another "Brave on macOS". Never a recent one: it may
-    // be another computer's, and two installs sharing a device mix up pushes.
+    // A reinstall or new profile starts with empty storage. Take back the device
+    // this browser remembers, or else an abandoned Pushpilot device of the same
+    // name, rather than adding yet another "Brave on macOS". Never a recent
+    // twin: it may be another computer's, and two installs sharing a device mix
+    // up pushes.
     const nickname = browserNickname();
-    const orphan = abandonedTwin(devices, nickname, saved);
+    const orphan = deviceToReuse(devices, { remembered: await rememberedDevice(), nickname, exclude: saved });
     if (orphan) {
       // Touch it, so another install opening at the same time doesn't take it too.
       await guard(() => pb.updateDevice(orphan.iden, { nickname }));
       await store.set({ selfDeviceIden: orphan.iden, selfDeviceOwned: true });
+      await rememberDevice(orphan.iden);
       await syncDevices();
       return orphan.iden;
     }
@@ -95,6 +144,7 @@ export function ensureSelfDevice(): Promise<string> {
       }),
     );
     await store.set({ selfDeviceIden: created.iden, selfDeviceOwned: true });
+    await rememberDevice(created.iden);
     await syncDevices();
     return created.iden;
   })().finally(() => {
@@ -114,11 +164,13 @@ export async function renameDevice(iden: string, name: string) {
 /**
  * Bumps this browser's device record at most once a day, so its "last active"
  * date means something: the device clean-up in Settings goes by it, and an
- * install that stops running stands out after a month.
+ * install that stops running stands out after a month. Also renews the
+ * cookie that remembers this browser's device.
  */
 export async function touchSelfDevice() {
   const { selfDeviceIden, devices } = await store.getMany(['selfDeviceIden', 'devices']);
   const self = devices.find((d) => d.iden === selfDeviceIden);
+  if (self) await rememberDevice(self.iden);
   if (!self || Date.now() / 1000 - self.modified < 23 * 3600) return;
   const pb = await requireClient();
   await guard(() => pb.updateDevice(self.iden, { nickname: self.nickname }));

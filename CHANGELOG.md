@@ -11,7 +11,7 @@ All notable changes are listed here. The format follows [Keep a Changelog](https
 ### Changed
 
 - Each Pushpilot refreshes its own device once a day, so an install you no longer use shows as unused after a month instead of looking active forever.
-- A fresh install (new profile, reinstall) reuses its old device when one with the same name has been unused for 30 days, instead of adding another "Brave on macOS".
+- Reinstalling Pushpilot, or signing out and back in, reuses this browser's device instead of adding another "Brave on macOS". The device ID is kept in one cookie (never sent anywhere), since uninstalling wipes extension storage; hence the new `cookies` permission, which shows no prompt. A new profile reuses a device with the same name only once it has been unused for 30 days.
 
 ### Fixed
 
