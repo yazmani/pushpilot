@@ -38,6 +38,7 @@
         if (msg.rpc === 'sms.thread') return { ok: true, data: data.smsMessages };
         if (msg.rpc === 'sms.threads') return { ok: true, data: data.smsThreads[msg.device] ?? [] };
         if (msg.rpc === 'unread.clear') return { ok: true };
+        if (msg.rpc === 'push.send') return { ok: true, data: { queued: false } };
         return { ok: true, data: undefined };
       },
       onMessage: noop,
