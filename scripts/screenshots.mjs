@@ -16,7 +16,8 @@ const root = fileURLToPath(new URL('..', import.meta.url));
 const dist = join(root, 'dist/chrome-mv3');
 const out = join(root, 'docs/screenshots');
 // Store listing images stay local (git-ignored) with the listing copy.
-// STORE_OUT renders them elsewhere first, to compare before replacing.
+// STORE_OUT renders them elsewhere first, to compare before replacing; STORE_SCALE
+// renders them sharper (1.875 gives 2400×1500, the most Firefox Add-ons takes).
 const storeOut = join(root, process.env.STORE_OUT || '.local/store');
 await mkdir(out, { recursive: true });
 await mkdir(storeOut, { recursive: true });
@@ -312,7 +313,7 @@ try {
   // Chrome Web Store: 1280×800 screenshots and promo tiles at exact sizes.
   const store = await browser.newPage();
   for (let i = 0; i < STORE.length; i++) {
-    await store.setViewport({ width: 1280, height: 800, deviceScaleFactor: 1 });
+    await store.setViewport({ width: 1280, height: 800, deviceScaleFactor: Number(process.env.STORE_SCALE || 1) });
     await store.goto(`${base}/__store-${i + 1}.html`, { waitUntil: 'networkidle2' });
     await settle(2200);
     if (STORE[i].page) await openSection(store, STORE[i].page);
