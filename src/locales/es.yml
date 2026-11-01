@@ -255,7 +255,9 @@ signIn:
   title: Envía esta página a tu teléfono.
   intro: Pushpilot lleva enlaces, notas, archivos y SMS entre tus dispositivos con tu cuenta de Pushbullet, y trae las notificaciones de tu teléfono a tu computadora.
   button: Iniciar sesión con Pushbullet
-  buttonHint: Abre Pushbullet para que autorices a Pushpilot. Tu contraseña nunca llega a la extensión.
+  buttonHint: 'Usa tu sesión de pushbullet.com (Pushpilot pide permiso una sola vez para leerla). Tu contraseña nunca llega a la extensión.'
+  useApproval: 'Aprobar en la página de Pushbullet'
+  useApprovalHint: 'No hace falta acceso a pushbullet.com, pero las apps de Pushbullet mostrarán tus envíos en Following › Pushpilot en lugar de Me.'
   useToken: Usar un token de acceso
   token: Token de acceso
   connect: Conectar
@@ -265,6 +267,9 @@ signIn:
   cancelled: Se canceló el inicio de sesión.
   openFailed: 'No se pudo abrir el inicio de sesión de Pushbullet: $1'
   noToken: Pushbullet no devolvió un token de acceso$1.
+  siteDenied: 'Pushpilot necesita leer tu sesión de pushbullet.com. O usa un token de acceso más abajo.'
+  siteTimeout: 'Aún no has iniciado sesión en pushbullet.com. Inicia sesión allí y vuelve a intentarlo.'
+  otherAccount: 'pushbullet.com tiene la sesión iniciada con otra cuenta de Pushbullet.'
 linkKind:
   video: Video
   image: Imagen
@@ -533,6 +538,11 @@ dash:
   sendTo: 'Enviar a este'
   apps: 'Apps'
   allApps: 'Todas las apps'
+meFix:
+  title: 'Tus envíos están en Following en la app de Pushbullet'
+  body: 'Pushbullet coloca los envíos de las apps en Following › Pushpilot. Cambia a tu sesión de pushbullet.com y volverán a aparecer en Me, como antes.'
+  action: 'Mostrarlos en Me'
+  done: 'Listo. Los envíos nuevos aparecen en Me.'
 outbox:
   title: 'Pendiente de envío'
   hint: 'Se enviarán solos en cuanto se pueda volver a contactar con Pushbullet.'

@@ -253,7 +253,9 @@ signIn:
   title: Отправьте эту страницу на телефон.
   intro: Pushpilot передаёт ссылки, заметки, файлы и SMS между вашими устройствами через аккаунт Pushbullet и выводит уведомления телефона на компьютер.
   button: Войти через Pushbullet
-  buttonHint: Откроется Pushbullet, где вы подтвердите доступ для Pushpilot. Ваш пароль никогда не попадает в расширение.
+  buttonHint: 'Использует ваш вход на pushbullet.com (Pushpilot один раз попросит разрешение его прочитать). Ваш пароль никогда не попадает в расширение.'
+  useApproval: 'Подтвердить на странице Pushbullet'
+  useApprovalHint: 'Доступ к pushbullet.com не нужен, но приложения Pushbullet покажут ваши пуши во вкладке Following › Pushpilot, а не в Me.'
   useToken: Использовать токен доступа
   token: Токен доступа
   connect: Подключить
@@ -263,6 +265,9 @@ signIn:
   cancelled: Вход отменён.
   openFailed: 'Не удалось открыть вход в Pushbullet: $1'
   noToken: Pushbullet не вернул токен доступа$1.
+  siteDenied: 'Pushpilot нужен доступ к вашему входу на pushbullet.com. Или используйте токен доступа ниже.'
+  siteTimeout: 'Вы ещё не вошли на pushbullet.com. Войдите там и попробуйте ещё раз.'
+  otherAccount: 'На pushbullet.com выполнен вход в другой аккаунт Pushbullet.'
 linkKind:
   video: Видео
   image: Изображение
@@ -529,6 +534,11 @@ dash:
   sendTo: 'Отправить на него'
   apps: 'Приложения'
   allApps: 'Все приложения'
+meFix:
+  title: 'Ваши пуши — во вкладке Following в приложении Pushbullet'
+  body: 'Pushbullet помещает пуши от приложений в Following › Pushpilot. Переключитесь на вход через pushbullet.com, и они снова будут в Me, как раньше.'
+  action: 'Показывать в Me'
+  done: 'Готово. Новые пуши появляются в Me.'
 outbox:
   title: 'Ожидает отправки'
   hint: 'Уйдут сами, как только Pushbullet снова будет доступен.'

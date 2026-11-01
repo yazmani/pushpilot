@@ -255,7 +255,9 @@ signIn:
   title: Envie esta página para o seu celular.
   intro: O Pushpilot leva links, notas, arquivos e SMS entre seus dispositivos usando sua conta Pushbullet, e traz as notificações do celular para o computador.
   button: Entrar com o Pushbullet
-  buttonHint: Abre o Pushbullet para você autorizar o Pushpilot. Sua senha nunca chega à extensão.
+  buttonHint: 'Usa o seu login do pushbullet.com (o Pushpilot pede permissão uma única vez para lê-lo). Sua senha nunca chega à extensão.'
+  useApproval: 'Aprovar na página do Pushbullet'
+  useApprovalHint: 'Não precisa de acesso ao pushbullet.com, mas os apps do Pushbullet mostram seus envios em Following › Pushpilot em vez de Me.'
   useToken: Usar um token de acesso
   token: Token de acesso
   connect: Conectar
@@ -265,6 +267,9 @@ signIn:
   cancelled: O login foi cancelado.
   openFailed: 'Não foi possível abrir o login do Pushbullet: $1'
   noToken: O Pushbullet não retornou um token de acesso$1.
+  siteDenied: 'O Pushpilot precisa ler o seu login do pushbullet.com. Ou use um token de acesso abaixo.'
+  siteTimeout: 'Você ainda não entrou no pushbullet.com. Entre lá e tente de novo.'
+  otherAccount: 'O pushbullet.com está conectado a outra conta do Pushbullet.'
 linkKind:
   video: Vídeo
   image: Imagem
@@ -533,6 +538,11 @@ dash:
   sendTo: 'Enviar para ele'
   apps: 'Apps'
   allApps: 'Todos os apps'
+meFix:
+  title: 'Seus envios estão em Following no app Pushbullet'
+  body: 'O Pushbullet coloca os envios de apps em Following › Pushpilot. Mude para o seu login do pushbullet.com e eles voltam a aparecer em Me, como antes.'
+  action: 'Mostrar em Me'
+  done: 'Pronto. Os novos envios aparecem em Me.'
 outbox:
   title: 'Aguardando envio'
   hint: 'Serão enviados sozinhos assim que o Pushbullet estiver acessível de novo.'

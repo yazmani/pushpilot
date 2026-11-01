@@ -255,7 +255,9 @@ signIn:
   title: Envoyez cette page sur votre téléphone.
   intro: Pushpilot fait circuler liens, notes, fichiers et SMS entre vos appareils grâce à votre compte Pushbullet, et affiche les notifications de votre téléphone sur votre ordinateur.
   button: Se connecter avec Pushbullet
-  buttonHint: Ouvre Pushbullet pour que vous autorisiez Pushpilot. Votre mot de passe n’est jamais transmis à l’extension.
+  buttonHint: 'Utilise votre connexion à pushbullet.com (Pushpilot demande une seule fois l’autorisation de la lire). Votre mot de passe n’est jamais transmis à l’extension.'
+  useApproval: 'Approuver plutôt sur la page de Pushbullet'
+  useApprovalHint: 'Pas besoin d’accès à pushbullet.com, mais les apps Pushbullet afficheront vos envois sous Following › Pushpilot au lieu de Me.'
   useToken: Utiliser plutôt un jeton d’accès
   token: Jeton d’accès
   connect: Connecter
@@ -265,6 +267,9 @@ signIn:
   cancelled: Connexion annulée.
   openFailed: 'Impossible d’ouvrir la connexion à Pushbullet : $1'
   noToken: Pushbullet n’a pas renvoyé de jeton d’accès$1.
+  siteDenied: 'Pushpilot doit pouvoir lire votre connexion à pushbullet.com. Sinon, utilisez un jeton d’accès ci-dessous.'
+  siteTimeout: 'Aucune connexion à pushbullet.com pour l’instant. Connectez-vous sur le site, puis réessayez.'
+  otherAccount: 'pushbullet.com est connecté à un autre compte Pushbullet.'
 linkKind:
   video: Vidéo
   image: Image
@@ -533,6 +538,11 @@ dash:
   sendTo: 'Y envoyer'
   apps: 'Applis'
   allApps: 'Toutes les applis'
+meFix:
+  title: 'Vos envois sont sous Following dans l’app Pushbullet'
+  body: 'Pushbullet range les envois des applis sous Following › Pushpilot. Passez à votre connexion pushbullet.com et ils apparaîtront sous Me, comme avant.'
+  action: 'Les afficher sous Me'
+  done: 'C’est fait. Les nouveaux envois apparaissent sous Me.'
 outbox:
   title: 'En attente d’envoi'
   hint: 'Ils partiront tout seuls dès que Pushbullet sera de nouveau joignable.'

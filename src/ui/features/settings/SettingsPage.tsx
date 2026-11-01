@@ -13,6 +13,7 @@ import { SignIn } from '@/ui/features/auth/SignIn';
 import { useTargets } from '@/ui/features/send/targets';
 import { IssueList } from '@/ui/features/setup/SetupIssues';
 import { lastActivity } from '@/core/setup';
+import { MeFixRow } from '@/ui/features/setup/MeFix';
 import { useStore } from '@/ui/hooks/use-store';
 import { useTheme } from '@/ui/hooks/use-theme';
 import { ToastProvider, useRun, useToast } from '@/ui/hooks/use-toast';
@@ -122,6 +123,7 @@ function SettingsContent() {
                 <LogOut size={15} /> {i18n.t('settings.signOut')}
               </Button>
             </div>
+            <MeFixRow />
             <RenameDevice
               current={self ? deviceName(self) : 'Chrome'}
               onSave={(name) => run(() => call('device.rename', { name }), i18n.t('settings.renamed'))}

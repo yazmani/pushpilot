@@ -1,6 +1,6 @@
 import { browser } from 'wxt/browser';
 import type { SmsMessage, SmsThread, Target } from '@/core/pushbullet/types';
-import type { SoundChoice } from '@/core/storage/store';
+import type { SoundChoice, AuthKind } from '@/core/storage/store';
 import type { LinkPreview } from '@/core/utils/links';
 import { i18n } from '#i18n';
 
@@ -16,7 +16,7 @@ export interface OutgoingPush {
 
 // UI → background requests. Each entry maps a request to its response data.
 export interface Rpc {
-  'auth.token': { req: { token: string }; res: void };
+  'auth.token': { req: { token: string; kind?: AuthKind; sameAccount?: boolean }; res: void };
   'auth.signout': { req: object; res: void };
   sync: { req: object; res: void };
   reconnect: { req: object; res: void };

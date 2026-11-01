@@ -255,7 +255,9 @@ signIn:
   title: أرسل هذه الصفحة إلى هاتفك.
   intro: ينقل Pushpilot الروابط والملاحظات والملفات والرسائل بين أجهزتك عبر حسابك في Pushbullet، ويعرض إشعارات هاتفك على سطح المكتب.
   button: تسجيل الدخول عبر Pushbullet
-  buttonHint: يفتح Pushbullet لتوافق على Pushpilot. لا تصل كلمة مرورك إلى الإضافة أبدًا.
+  buttonHint: 'يستخدم تسجيل دخولك في pushbullet.com (يطلب Pushpilot إذنًا لقراءته مرة واحدة فقط). لا تصل كلمة مرورك إلى الإضافة أبدًا.'
+  useApproval: 'الموافقة على صفحة Pushbullet بدلًا من ذلك'
+  useApprovalHint: 'لا حاجة إلى الوصول إلى pushbullet.com، لكن تطبيقات Pushbullet تعرض عمليات الإرسال ضمن Following › Pushpilot بدلًا من Me.'
   useToken: استخدام رمز وصول بدلًا من ذلك
   token: رمز الوصول
   connect: اتصال
@@ -265,6 +267,9 @@ signIn:
   cancelled: تم إلغاء تسجيل الدخول.
   openFailed: 'تعذّر فتح صفحة تسجيل الدخول في Pushbullet: $1'
   noToken: لم يُرجع Pushbullet رمز وصول$1.
+  siteDenied: 'يحتاج Pushpilot إلى قراءة تسجيل دخولك في pushbullet.com. أو استخدم رمز وصول أدناه.'
+  siteTimeout: 'لم تسجّل الدخول إلى pushbullet.com بعد. سجّل الدخول هناك، ثم حاول مرة أخرى.'
+  otherAccount: 'تم تسجيل الدخول إلى pushbullet.com بحساب Pushbullet مختلف.'
 linkKind:
   video: فيديو
   image: صورة
@@ -531,6 +536,11 @@ dash:
   sendTo: 'أرسل إليه'
   apps: 'التطبيقات'
   allApps: 'كل التطبيقات'
+meFix:
+  title: 'عمليات الإرسال موجودة ضمن Following في تطبيق Pushbullet'
+  body: 'يضع Pushbullet عمليات الإرسال الصادرة من التطبيقات ضمن Following › Pushpilot. انتقل إلى تسجيل دخولك في pushbullet.com لتظهر ضمن Me كما كانت من قبل.'
+  action: 'عرضها ضمن Me'
+  done: 'تم. تظهر عمليات الإرسال الجديدة ضمن Me.'
 outbox:
   title: 'بانتظار الإرسال'
   hint: 'ستُرسَل هذه تلقائيًا عندما يصبح الوصول إلى Pushbullet ممكنًا مجددًا.'
