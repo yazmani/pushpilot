@@ -255,7 +255,9 @@ signIn:
   title: 이 페이지를 휴대폰으로 보내 보세요.
   intro: Pushpilot은 Pushbullet 계정으로 기기 간에 링크, 메모, 파일, 문자를 주고받고, 휴대폰 알림을 데스크톱으로 가져와요.
   button: Pushbullet으로 로그인
-  buttonHint: Pushbullet이 열리면 Pushpilot을 승인할 수 있어요. 비밀번호는 확장 프로그램에 전달되지 않아요.
+  buttonHint: 'pushbullet.com 로그인을 사용해요(Pushpilot이 읽기 권한을 한 번만 요청해요). 비밀번호는 확장 프로그램에 전달되지 않아요.'
+  useApproval: '대신 Pushbullet 페이지에서 승인하기'
+  useApprovalHint: 'pushbullet.com 접근은 필요 없지만, Pushbullet 앱에서 푸시가 Me 대신 Following › Pushpilot에 표시돼요.'
   useToken: 대신 액세스 토큰 사용
   token: 액세스 토큰
   connect: 연결
@@ -265,6 +267,9 @@ signIn:
   cancelled: 로그인이 취소되었어요.
   openFailed: 'Pushbullet 로그인을 열 수 없어요: $1'
   noToken: Pushbullet이 액세스 토큰을 반환하지 않았어요$1.
+  siteDenied: 'Pushpilot이 pushbullet.com 로그인을 읽을 수 있어야 해요. 또는 아래에서 액세스 토큰을 사용하세요.'
+  siteTimeout: '아직 pushbullet.com에 로그인하지 않았어요. 그곳에서 로그인한 다음 다시 시도하세요.'
+  otherAccount: 'pushbullet.com에 다른 Pushbullet 계정으로 로그인되어 있어요.'
 linkKind:
   video: 동영상
   image: 이미지
@@ -522,6 +527,11 @@ dash:
   sendTo: '이 기기로 보내기'
   apps: '앱'
   allApps: '모든 앱'
+meFix:
+  title: '푸시가 Pushbullet 앱의 Following에 있어요'
+  body: 'Pushbullet은 앱에서 보낸 푸시를 Following › Pushpilot에 모아요. pushbullet.com 로그인으로 전환하면 예전처럼 Me에 표시돼요.'
+  action: 'Me에 표시'
+  done: '완료했어요. 새 푸시는 Me에 표시돼요.'
 outbox:
   title: '보내기 대기 중'
   hint: 'Pushbullet에 다시 연결되면 자동으로 보내져요.'

@@ -255,7 +255,9 @@ signIn:
   title: 把這個頁面傳送到手機。
   intro: Pushpilot 透過你的 Pushbullet 帳號，在裝置之間傳送連結、筆記、檔案和簡訊，並把手機通知帶到電腦上。
   button: 使用 Pushbullet 登入
-  buttonHint: 將開啟 Pushbullet 讓你授權 Pushpilot。你的密碼絕不會經過這個擴充功能。
+  buttonHint: '使用你在 pushbullet.com 的登入狀態（Pushpilot 只會要求一次讀取權限）。你的密碼絕不會經過這個擴充功能。'
+  useApproval: '改為在 Pushbullet 頁面上授權'
+  useApprovalHint: '不需要存取 pushbullet.com，但 Pushbullet 應用程式會把你的推送顯示在 Following › Pushpilot，而不是 Me。'
   useToken: 改用存取權杖
   token: 存取權杖
   connect: 連線
@@ -265,6 +267,9 @@ signIn:
   cancelled: 已取消登入。
   openFailed: 無法開啟 Pushbullet 登入頁面：$1
   noToken: Pushbullet 沒有傳回存取權杖$1。
+  siteDenied: 'Pushpilot 需要讀取你在 pushbullet.com 的登入狀態。也可以在下方改用存取權杖。'
+  siteTimeout: '你還沒有登入 pushbullet.com。請先在那裡登入，然後再試一次。'
+  otherAccount: 'pushbullet.com 上登入的是另一個 Pushbullet 帳號。'
 linkKind:
   video: 影片
   image: 圖片
@@ -522,6 +527,11 @@ dash:
   sendTo: '傳送到此裝置'
   apps: '應用程式'
   allApps: '所有應用程式'
+meFix:
+  title: '你的推送在 Pushbullet 應用程式的 Following 中'
+  body: 'Pushbullet 會把來自應用程式的推送放在 Following › Pushpilot 下。改用 pushbullet.com 的登入狀態後，推送會像以前一樣顯示在 Me 中。'
+  action: '顯示在 Me 中'
+  done: '完成了。新的推送會顯示在 Me 中。'
 outbox:
   title: '等待傳送'
   hint: '能重新連上 Pushbullet 後，這些會自動送出。'

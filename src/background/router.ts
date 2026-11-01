@@ -26,8 +26,8 @@ import { i18n } from '#i18n';
 type Handlers = { [K in RpcName]: (req: Rpc[K]['req']) => Promise<Rpc[K]['res']> };
 
 const handlers: Handlers = {
-  'auth.token': async ({ token }) => {
-    await signInWithToken(token);
+  'auth.token': async ({ token, kind, sameAccount }) => {
+    await signInWithToken(token, { kind, sameAccount });
   },
   'auth.signout': () => signOut(),
   sync: async () => {

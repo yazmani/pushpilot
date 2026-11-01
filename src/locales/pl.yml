@@ -253,7 +253,9 @@ signIn:
   title: Wyślij tę stronę na telefon.
   intro: Pushpilot przesyła linki, notatki, pliki i SMS-y między twoimi urządzeniami przez konto Pushbullet i pokazuje powiadomienia z telefonu na komputerze.
   button: Zaloguj się przez Pushbullet
-  buttonHint: Otwiera Pushbullet, aby zatwierdzić Pushpilot. Twoje hasło nigdy nie trafia do rozszerzenia.
+  buttonHint: 'Korzysta z twojego logowania na pushbullet.com (Pushpilot raz poprosi o zgodę na jego odczyt). Twoje hasło nigdy nie trafia do rozszerzenia.'
+  useApproval: 'Zamiast tego zatwierdź na stronie Pushbullet'
+  useApprovalHint: 'Bez dostępu do pushbullet.com, ale aplikacje Pushbullet pokażą pushe w zakładce Following › Pushpilot zamiast Me.'
   useToken: Użyj tokena dostępu
   token: Token dostępu
   connect: Połącz
@@ -263,6 +265,9 @@ signIn:
   cancelled: Logowanie anulowano.
   openFailed: 'Nie udało się otworzyć logowania Pushbullet: $1'
   noToken: Pushbullet nie zwrócił tokena dostępu$1.
+  siteDenied: 'Pushpilot potrzebuje dostępu do twojego logowania na pushbullet.com. Możesz też użyć tokena dostępu poniżej.'
+  siteTimeout: 'Nie zalogowano się jeszcze na pushbullet.com. Zaloguj się tam i spróbuj ponownie.'
+  otherAccount: 'Na pushbullet.com zalogowano się na inne konto Pushbullet.'
 linkKind:
   video: Wideo
   image: Obraz
@@ -520,6 +525,11 @@ dash:
   sendTo: 'Wyślij na to urządzenie'
   apps: 'Aplikacje'
   allApps: 'Wszystkie aplikacje'
+meFix:
+  title: 'Twoje pushe są w zakładce Following w aplikacji Pushbullet'
+  body: 'Pushbullet umieszcza pushe z aplikacji w Following › Pushpilot. Przełącz się na logowanie z pushbullet.com, a znów pojawią się w Me, jak wcześniej.'
+  action: 'Pokaż je w Me'
+  done: 'Gotowe. Nowe pushe pojawiają się w Me.'
 outbox:
   title: 'Czeka na wysłanie'
   hint: 'Wyjdą same, gdy tylko Pushbullet znów będzie dostępny.'
