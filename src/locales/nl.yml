@@ -100,6 +100,8 @@ whatsNew:
   title: Nieuw in Pushpilot $1
   seeAll: Alle wijzigingen bekijken
   label: Wat is er nieuw
+  v1_6:
+    browsers: 'Pushpilot werkt nu ook in Firefox en staat in Microsoft Edge Add-ons. Overal hetzelfde account en dezelfde geschiedenis.'
   v1_5:
     fullPage: 'Open Pushpilot als volledige pagina met de ⤢-knop naast je foto: een overzicht, een feed met grote voorbeelden en sms’jes naast elkaar.'
     files: 'Nieuwe pagina’s Bestanden en Apparaten: alles wat je pushte als galerij of lijst, en al je apparaten in één oogopslag.'

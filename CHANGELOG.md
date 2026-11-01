@@ -2,11 +2,16 @@
 
 All notable changes are listed here. The format follows [Keep a Changelog](https://keepachangelog.com/), and versions follow [Semantic Versioning](https://semver.org/).
 
+## [1.6.0] - 2026-11-01
+
+### Added
+
+- Pushpilot for Firefox (140 or newer), from the same code, with its own "Sign in with Pushbullet": the same popup, full page, side panel (as Firefox's sidebar), notifications with sound, and clipboard. Firefox has no favicon service and no global shortcuts, so site icons fall back to a globe and the push-what-you-copied shortcut works while Firefox is focused.
+
 ## [1.5.1] - 2026-10-31
 
 ### Added
 
-- Pushpilot for Firefox (140 or newer), from the same code: the same popup, full page, side panel (as Firefox's sidebar), notifications with sound, and clipboard. Firefox has no favicon service and no global shortcuts, so site icons fall back to a globe and the push-what-you-copied shortcut works while Firefox is focused.
 - Pushpilot is on Microsoft Edge Add-ons, with its own "Sign in with Pushbullet" and rating link.
 
 ### Changed
@@ -148,6 +153,7 @@ First public release.
 - Popup, side panel and pop-out window; light and dark themes; snooze; unread badge.
 - One-click sign-in through pushbullet.com, or an access token.
 
+[1.6.0]: https://github.com/yazmani/pushpilot/releases/tag/v1.6.0
 [1.5.1]: https://github.com/yazmani/pushpilot/releases/tag/v1.5.1
 [1.5.0]: https://github.com/yazmani/pushpilot/releases/tag/v1.5.0
 [1.4.0]: https://github.com/yazmani/pushpilot/releases/tag/v1.4.0

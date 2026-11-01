@@ -52,6 +52,8 @@ jobs:
         run: npx wxt submit --chrome-zip dist/*-chrome.zip
         env:
           CHROME_PUBLISH_TYPE: STAGED_PUBLISH
+          # A newer release replaces one still waiting for review.
+          CHROME_CANCEL_PENDING: 'true'
       # addons.mozilla.org: the Firefox zip plus its sources for review. Needs an
       # AMO API key (addons.mozilla.org/developers/addon/api/key) as repo secrets.
       - name: Submit to Firefox Add-ons

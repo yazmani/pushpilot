@@ -101,6 +101,8 @@ whatsNew:
   title: Baru di Pushpilot $1
   seeAll: Lihat semua perubahan
   label: Yang baru
+  v1_6:
+    browsers: 'Pushpilot kini juga berjalan di Firefox dan tersedia di Microsoft Edge Add-ons. Akun dan riwayat yang sama di mana pun.'
   v1_5:
     fullPage: 'Buka Pushpilot sebagai halaman penuh dengan tombol ⤢ di samping foto Anda: ringkasan, feed dengan pratinjau besar, dan SMS berdampingan.'
     files: 'Halaman File dan Perangkat baru: semua yang Anda kirim sebagai galeri atau daftar, dan semua perangkat sekilas.'
