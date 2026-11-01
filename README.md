@@ -78,9 +78,10 @@ The official Pushbullet extension is built on Manifest V2, which current version
 
 - **[Chrome Web Store](https://chromewebstore.google.com/detail/pushpilot-for-pushbullet/pdiijobemepbckkbdeacfngodbeddmcf):** one click, with automatic updates. Works in Chrome, Brave and Edge.
 - **From a release:** download the latest `pushpilot-*-chrome.zip` from [Releases](https://github.com/yazmani/pushpilot/releases), unzip it, open `chrome://extensions` (or `brave://extensions`, `edge://extensions`), turn on **Developer mode**, click **Load unpacked** and pick the unzipped folder.
+- **Firefox:** coming to Firefox Add-ons. Meanwhile, download `pushpilot-*-firefox.zip` from [Releases](https://github.com/yazmani/pushpilot/releases), open `about:debugging#/runtime/this-firefox` and choose **Load Temporary Add-on** (it stays until Firefox restarts).
 - **From source:** see [Development](#development).
 
-Requires Chrome 127 or newer (or a browser based on it).
+Requires Chrome 127 or newer (or a browser based on it), or Firefox 140 or newer. In Firefox, the push-what-you-copied shortcut works while Firefox is focused rather than from any app, and site icons next to links aren't shown.
 
 ## Getting started
 
@@ -155,6 +156,7 @@ Built with [WXT](https://wxt.dev), React 19, TypeScript and Tailwind CSS 4.
 npm install
 npm run dev          # Chrome with the extension and hot reload
 npm run build        # production build in dist/chrome-mv3
+npm run build:firefox  # Firefox build in dist/firefox-mv3
 npm run zip          # store-ready zip in dist/
 npm run compile      # type-check
 npm test             # unit tests

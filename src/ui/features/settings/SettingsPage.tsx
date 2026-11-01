@@ -746,6 +746,13 @@ function Encryption({ enabled, onSave }: { enabled: boolean; onSave: (password: 
   );
 }
 
+/** Each browser keeps extension shortcuts on its own settings page. */
+function openShortcutSettings() {
+  if (import.meta.env.FIREFOX) {
+    void (browser.commands as typeof browser.commands & { openShortcutSettings(): Promise<void> }).openShortcutSettings();
+  } else void browser.tabs.create({ url: 'chrome://extensions/shortcuts' });
+}
+
 function Shortcuts() {
   const [commands, setCommands] = useState<Browser.commands.Command[]>([]);
   useEffect(() => {
@@ -764,9 +771,7 @@ function Shortcuts() {
       ))}
       <div className="py-3.5">
         <p className="mb-3 text-xs leading-relaxed text-muted">{i18n.t('settings.shortcutsHint')}</p>
-        <Button onClick={() => void browser.tabs.create({ url: 'chrome://extensions/shortcuts' })}>
-          {i18n.t('settings.changeShortcuts')}
-        </Button>
+        <Button onClick={openShortcutSettings}>{i18n.t('settings.changeShortcuts')}</Button>
       </div>
     </>
   );

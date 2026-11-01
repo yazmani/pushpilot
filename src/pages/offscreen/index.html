@@ -3,9 +3,10 @@
   <head>
     <meta charset="UTF-8" />
     <title>Pushpilot offscreen</title>
+    <!-- Firefox background pages have a DOM; only Chrome needs this page. -->
+    <meta name="manifest.exclude" content="['firefox']" />
   </head>
   <body>
-    <textarea id="clip"></textarea>
     <script type="module" src="./main.ts"></script>
   </body>
 </html>

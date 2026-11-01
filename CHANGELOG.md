@@ -6,6 +6,7 @@ All notable changes are listed here. The format follows [Keep a Changelog](https
 
 ### Added
 
+- Pushpilot for Firefox (140 or newer), from the same code: the same popup, full page, side panel (as Firefox's sidebar), notifications with sound, and clipboard. Firefox has no favicon service and no global shortcuts, so site icons fall back to a globe and the push-what-you-copied shortcut works while Firefox is focused.
 - Pushpilot is on Microsoft Edge Add-ons, with its own "Sign in with Pushbullet" and rating link.
 
 ### Changed

@@ -184,8 +184,13 @@ export function AccountMenu({
     onClose();
   };
   const openPanel = async () => {
-    const win = await browser.windows.getCurrent();
-    if (win.id !== undefined) await browser.sidePanel.open({ windowId: win.id });
+    if (import.meta.env.FIREFOX) {
+      // Firefox's sidebar; opening it must happen right in the click.
+      void (browser as unknown as { sidebarAction: { open(): Promise<void> } }).sidebarAction.open();
+    } else {
+      const win = await browser.windows.getCurrent();
+      if (win.id !== undefined) await browser.sidePanel.open({ windowId: win.id });
+    }
     window.close();
   };
   // One full-page Pushpilot: focus it if it's already open.

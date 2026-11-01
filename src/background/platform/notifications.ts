@@ -63,10 +63,15 @@ export async function show(id: string, t: Toast, opts: { sticky?: boolean } = {}
     title: t.title || 'Pushpilot',
     message: t.message || '',
     contextMessage: t.context,
-    buttons: t.buttons?.slice(0, 2).map((title) => ({ title })),
-    requireInteraction: opts.sticky ?? false,
-    silent: true,
-    priority: 2,
+    // Firefox rejects the whole notification over buttons; there a click opens the item instead.
+    ...(import.meta.env.FIREFOX
+      ? {}
+      : {
+          buttons: t.buttons?.slice(0, 2).map((title) => ({ title })),
+          requireInteraction: opts.sticky ?? false,
+          silent: true,
+          priority: 2,
+        }),
   };
   if (t.image) options.imageUrl = t.image;
   try {
