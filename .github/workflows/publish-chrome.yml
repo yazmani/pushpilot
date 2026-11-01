@@ -20,7 +20,7 @@ on:
           - draft # upload only; submit it yourself in the dashboard
           - staged # submit for review; publish yourself once approved
           - publish # submit for review; goes live as soon as it's approved
-          - check # validate the credentials, upload nothing
+          - check # validate the Chrome and Firefox credentials, upload nothing
 
 permissions:
   contents: read
@@ -49,3 +49,11 @@ jobs:
           CHROME_PUBLISHER_ID: ${{ secrets.CHROME_PUBLISHER_ID }}
           CHROME_SERVICE_ACCOUNT_CLIENT_EMAIL: ${{ secrets.CHROME_SERVICE_ACCOUNT_CLIENT_EMAIL }}
           CHROME_SERVICE_ACCOUNT_PRIVATE_KEY: ${{ secrets.CHROME_SERVICE_ACCOUNT_PRIVATE_KEY }}
+      # Check mode also validates the Firefox Add-ons key (no upload).
+      - name: Check Firefox Add-ons credentials
+        if: inputs.mode == 'check'
+        run: npm run zip:firefox && npx wxt submit --dry-run --firefox-zip dist/*-firefox.zip --firefox-sources-zip dist/*-sources.zip
+        env:
+          FIREFOX_EXTENSION_ID: pushpilot@yazmani.github.io
+          FIREFOX_JWT_ISSUER: ${{ secrets.FIREFOX_JWT_ISSUER }}
+          FIREFOX_JWT_SECRET: ${{ secrets.FIREFOX_JWT_SECRET }}
