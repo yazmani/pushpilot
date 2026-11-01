@@ -255,7 +255,9 @@ signIn:
   title: Send this page to your phone.
   intro: Pushpilot moves links, notes, files and texts between your devices with your Pushbullet account, and brings your phone’s notifications to your desktop.
   button: Sign in with Pushbullet
-  buttonHint: Opens Pushbullet so you can approve Pushpilot. Your password never reaches the extension.
+  buttonHint: Uses your pushbullet.com sign-in (Pushpilot asks once to read it). Your password never reaches the extension.
+  useApproval: 'Approve on Pushbullet''s page instead'
+  useApprovalHint: 'No pushbullet.com access needed, but the Pushbullet apps show your pushes under Following › Pushpilot instead of Me.'
   useToken: Use an access token instead
   token: Access token
   connect: Connect
@@ -265,6 +267,9 @@ signIn:
   cancelled: Sign-in was cancelled.
   openFailed: 'Couldn’t open Pushbullet’s sign-in: $1'
   noToken: Pushbullet didn’t return an access token$1.
+  siteDenied: Pushpilot needs to read your pushbullet.com sign-in. Or use an access token below.
+  siteTimeout: No pushbullet.com sign-in yet. Sign in there, then try again.
+  otherAccount: pushbullet.com is signed in to a different Pushbullet account.
 linkKind:
   video: Video
   image: Image
@@ -524,6 +529,11 @@ dash:
   sendTo: Send to it
   apps: Apps
   allApps: All apps
+meFix:
+  title: Your pushes are under Following in the Pushbullet app
+  body: Pushbullet files pushes from apps under Following › Pushpilot. Switch to your pushbullet.com sign-in and they show under Me, like before.
+  action: Show them under Me
+  done: Done. New pushes show under Me.
 outbox:
   title: Waiting to send
   hint: 'These go out on their own once Pushbullet can be reached again.'

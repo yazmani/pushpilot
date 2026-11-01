@@ -100,7 +100,7 @@ whatsNew:
   seeAll: Tüm değişiklikleri gör
   label: Yenilikler
   v1_6:
-    browsers: 'Pushpilot artık Firefox''ta da çalışıyor ve Microsoft Edge Eklentileri''nde. Her yerde aynı hesap, aynı geçmiş.'
+    browsers: "Pushpilot artık Firefox'ta da çalışıyor ve Microsoft Edge Eklentileri'nde. Her yerde aynı hesap, aynı geçmiş."
   v1_5:
     fullPage: "Fotoğrafınızın yanındaki ⤢ düğmesiyle Pushpilot'u tam sayfa açın: genel bakış, büyük önizlemeli akış ve yan yana SMS'ler."
     files: 'Yeni Dosyalar ve Cihazlar sayfaları: gönderdiğiniz her şey galeri veya liste olarak, tüm cihazlarınız bir bakışta.'
@@ -253,7 +253,9 @@ signIn:
   title: Bu sayfayı telefonuna gönder.
   intro: Pushpilot, Pushbullet hesabınla bağlantıları, notları, dosyaları ve SMS’leri cihazların arasında taşır; telefonunun bildirimlerini de masaüstüne getirir.
   button: Pushbullet ile giriş yap
-  buttonHint: Pushpilot’a onay vermen için Pushbullet açılır. Şifren asla eklentiye ulaşmaz.
+  buttonHint: 'pushbullet.com’daki girişini kullanır (Pushpilot bunu okumak için bir kez izin ister). Şifren asla eklentiye ulaşmaz.'
+  useApproval: 'Bunun yerine Pushbullet sayfasında onayla'
+  useApprovalHint: 'pushbullet.com erişimi gerekmez, ancak Pushbullet uygulamaları gönderilerini Me yerine Following › Pushpilot altında gösterir.'
   useToken: Bunun yerine erişim jetonu kullan
   token: Erişim jetonu
   connect: Bağlan
@@ -263,6 +265,9 @@ signIn:
   cancelled: Giriş iptal edildi.
   openFailed: 'Pushbullet girişi açılamadı: $1'
   noToken: Pushbullet erişim jetonu döndürmedi$1.
+  siteDenied: 'Pushpilot’un pushbullet.com’daki girişini okuması gerekiyor. Ya da aşağıdan bir erişim jetonu kullan.'
+  siteTimeout: 'Henüz pushbullet.com’da giriş yapmamışsın. Orada giriş yap, sonra tekrar dene.'
+  otherAccount: 'pushbullet.com’da farklı bir Pushbullet hesabıyla giriş yapılmış.'
 linkKind:
   video: Video
   image: Görsel
@@ -520,6 +525,11 @@ dash:
   sendTo: 'Bu cihaza gönder'
   apps: 'Uygulamalar'
   allApps: 'Tüm uygulamalar'
+meFix:
+  title: 'Gönderilerin Pushbullet uygulamasında Following altında'
+  body: 'Pushbullet, uygulamalardan gelen gönderileri Following › Pushpilot altına koyar. pushbullet.com girişine geçersen eskisi gibi Me altında görünürler.'
+  action: 'Me altında göster'
+  done: 'Tamam. Yeni gönderiler Me altında görünür.'
 outbox:
   title: 'Gönderilmeyi bekliyor'
   hint: "Pushbullet'a yeniden ulaşılabildiğinde bunlar kendiliğinden gider."

@@ -83,6 +83,8 @@ export interface Push {
   receiver_email_normalized?: string;
   target_device_iden?: string;
   source_device_iden?: string;
+  /** Set when an OAuth app created the push; the Pushbullet apps file those under the app. */
+  client_iden?: string;
   channel_iden?: string;
 }
 
