@@ -141,6 +141,12 @@ function SettingsContent() {
               onChange={(prefillCurrentPage) => set({ prefillCurrentPage })}
             />
             <Toggle
+              label={i18n.t('settings.inlineSend')}
+              hint={i18n.t('settings.inlineSendHint')}
+              checked={settings.inlineSend}
+              onChange={(inlineSend) => set({ inlineSend })}
+            />
+            <Toggle
               label={i18n.t('settings.closeThePopupAfter')}
               checked={settings.closeAfterSend}
               onChange={(closeAfterSend) => set({ closeAfterSend })}

@@ -298,6 +298,8 @@ settings:
   startWithThePage: البدء بالصفحة الحالية
   startWithThePageHint: عند فتح Pushpilot يُملأ عنوان علامة التبويب الحالية ورابطها، جاهزَين للإرسال.
   closeThePopupAfter: إغلاق النافذة المنبثقة بعد الإرسال
+  inlineSend: 'زر الإرسال داخل مربع الرسالة'
+  inlineSendHint: 'زر إرسال صغير بجوار ما ترسله، ظاهر دائمًا بدلًا من أسفل النافذة.'
   rightClickMenu: قائمة النقر بزر الماوس الأيمن
   rightClickMenuHint: أرسل الصفحات والروابط والصور والنص المحدد من قائمة السياق في أي صفحة.
   pushesSentToAll: ما يُرسل إلى كل الأجهزة

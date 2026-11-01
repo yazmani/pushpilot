@@ -391,23 +391,36 @@ export function SendView({
             </div>
           )}
 
-          <textarea
-            dir="auto"
-            ref={bodyRef}
-            value={body}
-            onChange={(e) => {
-              edited.current = true;
-              setBody(e.target.value);
-            }}
-            rows={kind === 'note' ? (expanded ? 5 : 1) : 2}
-            placeholder={kind === 'note' ? i18n.t('send.notePlaceholder') : i18n.t('send.messagePlaceholder')}
-            aria-label={i18n.t('send.message')}
-            className={clsx(
-              'block max-h-56 w-full resize-none bg-transparent px-4 py-3 text-sm leading-relaxed outline-none [field-sizing:content] placeholder:text-faint',
-              kind !== 'note' && 'mt-2 border-t border-line',
+          <div className={clsx('flex items-end', kind !== 'note' && 'mt-2 border-t border-line')}>
+            <textarea
+              dir="auto"
+              ref={bodyRef}
+              value={body}
+              onChange={(e) => {
+                edited.current = true;
+                setBody(e.target.value);
+              }}
+              rows={kind === 'note' ? (expanded ? 5 : 1) : 2}
+              placeholder={kind === 'note' ? i18n.t('send.notePlaceholder') : i18n.t('send.messagePlaceholder')}
+              aria-label={i18n.t('send.message')}
+              className="block max-h-56 min-w-0 flex-1 resize-none bg-transparent px-4 py-3 text-sm leading-relaxed outline-none [field-sizing:content] placeholder:text-faint"
+              style={{ minHeight: kind === 'note' ? (expanded ? 140 : 48) : 46 }}
+            />
+            {/* Settings › Sending: Send right where you write, never scrolled out of view. */}
+            {settings.inlineSend && (
+              <Button
+                variant="primary"
+                className="mb-1.5 me-1.5 shrink-0"
+                onClick={send}
+                disabled={!canSend}
+                busy={sending}
+                title={`${i18n.t('send.sendTo', [targetLabel(selected, targets)])} (${isMac ? '⌘' : 'Ctrl'} ↵)`}
+              >
+                {!sending && <SendHorizontal size={15} strokeWidth={2.2} />}
+                {i18n.t('tabs.send')}
+              </Button>
             )}
-            style={{ minHeight: kind === 'note' ? (expanded ? 140 : 48) : 46 }}
-          />
+          </div>
         </div>
 
         <div className="mt-2 flex items-center gap-1.5">
@@ -445,7 +458,7 @@ export function SendView({
         <RecentPushes onSeeAll={onOpenFeed} />
       </div>
 
-      <div className="relative shrink-0 px-3.5 pb-3.5 pt-2">
+      <div className={clsx('relative shrink-0 px-3.5 pb-3.5 pt-2', settings.inlineSend && 'hidden')}>
         <Trail ref={trail} />
         <Button variant="primary" size="lg" className="w-full" onClick={send} disabled={!canSend} busy={sending}>
           {!sending && <SendHorizontal size={18} strokeWidth={2.2} />}

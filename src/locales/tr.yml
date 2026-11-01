@@ -100,7 +100,7 @@ whatsNew:
   seeAll: Tüm değişiklikleri gör
   label: Yenilikler
   v1_6:
-    browsers: 'Pushpilot artık Firefox''ta da çalışıyor ve Microsoft Edge Eklentileri''nde. Her yerde aynı hesap, aynı geçmiş.'
+    browsers: "Pushpilot artık Firefox'ta da çalışıyor ve Microsoft Edge Eklentileri'nde. Her yerde aynı hesap, aynı geçmiş."
   v1_5:
     fullPage: "Fotoğrafınızın yanındaki ⤢ düğmesiyle Pushpilot'u tam sayfa açın: genel bakış, büyük önizlemeli akış ve yan yana SMS'ler."
     files: 'Yeni Dosyalar ve Cihazlar sayfaları: gönderdiğiniz her şey galeri veya liste olarak, tüm cihazlarınız bir bakışta.'
@@ -296,6 +296,8 @@ settings:
   startWithThePage: Bulunduğun sayfayla başla
   startWithThePageHint: Pushpilot açılınca geçerli sekmenin başlığını ve bağlantısını doldurur, göndermeye hazır olur.
   closeThePopupAfter: Gönderdikten sonra açılır pencereyi kapat
+  inlineSend: 'Mesaj kutusunda Gönder düğmesi'
+  inlineSendHint: 'Gönderdiğin şeyin hemen yanında küçük bir Gönder düğmesi; altta değil, her zaman görünür.'
   rightClickMenu: Sağ tık menüsü
   rightClickMenuHint: Herhangi bir sayfanın sağ tık menüsünden sayfa, bağlantı, görsel ve seçili metin gönder.
   pushesSentToAll: Tüm cihazlara gönderilenler

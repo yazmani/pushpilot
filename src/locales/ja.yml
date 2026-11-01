@@ -298,6 +298,8 @@ settings:
   startWithThePage: '表示中のページから始める'
   startWithThePageHint: 'Pushpilot を開くと、現在のタブのタイトルとリンクが入力され、すぐに送信できます。'
   closeThePopupAfter: '送信後にポップアップを閉じる'
+  inlineSend: 'メッセージ欄に送信ボタン'
+  inlineSendHint: '送る内容のすぐ横に小さな送信ボタンを置き、下までスクロールしなくても常に見えるようにします。'
   rightClickMenu: '右クリックメニュー'
   rightClickMenuHint: 'どのページでも、コンテキストメニューからページ、リンク、画像、選択したテキストをプッシュできます。'
   pushesSentToAll: 'すべてのデバイス宛てのプッシュ'

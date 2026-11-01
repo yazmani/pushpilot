@@ -298,6 +298,8 @@ settings:
   startWithThePage: Mulai dengan halaman yang sedang dibuka
   startWithThePageHint: Saat dibuka, Pushpilot mengisi judul dan link tab saat ini, siap dikirim.
   closeThePopupAfter: Tutup popup setelah mengirim
+  inlineSend: 'Tombol Kirim di kotak pesan'
+  inlineSendHint: 'Tombol Kirim ringkas tepat di samping yang kamu kirim, selalu terlihat, bukan di bawah.'
   rightClickMenu: Menu klik kanan
   rightClickMenuHint: Kirim halaman, link, gambar, dan teks yang dipilih dari menu konteks halaman mana pun.
   pushesSentToAll: Kiriman ke semua perangkat

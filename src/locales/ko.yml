@@ -298,6 +298,8 @@ settings:
   startWithThePage: '지금 보고 있는 페이지로 시작'
   startWithThePageHint: 'Pushpilot을 열면 현재 탭의 제목과 링크가 채워져 바로 보낼 수 있어요.'
   closeThePopupAfter: '보낸 후 팝업 닫기'
+  inlineSend: '메시지 상자에 보내기 버튼'
+  inlineSendHint: '보내는 내용 바로 옆에 작은 보내기 버튼을 두어, 아래까지 내리지 않아도 항상 보입니다.'
   rightClickMenu: '우클릭 메뉴'
   rightClickMenuHint: '모든 페이지의 컨텍스트 메뉴에서 페이지, 링크, 이미지, 선택한 텍스트를 푸시할 수 있어요.'
   pushesSentToAll: '모든 기기로 보낸 푸시'
