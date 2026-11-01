@@ -2,6 +2,12 @@
 
 All notable changes are listed here. The format follows [Keep a Changelog](https://keepachangelog.com/), and versions follow [Semantic Versioning](https://semver.org/).
 
+## [Unreleased]
+
+### Fixed
+
+- With the browser zoomed above 100%, the popup's Send button no longer slides below the edge, where you had to scroll past your recent pushes to reach it.
+
 ## [1.6.0] - 2026-11-01
 
 ### Added
