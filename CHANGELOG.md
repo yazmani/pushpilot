@@ -4,9 +4,9 @@ All notable changes are listed here. The format follows [Keep a Changelog](https
 
 ## [Unreleased]
 
-### Added
+### Changed
 
-- Settings › Sending › "Send button in the message box": a compact Send button right where you write, so it's never scrolled out of view.
+- The Send button sits inside the message box, right where you write, so it's never scrolled out of view (it was at the bottom of the popup). Its tooltip names the device; ⌘/Ctrl+Enter still sends.
 
 ## [1.6.0] - 2026-11-01
 

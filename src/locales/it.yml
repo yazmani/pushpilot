@@ -297,8 +297,6 @@ settings:
   startWithThePage: Parti dalla pagina corrente
   startWithThePageHint: Quando apri Pushpilot, titolo e link della scheda corrente sono già compilati, pronti da inviare.
   closeThePopupAfter: Chiudi il popup dopo l’invio
-  inlineSend: 'Pulsante Invia nella casella del messaggio'
-  inlineSendHint: 'Un pulsante Invia compatto proprio accanto a ciò che invii, sempre in vista invece che in fondo.'
   rightClickMenu: Menu del tasto destro
   rightClickMenuHint: Invia pagine, link, immagini e testo selezionato dal menu contestuale di qualsiasi pagina.
   pushesSentToAll: Push inviati a tutti i dispositivi

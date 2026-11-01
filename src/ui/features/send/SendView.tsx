@@ -20,7 +20,6 @@ import { WhatsNew } from './WhatsNew';
 import { grabImage, type PageInfo, readPage } from './page';
 import { TargetGrid } from './TargetGrid';
 import { targetLabel, useTargets } from './targets';
-import { Trail, type TrailHandle } from './Trail';
 import { i18n } from '#i18n';
 
 type Kind = 'link' | 'note' | 'file';
@@ -67,7 +66,6 @@ export function SendView({
   const edited = useRef(false);
   const fileInput = useRef<HTMLInputElement>(null);
   const bodyRef = useRef<HTMLTextAreaElement>(null);
-  const trail = useRef<TrailHandle>(null);
 
   // Start on the remembered target; fall back to all devices if it's gone.
   useEffect(() => {
@@ -236,7 +234,6 @@ export function SendView({
         void store.updateSettings({ defaultTarget: selected[0] });
       if (queued) notify(i18n.t('send.queued'));
       else {
-        trail.current?.fire();
         void store.update('sendCount', (n) => n + 1);
         notify(i18n.t('send.sentTo', [where]));
       }
@@ -404,22 +401,22 @@ export function SendView({
               placeholder={kind === 'note' ? i18n.t('send.notePlaceholder') : i18n.t('send.messagePlaceholder')}
               aria-label={i18n.t('send.message')}
               className="block max-h-56 min-w-0 flex-1 resize-none bg-transparent px-4 py-3 text-sm leading-relaxed outline-none [field-sizing:content] placeholder:text-faint"
-              style={{ minHeight: kind === 'note' ? (expanded ? 140 : 48) : 46 }}
+              style={{ minHeight: kind === 'note' && expanded ? 140 : undefined }}
             />
-            {/* Settings › Sending: Send right where you write, never scrolled out of view. */}
-            {settings.inlineSend && (
-              <Button
-                variant="primary"
-                className="mb-1.5 me-1.5 shrink-0"
-                onClick={send}
-                disabled={!canSend}
-                busy={sending}
-                title={`${i18n.t('send.sendTo', [targetLabel(selected, targets)])} (${isMac ? '⌘' : 'Ctrl'} ↵)`}
-              >
-                {!sending && <SendHorizontal size={15} strokeWidth={2.2} />}
-                {i18n.t('tabs.send')}
-              </Button>
-            )}
+            {/* Send sits where you write, so it's never scrolled out of view: level with
+                the last line, inset as much from the bottom as from the side, its corner
+                following the card's. */}
+            <Button
+              variant="primary"
+              className="mb-[6px] me-[6px] shrink-0 rounded-[14px]"
+              onClick={send}
+              disabled={!canSend}
+              busy={sending}
+              title={`${i18n.t('send.sendTo', [targetLabel(selected, targets)])} (${isMac ? '⌘' : 'Ctrl'} ↵)`}
+            >
+              {!sending && <SendHorizontal size={15} strokeWidth={2.2} />}
+              {sending ? (kind === 'file' ? i18n.t('send.uploading') : i18n.t('send.sending')) : i18n.t('tabs.send')}
+            </Button>
           </div>
         </div>
 
@@ -456,25 +453,6 @@ export function SendView({
         <SupportPrompt />
         <RatePrompt />
         <RecentPushes onSeeAll={onOpenFeed} />
-      </div>
-
-      <div className={clsx('relative shrink-0 px-3.5 pb-3.5 pt-2', settings.inlineSend && 'hidden')}>
-        <Trail ref={trail} />
-        <Button variant="primary" size="lg" className="w-full" onClick={send} disabled={!canSend} busy={sending}>
-          {!sending && <SendHorizontal size={18} strokeWidth={2.2} />}
-          <span className="truncate">
-            {sending
-              ? kind === 'file'
-                ? i18n.t('send.uploading')
-                : i18n.t('send.sending')
-              : i18n.t('send.sendTo', [targetLabel(selected, targets)])}
-          </span>
-          {!sending && (
-            <kbd className="ms-auto rounded-md bg-black/10 px-1.5 py-0.5 font-sans text-2xs font-bold dark:bg-black/15">
-              {isMac ? '⌘' : 'Ctrl'} ↵
-            </kbd>
-          )}
-        </Button>
       </div>
     </div>
   );

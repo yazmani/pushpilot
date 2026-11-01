@@ -12,7 +12,6 @@
       defaultTab: params.get('tab') || 'send',
       defaultTarget: 'device:d-pixel',
       linkPreviews: true,
-      inlineSend: params.get('inlineSend') === '1',
     },
   };
   const listeners = [];

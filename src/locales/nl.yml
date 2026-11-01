@@ -297,8 +297,6 @@ settings:
   startWithThePage: Beginnen met de huidige pagina
   startWithThePageHint: Als je Pushpilot opent, zijn de titel en link van het huidige tabblad al ingevuld, klaar om te versturen.
   closeThePopupAfter: Pop-up sluiten na versturen
-  inlineSend: 'Verstuurknop in het berichtvak'
-  inlineSendHint: 'Een compacte verstuurknop direct naast wat je verstuurt, altijd in beeld in plaats van onderaan.'
   rightClickMenu: Rechtsklikmenu
   rightClickMenuHint: Push pagina’s, links, afbeeldingen en geselecteerde tekst via het contextmenu van elke pagina.
   pushesSentToAll: Pushes naar alle apparaten

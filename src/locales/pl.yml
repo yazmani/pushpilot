@@ -296,8 +296,6 @@ settings:
   startWithThePage: Zaczynaj od bieżącej strony
   startWithThePageHint: Po otwarciu Pushpilot uzupełnia tytuł i link bieżącej karty – gotowe do wysłania.
   closeThePopupAfter: Zamykaj okienko po wysłaniu
-  inlineSend: 'Przycisk Wyślij w polu wiadomości'
-  inlineSendHint: 'Mały przycisk Wyślij tuż obok tego, co wysyłasz – zawsze widoczny zamiast na dole.'
   rightClickMenu: Menu kontekstowe
   rightClickMenuHint: Wysyłaj strony, linki, obrazy i zaznaczony tekst z menu kontekstowego na dowolnej stronie.
   pushesSentToAll: Pushe wysłane na wszystkie urządzenia

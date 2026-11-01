@@ -298,8 +298,6 @@ settings:
   startWithThePage: 'Start with the page you’re on'
   startWithThePageHint: 'Opening Pushpilot fills in the current tab’s title and link, ready to send.'
   closeThePopupAfter: 'Close the popup after sending'
-  inlineSend: 'Send button in the message box'
-  inlineSendHint: 'A compact Send button right next to what you’re sending, always in view instead of at the bottom.'
   rightClickMenu: 'Right-click menu'
   rightClickMenuHint: 'Push pages, links, images and selected text from any page’s context menu.'
   pushesSentToAll: 'Pushes sent to all devices'

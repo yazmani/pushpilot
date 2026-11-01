@@ -297,8 +297,6 @@ settings:
   startWithThePage: Mit der aktuellen Seite starten
   startWithThePageHint: Beim Öffnen von Pushpilot sind Titel und Link des aktuellen Tabs schon eingetragen, bereit zum Senden.
   closeThePopupAfter: Popup nach dem Senden schließen
-  inlineSend: 'Senden-Knopf im Nachrichtenfeld'
-  inlineSendHint: 'Ein kompakter Senden-Knopf direkt neben dem, was du sendest – immer sichtbar statt ganz unten.'
   rightClickMenu: Rechtsklick-Menü
   rightClickMenuHint: Seiten, Links, Bilder und markierten Text über das Kontextmenü jeder Seite pushen.
   pushesSentToAll: Pushes an alle Geräte

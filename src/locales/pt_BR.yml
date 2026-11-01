@@ -298,8 +298,6 @@ settings:
   startWithThePage: 'Começar com a página atual'
   startWithThePageHint: 'Ao abrir, o Pushpilot preenche o título e o link da aba atual, prontos para enviar.'
   closeThePopupAfter: 'Fechar o pop-up depois de enviar'
-  inlineSend: 'Botão Enviar na caixa de mensagem'
-  inlineSendHint: 'Um botão Enviar compacto ao lado do que você envia, sempre visível em vez de lá embaixo.'
   rightClickMenu: 'Menu do botão direito'
   rightClickMenuHint: 'Envie páginas, links, imagens e texto selecionado pelo menu de contexto de qualquer página.'
   pushesSentToAll: 'Envios para todos os dispositivos'

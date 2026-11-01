@@ -298,8 +298,6 @@ settings:
   startWithThePage: Bắt đầu với trang đang mở
   startWithThePageHint: Khi mở Pushpilot, tiêu đề và liên kết của tab hiện tại được điền sẵn để gửi.
   closeThePopupAfter: Đóng cửa sổ bật lên sau khi gửi
-  inlineSend: 'Nút Gửi trong ô tin nhắn'
-  inlineSendHint: 'Nút Gửi gọn ngay cạnh nội dung bạn gửi, luôn hiển thị thay vì ở dưới cùng.'
   rightClickMenu: Menu chuột phải
   rightClickMenuHint: Gửi trang, liên kết, hình ảnh và văn bản đã chọn từ menu ngữ cảnh của mọi trang.
   pushesSentToAll: Mục gửi tới tất cả thiết bị

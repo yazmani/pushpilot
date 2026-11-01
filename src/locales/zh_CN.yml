@@ -298,8 +298,6 @@ settings:
   startWithThePage: '从当前页面开始'
   startWithThePageHint: '打开 Pushpilot 时自动填入当前标签页的标题和链接，随时可以发送。'
   closeThePopupAfter: '发送后关闭弹出窗口'
-  inlineSend: '发送按钮放在消息框内'
-  inlineSendHint: '在要发送的内容旁放一个小巧的发送按钮，始终可见，不用滚到底部。'
   rightClickMenu: '右键菜单'
   rightClickMenuHint: '在任意页面的右键菜单中推送页面、链接、图片和选中的文字。'
   pushesSentToAll: '发送到所有设备的推送'

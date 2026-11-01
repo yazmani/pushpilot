@@ -298,8 +298,6 @@ settings:
   startWithThePage: 'Partir de la page ouverte'
   startWithThePageHint: 'À l’ouverture, Pushpilot reprend le titre et le lien de l’onglet actuel, prêts à envoyer.'
   closeThePopupAfter: 'Fermer la popup après l’envoi'
-  inlineSend: 'Bouton Envoyer dans la zone du message'
-  inlineSendHint: 'Un bouton Envoyer compact juste à côté de ce que vous envoyez, toujours visible au lieu d’être en bas.'
   rightClickMenu: 'Menu du clic droit'
   rightClickMenuHint: 'Envoyez pages, liens, images et texte sélectionné depuis le menu contextuel de n’importe quelle page.'
   pushesSentToAll: 'Envois à tous les appareils'

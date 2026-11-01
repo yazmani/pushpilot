@@ -298,8 +298,6 @@ settings:
   startWithThePage: '從目前的頁面開始'
   startWithThePageHint: '開啟 Pushpilot 時會自動填入目前分頁的標題和連結，隨時可以傳送。'
   closeThePopupAfter: '傳送後關閉彈出式視窗'
-  inlineSend: '傳送按鈕放在訊息框內'
-  inlineSendHint: '在要傳送的內容旁放一個小巧的傳送按鈕，隨時可見，不必捲到底部。'
   rightClickMenu: '右鍵選單'
   rightClickMenuHint: '在任何頁面的右鍵選單中推送頁面、連結、圖片和選取的文字。'
   pushesSentToAll: '傳送到所有裝置的推送'

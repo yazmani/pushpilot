@@ -25,8 +25,6 @@ export interface Settings {
   /** Send the current tab's link when the popup opens, prefilled. */
   prefillCurrentPage: boolean;
   closeAfterSend: boolean;
-  /** A compact Send button inside the message box, instead of the full-width one at the bottom. */
-  inlineSend: boolean;
   contextMenu: boolean;
 
   // Which incoming pushes count (notify, badge, auto-open)
@@ -88,7 +86,6 @@ export const defaultSettings: Settings = {
   defaultTarget: 'all',
   prefillCurrentPage: true,
   closeAfterSend: false,
-  inlineSend: false,
   contextMenu: true,
   receiveAll: true,
   receiveOthers: false,
