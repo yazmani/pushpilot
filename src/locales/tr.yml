@@ -99,6 +99,10 @@ whatsNew:
   title: Pushpilot $1 sürümündeki yenilikler
   seeAll: Tüm değişiklikleri gör
   label: Yenilikler
+  v1_7:
+    me: 'pushbullet.com hesabınla giriş yap, push’ların Pushbullet uygulamalarında yeniden Me altında görünsün.'
+    devices: 'Eski cihazları Ayarlar › Cihazlar’dan kaldır. Yeniden yüklemek artık kopya cihaz eklemiyor.'
+    send: 'Gönder düğmesi artık mesaj kutusunun içinde, her zaman görünür.'
   v1_6:
     browsers: "Pushpilot artık Firefox'ta da çalışıyor ve Microsoft Edge Eklentileri'nde. Her yerde aynı hesap, aynı geçmiş."
   v1_5:

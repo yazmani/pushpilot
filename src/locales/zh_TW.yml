@@ -101,6 +101,10 @@ whatsNew:
   title: Pushpilot $1 新功能
   seeAll: 查看所有變更
   label: 新功能
+  v1_7:
+    me: '用 pushbullet.com 帳號登入，你的推送會重新顯示在 Pushbullet 應用程式的 Me 中。'
+    devices: '在 設定 › 裝置 中移除舊裝置。重新安裝不再產生重複裝置。'
+    send: '傳送按鈕現在就在訊息框裡，隨時可見。'
   v1_6:
     browsers: 'Pushpilot 現在也能在 Firefox 使用，並已上架 Microsoft Edge 附加元件商店。到哪裡都是同一個帳戶、同一份紀錄。'
   v1_5:

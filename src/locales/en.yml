@@ -101,6 +101,10 @@ whatsNew:
   title: New in Pushpilot $1
   seeAll: See all changes
   label: What’s new
+  v1_7:
+    me: 'Sign in with your pushbullet.com account and your pushes show under Me in the Pushbullet apps again.'
+    devices: 'Remove old devices in Settings › Devices. Reinstalling no longer adds a duplicate.'
+    send: 'The Send button now sits right in the message box, always in view.'
   v1_6:
     browsers: 'Pushpilot now runs in Firefox too, and is on Microsoft Edge Add-ons. Same account, same history everywhere.'
   v1_5:

@@ -100,6 +100,10 @@ whatsNew:
   title: Neu in Pushpilot $1
   seeAll: Alle Änderungen ansehen
   label: Neuigkeiten
+  v1_7:
+    me: 'Melde dich mit deinem pushbullet.com-Konto an, dann stehen deine Pushes in den Pushbullet-Apps wieder unter Me.'
+    devices: 'Alte Geräte entfernst du unter Einstellungen › Geräte. Eine Neuinstallation legt kein Duplikat mehr an.'
+    send: 'Der Senden-Knopf sitzt jetzt direkt im Nachrichtenfeld, immer sichtbar.'
   v1_6:
     browsers: 'Pushpilot läuft jetzt auch in Firefox und ist bei Microsoft Edge Add-ons. Gleiches Konto, gleicher Verlauf überall.'
   v1_5:

@@ -101,6 +101,10 @@ whatsNew:
   title: Baru di Pushpilot $1
   seeAll: Lihat semua perubahan
   label: Yang baru
+  v1_7:
+    me: 'Masuk dengan akun pushbullet.com-mu dan push-mu kembali muncul di Me di aplikasi Pushbullet.'
+    devices: 'Hapus perangkat lama di Setelan › Perangkat. Memasang ulang tidak lagi menambah duplikat.'
+    send: 'Tombol Kirim kini ada langsung di kotak pesan, selalu terlihat.'
   v1_6:
     browsers: 'Pushpilot kini juga berjalan di Firefox dan tersedia di Microsoft Edge Add-ons. Akun dan riwayat yang sama di mana pun.'
   v1_5:

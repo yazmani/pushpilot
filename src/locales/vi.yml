@@ -101,6 +101,10 @@ whatsNew:
   title: Có gì mới trong Pushpilot $1
   seeAll: Xem mọi thay đổi
   label: Có gì mới
+  v1_7:
+    me: 'Đăng nhập bằng tài khoản pushbullet.com và các push của bạn lại hiện trong Me trên ứng dụng Pushbullet.'
+    devices: 'Xóa thiết bị cũ trong Cài đặt › Thiết bị. Cài lại không còn thêm thiết bị trùng.'
+    send: 'Nút Gửi giờ nằm ngay trong ô tin nhắn, luôn hiển thị.'
   v1_6:
     browsers: 'Pushpilot giờ chạy cả trên Firefox và có mặt trên Microsoft Edge Add-ons. Cùng tài khoản, cùng lịch sử ở mọi nơi.'
   v1_5:

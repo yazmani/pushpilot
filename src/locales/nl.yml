@@ -100,6 +100,10 @@ whatsNew:
   title: Nieuw in Pushpilot $1
   seeAll: Alle wijzigingen bekijken
   label: Wat is er nieuw
+  v1_7:
+    me: 'Log in met je pushbullet.com-account en je pushes staan in de Pushbullet-apps weer onder Me.'
+    devices: 'Verwijder oude apparaten via Instellingen › Apparaten. Opnieuw installeren voegt geen dubbel apparaat meer toe.'
+    send: 'De verstuurknop zit nu in het berichtvak, altijd in beeld.'
   v1_6:
     browsers: 'Pushpilot werkt nu ook in Firefox en staat in Microsoft Edge Add-ons. Overal hetzelfde account en dezelfde geschiedenis.'
   v1_5:

@@ -101,6 +101,10 @@ whatsNew:
   title: Pushpilot $1 新功能
   seeAll: 查看所有更新
   label: 新功能
+  v1_7:
+    me: '用 pushbullet.com 账号登录，你的推送会重新显示在 Pushbullet 应用的 Me 中。'
+    devices: '在 设置 › 设备 中移除旧设备。重新安装不再产生重复设备。'
+    send: '发送按钮现在就在消息框里，始终可见。'
   v1_6:
     browsers: 'Pushpilot 现已支持 Firefox，并上架 Microsoft Edge 加载项商店。任何地方都是同一账户、同一记录。'
   v1_5:
