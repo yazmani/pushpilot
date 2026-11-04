@@ -13,7 +13,7 @@ A fast, modern, open-source Manifest V3 client for [Pushbullet](https://www.push
 [![CI](https://github.com/yazmani/pushpilot/actions/workflows/ci.yml/badge.svg)](https://github.com/yazmani/pushpilot/actions/workflows/ci.yml)
 [![License: AGPL-3.0](https://img.shields.io/badge/license-AGPL--3.0-16a35a)](LICENSE)
 ![Manifest V3](https://img.shields.io/badge/Manifest-V3-16a35a)
-![Chrome, Brave, Edge](https://img.shields.io/badge/works%20in-Chrome%20%7C%20Brave%20%7C%20Edge-0b7f43)
+![Chrome, Brave, Edge, Firefox](https://img.shields.io/badge/works%20in-Chrome%20%7C%20Brave%20%7C%20Edge%20%7C%20Firefox-0b7f43)
 [![Sponsor](https://img.shields.io/badge/sponsor-GitHub-ea4aaa?logo=githubsponsors&logoColor=white)](https://github.com/sponsors/yazmani)
 [![Ko-fi](https://img.shields.io/badge/buy%20me%20a%20coffee-Ko--fi-ff5e5b?logo=kofi&logoColor=white)](https://ko-fi.com/pushpilot)
 
@@ -78,7 +78,7 @@ The official Pushbullet extension is built on Manifest V2, which current version
 
 - **[Chrome Web Store](https://chromewebstore.google.com/detail/pushpilot-for-pushbullet/pdiijobemepbckkbdeacfngodbeddmcf):** one click, with automatic updates. Works in Chrome, Brave and Edge.
 - **From a release:** download the latest `pushpilot-*-chrome.zip` from [Releases](https://github.com/yazmani/pushpilot/releases), unzip it, open `chrome://extensions` (or `brave://extensions`, `edge://extensions`), turn on **Developer mode**, click **Load unpacked** and pick the unzipped folder.
-- **Firefox:** coming to Firefox Add-ons. Meanwhile, download `pushpilot-*-firefox.zip` from [Releases](https://github.com/yazmani/pushpilot/releases), open `about:debugging#/runtime/this-firefox` and choose **Load Temporary Add-on** (it stays until Firefox restarts).
+- **[Firefox Add-ons](https://addons.mozilla.org/firefox/addon/pushpilot-for-pushbullet/):** Firefox 140 or newer, with automatic updates.
 - **From source:** see [Development](#development).
 
 Requires Chrome 127 or newer (or a browser based on it), or Firefox 140 or newer. In Firefox, the push-what-you-copied shortcut works while Firefox is focused rather than from any app, and site icons next to links aren't shown.

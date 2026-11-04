@@ -14,6 +14,8 @@ export const REVIEWS: Record<string, string> = {
   // Microsoft Edge Add-ons: reviews are on the listing page itself.
   coeohelkfpdbkdjilgkdnpbeflgdlmjh:
     'https://microsoftedge.microsoft.com/addons/detail/pushpilot-for-pushbullet/coeohelkfpdbkdjilgkdnpbeflgdlmjh',
+  // Firefox Add-ons (no locale in the path: AMO picks the visitor's).
+  'pushpilot@yazmani.github.io': 'https://addons.mozilla.org/firefox/addon/pushpilot-for-pushbullet/reviews/',
 };
 
 /**
