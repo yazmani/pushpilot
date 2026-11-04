@@ -2,7 +2,7 @@ import { browser } from 'wxt/browser';
 import { deriveKey } from '@/core/pushbullet/crypto';
 import type { Rpc, RpcMessage, RpcName } from '@/core/messaging/rpc';
 import * as store from '@/core/storage/store';
-import { renameDevice, renameSelfDevice, setChatMuted, syncMe, syncPeople } from '@/background/services/account';
+import { deleteDevices, renameDevice, renameSelfDevice, setChatMuted, syncMe, syncPeople } from '@/background/services/account';
 import { bootstrap, signInWithToken, signOut } from '@/background/services/auth';
 import { show } from '@/background/platform/notifications';
 import { playSound } from '@/background/platform/offscreen';
@@ -26,8 +26,8 @@ import { i18n } from '#i18n';
 type Handlers = { [K in RpcName]: (req: Rpc[K]['req']) => Promise<Rpc[K]['res']> };
 
 const handlers: Handlers = {
-  'auth.token': async ({ token }) => {
-    await signInWithToken(token);
+  'auth.token': async ({ token, kind, sameAccount }) => {
+    await signInWithToken(token, { kind, sameAccount });
   },
   'auth.signout': () => signOut(),
   sync: async () => {
@@ -80,6 +80,7 @@ const handlers: Handlers = {
     void syncPeople().catch(() => undefined);
   },
   'device.rename': ({ name, iden }) => (iden ? renameDevice(iden, name) : renameSelfDevice(name)),
+  'device.delete': ({ idens }) => deleteDevices(idens),
   'sound.preview': async ({ choice }) => {
     await playSound(choice);
   },

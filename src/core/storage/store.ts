@@ -13,6 +13,8 @@ import type {
 import type { LinkPreview } from '@/core/utils/links';
 import type { OutboxItem } from '@/background/services/outbox';
 
+/** '' is an install from before this was recorded. */
+export type AuthKind = 'site' | 'oauth' | 'token' | '';
 export type Theme = 'system' | 'light' | 'dark';
 export type Tab = 'send' | 'feed' | 'phone' | 'sms';
 export type SoundChoice = 'takeoff' | 'chime' | 'pop' | 'ding' | 'custom';
@@ -169,6 +171,11 @@ export interface Schema {
   setupGuide: boolean;
   /** The push-clipboard shortcut was used at least once (a step of the checklist). */
   triedShortcut: boolean;
+  /**
+   * How this install signed in. Pushes made with an OAuth app's token ('oauth')
+   * show in the Pushbullet apps under Following › Pushpilot instead of Me.
+   */
+  authKind: AuthKind;
   /** Device warnings (see core/setup.ts) dismissed from the popup, by issueKey(). */
   dismissedIssues: string[];
 }
@@ -204,6 +211,7 @@ export const defaults: Schema = {
   whatsNewSeen: '',
   setupGuide: false,
   triedShortcut: false,
+  authKind: '',
   dismissedIssues: [],
 };
 
@@ -274,6 +282,7 @@ export function onChange(fn: (changes: Partial<Schema>) => void): () => void {
  */
 export const accountKeys: Key[] = [
   'token',
+  'authKind',
   'me',
   'devices',
   'chats',

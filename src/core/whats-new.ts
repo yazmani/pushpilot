@@ -3,6 +3,7 @@ import { i18n } from '#i18n';
 // Highlights shown once in the popup after an update to a new minor version.
 // Patch releases show nothing new; the full list is in CHANGELOG.md.
 export const WHATS_NEW: Record<string, () => string[]> = {
+  '1.7': () => [i18n.t('whatsNew.v1_7.me'), i18n.t('whatsNew.v1_7.devices'), i18n.t('whatsNew.v1_7.send')],
   '1.6': () => [i18n.t('whatsNew.v1_6.browsers')],
   '1.5': () => [i18n.t('whatsNew.v1_5.fullPage'), i18n.t('whatsNew.v1_5.files')],
   '1.4': () => [i18n.t('whatsNew.v1_4.jump'), i18n.t('whatsNew.v1_4.numbers')],

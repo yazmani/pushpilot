@@ -101,6 +101,10 @@ whatsNew:
   title: Pushpilot $1 新功能
   seeAll: 查看所有更新
   label: 新功能
+  v1_7:
+    me: '用 pushbullet.com 账号登录，你的推送会重新显示在 Pushbullet 应用的 Me 中。'
+    devices: '在 设置 › 设备 中移除旧设备。重新安装不再产生重复设备。'
+    send: '发送按钮现在就在消息框里，始终可见。'
   v1_6:
     browsers: 'Pushpilot 现已支持 Firefox，并上架 Microsoft Edge 加载项商店。任何地方都是同一账户、同一记录。'
   v1_5:
@@ -255,7 +259,9 @@ signIn:
   title: 把这个页面发送到手机。
   intro: Pushpilot 借助你的 Pushbullet 账号，在设备之间传送链接、笔记、文件和短信，并将手机通知带到电脑上。
   button: 使用 Pushbullet 登录
-  buttonHint: 将打开 Pushbullet 以授权 Pushpilot。你的密码不会经过此扩展程序。
+  buttonHint: '使用你在 pushbullet.com 的登录状态（Pushpilot 只会请求一次读取权限）。你的密码不会经过此扩展程序。'
+  useApproval: '改为在 Pushbullet 页面上授权'
+  useApprovalHint: '无需访问 pushbullet.com，但 Pushbullet 应用会把你的推送显示在 Following › Pushpilot 而不是 Me。'
   useToken: 改用访问令牌
   token: 访问令牌
   connect: 连接
@@ -265,6 +271,9 @@ signIn:
   cancelled: 登录已取消。
   openFailed: 无法打开 Pushbullet 登录页面：$1
   noToken: Pushbullet 未返回访问令牌$1。
+  siteDenied: 'Pushpilot 需要读取你在 pushbullet.com 的登录状态。也可以在下方改用访问令牌。'
+  siteTimeout: '你还没有登录 pushbullet.com。请先在那里登录，然后重试。'
+  otherAccount: 'pushbullet.com 上登录的是另一个 Pushbullet 账号。'
 linkKind:
   video: 视频
   image: 图片
@@ -371,9 +380,18 @@ settings:
   deviceLineSms: '$1，可发短信。上次活跃：$2'
   receiving: '接收中'
   notConnected: '未连接'
-  removeOldBefore: '可在'
-  removeOldLink: 'pushbullet.com › Devices'
-  removeOldAfter: ' 中移除旧设备。在手机上打开 Pushbullet 应用后，它会重新显示为“接收中”。'
+  removeDevice: '移除 $1'
+  remove: '移除'
+  cleanupHint: '未连接或 30 天内无活动的设备（最近活动）：'
+  cleanup:
+    1: '移除 1 台未使用的设备'
+    n: '移除 $1 台未使用的设备'
+  cleanupConfirm:
+    1: '移除'
+    n: '全部移除（$1）'
+  removedDevices:
+    1: '已移除 1 台设备'
+    n: '已移除 $1 台设备'
   otherBrowsers: '发送到其他浏览器的推送'
   otherBrowsersHint: '你的手机可能仍将旧版 Pushbullet 扩展程序显示为“Chrome”。勾选希望在这里接收其推送的浏览器。'
   renameLabel: '此浏览器在你其他设备上显示的名称'
@@ -522,6 +540,11 @@ dash:
   sendTo: '发送到此设备'
   apps: '应用'
   allApps: '所有应用'
+meFix:
+  title: '你的推送在 Pushbullet 应用的 Following 中'
+  body: 'Pushbullet 会把来自应用的推送放在 Following › Pushpilot 下。切换为 pushbullet.com 的登录状态后，推送会像以前一样显示在 Me 中。'
+  action: '显示在 Me 中'
+  done: '已完成。新的推送会显示在 Me 中。'
 outbox:
   title: '等待发送'
   hint: '可以重新连接 Pushbullet 后，这些会自动发出。'

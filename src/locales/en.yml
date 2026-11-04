@@ -101,6 +101,10 @@ whatsNew:
   title: New in Pushpilot $1
   seeAll: See all changes
   label: What’s new
+  v1_7:
+    me: 'Sign in with your pushbullet.com account and your pushes show under Me in the Pushbullet apps again.'
+    devices: 'Remove old devices in Settings › Devices. Reinstalling no longer adds a duplicate.'
+    send: 'The Send button now sits right in the message box, always in view.'
   v1_6:
     browsers: 'Pushpilot now runs in Firefox too, and is on Microsoft Edge Add-ons. Same account, same history everywhere.'
   v1_5:
@@ -255,7 +259,9 @@ signIn:
   title: Send this page to your phone.
   intro: Pushpilot moves links, notes, files and texts between your devices with your Pushbullet account, and brings your phone’s notifications to your desktop.
   button: Sign in with Pushbullet
-  buttonHint: Opens Pushbullet so you can approve Pushpilot. Your password never reaches the extension.
+  buttonHint: Uses your pushbullet.com sign-in (Pushpilot asks once to read it). Your password never reaches the extension.
+  useApproval: 'Approve on Pushbullet''s page instead'
+  useApprovalHint: 'No pushbullet.com access needed, but the Pushbullet apps show your pushes under Following › Pushpilot instead of Me.'
   useToken: Use an access token instead
   token: Access token
   connect: Connect
@@ -265,6 +271,9 @@ signIn:
   cancelled: Sign-in was cancelled.
   openFailed: 'Couldn’t open Pushbullet’s sign-in: $1'
   noToken: Pushbullet didn’t return an access token$1.
+  siteDenied: Pushpilot needs to read your pushbullet.com sign-in. Or use an access token below.
+  siteTimeout: No pushbullet.com sign-in yet. Sign in there, then try again.
+  otherAccount: pushbullet.com is signed in to a different Pushbullet account.
 linkKind:
   video: Video
   image: Image
@@ -371,9 +380,18 @@ settings:
   deviceLineSms: '$1, can text. Last active $2'
   receiving: 'Receiving'
   notConnected: 'Not connected'
-  removeOldBefore: 'Remove old devices on'
-  removeOldLink: 'pushbullet.com › Devices'
-  removeOldAfter: '. A phone shows up as Receiving again after you open the Pushbullet app on it.'
+  removeDevice: 'Remove $1'
+  remove: 'Remove'
+  cleanupHint: 'Not connected, or nothing from them in 30 days (last active):'
+  cleanup:
+    1: 'Remove 1 unused device'
+    n: 'Remove $1 unused devices'
+  cleanupConfirm:
+    1: 'Remove it'
+    n: 'Remove all $1'
+  removedDevices:
+    1: 'Removed 1 device'
+    n: 'Removed $1 devices'
   otherBrowsers: 'Pushes sent to another browser'
   otherBrowsersHint: 'Your phone may still list the old Pushbullet extension as “Chrome”. Tick any browser whose pushes should arrive here.'
   renameLabel: 'This browser’s name on your other devices'
@@ -524,6 +542,11 @@ dash:
   sendTo: Send to it
   apps: Apps
   allApps: All apps
+meFix:
+  title: Your pushes are under Following in the Pushbullet app
+  body: Pushbullet files pushes from apps under Following › Pushpilot. Switch to your pushbullet.com sign-in and they show under Me, like before.
+  action: Show them under Me
+  done: Done. New pushes show under Me.
 outbox:
   title: Waiting to send
   hint: 'These go out on their own once Pushbullet can be reached again.'

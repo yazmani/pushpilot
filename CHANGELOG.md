@@ -8,6 +8,26 @@ All notable changes are listed here. The format follows [Keep a Changelog](https
 
 - Firefox users can rate Pushpilot on Firefox Add-ons from Settings and the rating prompt.
 
+## [1.7.0] - 2026-11-01
+
+### Added
+
+- Already signed in? Settings › Account (and a one-time note in the popup) offers "Show them under Me", which switches over without losing anything.
+- The sign-in page keeps Pushbullet's approval page as a second option, for anyone who'd rather not give Pushpilot pushbullet.com access, and says what it changes.
+- Remove devices from Settings › Devices: one at a time (the bin next to the name), or all unused ones at once: not connected, or nothing from them in 30 days. This browser's own device is never removed.
+
+### Changed
+
+- "Sign in with Pushbullet" now uses your pushbullet.com sign-in, like the original extension (Pushpilot asks once to read it). A pushbullet.com tab you already have open is used as is; otherwise a small sign-in window opens and closes once you're in. Pushes you send then show in the Pushbullet apps under **Me** again. Signing in through Pushbullet's OAuth page made them land under Following › Pushpilot; that stays available as an option you pick, never a silent fallback. If pushbullet.com still holds a key from before you signed out there, Pushpilot waits for you to sign in again instead of using it.
+- The Send button sits inside the message box, right where you write, so it's never scrolled out of view (it was at the bottom of the popup). Its tooltip names the device; ⌘/Ctrl+Enter still sends.
+- Each Pushpilot refreshes its own device once a day, so an install you no longer use shows as unused after a month instead of looking active forever.
+- Reinstalling Pushpilot, or signing out and back in, reuses this browser's device instead of adding another "Brave on macOS". The device ID is kept in one cookie (never sent anywhere), since uninstalling wipes extension storage; hence the new `cookies` permission, which shows no prompt. A new profile reuses a device with the same name only once it has been unused for 30 days.
+
+### Fixed
+
+- With the browser zoomed above 100%, the popup no longer runs past its bottom edge.
+- Firefox installs register as "Firefox on macOS" (and so on), not "Chrome on macOS".
+
 ## [1.6.0] - 2026-11-01
 
 ### Added
@@ -159,6 +179,7 @@ First public release.
 - Popup, side panel and pop-out window; light and dark themes; snooze; unread badge.
 - One-click sign-in through pushbullet.com, or an access token.
 
+[1.7.0]: https://github.com/yazmani/pushpilot/releases/tag/v1.7.0
 [1.6.0]: https://github.com/yazmani/pushpilot/releases/tag/v1.6.0
 [1.5.1]: https://github.com/yazmani/pushpilot/releases/tag/v1.5.1
 [1.5.0]: https://github.com/yazmani/pushpilot/releases/tag/v1.5.0

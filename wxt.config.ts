@@ -75,6 +75,8 @@ export default defineConfig({
         'scripting',
         'clipboardRead',
         'clipboardWrite',
+        // Remembers this browser's Pushbullet device across reinstalls (account.ts).
+        'cookies',
         // Chrome only: Firefox has a sidebar_action (from the sidepanel page), a
         // DOM in its background page, and no favicon service.
         ...(firefox ? [] : ['offscreen', 'sidePanel', 'favicon']),

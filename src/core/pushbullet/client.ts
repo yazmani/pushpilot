@@ -84,6 +84,10 @@ export class Pushbullet {
     return this.call<Device>(`/v2/devices/${iden}`, { body: patch as Json });
   }
 
+  deleteDevice(iden: string) {
+    return this.call<Json>(`/v2/devices/${iden}`, { method: 'DELETE' });
+  }
+
   async chats() {
     return (await this.call<{ chats: Chat[] }>('/v2/chats?active=true')).chats.filter((c) => c.active);
   }

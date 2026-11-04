@@ -19,7 +19,7 @@ Everything is stored locally in your browser's extension storage (`chrome.storag
 - A local history of recent pushes, mirrored notifications, SMS thread previews and link previews.
 - Your settings, including an optional end-to-end encryption key derived from your password. Your password itself is never stored.
 
-Signing out removes your account data from the extension. Uninstalling Pushpilot removes all of it.
+Signing out removes your account data from the extension. Uninstalling Pushpilot removes all of it, except one cookie: the ID of this browser's Pushbullet device, kept in your browser's cookie jar so a reinstall reuses that device instead of adding a duplicate. It's set on a Pushbullet API path no request uses, so it's never sent anywhere; clearing your cookies removes it.
 
 ## What Pushpilot sends, and to whom
 

@@ -101,6 +101,10 @@ whatsNew:
   title: Pushpilot $1 の新機能
   seeAll: すべての変更を表示
   label: 新機能
+  v1_7:
+    me: 'pushbullet.com のアカウントでサインインすると、プッシュが Pushbullet アプリの Me に再び表示されます。'
+    devices: '古いデバイスは 設定 › デバイス から削除できます。再インストールしても重複は増えません。'
+    send: '送信ボタンがメッセージ欄の中に移り、いつでも見えるようになりました。'
   v1_6:
     browsers: 'Pushpilot が Firefox でも動くようになり、Microsoft Edge アドオンにも登場。どこでも同じアカウント、同じ履歴です。'
   v1_5:
@@ -255,7 +259,9 @@ signIn:
   title: このページをスマートフォンに送信しましょう。
   intro: Pushpilot は Pushbullet アカウントを使って、リンク、メモ、ファイル、SMS をデバイス間でやり取りし、スマートフォンの通知をデスクトップに届けます。
   button: Pushbullet でサインイン
-  buttonHint: Pushbullet が開き、Pushpilot を承認できます。パスワードが拡張機能に渡ることはありません。
+  buttonHint: 'pushbullet.com のサインイン状態を使います（Pushpilot が読み取りの許可を一度だけ求めます）。パスワードが拡張機能に渡ることはありません。'
+  useApproval: '代わりに Pushbullet のページで承認する'
+  useApprovalHint: 'pushbullet.com へのアクセスは不要ですが、Pushbullet アプリではプッシュが Me ではなく Following › Pushpilot に表示されます。'
   useToken: 代わりにアクセストークンを使う
   token: アクセストークン
   connect: 接続
@@ -265,6 +271,9 @@ signIn:
   cancelled: サインインはキャンセルされました。
   openFailed: Pushbullet のサインインを開けませんでした：$1
   noToken: Pushbullet からアクセストークンが返されませんでした$1。
+  siteDenied: 'Pushpilot が pushbullet.com のサインイン状態を読み取る必要があります。または、下のアクセストークンを使ってください。'
+  siteTimeout: 'まだ pushbullet.com にサインインしていません。サインインしてから、もう一度お試しください。'
+  otherAccount: 'pushbullet.com は別の Pushbullet アカウントでサインインしています。'
 linkKind:
   video: 動画
   image: 画像
@@ -371,9 +380,18 @@ settings:
   deviceLineSms: '$1・SMS 対応・最終アクティブ：$2'
   receiving: '受信中'
   notConnected: '未接続'
-  removeOldBefore: '古いデバイスは'
-  removeOldLink: 'pushbullet.com › Devices'
-  removeOldAfter: ' で削除できます。スマートフォンで Pushbullet アプリを開くと、再び「受信中」と表示されます。'
+  removeDevice: '$1 を削除'
+  remove: '削除'
+  cleanupHint: '未接続、または 30 日間使われていないデバイス（最終アクティブ）：'
+  cleanup:
+    1: '使っていないデバイス 1 台を削除'
+    n: '使っていないデバイス $1 台を削除'
+  cleanupConfirm:
+    1: '削除する'
+    n: '$1 台すべて削除'
+  removedDevices:
+    1: '1 台のデバイスを削除しました'
+    n: '$1 台のデバイスを削除しました'
   otherBrowsers: '他のブラウザ宛てのプッシュ'
   otherBrowsersHint: 'スマートフォンでは、古い Pushbullet 拡張機能が「Chrome」と表示されている場合があります。プッシュをここで受け取りたいブラウザにチェックを入れてください。'
   renameLabel: '他のデバイスに表示されるこのブラウザの名前'
@@ -522,6 +540,11 @@ dash:
   sendTo: 'このデバイスに送信'
   apps: 'アプリ'
   allApps: 'すべてのアプリ'
+meFix:
+  title: 'プッシュは Pushbullet アプリの Following にあります'
+  body: 'Pushbullet はアプリからのプッシュを Following › Pushpilot に振り分けます。pushbullet.com のサインインに切り替えると、以前のように Me に表示されます。'
+  action: 'Me に表示する'
+  done: '完了しました。新しいプッシュは Me に表示されます。'
 outbox:
   title: '送信待ち'
   hint: 'Pushbullet に再びつながると、自動で送信されます。'

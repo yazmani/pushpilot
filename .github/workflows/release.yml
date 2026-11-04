@@ -39,6 +39,7 @@ jobs:
       - run: npm test
       - run: npm run zip
       - run: npm run zip:firefox
+        id: zip-firefox
       - uses: softprops/action-gh-release@v3
         with:
           files: |
@@ -56,6 +57,7 @@ jobs:
           CHROME_CANCEL_PENDING: 'true'
       # addons.mozilla.org: the Firefox zip plus its sources for review. Needs an
       # AMO API key (addons.mozilla.org/developers/addon/api/key) as repo secrets.
+      # Runs even if the Chrome submission failed: one store shouldn't hold up the other.
       - name: Submit to Firefox Add-ons
-        if: env.FIREFOX_JWT_ISSUER != ''
+        if: ${{ !cancelled() && steps.zip-firefox.outcome == 'success' && env.FIREFOX_JWT_ISSUER != '' }}
         run: npx wxt submit --firefox-zip dist/*-firefox.zip --firefox-sources-zip dist/*-sources.zip

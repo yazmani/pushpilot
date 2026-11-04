@@ -101,6 +101,10 @@ whatsNew:
   title: Nouveautés de Pushpilot $1
   seeAll: Voir tous les changements
   label: Nouveautés
+  v1_7:
+    me: 'Connectez-vous avec votre compte pushbullet.com et vos envois réapparaissent sous Me dans les apps Pushbullet.'
+    devices: 'Supprimez les anciens appareils dans Paramètres › Appareils. Réinstaller n’ajoute plus de doublon.'
+    send: 'Le bouton Envoyer est désormais dans la zone du message, toujours visible.'
   v1_6:
     browsers: 'Pushpilot fonctionne désormais aussi dans Firefox et arrive sur Microsoft Edge Add-ons. Même compte, même historique partout.'
   v1_5:
@@ -255,7 +259,9 @@ signIn:
   title: Envoyez cette page sur votre téléphone.
   intro: Pushpilot fait circuler liens, notes, fichiers et SMS entre vos appareils grâce à votre compte Pushbullet, et affiche les notifications de votre téléphone sur votre ordinateur.
   button: Se connecter avec Pushbullet
-  buttonHint: Ouvre Pushbullet pour que vous autorisiez Pushpilot. Votre mot de passe n’est jamais transmis à l’extension.
+  buttonHint: 'Utilise votre connexion à pushbullet.com (Pushpilot demande une seule fois l’autorisation de la lire). Votre mot de passe n’est jamais transmis à l’extension.'
+  useApproval: 'Approuver plutôt sur la page de Pushbullet'
+  useApprovalHint: 'Pas besoin d’accès à pushbullet.com, mais les apps Pushbullet afficheront vos envois sous Following › Pushpilot au lieu de Me.'
   useToken: Utiliser plutôt un jeton d’accès
   token: Jeton d’accès
   connect: Connecter
@@ -265,6 +271,9 @@ signIn:
   cancelled: Connexion annulée.
   openFailed: 'Impossible d’ouvrir la connexion à Pushbullet : $1'
   noToken: Pushbullet n’a pas renvoyé de jeton d’accès$1.
+  siteDenied: 'Pushpilot doit pouvoir lire votre connexion à pushbullet.com. Sinon, utilisez un jeton d’accès ci-dessous.'
+  siteTimeout: 'Aucune connexion à pushbullet.com pour l’instant. Connectez-vous sur le site, puis réessayez.'
+  otherAccount: 'pushbullet.com est connecté à un autre compte Pushbullet.'
 linkKind:
   video: Vidéo
   image: Image
@@ -371,9 +380,18 @@ settings:
   deviceLineSms: '$1, peut envoyer des SMS. Dernière activité : $2'
   receiving: 'En réception'
   notConnected: 'Non connecté'
-  removeOldBefore: 'Supprimez les anciens appareils sur'
-  removeOldLink: 'pushbullet.com › Devices'
-  removeOldAfter: '. Un téléphone réapparaît « En réception » dès que vous y ouvrez l’app Pushbullet.'
+  removeDevice: 'Retirer $1'
+  remove: 'Retirer'
+  cleanupHint: 'Non connectés, ou rien reçu d’eux depuis 30 jours (dernière activité) :'
+  cleanup:
+    1: 'Retirer 1 appareil inutilisé'
+    n: 'Retirer $1 appareils inutilisés'
+  cleanupConfirm:
+    1: 'Le retirer'
+    n: 'Retirer les $1'
+  removedDevices:
+    1: '1 appareil retiré'
+    n: '$1 appareils retirés'
   otherBrowsers: 'Envois à un autre navigateur'
   otherBrowsersHint: 'Votre téléphone affiche peut-être encore l’ancienne extension Pushbullet sous le nom « Chrome ». Cochez chaque navigateur dont les envois doivent arriver ici.'
   renameLabel: 'Nom de ce navigateur sur vos autres appareils'
@@ -524,6 +542,11 @@ dash:
   sendTo: 'Y envoyer'
   apps: 'Applis'
   allApps: 'Toutes les applis'
+meFix:
+  title: 'Vos envois sont sous Following dans l’app Pushbullet'
+  body: 'Pushbullet range les envois des applis sous Following › Pushpilot. Passez à votre connexion pushbullet.com et ils apparaîtront sous Me, comme avant.'
+  action: 'Les afficher sous Me'
+  done: 'C’est fait. Les nouveaux envois apparaissent sous Me.'
 outbox:
   title: 'En attente d’envoi'
   hint: 'Ils partiront tout seuls dès que Pushbullet sera de nouveau joignable.'

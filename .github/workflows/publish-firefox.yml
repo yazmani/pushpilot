@@ -1,0 +1,41 @@
+name: Publish to Firefox Add-ons
+
+# Submits a tagged release to addons.mozilla.org by hand: when the release run
+# couldn't (say the Chrome step failed first), or to resend one. Builds the tag,
+# then uploads the Firefox zip with its sources for review. Needs the AMO API
+# key as repository secrets FIREFOX_JWT_ISSUER and FIREFOX_JWT_SECRET
+# (addons.mozilla.org/developers/addon/api/key).
+on:
+  workflow_dispatch:
+    inputs:
+      tag:
+        description: Release tag to submit (like v1.7.0)
+        required: true
+
+permissions:
+  contents: read
+
+jobs:
+  submit:
+    runs-on: ubuntu-latest
+    env:
+      PUPPETEER_SKIP_DOWNLOAD: 'true'
+    steps:
+      - uses: actions/checkout@v7
+        with:
+          ref: ${{ inputs.tag }}
+      - uses: actions/setup-node@v7
+        with:
+          node-version: 22
+          cache: npm
+      - run: npm ci
+      - name: Check the tag matches package.json
+        run: test "v$(node -p "require('./package.json').version")" = "${{ inputs.tag }}"
+      - run: npm test
+      - run: npm run zip:firefox
+      - name: Submit to Firefox Add-ons
+        run: npx wxt submit --firefox-zip dist/*-firefox.zip --firefox-sources-zip dist/*-sources.zip
+        env:
+          FIREFOX_EXTENSION_ID: pushpilot@yazmani.github.io
+          FIREFOX_JWT_ISSUER: ${{ secrets.FIREFOX_JWT_ISSUER }}
+          FIREFOX_JWT_SECRET: ${{ secrets.FIREFOX_JWT_SECRET }}

@@ -100,6 +100,10 @@ whatsNew:
   title: Neu in Pushpilot $1
   seeAll: Alle Änderungen ansehen
   label: Neuigkeiten
+  v1_7:
+    me: 'Melde dich mit deinem pushbullet.com-Konto an, dann stehen deine Pushes in den Pushbullet-Apps wieder unter Me.'
+    devices: 'Alte Geräte entfernst du unter Einstellungen › Geräte. Eine Neuinstallation legt kein Duplikat mehr an.'
+    send: 'Der Senden-Knopf sitzt jetzt direkt im Nachrichtenfeld, immer sichtbar.'
   v1_6:
     browsers: 'Pushpilot läuft jetzt auch in Firefox und ist bei Microsoft Edge Add-ons. Gleiches Konto, gleicher Verlauf überall.'
   v1_5:
@@ -254,7 +258,9 @@ signIn:
   title: Sende diese Seite an dein Handy.
   intro: Pushpilot überträgt Links, Notizen, Dateien und SMS über dein Pushbullet-Konto zwischen deinen Geräten und bringt die Benachrichtigungen deines Handys auf deinen Desktop.
   button: Mit Pushbullet anmelden
-  buttonHint: Öffnet Pushbullet, damit du Pushpilot freigeben kannst. Dein Passwort erreicht die Erweiterung nie.
+  buttonHint: 'Nutzt deine Anmeldung auf pushbullet.com (Pushpilot fragt einmal, ob es sie lesen darf). Dein Passwort erreicht die Erweiterung nie.'
+  useApproval: 'Stattdessen auf der Pushbullet-Seite zustimmen'
+  useApprovalHint: 'Kein Zugriff auf pushbullet.com nötig, aber die Pushbullet-Apps zeigen deine Pushes unter Following › Pushpilot statt unter Me.'
   useToken: Stattdessen einen Zugriffstoken verwenden
   token: Zugriffstoken
   connect: Verbinden
@@ -264,6 +270,9 @@ signIn:
   cancelled: Die Anmeldung wurde abgebrochen.
   openFailed: 'Die Pushbullet-Anmeldung konnte nicht geöffnet werden: $1'
   noToken: Pushbullet hat keinen Zugriffstoken zurückgegeben$1.
+  siteDenied: 'Pushpilot muss deine Anmeldung auf pushbullet.com lesen dürfen. Oder verwende unten einen Zugriffstoken.'
+  siteTimeout: 'Noch keine Anmeldung auf pushbullet.com. Melde dich dort an und versuch es dann noch einmal.'
+  otherAccount: 'Auf pushbullet.com ist ein anderes Pushbullet-Konto angemeldet.'
 linkKind:
   video: Video
   image: Bild
@@ -370,9 +379,18 @@ settings:
   deviceLineSms: $1, kann SMS senden. Zuletzt aktiv am $2
   receiving: Empfängt
   notConnected: Nicht verbunden
-  removeOldBefore: Entferne alte Geräte unter
-  removeOldLink: pushbullet.com › Devices
-  removeOldAfter: '. Ein Handy wird wieder als „Empfängt“ angezeigt, sobald du die Pushbullet-App darauf öffnest.'
+  removeDevice: '$1 entfernen'
+  remove: 'Entfernen'
+  cleanupHint: 'Nicht verbunden oder seit 30 Tagen nichts von ihnen (zuletzt aktiv):'
+  cleanup:
+    1: '1 ungenutztes Gerät entfernen'
+    n: '$1 ungenutzte Geräte entfernen'
+  cleanupConfirm:
+    1: 'Entfernen'
+    n: 'Alle $1 entfernen'
+  removedDevices:
+    1: '1 Gerät entfernt'
+    n: '$1 Geräte entfernt'
   otherBrowsers: Pushes an einen anderen Browser
   otherBrowsersHint: Dein Handy listet die alte Pushbullet-Erweiterung eventuell noch als „Chrome“. Hak jeden Browser an, dessen Pushes hier ankommen sollen.
   renameLabel: Name dieses Browsers auf deinen anderen Geräten
@@ -523,6 +541,11 @@ dash:
   sendTo: 'Dorthin senden'
   apps: 'Apps'
   allApps: 'Alle Apps'
+meFix:
+  title: 'Deine Pushes stehen in der Pushbullet-App unter Following'
+  body: 'Pushbullet legt Pushes von Apps unter Following › Pushpilot ab. Wechsle zu deiner Anmeldung auf pushbullet.com, dann erscheinen sie wie früher unter Me.'
+  action: 'Unter Me anzeigen'
+  done: 'Erledigt. Neue Pushes erscheinen unter Me.'
 outbox:
   title: 'Wartet auf Versand'
   hint: 'Diese gehen automatisch raus, sobald Pushbullet wieder erreichbar ist.'

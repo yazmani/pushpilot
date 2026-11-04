@@ -124,6 +124,7 @@ Pushpilot has no servers, no analytics and no tracking. It talks only to Pushbul
 | `alarms` | Reconnecting to Pushbullet's stream if the connection drops |
 | `offscreen` | Playing the notification sound and writing to the clipboard (service workers have no DOM) |
 | `clipboardRead`, `clipboardWrite` | Universal copy and paste, and copying sign-in codes |
+| `cookies` | Remembering this browser's Pushbullet device, so a reinstall reuses it instead of adding a duplicate (one cookie, never sent anywhere) |
 | `sidePanel` | Opening Pushpilot in the side panel |
 | `favicon` | Showing site icons next to links |
 | Pushbullet hosts | The Pushbullet API, realtime stream and file storage |
