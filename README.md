@@ -7,7 +7,7 @@
 **Send tabs, notes and files to your phone. See your Android notifications and text from your browser.**
 A fast, modern, open-source Manifest V3 client for [Pushbullet](https://www.pushbullet.com).
 
-**[Install from the Chrome Web Store](https://chromewebstore.google.com/detail/pushpilot-for-pushbullet/pdiijobemepbckkbdeacfngodbeddmcf)** · **[Website](https://yazmani.github.io/pushpilot/)** · **[Privacy](https://yazmani.github.io/pushpilot/privacy.html)**
+**[Chrome Web Store](https://chromewebstore.google.com/detail/pushpilot-for-pushbullet/pdiijobemepbckkbdeacfngodbeddmcf)** · **[Edge Add-ons](https://microsoftedge.microsoft.com/addons/detail/pushpilot-for-pushbullet/coeohelkfpdbkdjilgkdnpbeflgdlmjh)** · **[Firefox Add-ons](https://addons.mozilla.org/firefox/addon/pushpilot-for-pushbullet/)** · **[Website](https://yazmani.github.io/pushpilot/)** · **[Privacy](https://yazmani.github.io/pushpilot/privacy.html)**
 
 [![Chrome Web Store](https://img.shields.io/chrome-web-store/v/pdiijobemepbckkbdeacfngodbeddmcf?label=Chrome%20Web%20Store&color=16a35a&logo=googlechrome&logoColor=white)](https://chromewebstore.google.com/detail/pushpilot-for-pushbullet/pdiijobemepbckkbdeacfngodbeddmcf)
 [![CI](https://github.com/yazmani/pushpilot/actions/workflows/ci.yml/badge.svg)](https://github.com/yazmani/pushpilot/actions/workflows/ci.yml)
@@ -77,6 +77,7 @@ The official Pushbullet extension is built on Manifest V2, which current version
 ## Install
 
 - **[Chrome Web Store](https://chromewebstore.google.com/detail/pushpilot-for-pushbullet/pdiijobemepbckkbdeacfngodbeddmcf):** one click, with automatic updates. Works in Chrome, Brave and Edge.
+- **[Edge Add-ons](https://microsoftedge.microsoft.com/addons/detail/pushpilot-for-pushbullet/coeohelkfpdbkdjilgkdnpbeflgdlmjh):** the same, from Microsoft's store.
 - **From a release:** download the latest `pushpilot-*-chrome.zip` from [Releases](https://github.com/yazmani/pushpilot/releases), unzip it, open `chrome://extensions` (or `brave://extensions`, `edge://extensions`), turn on **Developer mode**, click **Load unpacked** and pick the unzipped folder.
 - **[Firefox Add-ons](https://addons.mozilla.org/firefox/addon/pushpilot-for-pushbullet/):** Firefox 140 or newer, with automatic updates.
 - **From source:** see [Development](#development).
