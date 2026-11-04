@@ -13,7 +13,7 @@ A fast, modern, open-source Manifest V3 client for [Pushbullet](https://www.push
 [![CI](https://github.com/yazmani/pushpilot/actions/workflows/ci.yml/badge.svg)](https://github.com/yazmani/pushpilot/actions/workflows/ci.yml)
 [![License: AGPL-3.0](https://img.shields.io/badge/license-AGPL--3.0-16a35a)](LICENSE)
 ![Manifest V3](https://img.shields.io/badge/Manifest-V3-16a35a)
-![Chrome, Brave, Edge](https://img.shields.io/badge/works%20in-Chrome%20%7C%20Brave%20%7C%20Edge-0b7f43)
+![Chrome, Brave, Edge, Firefox](https://img.shields.io/badge/works%20in-Chrome%20%7C%20Brave%20%7C%20Edge%20%7C%20Firefox-0b7f43)
 [![Sponsor](https://img.shields.io/badge/sponsor-GitHub-ea4aaa?logo=githubsponsors&logoColor=white)](https://github.com/sponsors/yazmani)
 [![Ko-fi](https://img.shields.io/badge/buy%20me%20a%20coffee-Ko--fi-ff5e5b?logo=kofi&logoColor=white)](https://ko-fi.com/pushpilot)
 
